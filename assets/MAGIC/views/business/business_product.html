@@ -1,0 +1,106 @@
+<div ng-controller="businessProductCtrl">
+    <div class="ibox-heading text-center p-xxs">
+        <h1><span class="text-navy">{{detailData.name}}</span></h1>
+    </div>
+
+    <div class="row procontent border-bottom white-bg dashboard-header" ng-repeat="system in detailData.uasc_system_product"  ng-init=" p_index=$index" >
+
+        <div class="col-sm-3">
+            <h2>{{ system.name }}</h2>
+            <ul class="list-group clear-list m-t">
+                <!--<li class="list-group-item fist-item">-->
+                    <!--<span class="pull-right"> {{system.resultClone.dev.run_time || '&#45;&#45;&#45;&#45;' }}</span>-->
+                    <!--<a ui-sref=" business.invDetail({sys_id:system.id,env_id:system.result.dev.env_id})" ng-show="system.resultClone.dev.status">-->
+                        <!--<span class="label {{system.resultClone.dev.classN}}" >DEV环境&nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+                    <!--</a>-->
+                    <!--<a ng-show="!system.resultClone.dev.status">-->
+                        <!--<span class="label {{system.resultClone.dev.classN}}" >DEV环境&nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+                    <!--</a>-->
+                    <!--<a href="{{result_url}}{{system.resultClone.dev.url}}" ng-show="system.resultClone.dev.url !== '' ">{{system.resultClone.dev.text}}</a>-->
+                    <!--<span ng-show="system.resultClone.dev.url ==''" >{{system.resultClone.dev.text}}</span>-->
+                <!--</li>-->
+                <li class="list-group-item">
+                    <span class="pull-right"> {{system.resultClone.ci.run_time || '----' }}</span>
+                    <a ui-sref="business.invDetail({system:system.uuid,env:system.result.ci.env_id})" ng-show="system.resultClone.ci.status">
+                        <span class="label {{system.resultClone.ci.classN}}" >CI环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </a>
+                    <a ng-show="!system.resultClone.ci.status">
+                        <span class="label {{system.resultClone.ci.classN}}" >CI环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </a>
+                    <a href={{result_url}}{{system.resultClone.ci.url}} ng-show="system.resultClone.ci.url !== '' ">{{system.resultClone.ci.text}}</a>
+                    <span ng-show="system.resultClone.ci.url ==''" >{{system.resultClone.ci.text}}</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="pull-right"> {{system.resultClone.sit.run_time || '----' }}</span>
+                    <a ui-sref="business.invDetail({system:system.uuid,env:system.result.sit.env_id})"  ng-show="system.resultClone.sit.status">
+                        <span class="label {{system.resultClone.sit.classN}}" >SIT环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </a>
+                    <a ng-show="!system.resultClone.sit.status" >
+                        <span class="label {{system.resultClone.sit.classN}}" >SIT环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </a>
+                    <a href="{{result_url}}{{system.resultClone.sit.url}}" ng-show="system.resultClone.sit.url !== '' ">{{system.resultClone.sit.text}}</a>
+                    <span ng-show="system.resultClone.sit.url ==''" >{{system.resultClone.sit.text}}</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="pull-right"> {{system.resultClone.asspro.run_time || '--  --' }}</span>
+                    <a ui-sref="business.invDetail({system:system.uuid,env:system.result.asspro.env_id})" ng-show="system.resultClone.asspro.status">
+                        <span class="label {{system.resultClone.asspro.classN}}" >准生产环境</span>
+                    </a>
+                    <a ng-show="!system.resultClone.asspro.status">
+                        <span class="label {{system.resultClone.asspro.classN}}" >准生产环境</span>
+                    </a>
+                    <a href={{result_url}}{{system.resultClone.asspro.url}} ng-show="system.resultClone.asspro.url !== '' ">{{system.resultClone.asspro.text}}</a>
+                    <span ng-show="system.resultClone.asspro.url ==''" >{{system.resultClone.asspro.text}}</span>
+                </li>
+                <!--<li class="list-group-item">-->
+                    <!--<span class="pull-right"> {{system.resultClone.pro.run_time}}</span>-->
+                    <!--<a ui-sref="business.invDetail({sys_id:system.id,env_id:system.result.pro.env_id})" ng-show="system.resultClone.pro.status">-->
+                        <!--<span class="label {{system.resultClone.pro.classN}}" >生产环境&nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+                    <!--</a>-->
+                    <!--<a ng-show="!system.resultClone.pro.status">-->
+                        <!--<span class="label {{system.resultClone.pro.classN}}" >生产环境&nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+                    <!--</a>-->
+                    <!--<a href={{result_url}}{{system.resultClone.pro.url}} ng-show="system.resultClone.pro.url !== '' ">{{system.resultClone.pro.text}}</a>-->
+                    <!--<span ng-show="system.resultClone.pro.url ==''" >{{system.resultClone.pro.text}}</span>-->
+                <!--</li>-->
+            </ul>
+        </div>
+
+
+        <div class="col-sm-6 coverage" ng-controller="chartJsCtrl as chart">
+            <div class="con_tabs display-flex">
+                <div ng-class="{zsyactive: $index == system.activeIndex}" ng-click="tabPicture(item,$index,p_index)"  ng-repeat=" item in ['ci','sit','asspro']">{{item}}</div>
+            </div>
+            <div>
+                <canvas linechart options="chart.lineOptions" data="system.allCanvas.detail" responsive=true
+                        height="200" width="500"></canvas>
+            </div>
+            <div align="center">
+                <h5>测试case通过率{{system.allCanvas.defaultText}}</h5>
+            </div>
+        </div>
+        <div class="col-sm-3" ng-controller="chartJsCtrl as chart">
+            <div class="statistic-box">
+                <h4 class="newstatus">
+                    最新用例执行状态
+                </h4>
+
+                <div class="row text-center">
+                    <div class="col-lg-6">
+                        <canvas doughnutchart options="chart.doughnutOptions" data="system.allCanvas.passRatio"
+                                width="120" height="120"></canvas>
+                        <h5>用例执行率{{system.allCanvas.defaultText}}</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <canvas doughnutchart options="chart.doughnutOptions" data="system.allCanvas.scale" width="120"
+                                height="120"></canvas>
+                        <h5>用例通过率</h5>
+                        <!--   <h5>用例比例{{system.allCanvas.defaultText}}</h5> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

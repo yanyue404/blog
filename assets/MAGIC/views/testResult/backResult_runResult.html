@@ -1,0 +1,152 @@
+    <div ng-controller="RunResult">
+        <div class="backInfo-depart-frame">
+            <div class="backDepart-header">
+                <p class="backDepartQ-title pull-left">执行结果</p>
+                <!--<div class="queryCase pull-right ">
+                    <input type="text " placeholder="请输入执行结果/执行结果编号">
+                    <span>查询</span>
+                </div>-->
+            </div>
+            <!-- 按钮触发模态框 -->
+           <!-- <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal" ng-click="addResult()">新增执行结果</button>-->
+            <div class="back-runResult-frame">
+                <table class=" table table-stripped toggle-arrow-tiny">
+                    <thead>
+                    <tr>
+                        <th style="width:3%">编号</th>
+                        <th style="width:15%">策略</th>
+                        <th style="width:6%">环境</th>
+                        <th style="width:6%">系统</th>
+                        <th>通过数量</th>
+                        <th>失败数量</th>
+                        <th>错误数量</th>
+                        <th>结果</th>
+                        <th>查看地址</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ResultList">
+                    <tr>
+                        <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                        <td>{{item.case_suite_description}}</td>
+                        <td>{{item.env_description}}</td>
+                        <td>{{item.system_description}}</td>
+                        <td>{{item.count_pass}}</td>
+                        <td>{{item.count_fail}}</td>
+                        <td>{{item.count_error}}</td>
+                        <!--<td>{{showResult_status(item.result_status)}}</td>-->
+                        <td>{{item.result_status}}</td>
+                        <td><a href="{{result_url}}{{item.file_path}}">详情</a></td>
+                        <td>{{item.created_time}}</td>
+                        <td>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#seeRunResult" ng-click="seeRunResultDes(item.id)">查看</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tcdPageCode"></div>
+            </div>
+            <!--<div ng-repeat="item in arrCon" class="footable"></div>-->
+        </div>
+
+    
+
+        <!-- 模态框 查看执行结果详情（Modal） -->
+        <div class="modal fade" id="seeRunResult" tabindex="-1" role="dialog" aria-labelledby="seeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="seeModalLabel">
+                            查看执行结果详情
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">用例描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="itemDetail.case_suite_description" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">环境</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="itemDetail.env_description" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">系统</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="itemDetail.system_description" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">通过数量</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="itemDetail.count_pass" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">失败数量</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="itemDetail.count_fail" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">错误数量</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="itemDetail.count_error" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">测试结果</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="itemDetail.result_status" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">查看地址</label>
+                                <div class="col-sm-10" style="padding-top:5px;">
+                                    <a  href="{{result_url}}{{itemDetail.file_path}}">点击查看详情</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">创建时间</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="itemDetail.created_time" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+					          关闭
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+   <!--      /.modal 查看执行结果详情结束 -->
+        <div>
+            <div class="toastShow" ng-show="toastState === true">
+                <em>{{toastCon}}</em>
+            </div>
+        </div>
+    </div>
+<!--
+    <script>
+        new Pagination('.container', {
+            total: 55,
+            pageSize: 5,
+            current: 1,
+            onChange: function(page) {
+                console.log(page)
+            }
+        })
+    </script>-->

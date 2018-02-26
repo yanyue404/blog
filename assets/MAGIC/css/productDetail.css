@@ -1,0 +1,68 @@
+.procontent{
+   /* padding: 20px;
+    background: #fff;
+    margin-right:-15px;
+    margin-left:-15px;*/
+    margin-bottom: 20px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    position: relative;
+}
+/*.procontent .platform{
+    flex: 1;
+    !*min-width:250px;*!
+}
+.procontent .platform_con{
+    flex:3;
+    position: relative;
+    padding-top:0px;
+    !*min-width: 500px;*!
+}*/
+
+.procontent .coverage{
+    padding-top:50px;
+    position: relative;
+}
+
+
+.procontent .newstatus{
+    margin-bottom: 30px;
+}
+.display-flex {
+    display: -moz-box;
+    /* Firefox */
+    display: -ms-flexbox;
+    /* IE10 */
+    display: -webkit-box;
+    /* Safari */
+    display: -webkit-flex;
+    /* Chrome, WebKit */
+    display: flex;
+}
+.procontent  .con_tabs{
+    position: absolute;
+    left:10px;
+    top:-10px;
+    /*margin-left: -250px;*/
+    justify-content: center;
+    width:100%;
+
+}
+.procontent  .con_tabs div{
+    flex:1;
+    height:26px;
+    font-size: 15px;
+    margin-left:2px;
+    line-height: 26px;
+    background: #f3f6fb;
+    text-align: center;
+    border-radius: 3px;
+    width: 20%;
+}
+.procontent   .con_tabs div.zsyactive{
+    background: #9ea6b9;
+}
+
+.procontent .statistic-box{
+    margin-top:50px;
+}

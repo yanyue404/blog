@@ -1,0 +1,299 @@
+
+    <div ng-controller="backSysConfig_env">
+        <div class="backInfo-depart-frame">
+            <div class="backDepart-header">
+                <p class="backDepartQ-title pull-left">环境管理</p>
+                <!--<div class="queryCase pull-right ">
+                    <input type="text " placeholder="请输入环境/环境编号 ">
+                    <span>查询</span>
+                </div>-->
+            </div>
+            <!-- 按钮触发模态框 -->
+            <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal">新增环境</button>
+            <div class="back-env-frame">
+                <table class="table table-hover table-striped depart-table ">
+                    <thead>
+                    <tr>
+                        <td>环境编号</td>
+                        <td>环境名称</td>
+                        <td>环境描述</td>
+                        <td>是否启用</td>
+                        <td>是否初始化数据</td>
+                        <td>创建时间</td>
+                        <!--<td>修改时间</td>-->
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="item in envListArr">
+                    <tr>
+                        <td>{{$index + 1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.is_active?'是':'否'}}</td>
+                        <td>{{item.is_init?'是':'否'}}</td>
+                        <td>{{item.created_time}}</td>
+                        <!--<td>{{item.modified_time}}</td>-->
+                        <td>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#seeEnvModel" ng-click="seeEnvDes(item.id)">查看</button>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#editEnv" ng-click="editEnvDes(item.id)">修改</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableEnv" ng-click="DisableEnv(item.id)">禁用</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#delEnv" ng-click="delEnv(item.id)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 模态框 新增环境（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="envLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="envLabel">
+                            新增环境
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">环境名称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="addEnv.name" class="form-control" id="departmentName" placeholder="请输入环境名称">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">环境描述</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="addEnv.description" class="form-control" id="departmentDes" placeholder="请输入环境描述">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked='addEnv.is_active' ng-click="isEnvActiveMethod()"> 是否启用
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--0413==bug118==zxh==系统配置&#45;&#45;环境，增加是否为初始化数据选项，入参is_init-->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked='addEnv.is_init' ng-click="isEnvInitMethod()"> 是否为初始化数据
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="addEnvMethod()">
+                            新增
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 新增环境 结束 -->
+
+        <!-- 模态框 查看环境详情（Modal） -->
+        <div class="modal fade" id="seeEnvModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            查看环境详情
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">环境名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeEnv.name" class="form-control" id="departmentName" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">环境描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeEnv.description" class="form-control" id="departmentDes" ng-disabled="true" placeholder="请输入环境描述">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="seeEnv.is_active" ng-disabled="seeEnv.is_active"> 是否启用
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="seeEnv.is_init" ng-disabled="seeEnv.is_init"> 是否为初始化数据
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            关闭
+                        </button>
+
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+        <!-- 模态框 修改环境（Modal） -->
+        <div class="modal fade" id="editEnv" tabindex="-1" role="dialog" aria-labelledby="editEnvInfo" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="editEnvInfo">
+                            修改环境
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">环境名称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="editEnv.name" class="form-control" id="departmentName" placeholder="请输入环境名称">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">环境描述</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="editEnv.description" class="form-control" id="departmentDes" placeholder="请输入环境描述">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked='editEnv.is_active' ng-click="editEnvActive()"> 是否启用
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked='editEnv.is_init' ng-click="editEnvInit()"> 是否为初始化数据
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="editEnvMethod()">
+                            确认更改
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 修改环境结束 -->
+
+
+        <!-- 模态框 禁用（Modal） -->
+        <div class="modal fade" id="DisableEnv" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="disableLabel">
+                            环境禁用
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-empty" data-dismiss="modal">
+                                取消
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" ng-click="DisableEnvMethod()">
+                                禁用
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 禁用结束 -->
+
+
+        <!-- 模态框 环境删除（Modal） -->
+        <div class="modal fade" id="delEnv" tabindex="-1" role="dialog" aria-labelledby="delLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="delLabel">
+                            删除环境
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-empty" data-dismiss="modal">
+                                取消
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" ng-click="sureDelEnv()">
+                                删除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <div>
+            <div class="toastShow" ng-show="toastState === true">
+                <em>{{toastCon}}</em>
+            </div>
+        </div>
+        <!-- /.modal 环境删除 -->
+    </div>

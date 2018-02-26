@@ -1,0 +1,364 @@
+<div ng-controller="strategy">
+    <div class="backInfo-depart-frame">
+        <div class="backDepart-header">
+            <p class="backDepartQ-title pull-left">策略列表</p>
+        </div>
+        <div class="queryCase">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <select ng-model="querySystemParam.product" ng-options="m.name for m in queryProductList" ng-change="queryProduct()">
+                                  <option value="">-- 请选择产品 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <select ng-model="querySystemParam.system" ng-options="m.system_name for m in querySystemList">
+                                  <option value="">-- 请选择系统 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <button ng-click="queryCase()" class="btn btn-default" style="bottom: 7px;position: relative;">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 按钮触发模态框 -->
+        <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal" ng-click="openStrategy()">新增</button>
+        <div class="back-server-frame">
+            <table class="table table-hover table-striped depart-table">
+                <thead>
+                    <tr>
+                        <td>编号</td>
+                        <td>策略名称</td>
+                        <td>系统</td>
+                        <td>环境</td>
+                        <td>是否关联任务</td>
+                        <td>是否启用</td>
+                        <td>更新时间</td>
+                        <td>创建人</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in strategyList">
+                    <tr>
+                        <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.system_name}}</td>
+                        <td>{{item.env_name}}</td>
+                        <td>{{item.is_relate?'是':'否'}}</td>
+                        <td>{{item.is_active?'是':'否'}}</td>
+                        <td>{{ item.modify_time}}</td>
+                        <td>{{ item.creator_name}}</td>
+                        <td>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="seeStrategy(item.uuid,$index)">查看</button>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="editStrategy(item.uuid,$index)">修改</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="disableStrategy(item.uuid,$index)">禁用</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="delStrategy(item.uuid,$index)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-show="forInitPage" class="forInit">
+                <span class="tcdPageCode"></span>
+            </div>
+            <div ng-hide="forInitPage" class="forSearch">
+                <span class="tcdPageCode"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框 新增、查看、修改（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">{{dialog.header}}</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title" id="myModalLabel" style="margin-bottom:10px; padding: 10px 20px; border-bottom:1px solid #ddd;">基本信息</h4>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">产品名称</label>
+                            <div class="col-sm-10">
+                                <select ng-change="selectedProduct()" ng-model="params.product" ng-options="m.name for m in productNameList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">系统</label>
+                            <div class="col-sm-10">
+                                <select ng-change="getWarehouse()" ng-model="params.system" ng-options="m.name for m in systemList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">环境</label>
+                            <div class="col-sm-10">
+                                <select ng-model="params.env" ng-options="m.name for m in envList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">策略名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.name" class="form-control" placeholder="请输入策略名称">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">分支</label>
+                            <div class="col-sm-2">
+                                <select ng-change="selectedSourceType()" ng-model="params.branch_type" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择 --</option>
+                                    <option label="分支" value="0">分支</option>
+                                    <option label="标签" value="1">标签</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select ng-model="params.branch_name" ng-options="m.name for m in sourceCodeBranchList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择 --</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" ng-model="params.branchInputName" class="form-control" placeholder="手动输入分支名称" style="height:23px;">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 5px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <h4 class="modal-title" id="myModalLabel" style="margin-bottom:10px; padding: 10px 20px; border-bottom:1px solid #ddd;">编译过程</h4>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">部署类型</label>
+                            <div class="col-sm-10">
+                                <select ng-change="selectDeployType()" ng-model="params.deploy_type" ng-options="m.type for m in deployType" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">源码路径</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.source_path" class="form-control" placeholder="请输入源码路径">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">编译文件名</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="compileParams[0].compile_file" class="form-control" placeholder="maven类型可选择多个编译文件和编译路径">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">编译路径</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="compileParams[0].compile_path" class="form-control" placeholder="相对路径">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <!-- 原型图上没有这两个参数但是接口文档上有，暂时注释掉 -->
+                        <!-- <div class="form-group">
+                            <label class="col-sm-2 control-label">编译源码路径</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.compile_source_branch" class="form-control" placeholder="请输入源码路径">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">编译源码分支</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.compile_source_branch" class="form-control" placeholder="请输入源码分支">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div> -->
+
+                        <!--部署类型为IOS时显示的内容-->
+                        <div class="form-group" ng-show="isIOS">
+                            <label class="col-sm-2 control-label">scheme_name</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.scheme_name" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="isIOS">
+                            <label class="col-sm-2 control-label">configuration</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.configuration" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="isIOS">
+                            <label class="col-sm-2 control-label">sdk</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.sdk" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <!-- 添加自定义参数 -->
+                        <div class="form-group">
+                            <button type="button" class="btn btn-default" ng-click="complieCustomPlus('complieCustomParams',$index)">添加自定义参数</button>
+                        </div>
+                        <div class="form-group" ng-show="complieCustomParams.length>0">
+                            <div class="display_flex" ng-repeat="param in complieCustomParams track by $index">
+                                <div style="margin-left:10%">
+                                    <input type="text" ng-model="param.key" class="form-control" placeholder="key">
+                                </div>
+                                <div>
+                                    <input type="text" ng-model="param.value" class="form-control" placeholder="value">
+                                </div>
+                                <button type="button" class="btn btn-default" ng-click="complieCustomMinus('complieCustomParams',$index)">-</button>
+                                <button type="button" class="btn btn-default" ng-click="complieCustomPlus('complieCustomParams',$index)">+</button>
+                            </div>
+                        </div>
+                        <!-- 点击按钮添加编译文件名和编译路径组合 -->
+                        <div class="form-group" ng-show="marven">
+                            <button type="button" class="btn btn-default" ng-click="compliePlus()">添加编译组</button>
+                            <button type="button" class="btn btn-default" ng-click="complieMinus()">删除编译组</button>
+                        </div>
+                        <!-- compileParams第一条是在上方显示，之后的在加减号下方显示 -->
+                        <div ng-repeat="oneArr in compileParams track by $index" ng-show="marven&&$index>=1">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">编译文件名</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="oneArr.compile_file" class="form-control" placeholder="maven类型可选择多个编译文件和编译路径">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">编译路径</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="oneArr.compile_path" class="form-control" placeholder="相对路径">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red">*</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 部署服务器 -->
+                        <h4 class="modal-title" id="myModalLabel" style="margin-bottom:10px; padding: 10px 20px; border-bottom:1px solid #ddd;">服务器部署</h4>
+                        <div ng-repeat="server in serverParams track by $index">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">部署服务器{{$index+1}}</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="server.server" ng-options="m.name for m in serverList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select>
+                                    <span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="marven">
+                                <label class="col-sm-2 control-label">上传包名{{$index+1}}</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="server.upBagName" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">上传路径{{$index+1}}</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="server.upPath" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="marven">
+                                <label class="col-sm-2 control-label">进程路径{{$index+1}}</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="server.proPath" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-default" ng-click="serverCustomPlus('serverParams','params',$index)">添加自定义参数</button>
+                            </div>
+                            <div class="form-group" ng-show="server.params.length>0">
+                                <div class="display_flex" ng-repeat="param in serverParams[$index].params track by $index">
+                                    <div style="margin-left:10%">
+                                        <input type="text" ng-model="param.key" class="form-control" placeholder="key">
+                                    </div>
+                                    <div>
+                                        <input type="text" ng-model="param.value" class="form-control" placeholder="value">
+                                    </div>
+                                    <button type="button" class="btn btn-default" ng-click="serverCustomMinus('serverParams','params',$parent.$index,$index)">-</button>
+                                    <button type="button" class="btn btn-default" ng-click="serverCustomPlus('serverParams','params',$parent.$index,$index)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary " ng-click="addServer()">添加服务器</button>
+                        <button type="button" class="btn btn-primary " ng-click="reduceServer()">删除服务器</button>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">启用</label>
+                            <div class="col-sm-10" style="padding-top:6px;">
+                                <input type="checkbox" ng-model="params.is_active" ng-disabled="dialog.input_isClick"> 是否启用
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="addStrategyConfirm()" ng-show="dialog.status === 'create'">新增</button>
+                    <button type="button" class="btn btn-primary" ng-click="editStrategyConfirm()" ng-show="dialog.status === 'modify'">修改</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- 模态框 禁用、删除（Modal） -->
+    <div class="modal fade" id="DisableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="disableLabel">{{dialog.header}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default btn-danger" ng-click="disableStrategyConfirm()" ng-show="dialog.status === 'disable'">禁用</button>
+                        <button type="button" class="btn btn-default btn-danger" ng-click="delStrategyConfirm()" ng-show="dialog.status === 'del'">删除</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- showToast（Modal） -->
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>

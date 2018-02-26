@@ -1,0 +1,150 @@
+<div class="row wrapper border-bottom white-bg page-heading text-center">
+    <div class="col-lg-12">
+        <h2>国美金融ASC接口自动化支持中心</h2>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight " id="interfaceCenter-frame" ng-controller="productResultList as result">
+    <div class="row">
+        <div class="col-lg-12" ng-repeat="department in productsList">
+            <div class="ibox float-e-margins">
+                <!--<div class="ibox-title ">-->
+                <div class="text-navy">
+                    <p>
+                        <a ui-sref="interface.board({proName:department.name,proId:department.uuid})">
+                            <h2>{{ department.name }}</h2>
+                        </a>
+                    </p>
+                </div>
+                <div class="ibox-content">
+                    <table class=" table table-stripped toggle-arrow-tiny" data-page-size="20">
+                        <thead>
+                            <tr>
+                                <th width="10%">产品</th>
+                                <th>系统</th>
+                                <th>开发环境</th>
+                                <th>ci环境</th>
+                                <th>sit环境</th>
+                                <th>准生产环境</th>
+                                <th>生产环境</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="product in department.product">
+                            <tr ng-show="!!product.system.length">
+                                <!---->
+                                <td rowspan="{{product.system.length+1}}" style="display:table-cell; vertical-align:middle" align="center">
+                                    <a ui-sref="interface.productDetail({proName:product.name,proId:product.uuid})" style="font-size: 16px">{{product.name}}</a>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="system in product.system">
+                                <td class="coverage_cell ">
+                                    <div class="verticalmiddle-front">
+                                        <p style="font-size: 16px; ">{{system.name}}</p>
+                                        <span style="color: darkgrey ;font-style: italic">代码覆盖率:</span><span style="color: darkgrey ;font-style: italic">{{system.result.coverage_percent}}</span>
+                                    </div>
+                                </td>
+                                <td class="env_cell ">
+                                    <div class="verticalmiddle-front">
+                                        <!--<p class="labelitem"
+                                       ng-class="{'labelitem_pass':system.result.dev.status === 'success'  ,'labelitem_fail':system.result.dev.status === 'failed' }">
+                                    </p>-->
+                                        <p class="labelitem" ng-class="{'labelitem_pass':isSuccess(system.result.dev.status) === 'success','labelitem_failed':isSuccess(system.result.dev.status) === 'failed','labelitem_running':isSuccess(system.result.dev.status) === 'running'}">
+                                        </p>
+                                        <p class="reportTime">
+                                            <a href="{{rootUrl}}{{system.result.dev.url }}">{{system.result.dev.run_time}}</a>
+                                        </p>
+                                    </div>
+
+                                </td>
+                                <td class="env_cell">
+                                    <div class="verticalmiddle-front">
+                                        <!--<p class="labelitem " ng-class="{'labelitem_pass':system.result.ci.status === 'success' ,'labelitem_fail':system.result.ci.status === 'failed'}"></p>-->
+                                        <p class="labelitem" ng-class="{'labelitem_pass':isSuccess(system.result.ci.status) === 'success','labelitem_failed':isSuccess(system.result.ci.status) === 'failed','labelitem_running':isSuccess(system.result.ci.status) === 'running'}">
+                                        </p>
+                                        <p class="reportTime">
+                                            <a href="{{rootUrl}}{{system.result.ci.url }}">{{system.result.ci.run_time}}</a>
+                                        </p>
+                                    </div>
+                                </td>
+                                <td class="env_cell">
+                                    <div class="verticalmiddle-front">
+                                        <!--<p class="labelitem" ng-class="{'labelitem_pass':system.result.sit.status === 'success' ,'labelitem_fail':system.result.sit.status === 'failed'}"></p>-->
+                                        <p class="labelitem" ng-class="{'labelitem_pass':isSuccess(system.result.sit.status) === 'success','labelitem_failed':isSuccess(system.result.sit.status) === 'failed','labelitem_running':isSuccess(system.result.sit.status) === 'running'}">
+                                        </p>
+                                        <p class="reportTime">
+                                            <a href="{{rootUrl}}{{system.result.sit.url }}">{{system.result.sit.run_time}}</a>
+                                        </p>
+                                    </div>
+
+                                </td>
+                                <td class="env_cell">
+                                    <div class="verticalmiddle-front">
+                                        <!--<p class="labelitem" ng-class="{'labelitem_passs':system.result.asspro.status === 'success','dev-state-fail':system.result.asspro.status === 'failed' }"></p>-->
+                                        <p class="labelitem" ng-class="{'labelitem_pass':isSuccess(system.result.asspro.status) === 'success','labelitem_failed':isSuccess(system.result.asspro.status) === 'failed','labelitem_running':isSuccess(system.result.asspro.status) === 'running'}">
+                                        </p>
+                                        <p class="reportTime">
+                                            <a href="{{rootUrl}}{{system.result.asspro.url  }}">{{system.result.asspro.run_time}}</a>
+                                        </p>
+                                    </div>
+
+                                </td>
+                                <td class="env_cell">
+                                    <div class="verticalmiddle-front">
+                                        <!--<p class="labelitem " ng-class="{'labelitem_pass':system.result.pro.status === 'success' ,
+                            'labelitem_fail':system.result.pro.status === 'failed'}"></p>-->
+                                        <p class="labelitem" ng-class="{'labelitem_pass':isSuccess(system.result.pro.status) === 'success','labelitem_failed':isSuccess(system.result.pro.status) === 'failed','labelitem_running':isSuccess(system.result.pro.status) === 'running'}"></p>
+                                        <p class="reportTime">
+                                            <a href="{{rootUrl}}{{system.result.pro.url }}">{{system.result.pro.run_time}}</a>
+                                        </p>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <!--     <tr>
+                            <td>ci环境</td>
+                            <td ng-bind-html="showStatusText(system.result.ci)"></td>
+                            <td>{{showExeTime(system.result.ci)}}</td>
+                            <td>{{showCover_percent(system.result.ci)}}</td>
+                            <td>
+                                <a ng-show="system.result.ci && system.result.ci.url " href={{ system.result.ci.url |
+                                   IFaddUrl}}>详情</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>sit环境</td>
+                            <td ng-bind-html="showStatusText(system.result.sit)"></td>
+                            <td>{{showExeTime(system.result.sit)}}</td>
+                            <td>{{showCover_percent(system.result.sit)}}</td>
+                            <td>
+                                <a ng-show="system.result.sit && system.result.sit.url " href={{
+                                   system.result.sit.url | IFaddUrl}}>详情</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>准生产环境</td>
+                            <td ng-bind-html="showStatusText(system.result.asspro)"></td>
+                            <td>{{showExeTime(system.result.asspro)}}</td>
+                            <td>{{showCover_percent(system.result.asspro)}}</td>
+                            <td>
+                                <a ng-show="system.result.asspro && system.result.asspro.url " href={{
+                                   system.result.asspro.url | IFaddUrl}}>详情</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>生产环境</td>
+                            <td ng-bind-html="showStatusText(system.result.pro)"></td>
+                            <td>{{showExeTime(system.result.pro)}}</td>
+                            <td>{{showCover_percent(system.result.pro)}}</td>
+                            <td>
+                                <a ng-show="system.result.pro && system.result.pro.url " href={{
+                                   system.result.pro.url | IFaddUrl}}>详情</a>
+                            </td>
+                        </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--</div>-->
+        </div>
+    </div>
+</div>

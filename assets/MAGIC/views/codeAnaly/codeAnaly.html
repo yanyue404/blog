@@ -1,0 +1,246 @@
+<!-- 代码分析管理=>代码分析策略页面-liudg-2017/10/19 -->
+<div ng-controller="codeAnaly">
+    <div class="backInfo-depart-frame">
+        <div class="backDepart-header">
+            <p class="backDepartQ-title pull-left">代码分析策略列表</p>
+        </div>
+        <div class="queryCase">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-2">
+                        <select ng-model="queryTacticsParam.department" ng-options="m.name for m in queryDepartmentList" ng-change="queryProduct()">
+                            <option value="">-- 请选择部门 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <select ng-model="queryTacticsParam.product" ng-options="m.name for m in queryProductList" ng-change="querySystem()">
+                            <option value="">-- 请选择产品 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <select ng-model="queryTacticsParam.system" ng-options="m.name for m in querySystemList">
+                            <option value="">-- 请选择系统 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <select ng-model="queryTacticsParam.analyType" ng-options="m.name for m in queryAnalyTypeList">
+                            <option value="">-- 请选择分析类型 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <button ng-click="queryCase()" class="btn btn-default" style="bottom: 7px;position: relative;">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 按钮触发模态框 -->
+        <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#tacticsModal" ng-click="addTactics()">新增策略</button>
+        <div class="back-server-frame">
+            <table class="table table-hover table-striped depart-table">
+                <thead>
+                    <tr>
+                        <td>编号</td>
+                        <td>策略名称</td>
+                        <td>类型</td>
+                        <td>系统</td>
+                        <td>是否启用</td>
+                        <td>创建时间</td>
+                        <td>创建人</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="item in tacticsList">
+                    <tr>
+                        <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{getOptType(item.option_type)}}</td>
+                        <td>{{item.system_name}}</td>
+                        <td>{{item.is_active?'是':'否'}}</td>
+                        <td>{{item.create_time}}</td>
+                        <td>{{item.creator_name}}</td>
+                        <td>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#tacticsModal" ng-click="seeTactics(item.uuid,$index)">查看</button>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#tacticsModal" ng-click="editTactics(item.uuid,$index)">修改</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="disableTactics(item.uuid,$index)">禁用</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="delTactics(item.uuid,$index)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-show="forInitPage" class="forInit">
+                <span class="tcdPageCode"></span>
+            </div>
+            <div ng-hide="forInitPage" class="forSearch">
+                <span class="tcdPageCode"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框 新增、查看、修改（Modal） -->
+    <div class="modal fade" id="tacticsModal" tabindex="-1" role="dialog" aria-labelledby="tacticsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="tacticsModalLabel">{{dialog.header}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">部门名称</label>
+                            <div class="col-sm-10">
+                                <select ng-change="getProductList()" ng-model="params.department" ng-options="m.name for m in queryDepartmentList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择部门 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">产品名称</label>
+                            <div class="col-sm-10">
+                                <select ng-change="getSystemList()" ng-model="params.product" ng-options="m.name for m in productList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择产品 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">系统名称</label>
+                            <div class="col-sm-10">
+                                <select ng-model="params.system" ng-options="m.name for m in systemList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择系统 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">环境名称</label>
+                            <div class="col-sm-10">
+                                <select ng-model="params.env" ng-options="m.name for m in envList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择环境 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tacticsName" class="col-sm-2 control-label">策略名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.tacticsName" class="form-control" id="tacticsName" placeholder="请输入系统名称（限字母、数字和下划线）" ng-disabled="dialog.input_isClick">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">分析类型</label>
+                            <div class="col-sm-10">
+                                <select ng-change="selectedAnalyType()" ng-model="params.analyType" ng-options="m.name for m in queryAnalyTypeList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择类型 --</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="staticFlag">
+                            <label for="baseDir" class="col-sm-2 control-label">ProjectBaseDir</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.baseDir" class="form-control" id="baseDir" placeholder="请输入全路径" ng-disabled="dialog.input_isClick">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="staticFlag">
+                            <label for="sourceDir" class="col-sm-2 control-label">SourceDir</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.sourceDir" class="form-control" id="sourceDir" placeholder="请输入全路径" ng-disabled="dialog.input_isClick">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dynamicFlag">
+                            <label for="pomPath" class="col-sm-2 control-label">ProjectPomPath</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.pomPath" class="form-control" id="pomPath" placeholder="请输入全路径" ng-disabled="dialog.input_isClick">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dynamicFlag">
+                            <label for="configXml" class="col-sm-2 control-label">ConfigXml</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.configXml" class="form-control" id="configXml" placeholder="请输入全路径" ng-disabled="dialog.input_isClick">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchUser" class="col-sm-2 control-label">创建用户</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="seeOnlyParams.creator_name" class="form-control" id="codeBranchUser" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchMod" class="col-sm-2 control-label">修改用户</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="seeOnlyParams.modifier_name" class="form-control" id="codeBranchMod" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchCreated" class="col-sm-2 control-label">创建时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="seeOnlyParams.create_time" class="form-control" id="codeBranchCreated" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchModified" class="col-sm-2 control-label">更新时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="seeOnlyParams.modify_time" class="form-control" id="codeBranchModified" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">启用</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" ng-model="params.is_active" ng-disabled="dialog.input_isClick"> 是否启用
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="addTacticsConfirm()" ng-show="dialog.status === 'create'">新增</button>
+                    <button type="button" class="btn btn-primary" ng-click="editTacticsConfirm()" ng-show="dialog.status === 'modify'">修改</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- 模态框 禁用、删除（Modal） -->
+    <div class="modal fade" id="DisableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="disableLabel">
+            {{dialog.header}}
+          </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default btn-danger" ng-click="disableTacticsConfirm()" ng-show="dialog.status === 'disable'">禁用</button>
+                        <button type="button" class="btn btn-default btn-danger" ng-click="delTacticsConfirm()" ng-show="dialog.status === 'del'">删除</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- showToast（Modal） -->
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,184 @@
+    <div ng-controller="CoverResult">
+        <div class="backInfo-depart-frame">
+            <div class="backDepart-header">
+                <p class="backDepartQ-title pull-left">覆盖结果</p>
+                <!--<div class="queryCase pull-right ">
+                    <input type="text " placeholder="请输入覆盖结果/覆盖结果编号">
+                    <span>查询</span>
+                </div>-->
+            </div>
+            <!-- 按钮触发模态框 -->
+            <!--<button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal">新增覆盖结果</button>-->
+            <div class="back-runResult-frame">
+                <table class=" table table-stripped toggle-arrow-tiny">
+                    <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>系统</th>
+                        <th>环境名</th>
+                        <!--<th>说明_miss</th>-->
+                        <!--<th>说明_all</th>-->
+                        <!--<th>branches_miss</th>-->
+                        <!--<th>branches_all</th>-->
+                        <!--<th>cxty_miss</th>-->
+                        <!--<th>cxty_all</th>-->
+                        <th>lines_miss</th>
+                        <th>lines_all</th>
+                        <!--<th>methods_miss</th>-->
+                        <!--<th>methods_all</th>-->
+                        <!--<th>classes_miss</th>-->
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="item in coverResultList">
+                    <tr>
+                        <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                        <td>{{item.system_name}}</td>
+                        <td>{{item.env_name}}</td>
+                        <!--<td>{{item.instructions_miss}}</td>-->
+                        <!--<td>{{item.instructions_all}}</td>-->
+                        <!--<td>{{item.branches_all}}</td>-->
+                        <!--<td>{{item.cxty_miss}}</td>-->
+                        <!--<td>{{ item.cxty_all}}</td>-->
+                        <td>{{item.lines_miss}}</td>
+                        <td>{{item.lines_all}}</td>
+                       <!-- <td>{{item.methods_miss}}</td>
+                        <td>{{item.methods_all}}</td>
+                        <td>{{item.classes_miss}}</td>
+                        <td>{{item.classes_all}}</td>-->
+                        <td>{{item.created_time}}</td>
+                        <td>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#seeCoverResult" ng-click="seeCoverResultDes(item.id)">查看</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="tcdPageCode"></div>
+            </div>
+        </div>
+
+   
+
+        <!-- 模态框 查看覆盖结果详情（Modal） -->
+        <div class="modal fade" id="seeCoverResult" tabindex="-1" role="dialog" aria-labelledby="seeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="seeModalLabel">
+                            查看覆盖结果详情
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">系统</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.system_name" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">环境</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.env_name" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">instructions_miss</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.instructions_miss" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">instructions_all</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.instructions_all" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">branches_miss</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.branches_miss" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">branches_all</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.branches_all" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">cxty_miss</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.cxty_miss" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">cxty_all</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.cxty_all" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">lines_miss</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.lines_miss" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">lines_all</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.lines_all" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">methods_miss</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.methods_miss" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">methods_all</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.methods_all" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">classes_miss</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.classes_miss" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">classes_all</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.classes_all" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">created</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="coverResultListDetail.created" class="form-control" ng-disabled="true">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+					          关闭
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 查看覆盖结果详情结束 -->
+        <div>
+            <div class="toastShow" ng-show="toastState === true">
+                <em>{{toastCon}}</em>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,160 @@
+<div ng-controller="businessStrategy">
+    <div class="backInfo-depart-frame">
+        <div class="backDepart-header">
+            <p class="backDepartQ-title pull-left">用例策略</p>
+        </div>
+        <div class="queryCase">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <select ng-model="querySystemParam.department" ng-options="m.name for m in queryDepartmentList" ng-change="queryDepartment()">
+                            <option value="">-- 请选择系统 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" name="" ng-model="aaa">
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" name="" ng-model="aaa">
+                    </div>
+                    <div class="col-sm-3">
+                        <button ng-click="queryCase()" class="btn btn-default" style="bottom: 7px;position: relative;">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 按钮触发模态框 -->
+        <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal" ng-click="openSystem()">新增系统</button>
+        <div class="back-server-frame">
+            <table class="table table-hover table-striped depart-table">
+                <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>用例策略名称</td>
+                    <td>作者</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody ng-repeat="item in systemList">
+                <tr>
+                    <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                    <td>{{item.department_name}}</td>
+                    <td>{{item.product_name}}</td>
+                    <td>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="seeSystem(item.uuid,$index)">查看</button>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="editSystem(item.uuid,$index)">修改</button>
+                        <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="disableSystem(item.uuid,$index)">禁用</button>
+                        <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="delSystem(item.uuid,$index)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-show = "forInitPage" class="forInit">
+                <span class="tcdPageCode"></span>
+            </div>
+            <div ng-hide = "forInitPage" class="forSearch">
+                <span class="tcdPageCode"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框 新增、查看、修改（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            {{dialog.header}}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                        	<div class="form-group">
+                                <label class="col-sm-2 control-label">部门名称</label>
+                                <div class="col-sm-10">
+                                    <select ng-change="selectedProduct()" ng-model="params.productName" ng-options="m.name for m in productNameList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">产品名称</label>
+                                <div class="col-sm-10">
+                                    <select ng-change="selectedProduct()" ng-model="params.productName" ng-options="m.name for m in productNameList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="systemName" class="col-sm-2 control-label">策略名称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="params.systemName" class="form-control" id="systemName" placeholder="" ng-disabled="dialog.input_isClick">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="col-sm-2 control-label">产品名称</label> -->
+                                <div class="col-sm-10">
+                                    <select ng-change="selectedProduct()" ng-model="params.productName" ng-options="m.name for m in productNameList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <div class="col-sm-9">
+                                	<textarea ng-model="params.systemName" class="form-control"></textarea>
+                                    <!-- <input type="textarea"  id="systemName" placeholder="" ng-disabled="dialog.input_isClick"> -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+	                            <!-- <label  class="col-sm-2 control-label">启用</label> -->
+	                            <div class="col-sm-10">
+	                                <input type="checkbox" ng-model="params.is_active" ng-disabled="dialog.input_isClick"> 是否是业务流程
+	                            </div>
+	                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="addSystemConfirm()" ng-show="dialog.status === 'create'">新增</button>
+                        <button type="button" class="btn btn-primary" ng-click="editSystemConfirm()" ng-show="dialog.status === 'modify'">修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 模态框 禁用、删除（Modal） -->
+        <div class="modal fade" id="DisableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="disableLabel">
+                            {{dialog.header}}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-empty" data-dismiss="modal">
+                                取消
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger"  ng-click="disableSystemConfirm()" ng-show="dialog.status === 'disable'">
+                                禁用
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger" ng-click="delSystemConfirm()" ng-show="dialog.status === 'del'">
+                                删除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+    <!-- showToast（Modal） -->
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>

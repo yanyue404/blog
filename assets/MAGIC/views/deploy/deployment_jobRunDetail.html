@@ -1,0 +1,65 @@
+<div ng-controller="deployment_jobRun">
+    <div class="backInfo-depart-frame">
+        <div class="backDepart-header">
+            <p class="backDepartQ-title pull-left">历史详情</p>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight" ng-repeat="detail in detailList">
+            <div class="col-xs-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{detail.job_name}}</h5>
+                    </div>
+                    <div class="ibox-content inspinia-timeline">
+
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-5 date">
+                                    <!--<i class="fa fa-briefcase"></i>-->
+                                    构建时间{{detail.build_time}}
+                                    <br/>
+                                    <!--<small class="text-navy">构建编号{{build_number}}</small>-->
+                                </div>
+                                <div class="col-xs-7 content no-top-border">
+                                    <p class="m-b-xs"><strong>构建编号{{detail.build_number}}</strong></p>
+                                    <p>status</p>
+                                    <!--<button class="btn btn-default">启动用户</button>-->
+                                    <!--<a class="btn btn-default" href="">代码更新日志</a>-->
+                                    <a class="btn btn-default" ui-sref="">构建日志url{{detail.log_url}}</a>
+                                    <a class="btn btn-default" ui-sref="">接口结果url{{detail.interface_result_url}}</a>
+                                    <!--<p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the
+                                        sale.</p>-->
+                                    <p>
+                                        <!--<bar-chart data="main.BarChart2.data" options="main.BarChart2.options"></bar-chart>-->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+    <!--<div>
+        <div class="load-bg">
+            <span class="load">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+            <span class="load-font">正在执行...</span>
+        </div>
+        <div class="layer"></div>
+    </div>-->
+</div>

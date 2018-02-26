@@ -1,0 +1,332 @@
+
+    <div ng-controller="backSysConfig_server">
+        <div class="backInfo-depart-frame">
+            <div class="backDepart-header">
+                <p class="backDepartQ-title pull-left">服务器管理</p>
+                <!--<div class="queryCase pull-right ">-->
+                    <!--<input type="text " placeholder="请输入服务器/服务器编号">-->
+                    <!--<span>查询</span>-->
+                <!--</div>-->
+            </div>
+            <!-- 按钮触发模态框 -->
+            <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal">新增服务器</button>
+            <div class="back-server-frame">
+                <table class="table table-hover table-striped depart-table ">
+                    <thead>
+                    <tr>
+                        <td>编号</td>
+                        <td>服务器名称</td>
+                        <td>服务器描述</td>
+                        <td>用户名</td>
+                        <!--<td>密码</td>-->
+                        <td>ip</td>
+                        <td>端口</td>
+                        <td>是否启用</td>
+                        <td>创建时间</td>
+                        <!--<td>修改时间</td>-->
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="item in serverList">
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.user}}</td>
+                        <!--<td>{{item.password}}</td>-->
+                        <td>{{item.host}}</td>
+                        <td>{{item.port}}</td>
+                        <td>{{item.is_active?"是":"否"}}</td>
+                        <td>{{item.created_time}}</td>
+                        <!--<td>{{item.modified_time}}</td>-->
+                        <td>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#seeServerDes" ng-click="seeServerDes(item.id)">查看</button>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#editServer" ng-click="editServer(item.id)">修改</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#disableModel" ng-click="disableModel(item.id)">禁用</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#delDodel" ng-click="delServer(item.id)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 模态框 新增服务器（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            新增服务器
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">服务器名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkName(addServer.name)" ng-model="addServer.name" class="form-control" id="departmentName" placeholder="请输入服务器名称（限字母、数字和下划线）">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">服务器描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="addServer.description" class="form-control" id="departmentName" placeholder="请输入服务器描述">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">用户名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkNull(addServer.user,'用户名')" ng-model="addServer.user" class="form-control" id="departmentDes" placeholder="请输入用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">密码</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkPwd(addServer.password)" ng-model="addServer.password" class="form-control" id="departmentDes" placeholder="请输入密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">ip地址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkNull(addServer.host,'ip地址')" ng-model="addServer.host" class="form-control" id="departmentDes" placeholder="请输入ip地址">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">端口</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkNull(addServer.port,'端口')" ng-model="addServer.port" class="form-control" id="departmentDes" placeholder="请输入端口">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+					                        <input type="checkbox" ng-checked="addServer.is_active" ng-click="ServerIsActive()"> 是否启用
+				                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="serverAdd()">新增服务器</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 新增服务器结束 -->
+
+        <!-- 模态框 查看服务器详情（Modal） -->
+        <div class="modal fade" id="seeServerDes" tabindex="-1" role="dialog" aria-labelledby="seeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="seeModalLabel">
+                            查看服务器详情
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">服务器名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeServerDetail.name" class="form-control" id="departmentName" placeholder="请输入服务器名称" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">服务器描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeServerDetail.description" class="form-control" id="departmentName" placeholder="请输入服务器名称" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">用户名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeServerDetail.user" class="form-control" id="departmentDes" placeholder="请输入用户名" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">密码</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeServerDetail.password" class="form-control" id="departmentDes" placeholder="请输入密码" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">ip地址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeServerDetail.host" class="form-control" id="departmentDes" placeholder="请输入ip地址" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">端口</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeServerDetail.port" class="form-control" id="departmentDes" placeholder="请输入端口" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+					                        <input type="checkbox" ng-checked="seeServerDetail.is_active" ng-disabled="true"> 是否启用
+				                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+					          关闭
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 查看服务器详情结束 -->
+
+         <!-- 模态框 修改服务器（Modal） -->
+        <div class="modal fade" id="editServer" tabindex="-1" role="dialog" aria-labelledby="editServerInfo" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="editServerInfo">
+                            修改服务器
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">服务器名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkName(editServerParam.name)" ng-model="editServerParam.name" class="form-control" id="departmentName" placeholder="请输入服务器名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">服务器描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="editServerParam.description" class="form-control" id="departmentName" placeholder="请输入服务器名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">用户名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkNull(editServerParam.user,'用户名')" ng-model="editServerParam.user" class="form-control" id="departmentDes" placeholder="请输入用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">密码</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="editServerParam.password" class="form-control" id="departmentDes" placeholder="请输入密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">ip地址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkNull(editServerParam.host,'ip地址')" ng-model="editServerParam.host" class="form-control" id="departmentDes" placeholder="请输入ip地址">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">端口</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkNull(editServerParam.port,'端口')" ng-model="editServerParam.port" class="form-control" id="departmentDes" placeholder="请输入端口">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+					                        <input type="checkbox" ng-checked="editServerParam.is_active" ng-click="editServerIsActive()"> 是否启用
+				                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="editServerMethod()">
+                            确认更改
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 修改服务器结束 -->
+
+
+        <!-- 模态框 禁用（Modal） -->
+        <div class="modal fade" id="disableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="disableLabel">
+                            服务器禁用
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-empty" data-dismiss="modal">
+                                取消
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" ng-click='disableServerItem()'>
+                                禁用
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 禁用结束 -->
+
+
+        <!-- 模态框 删除服务器（Modal） -->
+        <div class="modal fade" id="delDodel" tabindex="-1" role="dialog" aria-labelledby="delLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="delLabel">
+                            删除服务器
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-empty" data-dismiss="modal">
+                                取消
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" ng-click="sureDelServer()">
+                                删除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 服务器删除 -->
+        <div>
+            <div class="toastShow" ng-show="toastState === true">
+                <em>{{toastCon}}</em>
+            </div>
+        </div>
+    </div>

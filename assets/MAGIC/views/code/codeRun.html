@@ -1,0 +1,248 @@
+<div ng-controller="code_run">
+    <div class="backInfo-depart-frame">
+        <div class="backDepart-header">
+            <p class="backDepartQ-title pull-left">执行看板</p>
+        </div>
+        <!--<button class="btn btn-default" ng-click="startRun()">自动刷新</button>-->
+        <button class="btn btn-default" ng-click="stopRun()">停止刷新</button>
+        <div class="wrapper wrapper-content animated fadeInRight "  id="backJobRunCenter-frame">
+            <div class="row">
+                <div class="col-lg-12" ng-repeat="department in productsList | filter:isShowDepartment">
+                    <div class="ibox float-e-margins">
+                        <!--<div class="ibox-title ">-->
+                        <div class="text-navy">
+                            <p>
+                                <a ui-sref="#">
+                                    <h2>{{ department.description }}</h2>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="ibox-content ">
+                            <table class=" table table-stripped toggle-arrow-tiny" data-page-size="20">
+                                <thead>
+                                <tr>
+                                    <th width="10%">产品</th>
+                                    <th width="15%">仓库</th>
+                                    <th width="15%" align="left">对比分支</th>
+                                    <th width="15%" align="left">被对比分支</th>
+                                    <!--<th width="15%">结果</th>-->
+                                    <th width="25%">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody ng-repeat="product in department.product | filter:isShowProduct">
+                                <tr ng-show="!!product.public_warehouse_product.length"> <!---->
+                                    <td rowspan="{{product.public_warehouse_product.length+1}}" style="display:table-cell; vertical-align:middle" align="center">
+                                        <a ui-sref="#" style="font-size: 16px">{{product.description}}</a>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="warehouse in product.public_warehouse_product | filter:isShowwarehouse" >
+                                    <td class="coverage_cell">
+                                        <div class="verticalmiddle" style="position: absolute; width: 15%;">
+                                            <p style="font-size: 14px; ">{{warehouse.cmc_warehouse.name}}</p>
+                                        </div>
+                                    </td>
+                                    <td class="coverage_cell">
+                                        <div class="verticalmiddle" style="position: absolute; width: 15%;" ng-show="warehouse.cmc_warehouse!==null">
+                                            <!--<p style="font-size: 14px; ">{{warehouse.cmc_warehouse.branch_A}}</p>-->
+                                            <select  ng-change="selectedBranchA(warehouse.uuid)" ng-model="$parent.parambranchA[warehouse.uuid]" ng-options="m.name for m in warehouse.cmc_warehouse.branchs" ng-disabled="!warehouse.cmc_warehouse.is_start_run" style="width: 45%; display: inline-block;">
+                                                <!--<option value="">{{warehouse.cmc_warehouse.branch_A}}</option>-->
+                                                <option value="">-- 请选择 --</option>
+                                            </select>
+                                            <select ng-change="selectedCommitA(warehouse.uuid)" ng-model="$parent.paramcommitIdA[warehouse.uuid]" ng-options="m.commitTime for m in branchATime[warehouse.uuid]" ng-disabled="!warehouse.cmc_warehouse.is_start_run" style="width: 45%;display: inline-block;" ng-show="parambranchA[warehouse.uuid]">
+                                                <option value="">-- 请选择 --</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="coverage_cell" >
+                                        <div class="verticalmiddle" style="position: absolute; width: 15%;" ng-show="warehouse.cmc_warehouse!==null">
+                                            <!--<p style="font-size: 14px; ">{{warehouse.cmc_warehouse.branch_B}}</p>-->
+                                            <select ng-change="selectedBranchB(warehouse.uuid)" ng-model="$parent.parambranchB[warehouse.uuid]" ng-options="m.name for m in warehouse.cmc_warehouse.branchs" ng-disabled="!warehouse.cmc_warehouse.is_start_run" style="width: 45%;display: inline-block;">
+                                                <option value="">-- 请选择 --</option>
+                                            </select>
+                                            <select ng-change="selectedCommitB(warehouse.uuid)" ng-model="$parent.paramcommitIdB[warehouse.uuid]" ng-options="m.commitTime for m in branchBTime[warehouse.uuid]" ng-disabled="!warehouse.cmc_warehouse.is_start_run" style="width: 45%;display: inline-block;" ng-show="parambranchB[warehouse.uuid]">
+                                                <option value="">-- 请选择 --</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <!--<td class="coverage_cell">
+                                        <div class="verticalmiddle" style="position: absolute; width: 15%;">
+                                            <p style="font-size: 14px; ">{{warehouse.cmc_warehouse.last_result}}</p>
+                                        </div>
+                                    </td>-->
+                                    <td class="coverage_cell"  >
+                                        <p ng-show="warehouse.cmc_warehouse!==null && warehouse.cmc_warehouse.last_result !== 'running'" class="labelitem" ng-class="{'labelitem_pass':warehouse.cmc_warehouse.last_result === 'green' ,'labelitem_fail':warehouse.cmc_warehouse.last_result === 'red', 'labelitem_yellow':warehouse.cmc_warehouse.last_result === 'yellow'}"></p>
+                                        <div ng-show="warehouse.cmc_warehouse.last_result === 'running'" class="sk-spinner sk-spinner-double-bounce">
+                                            <div class="sk-double-bounce1"></div>
+                                            <div class="sk-double-bounce2"></div>
+                                        </div>
+                                        <div class="verticalmiddle" ng-show="warehouse.cmc_warehouse.is_start_run=== true && warehouse.cmc_warehouse.last_result !== 'running'">
+                                            <a ng-show="system.results.ASSPRO.result !== 'running'" class="btn-default btn" ng-click="ciRun(parambranchA[warehouse.uuid],parambranchB[warehouse.uuid],paramcommitIdA[warehouse.uuid],paramcommitIdB[warehouse.uuid],warehouse)">执行</a>
+                                            <a class="btn-default btn" ng-click="ciRunDetail(warehouse)" data-toggle="modal" data-target="#myModal">详情</a>
+                                        </div>
+                                    </td>
+                                    <!--<td class="env_cell">
+                                        <div class="verticalmiddle col-sm-3 col-sm-push-1">
+                                            <div class="verticalmiddle" style="position: absolute; width: 15%;">
+                                                <p style="font-size: 14px; ">{{warehouse.cmc_warehouse.branch_A}}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="env_cell">
+                                        <div class="verticalmiddle col-sm-3 col-sm-push-1">
+                                            <p ng-show="system.uasc_sysInfo_system.SIT.job_status !== 'running'" class="labelitem" ng-class="{'labelitem_pass':system.uasc_sysInfo_system.SIT.job_status === 'green' ,'labelitem_fail':system.uasc_sysInfo_system.SIT.job_status === 'red', 'labelitem_yellow':system.uasc_sysInfo_system.SIT.job_status === 'yellow'}"></p>
+                                            <div ng-show="system.uasc_sysInfo_system.SIT.job_status === 'running'" class="sk-spinner sk-spinner-double-bounce">
+                                                <div class="sk-double-bounce1"></div>
+                                                <div class="sk-double-bounce2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9 col-sm-push-2">
+                                            <a ng-show="system.uasc_sysInfo_system.SIT.job_status !== 'running'" class="btn-default btn" ng-click="ciRun(system.uasc_sysInfo_system.SIT.job)">执行</a>
+                                            <a ng-show="system.uasc_sysInfo_system.SIT.job_status === 'yellow'" class="btn-danger-empty btn-danger btn" ng-click="ciRunBack(system.uasc_sysInfo_system.SIT.job)">回滚</a>
+                                            <a ng-show="system.uasc_sysInfo_system.SIT.job_status === 'green' || system.uasc_sysInfo_system.SIT.job_status === 'red' || system.uasc_sysInfo_system.SIT.job_status === 'yellow'" class="btn-default btn" href={{result_url}}{{system.uasc_sysInfo_system.SIT.report_url}}>详情</a>
+                                            <p class="reportTime">
+                                            <p>{{system.uasc_sysInfo_system.SIT.run_time}}</p>
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td class="env_cell">
+                                        <div class="verticalmiddle col-sm-3 col-sm-push-1">
+                                            <p ng-show="system.uasc_sysInfo_system.ASSPRO.job_status !== 'running'" class="labelitem" ng-class="{'labelitem_pass':system.uasc_sysInfo_system.ASSPRO.job_status === 'green','dev-state-fail':system.uasc_sysInfo_system.ASSPRO.job_status === 'red', 'labelitem_yellow':system.uasc_sysInfo_system.ASSPRO.job_status === 'yellow' }"></p>
+                                            <div ng-show="system.uasc_sysInfo_system.ASSPRO.job_status === 'running'" class="sk-spinner sk-spinner-double-bounce">
+                                                <div class="sk-double-bounce1"></div>
+                                                <div class="sk-double-bounce2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9 col-sm-push-2">
+                                            <a ng-show="system.uasc_sysInfo_system.ASSPRO.job_status !== 'running'" class="btn-default btn" ng-click="ciRun(system.uasc_sysInfo_system.ASSPRO.job)">执行</a>
+                                            <a ng-show="system.uasc_sysInfo_system.ASSPRO.job_status === 'yellow'" class="btn-danger-empty btn-danger btn" ng-click="ciRunBack(system.uasc_sysInfo_system.ASSPRO.job)">回滚</a>
+                                            <a ng-show="system.uasc_sysInfo_system.ASSPRO.job_status === 'green' || system.uasc_sysInfo_system.ASSPRO.job_status === 'red' || system.uasc_sysInfo_system.ASSPRO.job_status === 'yellow'" class="btn-default btn" href={{result_url}}{{system.uasc_sysInfo_system.ASSPRO.report_url}}>详情</a>
+                                            <p class="reportTime">
+                                            <p>{{system.uasc_sysInfo_system.ASSPRO.run_time}}</p>
+                                            </p>
+                                        </div>
+                                    </td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--详情模框-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:70%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        {{cmc_name}}
+                    </h4>
+                </div>
+                <div class="wrapper wrapper-content">
+                    <!--<div class="row animated fadeInRight">-->
+                        <!--<div class="col-xs-12">-->
+                            <!--<div class="ibox float-e-margins">-->
+                                <!--<div class="ibox-title">-->
+                                    <!--<h5>{{cmc_name}}</h5>-->
+                                <!--</div>-->
+                                <div class="ibox-content inspinia-timeline" ng-repeat="detail in detailList">
+                                    <!--<div class="timeline-item">-->
+                                        <div class="row">
+                                            <!--<div class="col-xs-5 date">-->
+                                                <!--<i class="fa fa-briefcase"></i>-->
+                                                <!--{{detail.build_id}}-->
+                                                <!--<br/>-->
+                                                <!--bug64==zxh==构建历史详情没有显示每次成功还是失败-->
+                                                对比分支：{{detail.branch_A}}<br>
+                                                被对比分支：{{detail.branch_B}}<br>
+                                                对比分支CommitId：{{detail.from_commit_id}}<br>
+                                                被对比分支CommitId：{{detail.to_commit_id}}<br>
+                                                执行时间：{{detail.created_time}}<br>
+                                                执行结果：{{showResultStatus(detail.result_status)}} <br>
+                                                日志：<a href={{result_url}}cmc/{{detail.file_path_url}}>详情</a>
+                                                <!--<small class="text-navy">构建编号{{build_number}}</small>-->
+                                            <!--</div>-->
+                                           <!-- <div class="col-xs-7 content no-top-border">
+                                                &lt;!&ndash;<p class="m-b-xs"><strong>{{detail.build_number}}</strong></p>&ndash;&gt;
+                                                &lt;!&ndash;<p>status</p>&ndash;&gt;
+                                                &lt;!&ndash;<button class="btn btn-default">启动用户</button>
+                                                <a class="btn btn-default" href="">代码更新日志</a>&ndash;&gt;
+                                                <a class="btn btn-default" ng-click="logResult(detail.build_number)" data-toggle="modal" data-target="#logModal">日志文件</a>
+                                                &lt;!&ndash;<a class="btn btn-default" href={{detail.log_url}} ng-click="logResult()">日志文件</a>&ndash;&gt;
+
+                                                &lt;!&ndash;<a ng-show="detail.interface_result_url !=='' && detail.interface_result_url !== null" class="btn btn-default" href={{result_url}}{{detail.interface_result_url}}>接口结果</a>&ndash;&gt;
+                                                &lt;!&ndash;<pre style="word-wrap: break-word; white-space: pre-wrap;" ng-show="detail.git_log !== ''">{{detail.git_log}}</pre>&ndash;&gt;
+                                                &lt;!&ndash;<pre style="word-wrap: break-word; white-space: pre-wrap;" ng-show="detail.git_log == ''">无Git更新日志</pre>&ndash;&gt;
+                                                &lt;!&ndash;<p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the
+                                                    sale.</p>&ndash;&gt;
+                                                <p>
+                                                    &lt;!&ndash;<bar-chart data="main.BarChart2.data" options="main.BarChart2.options"></bar-chart>&ndash;&gt;
+                                                </p>
+                                            </div>-->
+                                        </div>
+                                    <!--</div>-->
+                                </div>
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+    <!--日志文件模框-->
+    <!--<div style=" overflow-y: scroll; position: absolute; top:0; left: 0; right: 0; bottom: 0" class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 90%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        日志文件
+                    </h4>
+                </div>
+                <div class="wrapper wrapper-content">
+                    <!--<p>{{logResultCon}}</p>-->
+                    <!--<pre style="word-wrap: break-word; white-space: pre-wrap;height: 450px;">{{logResultCon}}</pre>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        <!--</div>
+    </div>
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>-->
+    <!--<div>
+        <div class="load-bg">
+            <span class="load">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+            <span class="load-font">正在执行...</span>
+        </div>
+        <div class="layer"></div>
+    </div>-->
+</div>

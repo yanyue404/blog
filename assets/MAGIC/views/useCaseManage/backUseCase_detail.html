@@ -1,0 +1,1125 @@
+    <div ng-controller="backDetail" class="backUseCase_detail">
+        <div class="backInfo-depart-frame">
+            <div class="backDepart-header">
+                <p class="backDepartQ-title">用例管理</p>
+            </div>
+
+            <div class="queryCase">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <select ng-model="queryDetailParam.product" ng-options="m.description for m in queryProductList" ng-change="queryProduct()">
+                                <option value="">-- 请选择产品 --</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <select ng-model="queryDetailParam.system" ng-options="m.description for m in querySystemList" ng-change="querySystem()">
+                                <option value="">-- 请选择系统 --</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <select ng-model="queryDetailParam.model" ng-options="m.description for m in queryCaseModelList">
+                                <option value="">-- 请选择模块 --</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <button ng-click="queryCase()" class="btn btn-default" style="bottom: 7px;position: relative;">查询</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 按钮触发模态框 -->
+            <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal">新增用例</button>
+            <div class="back-useCase-frame">
+                <table class="table table-hover table-striped depart-table">
+                    <thead>
+                    <tr>
+                        <td>编号</td>
+                        <td>用例名称</td>
+                        <td>接口</td>
+                        <!--<td>description</td>-->
+                        <!-- <td>params</td> -->
+                        <!-- <td>headers</td> -->
+                        <!-- <td>body</td> -->
+                        <!-- <td>expectation_data</td> -->
+                        <!-- <td>corr_case</td> -->
+                        <!-- <td>mock_data</td> -->
+                        <!--<td>seq</td>-->
+                        <td>正向case</td>
+                        <td>级别</td>
+                        <td>是否启用</td>
+                        <td>创建时间</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="item in caseinfoList">
+                    <tr>
+                        <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.case_name}}</td>
+                        <!--<td>{{item.description}}</td>-->
+                        <!-- <td>{{item.params}}</td> -->
+                        <!-- <td>{{item.headers}}</td> -->
+                        <!-- <td>{{item.body}}</td> -->
+                        <!-- <td>{{item.expectation_data}}</td> -->
+                        <!-- <td>{{item.corr_case}}</td> -->
+                        <!-- <td>{{item.mock_data}}</td> -->
+                        <!--<td>{{item.seq}}</td>-->
+                        <td>{{item.is_main?'是':'否'}}</td>
+                        <td>{{levelType(item.level)}}</td>
+                        <td>{{item.is_active?'是':'否'}}</td>
+                        <td>{{ item.created_time }}</td>
+                        <td>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#seeServerDes" ng-click="seeDetailDes(item.id,$index)">查看</button>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#editDetail" ng-click="editDetail(item.id,$index)">修改</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#disableModel" ng-click="disableDetail(item.id,$index)">禁用</button>
+                            <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#delDodel" ng-click="delDetail(item.id,$index)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div ng-show = "forInitPage" class="forInit">
+                    <span class="tcdPageCode"></span>
+                </div>
+                <div ng-hide = "forInitPage" class="forSearch">
+                    <span class="tcdPageCode"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模态框 新增详情器（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            新增用例
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择产品</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="addDetailParam.product" ng-options="m.description for m in productList" ng-change="selectedProduct()" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择系统</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="addDetailParam.system" ng-options="m.description for m in systemList" ng-change="selectedSystem()" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择模块</label>
+                                <div class="col-sm-10">
+                                    <select ng-change="selectedModel()" ng-model="addDetailParam.model" ng-options="m.description for m in caseModelList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">关联接口</label>
+                                <div class="col-sm-10">
+                                    <select ng-change="selectedRelateInter()" ng-model="addDetailParam.case" ng-options="m.description for m in caseList">
+                                                <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">用例名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkCaseName(addDetailParam.name)" ng-model="addDetailParam.name" class="form-control" id="departmentName" placeholder="请输入用例名称（限字母、数字和下划线）">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">用例描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkNull(addDetailParam.description,'用例描述')" ng-model="addDetailParam.description" class="form-control" id="departmentDes" placeholder="请输入描述">
+                                </div>
+                            </div>
+                            <div class="form-group label-params">
+                                <label for="departmentDes" class="col-sm-2 control-label">Cookies</label>
+                                <!--<label for="departmentDes" class="btn-group col-sm-2 control-label label-param">
+                                    <button type="button" class="btn btn-default">Cookies</button>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">form-data</a></li>
+                                        <li><a href="">raw</a></li>
+                                    </ul>
+                                </label>-->
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeCookie" value="form-data" ng-model="formData.dataTypeCookie">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeCookie" value="raw" ng-model="formData.dataTypeCookie">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeCookie == 'form-data'">
+                                    <div class="display_flex" ng-repeat="cookie in cookiesArr">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="cookie.key" class="form-control" id="departmentDes" placeholder="key">
+                                        </div>
+                                        <div class="flex8" ng-show="!cookiesArr[$index].is_select">
+                                            <input type="text" ng-model="cookie.value" class="form-control" id="departmentDes" placeholder="value" >
+                                        </div>
+                                        <select class="flex8" ng-model="cookie.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="cookiesArr[$index].is_select">
+                                            <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default"  ng-click="minus('cookiesArr',$index)">-</button>
+                                        <button  type="button" class="btn btn-default" ng-click="plus('cookiesArr',$index)" >+</button>
+
+                                        <input  type="checkbox" class="checkbox-zsy" ng-model="cookiesArr[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                        <!--  -->
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeCookie == 'raw'">
+                                    <textarea placeholder="请输入cookies" style="width:100%;height: 140px;" ng-model="cookies">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Params</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeParams" value="form-data" ng-model="formData.dataTypeParams">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeParams" value="raw" ng-model="formData.dataTypeParams">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeParams == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in paramsArr">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="key">
+                                        </div>
+                                        <div class="flex8" ng-show="!paramsArr[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder="value" >
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="paramsArr[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default"  ng-click="minus('paramsArr',$index)">-</button>
+                                        <button  type="button" class="btn btn-default" ng-click="plus('paramsArr',$index)" >+</button>
+                                        
+                                        <input  type="checkbox" class="checkbox-zsy" ng-model="paramsArr[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                        <!--  -->
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeParams == 'raw'">
+                                    <textarea placeholder="请输入Params" style="width:100%;height: 140px;" ng-model="params">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Headers</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeHeaders" value="form-data" ng-model="formData.dataTypeHeaders">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeHeaders" value="raw" ng-model="formData.dataTypeHeaders">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeHeaders == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in headersArr">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="key">
+                                        </div>
+                                        <div class="flex8" ng-show="!headersArr[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder="value">
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="headersArr[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="minus('headersArr',$index)">-</button>
+                                        <button type="button" class="btn btn-default" ng-click="plus('headersArr',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="headersArr[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeHeaders == 'raw'">
+                                    <textarea placeholder="请输入Headers" style="width:100%;height: 140px;" ng-model="headers">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Body</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeBody" value="form-data" ng-model="formData.dataTypeBody">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeBody" value="raw" ng-model="formData.dataTypeBody">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeBody == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in bodyArr">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="key">
+                                        </div>
+                                        <div  class="flex8" ng-show="!bodyArr[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder="value">
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="bodyArr[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="minus('bodyArr',$index)">-</button>
+                                        <button type="button" class="btn btn-default" ng-click="plus('bodyArr',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="bodyArr[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeBody == 'raw'">
+                                    <textarea placeholder="请输入Body" style="width:100%;height: 140px;" ng-model="body">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">预期数据</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeExpect" value="form-data" ng-model="formData.dataTypeExpect">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeExpect" value="raw" ng-model="formData.dataTypeExpect">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeExpect == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in expectation_dataArr">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="key">
+                                        </div>
+                                        <div class="flex8" ng-show="!expectation_dataArr[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder="value">
+                                        </div>
+                                         <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="expectation_dataArr[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="minus('expectation_dataArr',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="plus('expectation_dataArr',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="expectation_dataArr[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeExpect == 'raw'">
+                                    <textarea placeholder="请输入Expect" style="width:100%;height: 140px;" ng-model="expect">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">corr_case</label>
+                                <div class="col-sm-10 ">
+                                    <div class="display_flex" ng-repeat="param in corr_caseArr">
+                                        <div class="flex8" >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="key">
+                                        </div>
+                                        <div class="flex8" ng-show="!corr_caseArr[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder="value">
+                                        </div>
+                                         <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="corr_caseArr[$index].is_select">
+                                                <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 请选择 -&#45;&#45;&#45;&#45;&#45;&#45;</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="minus('corr_caseArr',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="plus('corr_caseArr',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="corr_caseArr[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">mock_data</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeMock" value="form-data" ng-model="formData.dataTypeMock">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeMock" value="raw" ng-model="formData.dataTypeMock">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeMock == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in mock_dataArr">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="key">
+                                        </div>
+                                        <div class="flex8" ng-show="!mock_dataArr[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder="value">
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="mock_dataArr[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="minus('mock_dataArr',$index)">-</button>
+                                        <button type="button" class="btn btn-default" ng-click="plus('mock_dataArr',$index)" >+</button>
+                                         <input type="checkbox" class="checkbox-zsy " ng-model="mock_dataArr[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeMock == 'raw'">
+                                    <textarea placeholder="请输入Mock" style="width:100%;height: 140px;" ng-model="mock">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">seq</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="addDetailParam.seq" class="form-control" id="departmentDes" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">级别</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="addDetailParam.level" ng-options="m.L for m in level">
+                                                <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">依赖参数化数据</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="addDetailParam.depend_data" class="form-control" id="departmentDes" placeholder="">
+                                </div>
+                            </div>-->
+                            <div class="form-group" style="position: relative;z-index:2;">
+                                <label for="departmentDes" class="col-sm-2 control-label">前置接口</label>
+                                <div class="col-sm-10" >
+                                    <div ui-sortable="sortableOptions" class=" selectSearchResult" ng-model="selectSearchResult">
+                                        <div ng-repeat="item in selectSearchResult " class="selectSearchResultItem pull-left" >
+                                            <span class = "deleteSelected" ng-click="selectSearchResult.splice($index,1)" ng-show="!dialog.input_isClick" >x</span>
+                                            <span>{{item.description}}</span>
+                                        </div>
+                                    </div>
+                                    <div style="position:relative;" ng-show="!dialog.input_isClick">
+                                        <!-- <label for="departmentDes" class="control-label">搜索</label> -->
+                                        <input  type="text" ng-model="searchWord" placeholder="输入检索信息进行搜索" class="form-control" ng-focus = "searchResultIsShow = true" >
+                                        <div class="searchResult" ng-show="searchResultIsShow && searchResultFlag === true">
+                                            <div ng-repeat="m in searchResult" ng-click="selectSearchItem($index)" class="searchResultItem">{{m.description}}</div>
+                                        </div>
+                                        <div ng-show="searchResultIsShow && searchResultFlag === true" ng-click="searchResultIsShow = false" class="closeSearchResult">点击关闭</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="addDetailParam.is_main" ng-click="forwardIsActive()"> 正向用例
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="addDetailParam.is_active" ng-click="detailIsActive()"> 是否启用
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="addDetailParam.is_parameterized" ng-click="detailIsAarameterized()"> 是否参数化
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>-->
+                            <!--<div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">参数化数据</label>
+                                <div class="col-sm-10">
+                                    <div class="display_flex" ng-repeat="param in parameterized_dataArr">
+                                        <div class="flex8" >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="key">
+                                        </div>
+                                        <div class="flex8" ng-show="!parameterized_dataArr[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder="value">
+                                        </div>
+                                         <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="parameterized_dataArr[$index].is_select">
+                                                <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 请选择 -&#45;&#45;&#45;&#45;&#45;&#45;</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="minus('parameterized_dataArr',$index)">-</button>
+
+                                        <button type="button" class="btn btn-default"  ng-click="plus('parameterized_dataArr',$index)" >+</button>
+
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="parameterized_dataArr[$index].is_select" ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                            </div>-->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="addDetail()">新增用例</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 新增详情器结束 -->
+
+        <!-- 模态框 查看详情器详情（Modal） -->
+        <div class="modal fade" id="seeServerDes" tabindex="-1" role="dialog" aria-labelledby="seeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				        </button>
+                        <h4 class="modal-title" id="seeModalLabel">
+                            查看用例详情
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择产品</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-disabled="true" ng-model="seeDetailVal.product_name" class="form-control" id="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择系统</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-disabled="true" ng-model="seeDetailVal.system_name" class="form-control" id="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择模块</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-disabled="true" ng-model="seeDetailVal.case_model_name" class="form-control" id="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">关联接口</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-disabled="true" ng-model="seeDetailVal.case_name" class="form-control" id="departmentName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-disabled="true" ng-model="seeDetailVal.name" class="form-control" id="departmentName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-disabled="true" ng-model="seeDetailVal.description" class="form-control" id="departmentDes">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Cookies</label>
+                                <div class="col-sm-10">
+                                    <input ng-disabled="true" type="radio" name="dataTypeCookie" value="form-data" ng-model="formData.dataTypeCookie">form-data
+                                    <input ng-disabled="true" style="margin-left:50px;" type="radio" name="dataTypeCookie" value="raw" ng-model="formData.dataTypeCookie">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeCookie == 'form-data'">
+                                    <div class="display_flex" ng-repeat="cookie in seeDetailVal.cookies_c">
+                                        <div >
+                                            <input type="text" ng-model="cookie.key" class="form-control" id="departmentDes" placeholder="" ng-disabled="true">
+                                        </div>
+                                        <div >
+                                            <input type="text" ng-model="cookie.value" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeCookie == 'raw'">
+                                    <textarea ng-disabled="true" placeholder="请输入cookies" style="width:100%;height: 140px;" ng-model="cookies">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Params</label>
+                                <div class="col-sm-10">
+                                    <input ng-disabled="true" type="radio" name="dataTypeParams" value="form-data" ng-model="formData.dataTypeParams">form-data
+                                    <input ng-disabled="true" style="margin-left:50px;" type="radio" name="dataTypeParams" value="raw" ng-model="formData.dataTypeParams">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeParams == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in seeDetailVal.params_c">
+                                        <div >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" ng-disabled="true">
+                                        </div>
+                                        <div >
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeParams == 'raw'">
+                                    <textarea ng-disabled="true" placeholder="请输入Params" style="width:100%;height: 140px;" ng-model="params">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Headers</label>
+                                <div class="col-sm-10">
+                                    <input ng-disabled="true" type="radio" name="dataTypeHeaders" value="form-data" ng-model="formData.dataTypeHeaders">form-data
+                                    <input ng-disabled="true" style="margin-left:50px;" type="radio" name="dataTypeHeaders" value="raw" ng-model="formData.dataTypeHeaders">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeHeaders == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in seeDetailVal.headers_c">
+                                        <div >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" ng-disabled="true">
+                                        </div>
+                                        <div >
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeHeaders == 'raw'">
+                                    <textarea ng-disabled="true" placeholder="请输入Headers" style="width:100%;height: 140px;" ng-model="headers">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Body</label>
+                                <div class="col-sm-10">
+                                    <input ng-disabled="true" type="radio" name="dataTypeBody" value="form-data" ng-model="formData.dataTypeBody">form-data
+                                    <input ng-disabled="true" style="margin-left:50px;" type="radio" name="dataTypeBody" value="raw" ng-model="formData.dataTypeBody">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeBody == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in seeDetailVal.body_c">
+                                        <div >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" ng-disabled="true">
+                                        </div>
+                                        <div >
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeBody == 'raw'">
+                                    <textarea ng-disabled="true" placeholder="请输入Body" style="width:100%;height: 140px;" ng-model="body">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">预期数据</label>
+                                <div class="col-sm-10">
+                                    <input ng-disabled="true" type="radio" name="dataTypeExpect" value="form-data" ng-model="formData.dataTypeExpect">form-data
+                                    <input ng-disabled="true" style="margin-left:50px;" type="radio" name="dataTypeExpect" value="raw" ng-model="formData.dataTypeExpect">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeExpect == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in seeDetailVal.expectation_data_c">
+                                        <div >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" ng-disabled="true">
+                                        </div>
+                                        <div >
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeExpect == 'raw'">
+                                    <textarea ng-disabled="true" placeholder="请输入Expect" style="width:100%;height: 140px;" ng-model="expect">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">关联用例</label>
+                                <div class="col-sm-10 ">
+                                    <div class="display_flex" ng-repeat="param in seeDetailVal.corr_case_c">
+                                        <div >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" ng-disabled="true">
+                                        </div>
+                                        <div >
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">mock_data</label>
+                                <div class="col-sm-10">
+                                    <input ng-disabled="true" type="radio" name="dataTypeMock" value="form-data" ng-model="formData.dataTypeMock">form-data
+                                    <input ng-disabled="true" style="margin-left:50px;" type="radio" name="dataTypeMock" value="raw" ng-model="formData.dataTypeMock">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeMock == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in seeDetailVal.mock_data_c">
+                                        <div >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" ng-disabled="true">
+                                        </div>
+                                        <div>
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeMock == 'raw'">
+                                    <textarea ng-disabled="true" placeholder="请输入Mock" style="width:100%;height: 140px;" ng-model="mock">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">seq</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-disabled="true" ng-model="seeDetailVal.seq" class="form-control" id="departmentDes">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">级别</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-disabled="true" ng-model="seeDetailVal.level" class="form-control" id="departmentDes">
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">依赖参数化数据</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="seeDetailVal.depend_data" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                </div>
+                            </div>-->
+                            <div class="form-group" style="position: relative;z-index:2;">
+                                <label for="departmentDes" class="col-sm-2 control-label">前置接口</label>
+                                <div class="col-sm-10" >
+                                    <div ui-sortable="sortableOptions" class=" selectSearchResult" ng-model="selectSearchResult">
+                                        <div ng-repeat="item in selectSearchResult " class="selectSearchResultItem pull-left" >
+                                            <span class = "deleteSelected" ng-click="selectSearchResult.splice($index,1)" ng-show="!dialog.input_isClick" >x</span>
+                                            <span>{{item.description}}</span>
+                                        </div>
+                                    </div>
+                                    <!--<div style="position:relative;" ng-show="!dialog.input_isClick">
+                                        &lt;!&ndash; <label for="departmentDes" class="control-label">搜索</label> &ndash;&gt;
+                                        <input  type="text" ng-model="searchWord" placeholder="输入检索信息进行搜索" class="form-control" ng-focus = "searchResultIsShow = true" >
+                                        <div class="searchResult" ng-show="searchResultIsShow">
+                                            <div ng-repeat="m in searchResult" ng-click="selectSearchItem($index)" class="searchResultItem">{{m.description}}</div>
+                                        </div>
+                                        <div ng-show="searchResultIsShow" ng-click="searchResultIsShow = false" class="closeSearchResult">点击关闭</div>
+                                    </div>-->
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-disabled="true" ng-checked="seeDetailVal.is_main"> 正向用例
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-disabled="true" ng-checked="seeDetailVal.is_active"> 是否启用
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="seeDetailVal.is_parameterized"  ng-disabled="true"> 是否参数化
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">参数化数据</label>
+                                <div class="col-sm-10">
+                                    <div class="display_flex" ng-repeat="param in seeDetailVal.parameterized_data_c">
+                                        <div >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" ng-disabled="true">
+                                        </div>
+                                        <div >
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  ng-disabled="true">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+					          关闭
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 查看详情器详情结束 -->
+
+         <!-- 模态框 修改详情器（Modal） -->
+        <div class="modal fade" id="editDetail" tabindex="-1" role="dialog" aria-labelledby="editServerInfo" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+                        <h4 class="modal-title" id="editServerInfo">
+                            修改用例
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择产品</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="EditDetailProduct" ng-options="m.description for m in productList" ng-change="selectedProduct()" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择系统</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="EditDetailSystem" ng-options="m.description for m in systemList" ng-change="selectedSystem()" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">选择模块</label>
+                                <div class="col-sm-10">
+                                    <select ng-change="selectedModelEdit()" ng-model="EditDetailModel" ng-options="m.description for m in caseModelList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">关联接口</label>
+                                <div class="col-sm-10">
+                                    <select ng-change="selectedRelateInter()" ng-model="EditDetailCase" ng-options="m.description for m in caseListarr" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-blur="checkCaseName(EditDetailVal.name)" ng-model="EditDetailVal.name" class="form-control" id="departmentName" placeholder="请输入用例名称（限字母、数字和下划线）">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">描述</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="EditDetailVal.description" class="form-control" id="departmentDes" placeholder="请输入用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Cookies</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeCookie" value="form-data" ng-model="formData.dataTypeCookie">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeCookie" value="raw" ng-model="formData.dataTypeCookie">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeCookie == 'form-data'">
+                                    <div class="display_flex" ng-repeat="cookie in EditDetailVal.cookies_c">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="cookie.key" class="form-control" id="departmentDes" placeholder="" >
+                                        </div>
+                                        <div class="flex8" ng-show="!EditDetailVal.cookies_c[$index].is_select">
+                                            <input type="text" ng-model="cookie.value" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <select class="flex8" ng-model="cookie.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="EditDetailVal.cookies_c[$index].is_select">
+                                            <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="editminus('cookies_c',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="editplus('cookies_c',$index)" >+</button>
+                                        <input  type="checkbox" class="checkbox-zsy" ng-model="EditDetailVal.cookies_c[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeCookie == 'raw'">
+                                    <textarea placeholder="请输入cookies" style="width:100%;height: 140px;" ng-model="cookies">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Params</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeParams" value="form-data" ng-model="formData.dataTypeParams">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeParams" value="raw" ng-model="formData.dataTypeParams">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeParams == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in EditDetailVal.params_c">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" >
+                                        </div>
+                                        <div class="flex8" ng-show="!EditDetailVal.params_c[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="EditDetailVal.params_c[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="editminus('params_c',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="editplus('params_c',$index)" >+</button>
+                                        <input  type="checkbox" class="checkbox-zsy" ng-model="EditDetailVal.params_c[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeParams == 'raw'">
+                                    <textarea placeholder="请输入Params" style="width:100%;height: 140px;" ng-model="params">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Headers</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeHeaders" value="form-data" ng-model="formData.dataTypeHeaders">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeHeaders" value="raw" ng-model="formData.dataTypeHeaders">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeHeaders == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in EditDetailVal.headers_c">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" >
+                                        </div>
+                                        <div class="flex8" ng-show="!EditDetailVal.headers_c[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder="" >
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="EditDetailVal.headers_c[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="editminus('headers_c',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="editplus('headers_c',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="EditDetailVal.headers_c[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeHeaders == 'raw'">
+                                    <textarea placeholder="请输入Headers" style="width:100%;height: 140px;" ng-model="headers">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">Body</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeBody" value="form-data" ng-model="formData.dataTypeBody">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeBody" value="raw" ng-model="formData.dataTypeBody">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeBody == 'form-data'">
+                                     <div class="display_flex" ng-repeat="param in EditDetailVal.body_c">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder="" >
+                                        </div>
+                                        <div class="flex8" ng-show="!EditDetailVal.body_c[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="EditDetailVal.body_c[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="editminus('body_c',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="editplus('body_c',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="EditDetailVal.body_c[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeBody == 'raw'">
+                                    <textarea placeholder="请输入Body" style="width:100%;height: 140px;" ng-model="body">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">预期数据</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeExpect" value="form-data" ng-model="formData.dataTypeExpect">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeExpect" value="raw" ng-model="formData.dataTypeExpect">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeExpect == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in EditDetailVal.expectation_data_c">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <div class="flex8" ng-show="!EditDetailVal.expectation_data_c[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""   >
+                                        </div>
+                                         <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="EditDetailVal.expectation_data_c[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="editminus('expectation_data_c',$index)">-</button>
+                                        <button type="button" class="btn btn-default" ng-click="editplus('expectation_data_c',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="EditDetailVal.expectation_data_c[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeExpect == 'raw'">
+                                    <textarea placeholder="请输入Expect" style="width:100%;height: 140px;" ng-model="expect">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">关联用例</label>
+                                <div class="col-sm-10">
+                                    <div class="display_flex" ng-repeat="param in EditDetailVal.corr_case_c">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <div class="flex8" ng-show="!EditDetailVal.corr_case_c[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="EditDetailVal.corr_case_c[$index].is_select">
+                                                <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 请选择 -&#45;&#45;&#45;&#45;&#45;&#45;</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="editminus('corr_case_c',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="editplus('corr_case_c',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="EditDetailVal.corr_case_c[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">mock_data</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="dataTypeMock" value="form-data" ng-model="formData.dataTypeMock">form-data
+                                    <input style="margin-left:50px;" type="radio" name="dataTypeMock" value="raw" ng-model="formData.dataTypeMock">raw
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeMock == 'form-data'">
+                                    <div class="display_flex" ng-repeat="param in EditDetailVal.mock_data_c">
+                                        <div class="flex8">
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <div class="flex8" ng-show="!EditDetailVal.mock_data_c[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="EditDetailVal.mock_data_c[$index].is_select">
+                                                <option value="">-------- 请选择 -------</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="editminus('mock_data_c',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="editplus('mock_data_c',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="EditDetailVal.mock_data_c[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+                                </div>
+                                <div class="col-sm-10" ng-show="formData.dataTypeMock == 'raw'">
+                                    <textarea placeholder="请输入Mock" style="width:100%;height: 140px;" ng-model="mock">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">seq</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="EditDetailVal.seq" class="form-control" id="departmentDes" placeholder="请输入密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">级别</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="EditDetailLevel" ng-options="m.L for m in level">
+                                    </select>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">依赖参数化数据</label>
+                                <div class="col-sm-10">
+                                    <input type="text" ng-model="EditDetailVal.depend_data" class="form-control" id="departmentDes" placeholder="">
+                                </div>
+                            </div>-->
+                            <div class="form-group" style="position: relative;z-index:2;">
+                                <label for="departmentDes" class="col-sm-2 control-label">前置接口</label>
+                                <div class="col-sm-10" >
+                                    <div ui-sortable="sortableOptions" class=" selectSearchResult" ng-model="selectSearchResult">
+                                        <div ng-repeat="item in selectSearchResult " class="selectSearchResultItem pull-left" >
+                                            <span class = "deleteSelected" ng-click="selectSearchResult.splice($index,1)" ng-show="!dialog.input_isClick" >x</span>
+                                            <span>{{item.description}}</span>
+                                        </div>
+                                    </div>
+                                    <div style="position:relative;" ng-show="!dialog.input_isClick">
+                                        <!-- <label for="departmentDes" class="control-label">搜索</label> -->
+                                        <input  type="text" ng-model="searchWord" placeholder="输入检索信息进行搜索" class="form-control" ng-focus = "searchResultIsShow = true" >
+                                        <div class="searchResult" ng-show="searchResultIsShow">
+                                            <div ng-repeat="m in searchResult" ng-click="selectSearchItem($index)" class="searchResultItem">{{m.description}}</div>
+                                        </div>
+                                        <div ng-show="searchResultIsShow" ng-click="searchResultIsShow = false" class="closeSearchResult">点击关闭</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="EditDetailVal.is_main" ng-click="EditforwardIsActive()"> 正向用例
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="EditDetailVal.is_active" ng-click="EditdetailIsActive()"> 是否启用
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="EditDetailVal.is_parameterized" ng-click="EditIsAarameterized()"> 是否参数化
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departmentDes" class="col-sm-2 control-label">参数化数据</label>
+                                <div class="col-sm-10">
+                                    <div class="display_flex" ng-repeat="param in EditDetailVal.parameterized_data_c">
+                                        <div class="flex8" >
+                                            <input type="text" ng-model="param.key" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <div class="flex8" ng-show="!EditDetailVal.parameterized_data_c[$index].is_select">
+                                            <input type="text" ng-model="param.value" class="form-control" id="departmentDes" placeholder=""  >
+                                        </div>
+                                        <select class="flex8" ng-model="param.value" ng-options="m.correct_name as m.correct_name for m in allAssociation" ng-show="EditDetailVal.parameterized_data_c[$index].is_select">
+                                                <option value="">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 请选择 -&#45;&#45;&#45;&#45;&#45;&#45;</option>
+                                        </select>
+                                        <button type="button" class="btn btn-default" ng-click="editminus('parameterized_data_c',$index)">-</button>
+                                        <button type="button" class="btn btn-default"  ng-click="editplus('parameterized_data_c',$index)" >+</button>
+                                        <input type="checkbox" class="checkbox-zsy " ng-model="EditDetailVal.parameterized_data_c[$index].is_select"  ng-true-value = "true" ng-false-value = "false" ng-click="getAllAssociation()">
+                                    </div>
+
+
+                                </div>
+                            </div>-->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="editDetailMethod()">
+                            确认更改
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 修改详情器结束 -->
+
+
+        <!-- 模态框 禁用（Modal） -->
+        <div class="modal fade" id="disableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="disableLabel">
+                            用例禁用
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-empty" data-dismiss="modal">
+                                取消
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger" ng-click='disableDetailItem()'>
+                                禁用
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 禁用结束 -->
+        <!-- 模态框 删除详情器（Modal） -->
+        <div class="modal fade" id="delDodel" tabindex="-1" role="dialog" aria-labelledby="delLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="delLabel">
+                            删除用例
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-empty" data-dismiss="modal">
+                                取消
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" ng-click="sureDelDetail()">
+                                删除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal 详情器删除 -->
+        <div>
+            <div class="toastShow" ng-show="toastState === true">
+                <em>{{toastCon}}</em>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,36 @@
+<div class="row backInfo_center" style="background-color: #FFFFFF;width: 100%; height: 100%;position: absolute;" >
+    <div>
+        <h1 class="logo-name">MAGIC</h1>
+    </div>
+    <div class="middle-box text-center loginscreen  animated fadeInDown" ng-controller="backUserLogin">
+        <div>
+            <h3>欢迎使用Magic系统</h3>
+            <form class="m-t">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="用户名" required="" ng-blur="numBlur()"
+                           ng-model="login_username" >
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="密码" required="" ng-blur="pswBlur()"
+                           ng-model="login_password">
+                </div>
+                <!--<a style="display: block; text-align: right; margin-bottom:1rem;" ui-sref="forgot_password"><small>返回首页</small></a>-->
+                <a style="display: block; text-align: right; margin-bottom:1rem;" ui-sref="interface.center"><small>返回首页</small></a>
+
+                <button type="submit" class="btn btn-primary block full-width m-b" ng-click="loginTo()">登录</button>
+                <!--<a style="display: block; text-align: center; margin-bottom:1rem;" ui-sref="forgot_password"><small>返回首页</small></a>-->
+                <!--<button type="submit" class="btn btn-primary block full-width m-b">返回首页</button>-->
+
+                <!--<a ui-sref="forgot_password"><small>返回首页</small></a>-->
+                <!--<p class="text-muted text-center"><small>Do not have an account?</small></p>-->
+                <!--<a class="btn btn-sm btn-white btn-block" ui-sref="register">Create an account</a>-->
+            </form>
+            <!--<p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>-->
+        </div>
+    </div>
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,174 @@
+
+<div ng-controller="backSysConfig_emailSet">
+    <div class="backInfo-depart-frame">
+        <div class="backDepart-header">
+            <p class="backDepartQ-title pull-left">邮箱配置管理</p>
+        </div>
+        <!-- 按钮触发模态框 -->
+        <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal" ng-click="openEmailSet()">新增</button>
+        <div class="back-server-frame">
+            <table class="table table-hover table-striped depart-table">
+                <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>描述</td>
+                    <!--<td>发送人姓名</td>-->
+                    <!--<td>密码</td>-->
+                    <td>SMTP地址</td>
+                    <!--<td>POP3地址</td>-->
+                    <!--<td>创建用户</td>-->
+                    <!--<td>修改用户</td>-->
+                    <td>创建时间</td>
+                    <!--<td>修改时间</td>-->
+                    <td>是否启用</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody ng-repeat="item in emailSetList">
+                <tr>
+                    <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                    <td>{{item.name}}</td>
+                    <!--<td>{{item.login_user}}</td>-->
+                    <!--<td>{{item.password}}</td>-->
+                    <td>{{item.smtp}}</td>
+                    <!--<td>{{item.pop3}}</td>-->
+                    <!--<td>{{item.user}}</td>-->
+                    <!--<td>{{item.mod}}</td>-->
+                    <td>{{item.created_time}}</td>
+                    <!--<td>{{item.modified_time}}</td>-->
+                    <td>{{item.is_active?'是':'否'}}</td>
+                    <td>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="seeEmailSet(item.uuid,$index)">查看</button>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="editEmailSet(item.uuid,$index)">修改</button>
+                        <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="disableEmailSet(item.uuid,$index)">禁用</button>
+                        <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="delEmailSet(item.uuid,$index)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="tcdPageCode"></div>
+        </div>
+    </div>
+    <!-- 模态框 新增、查看、修改（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        {{dialog.header}}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="emailSetName" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-blur="checkNull(params.name,'名称')" ng-model="params.name" class="form-control" id="emailSetName" placeholder="请输入名称" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailSetLoginUser" class="col-sm-2 control-label">发送人姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-blur="checkNull(params.login_user,'发送人姓名')" ng-model="params.login_user" class="form-control" id="emailSetLoginUser" placeholder="请输入发送人姓名" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailSetPwd" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-blur="checkPwd(params.password)" ng-model="params.password" class="form-control" id="emailSetPwd" placeholder="请输入密码" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailSetSmtp" class="col-sm-2 control-label">SMTP地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-blur="checkNull(params.smtp,'SMTP地址')" ng-model="params.smtp" class="form-control" id="emailSetSmtp" placeholder="请输入SMTP地址" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailSetPop" class="col-sm-2 control-label">POP3地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.pop3" class="form-control" id="emailSetPop" placeholder="请输入POP3地址" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <!--详情-->
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="emailSetUser" class="col-sm-2 control-label">创建用户</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.user" class="form-control" id="emailSetUser" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="emailSetMod" class="col-sm-2 control-label">修改用户</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.mod" class="form-control" id="emailSetMod" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="emailSetCreated" class="col-sm-2 control-label">创建时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.created" class="form-control" id="emailSetCreated" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="emailSetModified" class="col-sm-2 control-label">更新时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.modified" class="form-control" id="emailSetModified" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">启用</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" ng-model="params.is_active" ng-disabled="dialog.input_isClick"> 是否启用
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="addEmailSetConfirm()" ng-show="dialog.status === 'create'">新增</button>
+                    <button type="button" class="btn btn-primary" ng-click="editEmailSetConfirm()" ng-show="dialog.status === 'modify'">修改</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- 模态框 禁用、删除（Modal） -->
+    <div class="modal fade" id="DisableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="disableLabel">
+                        {{dialog.header}}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            取消
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger"  ng-click="disableEmailSetConfirm()" ng-show="dialog.status === 'disable'">
+                            禁用
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger" ng-click="delEmailSetConfirm()" ng-show="dialog.status === 'del'">
+                            删除
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- showToast（Modal） -->
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>

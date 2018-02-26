@@ -1,0 +1,230 @@
+/*.interfaceCenter-frame{
+    background: #fff;
+    padding:10px;
+    padding-bottom:50px;
+}
+
+.interfaceCenter-frame .inter-title{
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #1ab394 ;
+}
+!* common*!
+
+.interfaceCenter-frame .vertical_mid{
+    text-align: center;
+    position:relative;
+    left:50%;
+    top:50%;
+    display: block;
+    transform: translate(-50%,-50%);
+}
+
+.interfaceCenter-frame .display-flex {
+    display: -moz-box;
+    !* Firefox *!
+    display: -ms-flexbox;
+    !* IE10 *!
+    display: -webkit-box;
+    !* Safari *!
+    display: -webkit-flex;
+    !* Chrome, WebKit *!
+    display: flex;
+}
+
+!* common*!
+.interfaceCenter-frame .header{
+    height:100px;
+    border-top:1px solid #999;
+    border-right:1px solid #999;
+    background: #f3f6fb;
+    color: #000;
+}
+.interfaceCenter-frame .header span{
+    height:100%;
+}
+
+!*.interfaceCenter-frame .header .left{
+    width: 37.5%;
+}*!
+.interfaceCenter-frame .header .left{
+    flex:1;
+    line-height: 100px;
+    text-align: center;
+    border-left:1px solid #999;
+    border-bottom:1px solid #999;
+}
+.interfaceCenter-frame .header .right{
+    flex:5;
+   !* width:62.5%;*!
+    line-height: 50px;
+}
+.interfaceCenter-frame .header .right .bottom span{
+    flex:1;
+    text-align: center;
+    border-left: 1px solid #999;
+    border-bottom: 1px solid #999;
+    height: 100%;
+
+}
+.interfaceCenter-frame .header .right .bottom{
+    height:50%;
+}
+.interfaceCenter-frame .header .right .environment{
+    width:100%;
+    text-align: center;
+    height:50%;
+    border-bottom: 1px solid #999;
+    border-left: 1px solid #999;
+}
+
+.interfaceCenter-frame .department{
+    width:100%;
+    border-right:1px solid #999;
+
+}
+.department .department_name{
+    flex:1;
+    border-left:1px solid #999;
+    border-bottom:1px solid #999;
+    display: block;
+}
+.department .department_name span{
+    position:relative;
+    left:50%;
+    top:50%;
+    display: block;
+    transform: translate(-50%,-50%);
+}
+.department> .department_con{
+    flex: 7;
+}
+.department .system{
+    height:100px;
+}
+.department_con .product_name{
+    flex:1;
+    border-left:1px solid #999;
+    border-bottom:1px solid #999;
+    display: block;
+
+}
+.department_con .product_con{
+    flex:6;
+    display: block;
+}
+
+.department_con .product_con .system>div{
+    flex:1;
+    text-align: center;
+    border-left: 1px solid #999;
+    border-bottom: 1px solid #999;
+}*/
+.department_con .product_con .system .system_con>p{
+    margin-top:20px;
+}
+    /*------------------*/
+/*
+.dev-state-default,.dev-state-success,.dev-state-fail{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: block;
+    text-align: center;
+
+
+}
+.dev-state-default{
+    background: lightgrey;
+}
+.dev-state-success{
+    background: #1ab394;
+}
+.dev-state-fail{
+    background: red;
+}*/
+
+#interfaceCenter-frame .coverage_cell{
+    text-align: center;
+    width:140px;
+    padding:0;
+    height:80px;
+    position: relative;
+
+}
+#interfaceCenter-frame .env_cell{
+    width: 110px;
+    padding:0;
+    height:80px;
+    text-align: center;
+    position: relative;
+
+}
+
+#interfaceCenter-frame .env_cell>div{
+    width:100%;
+    text-align: center;
+    margin-top: 10px;
+}
+#interfaceCenter-frame .coverage_cell>div{
+    width:100%;
+
+    margin-top: 10px;
+    text-align: center;
+}
+#interfaceCenter-frame .env_cell p{
+
+}
+#interfaceCenter-frame thead th{
+    text-align: center;
+}
+
+
+#interfaceCenter-frame .labelitem{
+    width:30px;
+    height:30px;
+    background:#d1dade;
+    border-radius: 100%;
+    display:inline-block;
+    margin:0 auto;
+}
+
+#interfaceCenter-frame .labelitem_fail{
+
+    background: #ed5565;
+}
+#interfaceCenter-frame .labelitem_pass{
+
+    background: #1ab394;
+}
+#interfaceCenter-frame .labelitem_yellow{
+    background: #F2B602;
+}
+#interfaceCenter-frame  .reportTime{
+    margin:2px auto 0 ;
+}
+#interfaceCenter-frame .display-flex{
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+#interfaceCenter-frame .verticalmiddle{
+
+    position: absolute;
+    /*left:50%;*/
+    margin-left:10px;
+    top:5px;
+    transform: translate(-50%);
+}
+#interfaceCenter-frame .verticalmiddle-front{
+    position: absolute;
+    /*left:50%;*/
+    margin-left:10px;
+    top:5px;
+    /*transform: translate(-50%);*/
+}
+#interfaceCenter-frame .col-sm-9.col-sm-push-2 {
+    margin-left: 30px;
+}

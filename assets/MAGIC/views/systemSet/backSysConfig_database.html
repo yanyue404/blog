@@ -1,0 +1,424 @@
+<div ng-controller="backSysConfig_database" class="zsy-tablelist">
+    <div class="backDepart-header">
+        <p class="backDepartQ-title pull-left">数据库管理</p>
+        <!--<div class="queryCase pull-right ">-->
+            <!--<input type="text " placeholder="请输入数据库/数据库编号 ">-->
+            <!--<span>查询</span>-->
+        <!--</div>-->
+    </div>
+    <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#addModal" style="" ng-click="openAdd()">新增数据库</button>
+    <div class="fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table  class="table table-hover table-stripped toggle-arrow-tiny">
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>名称</th>
+                                <!--<th>描述</th>-->
+                                <th>用户名</th>
+                                <!-- <th>password</th> -->
+                                <th>主机IP</th>
+                                <th>端口</th>
+                                <th>主机名</th>
+                                <th>是否启用</th>
+                               <th>创建时间</th>
+                               <!--<th>修改时间</th>-->
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+
+                            <tr ng-repeat="item in contentList">
+                                <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                                <!--<td>{{item.name}}</td>-->
+                                <td>{{item.description}}</td>
+                                <td>{{item.user}}</td>
+                                <!-- <td>{{item.password}}</td> -->
+                                <td>{{item.host}}</td>
+                                <td>{{item.port}}</td>
+                                <td>{{item.server_name}}</td>
+                                <td>{{item.is_active?'是':'否'}}</td>
+                                <td>{{item.created_time}}</td>
+                               <!--<td>{{item.modified_time}}</td>-->
+                                <td>
+                                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#seeModel" ng-click="seeDes(item.id)">查看</button>
+                                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modifyModal" ng-click="modify(item.id)">修改</button>
+                                    <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#Disable" ng-click="Disable(item.id,$index)">禁用</button>
+                                    <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#del" ng-click="del(item.id,$index)">删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="tcdPageCode"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 模态框 新增环境（Modal） -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="label1">
+                        新增数据库
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                         <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">服务器</label>
+                            <div class="col-sm-9">
+                                <select ng-model="selectedServer"  ng-options="item.name for item in serverList">
+                                    <option value="">{{'请选择'}}</option>
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentName" class="col-sm-2 control-label">数据库名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="addItemParams.name" class="form-control" id="departmentName" placeholder="请输入数据库名称">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">描述</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="addItemParams.description" class="form-control" id="departmentDes" placeholder="请输入描述">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="addItemParams.user" class="form-control" id="departmentDes" placeholder="请输入用户名">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-9">
+                                <input ng-blur="checkPwd(addItemParams.password)" type="text" ng-model="addItemParams.password" class="form-control" id="departmentDes" placeholder="请输入密码">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">数据库IP地址</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="addItemParams.host" class="form-control" id="departmentDes" placeholder="请输入数据库IP地址">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">端口</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="addItemParams.port" class="form-control" id="departmentDes" placeholder="请输入端口">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                  
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-checked='addItemParams.is_active' ng-click="toggle_is_active_add()"> 是否启用
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addMethod()">
+                        新增数据库
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal 新增环境 结束 -->
+
+    <!-- 模态框 查看环境详情（Modal） -->
+    <div class="modal fade" id="seeModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        查看数据库详情
+                    </h4>
+                </div>
+                <div class="modal-body">
+                   <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">编号</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.id" class="form-control" id="departmentName"  ng-disabled="true">
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">服务器</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.server_name" class="form-control" id="departmentName" placeholder="请输入环境名称" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentName" class="col-sm-2 control-label">数据库名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.name" class="form-control" id="departmentName" placeholder="请输入环境名称" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">描述</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.description" class="form-control" id="departmentDes" placeholder="请输入环境描述" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.user" class="form-control" id="departmentDes" placeholder="请输入环境描述" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.password" class="form-control" id="departmentDes" placeholder="请输入环境描述" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">数据库IP地址</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.host" class="form-control" id="departmentDes" placeholder="请输入环境描述" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">端口</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.port" class="form-control" id="departmentDes" placeholder="请输入环境描述" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">创建日期</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.created" class="form-control" id="departmentDes" placeholder="请输入环境描述" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">修改日期</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="itemDetail.modified" class="form-control" id="departmentDes" placeholder="请输入环境描述" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-checked='itemDetail.is_active' ng-disabled="true"> 是否启用
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">
+                        关闭
+                    </button>
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- 模态框 修改环境（Modal） -->
+    <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="label1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="label1">
+                        修改数据库
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                         <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">服务器</label>
+                            <div class="col-sm-9">
+                                <select ng-model="selectedServer"  ng-options="item.description for item in serverList">
+                                </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentName" class="col-sm-2 control-label">数据库名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="modifyParams.name" class="form-control" id="departmentName" placeholder="请输入数据库名称">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">描述</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="modifyParams.description" class="form-control" id="departmentDes" placeholder="请输入描述">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="modifyParams.user" class="form-control" id="departmentDes" placeholder="请输入用户名">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="modifyParams.password" class="form-control" id="departmentDes" placeholder="请输入密码">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">数据库IP地址</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="modifyParams.host" class="form-control" id="departmentDes" placeholder="请输入数据库IP地址">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="departmentDes" class="col-sm-2 control-label">端口</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="modifyParams.port" class="form-control" id="departmentDes" placeholder="请输入端口">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                  
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-checked='modifyParams.is_active' ng-click="toggle_is_active_modify()"> 是否启用
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="modifyMethod()">
+                        提交更改
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal 修改环境结束 -->
+
+
+    <!-- 模态框 禁用（Modal） -->
+    <div class="modal fade" id="Disable" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="disableLabel">
+                        环境禁用
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            取消
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" ng-click="DisableMethod()">
+                            禁用
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal 禁用结束 -->
+
+
+    <!-- 模态框 环境删除（Modal） -->
+    <div class="modal fade" id="del" tabindex="-1" role="dialog" aria-labelledby="delLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="delLabel">
+                        删除环境
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            取消
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" ng-click="delMethod()">
+                            删除
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>
+
+

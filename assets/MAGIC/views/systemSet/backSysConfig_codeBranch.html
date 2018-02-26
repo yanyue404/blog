@@ -1,0 +1,178 @@
+
+<div ng-controller="backSysConfig_codeBranch">
+    <div class="backInfo-depart-frame">
+        <div class="backDepart-header">
+            <p class="backDepartQ-title pull-left">代码分支管理</p>
+        </div>
+        <div class="queryCase">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <select ng-model="queryCodeBranchParam.dataStorage" ng-options="m.name for m in queryStorageList">
+                            <option value="">-- 请选择数据仓库 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <button ng-click="queryCase()" class="btn btn-default" style="bottom: 7px;position: relative;">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 按钮触发模态框 -->
+        <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal" ng-click="openCodeBranch()">新增分支</button>
+        <div class="back-server-frame">
+            <table class="table table-hover table-striped depart-table">
+                <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>数据仓库</td>
+                    <td>分支名称</td>
+                    <td>是否启用</td>
+                    <td>创建时间</td>
+                    <!--<td>修改时间</td>-->
+                    <td>操作</td>
+
+                </tr>
+                </thead>
+                <tbody ng-repeat="item in codeBranchList">
+                <tr>
+                    <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                    <td>{{item.warehouse}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.is_active?'是':'否'}}</td>
+                    <td>{{ item.create_time }}</td>
+                    <!--<td>{{ item.modified_time }}</td>-->
+                    <td>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="seeCodeBranch(item.uuid,$index)">查看</button>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="editCodeBranch(item.uuid,$index)">修改</button>
+                        <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="disableCodeBranch(item.uuid,$index)">禁用</button>
+                        <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="delCodeBranch(item.uuid,$index)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-show = "forInitPage" class="forInit">
+                <span class="tcdPageCode"></span>
+            </div>
+            <div ng-hide = "forInitPage" class="forSearch">
+                <span class="tcdPageCode"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框 新增、查看、修改（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        {{dialog.header}}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">数据仓库</label>
+                            <div class="col-sm-10">
+                                <select ng-model="params.dataStorageName" ng-options="m.name for m in dataStorageList" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择 --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div  class="form-group">
+                            <label class="col-sm-2 control-label">类型</label>
+                            <div class="col-sm-10">
+                                <select ng-model="params.types_of" ng-disabled="dialog.input_isClick">
+                                    <option value="">-- 请选择 --</option>
+                                    <option label="分支" value="0">分支</option>
+                                    <option label="标签" value="1">标签</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="codeBranchName" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-blur="ckeckName(params.name)" ng-model="params.name" class="form-control" id="codeBranchName" placeholder="请输入分支或标签名称" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <!--详情-->
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchUser" class="col-sm-2 control-label">创建用户</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.creator_name" class="form-control" id="codeBranchUser" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchMod" class="col-sm-2 control-label">修改用户</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.modifier_name" class="form-control" id="codeBranchMod" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchCreated" class="col-sm-2 control-label">创建时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.create_time" class="form-control" id="codeBranchCreated" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchModified" class="col-sm-2 control-label">更新时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.modifiy_time" class="form-control" id="codeBranchModified" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">启用</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" ng-model="params.is_active" ng-disabled="dialog.input_isClick"> 是否启用
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="addCodeBranchConfirm()" ng-show="dialog.status === 'create'">新增</button>
+                    <button type="button" class="btn btn-primary" ng-click="editCodeBranchConfirm()" ng-show="dialog.status === 'modify'">修改</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- 模态框 禁用、删除（Modal） -->
+    <div class="modal fade" id="DisableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="disableLabel">
+                        {{dialog.header}}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            取消
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger"  ng-click="disableCodeBranchConfirm()" ng-show="dialog.status === 'disable'">
+                            禁用
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger" ng-click="delCodeBranchConfirm()" ng-show="dialog.status === 'del'">
+                            删除
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- showToast（Modal） -->
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>

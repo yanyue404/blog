@@ -1,0 +1,134 @@
+<div ng-controller="productDetailCtrl as pdc">
+    <div class="ibox-heading text-center p-xxs">
+        <h1><span class="text-navy">{{proName}}系统</span></h1>
+    </div>
+
+    <div class="row  border-bottom white-bg dashboard-header" ng-repeat="subproduct in detailData">
+
+        <!--<div ng-repeat="x in names">-->
+        <div class="col-sm-3">
+            <!--<h2>{{ '进件系统' | translate }}</h2>-->
+            <h2>{{ subproduct.subproduct_name }}</h2>
+            <!--<small>{{ 'MESSAGEINFO' | translate }}</small>-->
+            <ul class="list-group clear-list m-t">
+                <li class="list-group-item fist-item">
+                    <span class="pull-right">
+                        {{subproduct.env_result.dev.updated_at}}
+                    </span>
+                    <a ui-sref="interface.invDetail({subproduct_id:subproduct.subproduct_id, env_id:subproduct.env_result.dev.env_id, sys_name:subproduct.subproduct_name+'    Dev环境'})">
+                        <span class="label label-primary" ng-show="subproduct.env_result.dev.status==0">DEV环境&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="label label-danger" ng-show="subproduct.env_result.dev.status==1">DEV环境&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="label label-default" ng-show="subproduct.env_result.dev.status==2">DEV环境&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </a>
+                    <a href={{rootUrl}}{{subproduct.env_result.dev.url}} ng-show="subproduct.env_result.dev.status==0">通过</a>
+                    <a href={{rootUrl}}{{subproduct.env_result.dev.url}} ng-show="subproduct.env_result.dev.status==1">失败</a>
+                    <span ng-show="subproduct.env_result.dev.status==2">未运行</span>
+                </li>
+                <li class="list-group-item">
+                                    <span class="pull-right">
+                                        {{subproduct.env_result.ci.updated_at}}
+                                    </span>
+                    <a ui-sref="interface.invDetail({subproduct_id:subproduct.subproduct_id, env_id:subproduct.env_result.ci.env_id, sys_name:subproduct.subproduct_name+'    CI环境'})">
+                        <span class="label label-primary" ng-show="subproduct.env_result.ci.status==0">CI环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+                        <span class="label label-danger" ng-show="subproduct.env_result.ci.status==1">CI环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+                        <span class="label label-default" ng-show="subproduct.env_result.ci.status==2">CI环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+                    </a>
+                    <a href={{rootUrl}}{{subproduct.env_result.ci.url}}
+                       ng-show="subproduct.env_result.ci.status==0">通过</a>
+                    <a href={{rootUrl}}{{subproduct.env_result.ci.url}}
+                       ng-show="subproduct.env_result.ci.status==1">失败</a>
+                    <span ng-show="subproduct.env_result.ci.status==2">未运行</span>
+                </li>
+                <li class="list-group-item">
+                                    <span class="pull-right">
+                                        {{subproduct.env_result.sit.updated_at}}
+                                    </span>
+                    <a ui-sref="interface.invDetail({subproduct_id:subproduct.subproduct_id, env_id:subproduct.env_result.sit.env_id, sys_name:subproduct.subproduct_name+'    SIT环境'})">
+                        <span class="label label-primary" ng-show="subproduct.env_result.sit.status==0">SIT环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                        <span class="label label-danger" ng-show="subproduct.env_result.sit.status==1">SIT环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                        <span class="label label-default" ng-show="subproduct.env_result.sit.status==2">SIT环境&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                    </a>
+                    <a href={{rootUrl}}{{subproduct.env_result.sit.url}} ng-show="subproduct.env_result.sit.status==0">通过</a>
+                    <a href={{rootUrl}}{{subproduct.env_result.sit.url}} ng-show="subproduct.env_result.sit.status==1">失败</a>
+                    <span ng-show="subproduct.env_result.sit.status==2">未运行</span>
+                </li>
+                <li class="list-group-item">
+                                    <span class="pull-right">
+                                        {{subproduct.env_result.assopro.updated_at}}
+                                    </span>
+                    <a ui-sref="interface.invDetail({subproduct_id:subproduct.subproduct_id, env_id:subproduct.env_result.assopro.env_id, sys_name:subproduct.subproduct_name+'    准生产环境'})">
+                        <span class="label label-primary" ng-show="subproduct.env_result.assopro.status==0">准生产环境</span>
+                        <span class="label label-danger" ng-show="subproduct.env_result.assopro.status==1">准生产环境</span>
+                        <span class="label label-default" ng-show="subproduct.env_result.assopro.status==2">准生产环境</span>
+                    </a>
+                    <a href={{rootUrl}}{{subproduct.env_result.assopro.url}}
+                       ng-show="subproduct.env_result.assopro.status==0">通过</a>
+                    <a href={{rootUrl}}{{subproduct.env_result.assopro.url}}
+                       ng-show="subproduct.env_result.assopro.status==1">失败</a>
+                    <span ng-show="subproduct.env_result.assopro.status==2">未运行</span>
+                </li>
+                <li class="list-group-item">
+                                    <span class="pull-right">
+                                        {{subproduct.env_result.pro.updated_at}}
+                                    </span>
+                    <a ui-sref="interface.invDetail({subproduct_id:subproduct.subproduct_id, env_id:subproduct.env_result.pro.env_id, sys_name:subproduct.subproduct_name+'    生产环境'})">
+                        <span class="label label-primary" ng-show="subproduct.env_result.pro.status==0">生产环境&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="label label-danger" ng-show="subproduct.env_result.pro.status==1">生产环境&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="label label-default" ng-show="subproduct.env_result.pro.status==2">生产环境&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </a>
+                    <a href={{rootUrl}}{{subproduct.env_result.pro.url}} ng-show="subproduct.env_result.pro.status==0">通过</a>
+                    <a href={{rootUrl}}{{subproduct.env_result.pro.url}} ng-show="subproduct.env_result.pro.status==1">失败</a>
+                    <span ng-show="subproduct.env_result.pro.status==2">未运行</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-6" ng-controller="chartJsCtrl as chart">
+            <!--<div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-xs btn-white"  ng-class="{active:focusIndex[subproduct.subproduct_id]==0}" ng-click="query(0,subproduct.subproduct_id)">DEV环境</button>
+                    <button type="button" class="btn btn-xs btn-white"  ng-class="{active:focusIndex[subproduct.subproduct_id]==1}" ng-click="query(1,subproduct.subproduct_id)">CI环境</button>
+                    <button type="button" class="btn btn-xs btn-white"  ng-class="{active:focusIndex[subproduct.subproduct_id]==2}" ng-click="query(2,subproduct.subproduct_id)">SIT环境</button>
+                </div>
+            </div>--!>
+
+            <!--<div class="flot-chart dashboard-chart">-->
+            <!--<div flot class="flot-chart-content" dataset="x.sit_day_run_detail" options="pdc.flotOptions"></div>-->
+            <!--</div>-->
+
+            <div>
+                <canvas linechart options="chart.lineOptions" data="subproduct.day_run_detail" responsive=true></canvas>
+            </div>
+            <div align="center">
+                <h5>测试case通过率</h5>
+            </div>
+        </div>
+        <div class="col-sm-3" ng-controller="chartJsCtrl as chart">
+            <div class="statistic-box">
+                <h4>
+                    最新用例执行状态
+                </h4>
+
+                <div class="row text-center">
+                    <div class="col-lg-6">
+                        <canvas doughnutchart options="chart.doughnutOptions" data="subproduct.lastest_result_cases"
+                                width="120" height="120"></canvas>
+                        <h5>用例通过率</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <canvas doughnutchart options="chart.doughnutOptions" data="chart.testData" width="120"
+                                height="120"></canvas>
+                        <h5>用例比例</h5>
+                    </div>
+
+                </div>
+
+                <!--<div class="m-t">-->
+                <!--<small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>-->
+                <!--</div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+

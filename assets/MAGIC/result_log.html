@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html style="font-size: 12px;" lang="en" ng-app="wechat">
+<head>
+    <meta charset="UTF-8">
+    <title>部署详情日志</title>
+    <link id="loadBefore" href="css/style.css?v=1.23" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=1.23">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+</head>
+<body ng-controller="detailLog"style="background:#fff;">
+<h2 style="text-align: center;">部署日志详情</h2>
+<div class="row backInfo_center" style="padding: 10px 20px;">
+    <p style="color: #333;line-height: 2rem; font-size:1.5rem">{{detail}}</p>
+</div>
+<div>
+    <div class="toastShow" ng-show="toastState === true">
+        <em>{{toastCon}}</em>
+    </div>
+</div>
+</body>
+<script src="js/angular/angular.min.js?v=1.23"></script>
+<script>
+    var myApp =angular.module("wechat",[]);
+    myApp.controller("detailLog",detailLog);
+{#    myApp.constant('interface_url', 'http://10.143.117.38:84') ;// API#}
+    function detailLog($scope, $rootScope, $http, interface_url, $timeout) {
+        $http({
+            'method': 'GET',
+            'url': $rootScope.interface + '/gdc/gitlog/?job=' + GetQueryString('job') + '&build_id=' + GetQueryString('build_id'),
+        }).success(function (data) {
+            if (data.code === 200 || data.code === '200'){
+//                $rootScope.showToast(data.message);
+                $scope.detail = data.result;
+            }else {
+                $rootScope.showToast(data.message);
+            }
+        }).error(function (data) {
+            $rootScope.showToast(data.message);
+        })
+        //获取地址中的信息
+        function GetQueryString(name) {
+            /*定义正则，用于获取相应参数*/
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            /*字符串截取，获取匹配参数值*/
+            var r = window.location.search.substr(1).match(reg);
+            /*返回参数值*/
+            if (r != null) {
+                return decodeURI(r[2]);
+            } else {
+                return null;
+            }
+        }
+        // 弹框
+        $rootScope.showToast = function(val) {
+            $rootScope.toastState = true;
+            $rootScope.toastCon = val;
+            $timeout(function () {
+                $rootScope.toastState = false;
+            }, 2000);
+        };
+    }
+</script>
+</html>

@@ -1,0 +1,158 @@
+<div class="row backInfo_center" ng-controller="weChatGroup" style="padding: 10px 20px;">
+    <div class="backDepart-header">
+        <p class="backDepartQ-title pull-left">微信组管理</p>
+    </div>
+    <div class="queryCase">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <input type="text" ng-model="queryWechatParam.name" class="form-control" placeholder="请输入名称">
+                </div>
+                <div class="col-sm-3">
+                    <button ng-click="queryCase()" class="btn btn-default" style="bottom: 7px;position: relative;">查询</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <button class="btn btn-default new-user" data-toggle="modal" data-target="#myModal" ng-click="openWechatGroup()">添加微信组</button>
+    <div class="back-server-frame">
+        <table class="table table-hover table-striped depart-table">
+            <thead>
+            <tr>
+                <td>编号</td>
+                <td>名称</td>
+                <td>是否启用</td>
+                <td>创建用户</td>
+                <td>操作</td>
+
+            </tr>
+            </thead>
+            <tbody ng-repeat="item in wechatGroupList">
+            <tr>
+                <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.is_active?'是':'否'}}</td>
+                <td>{{item.creator_name}}</td>
+                <td>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="seeWechatGroup(item.uuid,$index)">查看</button>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="editWechatGroup(item.uuid,$index)">修改</button>
+                    <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="disableWechatGroup(item.uuid,$index)">禁用</button>
+                    <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="delWechatGroup(item.uuid,$index)">删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div ng-show = "forInitPage" class="forInit">
+            <span class="tcdPageCode"></span>
+        </div>
+        <div ng-hide = "forInitPage" class="forSearch">
+            <span class="tcdPageCode"></span>
+        </div>
+    </div>
+    <!-- 模态框 新增、查看、修改（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        {{dialog.header}}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="systemName" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="params.name" class="form-control" id="systemName" placeholder="请输入名称（限字母、数字和下划线）">
+                            </div>
+                            <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                <span class="requested_red ">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="position: relative;z-index:2;">
+                            <label class="col-sm-2 control-label">微信组</label>
+                            <div class="col-sm-10" >
+                                <div ui-sortable="sortableOptions" class=" selectSearchResult" ng-model="selectSearchResult" style="border: 1px solid #ccc;height:60px;">
+                                    <div ng-repeat="item in selectSearchResult " class="selectSearchResultItem pull-left" style="padding: 5px 10px; margin-right:2px;background: #ccc;margin-bottom:2px;height: 28px;position: relative;">
+                                        <span class = "deleteSelected" ng-click="selectSearchResult.splice($index,1)" ng-show="!dialog.input_isClick" style="position: absolute;top: -3px;right: 0;">x</span>
+                                        <span>{{item.name}}</span>
+                                    </div>
+                                </div>
+                                <div style="position:relative;" ng-show="!dialog.input_isClick">
+                                    <input  type="text" ng-model="searchWord" placeholder="输入检索信息进行搜索" class="form-control" ng-focus = "searchResultIsShow = true" >
+                                    <div class="searchResult" ng-show="searchResultIsShow && searchResultFlag === true" style="padding:0 10px;max-height:150px;border:1px solid #ccc;overflow-y: auto;position: absolute;background: #fff;">
+                                        <div ng-repeat="m in searchResult" ng-click="selectSearchItem($index)" class="searchResultItem">{{m.name}}</div>
+                                    </div>
+                                    <div ng-show="searchResultIsShow && searchResultFlag === true" ng-click="searchResultIsShow = false" class="closeSearchResult" style="float:right;position: relative;top: 5px;right: 5px;">点击关闭</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--详情-->
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchUser" class="col-sm-2 control-label">创建用户</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.creator_name" class="form-control" id="codeBranchUser" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="dialog.detail">
+                            <label for="codeBranchMod" class="col-sm-2 control-label">修改用户</label>
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="params.modifier_name" class="form-control" id="codeBranchMod" ng-disabled="dialog.input_isClick">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">启用</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" ng-model="params.is_active" ng-disabled="dialog.input_isClick"> 是否启用
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" ng-click="addWechatGroupConfirm()" ng-show="dialog.status === 'create'">新增</button>
+                    <button type="button" class="btn btn-primary" ng-click="editWechatGroupConfirm()" ng-show="dialog.status === 'modify'">修改</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- 模态框 禁用、删除（Modal） -->
+    <div class="modal fade" id="DisableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="disableLabel">
+                        {{dialog.header}}
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">
+                            取消
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger"  ng-click="disableWechatGroupConfirm()" ng-show="dialog.status === 'disable'">
+                            禁用
+                        </button>
+                        <button type="button" class="btn btn-default btn-danger" ng-click="delWechatGroupConfirm()" ng-show="dialog.status === 'del'">
+                            删除
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>

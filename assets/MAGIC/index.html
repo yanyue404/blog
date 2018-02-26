@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="inspinia">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title page-title>国美金融Magic系统</title>
+        <link href="css/bootstrap.css?v=1.3" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css?v=1.3" rel="stylesheet">
+        <link href="css/animate.css?v=1.3" rel="stylesheet">
+        <link id="loadBefore" href="css/style.css?v=1.3" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css?v=1.3">
+    </head>
+    <body ng-controller="MainCtrl as main" class="{{$state.current.data.specialClass}}" landing-scrollspy id="page-top">
+        <!-- 前台菜单栏 -->
+        <div ng-include="'views/frontCommon/navigation.html'"
+        ng-if="$state.includes('interface') || $state.includes('abilityAutomation') || $state.includes('business') || $state.includes('unify')"></div>
+        <div ui-view></div>
+        <script src="js/jquery/jquery-2.1.1.min.js?v=1.3"></script>
+        <script src="js/plugins/jquery-ui/jquery-ui.js?v=1.3"></script>
+        <script src="js/bootstrap/bootstrap.min.js?v=1.3"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js?v=1.3"></script>
+        <script src="js/plugins/slimscroll/jquery.slimscroll.min.js?v=1.3"></script>
+        <script src="js/plugins/pace/pace.min.js?v=1.3"></script>
+        <script src="js/inspinia.js?v=1.3"></script>
+        <script src="js/angular/angular.min.js?v=1.3"></script>
+        <script src="js/angular/angular-sanitize.js?v=1.3"></script>
+        <script src="js/plugins/oclazyload/dist/ocLazyLoad.min.js?v=1.3"></script>
+        <script src="js/angular-translate/angular-translate.min.js?v=1.3"></script>
+        <script src="js/ui-router/angular-ui-router.min.js?v=1.3"></script>
+        <script src="js/bootstrap/ui-bootstrap-tpls-1.1.2.min.js?v=1.3"></script>
+        <script src="js/plugins/angular-idle/angular-idle.js?v=1.3"></script>
+        <script src="js/app.js?v=1.3"></script>
+        <script src="js/config.js?v=1.3"></script>
+        <script src="js/translations.js?v=1.3"></script>
+        <script src="js/directives.js?v=1.3"></script>
+        <script src="js/controllers.js?v=1.3"></script>
+        <script src="js/filters.js?v=1.3"></script>
+        <script src="js/plugins/bootstrap-tour/tooltip.js?v=1.3"></script>
+        <!--前端页面展示-->
+        <script src="js/frontPage/frontPage.js?v=1.3"></script>
+        <!--用户管理==用户-->
+        <script src="js/userManage/user.js?v=1.3"></script>
+
+    </body>
+</html>
+

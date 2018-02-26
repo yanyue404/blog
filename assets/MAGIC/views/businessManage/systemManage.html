@@ -1,0 +1,197 @@
+<div ng-controller="systemManage">
+    <div class="backInfo-depart-frame">
+        <div class="backDepart-header">
+            <p class="backDepartQ-title pull-left">系统管理</p>
+        </div>
+        <div class="queryCase">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <select ng-model="querySystemParam.department" ng-options="m.name for m in queryDepartmentList" ng-change="queryDepartment()">
+                            <option value="">-- 请选择部门 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <select ng-model="querySystemParam.product" ng-options="m.name for m in queryProductList">
+                            <option value="">-- 请选择产品 --</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" name="" ng-model="querySystemParam.name">
+                    </div>
+                    <div class="col-sm-3">
+                        <button ng-click="queryCase()" class="btn btn-default" style="bottom: 7px;position: relative;">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 按钮触发模态框 -->
+        <button class="btn btn-default new-apartment" data-toggle="modal" data-target="#myModal" ng-click="openSystem()">新增系统</button>
+        <div class="back-server-frame">
+            <table class="table table-hover table-striped depart-table">
+                <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>系统名称</td>
+                    <td>操作系统</td>
+                    <td>产品</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody ng-repeat="item in systemList">
+                <tr>
+                    <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                    <td>{{item.department_name}}</td>
+                    <td>{{item.product_name}}</td>
+                    <td>{{item.system_name}}</td>
+                    <td>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="seeSystem(item.uuid,$index)">查看</button>
+                        <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal" ng-click="editSystem(item.uuid,$index)">修改</button>
+                        <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="disableSystem(item.uuid,$index)">禁用</button>
+                        <button class="btn btn-danger btn-danger-empty btn-sm" data-toggle="modal" data-target="#DisableModel" ng-click="delSystem(item.uuid,$index)">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div ng-show = "forInitPage" class="forInit">
+                <span class="tcdPageCode"></span>
+            </div>
+            <div ng-hide = "forInitPage" class="forSearch">
+                <span class="tcdPageCode"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框 新增、查看、修改（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            {{dialog.header}}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="departmentName" class="col-sm-2 control-label">部门名称</label>
+                                <div class="col-sm-10">
+                                    <select ng-change="selectProductByDepent()" ng-model="params.departmentName" ng-options="m.name for m in queryDepartmentList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productName" class="col-sm-2 control-label">产品名称</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="params.productName" ng-options="m.name for m in queryProductList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="systemName" class="col-sm-2 control-label">系统名称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="params.name" class="form-control" id="systemName" placeholder="请输入系统名称（限字母、数字和下划线）" ng-disabled="dialog.input_isClick">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="OperaSys" class="col-sm-2 control-label">操作系统</label>
+                                <div class="col-sm-10">
+                                    <select ng-model="params.os" ng-options="m.name for m in OperaSysList" ng-disabled="dialog.input_isClick">
+                                        <option value="">-- 请选择 --</option>
+                                    </select><span style="padding-left:10px; padding-top: 3px;" class="requested_red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="params.os.name !== 'web'">
+                                <label for="systemBoxName" class="col-sm-2 control-label">系统包名</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="params.package_name" class="form-control" id="systemBoxName" placeholder="" ng-disabled="dialog.input_isClick">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="params.os.name !== 'web'">
+                                <label for="systemActivePage" class="col-sm-2 control-label">系统启动页</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="params.active_page" class="form-control" id="systemActivePage" placeholder="" ng-disabled="dialog.input_isClick">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="params.OperaSys.name === 'web'">
+                                <label for="browserPath" class="col-sm-2 control-label">web地址</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="params.browser_path" class="form-control" id="browserPath" placeholder="" ng-disabled="dialog.input_isClick">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="params.os.name === 'web'">
+                                <label for="browserActivePage" class="col-sm-2 control-label">web启动页</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="params.browser_url" class="form-control" id="browserActivePage" placeholder="" ng-disabled="dialog.input_isClick">
+                                </div>
+                                <div class="col-sm-1" style="padding-left: 0; padding-top: 10px;">
+                                    <span class="requested_red ">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="remark" class="col-sm-2 control-label">备注</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="params.comment" class="form-control" id="remark" ng-disabled="dialog.input_isClick">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-empty" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="addSystemConfirm()" ng-show="dialog.status === 'create'">新增</button>
+                        <button type="button" class="btn btn-primary" ng-click="editSystemConfirm()" ng-show="dialog.status === 'modify'">修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 模态框 禁用、删除（Modal） -->
+        <div class="modal fade" id="DisableModel" tabindex="-1" role="dialog" aria-labelledby="disableLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="disableLabel">
+                            {{dialog.header}}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <button type="button" class="btn btn-empty" data-dismiss="modal">
+                                取消
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger"  ng-click="disableSystemConfirm()" ng-show="dialog.status === 'disable'">
+                                禁用
+                            </button>
+                            <button type="button" class="btn btn-default btn-danger" ng-click="delSystemConfirm()" ng-show="dialog.status === 'del'">
+                                删除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+    <!-- showToast（Modal） -->
+    <div>
+        <div class="toastShow" ng-show="toastState === true">
+            <em>{{toastCon}}</em>
+        </div>
+    </div>
+</div>

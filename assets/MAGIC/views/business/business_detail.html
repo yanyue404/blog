@@ -1,0 +1,53 @@
+<div  ng-controller="businessDetailCtrl"  id="executeDetail">
+    <div class="row wrapper border-bottom white-bg page-heading text-center">
+        <div class="col-lg-12">
+            <h2><strong>执行详情</strong></h2>   <!--{{proName}}{{sys_name}}-->
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="forPageClass">
+                        <table  class=" table table-stripped toggle-arrow-tiny" data-page-size="16" id="footable">
+                            <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>系统</th>
+                                <th>环境</th>
+                                <th>名称</th>
+                               <!-- <th>通过数量 </th>
+                                <th>失败数量</th>
+                                <th>错误数量</th>-->
+                                <th>结果</th>
+                                <th>创建时间</th>
+                                <th>详情</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="resultData in bussinessDetailData track by $index  " >
+                                <td>{{$index + (pageNum - 1) *10 + 1}}</td>
+                                <td>{{resultData.system_name}}</td>
+                                <td>{{resultData.env_name}}</td>
+                                <td>{{resultData.job_name}}</td>
+                                <!--<td>{{resultData.count_pass}}</td>-->
+                                <!--<td>{{resultData.count_fail}}</td>-->
+                                <!--<td>{{resultData.count_error}}</td>-->
+                                <td  ng-switch="resultData.result_status">
+                                    <span class="label label-pass"  ng-switch-when ="pass">成功</span>
+                                    <span class="label label-fail" ng-switch-when ="fail">失败</span>
+                                    <span class="label label-danger" ng-switch-when ="error">错误</span>
+                                    <span class="label " ng-switch-default >{{resultData.result_status}}</span>
+                                </td>
+                                <td>{{resultData.created_time}}</td>
+                                <td> <a href="{{result_url}}{{resultData.file_path_url}}">详情</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="tcdPageCode"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
