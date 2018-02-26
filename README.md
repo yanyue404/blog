@@ -5,7 +5,7 @@ my personal blog
 
 ## 2017
 #### - [react语法入门（参照Airbnb React JSX 编码规范）](https://github.com/xiaoyueyue165/blog/issues/9)
-#### - [跨域请求获取数据]((https://github.com/xiaoyueyue165/blog/issues/8)
+#### - [跨域请求获取数据](https://github.com/xiaoyueyue165/blog/issues/8)
 #### - [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
 #### - [原生js字符串传递参数](https://github.com/xiaoyueyue165/blog/issues/6)
 #### - [页面之间传参的方法](https://github.com/xiaoyueyue165/blog/issues/5)
