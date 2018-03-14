@@ -3,7 +3,7 @@ blog
 
 my personal blog
 ## 2018
-#### - [使用fis3构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/12)
+#### - [使用fis3构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/12) [3.14]
 #### - [Javascript 编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
 #### - [函数声明和函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
 ## 2017
