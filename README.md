@@ -18,7 +18,7 @@ my personal blog
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
 
 
-## 联系作者
+### 联系作者
 - [Xiaoyueyue's Personal Website](http://xiaoyueyue.org/)
 - Email: xiaoyueyue165@gmail.com
 
