@@ -15,7 +15,7 @@ my personal blog
 #### - [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16)
 
 ## 最好的开发环境
-#### - [开发网络环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
+#### - [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
 #### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
 
