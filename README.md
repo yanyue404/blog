@@ -6,7 +6,7 @@ my personal blog
 ## 工程化，规范化
 #### - [使用fis3构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/14) [3.14]
 #### - [Javascript 编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
-#### - [函数声明和函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
+#### - [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16)
 
 ## 最好的开发环境
 #### - [开发网络环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
