@@ -10,6 +10,8 @@ my personal blog
 #### - [使用fis3构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/14) [2018.3.14]
 #### - [Javascript 编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
 #### - [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16)
+## 思考
+#### -[No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13) [2018.3.7]
 
 ## 最好的开发环境
 #### - [开发网络环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
