@@ -4,7 +4,7 @@ blog
 my personal blog
 
 ## Javascript
-#### -[Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [Adjectives]
+#### -[Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
 
 ## 思考
 #### -[No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13) [2018.3.7]
