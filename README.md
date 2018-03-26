@@ -5,7 +5,7 @@ my personal blog
 
 ## Javascript
 #### -[Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
-#### -[Js编程风格](https://github.com/xiaoyueyue165/blog/issues/11) [2018.3.1]
+#### -[函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10) [2018.3.1]
 
 ## 思考
 #### -[No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13) [2018.3.7]
