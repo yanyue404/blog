@@ -5,16 +5,16 @@ my personal blog
 
 ## 深入系列
 
-#### -[一张网页，要经历怎样的过程，才能抵达用户面前？](https://github.com/xiaoyueyue165/blog/issues/20)
+#### - [一张网页，要经历怎样的过程，才能抵达用户面前？](https://github.com/xiaoyueyue165/blog/issues/20)
 
 ## Javascript
 
-#### -[Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
-#### -[函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10) [2018.3.1]
+#### - [Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
+#### - [函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10) [2018.3.1]
 
 ## 思考
 
-#### -[No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13) [2018.3.7]
+#### - [No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13) [2018.3.7]
 
 ## 工程化，规范化
 
