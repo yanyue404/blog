@@ -3,18 +3,26 @@ blog
 
 my personal blog
 
+## 深入系列
+
+#### -[一张网页，要经历怎样的过程，才能抵达用户面前？](https://github.com/xiaoyueyue165/blog/issues/20)
+
 ## Javascript
+
 #### -[Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
 #### -[函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10) [2018.3.1]
 
 ## 思考
+
 #### -[No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13) [2018.3.7]
 
 ## 工程化，规范化
+
 #### - [使用fis3构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/14) [2018.3.14]
 #### - [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16) [2018.3.20]
 
 ## 开发环境
+
 #### - [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
 #### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
