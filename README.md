@@ -5,7 +5,7 @@ my personal blog
 
 ## 深入系列
 
-#### - [一张网页，要经历怎样的过程，才能抵达用户面前？](https://github.com/xiaoyueyue165/blog/issues/20)
+#### - [一张网页，要经历怎样的过程，才能抵达用户面前？](https://github.com/xiaoyueyue165/blog/issues/20) [3.29]
 
 ## Javascript
 
