@@ -10,9 +10,9 @@ my personal blog
 ## Javascript
 
 #### - [js编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
-#### - [Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
 #### - [js的继承模式](https://github.com/xiaoyueyue165/blog/issues/17)
-#### - [函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10) 
+#### - [Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
+#### - [函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
 
 ## 思考
 
