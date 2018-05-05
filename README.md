@@ -24,12 +24,16 @@ my personal blog
 #### - [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16) 
 
 ## 开发环境
+
 #### - [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
 #### - [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
 #### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
 
+## Useful links
 
+- [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
+- [stackoverflow](https://stackoverflow.com/users/8273471/%E5%B0%8F%E8%B6%8A%E8%B6%8A)
 
 
 
