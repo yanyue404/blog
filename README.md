@@ -33,7 +33,7 @@ my personal blog
 ## Useful links
 
 - [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
-- [stackoverflow](https://stackoverflow.com/users/8273471/%E5%B0%8F%E8%B6%8A%E8%B6%8A)
+- [stackoverflow](https://stackoverflow.com/users/8273471/xiaoyueyue)
 
 
 
