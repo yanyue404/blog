@@ -30,6 +30,9 @@ my personal blog
 #### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
 
+## 好的文章
+- [如何在疲劳的JS世界中持续学习](https://zhuanlan.zhihu.com/p/36339128)
+
 ## Useful links
 
 - [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
