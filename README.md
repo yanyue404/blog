@@ -29,8 +29,11 @@ my personal blog
 #### - [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
 #### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
-
+## 周刊
+- [奇舞周刊](https://weekly.75team.com/)
+- [百度 FEX 周刊](http://fex.baidu.com/weekly/)
 ## 团队
+
 - [TaobaoUED](http://taobaofed.org/categories/Web%E5%BC%80%E5%8F%91/)
 - [百度EFE（Excellent FrontEnd）](http://efe.baidu.com/)
 - [AlloyTeam](http://www.alloyteam.com/) （腾讯）
