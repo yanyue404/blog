@@ -43,7 +43,7 @@ my personal blog
 - [AlloyTeam](http://www.alloyteam.com/) （腾讯）
 - [饿了么前端](https://zhuanlan.zhihu.com/ElemeFE)
 - [IMWeb](http://imweb.io/) （腾讯）
-- [大搜车](http://f2e.souche.com/blog/) [xin](https://blog.souche.com/)
+- [大搜车](http://f2e.souche.com/blog/) or [Xin](https://blog.souche.com/)
 ## 优秀的文章
 - [如何在疲劳的JS世界中持续学习](https://zhuanlan.zhihu.com/p/36339128)
 - [驳《我不是很懂 Node.js 社区的 DRY 文化》](https://segmentfault.com/a/1190000014480379) by [justjavac](https://segmentfault.com/u/justjavac) 【2018.4.20】
