@@ -29,9 +29,13 @@ my personal blog
 #### - [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
 #### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
-## 周刊
+
+## 周刊+文章聚合
 - [奇舞周刊](https://weekly.75team.com/)
 - [百度 FEX 周刊](http://fex.baidu.com/weekly/)
+- [w3ctech ](https://www.w3ctech.com/)
+- [w3cplus](https://www.w3cplus.com/)
+
 ## 团队
 
 - [TaobaoUED](http://taobaofed.org/categories/Web%E5%BC%80%E5%8F%91/)
