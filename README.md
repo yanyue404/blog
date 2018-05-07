@@ -30,6 +30,13 @@ my personal blog
 #### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
 
+## 团队
+- [TaobaoUED](http://taobaofed.org/categories/Web%E5%BC%80%E5%8F%91/)
+- [百度EFE（Excellent FrontEnd）](http://efe.baidu.com/)
+- [AlloyTeam](http://www.alloyteam.com/) （腾讯）
+- [饿了么前端](https://zhuanlan.zhihu.com/ElemeFE)
+- [IMWeb）](http://imweb.io/) （腾讯）
+- [大搜车](http://f2e.souche.com/blog/)
 ## 优秀的文章
 - [如何在疲劳的JS世界中持续学习](https://zhuanlan.zhihu.com/p/36339128)
 - [驳《我不是很懂 Node.js 社区的 DRY 文化》](https://segmentfault.com/a/1190000014480379) by [justjavac](https://segmentfault.com/u/justjavac) 【2018.4.20】
