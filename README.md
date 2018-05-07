@@ -35,7 +35,7 @@ my personal blog
 - [百度EFE（Excellent FrontEnd）](http://efe.baidu.com/)
 - [AlloyTeam](http://www.alloyteam.com/) （腾讯）
 - [饿了么前端](https://zhuanlan.zhihu.com/ElemeFE)
-- [IMWeb）](http://imweb.io/) （腾讯）
+- [IMWeb](http://imweb.io/) （腾讯）
 - [大搜车](http://f2e.souche.com/blog/)
 ## 优秀的文章
 - [如何在疲劳的JS世界中持续学习](https://zhuanlan.zhihu.com/p/36339128)
