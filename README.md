@@ -32,6 +32,7 @@ my personal blog
 
 ## 优秀的文章
 - [如何在疲劳的JS世界中持续学习](https://zhuanlan.zhihu.com/p/36339128)
+- [驳《我不是很懂 Node.js 社区的 DRY 文化》](https://segmentfault.com/a/1190000014480379) by [justjavac](https://segmentfault.com/u/justjavac) 【2018.4.20】
 
 ## Useful links
 
