@@ -52,6 +52,7 @@ my personal blog
 
 - [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
 - [stackoverflow](https://stackoverflow.com/users/8273471/xiaoyueyue)
+- [infoq](http://www.infoq.com/cn/)
 
 
 
