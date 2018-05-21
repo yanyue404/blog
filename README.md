@@ -31,6 +31,7 @@ my personal blog
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
 
 ## 周刊+文章聚合
+
 - [奇舞周刊](https://weekly.75team.com/)
 - [百度 FEX 周刊](http://fex.baidu.com/weekly/)
 - [w3ctech ](https://www.w3ctech.com/)
@@ -45,6 +46,7 @@ my personal blog
 - [IMWeb](http://imweb.io/) （腾讯）
 - [大搜车](http://f2e.souche.com/blog/) or [Xin](https://blog.souche.com/)
 ## 优秀的文章
+
 - [如何在疲劳的JS世界中持续学习](https://zhuanlan.zhihu.com/p/36339128)
 - [驳《我不是很懂 Node.js 社区的 DRY 文化》](https://segmentfault.com/a/1190000014480379) by [justjavac](https://segmentfault.com/u/justjavac) 【2018.4.20】
 
@@ -52,6 +54,7 @@ my personal blog
 
 - [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
 - [stackoverflow](https://stackoverflow.com/users/8273471/xiaoyueyue)
+- [zhihu](https://www.zhihu.com/people/yan-yue-44-30/activities)
 - [infoq](http://www.infoq.com/cn/)
 
 
