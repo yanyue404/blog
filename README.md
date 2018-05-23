@@ -11,6 +11,8 @@ my personal blog
 
 #### - [js编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
 #### - [js的继承模式](https://github.com/xiaoyueyue165/blog/issues/17)
+#### - [js模块化](https://github.com/xiaoyueyue165/blog/issues/23)
+#### - [Javascript设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
 #### - [Javascript问题的回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
 #### - [函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
 
