@@ -10,6 +10,13 @@
 - http://www.infoq.com/cn/
 
 ## 大神博客
+
 - http://www.ruanyifeng.com/blog/javascript/
 - https://www.liaoxuefeng.com/
 - http://www.zhangxinxu.com/
+
+## docs
+
+- http://es6.ruanyifeng.com/
+- https://www.docschina.org/
+- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
