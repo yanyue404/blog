@@ -9,7 +9,7 @@
 - https://stackoverflow.com/questions?sort=votes
 - http://www.infoq.com/cn/
 
-## 大神博客
+## 博客
 
 - http://www.ruanyifeng.com/blog/javascript/
 - https://www.liaoxuefeng.com/
