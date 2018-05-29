@@ -60,6 +60,8 @@ my personal blog
 - [stackoverflow](https://stackoverflow.com/users/8273471/xiaoyueyue)
 - [zhihu](https://www.zhihu.com/people/yan-yue-44-30/activities)
 - [infoq](http://www.infoq.com/cn/)
+- [GitHub 全球 Developers, Organizations and Repositories 排行榜](https://www.diycode.cc/trends)
+- [location:China](https://github.com/search?q=location%3AChina)
 
 
 
