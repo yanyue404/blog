@@ -41,21 +41,6 @@ my personal blog
 #### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 #### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
 
-## 周刊+文章聚合
-
-- [奇舞周刊](https://weekly.75team.com/)
-- [百度 FEX 周刊](http://fex.baidu.com/weekly/)
-- [w3ctech ](https://www.w3ctech.com/)
-- [w3cplus](https://www.w3cplus.com/)
-
-## 团队
-
-- [TaobaoUED](http://taobaofed.org/categories/Web%E5%BC%80%E5%8F%91/)
-- [百度EFE（Excellent FrontEnd）](http://efe.baidu.com/)
-- [AlloyTeam](http://www.alloyteam.com/) （腾讯）
-- [饿了么前端](https://zhuanlan.zhihu.com/ElemeFE)
-- [IMWeb](http://imweb.io/) （腾讯）
-- [大搜车](http://f2e.souche.com/blog/) or [Xin](https://blog.souche.com/)
 ## 优秀的文章
 
 - [如何在疲劳的JS世界中持续学习](https://zhuanlan.zhihu.com/p/36339128)
