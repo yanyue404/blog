@@ -23,7 +23,7 @@ my personal blog
 
 ## Interview
 
-#### - [Javascript问题回答 ](https://github.com/xiaoyueyue165/blog/issues/15) [continued]
+#### - [front-end-interview-handbook JS问题](https://github.com/xiaoyueyue165/blog/issues/15)
 
 ## 思考
 
