@@ -15,6 +15,13 @@
 - https://www.liaoxuefeng.com/
 - http://www.zhangxinxu.com/
 
+## job
+
+- 猎头+内推
+- http://www.sangurencai.com/
+- http://jobtong.com/
+- http://www.neitui.me/
+
 ## docs
 
 - http://es6.ruanyifeng.com/
