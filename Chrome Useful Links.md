@@ -3,6 +3,10 @@
 - https://weekly.75team.com/
 - https://github.com/dt-fe/weekly
 
+## 工具
+
+- https://www.netlify.com 部署静态站点演示
+
 ## 社区
 
 - https://segmentfault.com/
