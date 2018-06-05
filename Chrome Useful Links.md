@@ -31,3 +31,14 @@
 - http://es6.ruanyifeng.com/
 - https://www.docschina.org/
 - https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
+
+- 图片网址
+  + https://pixabay.com/
+  + https://www.pexels.com/
+  + https://unsplash.com/
+  + https://stocksnap.io/
+  + https://visualhunt.com/
+  + https://www.flaticon.com
+  + https://www.pickpik.com/ 
+- [vip电影](http://pu.tn/)
+- [微信公众号markdown](http://blog.didispace.com/tools/online-markdown/)
