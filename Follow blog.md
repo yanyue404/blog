@@ -2,6 +2,7 @@
 
 ### personal & following
 
+- [xufei](https://github.com/xufei/blog) - my personal blog
 - [mqyqingfeng](https://github.com/mqyqingfeng/Blog) - 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列。
 - [dunizb](https://github.com/dunizb/blog) -博客文章 https://dunizb.com
 - [atian25](https://github.com/atian25/blog) - 天猪部落阁 http://atian25.github.io
