@@ -1,8 +1,12 @@
-## github
+## Github
 
-### personal
+### personal & following
 
 - [mqyqingfeng](https://github.com/mqyqingfeng/Blog) - 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列。
+- [dunizb](https://github.com/dunizb/blog) -博客文章 https://dunizb.com
+
+### personal & nofollow
+
 - [creeperyang](https://github.com/creeperyang/blog/issues) - 前端博客，关注基础知识和性能优化
 - [hpoenixf](https://github.com/hpoenixf/hpoenixf.github.io) - 博客文章，含前端进阶系列
 - [atian25](https://github.com/atian25/blog) - 天猪部落阁 http://atian25.github.io
@@ -10,6 +14,10 @@
 - [youngwind/blog](https://github.com/youngwind/blog) - 梁少峰的个人博客
 - [Aaaaaaaty](https://github.com/Aaaaaaaty/blog) - 趁还能折腾的时候多读书——前端何时是个头
 - [joeyguo](https://github.com/joeyguo/blog) - joeyguo's blog
+- [lmk123](https://github.com/lmk123/blog/issues) - 个人技术博客，博文写在 Issues 里。
+- [zwwill](https://github.com/zwwill/blog/issues) - stay hungry stay foolish
+- [ascoders](https://github.com/ascoders/blog/issues) 
+- [jiangtao](https://github.com/jiangtao/blog) - 深入基础，沉淀下来。欢迎watch或star https://imjiangtao.com
 
 ### Non-personal
 
