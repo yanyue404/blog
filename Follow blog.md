@@ -7,6 +7,8 @@
 - [atian25](https://github.com/atian25/blog) - 天猪部落阁 http://atian25.github.io
 - [youngwind/blog](https://github.com/youngwind/blog) - 梁少峰的个人博客
 - [camsong](https://github.com/camsong/blog/issues) - Front-end Development Thoughts
+- [jawil](https://github.com/jawil/blog/issues) - Too young, too simple. Sometimes, naive & stupid 
+- [creeperyang](https://github.com/creeperyang/blog/issues/18) - 前端博客，关注基础知识和性能优化。
 - [sunyongjian](https://github.com/sunyongjian/blog/issues) - 个人博客 :stuck_out_tongue_closed_eyes::yum::smile:
 
 ### personal & nofollow
