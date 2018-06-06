@@ -6,6 +6,7 @@
 - [dunizb](https://github.com/dunizb/blog) -博客文章 https://dunizb.com
 - [atian25](https://github.com/atian25/blog) - 天猪部落阁 http://atian25.github.io
 - [youngwind/blog](https://github.com/youngwind/blog) - 梁少峰的个人博客
+- [camsong](https://github.com/camsong/blog/issues) - Front-end Development Thoughts
 - [sunyongjian](https://github.com/sunyongjian/blog/issues) - 个人博客 :stuck_out_tongue_closed_eyes::yum::smile:
 
 ### personal & nofollow
