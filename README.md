@@ -12,6 +12,7 @@ my personal blog
 ## React
 
 #### - [React组件通信 ](https://github.com/xiaoyueyue165/blog/issues/27)
+#### - [redux入门](https://github.com/xiaoyueyue165/blog/issues/34)
 
 ## Javascript
 
