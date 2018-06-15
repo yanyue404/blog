@@ -1,11 +1,9 @@
-blog
+blog  [![](https://img.shields.io/github/issues/xiaoyueyue165/blog.svg)](https://github.com/xiaoyueyue165/blog/issues)
 ====
 
 my personal blog
 
-[![](https://img.shields.io/github/issues/xiaoyueyue165/blog.svg)](https://github.com/xiaoyueyue165/blog/issues)
-[![](https://img.shields.io/github/forks/xiaoyueyue165/blog.svg)](https://github.com/xiaoyueyue165/blog/network)
-[![](https://img.shields.io/github/stars/xiaoyueyue165/blog.svg)](https://github.com/xiaoyueyue165/blog/stargazers)
+
 
 
 ## 深入系列
