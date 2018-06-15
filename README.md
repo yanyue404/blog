@@ -17,6 +17,7 @@ my personal blog
 ## Javascript
 
 #### - [Javascript编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
+#### - [Js传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
 #### - [Javascript继承模式](https://github.com/xiaoyueyue165/blog/issues/17)
 #### - [Javascript模块化](https://github.com/xiaoyueyue165/blog/issues/23)
 #### - [Javascript设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
