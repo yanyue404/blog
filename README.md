@@ -54,6 +54,8 @@ my personal blog
 
 - [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
 - [stackoverflow](https://stackoverflow.com/users/8273471/xiaoyueyue)
+- [medium](https://medium.com/)
+- [reddit](https://www.reddit.com/)
 - [zhihu](https://www.zhihu.com/people/yan-yue-44-30/activities)
 - [infoq](http://www.infoq.com/cn/)
 - [GitHub 全球 Developers, Organizations and Repositories 排行榜](https://www.diycode.cc/trends)
