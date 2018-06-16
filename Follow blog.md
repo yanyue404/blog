@@ -2,6 +2,7 @@
 
 ## website
 - [阮一峰的网络日志](http://www.ruanyifeng.com/blog/archives.html)
+- http://www.dailichun.com/
 
 ## Github
 ### personal & following
