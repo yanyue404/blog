@@ -1,5 +1,9 @@
-## Github
+# blog
 
+## website
+- [阮一峰的网络日志](http://www.ruanyifeng.com/blog/archives.html)
+
+## Github
 ### personal & following
 
 - [xufei](https://github.com/xufei/blog) - my personal blog
