@@ -20,6 +20,7 @@
 ### personal & nofollow
 
 - [creeperyang](https://github.com/creeperyang/blog/issues) - 前端博客，关注基础知识和性能优化
+- [lcxfs1991](https://github.com/lcxfs1991/blog)
 - [hpoenixf](https://github.com/hpoenixf/hpoenixf.github.io) - 博客文章，含前端进阶系列
 - [Aaaaaaaty](https://github.com/Aaaaaaaty/blog) - 趁还能折腾的时候多读书——前端何时是个头
 - [joeyguo](https://github.com/joeyguo/blog) - joeyguo's blog
