@@ -1,6 +1,7 @@
 # blog
 
 ## website
+
 -  [阮一峰的网络日志](http://www.ruanyifeng.com/blog/archives.html)
 - 【撒网要见鱼】 http://www.dailichun.com/
 
@@ -10,6 +11,7 @@
 - 【简书】[可乐](https://www.jianshu.com/u/4152d9aab276)
 
 ## Github
+
 ### personal & following
 
 - 【徐飞】[xufei](https://github.com/xufei/blog) - my personal blog
