@@ -2,7 +2,9 @@
 
 ## website
 
--  [阮一峰的网络日志](http://www.ruanyifeng.com/blog/archives.html)
+- 【阮一峰的网络日志】 http://www.ruanyifeng.com/blog/archives.html
+- 【张鑫旭】 https://www.zhangxinxu.com/wordpress/
+－【月影 —— 十年踪迹的博客】　https://www.h5jun.com/archives/　
 - 【撒网要见鱼】 http://www.dailichun.com/
 
 ## 各平台
