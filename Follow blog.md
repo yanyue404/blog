@@ -28,6 +28,7 @@
 - [zwwill](https://github.com/zwwill/blog/issues) - stay hungry stay foolish
 - [ascoders](https://github.com/ascoders/blog/issues) 
 - [jiangtao](https://github.com/jiangtao/blog) - 深入基础，沉淀下来。欢迎watch或star https://imjiangtao.com
+- [rccoder](https://github.com/rccoder/blog/issues) - 个人博客 zipper_mouth_face 订阅是 watch 是 watch 是 watch 是 watch
 
 ### Non-personal
 
