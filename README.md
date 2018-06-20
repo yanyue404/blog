@@ -10,38 +10,38 @@ my personal blog
 
 ## React
 
-#### - [React组件通信 ](https://github.com/xiaoyueyue165/blog/issues/27)
-#### - [redux入门](https://github.com/xiaoyueyue165/blog/issues/34)
+- [React组件通信 ](https://github.com/xiaoyueyue165/blog/issues/27)
+- [redux入门](https://github.com/xiaoyueyue165/blog/issues/34)
 
 ## Javascript
 
-#### - [Javascript编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
-#### - [Js传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
-#### - [Javascript继承模式](https://github.com/xiaoyueyue165/blog/issues/17)
-#### - [Javascript模块化](https://github.com/xiaoyueyue165/blog/issues/23)
-#### - [Javascript设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
-#### - [函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
+- [Javascript编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
+- [Js传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
+- [Javascript继承模式](https://github.com/xiaoyueyue165/blog/issues/17)
+- [Javascript模块化](https://github.com/xiaoyueyue165/blog/issues/23)
+- [Javascript设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
+- [函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
 
 ## 思考
 
-#### - [No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13)
+- [No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13)
 
 ## 工程化，规范化
 
-#### - [webpack使用说明](https://github.com/xiaoyueyue165/blog/issues/33)
-#### - [使用fis3构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/14) 
-#### - [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16) 
+- [webpack使用说明](https://github.com/xiaoyueyue165/blog/issues/33)
+- [使用fis3构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/14) 
+- [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16) 
 
 ## 开发环境
 
-#### - [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
-#### - [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
-#### - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
-#### - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
+- [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
+- [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
+- [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
+- [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
 
 ## Interview
 
-#### - [front-end-interview-handbook JS问题](https://github.com/xiaoyueyue165/blog/issues/15)
+- [front-end-interview-handbook JS问题](https://github.com/xiaoyueyue165/blog/issues/15)
 
 ## 优秀的文章
 
