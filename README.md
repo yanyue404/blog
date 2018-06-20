@@ -48,6 +48,7 @@ my personal blog
 - [为什么整个互联网行业都缺前端工程师？](https://zhuanlan.zhihu.com/p/20598089)
 - [如何在疲劳的JS世界中持续学习](https://zhuanlan.zhihu.com/p/36339128)
 - [驳《我不是很懂 Node.js 社区的 DRY 文化》](https://segmentfault.com/a/1190000014480379)
+- [工作五年，后面四年重复着第一年的活儿？](https://www.barretlee.com/blog/2016/07/21/donnot-repeat-yourself/)
 - [一个程序员的成长之路](https://github.com/fouber/blog/issues/41) by [fouber](https://github.com/fouber)
 - [页面可视化搭建工具前生今世](https://zhuanlan.zhihu.com/p/37171897)
 
