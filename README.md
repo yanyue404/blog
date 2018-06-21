@@ -22,7 +22,7 @@ my personal blog
 - [Javascript设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
 - [函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
 
-## 思考
+## 思想的步伐
 
 - [No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13)
 
