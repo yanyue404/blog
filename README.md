@@ -15,7 +15,6 @@ my personal blog
 
 ## Javascript
 
-- [Javascript编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
 - [Js传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
 - [Javascript继承模式](https://github.com/xiaoyueyue165/blog/issues/17)
 - [Javascript模块化](https://github.com/xiaoyueyue165/blog/issues/23)
@@ -24,7 +23,8 @@ my personal blog
 
 ## 工程化，规范化
 
-- [webpack使用说明](https://github.com/xiaoyueyue165/blog/issues/33)
+- [Javascript编程风格](https://github.com/xiaoyueyue165/blog/issues/11)
+- [webpack3使用说明](https://github.com/xiaoyueyue165/blog/issues/33)
 - [使用fis3构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/14) 
 - [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16) 
 
