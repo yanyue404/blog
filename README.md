@@ -22,10 +22,6 @@ my personal blog
 - [Javascript设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
 - [函数声明与函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
 
-## 思想的步伐
-
-- [No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13)
-
 ## 工程化，规范化
 
 - [webpack使用说明](https://github.com/xiaoyueyue165/blog/issues/33)
@@ -38,6 +34,10 @@ my personal blog
 - [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
 - [git+Github的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
+
+## 思想的步伐
+
+- [No game 赌约](https://github.com/xiaoyueyue165/blog/issues/13)
 
 ## Interview
 
