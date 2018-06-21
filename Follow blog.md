@@ -26,6 +26,7 @@
 - [camsong](https://github.com/camsong/blog/issues) - Front-end Development Thoughts
 - [jawil](https://github.com/jawil/blog/issues) - Too young, too simple. Sometimes, naive & stupid 
 - [creeperyang](https://github.com/creeperyang/blog/issues/18) - 前端博客，关注基础知识和性能优化。
+- [hieeyh](https://github.com/hieeyh) 一只前端小菜鸟的成长日记
 
 
 ### personal & nofollow
@@ -39,6 +40,7 @@
 - [ascoders](https://github.com/ascoders/blog/issues) 
 - [jiangtao](https://github.com/jiangtao/blog) - 深入基础，沉淀下来。欢迎watch或star https://imjiangtao.com
 - [rccoder](https://github.com/rccoder/blog/issues) - 个人博客 zipper_mouth_face 订阅是 watch 是 watch 是 watch 是 watch
+
 
 ### 聚合
 
