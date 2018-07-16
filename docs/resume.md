@@ -12,7 +12,7 @@
  - 技术博客：https://github.com/xiaoyueyue165/blog
  - Github：https://github.com/xiaoyueyue165
  - 期望职位：前端工程师
- - 期望薪资：税前月薪15k，特别喜欢的公司可例外
+ - 期望薪资：面议
  - 期望城市：北京
 
 # 技能清单
