@@ -46,3 +46,23 @@
 
 - [best-chinese-front-end-blogs](https://github.com/FrankFang/best-chinese-front-end-blogs) - 收集优质的中文前端博客
 - [https://github.com/ProtoTeam/blog](https://github.com/ProtoTeam/blog) - 蚂蚁数据体验技术团队的文章仓库 
+
+## 团队
+
+### github
+
+- [Microsoft](https://github.com/Microsoft) 
+- [Facebook](https://github.com/facebook?utf8=%E2%9C%93&q=&type=&language=javascript) 
+- [ElemeFE](https://github.com/ElemeFE)
+- [Alibaba](https://github.com/alibaba) 
+- [Tencent](https://github.com/AlloyTeam)
+
+### web
+
+- [TaobaoUED](http://taobaofed.org/categories/Web%E5%BC%80%E5%8F%91/)
+- [百度EFE（Excellent FrontEnd）](http://efe.baidu.com/)
+- [AlloyTeam](http://www.alloyteam.com/) （腾讯）
+- [饿了么前端](https://zhuanlan.zhihu.com/ElemeFE)
+- [IMWeb](http://imweb.io/) （腾讯）
+- [大搜车](http://f2e.souche.com/blog/) or [Xin](https://blog.souche.com/)
+
