@@ -6,12 +6,10 @@
 - 【张鑫旭】 https://www.zhangxinxu.com/wordpress/
 - 【月影 —— 十年踪迹的博客】　https://www.h5jun.com/archives/　
 - 【撒网要见鱼】 http://www.dailichun.com/
-
-## 各平台
-
 - 【知乎】[方正](https://www.zhihu.com/people/fang-zheng-3-34/posts)
 - 【简书】[可乐](https://www.jianshu.com/u/4152d9aab276)
 - 【Sf】 [题叶](https://segmentfault.com/u/jiyinyiyong/articles)
+- 【颜海镜】http://yanhaijing.com/
 
 ## Github
 
@@ -21,10 +19,10 @@
 - 【冴羽】[mqyqingfeng](https://github.com/mqyqingfeng/Blog) - 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列。
 - 【张兵】[dunizb](https://github.com/dunizb/blog) -博客文章 https://dunizb.com
 - 【梁少峰】[youngwind/blog](https://github.com/youngwind/blog) - 梁少峰的个人博客
+- 【微醺岁月】[jawil](https://github.com/jawil/blog/issues) - Too young, too simple. Sometimes, naive & stupid / [简书](https://www.jianshu.com/u/8b0cd8b242c0)
 - 【孙勇健】[sunyongjian](https://github.com/sunyongjian/blog/issues) - 个人博客 :stuck_out_tongue_closed_eyes::yum::smile:
 - [atian25](https://github.com/atian25/blog) - 天猪部落阁 http://atian25.github.io
 - [camsong](https://github.com/camsong/blog/issues) - Front-end Development Thoughts
-- [jawil](https://github.com/jawil/blog/issues) - Too young, too simple. Sometimes, naive & stupid 
 - [creeperyang](https://github.com/creeperyang/blog/issues/18) - 前端博客，关注基础知识和性能优化。
 - [hieeyh](https://github.com/hieeyh) 一只前端小菜鸟的成长日记
 
@@ -40,6 +38,7 @@
 - [ascoders](https://github.com/ascoders/blog/issues) 
 - [jiangtao](https://github.com/jiangtao/blog) - 深入基础，沉淀下来。欢迎watch或star https://imjiangtao.com
 - [rccoder](https://github.com/rccoder/blog/issues) - 个人博客 zipper_mouth_face 订阅是 watch 是 watch 是 watch 是 watch
+
 
 
 ### 聚合
@@ -65,4 +64,3 @@
 - [饿了么前端](https://zhuanlan.zhihu.com/ElemeFE)
 - [IMWeb](http://imweb.io/) （腾讯）
 - [大搜车](http://f2e.souche.com/blog/) or [Xin](https://blog.souche.com/)
-
