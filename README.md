@@ -48,6 +48,7 @@ my personal blog
 
 ## 优秀的文章
 
+- [2015前端组件化框架之路](https://github.com/xufei/blog/issues/19)
 - [为什么整个互联网行业都缺前端工程师？](https://zhuanlan.zhihu.com/p/20598089)
 - [如何在疲劳的JS世界中持续学习](https://github.com/ProtoTeam/blog/blob/master/201805/1.md)
 - [驳《我不是很懂 Node.js 社区的 DRY 文化》](https://segmentfault.com/a/1190000014480379)
