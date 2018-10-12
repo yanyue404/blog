@@ -51,7 +51,7 @@ my personal blog
 - [2015前端组件化框架之路](https://github.com/xufei/blog/issues/19) by [xufei](https://github.com/xufei)
 - [为什么整个互联网行业都缺前端工程师？](https://zhuanlan.zhihu.com/p/20598089)
 - [如何在疲劳的JS世界中持续学习](https://github.com/ProtoTeam/blog/blob/master/201805/1.md)
-- [驳《我不是很懂 Node.js 社区的 DRY 文化》](https://segmentfault.com/a/1190000014480379)
+- [我如何零基础转行成为一个自信的前端](https://juejin.im/post/5bb9aed1e51d451a3f4c3923?utm_source=gold_browser_extension)
 - [工作五年，后面四年重复着第一年的活儿？](https://www.barretlee.com/blog/2016/07/21/donnot-repeat-yourself/)
 - [页面可视化搭建工具前生今世](https://zhuanlan.zhihu.com/p/37171897)
 
