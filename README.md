@@ -33,9 +33,11 @@ my personal blog
 
 ## 开发环境
 
-- [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
-- [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
 - [git 入门与实践 ](https://github.com/xiaoyueyue165/blog/issues/1)
+- [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
+- [玩好 Terminal 终端 ](https://github.com/xiaoyueyue165/blog/issues/42)
+- [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
+
 
 ## My heart
 
