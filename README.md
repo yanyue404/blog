@@ -14,7 +14,7 @@ my personal blog
 
 - [我到底为什么要用react等前端框架](https://github.com/xiaoyueyue165/blog/issues/32)
 - [React组件编码规范化](https://github.com/xiaoyueyue165/blog/issues/9)
-- [React组件通信 ](https://github.com/xiaoyueyue165/blog/issues/27)
+- [React组件通信 ](https://github.com/xiaoyueyue165/blog/issues/28)
 - [redux入门](https://github.com/xiaoyueyue165/blog/issues/34)
 
 ## Javascript
