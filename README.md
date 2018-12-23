@@ -50,7 +50,7 @@ my personal blog
 ## 其他
 
 - [转载](https://github.com/xiaoyueyue165/blog/issues/20)
-- [front-end-interview-handbook JS问题](https://github.com/xiaoyueyue165/blog/issues/15)
+- [Interview List](https://github.com/xiaoyueyue165/blog/issues/15)
 
 
 
