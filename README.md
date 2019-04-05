@@ -8,7 +8,7 @@ my personal blog
 - [git + Github 的正确姿势 ](https://github.com/xiaoyueyue165/blog/issues/2)
 - [Js 传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
 - [Javascript 设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
-- [2019,帮助你更好的开发小程序 ](https://github.com/xiaoyueyue165/blog/issues/47)
+- [2019, 帮助你更好的开发小程序 ](https://github.com/xiaoyueyue165/blog/issues/47)
 
 ## React
 
