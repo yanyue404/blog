@@ -9,6 +9,7 @@ my personal blog
 - [Js 传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
 - [Javascript 设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
 - [2019, 帮助你更好的开发小程序 ](https://github.com/xiaoyueyue165/blog/issues/47)
+- [rem 适配移动设备](https://github.com/xiaoyueyue165/blog/issues/39)
 
 ## React
 
