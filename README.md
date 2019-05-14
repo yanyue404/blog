@@ -13,3 +13,4 @@ my personal blog
 ## 社交账号
 
 - [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
+- [掘金](https://juejin.im/user/5bee79b6e51d4535a65be490)
