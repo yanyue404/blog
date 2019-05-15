@@ -12,5 +12,11 @@ my personal blog
 
 ## 社交账号
 
+- [twitter](https://twitter.com/xiaoyueyue165)
+- [stackoverflow](https://stackoverflow.com/users/8273471/xiaoyueyue)
 - [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
 - [掘金](https://juejin.im/user/5bee79b6e51d4535a65be490)
+
+### 兴趣爱好
+
+- [唱吧](http://changba.com/u/39302742)
