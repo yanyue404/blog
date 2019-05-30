@@ -1,6 +1,6 @@
 # blog [![](https://img.shields.io/github/issues/xiaoyueyue165/blog.svg)](https://github.com/xiaoyueyue165/blog/issues)
 
-my personal blog
+my personal blog , written in issues
 
 ## 优质原创
 
