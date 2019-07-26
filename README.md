@@ -24,6 +24,7 @@ my personal blog , written in [issues](https://github.com/xiaoyueyue165/blog/iss
 - [stackoverflow](https://stackoverflow.com/users/8273471/xiaoyueyue)
 - [掘金](https://juejin.im/user/5bee79b6e51d4535a65be490)
 - [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
+- [npm](https://www.npmjs.com/~xiaoyueyue)
 
 ### 兴趣爱好
 
