@@ -14,6 +14,10 @@ my personal blog , written in [issues](https://github.com/xiaoyueyue165/blog/iss
 
 - [开发技巧挑战 100 楼](https://github.com/xiaoyueyue165/blog/issues/49)
 
+## 翻译
+
+- TODO
+
 ## 社交账号
 
 - [twitter](https://twitter.com/xiaoyueyue165)
@@ -24,8 +28,3 @@ my personal blog , written in [issues](https://github.com/xiaoyueyue165/blog/iss
 ### 兴趣爱好
 
 - [唱吧](http://changba.com/u/39302742)
-
-## 关注
-
-- [阮一峰的网络日志](http://www.ruanyifeng.com/blog/archives.html)
-- [小胡子哥的博客](https://www.barretlee.com/entry/)
