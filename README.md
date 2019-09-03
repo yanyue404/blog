@@ -15,10 +15,12 @@ my personal blog , written in [issues](https://github.com/xiaoyueyue165/blog/iss
 
 ## 社交账号
 
-- [twitter](https://twitter.com/xiaoyueyue165)
-- [stackoverflow](https://stackoverflow.com/users/8273471/xiaoyueyue)
-- [掘金](https://juejin.im/user/5bee79b6e51d4535a65be490)
-- [segmentfault](https://segmentfault.com/u/xiaoyueyue165)
-- [npm](https://www.npmjs.com/~xiaoyueyue)
-- [唱吧](http://changba.com/u/39302742)
+- Github：[xiaoyueyue165](https://github.com/xiaoyueyue165) ，GitHub 重度用户，活跃度在私有项目上
+- Blog：[RainBow's Blog](https://xiaoyueyue.org/issue-blog)
+- Stackoverflow：[xiaoyueyue](https://stackoverflow.com/users/8273471/xiaoyueyue)
+- Segmentfault：[xiaoyueyue165](https://segmentfault.com/u/xiaoyueyue165)
+- 掘金：[RainBow_Yue](https://juejin.im/user/5bee79b6e51d4535a65be490)
+- npm： [xiaoyueyue](https://www.npmjs.com/~xiaoyueyue)
+- Twitter：[xiaoyueyue165](https://twitter.com/xiaoyueyue165)
+- 唱吧：[基督徒 · 小越越](http://changba.com/u/39302742) ，音乐爱好者
 
