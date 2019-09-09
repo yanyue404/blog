@@ -1,6 +1,6 @@
 # blog [![](https://img.shields.io/github/issues/xiaoyueyue165/blog.svg)](https://github.com/xiaoyueyue165/blog/issues)
 
-my personal blog , written in [issues](https://github.com/xiaoyueyue165/blog/issues)
+基督徒 | 歌者 | Web developer
 
 ## 分类
 
