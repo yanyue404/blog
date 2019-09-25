@@ -12,6 +12,7 @@
 - [杂物间](https://github.com/xiaoyueyue165/blog/labels/%E6%9D%82%E7%89%A9%E9%97%B4)
 - [精读](https://github.com/xiaoyueyue165/blog/labels/%E7%B2%BE%E8%AF%BB)
 - [观点与感想](https://github.com/xiaoyueyue165/blog/labels/%E8%A7%82%E7%82%B9%E4%B8%8E%E6%84%9F%E6%83%B3)
+- [语思](https://github.com/xiaoyueyue165/blog/labels/%E8%AF%AD%E6%80%9D)
 - [音乐爱好者](https://github.com/xiaoyueyue165/blog/labels/%E9%9F%B3%E4%B9%90%E7%88%B1%E5%A5%BD%E8%80%85)
 
 ## 社交账号
