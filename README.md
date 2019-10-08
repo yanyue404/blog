@@ -54,7 +54,7 @@
 
 **Redux**
 
-- [redux 入门](https://github.com/xiaoyueyue165/blog/issues/34)
+- [Redux 入门](https://github.com/xiaoyueyue165/blog/issues/34)
 
 ### 工程化
 
