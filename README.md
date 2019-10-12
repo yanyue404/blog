@@ -34,10 +34,19 @@
 
 ### Js
 
-- [理解 JS 中的闭包](https://github.com/xiaoyueyue165/blog/issues/73)
-- [我所知道的 JavaScript 中的 Event Loop](https://github.com/xiaoyueyue165/blog/issues/30)
-- [Javascript 中的 this 指向](https://github.com/xiaoyueyue165/blog/issues/18)
+- [Js传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
+- [Javascript之深浅拷贝 ](https://github.com/xiaoyueyue165/blog/issues/6)
+- [函数声明和函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
 - [Javascript 的继承模式](https://github.com/xiaoyueyue165/blog/issues/17)
+- [Javascript 中的 this 指向](https://github.com/xiaoyueyue165/blog/issues/18)
+- [排序算法](https://github.com/xiaoyueyue165/blog/issues/22)
+- [Javascript模块化 ](https://github.com/xiaoyueyue165/blog/issues/23)
+- [Javascript设计模式](https://github.com/xiaoyueyue165/blog/issues/26)
+- [我所知道的 JavaScript 中的 Event Loop](https://github.com/xiaoyueyue165/blog/issues/30)
+- [Javascript双等与三等的布尔值比较](https://github.com/xiaoyueyue165/blog/issues/44)
+- [理解 JS 中的闭包](https://github.com/xiaoyueyue165/blog/issues/73)
+- [节流与防抖如何区分?](https://github.com/xiaoyueyue165/blog/issues/74)
+
 
 ### 浏览器和网络
 
