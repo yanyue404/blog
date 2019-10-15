@@ -15,7 +15,7 @@
 - [语思](https://github.com/xiaoyueyue165/blog/labels/%E8%AF%AD%E6%80%9D)
 - [音乐爱好者](https://github.com/xiaoyueyue165/blog/labels/%E9%9F%B3%E4%B9%90%E7%88%B1%E5%A5%BD%E8%80%85)
 
-## 知识图谱
+## [知识图谱](https://github.com/xiaoyueyue165/blog/issues/85)
 
 ### 起步
 
