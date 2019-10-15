@@ -36,6 +36,7 @@
 
 ### Js
 
+- [Js传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
 - [Javascript之深浅拷贝 ](https://github.com/xiaoyueyue165/blog/issues/6)
 - [函数声明和函数表达式的区别](https://github.com/xiaoyueyue165/blog/issues/10)
 - [Javascript 的继承模式](https://github.com/xiaoyueyue165/blog/issues/17)
@@ -62,32 +63,38 @@
 - [从 React 渲染原理看性能优化@黄琼](https://github.com/xiaoyueyue165/blog/issues/50)
 - [React 组件更新 —— setState](https://github.com/xiaoyueyue165/blog/issues/82)
 
-**Redux**
-
-- [Redux 入门](https://github.com/xiaoyueyue165/blog/issues/34)
-
-**Babel**
-
-- [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16)
-
-**Webpack**
-
-- [webpack3 使用说明](https://github.com/xiaoyueyue165/blog/issues/33)
-
-**Electron**
-
 **Vue**
 
-**Node.js**
+**数据流管理**
+
+- [Redux 入门](https://github.com/xiaoyueyue165/blog/issues/34)
+- Mobx
+- Vuex
+
+**多端开发**
+
+- Taro 
+- React Native
+- Electron
+
+**实用库**
+
+- antd design
+- lodash
+
+
+
+
 
 ### 工程化
 
 - [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
+- [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16)
 - [使用 fis3 构建工程化项目](https://github.com/xiaoyueyue165/blog/issues/14)
+- [webpack3 使用说明](https://github.com/xiaoyueyue165/blog/issues/33)
 
 ### 项目和业务
 
-- [Js传参技巧总结](https://github.com/xiaoyueyue165/blog/issues/5)
 - [前端模拟 api 数据的两种方式](https://github.com/xiaoyueyue165/blog/issues/25)
 - [debug](https://github.com/xiaoyueyue165/blog/issues/29)
 - [2019,帮助你更好的开发小程序](https://github.com/xiaoyueyue165/blog/issues/47)
