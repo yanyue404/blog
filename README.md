@@ -1,4 +1,4 @@
-# blog [![](https://img.shields.io/github/issues/xiaoyueyue165/blog.svg)](https://github.com/xiaoyueyue165/blog/issues)
+# blog [![](https://img.shields.io/github/issues/yanyue404/blog.svg)](https://github.com/yanyue404/blog/issues)
 
 基督徒 | 歌者 | Web developer
 
