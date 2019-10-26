@@ -1,4 +1,4 @@
-# blog [![](https://img.shields.io/github/issues/yanyue404/blog.svg)](https://github.com/yanyue404/blog/issues)
+# blog [![](https://img.shields.io/github/issues/yanyue404/blog.svg)](https://github.com/yanyue404/blog/issues) [![](https://img.shields.io/badge/twitter-yanyue404-blue.svg)](https://twitter.com/yanyue404)
 
 基督徒 | 歌者 | Web developer
 
@@ -114,11 +114,11 @@
 
 ## 社交账号
 
-- Github：[xiaoyueyue165](https://github.com/xiaoyueyue165) ，GitHub 重度用户，活跃度在私有项目上
+- Github：[yanyue404](https://github.com/yanyue404) ，GitHub 重度用户，活跃度在私有项目上
 - Blog：[RainBow's Blog](https://xiaoyueyue.org/issue-blog)
 - Stackoverflow：[xiaoyueyue](https://stackoverflow.com/users/8273471/xiaoyueyue)
 - Segmentfault：[xiaoyueyue165](https://segmentfault.com/u/xiaoyueyue165)
 - 掘金：[RainBow_Yue](https://juejin.im/user/5bee79b6e51d4535a65be490)
 - npm： [xiaoyueyue](https://www.npmjs.com/~xiaoyueyue)
-- Twitter：[xiaoyueyue165](https://twitter.com/xiaoyueyue165)
+- Twitter：[yanyue404](https://twitter.com/yanyue404)
 - 唱吧：[基督徒 · 小越越](http://changba.com/u/39302742) ，音乐爱好者
