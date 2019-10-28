@@ -1,4 +1,4 @@
-# blog ![GitHub issues](https://img.shields.io/github/issues-raw/yanyue404/blog?color=%232cbe4e&style=plastic) [![](https://img.shields.io/badge/twitter-yanyue404-blue.svg)](https://twitter.com/yanyue404)
+# blog ![GitHub issues](https://img.shields.io/github/issues-raw/yanyue404/blog?color=%232fcb53) [![](https://img.shields.io/badge/twitter-yanyue404-blue.svg)](https://twitter.com/yanyue404)
 
 基督徒 | 歌者 | Web developer
 
