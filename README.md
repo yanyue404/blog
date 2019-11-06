@@ -117,4 +117,5 @@
 - Segmentfault：[xiaoyueyue165](https://segmentfault.com/u/xiaoyueyue165)
 - npm： [xiaoyueyue](https://www.npmjs.com/~xiaoyueyue)
 - Twitter：[yanyue404](https://twitter.com/yanyue404)
+- V2ex: [xiaoyueyue165](https://www.v2ex.com/member/xiaoyueyue165)
 - 唱吧：[基督徒 · 小越越](http://changba.com/u/39302742) ，音乐爱好者
