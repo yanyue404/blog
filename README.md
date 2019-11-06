@@ -68,8 +68,8 @@
 **数据流管理**
 
 - [Redux 入门](https://github.com/xiaoyueyue165/blog/issues/34)
+- [Vuex 使用入门](https://github.com/yanyue404/blog/issues/90)
 - Mobx
-- Vuex
 
 **多端开发**
 
@@ -82,11 +82,7 @@
 - antd design
 - lodash
 
-
-
-
-
-### 工程化
+### 前端工程
 
 - [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
 - [babel使用全纪录](https://github.com/xiaoyueyue165/blog/issues/16)
@@ -99,7 +95,8 @@
 - [debug](https://github.com/xiaoyueyue165/blog/issues/29)
 - [2019,帮助你更好的开发小程序](https://github.com/xiaoyueyue165/blog/issues/47)
 - [开发技巧挑战 100 楼](https://github.com/xiaoyueyue165/blog/issues/49)
-
+- [React & Vue 用法区别记 ](https://github.com/yanyue404/blog/issues/86)
+- [vue-blog 前后端源码 ](https://github.com/yanyue404/blog/issues/95)
 
 ## 关注博客
 
@@ -118,7 +115,6 @@
 - Blog：[RainBow's Blog](https://xiaoyueyue.org/issue-blog)
 - Stackoverflow：[xiaoyueyue](https://stackoverflow.com/users/8273471/xiaoyueyue)
 - Segmentfault：[xiaoyueyue165](https://segmentfault.com/u/xiaoyueyue165)
-- 掘金：[RainBow_Yue](https://juejin.im/user/5bee79b6e51d4535a65be490)
 - npm： [xiaoyueyue](https://www.npmjs.com/~xiaoyueyue)
 - Twitter：[yanyue404](https://twitter.com/yanyue404)
 - 唱吧：[基督徒 · 小越越](http://changba.com/u/39302742) ，音乐爱好者
