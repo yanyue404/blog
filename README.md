@@ -19,9 +19,10 @@
 
 ### 起步
 
-- [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
 - [git 入门与实践](https://github.com/xiaoyueyue165/blog/issues/1)
 - [git+Github 的正确姿势](https://github.com/xiaoyueyue165/blog/issues/2)
+- [开发环境的搭建](https://github.com/xiaoyueyue165/blog/issues/3)
+- [前端基本功 —— 扎马步](https://github.com/yanyue404/blog/issues/4)
 - [同步你的 Github fork](https://github.com/xiaoyueyue165/blog/issues/48)
 - [玩好 Terminal 终端 ](https://github.com/xiaoyueyue165/blog/issues/42)
 
