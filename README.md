@@ -103,7 +103,8 @@
 
 - [阮一峰的网络日志](http://www.ruanyifeng.com/blog/archives.html)
 - [冴羽的博客](https://github.com/mqyqingfeng/Blog) 冴羽写博客的地方，预计写四个系列：JavaScript 深入系列、JavaScript 专题系列、ES6 系列、React 系列。
-- [sunyongjian/blog](https://github.com/sunyongjian/blog) 个人博客 😝😋😄
+- [sunyongjian/blog](https://github.com/sunyongjian/blog) 个人博客 😝😋
+- [berwin/Blog](https://github.com/berwin/Blog) 记录成长的过程【Author of 《深入浅出Vue.js》,born in 1995. 博文】
 - [sisterAn/blog](https://github.com/sisterAn/blog) 瓶博：每日更新，前端前进 【瓶子君】
 - [ConardLi/ConardLi.github.io](https://github.com/ConardLi/ConardLi.github.io) - 【前端知识清单】前端工程师吃饭的家伙，深度、广度一样都不能差。 http://www.conardli.top/blog
 - [YvetteLau/Blog](https://github.com/YvetteLau/Blog) 【前端进阶】优质博文
