@@ -110,7 +110,8 @@
 - [YvetteLau/Blog](https://github.com/YvetteLau/Blog) 【前端进阶】优质博文
 - [yygmind/blog](https://github.com/yygmind/blog) 木易杨，每周重点攻克一个前端面试重难点 https://muyiy.cn/blog/
 - [ljianshu/Blog](https://github.com/ljianshu/Blog) 关注基础知识，打造优质前端博客，公众号【前端工匠】
-
+- [lifesinger/blog](https://github.com/lifesinger/blog) 岁月如歌
+  
 ## 社交账号
 
 - Github：[yanyue404](https://github.com/yanyue404) ，GitHub 重度用户，活跃度在私有项目上
