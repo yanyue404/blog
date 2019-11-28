@@ -15,20 +15,20 @@
 - [语思](https://github.com/xiaoyueyue165/blog/labels/%E8%AF%AD%E6%80%9D)
 - [音乐爱好者](https://github.com/xiaoyueyue165/blog/labels/%E9%9F%B3%E4%B9%90%E7%88%B1%E5%A5%BD%E8%80%85)
 - [盖楼贴](https://github.com/yanyue404/blog/labels/%E7%9B%96%E6%A5%BC%E8%B4%B4)
+  + [读经亮光](https://github.com/yanyue404/blog/issues/106)
+  + [彩虹文摘](https://github.com/yanyue404/blog/issues/51)
+  + [开发技巧挑战 100 楼](https://github.com/yanyue404/blog/issues/49)
+  + [FE interview written test](https://github.com/yanyue404/blog/issues/75)
 - [译文集](https://github.com/yanyue404/blog/labels/%E8%AF%91%E6%96%87%E9%9B%86)
 
-## 关注博客
+## 关注
 
-- [阮一峰的网络日志](http://www.ruanyifeng.com/blog/archives.html)
-- [mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog) 冴羽写博客的地方，预计写四个系列：JavaScript 深入系列、JavaScript 专题系列、ES6 系列、React 系列。
-- [sunyongjian/blog](https://github.com/sunyongjian/blog) 个人博客 😝😋
-- [berwin/Blog](https://github.com/berwin/Blog) 记录成长的过程【Author of 《深入浅出 Vue.js》,born in 1995. 博文】
-- [sisterAn/blog](https://github.com/sisterAn/blog) 瓶博：每日更新，前端前进 【瓶子君】
-- [ConardLi/ConardLi.github.io](https://github.com/ConardLi/ConardLi.github.io) - 【前端知识清单】前端工程师吃饭的家伙，深度、广度一样都不能差。 http://www.conardli.top/blog
-- [YvetteLau/Blog](https://github.com/YvetteLau/Blog) 【前端进阶】优质博文
-- [yygmind/blog](https://github.com/yygmind/blog) 木易杨，每周重点攻克一个前端面试重难点 https://muyiy.cn/blog/
-- [ljianshu/Blog](https://github.com/ljianshu/Blog) 关注基础知识，打造优质前端博客，公众号【前端工匠】
-- [lifesinger/blog](https://github.com/lifesinger/blog) 岁月如歌
+- [ruanyf](https://github.com/ruanyf)/[articles](https://github.com/ruanyf/articles) - [阮一峰的网络日志](http://www.ruanyifeng.com/blog/archives.html)
+- [mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog) - 冴羽的博客
+- [sunyongjian/blog](https://github.com/sunyongjian/blog) - 孙勇健的个人博客
+- [berwin/Blog](https://github.com/berwin/Blog) - 博文 (born in 1995)
+- [luuman.github.io](https://luuman.github.io/) - Luuman's Blog
+- [youngwind/blog](https://github.com/youngwind/blog) - 梁少峰的个人博客
 
 ## 社交账号
 
