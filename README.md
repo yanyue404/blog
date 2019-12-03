@@ -14,7 +14,7 @@
 - [**观点与感想**](https://github.com/xiaoyueyue165/blog/labels/%E8%A7%82%E7%82%B9%E4%B8%8E%E6%84%9F%E6%83%B3)
 - [**语思**](https://github.com/xiaoyueyue165/blog/labels/%E8%AF%AD%E6%80%9D)
 - [**音乐爱好者**](https://github.com/xiaoyueyue165/blog/labels/%E9%9F%B3%E4%B9%90%E7%88%B1%E5%A5%BD%E8%80%85)
-- [盖楼贴](https://github.com/yanyue404/blog/labels/%E7%9B%96%E6%A5%BC%E8%B4%B4)
+- [**盖楼贴**](https://github.com/yanyue404/blog/labels/%E7%9B%96%E6%A5%BC%E8%B4%B4)
   - [优秀的博客文章纪录](https://github.com/yanyue404/blog/issues/111)
   - [读经亮光](https://github.com/yanyue404/blog/issues/106)
   - [彩虹文摘](https://github.com/yanyue404/blog/issues/51)
