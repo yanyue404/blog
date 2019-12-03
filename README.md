@@ -34,7 +34,7 @@
 - [luuman.github.io](https://luuman.github.io/) - Luuman's Blog
 - [youngwind/blog](https://github.com/youngwind/blog) - 梁少峰的个人博客
 
-## 社交账号
+## 社交
 
 - Github：[yanyue404](https://github.com/yanyue404) ，GitHub 重度用户，活跃度在私有项目上
 - Blog：[RainBow's Blog](https://xiaoyueyue.org/issue-blog)
