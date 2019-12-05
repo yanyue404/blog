@@ -19,6 +19,7 @@
   - [读经亮光](https://github.com/yanyue404/blog/issues/106)
   - [彩虹文摘](https://github.com/yanyue404/blog/issues/51)
   - [知识图谱](https://github.com/yanyue404/blog/issues/85)
+  - [前端开发技术之路](https://github.com/yanyue404/blog/issues/100)
   - [开发技巧挑战 100 楼](https://github.com/yanyue404/blog/issues/49)
   - [正则表达式实践](https://github.com/yanyue404/blog/issues/113)
   - [关于编程学习方法的讨论](https://github.com/yanyue404/blog/issues/87)
