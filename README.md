@@ -20,6 +20,7 @@
   - [彩虹文摘](https://github.com/yanyue404/blog/issues/51)
   - [知识图谱](https://github.com/yanyue404/blog/issues/85)
   - [开发技巧挑战 100 楼](https://github.com/yanyue404/blog/issues/49)
+  - [正则表达式实践](https://github.com/yanyue404/blog/issues/113)
   - [关于编程学习方法的讨论](https://github.com/yanyue404/blog/issues/87)
   - [那些事件](https://github.com/yanyue404/blog/issues/93)
   - [FE interview written test](https://github.com/yanyue404/blog/issues/75)
@@ -33,6 +34,7 @@
 - [berwin/Blog](https://github.com/berwin/Blog) - 博文 (born in 1995)
 - [luuman.github.io](https://luuman.github.io/) - Luuman's Blog
 - [youngwind/blog](https://github.com/youngwind/blog) - 梁少峰的个人博客
+- [dailc](https://github.com/dailc) - [撒网要见鱼](http://www.dailichun.com/blog/archive.html)
 
 ## 社交
 
