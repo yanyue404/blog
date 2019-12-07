@@ -24,6 +24,7 @@
   - [正则表达式实践](https://github.com/yanyue404/blog/issues/113)
   - [关于编程学习方法的讨论](https://github.com/yanyue404/blog/issues/87)
   - [那些事件](https://github.com/yanyue404/blog/issues/93)
+  - [《丑陋的中国人》反思 ](https://github.com/yanyue404/blog/issues/83)
   - [FE interview written test](https://github.com/yanyue404/blog/issues/75)
 - [**译文集**](https://github.com/yanyue404/blog/labels/%E8%AF%91%E6%96%87%E9%9B%86)
 
