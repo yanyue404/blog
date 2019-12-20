@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "基督徒 | 歌者 | Web developer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanyue404/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yanyue404/blog/issues"
+  },
+  "homepage": "https://github.com/yanyue404/blog#readme",
+  "devDependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "turndown": "^5.0.3",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
+}
