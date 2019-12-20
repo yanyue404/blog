@@ -1,83 +1,83 @@
-## [ÖªÊ¶Í¼Æ×](https://github.com/xiaoyueyue165/blog/issues/85)
+## [çŸ¥è¯†å›¾è°±](https://github.com/xiaoyueyue165/blog/issues/85)
 
-### Æğ²½
+### èµ·æ­¥
 
-- [git ÈëÃÅÓëÊµ¼ù](https://github.com/xiaoyueyue165/blog/issues/1)
-- [git+Github µÄÕıÈ·×ËÊÆ](https://github.com/xiaoyueyue165/blog/issues/2)
-- [¿ª·¢»·¾³µÄ´î½¨](https://github.com/xiaoyueyue165/blog/issues/3)
-- [Ç°¶Ë»ù±¾¹¦ ¡ª¡ª ÔúÂí²½](https://github.com/yanyue404/blog/issues/4)
-- [Í¬²½ÄãµÄ Github fork](https://github.com/xiaoyueyue165/blog/issues/48)
-- [ÍæºÃ Terminal ÖÕ¶Ë ](https://github.com/xiaoyueyue165/blog/issues/42)
+- [git å…¥é—¨ä¸å®è·µ](https://github.com/xiaoyueyue165/blog/issues/1)
+- [git+Github çš„æ­£ç¡®å§¿åŠ¿](https://github.com/xiaoyueyue165/blog/issues/2)
+- [å¼€å‘ç¯å¢ƒçš„æ­å»º](https://github.com/xiaoyueyue165/blog/issues/3)
+- [å‰ç«¯åŸºæœ¬åŠŸ â€”â€” æ‰é©¬æ­¥](https://github.com/yanyue404/blog/issues/4)
+- [åŒæ­¥ä½ çš„ Github fork](https://github.com/xiaoyueyue165/blog/issues/48)
+- [ç©å¥½ Terminal ç»ˆç«¯ ](https://github.com/xiaoyueyue165/blog/issues/42)
 
 ### Css
 
-- [Ç°¶ËÉè¼Æµ¥Î»](https://github.com/xiaoyueyue165/blog/issues/27)
-- [ÉîÈë bootstrap ÏìÓ¦Ê½²¼¾Ö ](https://github.com/xiaoyueyue165/blog/issues/37)
-- [Css Ô¤´¦ÀíÆ÷Ö®-Sass ](https://github.com/xiaoyueyue165/blog/issues/38)
-- [rem ÊÊÅäÒÆ¶¯Éè±¸ ](https://github.com/xiaoyueyue165/blog/issues/39)
-- [Css3 ¶¯»­](https://github.com/xiaoyueyue165/blog/issues/40)
-- [³õÌ½ BFC](https://github.com/xiaoyueyue165/blog/issues/79)
+- [å‰ç«¯è®¾è®¡å•ä½](https://github.com/xiaoyueyue165/blog/issues/27)
+- [æ·±å…¥ bootstrap å“åº”å¼å¸ƒå±€ ](https://github.com/xiaoyueyue165/blog/issues/37)
+- [Css é¢„å¤„ç†å™¨ä¹‹-Sass ](https://github.com/xiaoyueyue165/blog/issues/38)
+- [rem é€‚é…ç§»åŠ¨è®¾å¤‡ ](https://github.com/xiaoyueyue165/blog/issues/39)
+- [Css3 åŠ¨ç”»](https://github.com/xiaoyueyue165/blog/issues/40)
+- [åˆæ¢ BFC](https://github.com/xiaoyueyue165/blog/issues/79)
 
 ### Js
 
-- [Js´«²Î¼¼ÇÉ×Ü½á](https://github.com/xiaoyueyue165/blog/issues/5)
-- [JavascriptÖ®ÉîÇ³¿½±´ ](https://github.com/xiaoyueyue165/blog/issues/6)
-- [º¯ÊıÉùÃ÷ºÍº¯Êı±í´ïÊ½µÄÇø±ğ](https://github.com/xiaoyueyue165/blog/issues/10)
-- [Javascript µÄ¼Ì³ĞÄ£Ê½](https://github.com/xiaoyueyue165/blog/issues/17)
-- [Javascript ÖĞµÄ this Ö¸Ïò](https://github.com/xiaoyueyue165/blog/issues/18)
-- [ÅÅĞòËã·¨](https://github.com/xiaoyueyue165/blog/issues/22)
-- [JavascriptÄ£¿é»¯ ](https://github.com/xiaoyueyue165/blog/issues/23)
-- [JavascriptÉè¼ÆÄ£Ê½](https://github.com/xiaoyueyue165/blog/issues/26)
-- [ÎÒËùÖªµÀµÄ JavaScript ÖĞµÄ Event Loop](https://github.com/xiaoyueyue165/blog/issues/30)
-- [JavascriptË«µÈÓëÈıµÈµÄ²¼¶ûÖµ±È½Ï](https://github.com/xiaoyueyue165/blog/issues/44)
-- [Àí½â JS ÖĞµÄ±Õ°ü](https://github.com/xiaoyueyue165/blog/issues/73)
-- [½ÚÁ÷Óë·À¶¶ÈçºÎÇø·Ö?](https://github.com/xiaoyueyue165/blog/issues/74)
+- [Jsä¼ å‚æŠ€å·§æ€»ç»“](https://github.com/xiaoyueyue165/blog/issues/5)
+- [Javascriptä¹‹æ·±æµ…æ‹·è´ ](https://github.com/xiaoyueyue165/blog/issues/6)
+- [å‡½æ•°å£°æ˜å’Œå‡½æ•°è¡¨è¾¾å¼çš„åŒºåˆ«](https://github.com/xiaoyueyue165/blog/issues/10)
+- [Javascript çš„ç»§æ‰¿æ¨¡å¼](https://github.com/xiaoyueyue165/blog/issues/17)
+- [Javascript ä¸­çš„ this æŒ‡å‘](https://github.com/xiaoyueyue165/blog/issues/18)
+- [æ’åºç®—æ³•](https://github.com/xiaoyueyue165/blog/issues/22)
+- [Javascriptæ¨¡å—åŒ– ](https://github.com/xiaoyueyue165/blog/issues/23)
+- [Javascriptè®¾è®¡æ¨¡å¼](https://github.com/xiaoyueyue165/blog/issues/26)
+- [æˆ‘æ‰€çŸ¥é“çš„ JavaScript ä¸­çš„ Event Loop](https://github.com/xiaoyueyue165/blog/issues/30)
+- [JavascriptåŒç­‰ä¸ä¸‰ç­‰çš„å¸ƒå°”å€¼æ¯”è¾ƒ](https://github.com/xiaoyueyue165/blog/issues/44)
+- [ç†è§£ JS ä¸­çš„é—­åŒ…](https://github.com/xiaoyueyue165/blog/issues/73)
+- [èŠ‚æµä¸é˜²æŠ–å¦‚ä½•åŒºåˆ†?](https://github.com/xiaoyueyue165/blog/issues/74)
 
 
-### ä¯ÀÀÆ÷ºÍÍøÂç
+### æµè§ˆå™¨å’Œç½‘ç»œ
 
-- [IE ¼æÈİĞÔ](https://github.com/xiaoyueyue165/blog/issues/43)
-- [¿çÓòÇëÇóÊı¾İ ](https://github.com/xiaoyueyue165/blog/issues/8)
+- [IE å…¼å®¹æ€§](https://github.com/xiaoyueyue165/blog/issues/43)
+- [è·¨åŸŸè¯·æ±‚æ•°æ® ](https://github.com/xiaoyueyue165/blog/issues/8)
 
-### ¿ò¼ÜºÍÀà¿â
+### æ¡†æ¶å’Œç±»åº“
 
 **React**
 
-- [React ×é¼şÍ¨ĞÅ](https://github.com/xiaoyueyue165/blog/issues/28)
-- [´Ó React äÖÈ¾Ô­Àí¿´ĞÔÄÜÓÅ»¯@»ÆÇí](https://github.com/xiaoyueyue165/blog/issues/50)
-- [React ×é¼ş¸üĞÂ ¡ª¡ª setState](https://github.com/xiaoyueyue165/blog/issues/82)
+- [React ç»„ä»¶é€šä¿¡](https://github.com/xiaoyueyue165/blog/issues/28)
+- [ä» React æ¸²æŸ“åŸç†çœ‹æ€§èƒ½ä¼˜åŒ–@é»„ç¼](https://github.com/xiaoyueyue165/blog/issues/50)
+- [React ç»„ä»¶æ›´æ–° â€”â€” setState](https://github.com/xiaoyueyue165/blog/issues/82)
 
 **Vue**
 
-**Êı¾İÁ÷¹ÜÀí**
+**æ•°æ®æµç®¡ç†**
 
-- [Redux ÈëÃÅ](https://github.com/xiaoyueyue165/blog/issues/34)
-- [Vuex Ê¹ÓÃÈëÃÅ](https://github.com/yanyue404/blog/issues/90)
+- [Redux å…¥é—¨](https://github.com/xiaoyueyue165/blog/issues/34)
+- [Vuex ä½¿ç”¨å…¥é—¨](https://github.com/yanyue404/blog/issues/90)
 - Mobx
 
-**¶à¶Ë¿ª·¢**
+**å¤šç«¯å¼€å‘**
 
 - Taro 
 - React Native
 - Electron
 
-**ÊµÓÃ¿â**
+**å®ç”¨åº“**
 
 - antd design
 - lodash
 
-### Ç°¶Ë¹¤³Ì
+### å‰ç«¯å·¥ç¨‹
 
 - [npm&yarn](https://github.com/xiaoyueyue165/blog/issues/7)
-- [babelÊ¹ÓÃÈ«¼ÍÂ¼](https://github.com/xiaoyueyue165/blog/issues/16)
-- [Ê¹ÓÃ fis3 ¹¹½¨¹¤³Ì»¯ÏîÄ¿](https://github.com/xiaoyueyue165/blog/issues/14)
-- [webpack3 Ê¹ÓÃËµÃ÷](https://github.com/xiaoyueyue165/blog/issues/33)
+- [babelä½¿ç”¨å…¨çºªå½•](https://github.com/xiaoyueyue165/blog/issues/16)
+- [ä½¿ç”¨ fis3 æ„å»ºå·¥ç¨‹åŒ–é¡¹ç›®](https://github.com/xiaoyueyue165/blog/issues/14)
+- [webpack3 ä½¿ç”¨è¯´æ˜](https://github.com/xiaoyueyue165/blog/issues/33)
 
-### ÏîÄ¿ºÍÒµÎñ
+### é¡¹ç›®å’Œä¸šåŠ¡
 
-- [Ç°¶ËÄ£Äâ api Êı¾İµÄÁ½ÖÖ·½Ê½](https://github.com/xiaoyueyue165/blog/issues/25)
+- [å‰ç«¯æ¨¡æ‹Ÿ api æ•°æ®çš„ä¸¤ç§æ–¹å¼](https://github.com/xiaoyueyue165/blog/issues/25)
 - [debug](https://github.com/xiaoyueyue165/blog/issues/29)
-- [2019,°ïÖúÄã¸üºÃµÄ¿ª·¢Ğ¡³ÌĞò](https://github.com/xiaoyueyue165/blog/issues/47)
-- [¿ª·¢¼¼ÇÉÌôÕ½ 100 Â¥](https://github.com/xiaoyueyue165/blog/issues/49)
-- [React & Vue ÓÃ·¨Çø±ğ¼Ç ](https://github.com/yanyue404/blog/issues/86)
-- [vue-blog Ç°ºó¶ËÔ´Âë ](https://github.com/yanyue404/blog/issues/95)
+- [2019,å¸®åŠ©ä½ æ›´å¥½çš„å¼€å‘å°ç¨‹åº](https://github.com/xiaoyueyue165/blog/issues/47)
+- [å¼€å‘æŠ€å·§æŒ‘æˆ˜ 100 æ¥¼](https://github.com/xiaoyueyue165/blog/issues/49)
+- [React & Vue ç”¨æ³•åŒºåˆ«è®° ](https://github.com/yanyue404/blog/issues/86)
+- [vue-blog å‰åç«¯æºç  ](https://github.com/yanyue404/blog/issues/95)
