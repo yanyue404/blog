@@ -10,6 +10,7 @@ const turndownService = new TurndownService({
 const gfm = turndownPluginGfm.gfm;
 turndownService.use(gfm);
 
+// 单个博客地址
 const issues_url = "https://github.com/yanyue404/blog/issues/110";
 
 function getSimglePageIssuesMessage(fetchUrl) {
