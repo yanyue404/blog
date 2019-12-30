@@ -4,7 +4,7 @@
 
 ## 分类
 
-- [**JavaScript**](https://github.com/yanyue404/blog/labels/JavaScript)
+- [**JavaScript**](#JavaScript)
 - [**光与盐**](https://github.com/xiaoyueyue165/blog/labels/%E5%85%89%E4%B8%8E%E7%9B%90)
 - [**工具集**](https://github.com/xiaoyueyue165/blog/labels/%E5%B7%A5%E5%85%B7%E9%9B%86)
 - [**开发者笔记**](https://github.com/xiaoyueyue165/blog/labels/%E5%BC%80%E5%8F%91%E8%80%85%E7%AC%94%E8%AE%B0)
