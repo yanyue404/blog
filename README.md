@@ -4,19 +4,17 @@
 
 ## 分类
 
+- [**开发者笔记**](#开发者笔记)
+- [**光与盐**](#光与盐)
+- [**杂物间**](#杂物间)
 - [**JavaScript**](#JavaScript)
-- [**光与盐**](https://github.com/xiaoyueyue165/blog/labels/%E5%85%89%E4%B8%8E%E7%9B%90)
-- [**工具集**](https://github.com/xiaoyueyue165/blog/labels/%E5%B7%A5%E5%85%B7%E9%9B%86)
-- [**开发者笔记**](https://github.com/xiaoyueyue165/blog/labels/%E5%BC%80%E5%8F%91%E8%80%85%E7%AC%94%E8%AE%B0)
-- [**文学爱好者**](https://github.com/xiaoyueyue165/blog/labels/%E6%96%87%E5%AD%A6%E7%88%B1%E5%A5%BD%E8%80%85)
-- [**杂物间**](https://github.com/xiaoyueyue165/blog/labels/%E6%9D%82%E7%89%A9%E9%97%B4)
-- [**精读**](https://github.com/xiaoyueyue165/blog/labels/%E7%B2%BE%E8%AF%BB)
-- [**观点与感想**](https://github.com/xiaoyueyue165/blog/labels/%E8%A7%82%E7%82%B9%E4%B8%8E%E6%84%9F%E6%83%B3)
-- [**语思**](https://github.com/xiaoyueyue165/blog/labels/%E8%AF%AD%E6%80%9D)
-- [**音乐爱好者**](https://github.com/xiaoyueyue165/blog/labels/%E9%9F%B3%E4%B9%90%E7%88%B1%E5%A5%BD%E8%80%85)
-- [**译文集**](https://github.com/yanyue404/blog/labels/%E8%AF%91%E6%96%87%E9%9B%86)
-
-## 文章
+- [**观点与感想**](#观点与感想)
+- [**精读**](#精读)
+- [**译文集**](#译文集)
+- [**工具集**](#工具集)
+- [**语思**](#语思)
+- [**文学爱好者**](#文学爱好者)
+- [**音乐爱好者**](#音乐爱好者)
 
 ### 开发者笔记
 
@@ -157,7 +155,6 @@
 ### 音乐爱好者
 
 - [我的歌声里](https://github.com/yanyue404/blog/issues/62)
-
 
 ## 关注
 
