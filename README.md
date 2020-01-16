@@ -4,8 +4,10 @@
 
 ## 分类
 
-- [**开发者笔记**](#开发者笔记)
 - [**光与盐**](#光与盐)
+- [**Mock interview**](#Mock-interview)
+- [**剪贴板**](#剪贴板)
+- [**开发者笔记**](#开发者笔记)
 - [**杂物间**](#杂物间)
 - [**JavaScript**](#JavaScript)
 - [**观点与感想**](#观点与感想)
@@ -15,9 +17,46 @@
 - [**语思**](#语思)
 - [**文学爱好者**](#文学爱好者)
 - [**音乐爱好者**](#音乐爱好者)
+- [**科普**](#科普)
+
+## 文章
+
+### 光与盐
+
+- [福](https://github.com/yanyue404/blog/issues/122)
+- [圣经中的教导 —— 当孝敬父母](https://github.com/yanyue404/blog/issues/112)
+- [教会信经简史](https://github.com/yanyue404/blog/issues/108)
+- [我的心你要称颂耶和华 —— 旷野心理十讲](https://github.com/yanyue404/blog/issues/107)
+- [读经亮光](https://github.com/yanyue404/blog/issues/106)
+- [上帝十诫](https://github.com/yanyue404/blog/issues/105)
+- [存奴仆的心呢？存儿子的心呢？](https://github.com/yanyue404/blog/issues/97)
+- [为爱守候立约](https://github.com/yanyue404/blog/issues/77)
+- [十一前的主日读经思考](https://github.com/yanyue404/blog/issues/76)
+- [九江行](https://github.com/yanyue404/blog/issues/60)
+- [保持生命健康的七个元素](https://github.com/yanyue404/blog/issues/59)
+- [恩典卡](https://github.com/yanyue404/blog/issues/58)
+- [路得记经文分享](https://github.com/yanyue404/blog/issues/57)
+- [危机，益处，寻求神](https://github.com/yanyue404/blog/issues/56)
+- [Rainbow 计划 (下)](https://github.com/yanyue404/blog/issues/55)
+- [Rainbow 计划 (上)](https://github.com/yanyue404/blog/issues/54)
+- [人生次序](https://github.com/yanyue404/blog/issues/53)
+
+### Mock interview
+
+- [前端思考 —— 代码质量](https://github.com/yanyue404/blog/issues/121)
+- [前端思考 —— 性能优化](https://github.com/yanyue404/blog/issues/120)
+- [前端基本功 —— CSS 篇](https://github.com/yanyue404/blog/issues/4)
+
+### 剪贴板
+
+- [一个老程序员的 30 年生涯回顾（译文）](https://github.com/yanyue404/blog/issues/119)
 
 ### 开发者笔记
 
+- [递归算法](https://github.com/yanyue404/blog/issues/118)
+- [Git 使用进阶](https://github.com/yanyue404/blog/issues/117)
+- [node 爬虫手记](https://github.com/yanyue404/blog/issues/116)
+- [GitHub API 纪录](https://github.com/yanyue404/blog/issues/115)
 - [超文本传输协议-HTTP](https://github.com/yanyue404/blog/issues/114)
 - [正则表达式实践](https://github.com/yanyue404/blog/issues/113)
 - [前端单元测试](https://github.com/yanyue404/blog/issues/110)
@@ -55,37 +94,17 @@
 - [git+Github 的正确姿势](https://github.com/yanyue404/blog/issues/2)
 - [git 入门与实践](https://github.com/yanyue404/blog/issues/1)
 
-### 光与盐
-
-- [圣经中的教导 —— 当孝敬父母](https://github.com/yanyue404/blog/issues/112)
-- [教会信经简史](https://github.com/yanyue404/blog/issues/108)
-- [我的心你要称颂耶和华 —— 旷野心理十讲](https://github.com/yanyue404/blog/issues/107)
-- [读经亮光](https://github.com/yanyue404/blog/issues/106)
-- [上帝十诫](https://github.com/yanyue404/blog/issues/105)
-- [存奴仆的心呢？存儿子的心呢？](https://github.com/yanyue404/blog/issues/97)
-- [为爱守候立约](https://github.com/yanyue404/blog/issues/77)
-- [十一前的主日读经思考](https://github.com/yanyue404/blog/issues/76)
-- [九江行](https://github.com/yanyue404/blog/issues/60)
-- [保持生命健康的七个元素](https://github.com/yanyue404/blog/issues/59)
-- [恩典卡](https://github.com/yanyue404/blog/issues/58)
-- [路得记经文分享](https://github.com/yanyue404/blog/issues/57)
-- [危机，益处，寻求神](https://github.com/yanyue404/blog/issues/56)
-- [Rainbow 计划 (下)](https://github.com/yanyue404/blog/issues/55)
-- [Rainbow 计划 (上)](https://github.com/yanyue404/blog/issues/54)
-- [人生次序](https://github.com/yanyue404/blog/issues/53)
-
 ### 杂物间
 
 - [优秀的博客文章纪录](https://github.com/yanyue404/blog/issues/111)
 - [那些事件](https://github.com/yanyue404/blog/issues/93)
 - [联想天逸 300-15 升级(后记)](https://github.com/yanyue404/blog/issues/89)
 - [反义谚语](https://github.com/yanyue404/blog/issues/67)
-- [如果你抢不到回家的火车票，那么你知道“分流”吗？](https://github.com/yanyue404/blog/issues/45)
 
 ### JavaScript
 
 - [你有用对 async/await 吗？](https://github.com/yanyue404/blog/issues/104)
-- [React v16 使用探索](https://github.com/yanyue404/blog/issues/98)
+- [React v16 新特性](https://github.com/yanyue404/blog/issues/98)
 - [React 内部是如何工作的 ?](https://github.com/yanyue404/blog/issues/96)
 - [React 组件更新 —— setState](https://github.com/yanyue404/blog/issues/82)
 - [节流与防抖如何区分？](https://github.com/yanyue404/blog/issues/74)
@@ -102,7 +121,6 @@
 - [js 编程风格](https://github.com/yanyue404/blog/issues/11)
 - [函数声明和函数表达式的区别](https://github.com/yanyue404/blog/issues/10)
 - [Javascript 之深浅拷贝](https://github.com/yanyue404/blog/issues/6)
-- [前端基本功 —— 扎马步](https://github.com/yanyue404/blog/issues/4)
 
 ### 观点与感想
 
@@ -132,7 +150,7 @@
 
 ### 工具集
 
-- [前端开发技术之路](https://github.com/yanyue404/blog/issues/100)
+- [前端开发技术之路 —— 资源站](https://github.com/yanyue404/blog/issues/100)
 - [pandoc 文档转换命令行记录](https://github.com/yanyue404/blog/issues/19)
 
 ### 语思
@@ -155,6 +173,10 @@
 ### 音乐爱好者
 
 - [我的歌声里](https://github.com/yanyue404/blog/issues/62)
+
+### 科普
+
+- [如果你抢不到回家的火车票，那么你知道“分流”吗？](https://github.com/yanyue404/blog/issues/45)
 
 ## 社交
 
