@@ -4,7 +4,7 @@
 
 ## 分类
 
-- [**Mock interview**](#Mock interview)
+- [**Mock interview**](#Mock-interview)
 - [**杂物间**](#杂物间)
 - [**音乐爱好者**](#音乐爱好者)
 - [**软件工程师的自我修养**](#软件工程师的自我修养)
@@ -22,7 +22,7 @@
 
 ## 文章
 
-### Mock interview
+### Mock-interview
 
 - [西安中级前端面试报告](https://github.com/yanyue404/blog/issues/144)
 - [前端思考 —— 代码质量](https://github.com/yanyue404/blog/issues/121)
