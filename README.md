@@ -18,6 +18,7 @@
 - [**观点与感想**](#观点与感想)
 - [**精读**](#精读)
 - [**译文集**](#译文集)
+- [**项目篇**](#项目篇)
 - [**文学爱好者**](#文学爱好者)
 
 ## 文章
@@ -54,7 +55,6 @@
 - [Git 使用进阶](https://github.com/yanyue404/blog/issues/117)
 - [如何学习开源项目甚至发起 PR ？](https://github.com/yanyue404/blog/issues/109)
 - [互联网行业术语纪录](https://github.com/yanyue404/blog/issues/94)
-- [前端项目目录结构优化](https://github.com/yanyue404/blog/issues/92)
 - [联想天逸 300-15 升级(后记)](https://github.com/yanyue404/blog/issues/89)
 - [关于编程学习方法的讨论](https://github.com/yanyue404/blog/issues/87)
 - [知识图谱](https://github.com/yanyue404/blog/issues/85)
@@ -159,7 +159,6 @@
 - [深入 bootstrap 响应式布局](https://github.com/yanyue404/blog/issues/37)
 - [webpack3 使用说明](https://github.com/yanyue404/blog/issues/33)
 - [移动端的 300 毫秒点击延迟和点击穿透问题](https://github.com/yanyue404/blog/issues/31)
-- [debug 技术](https://github.com/yanyue404/blog/issues/29)
 - [前端设计单位](https://github.com/yanyue404/blog/issues/27)
 - [设计模式之发布—订阅模式](https://github.com/yanyue404/blog/issues/26)
 - [前端模拟 api 数据的两种方式](https://github.com/yanyue404/blog/issues/25)
@@ -196,6 +195,11 @@
 ### 译文集
 
 - [2019 前端工具调查-结果（译文）](https://github.com/yanyue404/blog/issues/101)
+
+### 项目篇
+
+- [前端项目目录结构优化](https://github.com/yanyue404/blog/issues/92)
+- [debug 技术](https://github.com/yanyue404/blog/issues/29)
 
 ### 文学爱好者
 
