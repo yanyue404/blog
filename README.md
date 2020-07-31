@@ -1,4 +1,4 @@
-# blog [![Badge](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg?style=flat-square)](https://996.icu/#/zh_CN) ![GitHub issues](https://img.shields.io/github/issues-raw/yanyue404/blog?color=gree&label=blog) [![](https://img.shields.io/badge/twitter-yanyue404-blue.svg)](https://twitter.com/yanyue404)
+# blog [![Badge](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg?style=flat-square)](https://996.icu/#/zh_CN) ![GitHub issues](https://img.shields.io/github/issues-raw/yanyue404/blog?color=gree&label=blog&link=https://github.com/yanyue404/blog/issues) [![](https://img.shields.io/badge/twitter-yanyue404-blue.svg)](https://twitter.com/yanyue404)
 
 基督徒 | 歌者 | Web developer
 
