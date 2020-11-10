@@ -2,6 +2,8 @@
 
 基督徒 | 歌者 | Web developer
 
+## 目录
+
 <details>
 <summary>我的 blog，在 issues 中</summary>
 
@@ -252,3 +254,6 @@
 
 </details>
 
+## License
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" /></a><br /><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</a>
