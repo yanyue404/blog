@@ -2,6 +2,9 @@
 
 基督徒 | 歌者 | Web developer
 
+<details>
+<summary>我的 blog，在 issues 中</summary>
+
 ## 分类
 
 - [**开发者手册**](#开发者手册)
@@ -246,3 +249,6 @@
 - V2ex: [yanyue404](https://www.v2ex.com/member/yanyue404)
 - 知乎专栏: [《软件工程师的自我修养》](https://zhuanlan.zhihu.com/c_1279799154877792256)
 - 唱吧：[基督徒 · 小越越](http://changba.com/u/39302742) ，音乐爱好者
+
+</details>
+
