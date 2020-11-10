@@ -240,6 +240,8 @@
 - [语文课本之古文](https://github.com/yanyue404/blog/issues/63)
 - [彩虹文摘](https://github.com/yanyue404/blog/issues/51)
 
+</details>
+
 ## 社交
 
 - Github：[yanyue404](https://github.com/yanyue404) ，GitHub 重度用户，活跃度在私有项目上
@@ -251,8 +253,6 @@
 - V2ex: [yanyue404](https://www.v2ex.com/member/yanyue404)
 - 知乎专栏: [《软件工程师的自我修养》](https://zhuanlan.zhihu.com/c_1279799154877792256)
 - 唱吧：[基督徒 · 小越越](http://changba.com/u/39302742) ，音乐爱好者
-
-</details>
 
 ## License
 
