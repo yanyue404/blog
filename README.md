@@ -5,7 +5,7 @@
 ## 目录
 
 <details>
-<summary>我的 blog，在 issues 中</summary>
+<summary>目录更新于 11月10日 ...</summary>
 
 ## 分类
 
