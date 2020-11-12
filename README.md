@@ -6,7 +6,7 @@
 
 <details>
 <summary>目录更新于 11月10日 ...</summary>
-
+  
 ## 分类
 
 - [**开发者手册**](#开发者手册)
@@ -241,6 +241,20 @@
 - [彩虹文摘](https://github.com/yanyue404/blog/issues/51)
 
 </details>
+
+## 持续更新(may be)
+
+- https://github.com/yanyue404/blog/issues/11 Javascript 编程风格修正
+- https://github.com/yanyue404/blog/issues/49 开发技巧挑战 100 楼
+- https://github.com/yanyue404/blog/issues/85 知识图谱
+- https://github.com/yanyue404/blog/issues/93 新见与旧闻
+- https://github.com/yanyue404/blog/issues/100 前端开发技术之路 —— 资源站
+- https://github.com/yanyue404/blog/issues/143 开源项目
+- https://github.com/yanyue404/blog/issues/147 纪录我可以做的提升用户体验的优化
+- https://github.com/yanyue404/blog/issues/157 开源的面试资料
+- https://github.com/yanyue404/blog/issues/159 记录 DEV 路上踩过的坑
+- https://github.com/yanyue404/blog/issues/168 小而美的工具为你的开发体验加分
+- https://github.com/yanyue404/blog/issues/186 编程相关的言论
 
 ## 社交
 
