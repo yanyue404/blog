@@ -248,7 +248,7 @@
 - https://github.com/yanyue404/blog/issues/49 开发技巧挑战 100 楼
 - https://github.com/yanyue404/blog/issues/85 知识图谱
 - https://github.com/yanyue404/blog/issues/93 新见与旧闻
-- https://github.com/yanyue404/blog/issues/100 前端开发技术之路 —— 资源站
+- https://github.com/yanyue404/blog/issues/100 The road to the front
 - https://github.com/yanyue404/blog/issues/143 开源项目
 - https://github.com/yanyue404/blog/issues/147 纪录我可以做的提升用户体验的优化
 - https://github.com/yanyue404/blog/issues/157 开源的面试资料
