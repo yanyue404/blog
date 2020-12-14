@@ -260,15 +260,24 @@
 
 - https://github.com/yanyue404/blog/issues/11 Javascript 编程风格修正
 - https://github.com/yanyue404/blog/issues/49 开发技巧挑战 100 楼
+- https://github.com/yanyue404/blog/issues/51 彩虹文摘
 - https://github.com/yanyue404/blog/issues/85 知识图谱
 - https://github.com/yanyue404/blog/issues/93 新见与旧闻
+- https://github.com/yanyue404/blog/issues/94 互联网行业术语纪录
 - https://github.com/yanyue404/blog/issues/100 The road to the front
 - https://github.com/yanyue404/blog/issues/143 开源项目
+- https://github.com/yanyue404/blog/issues/146 Github 无法访问解决办法
 - https://github.com/yanyue404/blog/issues/147 纪录我可以做的提升用户体验的优化
 - https://github.com/yanyue404/blog/issues/157 开源的面试资料
 - https://github.com/yanyue404/blog/issues/159 记录 DEV 路上踩过的坑
 - https://github.com/yanyue404/blog/issues/168 小而美的工具为你的开发体验加分
 - https://github.com/yanyue404/blog/issues/186 编程相关的言论
+
+## 关注
+
+- [ruanyf/articles](https://github.com/ruanyf/articles)
+- [fouber/blog](https://github.com/fouber/blog)
+- [berwin/blog](https://github.com/berwin/Blog)
 
 ## 社交
 
