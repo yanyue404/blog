@@ -264,6 +264,7 @@
 - https://github.com/yanyue404/blog/issues/85 知识图谱
 - https://github.com/yanyue404/blog/issues/93 新见与旧闻
 - https://github.com/yanyue404/blog/issues/94 互联网行业术语纪录
+- https://github.com/yanyue404/blog/issues/136 誰還未覺醒
 - https://github.com/yanyue404/blog/issues/100 The road to the front
 - https://github.com/yanyue404/blog/issues/143 开源项目
 - https://github.com/yanyue404/blog/issues/146 Github 无法访问解决办法
