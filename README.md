@@ -276,9 +276,13 @@
 
 ## 关注
 
-- [ruanyf/articles](https://github.com/ruanyf/articles)
-- [fouber/blog](https://github.com/fouber/blog)
-- [berwin/blog](https://github.com/berwin/Blog)
+- [ruanyf/articles](https://github.com/ruanyf/articles) 阮一峰老师的文章
+- [fouber/blog](https://github.com/fouber/blog) 张云龙，前端工程
+- [berwin/blog](https://github.com/berwin/Blog) 记录成长的过程
+- [overreacted.io](https://github.com/gaearon/overreacted.io) Personal blog by Dan Abramov.
+- [mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog) 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列
+- [sunyongjian/blog](https://github.com/sunyongjian/blog)  个人博客😝😋😄
+- [impeiran/Blog](https://github.com/impeiran/Blog) 记录自己研究学习的实现原理，心得体会与实践方案
 
 ## 社交
 
