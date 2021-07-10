@@ -4,7 +4,7 @@
 
 ## 目录
 
-<details>
+<details open>
 <summary>更新于 【2021-06-06】:sunflower:</summary>
   
 ## 分类
