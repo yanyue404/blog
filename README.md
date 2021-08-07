@@ -261,6 +261,7 @@
 - [berwin/blog](https://github.com/berwin/Blog) 记录成长的过程
 - [overreacted.io](https://github.com/gaearon/overreacted.io) Personal blog by Dan Abramov.
 - [mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog) 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列
+- [ConardLi](https://github.com/ConardLi/ConardLi.github.io) 完善的知识体系： 【自检】前端知识清单
 - [sunyongjian/blog](https://github.com/sunyongjian/blog)  个人博客😝😋😄
 - [impeiran/Blog](https://github.com/impeiran/Blog) 记录自己研究学习的实现原理，心得体会与实践方案
 
