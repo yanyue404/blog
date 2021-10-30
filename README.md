@@ -4,48 +4,81 @@
 
 ## 目录
 
-<details open>
-<summary>更新于 【2021-06-06】:sunflower:</summary>
-  
+<details><summary>Update time: 2021-10-30 13:05:42 by <a href="https://github.com/rainbow-design/issues2md">issues2md</a> :sunflower:</summary>
+
 ## 分类
 
-- [**项目篇**](#项目篇)
+- [**软件工程师的自我修养**](#软件工程师的自我修养)
 - [**唯独基督**](#唯独基督)
+- [**项目篇**](#项目篇)
+- [**杂物间**](#杂物间)
 - [**开发者手册**](#开发者手册)
 - [**观点与感想**](#观点与感想)
 - [**剪贴板**](#剪贴板)
-- [**软件工程师的自我修养**](#软件工程师的自我修养)
 - [**音乐爱好者**](#音乐爱好者)
 - [**语思**](#语思)
 - [**文学爱好者**](#文学爱好者)
 - [**JavaScript**](#JavaScript)
-- [**杂物间**](#杂物间)
 - [**前端体系**](#前端体系)
 - [**译文集**](#译文集)
+- [**TODO**](#TODO)
 - [**精读**](#精读)
 
 ## 文章
 
-### 项目篇
+### 软件工程师的自我修养
 
-- [微信小程序产品页改版分享](https://github.com/yanyue404/blog/issues/206)
-- [Fix Vue warning](https://github.com/yanyue404/blog/issues/199)
-- [通用接口配置：Axios or Fetch](https://github.com/yanyue404/blog/issues/194)
-- [微信小程序分享案例纪录](https://github.com/yanyue404/blog/issues/188)
-- [记录 DEV 路上踩过的坑](https://github.com/yanyue404/blog/issues/159)
-- [我所知道的动画](https://github.com/yanyue404/blog/issues/149)
-- [持续集成自动化部署软件](https://github.com/yanyue404/blog/issues/148)
-- [纪录我可以做的提升用户体验的优化](https://github.com/yanyue404/blog/issues/147)
-- [初始化前端 utils 工具库](https://github.com/yanyue404/blog/issues/145)
-- [开源项目](https://github.com/yanyue404/blog/issues/143)
-- [开发技巧挑战 100 楼](https://github.com/yanyue404/blog/issues/49)
-- [前端模拟 api 数据的两种方式](https://github.com/yanyue404/blog/issues/25)
+- [Shell 脚本编写实例](https://github.com/yanyue404/blog/issues/221)
+- [《编程之道》 (Tao of Programming) 最新中英双语版](https://github.com/yanyue404/blog/issues/198)
+- [VS Code 编辑器配置](https://github.com/yanyue404/blog/issues/185)
+- [Git 分支管理策略](https://github.com/yanyue404/blog/issues/180)
+- [你是一个新毕业的软件工程师（译文）](https://github.com/yanyue404/blog/issues/177)
+- [我的 markdown 写作风格改进 ：以《中文技术文档的写作规范》为标准](https://github.com/yanyue404/blog/issues/171)
+- [面试如何与 HR 谈薪资](https://github.com/yanyue404/blog/issues/170)
+- [命令行工具 github-to-md (for Github Issues bloggers) 发布了](https://github.com/yanyue404/blog/issues/169)
+- [小而美的工具为你的开发体验加分](https://github.com/yanyue404/blog/issues/168)
+- [不要自称为程序员（转贴）](https://github.com/yanyue404/blog/issues/166)
+- [Sql 入门教程](https://github.com/yanyue404/blog/issues/163)
+- [常用 Git 命令清单](https://github.com/yanyue404/blog/issues/160)
+- [给 windows 右键做加减法](https://github.com/yanyue404/blog/issues/153)
+- [Github 无法访问解决办法](https://github.com/yanyue404/blog/issues/146)
+- [图片集](https://github.com/yanyue404/blog/issues/142)
+- [《程序员的职业素养》之时间管理](https://github.com/yanyue404/blog/issues/140)
+- [《程序员的职业素养》之专业主义](https://github.com/yanyue404/blog/issues/137)
+- [DIY 笔电升级指南](https://github.com/yanyue404/blog/issues/134)
+- [win10 触控板效率提升](https://github.com/yanyue404/blog/issues/133)
+- [谷歌浏览器脱离鼠标使用键盘操作更快速 —— Vimium](https://github.com/yanyue404/blog/issues/132)
+- [Git 使用进阶](https://github.com/yanyue404/blog/issues/117)
+- [GitHub API 纪录](https://github.com/yanyue404/blog/issues/115)
+- [前端单元测试](https://github.com/yanyue404/blog/issues/110)
+- [如何学习开源项目甚至发起 PR ？](https://github.com/yanyue404/blog/issues/109)
+- [互联网行业术语纪录](https://github.com/yanyue404/blog/issues/94)
+- [联想天逸 300-15 升级(后记)](https://github.com/yanyue404/blog/issues/89)
+- [同步你的 Github fork](https://github.com/yanyue404/blog/issues/48)
+- [如果你抢不到回家的火车票，那么你知道“分流”吗？](https://github.com/yanyue404/blog/issues/45)
+- [玩好 Terminal 终端](https://github.com/yanyue404/blog/issues/42)
+- [开发环境的搭建](https://github.com/yanyue404/blog/issues/3)
+- [Git+Github 的正确姿势](https://github.com/yanyue404/blog/issues/2)
+- [git 入门与实践](https://github.com/yanyue404/blog/issues/1)
 
 ### 唯独基督
 
+- [亲爱的，我愿你知](https://github.com/yanyue404/blog/issues/220)
+- [顺应神的命定](https://github.com/yanyue404/blog/issues/219)
+- [三个属灵的勇士 - 王明道](https://github.com/yanyue404/blog/issues/218)
+- [王明道先生的一篇勉词](https://github.com/yanyue404/blog/issues/217)
+- [十一奉献](https://github.com/yanyue404/blog/issues/216)
+- [不要自欺](https://github.com/yanyue404/blog/issues/215)
+- [《重生真义》王明道](https://github.com/yanyue404/blog/issues/214)
+- [未知死，焉懂活？](https://github.com/yanyue404/blog/issues/212)
+- [王明道文集精选卷一之生活中的“小事”](https://github.com/yanyue404/blog/issues/211)
+- [人想要的和神想给的](https://github.com/yanyue404/blog/issues/210)
+- [基督徒可以吃猪肉吗？](https://github.com/yanyue404/blog/issues/208)
+- [“天国” 与 “一切”](https://github.com/yanyue404/blog/issues/207)
 - [青岛“行”](https://github.com/yanyue404/blog/issues/205)
 - [长不大的教会大男孩（转载）](https://github.com/yanyue404/blog/issues/201)
 - [旧约概论之《传道书》](https://github.com/yanyue404/blog/issues/192)
+- [盟约 —— 基督与教会&丈夫与妻子](https://github.com/yanyue404/blog/issues/191)
 - [哈巴谷书 —— 诚实向上帝发问并得到了回应](https://github.com/yanyue404/blog/issues/165)
 - [何谓基督徒? —— 陈鸽](https://github.com/yanyue404/blog/issues/162)
 - [等候神的亮光](https://github.com/yanyue404/blog/issues/158)
@@ -72,6 +105,29 @@
 - [Rainbow 计划 (下)](https://github.com/yanyue404/blog/issues/55)
 - [Rainbow 计划 (上) ](https://github.com/yanyue404/blog/issues/54)
 - [人生次序](https://github.com/yanyue404/blog/issues/53)
+
+### 项目篇
+
+- [统一团队代码风格方案：Prettier + ESlint](https://github.com/yanyue404/blog/issues/213)
+- [微信小程序产品页改版分享](https://github.com/yanyue404/blog/issues/206)
+- [Vue SSR 技术栈 —— Nuxt 项目优化实践](https://github.com/yanyue404/blog/issues/202)
+- [Fix Vue warning](https://github.com/yanyue404/blog/issues/199)
+- [通用接口配置：Axios or Fetch](https://github.com/yanyue404/blog/issues/194)
+- [微信小程序分享案例纪录](https://github.com/yanyue404/blog/issues/188)
+- [记录 DEV 路上踩过的坑](https://github.com/yanyue404/blog/issues/159)
+- [我所知道的动画](https://github.com/yanyue404/blog/issues/149)
+- [持续集成自动化部署软件](https://github.com/yanyue404/blog/issues/148)
+- [纪录我可以做的提升用户体验的优化](https://github.com/yanyue404/blog/issues/147)
+- [初始化前端 utils 工具库](https://github.com/yanyue404/blog/issues/145)
+- [开源项目](https://github.com/yanyue404/blog/issues/143)
+- [开发技巧挑战 100 楼](https://github.com/yanyue404/blog/issues/49)
+- [前端模拟 api 数据的两种方式](https://github.com/yanyue404/blog/issues/25)
+
+### 杂物间
+
+- [在皮肤科医师的指导下科学祛痘](https://github.com/yanyue404/blog/issues/209)
+- [关于年轻人理财的一些建议（转贴）](https://github.com/yanyue404/blog/issues/167)
+- [家庭药箱常备内容](https://github.com/yanyue404/blog/issues/130)
 
 ### 开发者手册
 
@@ -121,40 +177,6 @@
 - [深水洞潜历险记](https://github.com/yanyue404/blog/issues/164)
 - [JavaScript：核心 - 第二版（译文）](https://github.com/yanyue404/blog/issues/124)
 - [一个老程序员的 30 年生涯回顾（译文）](https://github.com/yanyue404/blog/issues/119)
-
-### 软件工程师的自我修养
-
-- [《编程之道》 (Tao of Programming) 最新中英双语版](https://github.com/yanyue404/blog/issues/198)
-- [VS Code 编辑器配置](https://github.com/yanyue404/blog/issues/185)
-- [Git 分支管理策略](https://github.com/yanyue404/blog/issues/180)
-- [你是一个新毕业的软件工程师（译文）](https://github.com/yanyue404/blog/issues/177)
-- [我的 markdown 写作风格改进 ：以《中文技术文档的写作规范》为标准](https://github.com/yanyue404/blog/issues/171)
-- [面试如何与 HR 谈薪资](https://github.com/yanyue404/blog/issues/170)
-- [命令行工具 github-to-md (for Github Issues bloggers) 发布了](https://github.com/yanyue404/blog/issues/169)
-- [小而美的工具为你的开发体验加分](https://github.com/yanyue404/blog/issues/168)
-- [不要自称为程序员（转贴）](https://github.com/yanyue404/blog/issues/166)
-- [Sql 入门教程](https://github.com/yanyue404/blog/issues/163)
-- [常用 Git 命令清单](https://github.com/yanyue404/blog/issues/160)
-- [给 windows 右键做加减法](https://github.com/yanyue404/blog/issues/153)
-- [Github 无法访问解决办法](https://github.com/yanyue404/blog/issues/146)
-- [图片集](https://github.com/yanyue404/blog/issues/142)
-- [《程序员的职业素养》之时间管理](https://github.com/yanyue404/blog/issues/140)
-- [《程序员的职业素养》之专业主义](https://github.com/yanyue404/blog/issues/137)
-- [DIY 笔电升级指南](https://github.com/yanyue404/blog/issues/134)
-- [win10 触控板效率提升](https://github.com/yanyue404/blog/issues/133)
-- [谷歌浏览器脱离鼠标使用键盘操作更快速 —— Vimium](https://github.com/yanyue404/blog/issues/132)
-- [Git 使用进阶](https://github.com/yanyue404/blog/issues/117)
-- [GitHub API 纪录](https://github.com/yanyue404/blog/issues/115)
-- [前端单元测试](https://github.com/yanyue404/blog/issues/110)
-- [如何学习开源项目甚至发起 PR ？](https://github.com/yanyue404/blog/issues/109)
-- [互联网行业术语纪录](https://github.com/yanyue404/blog/issues/94)
-- [联想天逸 300-15 升级(后记)](https://github.com/yanyue404/blog/issues/89)
-- [同步你的 Github fork](https://github.com/yanyue404/blog/issues/48)
-- [如果你抢不到回家的火车票，那么你知道“分流”吗？](https://github.com/yanyue404/blog/issues/45)
-- [玩好 Terminal 终端](https://github.com/yanyue404/blog/issues/42)
-- [开发环境的搭建](https://github.com/yanyue404/blog/issues/3)
-- [Git+Github 的正确姿势](https://github.com/yanyue404/blog/issues/2)
-- [git 入门与实践](https://github.com/yanyue404/blog/issues/1)
 
 ### 音乐爱好者
 
@@ -207,7 +229,7 @@
 - [理解 JS 中的闭包](https://github.com/yanyue404/blog/issues/73)
 - [Javascript 双等与三等的布尔值比较](https://github.com/yanyue404/blog/issues/44)
 - [Redux 入门](https://github.com/yanyue404/blog/issues/34)
-- [我所知道的 JavaScript 中的 Event Loop](https://github.com/yanyue404/blog/issues/30)
+- [JavaScript 运行机制详述：Event Loop](https://github.com/yanyue404/blog/issues/30)
 - [React 组件通信](https://github.com/yanyue404/blog/issues/28)
 - [设计模式之发布—订阅模式](https://github.com/yanyue404/blog/issues/26)
 - [Javascript 模块化](https://github.com/yanyue404/blog/issues/23)
@@ -219,11 +241,6 @@
 - [React 组件编码规范化](https://github.com/yanyue404/blog/issues/9)
 - [Javascript 之深浅拷贝](https://github.com/yanyue404/blog/issues/6)
 - [JavaScript 传参技巧总结](https://github.com/yanyue404/blog/issues/5)
-
-### 杂物间
-
-- [关于年轻人理财的一些建议（转贴）](https://github.com/yanyue404/blog/issues/167)
-- [家庭药箱常备内容](https://github.com/yanyue404/blog/issues/130)
 
 ### 前端体系
 
@@ -253,6 +270,7 @@
 - [从 React 渲染原理看性能优化@黄琼](https://github.com/yanyue404/blog/issues/50)
 
 </details>
+
 
 ## 关注
 
