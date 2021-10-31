@@ -3,11 +3,11 @@ module.exports = {
 
   parserOptions: {
     parser: "babel-eslint",
-    sourceType: "module"
+    sourceType: "module",
   },
 
   env: {
-    browser: true
+    browser: true,
   },
 
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
@@ -21,14 +21,14 @@ module.exports = {
     ga: true, // Google Analytics
     cordova: true,
     __statics: true,
-    process: true
+    process: true,
   },
 
   // add your custom rules here
   rules: {
     "no-param-reassign": "off",
     "object-shorthand": "off",
-    "quotes": "off",
+    quotes: "off",
     "import/first": "off",
     "import/named": "error",
     "import/namespace": "error",
@@ -45,6 +45,7 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     // allow debugger during development only
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    "max-len": "off"
-  }
+    "max-len": "off",
+    "operator-linebreak": "off",
+  },
 };

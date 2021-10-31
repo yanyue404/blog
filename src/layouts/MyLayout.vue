@@ -1,29 +1,42 @@
 <template>
   <q-layout view="hHh Lpr fFf">
-    <q-header elevated reveal style="background: linear-gradient(145deg,#027be3 11%,#014a88 75%);">
+    <q-header
+      elevated
+      style="background: linear-gradient(145deg, #027be3 11%, #014a88 75%)"
+    >
       <q-toolbar>
-        <q-btn flat round aria-label="Menu" @click="leftDrawerOpen = !leftDrawerOpen">
+        <q-btn
+          flat
+          round
+          aria-label="Menu"
+          @click="leftDrawerOpen = !leftDrawerOpen"
+        >
           <q-icon name="menu" />
         </q-btn>
         <!-- <div class="q-btn__wrapper col row no-wrap q-anchor--skipr"> -->
-        <q-btn round style="padding: 4px 16px" @click="toOutLink">
+        <!-- <q-btn round style="padding: 4px 16px" @click="toOutLink">
           <q-avatar class="doc-layout-avatar" size="38px">
             <img src="https://cdn.quasar.dev/app-icons/icon-128x128.png" />
           </q-avatar>
-        </q-btn>
+        </q-btn> -->
         <q-toolbar-title>{{ $store.getters.blogName }}</q-toolbar-title>
         <q-input
           v-if="showSearchInput"
           dark
           dense
           standout
+          placeholder="Search"
           v-model="text"
-          input-class="text-right"
-          class="q-ml-md"
+          class="q-ml-md input-search"
         >
           <template v-slot:append>
             <q-icon v-if="text === ''" name="search" />
-            <q-icon v-else name="clear" class="cursor-pointer" @click="text = ''" />
+            <q-icon
+              v-else
+              name="clear"
+              class="cursor-pointer"
+              @click="text = ''"
+            />
           </template>
         </q-input>
         <!-- <iframe
@@ -42,11 +55,15 @@
       v-model="leftDrawerOpen"
       show-if-above
       class="rainbow"
-      style="height:100%"
+      style="height: 100%"
       side="left"
     >
       <q-scroll-area
-        style="height: calc(100% - 250px); margin-top: 250px; border-right: 1px solid #ddd"
+        style="
+          height: calc(100% - 250px);
+          margin-top: 250px;
+          border-right: 1px solid #ddd;
+        "
       >
         <q-list class="q-pa-md q-mb-lg">
           <q-item-label header>Links</q-item-label>
@@ -64,7 +81,9 @@
             </q-item-section>
             <q-item-section>
               <q-item-label class="rainbow">{{ item.title }}</q-item-label>
-              <q-item-label caption style="text-decoration: underline;">{{ item.subTile }}</q-item-label>
+              <q-item-label caption style="text-decoration: underline">{{
+                item.subTile
+              }}</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>
@@ -75,7 +94,10 @@
         src="https://cdn.quasar.dev/img/material.png"
         style="height: 250px"
       >
-        <div class="absolute-center bg-transparent text-center" style="width: 100%;">
+        <div
+          class="absolute-center bg-transparent text-center"
+          style="width: 100%"
+        >
           <q-avatar size="80px" class>
             <img alt="ttop5-avatar" :src="user.avatar_url" />
           </q-avatar>
@@ -87,17 +109,20 @@
     </q-drawer>
 
     <q-page-container class="q-mb-xl">
+      <!-- 中间实际 -->
       <router-view />
       <br />
       <br />
       <div class="absolute-bottom text-center text-grey-6">
         © {{ year }}
-        <a class="text-grey-6" href="https://github.com/ttop5/issue-blog">issue-blog</a>
+        <a class="text-grey-6" href="https://github.com/ttop5/issue-blog"
+          >issue-blog</a
+        >
       </div>
     </q-page-container>
 
     <q-page-sticky
-      style="color:#027be3"
+      style="color: #027be3"
       elevated
       reveal
       position="bottom-right"
@@ -105,8 +130,12 @@
       :offset="[18, 18]"
     >
       <q-fab icon="unfold_more" class="rainbow" direction="up">
-        <q-fab-action icon="home" class="rainbow" @click="$router.push('/');" />
-        <q-fab-action icon="keyboard_arrow_up" class="rainbow" @click="backToTop" />
+        <q-fab-action icon="home" class="rainbow" @click="$router.push('/')" />
+        <q-fab-action
+          icon="keyboard_arrow_up"
+          class="rainbow"
+          @click="backToTop"
+        />
       </q-fab>
     </q-page-sticky>
   </q-layout>
@@ -122,10 +151,10 @@ export default {
     return {
       showSearchInput: true,
       text: "",
-      leftDrawerOpen: this.$q.platform.is.desktop,
+      leftDrawerOpen: false,
       user: {},
       links: this.$store.getters.links,
-      year: date.formatDate(new Date(), "YYYY")
+      year: date.formatDate(new Date(), "YYYY"),
     };
   },
   methods: {
@@ -139,7 +168,8 @@ export default {
     backToTop() {
       let timer;
       const gotoTop = () => {
-        let currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+        let currentPosition =
+          document.documentElement.scrollTop || document.body.scrollTop;
         currentPosition -= 100;
         if (currentPosition > 0) {
           window.scrollTo(0, currentPosition);
@@ -153,14 +183,13 @@ export default {
     },
     toOutLink() {
       window.open("https://quasar.dev/", "_blank");
-    }
+    },
   },
 
   created() {
     this.getUserInfo();
   },
   beforeRouteUpdate(to, from, next) {
-    console.log("beforeRouteUpdate");
     next();
   },
   watch: {
@@ -174,12 +203,12 @@ export default {
       } else {
         this.showSearchInput = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
 .q-item__label + .q-item__label {
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -193,5 +222,23 @@ export default {
 .q-btn__wrapper {
   padding: 4px 16px;
   align-items: center;
+}
+.input-search {
+  padding: 0.375;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.2);
+  min-width: 268px;
+}
+@media (max-width: 768px) {
+  .input-search {
+    display: none;
+  }
+  .q-toolbar__title {
+    font-size: 18px;
+    padding: 0 3px;
+  }
 }
 </style>

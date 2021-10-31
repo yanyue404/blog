@@ -15,9 +15,14 @@
         <q-item-section>
           <q-item-label lines="1">
             <span class="text-weight-bold">{{ comment.user.login }}</span>
-            <span class="text-gray-light"> {{ comment.updated_at | timeAgo }}</span>
+            <span class="text-gray-light">
+              {{ comment.updated_at | timeAgo }}</span
+            >
           </q-item-label>
-          <q-item-label v-html="comment.body_html" class="q-pt-sm"></q-item-label>
+          <q-item-label
+            v-html="comment.body_html"
+            class="q-pt-sm"
+          ></q-item-label>
         </q-item-section>
       </q-item>
     </q-list>
@@ -31,12 +36,12 @@
 </template>
 
 <script>
-import { openURL } from 'quasar';
-import { format } from 'timeago.js';
-import { axiosInstance } from 'boot/axios';
+import { openURL } from "quasar";
+import { format } from "timeago.js";
+import { axiosInstance } from "boot/axios";
 
 export default {
-  name: 'Comment',
+  name: "Comment",
   data() {
     return {
       comments: [],
@@ -50,9 +55,12 @@ export default {
   },
   methods: {
     getComments() {
-      axiosInstance.get(`/repos/${this.$store.getters.repository}/issues/${this.$route.params.id}/comments`)
+      axiosInstance
+        .get(
+          `/repos/${this.$store.getters.repository}/issues/${this.$route.params.id}/comments`
+        )
         .then((res) => {
-          this.$set(this, 'comments', res.data);
+          this.$set(this, "comments", res.data);
         });
     },
     goAddComment() {
@@ -65,10 +73,14 @@ export default {
 };
 </script>
 
-<style scoped lang="stylus">
-  .q-item__section--side > .q-avatar
-    font-size 48px
-  @media (max-width 767px)
-    .q-item__section--side > .q-avatar
-      font-size 36px
+<style scoped lang="scss">
+.q-item__section--side > .q-avatar {
+  font-size: 48px;
+}
+
+@media (max-width: 767px) {
+  .q-item__section--side > .q-avatar {
+    font-size: 36px;
+  }
+}
 </style>

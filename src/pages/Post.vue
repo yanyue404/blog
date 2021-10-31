@@ -55,8 +55,6 @@ export default {
         .catch((err) => {
           if (err.response.status === 404) {
             this.$router.push('/404');
-          } else {
-            console.log(err);
           }
         });
     },

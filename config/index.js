@@ -2,7 +2,7 @@ export default {
   username: "yanyue404", // GitHub 用户名
   repository: "blog", // 记录 issue 的仓库名
   accessToken: "MWM2YmE5NmMwODJhODgyYzBiZmM2ZWExNGVhNzFhYjFkZTM4MzcwYw==", // 经过 base64 加密后的 GitHub Token
-  blogName: "My growth log and not just code", // 给你的博客取个名字
+  blogName: "Just blog and unjust blog", // 给你的博客取个名字
   /**
    * 定制左侧菜单链接部分
    * 格式：

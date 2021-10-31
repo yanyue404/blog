@@ -1,13 +1,13 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
-module.exports = function(ctx) {
+module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     boot: ["i18n", "axios"],
 
-    css: ["app.styl"],
+    css: ["app.scss"],
 
     extras: [
       // 'ionicons-v4',
@@ -17,7 +17,7 @@ module.exports = function(ctx) {
       // 'themify',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
       // 'roboto-font',
-      "material-icons" // optional, you are not bound to it
+      "material-icons", // optional, you are not bound to it
     ],
 
     framework: {
@@ -48,7 +48,7 @@ module.exports = function(ctx) {
         "QPageSticky",
         "QFab",
         "QFabAction",
-        "QInput"
+        "QInput",
       ],
 
       directives: ["Ripple"],
@@ -58,9 +58,9 @@ module.exports = function(ctx) {
       config: {
         loadingBar: {
           color: "amber",
-          size: "2.5px"
-        }
-      }
+          size: "2.5px",
+        },
+      },
     },
 
     supportIE: true,
@@ -80,21 +80,21 @@ module.exports = function(ctx) {
           loader: "eslint-loader",
           exclude: /node_modules/,
           options: {
-            formatter: require("eslint").CLIEngine.getFormatter("stylish")
-          }
+            formatter: require("eslint").CLIEngine.getFormatter("stylish"),
+          },
         });
-      }
+      },
     },
 
     devServer: {
       // https: true,
       // port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
     },
 
     animations: "all", // --- includes all animations
     ssr: {
-      pwa: false
+      pwa: false,
     },
 
     pwa: {
@@ -112,30 +112,30 @@ module.exports = function(ctx) {
           {
             src: "statics/icons/icon-128x128.png",
             sizes: "128x128",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "statics/icons/icon-192x192.png",
             sizes: "192x192",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "statics/icons/icon-256x256.png",
             sizes: "256x256",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "statics/icons/icon-384x384.png",
             sizes: "384x384",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "statics/icons/icon-512x512.png",
             sizes: "512x512",
-            type: "image/png"
-          }
-        ]
-      }
+            type: "image/png",
+          },
+        ],
+      },
     },
 
     cordova: {
@@ -165,7 +165,7 @@ module.exports = function(ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
         // appId: 'issue-blog'
-      }
-    }
+      },
+    },
   };
 };
