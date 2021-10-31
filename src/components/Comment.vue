@@ -67,7 +67,7 @@ export default {
       openURL(this.addCommentUrl);
     },
   },
-  mounted() {
+  created() {
     this.getComments();
   },
 };

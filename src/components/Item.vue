@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="post in postList" :key="post.index">
-      <q-item clickable v-ripple class="q-mt-lg">
+      <q-item clickable v-ripple class="q-mt-lg" style="border-top:1px solid rgba(0,0,0,.125)">
         <q-item-section @click="toPostDetail(post.number)">
           <q-item-label>
             <div class="text-h6 rainbow">{{ post.title }}</div>

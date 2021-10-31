@@ -1,12 +1,17 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
+// http://www.quasarchs.com/quasar-cli/quasar-conf-js
+
+// 访问终端变量
+// console.log(process.env);
 
 module.exports = function (ctx) {
   return {
-    // app boot file (/src/boot)
+    // app 启动文件 (/src/boot)
     // --> boot files are part of "main.js"
     boot: ["i18n", "axios"],
 
+    // 全局 CSS 文件
     css: ["app.scss"],
 
     extras: [
@@ -67,13 +72,14 @@ module.exports = function (ctx) {
 
     build: {
       scopeHoisting: true,
+      // devtool: "eval-source-map", //需要时才放开
+      analyze: process.env.NODE_ENV === "production" ? true : false,
       // vueRouterMode: 'history',
       // publicPath:'./',
       // vueCompiler: true,
       // gzip: true,
-      // analyze: true,
       // extractCSS: false,
-      extendWebpack(cfg) {
+      extendWebpack(cfg, { isServer, isClient }) {
         cfg.module.rules.push({
           enforce: "pre",
           test: /\.(js|vue)$/,

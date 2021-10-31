@@ -1,6 +1,6 @@
 <template>
   <q-page v-if="postList.length !== 0" padding>
-    <q-list padding class="rounded-borders" style="margin-top: -24px;">
+    <q-list padding class="rounded-borders" style="margin-top: -24px">
       <Item :postList="postList" />
     </q-list>
   </q-page>
@@ -20,13 +20,13 @@ export default {
       loaded: false,
       page: 1,
       number: 30,
-      total_count: ""
+      total_count: "",
     };
   },
   computed: {
     ...mapState({
-      searchKeyWords: state => state.search.searchKeyWords
-    })
+      searchKeyWords: (state) => state.search.searchKeyWords,
+    }),
   },
   watch: {
     $route() {
@@ -40,7 +40,7 @@ export default {
     },
     searchKeyWords(val) {
       this.getIssueList(1, 50, false, val);
-    }
+    },
   },
   methods: {
     getIssueList(page, number, pagination = false, keyWorld = "") {
@@ -57,13 +57,13 @@ export default {
         const that = this;
         url = url.replace(
           /\+state/g,
-          m => `+label:${that.$route.query.label}${m}`
+          (m) => `+label:${that.$route.query.label}${m}`
         );
       }
       // 关键词搜索 q=
       if (keyWorld) {
         const that = this;
-        url = url.replace(/\+repo/g, m => `${that.searchKeyWords}${m}`);
+        url = url.replace(/\+repo/g, (m) => `${that.searchKeyWords}${m}`);
       }
       axiosInstance.get(url).then((res) => {
         // 分页模式 拼接数据
@@ -83,28 +83,28 @@ export default {
       const that = this;
       window.onscroll = () => {
         // 距离底部200px时加载一次
-        const bottomOfWindow = document.documentElement.offsetHeight
-            - document.documentElement.scrollTop
-            - window.innerHeight
-          <= 200;
+        const bottomOfWindow =
+          document.documentElement.offsetHeight -
+            document.documentElement.scrollTop -
+            window.innerHeight <=
+          200;
         if (
-          bottomOfWindow
-          && that.loaded
-          && that.total_count > that.postList.length
+          bottomOfWindow &&
+          that.loaded &&
+          that.total_count > that.postList.length
         ) {
           that.getIssueList(that.page + 1, that.number, true);
         }
       };
-    }
+    },
   },
   created() {
     this.getIssueList(this.page, this.number);
   },
   mounted() {
     this.handleScroll();
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>
