@@ -1,6 +1,6 @@
 {
   "name": "issue-blog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "github issue blog",
   "productName": "闫越的网络日志",
   "cordovaId": "org.cordova.quasar.app",
@@ -36,7 +36,8 @@
     "eslint-loader": "^2.1.1",
     "eslint-plugin-vue": "^5.0.0",
     "gh-pages": "^2.0.1",
-    "husky": "^3.0.1"
+    "husky": "^3.0.1",
+    "standard-version": "^9.3.2"
   },
   "engines": {
     "node": ">= 8.9.0",
