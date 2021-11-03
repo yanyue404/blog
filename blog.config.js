@@ -19,25 +19,25 @@ export default {
       title: "Home",
       subTile: "yanyue404",
       icon: "fas fa-home",
-      url: "https://xiaoyueyue.org/"
+      url: "https://xiaoyueyue.org/",
     },
     {
       title: "GitHub",
       subTile: "github.com/yanyue404",
       icon: "fab fa-github",
-      url: "https://github.com/yanyue404"
+      url: "https://github.com/yanyue404",
     },
     {
       title: "Twitter",
       subTile: "twitter.com/yanyue404",
       icon: "fab fa-twitter",
-      url: "https://twitter.com/yanyue404"
+      url: "https://twitter.com/yanyue404",
     },
     {
       title: "Email",
       subTile: "xiaoyueyue165@gmail.com",
       icon: "fas fa-envelope",
-      url: "mailto:xiaoyueyue165@gmail.com"
-    }
-  ]
+      url: "mailto:xiaoyueyue165@gmail.com",
+    },
+  ],
 };

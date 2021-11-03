@@ -1,6 +1,6 @@
-import config from "../../config/index";
+import blogConfig from "../../blog.config";
 
-const state = config;
+const state = blogConfig;
 
 const getters = {
   username(s) {

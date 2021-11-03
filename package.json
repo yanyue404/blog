@@ -7,15 +7,14 @@
   "author": "ttop5 <ttop5@qq.com>",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue src",
     "dev": "quasar dev",
     "dev:ssr": "quasar dev -m ssr",
     "build": "quasar build",
     "build:ssr": "quasar build --mode ssr",
     "deploy": "quasar build && node publish.js",
-    "eslint": "eslint --ext .js --ext .jsx --ext .vue src/",
-    "eslint:html": "eslint **/*.js -f html -o ./reports/lint-results.html",
-    "eslint:fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/"
+    "lint": "eslint --ext .js,.vue src",
+    "lint:fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
+    "lint:html": "eslint **/*.js -f html -o ./reports/lint-results.html"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
