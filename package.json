@@ -15,7 +15,9 @@
     "deploy": "quasar build && node publish.js",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
-    "lint:html": "eslint **/*.js -f html -o ./reports/lint-results.html"
+    "lint:html": "eslint **/*.js -f html -o ./reports/lint-results.html",
+    "release": "standard-version",
+    "push:publish": "git push --follow-tags origin master && npm publish"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
