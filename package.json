@@ -7,6 +7,7 @@
   "author": "ttop5 <ttop5@qq.com>",
   "private": true,
   "scripts": {
+    "getIssuesData": "node build.js @LOCAL=true",
     "dev": "quasar dev",
     "dev:ssr": "quasar dev -m ssr",
     "build": "quasar build",

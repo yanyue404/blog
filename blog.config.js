@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   username: "yanyue404", // GitHub 用户名
   repository: "blog", // 记录 issue 的仓库名
   accessToken: "MWM2YmE5NmMwODJhODgyYzBiZmM2ZWExNGVhNzFhYjFkZTM4MzcwYw==", // 经过 base64 加密后的 GitHub Token

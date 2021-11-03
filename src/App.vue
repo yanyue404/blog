@@ -9,11 +9,11 @@ import "github-markdown-css/github-markdown.css";
 import "./css/global.css";
 
 export default {
-  name: "App"
+  name: "App",
 };
 </script>
 
-<style scoped lang="stylus">
+<style scoped lang="scss">
 .markdown-body {
   box-sizing: border-box;
   min-width: 200px;

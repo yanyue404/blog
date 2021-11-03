@@ -1,17 +1,17 @@
 const state = {
-  searchKeyWords: "node"
+  searchKeyWords: "node",
 };
 
 const getters = {
   searchKeyWords(s) {
     return `${s.searchKeyWords}`;
-  }
+  },
 };
 
 const mutations = {
   keyWordChange(s, newText) {
     s.searchKeyWords = newText;
-  }
+  },
 };
 
 const actions = {};
@@ -21,5 +21,5 @@ export default {
   state,
   getters,
   mutations,
-  actions
+  actions,
 };

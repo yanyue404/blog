@@ -1,4 +1,4 @@
-import blogConfig from "../../blog.config";
+const blogConfig = require("../../blog.config");
 
 const state = blogConfig;
 
@@ -17,7 +17,7 @@ const getters = {
   },
   links(s) {
     return s.links;
-  }
+  },
 };
 
 const mutations = {};
@@ -28,5 +28,5 @@ export default {
   state,
   getters,
   mutations,
-  actions
+  actions,
 };
