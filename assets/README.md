@@ -33,5 +33,9 @@ const getUrl = (path) => {
   return `https://raw.githubusercontent.com/yanyue404/blog/master/assets/${prefix}/${name}`;
 };
 
-console.log(getUrl("git/git command.jpg")); // https://raw.githubusercontent.com/yanyue404/blog/master/assets/git/git%20command.jpg
+console.log(getUrl("assets/git/git command.jpg")); // https://raw.githubusercontent.com/yanyue404/blog/master/assets/git/git%20command.jpg
+
+// 公共的 js 资源
+
+console.log(getUrl("public-js/lib/lodash.min.js")); // https://raw.githubusercontent.com/yanyue404/blog/master/public-js/lib/lodash.min.js
 ```
