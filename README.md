@@ -294,7 +294,7 @@
 - Blog：[RainBow's Blog](https://xiaoyueyue.org/issue-blog)
 - Stackoverflow：[yanyue404](https://stackoverflow.com/users/8273471/yanyue404)
 - Segmentfault：[yanyue404](https://segmentfault.com/u/yanyue404)
-- npm： [xiaoyueyue](https://www.npmjs.com/~yanyue404)
+- npm： [yanyue404](https://www.npmjs.com/~yanyue404)
 - Twitter：[yanyue404](https://twitter.com/yanyue404)
 - V2ex: [yanyue404](https://www.v2ex.com/member/yanyue404)
 - 知乎专栏: [《软件工程师的自我修养》](https://zhuanlan.zhihu.com/c_1279799154877792256)
