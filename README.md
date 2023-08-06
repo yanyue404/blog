@@ -300,6 +300,7 @@
 
 ## 关注
 
+- [programthink](https://program-think.blogspot.com/) 编程随想
 - [ruanyf/articles](https://github.com/ruanyf/articles) 阮一峰老师的文章
 - [fouber/blog](https://github.com/fouber/blog) 张云龙，前端工程
 - [berwin/blog](https://github.com/berwin/Blog) 记录成长的过程
