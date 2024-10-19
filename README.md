@@ -336,11 +336,11 @@
 ## 关注
 
 - [programthink](https://program-think.blogspot.com/) 编程随想
-- [ruanyf/articles](https://github.com/ruanyf/articles) 阮一峰老师的文章
-- [fouber/blog](https://github.com/fouber/blog) 张云龙，前端工程
-- [berwin/blog](https://github.com/berwin/Blog) 记录成长的过程
-- [mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog) 冴羽写博客的地方，预计写四个系列：JavaScript 深入系列、JavaScript 专题系列、ES6 系列、React 系列
+- [ruanyf/articles](https://github.com/ruanyf/articles) 阮一峰
+- [fouber/blog](https://github.com/fouber/blog) 张云龙
+- [mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog) 冴羽
 - [ConardLi](https://github.com/ConardLi/ConardLi.github.io) 完善的知识体系： 【自检】前端知识清单
+- [woai3c](https://github.com/woai3c/Front-end-articles) 谭光志
 - [更多 blog (stars list) ...](https://github.com/stars/yanyue404/lists/blog)
 
 ## 社交
