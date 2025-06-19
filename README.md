@@ -2,9 +2,10 @@
 
 基督徒 | F2E
 
-## 目录
 
-<a href="https://openrss.org/github.com/yanyue404/blog/issues">订阅 RSS</a>
+> 欢迎 RSS 订阅我的博客！通过 GitHub Issues 管理的所有新文章都会自动更新：https://openrss.org/github.com/yanyue404/blog/issues
+
+## 目录
 
 <details><summary>Update time: 2024-08-17 01:00:49 by <a href="https://github.com/yanyue404/issues2md">issues2md</a> :sunflower:</summary>
 
