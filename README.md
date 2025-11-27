@@ -3,7 +3,7 @@
 基督徒 | F2E
 
 
-> 欢迎 RSS 订阅我的博客！通过 GitHub Issues 管理的所有新文章都会自动更新：https://openrss.org/github.com/yanyue404/blog/issues
+> 欢迎 RSS 订阅我的博客！通过 GitHub Issues 管理的所有新文章都会自动更新：<del>https://openrss.org/github.com/yanyue404/blog/issues</del>
 
 ## 目录
 
