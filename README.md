@@ -326,15 +326,17 @@
 
 ## 关注
 
-- [ruanyf/articles](https://github.com/ruanyf/articles) [阮一峰](https://www.ruanyifeng.com/blog/)
-- [michaelliao](https://github.com/michaelliao) [廖雪峰](https://liaoxuefeng.com/)
-- [woai3c](https://github.com/woai3c/Front-end-articles) 谭光志
-- [mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog) 冴羽
-- [ConardLi](https://github.com/ConardLi/ConardLi.github.io) 完善的知识体系： 【自检】前端知识清单
+- [github/ruanyf](https://github.com/ruanyf/articles) [阮一峰](https://www.ruanyifeng.com/blog/)
+- [github/michaelliao](https://github.com/michaelliao) [廖雪峰](https://liaoxuefeng.com/)
+- [x/williamlong](https://x.com/williamlong) [月光博客](https://www.williamlong.info/) 
+- [酷 壳 - CoolShell (陈皓)](https://coolshell.cn/featured) 
 - [programthink](https://program-think.blogspot.com/) 编程随想
-- [fouber/blog](https://github.com/fouber/blog) 张云龙
-- [月光博客](https://www.williamlong.info/) [williamlong](https://x.com/williamlong)
-- [更多 blog (stars list) ...](https://github.com/stars/yanyue404/lists/blog)
+- **前端**
+  - [woai3c](https://github.com/woai3c/Front-end-articles) 谭光志
+  - [mqyqingfeng/Blog](https://github.com/mqyqingfeng/Blog) 冴羽
+  - [ConardLi](https://github.com/ConardLi/ConardLi.github.io) 完善的知识体系： 【自检】前端知识清单
+  - [fouber/blog](https://github.com/fouber/blog) 张云龙
+  - [更多 blog (stars list) ...](https://github.com/stars/yanyue404/lists/blog)
 
 ## 社交
 
