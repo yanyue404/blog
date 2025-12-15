@@ -328,8 +328,8 @@
 
 - [github/ruanyf](https://github.com/ruanyf/articles) [阮一峰](https://www.ruanyifeng.com/blog/)
 - [github/michaelliao](https://github.com/michaelliao) [廖雪峰](https://liaoxuefeng.com/)
+- [github/haoer](https://github.com/haoel) [酷 壳 - CoolShell (陈皓)](https://coolshell.cn/featured)
 - [x/williamlong](https://x.com/williamlong) [月光博客](https://www.williamlong.info/) 
-- [酷 壳 - CoolShell (陈皓)](https://coolshell.cn/featured) 
 - [programthink](https://program-think.blogspot.com/) 编程随想
 - **前端**
   - [woai3c](https://github.com/woai3c/Front-end-articles) 谭光志
