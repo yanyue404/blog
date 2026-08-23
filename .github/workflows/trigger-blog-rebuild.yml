@@ -1,0 +1,20 @@
+# 在本仓库配置 secrets.ACCESS_TOKEN（能对 yanyue404/nuxt-issue-blog 发 repository_dispatch）
+name: Trigger blog rebuild
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled, reopened, closed]
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify nuxt-issue-blog
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          curl -sS -X POST \
+            -H "Authorization: token $ACCESS_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/yanyue404/nuxt-issue-blog/dispatches \
+            -d '{"event_type":"blog-content-updated"}'
