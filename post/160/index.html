@@ -1,0 +1,536 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>常用 Git 命令清单 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 在日常工作我中使用 vscode 作为开发编辑器，本地使用编辑器自带的 git 解决方案，安装了 TortoiseGit 来简化 git 操作，但是必要的命令行操作还是必须的。 为了提高操作的效率以及优化使用体验，我还做了 .gitconfig 自定义配置，安装了命令行工具 git bash、"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="常用 Git 命令清单"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 在日常工作我中使用 vscode 作为开发编辑器，本地使用编辑器自带的 git 解决方案，安装了 TortoiseGit 来简化 git 操作，但是必要的命令行操作还是必须的。 为了提高操作的效率以及优化使用体验，我还做了 .gitconfig 自定义配置，安装了命令行工具 git bash、"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="常用 Git 命令清单"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 在日常工作我中使用 vscode 作为开发编辑器，本地使用编辑器自带的 git 解决方案，安装了 TortoiseGit 来简化 git 操作，但是必要的命令行操作还是必须的。 为了提高操作的效率以及优化使用体验，我还做了 .gitconfig 自定义配置，安装了命令行工具 git bash、"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/160#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/160#main-heading-H2-1" title="命令清单" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              命令清单
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/160#main-heading-H2-2" title="自定义配置" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              自定义配置
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/160#main-heading-H2-3" title="参考" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>常用 Git 命令清单</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>常用 Git 命令清单</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2020-07-29</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 12 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto">在日常工作我中使用 vscode 作为开发编辑器，本地使用编辑器自带的 git 解决方案，安装了 <a href="https://tortoisegit.org/" rel="nofollow">TortoiseGit</a> 来简化 git 操作，但是必要的命令行操作还是必须的。</p>
+<p dir="auto">为了提高操作的效率以及优化使用体验，我还做了 <code class="notranslate">.gitconfig</code> 自定义配置，安装了命令行工具 <a href="https://gitforwindows.org/" rel="nofollow">git bash</a>、<a href="https://conemu.github.io/" rel="nofollow">Conemu</a> 。</p>
+<p dir="auto">在这里记录一下我常用的 Git 命令清单，方便查阅。</p>
+<h2 id="main-heading-H2-1">命令清单</h2>
+<p dir="auto">（1）初始化</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='# 生成 SSH 公钥
+ssh-keygen -o
+
+# 配置用户名
+git config --global user.name "自己的名字"
+
+# 配置邮箱
+git config --global user.email "自己的邮箱"
+
+# 生成设备公钥
+ssh-keygen -t rsa || ssh-keygen
+
+# 测试 github 连接状态
+ssh -T git@github.com
+
+# 拷贝项目与历史记录
+git clone [url]
+
+# 使用代理拷贝项目
+git clone -c http.proxy="http://127.0.0.1:8899" [url]
+
+# 全局配置代理
+git config --global http.proxy http://127.0.0.1:1080
+git config --global https.proxy https://127.0.0.1:1080
+
+# 全局取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy'><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 生成 SSH 公钥</span>
+ssh-keygen -o
+
+<span class="pl-c"><span class="pl-c">#</span> 配置用户名</span>
+git config --global user.name <span class="pl-s"><span class="pl-pds">"</span>自己的名字<span class="pl-pds">"</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span> 配置邮箱</span>
+git config --global user.email <span class="pl-s"><span class="pl-pds">"</span>自己的邮箱<span class="pl-pds">"</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span> 生成设备公钥</span>
+ssh-keygen -t rsa <span class="pl-k">||</span> ssh-keygen
+
+<span class="pl-c"><span class="pl-c">#</span> 测试 github 连接状态</span>
+ssh -T git@github.com
+
+<span class="pl-c"><span class="pl-c">#</span> 拷贝项目与历史记录</span>
+git clone [url]
+
+<span class="pl-c"><span class="pl-c">#</span> 使用代理拷贝项目</span>
+git clone -c http.proxy=<span class="pl-s"><span class="pl-pds">"</span>http://127.0.0.1:8899<span class="pl-pds">"</span></span> [url]
+
+<span class="pl-c"><span class="pl-c">#</span> 全局配置代理</span>
+git config --global http.proxy http://127.0.0.1:1080
+git config --global https.proxy https://127.0.0.1:1080
+
+<span class="pl-c"><span class="pl-c">#</span> 全局取消代理</span>
+git config --global --unset http.proxy
+git config --global --unset https.proxy</pre></div>
+<p dir="auto">（2） 配置</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 显示当前的Git配置
+git config --list
+
+# 编辑Git配置文件
+git config -e [--global]"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 显示当前的Git配置</span>
+git config --list
+
+<span class="pl-c"><span class="pl-c">#</span> 编辑Git配置文件</span>
+git config -e [--global]</pre></div>
+<p dir="auto">（3） 查看信息</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 查看提交日志,图形化显示合并关系 (自定义简化命令)
+git lgh
+
+# 显示整个本地仓库的最近提交，包括所有分支
+git reflog
+
+# 显示工作区有变更的文件
+git status => git st
+
+# 查看某次 commmit 的提交信息
+git show [commitID]
+
+# 显示某次提交时，某个文件的内容
+git show [commitID]:[filename]
+
+# 显示两次提交之间的差异
+git diff [first-commitID] [second-commitID]"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 查看提交日志,图形化显示合并关系 (自定义简化命令)</span>
+git lgh
+
+<span class="pl-c"><span class="pl-c">#</span> 显示整个本地仓库的最近提交，包括所有分支</span>
+git reflog
+
+<span class="pl-c"><span class="pl-c">#</span> 显示工作区有变更的文件</span>
+git status =<span class="pl-k">></span> git st
+
+<span class="pl-c"><span class="pl-c">#</span> 查看某次 commmit 的提交信息</span>
+git show [commitID]
+
+<span class="pl-c"><span class="pl-c">#</span> 显示某次提交时，某个文件的内容</span>
+git show [commitID]:[filename]
+
+<span class="pl-c"><span class="pl-c">#</span> 显示两次提交之间的差异</span>
+git diff [first-commitID] [second-commitID]</pre></div>
+<p dir="auto">（4） 撤销</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 撤销工作区的修改 (指所有未暂存的文件)
+git restore .
+
+# 撤销暂存区的修改，将文件恢复到工作区
+git restore --staged .
+
+# 重置当前分支的HEAD为指定commitID，同时重置暂存区和工作区，与指定commit一致
+git reset --hard [commitID]
+
+# 取消 rebase
+git rebase --abort
+
+# 暂时将未提交的变化移除，方便做其他操作
+git stash
+
+# 移入之前缓存的工作区修改
+git stash pop
+
+# 查看缓存的 stash 列表
+git stash list"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 撤销工作区的修改 (指所有未暂存的文件)</span>
+git restore <span class="pl-c1">.</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 撤销暂存区的修改，将文件恢复到工作区</span>
+git restore --staged <span class="pl-c1">.</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 重置当前分支的HEAD为指定commitID，同时重置暂存区和工作区，与指定commit一致</span>
+git reset --hard [commitID]
+
+<span class="pl-c"><span class="pl-c">#</span> 取消 rebase</span>
+git rebase --abort
+
+<span class="pl-c"><span class="pl-c">#</span> 暂时将未提交的变化移除，方便做其他操作</span>
+git stash
+
+<span class="pl-c"><span class="pl-c">#</span> 移入之前缓存的工作区修改</span>
+git stash pop
+
+<span class="pl-c"><span class="pl-c">#</span> 查看缓存的 stash 列表</span>
+git stash list</pre></div>
+<p dir="auto">（5） 分支</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='# 列出所有本地分支
+git branch => git br
+
+# 列出所有远程分支
+git branch -r
+
+# 列出所有本地分支和远程分支
+git branch -a
+
+# 切换到目标分支
+git checkout [branch-name] => git co [branch-name]
+
+# 新建一个分支，但依然停留在当前分支
+git branch [branch-name]
+
+# 新建一个分支(基于当前分支)，并切换到该分支
+git checkout -b [branch]
+
+# 新建一个分支(基于develop分支)，并切换到该分支
+git checkout -b [new-branch] develop
+
+# 新建本地分支后关联远程分支
+git push --set-upstream origin develop-yue
+
+# 合并指定分支到当前分支
+git merge [branch]
+
+# 不使用fast-forward 方式合并，保留分支的commit历史
+git merge --no-ff [branch]
+
+# 合并分支，并提交 commit 描述
+git merge --no-ff -m "feat: 新特性" [branch]
+
+# 选择一个或多个commit，合并进当前分支
+git cherry-pick [commit1_ID] [commit2_ID]
+
+# 删除分支
+git branch -d [branch-name]
+
+# 更新本地远端分支目录
+git remote update origin --prune
+
+# 删除远程分支
+git push origin --delete [branch-name]'><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 列出所有本地分支</span>
+git branch =<span class="pl-k">></span> git br
+
+<span class="pl-c"><span class="pl-c">#</span> 列出所有远程分支</span>
+git branch -r
+
+<span class="pl-c"><span class="pl-c">#</span> 列出所有本地分支和远程分支</span>
+git branch -a
+
+<span class="pl-c"><span class="pl-c">#</span> 切换到目标分支</span>
+git checkout [branch-name] =<span class="pl-k">></span> git co [branch-name]
+
+<span class="pl-c"><span class="pl-c">#</span> 新建一个分支，但依然停留在当前分支</span>
+git branch [branch-name]
+
+<span class="pl-c"><span class="pl-c">#</span> 新建一个分支(基于当前分支)，并切换到该分支</span>
+git checkout -b [branch]
+
+<span class="pl-c"><span class="pl-c">#</span> 新建一个分支(基于develop分支)，并切换到该分支</span>
+git checkout -b [new-branch] develop
+
+<span class="pl-c"><span class="pl-c">#</span> 新建本地分支后关联远程分支</span>
+git push --set-upstream origin develop-yue
+
+<span class="pl-c"><span class="pl-c">#</span> 合并指定分支到当前分支</span>
+git merge [branch]
+
+<span class="pl-c"><span class="pl-c">#</span> 不使用fast-forward 方式合并，保留分支的commit历史</span>
+git merge --no-ff [branch]
+
+<span class="pl-c"><span class="pl-c">#</span> 合并分支，并提交 commit 描述</span>
+git merge --no-ff -m <span class="pl-s"><span class="pl-pds">"</span>feat: 新特性<span class="pl-pds">"</span></span> [branch]
+
+<span class="pl-c"><span class="pl-c">#</span> 选择一个或多个commit，合并进当前分支</span>
+git cherry-pick [commit1_ID] [commit2_ID]
+
+<span class="pl-c"><span class="pl-c">#</span> 删除分支</span>
+git branch -d [branch-name]
+
+<span class="pl-c"><span class="pl-c">#</span> 更新本地远端分支目录</span>
+git remote update origin --prune
+
+<span class="pl-c"><span class="pl-c">#</span> 删除远程分支</span>
+git push origin --delete [branch-name]</pre></div>
+<p dir="auto">（6） 代码提交</p>
+<blockquote>
+<p dir="auto"><code class="notranslate">=></code> 后为自定义的简化命令</p>
+</blockquote>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='# 添加指定文件到暂存区
+git add [file1] [file2] ...
+
+# 添加当前目录的所有文件到暂存区
+git add .
+
+# 提交 log 注释
+git commit -m "commit log"
+
+# 变基拉取远端最新代码（本地没有修改）
+git pull --rebase => git pr
+
+# 变基拉取远端最新代码（本地有修改）
+git pull --rebase --autostash => git prs
+
+# 推送到远端
+git push
+
+# 覆盖重写最新 commit（而后强制提交）
+git commit --amend -m "chore: " 
+
+# 修改提交日志 
+git rebase -i HEAD~5'><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 添加指定文件到暂存区</span>
+git add [file1] [file2] ...
+
+<span class="pl-c"><span class="pl-c">#</span> 添加当前目录的所有文件到暂存区</span>
+git add <span class="pl-c1">.</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 提交 log 注释</span>
+git commit -m <span class="pl-s"><span class="pl-pds">"</span>commit log<span class="pl-pds">"</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span> 变基拉取远端最新代码（本地没有修改）</span>
+git pull --rebase =<span class="pl-k">></span> git pr
+
+<span class="pl-c"><span class="pl-c">#</span> 变基拉取远端最新代码（本地有修改）</span>
+git pull --rebase --autostash =<span class="pl-k">></span> git prs
+
+<span class="pl-c"><span class="pl-c">#</span> 推送到远端</span>
+git push
+
+<span class="pl-c"><span class="pl-c">#</span> 覆盖重写最新 commit（而后强制提交）</span>
+git commit --amend -m <span class="pl-s"><span class="pl-pds">"</span>chore: <span class="pl-pds">"</span></span> 
+
+<span class="pl-c"><span class="pl-c">#</span> 修改提交日志 </span>
+git rebase -i HEAD~5</pre></div>
+<p dir="auto">（7）标签</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='# 列出所有tag
+git tag
+
+# 新建一个tag在当前commit
+git tag [tag]
+
+# 新建一个tag在指定commit
+git tag [tag] [commit]
+
+# 设置带有说明的标签 ，-a 为标签， -m 为说明
+git tag -a [tag] -m "commit log" [commit]
+
+# 查看tag信息
+git show [tag]
+
+# 切换到 tag
+git checkout v1.0.0
+
+# 提交指定tag
+git push [remote] [tag]
+
+# 删除本地 tag
+git tag -d [tag]
+
+# 删除远程tag
+git push origin :refs/tags/[tagName]'><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 列出所有tag</span>
+git tag
+
+<span class="pl-c"><span class="pl-c">#</span> 新建一个tag在当前commit</span>
+git tag [tag]
+
+<span class="pl-c"><span class="pl-c">#</span> 新建一个tag在指定commit</span>
+git tag [tag] [commit]
+
+<span class="pl-c"><span class="pl-c">#</span> 设置带有说明的标签 ，-a 为标签， -m 为说明</span>
+git tag -a [tag] -m <span class="pl-s"><span class="pl-pds">"</span>commit log<span class="pl-pds">"</span></span> [commit]
+
+<span class="pl-c"><span class="pl-c">#</span> 查看tag信息</span>
+git show [tag]
+
+<span class="pl-c"><span class="pl-c">#</span> 切换到 tag</span>
+git checkout v1.0.0
+
+<span class="pl-c"><span class="pl-c">#</span> 提交指定tag</span>
+git push [remote] [tag]
+
+<span class="pl-c"><span class="pl-c">#</span> 删除本地 tag</span>
+git tag -d [tag]
+
+<span class="pl-c"><span class="pl-c">#</span> 删除远程tag</span>
+git push origin :refs/tags/[tagName]</pre></div>
+<p dir="auto">（8）导出</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='# 将master分支打包为output.tar.gz
+git archive --format tar.gz --output "./output.tar.gz" master'><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 将master分支打包为output.tar.gz</span>
+git archive --format tar.gz --output <span class="pl-s"><span class="pl-pds">"</span>./output.tar.gz<span class="pl-pds">"</span></span> master</pre></div>
+<p dir="auto">（9） git 创建一个空分支</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='# 1. 创建分支
+git checkout --orphan new-branchName
+
+#2. 删除所有内容我们不想提交任何内容，所以我们需要把当前内容全部删除
+
+git rm -rf .
+
+#3. 提交分支使用 commit 命令来提交分支
+
+git commit -am "new branch for documentation"
+
+#如果没有任何文件提交的话，分支是看不到的，可以创建一个新文件后再次提交则新创建的 branch 就会显示出来。
+
+#4. 使用 branch 来查看分支是否创建成功
+
+git branch -a'><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1. 创建分支</span>
+git checkout --orphan new-branchName
+
+<span class="pl-c"><span class="pl-c">#</span>2. 删除所有内容我们不想提交任何内容，所以我们需要把当前内容全部删除</span>
+
+git rm -rf <span class="pl-c1">.</span>
+
+<span class="pl-c"><span class="pl-c">#</span>3. 提交分支使用 commit 命令来提交分支</span>
+
+git commit -am <span class="pl-s"><span class="pl-pds">"</span>new branch for documentation<span class="pl-pds">"</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span>如果没有任何文件提交的话，分支是看不到的，可以创建一个新文件后再次提交则新创建的 branch 就会显示出来。</span>
+
+<span class="pl-c"><span class="pl-c">#</span>4. 使用 branch 来查看分支是否创建成功</span>
+
+git branch -a</pre></div>
+<h2 id="main-heading-H2-2">自定义配置</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="[user]
+	name = yanyue404
+	email = xiaoyueyue165@gmail.com
+	signingkey = &#34;&#34;
+[credential]
+	helper = store
+[http]
+	postBuffer = 500M
+	sslBackend = openssl
+	maxRequestBuffer = 100M
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[alias]
+# 简化命令
+	br = branch
+	cm = commit -m
+        cma = commit --amend -m
+	co = checkout
+	st = status
+	mg = merge
+	cp = cherry-pick
+	last = log -10
+# 回退
+	rs = reset --hard
+	back = checkout master
+	r3 = rebase -i HEAD~3
+	r5 = rebase -i HEAD~5
+	r7 = rebase -i HEAD~7
+	r10 = rebase -i HEAD~10
+	unstage = reset HEAD
+	rh = reset --hard HEAD
+# pull
+	pr = pull --rebase
+	prs = pull --rebase --autostash
+# 日志
+	lg  = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'  --date=format:'%Y-%m-%d %H:%M:%S' --abbrev-commit
+	lgd = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=format:'%Y-%m-%d %H:%M:%S' --abbrev-commit
+	lgh = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lgr = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --reverse
+[format]
+	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[help]
+	autocorrect = 1
+[core]
+	compression = 0
+	quotepath = true
+[i18n]
+	commitencoding = utf-8
+	logoutputencoding = utf-8
+[gui]
+	encoding = utf-8
+[merge &#34;ours&#34;]
+	driver = true
+"><pre class="notranslate">[user]
+	name = yanyue404
+	email = xiaoyueyue165@gmail.com
+	signingkey = <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>
+[credential]
+	helper = store
+[http]
+	postBuffer = 500M
+	sslBackend = openssl
+	maxRequestBuffer = 100M
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = <span class="pl-c1">true</span>
+[alias]
+<span class="pl-c"><span class="pl-c">#</span> 简化命令</span>
+	br = branch
+	cm = commit -m
+        cma = commit --amend -m
+	co = checkout
+	st = status
+	mg = merge
+	cp = cherry-pick
+	last = log -10
+<span class="pl-c"><span class="pl-c">#</span> 回退</span>
+	rs = reset --hard
+	back = checkout master
+	r3 = rebase -i HEAD~3
+	r5 = rebase -i HEAD~5
+	r7 = rebase -i HEAD~7
+	r10 = rebase -i HEAD~10
+	unstage = reset HEAD
+	rh = reset --hard HEAD
+<span class="pl-c"><span class="pl-c">#</span> pull</span>
+	pr = pull --rebase
+	prs = pull --rebase --autostash
+<span class="pl-c"><span class="pl-c">#</span> 日志</span>
+	lg  = log --color --pretty=format:<span class="pl-s"><span class="pl-pds">'</span>%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an>%Creset<span class="pl-pds">'</span></span>  --date=format:<span class="pl-s"><span class="pl-pds">'</span>%Y-%m-%d %H:%M:%S<span class="pl-pds">'</span></span> --abbrev-commit
+	lgd = log --color --pretty=format:<span class="pl-s"><span class="pl-pds">'</span>%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)&lt;%an>%Creset<span class="pl-pds">'</span></span> --date=format:<span class="pl-s"><span class="pl-pds">'</span>%Y-%m-%d %H:%M:%S<span class="pl-pds">'</span></span> --abbrev-commit
+	lgh = log --color --graph --pretty=format:<span class="pl-s"><span class="pl-pds">'</span>%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an>%Creset<span class="pl-pds">'</span></span> --abbrev-commit
+	lgr = log --color --pretty=format:<span class="pl-s"><span class="pl-pds">'</span>%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an>%Creset<span class="pl-pds">'</span></span> --abbrev-commit --reverse
+[format]
+	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[help]
+	autocorrect = 1
+[core]
+	compression = 0
+	quotepath = <span class="pl-c1">true</span>
+[i18n]
+	commitencoding = utf-8
+	logoutputencoding = utf-8
+[gui]
+	encoding = utf-8
+[merge <span class="pl-s"><span class="pl-pds">"</span>ours<span class="pl-pds">"</span></span>]
+	driver = <span class="pl-c1">true</span>
+</pre></div>
+<h2 id="main-heading-H2-3">参考</h2>
+<ul dir="auto">
+<li><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" rel="nofollow">常用 Git 命令清单</a></li>
+<li><a href="https://stackoverflow.com/questions/tagged/git?tab=Votes" rel="nofollow">stackoverflow 关于 Git 的高票回答</a></li>
+<li><a href="https://segmentfault.com/q/1010000002477106" rel="nofollow">git merge --no-ff 是什么意思</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,n,a,t,p){return{layout:"default",data:[{post:{id:667521388,number:160,title:"常用 Git 命令清单",created_at:"2020-07-29T03:34:26Z",updated_at:"2026-08-23T15:48:11Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto">在日常工作我中使用 vscode 作为开发编辑器，本地使用编辑器自带的 git 解决方案，安装了 <a href="https://tortoisegit.org/" rel="nofollow">TortoiseGit</a> 来简化 git 操作，但是必要的命令行操作还是必须的。</p>\n<p dir="auto">为了提高操作的效率以及优化使用体验，我还做了 <code class="notranslate">.gitconfig</code> 自定义配置，安装了命令行工具 <a href="https://gitforwindows.org/" rel="nofollow">git bash</a>、<a href="https://conemu.github.io/" rel="nofollow">Conemu</a> 。</p>\n<p dir="auto">在这里记录一下我常用的 Git 命令清单，方便查阅。</p>\n<h2 id="main-heading-H2-1">命令清单</h2>\n<p dir="auto">（1）初始化</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 生成 SSH 公钥\nssh-keygen -o\n\n# 配置用户名\ngit config --global user.name &quot;自己的名字&quot;\n\n# 配置邮箱\ngit config --global user.email &quot;自己的邮箱&quot;\n\n# 生成设备公钥\nssh-keygen -t rsa || ssh-keygen\n\n# 测试 github 连接状态\nssh -T git@github.com\n\n# 拷贝项目与历史记录\ngit clone [url]\n\n# 使用代理拷贝项目\ngit clone -c http.proxy=&quot;http://127.0.0.1:8899&quot; [url]\n\n# 全局配置代理\ngit config --global http.proxy http://127.0.0.1:1080\ngit config --global https.proxy https://127.0.0.1:1080\n\n# 全局取消代理\ngit config --global --unset http.proxy\ngit config --global --unset https.proxy"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 生成 SSH 公钥</span>\nssh-keygen -o\n\n<span class="pl-c"><span class="pl-c">#</span> 配置用户名</span>\ngit config --global user.name <span class="pl-s"><span class="pl-pds">"</span>自己的名字<span class="pl-pds">"</span></span>\n\n<span class="pl-c"><span class="pl-c">#</span> 配置邮箱</span>\ngit config --global user.email <span class="pl-s"><span class="pl-pds">"</span>自己的邮箱<span class="pl-pds">"</span></span>\n\n<span class="pl-c"><span class="pl-c">#</span> 生成设备公钥</span>\nssh-keygen -t rsa <span class="pl-k">||</span> ssh-keygen\n\n<span class="pl-c"><span class="pl-c">#</span> 测试 github 连接状态</span>\nssh -T git@github.com\n\n<span class="pl-c"><span class="pl-c">#</span> 拷贝项目与历史记录</span>\ngit clone [url]\n\n<span class="pl-c"><span class="pl-c">#</span> 使用代理拷贝项目</span>\ngit clone -c http.proxy=<span class="pl-s"><span class="pl-pds">"</span>http://127.0.0.1:8899<span class="pl-pds">"</span></span> [url]\n\n<span class="pl-c"><span class="pl-c">#</span> 全局配置代理</span>\ngit config --global http.proxy http://127.0.0.1:1080\ngit config --global https.proxy https://127.0.0.1:1080\n\n<span class="pl-c"><span class="pl-c">#</span> 全局取消代理</span>\ngit config --global --unset http.proxy\ngit config --global --unset https.proxy</pre></div>\n<p dir="auto">（2） 配置</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 显示当前的Git配置\ngit config --list\n\n# 编辑Git配置文件\ngit config -e [--global]"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 显示当前的Git配置</span>\ngit config --list\n\n<span class="pl-c"><span class="pl-c">#</span> 编辑Git配置文件</span>\ngit config -e [--global]</pre></div>\n<p dir="auto">（3） 查看信息</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 查看提交日志,图形化显示合并关系 (自定义简化命令)\ngit lgh\n\n# 显示整个本地仓库的最近提交，包括所有分支\ngit reflog\n\n# 显示工作区有变更的文件\ngit status =&gt; git st\n\n# 查看某次 commmit 的提交信息\ngit show [commitID]\n\n# 显示某次提交时，某个文件的内容\ngit show [commitID]:[filename]\n\n# 显示两次提交之间的差异\ngit diff [first-commitID] [second-commitID]"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 查看提交日志,图形化显示合并关系 (自定义简化命令)</span>\ngit lgh\n\n<span class="pl-c"><span class="pl-c">#</span> 显示整个本地仓库的最近提交，包括所有分支</span>\ngit reflog\n\n<span class="pl-c"><span class="pl-c">#</span> 显示工作区有变更的文件</span>\ngit status =<span class="pl-k">&gt;</span> git st\n\n<span class="pl-c"><span class="pl-c">#</span> 查看某次 commmit 的提交信息</span>\ngit show [commitID]\n\n<span class="pl-c"><span class="pl-c">#</span> 显示某次提交时，某个文件的内容</span>\ngit show [commitID]:[filename]\n\n<span class="pl-c"><span class="pl-c">#</span> 显示两次提交之间的差异</span>\ngit diff [first-commitID] [second-commitID]</pre></div>\n<p dir="auto">（4） 撤销</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 撤销工作区的修改 (指所有未暂存的文件)\ngit restore .\n\n# 撤销暂存区的修改，将文件恢复到工作区\ngit restore --staged .\n\n# 重置当前分支的HEAD为指定commitID，同时重置暂存区和工作区，与指定commit一致\ngit reset --hard [commitID]\n\n# 取消 rebase\ngit rebase --abort\n\n# 暂时将未提交的变化移除，方便做其他操作\ngit stash\n\n# 移入之前缓存的工作区修改\ngit stash pop\n\n# 查看缓存的 stash 列表\ngit stash list"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 撤销工作区的修改 (指所有未暂存的文件)</span>\ngit restore <span class="pl-c1">.</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 撤销暂存区的修改，将文件恢复到工作区</span>\ngit restore --staged <span class="pl-c1">.</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 重置当前分支的HEAD为指定commitID，同时重置暂存区和工作区，与指定commit一致</span>\ngit reset --hard [commitID]\n\n<span class="pl-c"><span class="pl-c">#</span> 取消 rebase</span>\ngit rebase --abort\n\n<span class="pl-c"><span class="pl-c">#</span> 暂时将未提交的变化移除，方便做其他操作</span>\ngit stash\n\n<span class="pl-c"><span class="pl-c">#</span> 移入之前缓存的工作区修改</span>\ngit stash pop\n\n<span class="pl-c"><span class="pl-c">#</span> 查看缓存的 stash 列表</span>\ngit stash list</pre></div>\n<p dir="auto">（5） 分支</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 列出所有本地分支\ngit branch =&gt; git br\n\n# 列出所有远程分支\ngit branch -r\n\n# 列出所有本地分支和远程分支\ngit branch -a\n\n# 切换到目标分支\ngit checkout [branch-name] =&gt; git co [branch-name]\n\n# 新建一个分支，但依然停留在当前分支\ngit branch [branch-name]\n\n# 新建一个分支(基于当前分支)，并切换到该分支\ngit checkout -b [branch]\n\n# 新建一个分支(基于develop分支)，并切换到该分支\ngit checkout -b [new-branch] develop\n\n# 新建本地分支后关联远程分支\ngit push --set-upstream origin develop-yue\n\n# 合并指定分支到当前分支\ngit merge [branch]\n\n# 不使用fast-forward 方式合并，保留分支的commit历史\ngit merge --no-ff [branch]\n\n# 合并分支，并提交 commit 描述\ngit merge --no-ff -m &quot;feat: 新特性&quot; [branch]\n\n# 选择一个或多个commit，合并进当前分支\ngit cherry-pick [commit1_ID] [commit2_ID]\n\n# 删除分支\ngit branch -d [branch-name]\n\n# 更新本地远端分支目录\ngit remote update origin --prune\n\n# 删除远程分支\ngit push origin --delete [branch-name]"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 列出所有本地分支</span>\ngit branch =<span class="pl-k">&gt;</span> git br\n\n<span class="pl-c"><span class="pl-c">#</span> 列出所有远程分支</span>\ngit branch -r\n\n<span class="pl-c"><span class="pl-c">#</span> 列出所有本地分支和远程分支</span>\ngit branch -a\n\n<span class="pl-c"><span class="pl-c">#</span> 切换到目标分支</span>\ngit checkout [branch-name] =<span class="pl-k">&gt;</span> git co [branch-name]\n\n<span class="pl-c"><span class="pl-c">#</span> 新建一个分支，但依然停留在当前分支</span>\ngit branch [branch-name]\n\n<span class="pl-c"><span class="pl-c">#</span> 新建一个分支(基于当前分支)，并切换到该分支</span>\ngit checkout -b [branch]\n\n<span class="pl-c"><span class="pl-c">#</span> 新建一个分支(基于develop分支)，并切换到该分支</span>\ngit checkout -b [new-branch] develop\n\n<span class="pl-c"><span class="pl-c">#</span> 新建本地分支后关联远程分支</span>\ngit push --set-upstream origin develop-yue\n\n<span class="pl-c"><span class="pl-c">#</span> 合并指定分支到当前分支</span>\ngit merge [branch]\n\n<span class="pl-c"><span class="pl-c">#</span> 不使用fast-forward 方式合并，保留分支的commit历史</span>\ngit merge --no-ff [branch]\n\n<span class="pl-c"><span class="pl-c">#</span> 合并分支，并提交 commit 描述</span>\ngit merge --no-ff -m <span class="pl-s"><span class="pl-pds">"</span>feat: 新特性<span class="pl-pds">"</span></span> [branch]\n\n<span class="pl-c"><span class="pl-c">#</span> 选择一个或多个commit，合并进当前分支</span>\ngit cherry-pick [commit1_ID] [commit2_ID]\n\n<span class="pl-c"><span class="pl-c">#</span> 删除分支</span>\ngit branch -d [branch-name]\n\n<span class="pl-c"><span class="pl-c">#</span> 更新本地远端分支目录</span>\ngit remote update origin --prune\n\n<span class="pl-c"><span class="pl-c">#</span> 删除远程分支</span>\ngit push origin --delete [branch-name]</pre></div>\n<p dir="auto">（6） 代码提交</p>\n<blockquote>\n<p dir="auto"><code class="notranslate">=&gt;</code> 后为自定义的简化命令</p>\n</blockquote>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 添加指定文件到暂存区\ngit add [file1] [file2] ...\n\n# 添加当前目录的所有文件到暂存区\ngit add .\n\n# 提交 log 注释\ngit commit -m &quot;commit log&quot;\n\n# 变基拉取远端最新代码（本地没有修改）\ngit pull --rebase =&gt; git pr\n\n# 变基拉取远端最新代码（本地有修改）\ngit pull --rebase --autostash =&gt; git prs\n\n# 推送到远端\ngit push\n\n# 覆盖重写最新 commit（而后强制提交）\ngit commit --amend -m &quot;chore: &quot; \n\n# 修改提交日志 \ngit rebase -i HEAD~5"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 添加指定文件到暂存区</span>\ngit add [file1] [file2] ...\n\n<span class="pl-c"><span class="pl-c">#</span> 添加当前目录的所有文件到暂存区</span>\ngit add <span class="pl-c1">.</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 提交 log 注释</span>\ngit commit -m <span class="pl-s"><span class="pl-pds">"</span>commit log<span class="pl-pds">"</span></span>\n\n<span class="pl-c"><span class="pl-c">#</span> 变基拉取远端最新代码（本地没有修改）</span>\ngit pull --rebase =<span class="pl-k">&gt;</span> git pr\n\n<span class="pl-c"><span class="pl-c">#</span> 变基拉取远端最新代码（本地有修改）</span>\ngit pull --rebase --autostash =<span class="pl-k">&gt;</span> git prs\n\n<span class="pl-c"><span class="pl-c">#</span> 推送到远端</span>\ngit push\n\n<span class="pl-c"><span class="pl-c">#</span> 覆盖重写最新 commit（而后强制提交）</span>\ngit commit --amend -m <span class="pl-s"><span class="pl-pds">"</span>chore: <span class="pl-pds">"</span></span> \n\n<span class="pl-c"><span class="pl-c">#</span> 修改提交日志 </span>\ngit rebase -i HEAD~5</pre></div>\n<p dir="auto">（7）标签</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 列出所有tag\ngit tag\n\n# 新建一个tag在当前commit\ngit tag [tag]\n\n# 新建一个tag在指定commit\ngit tag [tag] [commit]\n\n# 设置带有说明的标签 ，-a 为标签， -m 为说明\ngit tag -a [tag] -m &quot;commit log&quot; [commit]\n\n# 查看tag信息\ngit show [tag]\n\n# 切换到 tag\ngit checkout v1.0.0\n\n# 提交指定tag\ngit push [remote] [tag]\n\n# 删除本地 tag\ngit tag -d [tag]\n\n# 删除远程tag\ngit push origin :refs/tags/[tagName]"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 列出所有tag</span>\ngit tag\n\n<span class="pl-c"><span class="pl-c">#</span> 新建一个tag在当前commit</span>\ngit tag [tag]\n\n<span class="pl-c"><span class="pl-c">#</span> 新建一个tag在指定commit</span>\ngit tag [tag] [commit]\n\n<span class="pl-c"><span class="pl-c">#</span> 设置带有说明的标签 ，-a 为标签， -m 为说明</span>\ngit tag -a [tag] -m <span class="pl-s"><span class="pl-pds">"</span>commit log<span class="pl-pds">"</span></span> [commit]\n\n<span class="pl-c"><span class="pl-c">#</span> 查看tag信息</span>\ngit show [tag]\n\n<span class="pl-c"><span class="pl-c">#</span> 切换到 tag</span>\ngit checkout v1.0.0\n\n<span class="pl-c"><span class="pl-c">#</span> 提交指定tag</span>\ngit push [remote] [tag]\n\n<span class="pl-c"><span class="pl-c">#</span> 删除本地 tag</span>\ngit tag -d [tag]\n\n<span class="pl-c"><span class="pl-c">#</span> 删除远程tag</span>\ngit push origin :refs/tags/[tagName]</pre></div>\n<p dir="auto">（8）导出</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 将master分支打包为output.tar.gz\ngit archive --format tar.gz --output &quot;./output.tar.gz&quot; master"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 将master分支打包为output.tar.gz</span>\ngit archive --format tar.gz --output <span class="pl-s"><span class="pl-pds">"</span>./output.tar.gz<span class="pl-pds">"</span></span> master</pre></div>\n<p dir="auto">（9） git 创建一个空分支</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 1. 创建分支\ngit checkout --orphan new-branchName\n\n#2. 删除所有内容我们不想提交任何内容，所以我们需要把当前内容全部删除\n\ngit rm -rf .\n\n#3. 提交分支使用 commit 命令来提交分支\n\ngit commit -am &quot;new branch for documentation&quot;\n\n#如果没有任何文件提交的话，分支是看不到的，可以创建一个新文件后再次提交则新创建的 branch 就会显示出来。\n\n#4. 使用 branch 来查看分支是否创建成功\n\ngit branch -a"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1. 创建分支</span>\ngit checkout --orphan new-branchName\n\n<span class="pl-c"><span class="pl-c">#</span>2. 删除所有内容我们不想提交任何内容，所以我们需要把当前内容全部删除</span>\n\ngit rm -rf <span class="pl-c1">.</span>\n\n<span class="pl-c"><span class="pl-c">#</span>3. 提交分支使用 commit 命令来提交分支</span>\n\ngit commit -am <span class="pl-s"><span class="pl-pds">"</span>new branch for documentation<span class="pl-pds">"</span></span>\n\n<span class="pl-c"><span class="pl-c">#</span>如果没有任何文件提交的话，分支是看不到的，可以创建一个新文件后再次提交则新创建的 branch 就会显示出来。</span>\n\n<span class="pl-c"><span class="pl-c">#</span>4. 使用 branch 来查看分支是否创建成功</span>\n\ngit branch -a</pre></div>\n<h2 id="main-heading-H2-2">自定义配置</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="[user]\n\tname = yanyue404\n\temail = xiaoyueyue165@gmail.com\n\tsigningkey = &quot;&quot;\n[credential]\n\thelper = store\n[http]\n\tpostBuffer = 500M\n\tsslBackend = openssl\n\tmaxRequestBuffer = 100M\n[color]\n\tdiff = auto\n\tstatus = auto\n\tbranch = auto\n\tui = true\n[alias]\n# 简化命令\n\tbr = branch\n\tcm = commit -m\n        cma = commit --amend -m\n\tco = checkout\n\tst = status\n\tmg = merge\n\tcp = cherry-pick\n\tlast = log -10\n# 回退\n\trs = reset --hard\n\tback = checkout master\n\tr3 = rebase -i HEAD~3\n\tr5 = rebase -i HEAD~5\n\tr7 = rebase -i HEAD~7\n\tr10 = rebase -i HEAD~10\n\tunstage = reset HEAD\n\trh = reset --hard HEAD\n# pull\n\tpr = pull --rebase\n\tprs = pull --rebase --autostash\n# 日志\n\tlg  = log --color --pretty=format:\'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset\'  --date=format:\'%Y-%m-%d %H:%M:%S\' --abbrev-commit\n\tlgd = log --color --pretty=format:\'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset\' --date=format:\'%Y-%m-%d %H:%M:%S\' --abbrev-commit\n\tlgh = log --color --graph --pretty=format:\'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset\' --abbrev-commit\n\tlgr = log --color --pretty=format:\'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset\' --abbrev-commit --reverse\n[format]\n\tpretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset\n[help]\n\tautocorrect = 1\n[core]\n\tcompression = 0\n\tquotepath = true\n[i18n]\n\tcommitencoding = utf-8\n\tlogoutputencoding = utf-8\n[gui]\n\tencoding = utf-8\n[merge &quot;ours&quot;]\n\tdriver = true\n"><pre class="notranslate">[user]\n\tname = yanyue404\n\temail = xiaoyueyue165@gmail.com\n\tsigningkey = <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>\n[credential]\n\thelper = store\n[http]\n\tpostBuffer = 500M\n\tsslBackend = openssl\n\tmaxRequestBuffer = 100M\n[color]\n\tdiff = auto\n\tstatus = auto\n\tbranch = auto\n\tui = <span class="pl-c1">true</span>\n[alias]\n<span class="pl-c"><span class="pl-c">#</span> 简化命令</span>\n\tbr = branch\n\tcm = commit -m\n        cma = commit --amend -m\n\tco = checkout\n\tst = status\n\tmg = merge\n\tcp = cherry-pick\n\tlast = log -10\n<span class="pl-c"><span class="pl-c">#</span> 回退</span>\n\trs = reset --hard\n\tback = checkout master\n\tr3 = rebase -i HEAD~3\n\tr5 = rebase -i HEAD~5\n\tr7 = rebase -i HEAD~7\n\tr10 = rebase -i HEAD~10\n\tunstage = reset HEAD\n\trh = reset --hard HEAD\n<span class="pl-c"><span class="pl-c">#</span> pull</span>\n\tpr = pull --rebase\n\tprs = pull --rebase --autostash\n<span class="pl-c"><span class="pl-c">#</span> 日志</span>\n\tlg  = log --color --pretty=format:<span class="pl-s"><span class="pl-pds">\'</span>%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset<span class="pl-pds">\'</span></span>  --date=format:<span class="pl-s"><span class="pl-pds">\'</span>%Y-%m-%d %H:%M:%S<span class="pl-pds">\'</span></span> --abbrev-commit\n\tlgd = log --color --pretty=format:<span class="pl-s"><span class="pl-pds">\'</span>%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)&lt;%an&gt;%Creset<span class="pl-pds">\'</span></span> --date=format:<span class="pl-s"><span class="pl-pds">\'</span>%Y-%m-%d %H:%M:%S<span class="pl-pds">\'</span></span> --abbrev-commit\n\tlgh = log --color --graph --pretty=format:<span class="pl-s"><span class="pl-pds">\'</span>%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset<span class="pl-pds">\'</span></span> --abbrev-commit\n\tlgr = log --color --pretty=format:<span class="pl-s"><span class="pl-pds">\'</span>%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset<span class="pl-pds">\'</span></span> --abbrev-commit --reverse\n[format]\n\tpretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset\n[help]\n\tautocorrect = 1\n[core]\n\tcompression = 0\n\tquotepath = <span class="pl-c1">true</span>\n[i18n]\n\tcommitencoding = utf-8\n\tlogoutputencoding = utf-8\n[gui]\n\tencoding = utf-8\n[merge <span class="pl-s"><span class="pl-pds">"</span>ours<span class="pl-pds">"</span></span>]\n\tdriver = <span class="pl-c1">true</span>\n</pre></div>\n<h2 id="main-heading-H2-3">参考</h2>\n<ul dir="auto">\n<li><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" rel="nofollow">常用 Git 命令清单</a></li>\n<li><a href="https://stackoverflow.com/questions/tagged/git?tab=Votes" rel="nofollow">stackoverflow 关于 Git 的高票回答</a></li>\n<li><a href="https://segmentfault.com/q/1010000002477106" rel="nofollow">git merge --no-ff 是什么意思</a></li>\n</ul>',user:{login:a,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:t,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/160"},navList:[{text:"前言",id:"main-heading-H2-0",type:n,children:[]},{text:"命令清单",id:"main-heading-H2-1",type:n,children:[]},{text:"自定义配置",id:"main-heading-H2-2",type:n,children:[]},{text:"参考",id:"main-heading-H2-3",type:n,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:a,userEmail:"1656800216@qq.com",repository:"blog",blogName:p,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:p,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:t}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

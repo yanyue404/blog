@@ -1,0 +1,579 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Css3动画 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="transition 官方文档 过渡动画，定义css初始样式开始到结束时候中间过度时间段内的动画效果，可称之为补间动画。 状态 开始状态(动画放在这个状态里面) 结束状态(最终形态) 参数 transition-property: 规定对哪个属性进行过度,all为默认值 可以指定要进行过渡的css属"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Css3动画"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="transition 官方文档 过渡动画，定义css初始样式开始到结束时候中间过度时间段内的动画效果，可称之为补间动画。 状态 开始状态(动画放在这个状态里面) 结束状态(最终形态) 参数 transition-property: 规定对哪个属性进行过度,all为默认值 可以指定要进行过渡的css属"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Css3动画"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="transition 官方文档 过渡动画，定义css初始样式开始到结束时候中间过度时间段内的动画效果，可称之为补间动画。 状态 开始状态(动画放在这个状态里面) 结束状态(最终形态) 参数 transition-property: 规定对哪个属性进行过度,all为默认值 可以指定要进行过渡的css属"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H2-0" title="transition" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              transition
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H3-1" title="状态" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  状态
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H3-2" title="参数" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  参数
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H2-3" title="2D转换(transform)" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              2D转换(transform)
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H3-4" title="浏览器支持" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  浏览器支持
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H2-5" title="3D转换" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              3D转换
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H3-6" title="3D 位移" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3D 位移
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H3-7" title="3D 旋转" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3D 旋转
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H3-8" title="3D 缩放" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3D 缩放
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H2-9" title="动画" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              动画
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H3-10" title="参数" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  参数
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H3-11" title="动画执行完成后触发的事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  动画执行完成后触发的事件
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/40#main-heading-H2-12" title="animation.css使用" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              animation.css使用
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Css3动画</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Css3动画</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-06-27</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 16 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">transition</h2>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/css-transitions-1/" rel="nofollow">官方文档</a></li>
+</ul>
+<p dir="auto">过渡动画，定义css初始样式开始到结束时候中间过度时间段内的动画效果，可称之为补间动画。</p>
+<h3 id="main-heading-H3-1">状态</h3>
+<p dir="auto">开始状态(动画放在这个状态里面)<br>
+结束状态(最终形态)</p>
+<h3 id="main-heading-H3-2">参数</h3>
+<ul dir="auto">
+<li>transition-property: 规定对哪个属性进行过度,all为默认值</li>
+</ul>
+<p dir="auto">可以指定要进行过渡的css属性,如果提供多个属性值,以逗号进行分隔:</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".style {transition-property: opacity, left, top, width;)"><pre class="notranslate">.<span class="pl-c1">style</span> {<span class="pl-c1">transition-property</span><span class="pl-kos">:</span> opacity<span class="pl-kos">,</span> left<span class="pl-kos">,</span> top<span class="pl-kos">,</span> width;)</pre></div>
+<ul dir="auto">
+<li>transition-duration 过渡执行时间</li>
+<li>transition-timing-function: 动画执行的速度:</li>
+</ul>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  ease(逐渐变慢) 默认值
+  linear匀速
+  ease-in(加速)
+  ease-out(减速)
+  ease-in-out(先加速后减速
+  cubic-bezier贝塞尔曲线(x1,y1,x2,y2)"><pre class="notranslate">  <span class="pl-ent">ease</span>(逐渐变慢) 默认值
+  linear匀速
+  ease<span class="pl-c1">-</span>in(加速)
+  ease<span class="pl-c1">-</span>out(减速)
+  ease<span class="pl-c1">-</span>in<span class="pl-c1">-</span>out(先加速后减速
+  cubic<span class="pl-c1">-</span>bezier贝塞尔曲线(x1<span class="pl-kos">,</span><span class="pl-ent">y1</span><span class="pl-kos">,</span><span class="pl-ent">x2</span><span class="pl-kos">,</span><span class="pl-ent">y2</span>)</pre></div>
+<ul dir="auto">
+<li>transition-delay 动画延时执行时间,默认为0</li>
+</ul>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="    div {
+      transition-property: width;
+      transition-duration: 2s;/*过度时间2秒*/
+      transition-timing-function: ease;
+      transition-delay: 2s;/*y延时2秒开始过度*/
+    }"><pre class="notranslate">    <span class="pl-ent">div</span> {
+      <span class="pl-c1">transition-property</span><span class="pl-kos">:</span> width;
+      <span class="pl-c1">transition-duration</span><span class="pl-kos">:</span> <span class="pl-c1">2<span class="pl-smi">s</span></span>;<span class="pl-c">/*过度时间2秒*/</span>
+      <span class="pl-c1">transition-timing-function</span><span class="pl-kos">:</span> ease;
+      <span class="pl-c1">transition-delay</span><span class="pl-kos">:</span> <span class="pl-c1">2<span class="pl-smi">s</span></span>;<span class="pl-c">/*y延时2秒开始过度*/</span>
+    }</pre></div>
+<p dir="auto">为了书写方便，也可以把这四个属性按照以上顺序简写在一个 transition 属性上：</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" div {
+      transition: width 2s ease 2s;
+    }"><pre class="notranslate"> <span class="pl-ent">div</span> {
+      <span class="pl-c1">transition</span><span class="pl-kos">:</span> width <span class="pl-c1">2<span class="pl-smi">s</span></span> ease <span class="pl-c1">2<span class="pl-smi">s</span></span>;
+    }</pre></div>
+<p dir="auto">如果使用属性的默认值，则可以省略:</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" div {
+      transition: width 2s;
+      /*相当于*/
+      /*transition: width 2s ease 0*/
+    }"><pre class="notranslate"> <span class="pl-ent">div</span> {
+      <span class="pl-c1">transition</span><span class="pl-kos">:</span> width <span class="pl-c1">2<span class="pl-smi">s</span></span>;
+      <span class="pl-c">/*相当于*/</span>
+      <span class="pl-c">/*transition: width 2s ease 0*/</span>
+    }</pre></div>
+<p dir="auto">使用transtion属性只是规定了要如何去过渡，要想让动画发生，还得要有元素状态的改变。如何改变元素状态呢，当然就是在css中给这个元素定义一个类（:hover等伪类也可以），这个类描述的是过渡动画结束时元素的状态。</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" <div>xiaoyueyue</div>"><pre class="notranslate"> <span class="pl-kos">&lt;</span><span class="pl-ent">div</span><span class="pl-kos">></span>xiaoyueyue<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span></pre></div>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="    
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      border-radius: 100px;
+      text-align: center;
+      line-height: 200px;
+      color: #fff;
+      font-weight: 700;
+      transition: width 3s, height 3s, background-color 3s, opacity 3s;
+    }
+
+    div:hover {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      background-color: red;
+      opacity: 0;
+    }"><pre class="notranslate">    
+    <span class="pl-ent">div</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> green;
+      <span class="pl-c1">border-radius</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;
+      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">color</span><span class="pl-kos">:</span> <span class="pl-pds"><span class="pl-kos">#</span>fff</span>;
+      <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">700</span>;
+      <span class="pl-c1">transition</span><span class="pl-kos">:</span> width <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> height <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> background-color <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> opacity <span class="pl-c1">3<span class="pl-smi">s</span></span>;
+    }
+
+    <span class="pl-ent">div</span><span class="pl-kos">:</span><span class="pl-c1">hover</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;
+      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> red;
+      <span class="pl-c1">opacity</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;
+    }</pre></div>
+<p dir="auto">还可以使用自定义类来实现</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" div {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      border-radius: 100px;
+      text-align: center;
+      line-height: 200px;
+      color: #fff;
+      font-weight: 700;
+      transition: width 3s, height 3s, background-color 3s, opacity 3s;
+    }
+
+    div.on {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      background-color: red;
+      opacity: 0;
+    }"><pre class="notranslate"> <span class="pl-ent">div</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> green;
+      <span class="pl-c1">border-radius</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;
+      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">color</span><span class="pl-kos">:</span> <span class="pl-pds"><span class="pl-kos">#</span>fff</span>;
+      <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">700</span>;
+      <span class="pl-c1">transition</span><span class="pl-kos">:</span> width <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> height <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> background-color <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> opacity <span class="pl-c1">3<span class="pl-smi">s</span></span>;
+    }
+
+    <span class="pl-ent">div</span>.<span class="pl-c1">on</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;
+      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> red;
+      <span class="pl-c1">opacity</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;
+    }</pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" var box = document.querySelector('div');
+
+    box.onmouseenter = function () {
+      box.classList.add('on');
+    }"><pre class="notranslate"> <span class="pl-k">var</span> <span class="pl-s1">box</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">'div'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+    <span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-en">onmouseenter</span> <span class="pl-c1">=</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-c1">classList</span><span class="pl-kos">.</span><span class="pl-en">add</span><span class="pl-kos">(</span><span class="pl-s">'on'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-3">2D转换(transform)</h2>
+<h3 id="main-heading-H3-4">浏览器支持</h3>
+<p dir="auto">Internet Explorer 10, Firefox, 和 Opera支持transform 属性.</p>
+<p dir="auto">Chrome 和 Safari 要求前缀 -webkit- 版本.</p>
+<p dir="auto">注意： Internet Explorer 9 要求前缀 -ms- 版本.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>功能</th>
+<th>书写</th>
+<th>补充</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.位移</td>
+<td>translate(x,y)</td>
+<td>根据左(X轴)和顶部(Y轴)位置给定的参数，从当前元素位置移，加单位：如px</td>
+</tr>
+<tr>
+<td>2.旋转</td>
+<td>rotate(30deg)</td>
+<td>(角度设置正值(顺时针),负值(逆时针))</td>
+</tr>
+<tr>
+<td>3.缩放</td>
+<td>scale(倍数)</td>
+<td>整数(大于1)放大  小数(小于1)缩小， scale（2,3）转变宽度为原来的大小的2倍，和其原始大小3倍的高度。</td>
+</tr>
+<tr>
+<td>4.倾斜</td>
+<td>skew(30deg,45deg)</td>
+<td>第一个值垂直方向倾斜,第二个方向代表水平倾斜</td>
+</tr>
+<tr>
+<td>5.旋转原点</td>
+<td>transform-origin:left top;(以左上角为旋转原点)</td>
+<td>改变旋转原点的位置应该一开始就改变 40px 50px;</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">例子，直径为200的圆鼠标移入后向右移动100px同时颜色渐变为红色：</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" div {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      border-radius: 100px;
+      text-align: center;
+      line-height: 200px;
+      color: #fff;
+      font-weight: 700;
+      transition: background-color 3s, transform 3s;
+    }
+
+    .on {
+      transform: translate(100px);
+      background: red;
+    }"><pre class="notranslate"> <span class="pl-ent">div</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> green;
+      <span class="pl-c1">border-radius</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;
+      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">color</span><span class="pl-kos">:</span> <span class="pl-pds"><span class="pl-kos">#</span>fff</span>;
+      <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">700</span>;
+      <span class="pl-c1">transition</span><span class="pl-kos">:</span> background-color <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> transform <span class="pl-c1">3<span class="pl-smi">s</span></span>;
+    }
+
+    .<span class="pl-c1">on</span> {
+      <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate</span>(<span class="pl-c1">100<span class="pl-smi">px</span></span>);
+      <span class="pl-c1">background</span><span class="pl-kos">:</span> red;
+    }</pre></div>
+<h2 id="main-heading-H2-5">3D转换</h2>
+<h5 dir="auto">perspective:1000px;			// 透视</h5>
+<p dir="auto">取值为眼睛距离图片的距离   600-1000px 是人眼最舒服的距离</p>
+<p dir="auto">设置有两种方式</p>
+<ol dir="auto">
+<li>
+<p dir="auto">给父元素设置</p>
+</li>
+<li>
+<p dir="auto">作为transform的属性写进transform里面</p>
+</li>
+</ol>
+<p dir="auto">transform-style:preserve-3d;			// 显示出3D效果</p>
+<h3 id="main-heading-H3-6">3D 位移</h3>
+<ol dir="auto">
+<li>translateX(30px)			// 沿着x轴移动30px</li>
+<li>translateY(30px)			// 沿着y轴移动30px</li>
+<li>translateZ(30px)			// 沿着z轴移动30px</li>
+</ol>
+<h3 id="main-heading-H3-7">3D 旋转</h3>
+<ol dir="auto">
+<li>transform-origin:top/bottom/center;  // 沿着哪里旋转</li>
+<li>transform:rotateX(10deg)			// 沿着x轴旋转</li>
+<li>transform:rotateY(10deg) 		// 沿着y轴旋转</li>
+<li>transform:rotateZ(10deg)			// 沿着z轴旋转</li>
+</ol>
+<h3 id="main-heading-H3-8">3D 缩放</h3>
+<ol dir="auto">
+<li>transform-origin:top/bottom/center;  // 沿着哪里缩放</li>
+<li>scaleX(10deg)			// 沿着x轴缩放</li>
+<li>rscaleY(10deg) 		// 沿着y轴缩放</li>
+<li>scaleZ(10deg)			// 沿着z轴缩放</li>
+</ol>
+<h2 id="main-heading-H2-9">动画</h2>
+<p dir="auto">当在 <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/Keyframes/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Keyframes">@Keyframes</a> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
+<p dir="auto">指定至少这两个CSS3的动画属性绑定向一个选择器：</p>
+<ul dir="auto">
+<li>规定动画的名称</li>
+<li>规定动画的时长</li>
+</ul>
+<p dir="auto">关键帧的时间单位</p>
+<p dir="auto">数字：0%、25%、100%等</p>
+<p dir="auto">字符：from(0%)、to(100%)</p>
+<p dir="auto">例子：</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@keyframes myfirst
+{
+	0%   {background:red; left:0px; top:0px;}
+	25%  {background:yellow; left:200px; top:0px;}
+	50%  {background:blue; left:200px; top:200px;}
+	75%  {background:green; left:0px; top:200px;}
+	100% {background:red; left:0px; top:0px;}
+}
+div {
+	width:100px;
+	height:100px;
+	background:red;
+	position:relative;
+	animation-name:myfirst;
+	animation-duration:5s;
+	animation-timing-function:linear;
+	animation-delay:2s;
+	animation-iteration-count:infinite;
+	animation-direction:alternate;
+	animation-play-state:running;
+}"><pre class="notranslate"><span class="pl-k">@keyframes</span> myfirst
+{
+	<span class="pl-c1">0<span class="pl-smi">%</span></span>   {<span class="pl-c1">background</span><span class="pl-kos">:</span>red; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>;}
+	<span class="pl-c1">25<span class="pl-smi">%</span></span>  {<span class="pl-c1">background</span><span class="pl-kos">:</span>yellow; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">200<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>;}
+	<span class="pl-c1">50<span class="pl-smi">%</span></span>  {<span class="pl-c1">background</span><span class="pl-kos">:</span>blue; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">200<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">200<span class="pl-smi">px</span></span>;}
+	<span class="pl-c1">75<span class="pl-smi">%</span></span>  {<span class="pl-c1">background</span><span class="pl-kos">:</span>green; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">200<span class="pl-smi">px</span></span>;}
+	<span class="pl-c1">100<span class="pl-smi">%</span></span> {<span class="pl-c1">background</span><span class="pl-kos">:</span>red; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>;}
+}
+<span class="pl-ent">div</span> {
+	<span class="pl-c1">width</span><span class="pl-kos">:</span><span class="pl-c1">100<span class="pl-smi">px</span></span>;
+	<span class="pl-c1">height</span><span class="pl-kos">:</span><span class="pl-c1">100<span class="pl-smi">px</span></span>;
+	<span class="pl-c1">background</span><span class="pl-kos">:</span>red;
+	<span class="pl-c1">position</span><span class="pl-kos">:</span>relative;
+	<span class="pl-c1">animation-name</span><span class="pl-kos">:</span>myfirst;
+	<span class="pl-c1">animation-duration</span><span class="pl-kos">:</span><span class="pl-c1">5<span class="pl-smi">s</span></span>;
+	<span class="pl-c1">animation-timing-function</span><span class="pl-kos">:</span>linear;
+	<span class="pl-c1">animation-delay</span><span class="pl-kos">:</span><span class="pl-c1">2<span class="pl-smi">s</span></span>;
+	<span class="pl-c1">animation-iteration-count</span><span class="pl-kos">:</span>infinite;
+	<span class="pl-c1">animation-direction</span><span class="pl-kos">:</span>alternate;
+	<span class="pl-c1">animation-play-state</span><span class="pl-kos">:</span>running;
+}</pre></div>
+<p dir="auto">像前面讲的transition属性一样，也可以把这些animation属性简写到一个animation中，使用默认值的也可以省略掉。但 animation-play-state 属性不能简写到animation中</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="div {
+    animation:myfirst 5s;
+}"><pre class="notranslate"><span class="pl-ent">div</span> {
+    <span class="pl-c1">animation</span><span class="pl-kos">:</span>myfirst <span class="pl-c1">5<span class="pl-smi">s</span></span>;
+}</pre></div>
+<h3 id="main-heading-H3-10">参数</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>含义</th>
+<th>属性名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>动画名称</td>
+<td>animation-name</td>
+</tr>
+<tr>
+<td>持续的时间</td>
+<td>animation-duration</td>
+</tr>
+<tr>
+<td>执行次数</td>
+<td>animation-iteration-count(默认为1次,infinite 一直执行)</td>
+</tr>
+<tr>
+<td>延时执行的时间</td>
+<td>animation-delay:2s</td>
+</tr>
+<tr>
+<td>执行的速度</td>
+<td>animation-timing-function:inear 匀速 ease 缓冲 ease-in 由慢到快 ease-out 由快到慢 ease-in-out 由慢到快再到慢。cubic-bezier(number,number,number,number)：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内</td>
+</tr>
+<tr>
+<td>动画逆波</td>
+<td>animation-direction:alternat动画时间之外的状态</td>
+</tr>
+<tr>
+<td>动画时间之外的问题</td>
+<td>animation-fill-mode:forwords 停止到动画结束的状态 / backwords (默认)</td>
+</tr>
+<tr>
+<td>动画的播放状态</td>
+<td>animation-play-state:（ running 播放 和paused 暂停 ）</td>
+</tr>
+<tr>
+<td>播放前重置,动画是否重置后再开始播放</td>
+<td>animation-direction alternate动画直接从上一次停止的位置开始执行  normal动画第二次直接跳到0%的状态开始执行</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p dir="auto">注意，为了达到最佳的浏览器兼容效果，在实际书写代码的时候，还必须加上各大浏览器的私有前缀</p>
+</blockquote>
+<h3 id="main-heading-H3-11">动画执行完成后触发的事件</h3>
+<p dir="auto">当CSS 3的transition动画执行结束时，触发webkitTransitionEnd事件,使用：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="dom.addEventListener(‘webkitTransitionEnd’,function(){}) "><pre class="notranslate"><span class="pl-s1">dom</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s1">‘webkitTransitionEnd’</span><span class="pl-kos">,</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span> </pre></div>
+<h2 id="main-heading-H2-12">animation.css使用</h2>
+<p dir="auto">添加cdn引用</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='  <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">'><pre class="notranslate">  <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">href</span>="<span class="pl-s">https://cdn.bootcss.com/animate.css/3.5.2/animate.css</span>" <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>"<span class="pl-kos">></span></pre></div>
+<p dir="auto">然后你想要哪个元素进行动画，就给那个元素添加上animated类 以及特定的动画类名，<code class="notranslate">animated</code>是每个要进行动画的元素都必须要添加的类。</p>
+<p dir="auto">给上面的样式添加一个摇动的动画,因为摇动的动画类名为<code class="notranslate">shake</code>，所以代码是这样的：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" var box = document.querySelector('div');
+
+ box.onmouseenter = function () {
+  box.classList.add('animated','shake');
+}"><pre class="notranslate"> <span class="pl-k">var</span> <span class="pl-s1">box</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">'div'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+ <span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-en">onmouseenter</span> <span class="pl-c1">=</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-c1">classList</span><span class="pl-kos">.</span><span class="pl-en">add</span><span class="pl-kos">(</span><span class="pl-s">'animated'</span><span class="pl-kos">,</span><span class="pl-s">'shake'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">至于动画的效果有差异可自定义样式进行覆盖</p>
+<p dir="auto"><strong>animation.css提供动画的可用class类名</strong></p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Class Name</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">bounce</code></td>
+<td><code class="notranslate">flash</code></td>
+<td><code class="notranslate">pulse</code></td>
+<td><code class="notranslate">rubberBand</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">shake</code></td>
+<td><code class="notranslate">headShake</code></td>
+<td><code class="notranslate">swing</code></td>
+<td><code class="notranslate">tada</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">wobble</code></td>
+<td><code class="notranslate">jello</code></td>
+<td><code class="notranslate">bounceIn</code></td>
+<td><code class="notranslate">bounceInDown</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">bounceInLeft</code></td>
+<td><code class="notranslate">bounceInRight</code></td>
+<td><code class="notranslate">bounceInUp</code></td>
+<td><code class="notranslate">bounceOut</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">bounceOutDown</code></td>
+<td><code class="notranslate">bounceOutLeft</code></td>
+<td><code class="notranslate">bounceOutRight</code></td>
+<td><code class="notranslate">bounceOutUp</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">fadeIn</code></td>
+<td><code class="notranslate">fadeInDown</code></td>
+<td><code class="notranslate">fadeInDownBig</code></td>
+<td><code class="notranslate">fadeInLeft</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">fadeInLeftBig</code></td>
+<td><code class="notranslate">fadeInRight</code></td>
+<td><code class="notranslate">fadeInRightBig</code></td>
+<td><code class="notranslate">fadeInUp</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">fadeInUpBig</code></td>
+<td><code class="notranslate">fadeOut</code></td>
+<td><code class="notranslate">fadeOutDown</code></td>
+<td><code class="notranslate">fadeOutDownBig</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">fadeOutLeft</code></td>
+<td><code class="notranslate">fadeOutLeftBig</code></td>
+<td><code class="notranslate">fadeOutRight</code></td>
+<td><code class="notranslate">fadeOutRightBig</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">fadeOutUp</code></td>
+<td><code class="notranslate">fadeOutUpBig</code></td>
+<td><code class="notranslate">flipInX</code></td>
+<td><code class="notranslate">flipInY</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">flipOutX</code></td>
+<td><code class="notranslate">flipOutY</code></td>
+<td><code class="notranslate">lightSpeedIn</code></td>
+<td><code class="notranslate">lightSpeedOut</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">rotateIn</code></td>
+<td><code class="notranslate">rotateInDownLeft</code></td>
+<td><code class="notranslate">rotateInDownRight</code></td>
+<td><code class="notranslate">rotateInUpLeft</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">rotateInUpRight</code></td>
+<td><code class="notranslate">rotateOut</code></td>
+<td><code class="notranslate">rotateOutDownLeft</code></td>
+<td><code class="notranslate">rotateOutDownRight</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">rotateOutUpLeft</code></td>
+<td><code class="notranslate">rotateOutUpRight</code></td>
+<td><code class="notranslate">hinge</code></td>
+<td><code class="notranslate">jackInTheBox</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">rollIn</code></td>
+<td><code class="notranslate">rollOut</code></td>
+<td><code class="notranslate">zoomIn</code></td>
+<td><code class="notranslate">zoomInDown</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">zoomInLeft</code></td>
+<td><code class="notranslate">zoomInRight</code></td>
+<td><code class="notranslate">zoomInUp</code></td>
+<td><code class="notranslate">zoomOut</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">zoomOutDown</code></td>
+<td><code class="notranslate">zoomOutLeft</code></td>
+<td><code class="notranslate">zoomOutRight</code></td>
+<td><code class="notranslate">zoomOutUp</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">slideInDown</code></td>
+<td><code class="notranslate">slideInLeft</code></td>
+<td><code class="notranslate">slideInRight</code></td>
+<td><code class="notranslate">slideInUp</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">slideOutDown</code></td>
+<td><code class="notranslate">slideOutLeft</code></td>
+<td><code class="notranslate">slideOutRight</code></td>
+<td><code class="notranslate">slideOutUp</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h4 dir="auto">参考</h4>
+<ul dir="auto">
+<li><a href="https://www.cnblogs.com/2050/p/3409129.html" rel="nofollow">https://www.cnblogs.com/2050/p/3409129.html</a></li>
+<li><a href="http://www.runoob.com/css3/css3-animations.html" rel="nofollow">http://www.runoob.com/css3/css3-animations.html</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,n,a,p,t,l){return{layout:"default",data:[{post:{id:336091061,number:40,title:"Css3动画",created_at:"2018-06-27T06:19:24Z",updated_at:"2025-11-23T15:54:34Z",body_html:'<h2 id="main-heading-H2-0">transition</h2>\n<ul dir="auto">\n<li><a href="https://www.w3.org/TR/css-transitions-1/" rel="nofollow">官方文档</a></li>\n</ul>\n<p dir="auto">过渡动画，定义css初始样式开始到结束时候中间过度时间段内的动画效果，可称之为补间动画。</p>\n<h3 id="main-heading-H3-1">状态</h3>\n<p dir="auto">开始状态(动画放在这个状态里面)<br>\n结束状态(最终形态)</p>\n<h3 id="main-heading-H3-2">参数</h3>\n<ul dir="auto">\n<li>transition-property: 规定对哪个属性进行过度,all为默认值</li>\n</ul>\n<p dir="auto">可以指定要进行过渡的css属性,如果提供多个属性值,以逗号进行分隔:</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".style {transition-property: opacity, left, top, width;)"><pre class="notranslate">.<span class="pl-c1">style</span> {<span class="pl-c1">transition-property</span><span class="pl-kos">:</span> opacity<span class="pl-kos">,</span> left<span class="pl-kos">,</span> top<span class="pl-kos">,</span> width;)</pre></div>\n<ul dir="auto">\n<li>transition-duration 过渡执行时间</li>\n<li>transition-timing-function: 动画执行的速度:</li>\n</ul>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  ease(逐渐变慢) 默认值\n  linear匀速\n  ease-in(加速)\n  ease-out(减速)\n  ease-in-out(先加速后减速\n  cubic-bezier贝塞尔曲线(x1,y1,x2,y2)"><pre class="notranslate">  <span class="pl-ent">ease</span>(逐渐变慢) 默认值\n  linear匀速\n  ease<span class="pl-c1">-</span>in(加速)\n  ease<span class="pl-c1">-</span>out(减速)\n  ease<span class="pl-c1">-</span>in<span class="pl-c1">-</span>out(先加速后减速\n  cubic<span class="pl-c1">-</span>bezier贝塞尔曲线(x1<span class="pl-kos">,</span><span class="pl-ent">y1</span><span class="pl-kos">,</span><span class="pl-ent">x2</span><span class="pl-kos">,</span><span class="pl-ent">y2</span>)</pre></div>\n<ul dir="auto">\n<li>transition-delay 动画延时执行时间,默认为0</li>\n</ul>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="    div {\n      transition-property: width;\n      transition-duration: 2s;/*过度时间2秒*/\n      transition-timing-function: ease;\n      transition-delay: 2s;/*y延时2秒开始过度*/\n    }"><pre class="notranslate">    <span class="pl-ent">div</span> {\n      <span class="pl-c1">transition-property</span><span class="pl-kos">:</span> width;\n      <span class="pl-c1">transition-duration</span><span class="pl-kos">:</span> <span class="pl-c1">2<span class="pl-smi">s</span></span>;<span class="pl-c">/*过度时间2秒*/</span>\n      <span class="pl-c1">transition-timing-function</span><span class="pl-kos">:</span> ease;\n      <span class="pl-c1">transition-delay</span><span class="pl-kos">:</span> <span class="pl-c1">2<span class="pl-smi">s</span></span>;<span class="pl-c">/*y延时2秒开始过度*/</span>\n    }</pre></div>\n<p dir="auto">为了书写方便，也可以把这四个属性按照以上顺序简写在一个 transition 属性上：</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" div {\n      transition: width 2s ease 2s;\n    }"><pre class="notranslate"> <span class="pl-ent">div</span> {\n      <span class="pl-c1">transition</span><span class="pl-kos">:</span> width <span class="pl-c1">2<span class="pl-smi">s</span></span> ease <span class="pl-c1">2<span class="pl-smi">s</span></span>;\n    }</pre></div>\n<p dir="auto">如果使用属性的默认值，则可以省略:</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" div {\n      transition: width 2s;\n      /*相当于*/\n      /*transition: width 2s ease 0*/\n    }"><pre class="notranslate"> <span class="pl-ent">div</span> {\n      <span class="pl-c1">transition</span><span class="pl-kos">:</span> width <span class="pl-c1">2<span class="pl-smi">s</span></span>;\n      <span class="pl-c">/*相当于*/</span>\n      <span class="pl-c">/*transition: width 2s ease 0*/</span>\n    }</pre></div>\n<p dir="auto">使用transtion属性只是规定了要如何去过渡，要想让动画发生，还得要有元素状态的改变。如何改变元素状态呢，当然就是在css中给这个元素定义一个类（:hover等伪类也可以），这个类描述的是过渡动画结束时元素的状态。</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" &lt;div&gt;xiaoyueyue&lt;/div&gt;"><pre class="notranslate"> <span class="pl-kos">&lt;</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>xiaoyueyue<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></pre></div>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="    \n    div {\n      width: 200px;\n      height: 200px;\n      background-color: green;\n      border-radius: 100px;\n      text-align: center;\n      line-height: 200px;\n      color: #fff;\n      font-weight: 700;\n      transition: width 3s, height 3s, background-color 3s, opacity 3s;\n    }\n\n    div:hover {\n      width: 100px;\n      height: 100px;\n      text-align: center;\n      line-height: 100px;\n      background-color: red;\n      opacity: 0;\n    }"><pre class="notranslate">    \n    <span class="pl-ent">div</span> {\n      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> green;\n      <span class="pl-c1">border-radius</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;\n      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">color</span><span class="pl-kos">:</span> <span class="pl-pds"><span class="pl-kos">#</span>fff</span>;\n      <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">700</span>;\n      <span class="pl-c1">transition</span><span class="pl-kos">:</span> width <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> height <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> background-color <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> opacity <span class="pl-c1">3<span class="pl-smi">s</span></span>;\n    }\n\n    <span class="pl-ent">div</span><span class="pl-kos">:</span><span class="pl-c1">hover</span> {\n      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;\n      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> red;\n      <span class="pl-c1">opacity</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;\n    }</pre></div>\n<p dir="auto">还可以使用自定义类来实现</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" div {\n      width: 200px;\n      height: 200px;\n      background-color: green;\n      border-radius: 100px;\n      text-align: center;\n      line-height: 200px;\n      color: #fff;\n      font-weight: 700;\n      transition: width 3s, height 3s, background-color 3s, opacity 3s;\n    }\n\n    div.on {\n      width: 100px;\n      height: 100px;\n      text-align: center;\n      line-height: 100px;\n      background-color: red;\n      opacity: 0;\n    }"><pre class="notranslate"> <span class="pl-ent">div</span> {\n      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> green;\n      <span class="pl-c1">border-radius</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;\n      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">color</span><span class="pl-kos">:</span> <span class="pl-pds"><span class="pl-kos">#</span>fff</span>;\n      <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">700</span>;\n      <span class="pl-c1">transition</span><span class="pl-kos">:</span> width <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> height <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> background-color <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> opacity <span class="pl-c1">3<span class="pl-smi">s</span></span>;\n    }\n\n    <span class="pl-ent">div</span>.<span class="pl-c1">on</span> {\n      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;\n      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> red;\n      <span class="pl-c1">opacity</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;\n    }</pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" var box = document.querySelector(\'div\');\n\n    box.onmouseenter = function () {\n      box.classList.add(\'on\');\n    }"><pre class="notranslate"> <span class="pl-k">var</span> <span class="pl-s1">box</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">\'div\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n    <span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-en">onmouseenter</span> <span class="pl-c1">=</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-c1">classList</span><span class="pl-kos">.</span><span class="pl-en">add</span><span class="pl-kos">(</span><span class="pl-s">\'on\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-3">2D转换(transform)</h2>\n<h3 id="main-heading-H3-4">浏览器支持</h3>\n<p dir="auto">Internet Explorer 10, Firefox, 和 Opera支持transform 属性.</p>\n<p dir="auto">Chrome 和 Safari 要求前缀 -webkit- 版本.</p>\n<p dir="auto">注意： Internet Explorer 9 要求前缀 -ms- 版本.</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>功能</th>\n<th>书写</th>\n<th>补充</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>1.位移</td>\n<td>translate(x,y)</td>\n<td>根据左(X轴)和顶部(Y轴)位置给定的参数，从当前元素位置移，加单位：如px</td>\n</tr>\n<tr>\n<td>2.旋转</td>\n<td>rotate(30deg)</td>\n<td>(角度设置正值(顺时针),负值(逆时针))</td>\n</tr>\n<tr>\n<td>3.缩放</td>\n<td>scale(倍数)</td>\n<td>整数(大于1)放大  小数(小于1)缩小， scale（2,3）转变宽度为原来的大小的2倍，和其原始大小3倍的高度。</td>\n</tr>\n<tr>\n<td>4.倾斜</td>\n<td>skew(30deg,45deg)</td>\n<td>第一个值垂直方向倾斜,第二个方向代表水平倾斜</td>\n</tr>\n<tr>\n<td>5.旋转原点</td>\n<td>transform-origin:left top;(以左上角为旋转原点)</td>\n<td>改变旋转原点的位置应该一开始就改变 40px 50px;</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto">例子，直径为200的圆鼠标移入后向右移动100px同时颜色渐变为红色：</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" div {\n      width: 200px;\n      height: 200px;\n      background-color: green;\n      border-radius: 100px;\n      text-align: center;\n      line-height: 200px;\n      color: #fff;\n      font-weight: 700;\n      transition: background-color 3s, transform 3s;\n    }\n\n    .on {\n      transform: translate(100px);\n      background: red;\n    }"><pre class="notranslate"> <span class="pl-ent">div</span> {\n      <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">background-color</span><span class="pl-kos">:</span> green;\n      <span class="pl-c1">border-radius</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;\n      <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">200<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">color</span><span class="pl-kos">:</span> <span class="pl-pds"><span class="pl-kos">#</span>fff</span>;\n      <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">700</span>;\n      <span class="pl-c1">transition</span><span class="pl-kos">:</span> background-color <span class="pl-c1">3<span class="pl-smi">s</span></span><span class="pl-kos">,</span> transform <span class="pl-c1">3<span class="pl-smi">s</span></span>;\n    }\n\n    .<span class="pl-c1">on</span> {\n      <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate</span>(<span class="pl-c1">100<span class="pl-smi">px</span></span>);\n      <span class="pl-c1">background</span><span class="pl-kos">:</span> red;\n    }</pre></div>\n<h2 id="main-heading-H2-5">3D转换</h2>\n<h5 dir="auto">perspective:1000px;\t\t\t// 透视</h5>\n<p dir="auto">取值为眼睛距离图片的距离   600-1000px 是人眼最舒服的距离</p>\n<p dir="auto">设置有两种方式</p>\n<ol dir="auto">\n<li>\n<p dir="auto">给父元素设置</p>\n</li>\n<li>\n<p dir="auto">作为transform的属性写进transform里面</p>\n</li>\n</ol>\n<p dir="auto">transform-style:preserve-3d;\t\t\t// 显示出3D效果</p>\n<h3 id="main-heading-H3-6">3D 位移</h3>\n<ol dir="auto">\n<li>translateX(30px)\t\t\t// 沿着x轴移动30px</li>\n<li>translateY(30px)\t\t\t// 沿着y轴移动30px</li>\n<li>translateZ(30px)\t\t\t// 沿着z轴移动30px</li>\n</ol>\n<h3 id="main-heading-H3-7">3D 旋转</h3>\n<ol dir="auto">\n<li>transform-origin:top/bottom/center;  // 沿着哪里旋转</li>\n<li>transform:rotateX(10deg)\t\t\t// 沿着x轴旋转</li>\n<li>transform:rotateY(10deg) \t\t// 沿着y轴旋转</li>\n<li>transform:rotateZ(10deg)\t\t\t// 沿着z轴旋转</li>\n</ol>\n<h3 id="main-heading-H3-8">3D 缩放</h3>\n<ol dir="auto">\n<li>transform-origin:top/bottom/center;  // 沿着哪里缩放</li>\n<li>scaleX(10deg)\t\t\t// 沿着x轴缩放</li>\n<li>rscaleY(10deg) \t\t// 沿着y轴缩放</li>\n<li>scaleZ(10deg)\t\t\t// 沿着z轴缩放</li>\n</ol>\n<h2 id="main-heading-H2-9">动画</h2>\n<p dir="auto">当在 <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/Keyframes/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Keyframes">@Keyframes</a> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>\n<p dir="auto">指定至少这两个CSS3的动画属性绑定向一个选择器：</p>\n<ul dir="auto">\n<li>规定动画的名称</li>\n<li>规定动画的时长</li>\n</ul>\n<p dir="auto">关键帧的时间单位</p>\n<p dir="auto">数字：0%、25%、100%等</p>\n<p dir="auto">字符：from(0%)、to(100%)</p>\n<p dir="auto">例子：</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@keyframes myfirst\n{\n\t0%   {background:red; left:0px; top:0px;}\n\t25%  {background:yellow; left:200px; top:0px;}\n\t50%  {background:blue; left:200px; top:200px;}\n\t75%  {background:green; left:0px; top:200px;}\n\t100% {background:red; left:0px; top:0px;}\n}\ndiv {\n\twidth:100px;\n\theight:100px;\n\tbackground:red;\n\tposition:relative;\n\tanimation-name:myfirst;\n\tanimation-duration:5s;\n\tanimation-timing-function:linear;\n\tanimation-delay:2s;\n\tanimation-iteration-count:infinite;\n\tanimation-direction:alternate;\n\tanimation-play-state:running;\n}"><pre class="notranslate"><span class="pl-k">@keyframes</span> myfirst\n{\n\t<span class="pl-c1">0<span class="pl-smi">%</span></span>   {<span class="pl-c1">background</span><span class="pl-kos">:</span>red; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>;}\n\t<span class="pl-c1">25<span class="pl-smi">%</span></span>  {<span class="pl-c1">background</span><span class="pl-kos">:</span>yellow; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">200<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>;}\n\t<span class="pl-c1">50<span class="pl-smi">%</span></span>  {<span class="pl-c1">background</span><span class="pl-kos">:</span>blue; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">200<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">200<span class="pl-smi">px</span></span>;}\n\t<span class="pl-c1">75<span class="pl-smi">%</span></span>  {<span class="pl-c1">background</span><span class="pl-kos">:</span>green; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">200<span class="pl-smi">px</span></span>;}\n\t<span class="pl-c1">100<span class="pl-smi">%</span></span> {<span class="pl-c1">background</span><span class="pl-kos">:</span>red; <span class="pl-c1">left</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>; <span class="pl-c1">top</span><span class="pl-kos">:</span><span class="pl-c1">0<span class="pl-smi">px</span></span>;}\n}\n<span class="pl-ent">div</span> {\n\t<span class="pl-c1">width</span><span class="pl-kos">:</span><span class="pl-c1">100<span class="pl-smi">px</span></span>;\n\t<span class="pl-c1">height</span><span class="pl-kos">:</span><span class="pl-c1">100<span class="pl-smi">px</span></span>;\n\t<span class="pl-c1">background</span><span class="pl-kos">:</span>red;\n\t<span class="pl-c1">position</span><span class="pl-kos">:</span>relative;\n\t<span class="pl-c1">animation-name</span><span class="pl-kos">:</span>myfirst;\n\t<span class="pl-c1">animation-duration</span><span class="pl-kos">:</span><span class="pl-c1">5<span class="pl-smi">s</span></span>;\n\t<span class="pl-c1">animation-timing-function</span><span class="pl-kos">:</span>linear;\n\t<span class="pl-c1">animation-delay</span><span class="pl-kos">:</span><span class="pl-c1">2<span class="pl-smi">s</span></span>;\n\t<span class="pl-c1">animation-iteration-count</span><span class="pl-kos">:</span>infinite;\n\t<span class="pl-c1">animation-direction</span><span class="pl-kos">:</span>alternate;\n\t<span class="pl-c1">animation-play-state</span><span class="pl-kos">:</span>running;\n}</pre></div>\n<p dir="auto">像前面讲的transition属性一样，也可以把这些animation属性简写到一个animation中，使用默认值的也可以省略掉。但 animation-play-state 属性不能简写到animation中</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="div {\n    animation:myfirst 5s;\n}"><pre class="notranslate"><span class="pl-ent">div</span> {\n    <span class="pl-c1">animation</span><span class="pl-kos">:</span>myfirst <span class="pl-c1">5<span class="pl-smi">s</span></span>;\n}</pre></div>\n<h3 id="main-heading-H3-10">参数</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>含义</th>\n<th>属性名</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>动画名称</td>\n<td>animation-name</td>\n</tr>\n<tr>\n<td>持续的时间</td>\n<td>animation-duration</td>\n</tr>\n<tr>\n<td>执行次数</td>\n<td>animation-iteration-count(默认为1次,infinite 一直执行)</td>\n</tr>\n<tr>\n<td>延时执行的时间</td>\n<td>animation-delay:2s</td>\n</tr>\n<tr>\n<td>执行的速度</td>\n<td>animation-timing-function:inear 匀速 ease 缓冲 ease-in 由慢到快 ease-out 由快到慢 ease-in-out 由慢到快再到慢。cubic-bezier(number,number,number,number)：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内</td>\n</tr>\n<tr>\n<td>动画逆波</td>\n<td>animation-direction:alternat动画时间之外的状态</td>\n</tr>\n<tr>\n<td>动画时间之外的问题</td>\n<td>animation-fill-mode:forwords 停止到动画结束的状态 / backwords (默认)</td>\n</tr>\n<tr>\n<td>动画的播放状态</td>\n<td>animation-play-state:（ running 播放 和paused 暂停 ）</td>\n</tr>\n<tr>\n<td>播放前重置,动画是否重置后再开始播放</td>\n<td>animation-direction alternate动画直接从上一次停止的位置开始执行  normal动画第二次直接跳到0%的状态开始执行</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<blockquote>\n<p dir="auto">注意，为了达到最佳的浏览器兼容效果，在实际书写代码的时候，还必须加上各大浏览器的私有前缀</p>\n</blockquote>\n<h3 id="main-heading-H3-11">动画执行完成后触发的事件</h3>\n<p dir="auto">当CSS 3的transition动画执行结束时，触发webkitTransitionEnd事件,使用：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="dom.addEventListener(‘webkitTransitionEnd’,function(){}) "><pre class="notranslate"><span class="pl-s1">dom</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s1">‘webkitTransitionEnd’</span><span class="pl-kos">,</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span> </pre></div>\n<h2 id="main-heading-H2-12">animation.css使用</h2>\n<p dir="auto">添加cdn引用</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  &lt;link href=&quot;https://cdn.bootcss.com/animate.css/3.5.2/animate.css&quot; rel=&quot;stylesheet&quot;&gt;"><pre class="notranslate">  <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">href</span>="<span class="pl-s">https://cdn.bootcss.com/animate.css/3.5.2/animate.css</span>" <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>"<span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">然后你想要哪个元素进行动画，就给那个元素添加上animated类 以及特定的动画类名，<code class="notranslate">animated</code>是每个要进行动画的元素都必须要添加的类。</p>\n<p dir="auto">给上面的样式添加一个摇动的动画,因为摇动的动画类名为<code class="notranslate">shake</code>，所以代码是这样的：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" var box = document.querySelector(\'div\');\n\n box.onmouseenter = function () {\n  box.classList.add(\'animated\',\'shake\');\n}"><pre class="notranslate"> <span class="pl-k">var</span> <span class="pl-s1">box</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">\'div\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n <span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-en">onmouseenter</span> <span class="pl-c1">=</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">box</span><span class="pl-kos">.</span><span class="pl-c1">classList</span><span class="pl-kos">.</span><span class="pl-en">add</span><span class="pl-kos">(</span><span class="pl-s">\'animated\'</span><span class="pl-kos">,</span><span class="pl-s">\'shake\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">至于动画的效果有差异可自定义样式进行覆盖</p>\n<p dir="auto"><strong>animation.css提供动画的可用class类名</strong></p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>Class Name</th>\n<th></th>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code class="notranslate">bounce</code></td>\n<td><code class="notranslate">flash</code></td>\n<td><code class="notranslate">pulse</code></td>\n<td><code class="notranslate">rubberBand</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">shake</code></td>\n<td><code class="notranslate">headShake</code></td>\n<td><code class="notranslate">swing</code></td>\n<td><code class="notranslate">tada</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">wobble</code></td>\n<td><code class="notranslate">jello</code></td>\n<td><code class="notranslate">bounceIn</code></td>\n<td><code class="notranslate">bounceInDown</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">bounceInLeft</code></td>\n<td><code class="notranslate">bounceInRight</code></td>\n<td><code class="notranslate">bounceInUp</code></td>\n<td><code class="notranslate">bounceOut</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">bounceOutDown</code></td>\n<td><code class="notranslate">bounceOutLeft</code></td>\n<td><code class="notranslate">bounceOutRight</code></td>\n<td><code class="notranslate">bounceOutUp</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">fadeIn</code></td>\n<td><code class="notranslate">fadeInDown</code></td>\n<td><code class="notranslate">fadeInDownBig</code></td>\n<td><code class="notranslate">fadeInLeft</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">fadeInLeftBig</code></td>\n<td><code class="notranslate">fadeInRight</code></td>\n<td><code class="notranslate">fadeInRightBig</code></td>\n<td><code class="notranslate">fadeInUp</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">fadeInUpBig</code></td>\n<td><code class="notranslate">fadeOut</code></td>\n<td><code class="notranslate">fadeOutDown</code></td>\n<td><code class="notranslate">fadeOutDownBig</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">fadeOutLeft</code></td>\n<td><code class="notranslate">fadeOutLeftBig</code></td>\n<td><code class="notranslate">fadeOutRight</code></td>\n<td><code class="notranslate">fadeOutRightBig</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">fadeOutUp</code></td>\n<td><code class="notranslate">fadeOutUpBig</code></td>\n<td><code class="notranslate">flipInX</code></td>\n<td><code class="notranslate">flipInY</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">flipOutX</code></td>\n<td><code class="notranslate">flipOutY</code></td>\n<td><code class="notranslate">lightSpeedIn</code></td>\n<td><code class="notranslate">lightSpeedOut</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">rotateIn</code></td>\n<td><code class="notranslate">rotateInDownLeft</code></td>\n<td><code class="notranslate">rotateInDownRight</code></td>\n<td><code class="notranslate">rotateInUpLeft</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">rotateInUpRight</code></td>\n<td><code class="notranslate">rotateOut</code></td>\n<td><code class="notranslate">rotateOutDownLeft</code></td>\n<td><code class="notranslate">rotateOutDownRight</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">rotateOutUpLeft</code></td>\n<td><code class="notranslate">rotateOutUpRight</code></td>\n<td><code class="notranslate">hinge</code></td>\n<td><code class="notranslate">jackInTheBox</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">rollIn</code></td>\n<td><code class="notranslate">rollOut</code></td>\n<td><code class="notranslate">zoomIn</code></td>\n<td><code class="notranslate">zoomInDown</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">zoomInLeft</code></td>\n<td><code class="notranslate">zoomInRight</code></td>\n<td><code class="notranslate">zoomInUp</code></td>\n<td><code class="notranslate">zoomOut</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">zoomOutDown</code></td>\n<td><code class="notranslate">zoomOutLeft</code></td>\n<td><code class="notranslate">zoomOutRight</code></td>\n<td><code class="notranslate">zoomOutUp</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">slideInDown</code></td>\n<td><code class="notranslate">slideInLeft</code></td>\n<td><code class="notranslate">slideInRight</code></td>\n<td><code class="notranslate">slideInUp</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">slideOutDown</code></td>\n<td><code class="notranslate">slideOutLeft</code></td>\n<td><code class="notranslate">slideOutRight</code></td>\n<td><code class="notranslate">slideOutUp</code></td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h4 dir="auto">参考</h4>\n<ul dir="auto">\n<li><a href="https://www.cnblogs.com/2050/p/3409129.html" rel="nofollow">https://www.cnblogs.com/2050/p/3409129.html</a></li>\n<li><a href="http://www.runoob.com/css3/css3-animations.html" rel="nofollow">http://www.runoob.com/css3/css3-animations.html</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:t,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/40"},navList:[{text:"transition",id:"main-heading-H2-0",type:a,children:[{text:"状态",id:"main-heading-H3-1",type:n},{text:"参数",id:"main-heading-H3-2",type:n}]},{text:"2D转换(transform)",id:"main-heading-H2-3",type:a,children:[{text:"浏览器支持",id:"main-heading-H3-4",type:n}]},{text:"3D转换",id:"main-heading-H2-5",type:a,children:[{text:"3D 位移",id:"main-heading-H3-6",type:n},{text:"3D 旋转",id:"main-heading-H3-7",type:n},{text:"3D 缩放",id:"main-heading-H3-8",type:n}]},{text:"动画",id:"main-heading-H2-9",type:a,children:[{text:"参数",id:"main-heading-H3-10",type:n},{text:"动画执行完成后触发的事件",id:"main-heading-H3-11",type:n}]},{text:"animation.css使用",id:"main-heading-H2-12",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:t}},serverRendered:!0}}("","H3","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,529 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>前端架构师亲述：前端工程师成长之路的 N 问 及 回答（转贴） | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="问题回答者：是开源库 better-scroll 的作者 -- 黄轶，你有什么问题要问我？ 大家好，我是黄轶，目前就职于 Zoom 公司担任前端架构师，曾就职于滴滴和百度，毕业于北京科技大学。我是开源库 better-scroll 的作者，也是慕课网的老师，相信有很多同学通过我的课程学习掌握了 Vu"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="前端架构师亲述：前端工程师成长之路的 N 问 及 回答（转贴）"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="问题回答者：是开源库 better-scroll 的作者 -- 黄轶，你有什么问题要问我？ 大家好，我是黄轶，目前就职于 Zoom 公司担任前端架构师，曾就职于滴滴和百度，毕业于北京科技大学。我是开源库 better-scroll 的作者，也是慕课网的老师，相信有很多同学通过我的课程学习掌握了 Vu"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="前端架构师亲述：前端工程师成长之路的 N 问 及 回答（转贴）"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="问题回答者：是开源库 better-scroll 的作者 -- 黄轶，你有什么问题要问我？ 大家好，我是黄轶，目前就职于 Zoom 公司担任前端架构师，曾就职于滴滴和百度，毕业于北京科技大学。我是开源库 better-scroll 的作者，也是慕课网的老师，相信有很多同学通过我的课程学习掌握了 Vu"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/277#main-heading-H2-0" title="1. 前端开发" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              1. 前端开发
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/277#main-heading-H2-1" title="2. 性能优化" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              2. 性能优化
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/277#main-heading-H2-2" title="3. Vue.js" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              3. Vue.js
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/277#main-heading-H2-3" title="4. 个人成长" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              4. 个人成长
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/277#main-heading-H2-4" title="5. 源码" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              5. 源码
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/277#main-heading-H2-5" title="6. 最后" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              6. 最后
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>前端架构师亲述：前端工程师成长之路的 N 问 及 回答（转贴）</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>前端架构师亲述：前端工程师成长之路的 N 问 及 回答（转贴）</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2024-05-30</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 33 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><p dir="auto"><a href="https://camo.githubusercontent.com/49482a103716c672858f26ed8a50b720b5aedb062112a132baeb778a501afa1e/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d633062633566343336373264653664392e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/49482a103716c672858f26ed8a50b720b5aedb062112a132baeb778a501afa1e/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d633062633566343336373264653664392e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width:100%"></a></p>
+<blockquote>
+<p dir="auto">问题回答者：是开源库 better-scroll 的作者 -- 黄轶，你有什么问题要问我？</p>
+</blockquote>
+<blockquote>
+<p dir="auto">大家好，我是黄轶，目前就职于 Zoom 公司担任前端架构师，曾就职于滴滴和百度，毕业于北京科技大学。我是开源库 better-scroll 的作者，也是慕课网的老师，相信有很多同学通过我的课程学习掌握了 Vue.js 这门技术。</p>
+</blockquote>
+<blockquote>
+<p dir="auto">我在 2012 年毕业加入百度后，才开始正式接触 Web 前端，上学期间主要接触的是 .net，写过几个小作品到 CSDN，我非常庆幸转行，如果毕业还坚持做 .net 可能早就凉了。在百度的 3 年工作经历，我写过页面，写过网页游戏、写过 chrome 插件、写过组件、写过框架。</p>
+</blockquote>
+<blockquote>
+<p dir="auto">15 年 7 月份我加入滴滴，成为当时公共部门第一个前端。在滴滴的 3 年，我造过很多公司级别轮子（登录 sdk、jsbridge-sdk，地图 sdk 等），作为技术负责人主导过 2 次滴滴 WebApp 重构，负责架构设计和实现。在 16 年初把 Vue.js 引入滴滴的生产环境项目中，并在 WebApp 5.0 的重构项目得到全面应用。在滴滴的后期我负责 WebApp 架构组，开源了 cube-ui，折腾了多个技术方向（自动化测试框架、小程序框架）。</p>
+</blockquote>
+<blockquote>
+<p dir="auto">18 年 9 月，为追求喜欢的生活方式，我离开生活 12 年的帝都，回到家乡合肥，加入了目前的公司 Zoom。结合 Zoom Web 产品的特点我设计了一整套前后端分离的架构设计方案，包括了项目初始化、本地开发、联调、测试、上线等各个环节，并在多个项目中落地。同时，我们基于 element-ui fork 出 zoom-ui，并致力解决和优化 aceesibility 问题，另外除了基础组件之外我们针对一些业务场景设计了业务组件。</p>
+</blockquote>
+<blockquote>
+<p dir="auto">我在工作外也不忘发挥余热，从做兼职，到写书，做课程。它们不仅带来额外收入，也促进了我能力的提升，比如 Angular.js 的学习就是兼职中边做边学的；通过写书和做课程，我把 Vue.js 的源码翻烂了。我的理念是挣外快可以，但同时一定要提升自己，否则就是浪费时间。由于篇幅原因，完整介绍见图 2</p>
+</blockquote>
+<blockquote>
+<p dir="auto">我在 2019.06.18 - 2019.06.20 期间挑选有趣、有典型性、有意义的问题回答，你们可以问我 「前端开发」、「Vue.js」、「源码」、「前端架构」、「性能优化」、「个人成长」等相关问题。</p>
+</blockquote>
+<blockquote>
+<p dir="auto">原文出处：<a href="https://juejin.cn/pin/6844910434961588238" rel="nofollow">掘金话题</a> / <a href="https://github.com/biaochenxuying/blog/issues/33" data-hovercard-type="issue" data-hovercard-url="/biaochenxuying/blog/issues/33/hovercard">内容 zhengli</a></p>
+</blockquote>
+<h2 id="main-heading-H2-0">1. 前端开发</h2>
+<p dir="auto">问题</p>
+<p dir="auto">大佬，能分享下学习路径么，感觉天天忙着开发业务，但是能力好像没有太大提升，不知道该怎么充实自己 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>业务开发有没有痛点，能不能通过技术的手段解决 ？�</li>
+<li>平时开发业务用到了哪些技术栈和周边的生态链，我是否对他们熟练掌握了，对他们的实现原理呢 ？</li>
+<li>平时开发遇到了 bug，调试了很久，能不能提升自己快速定位 bug，解决问题的能力 ？</li>
+<li>如果上面分配了一个需求，没有现成的轮子可以用，我是否可以快速造一个出来 ？</li>
+<li>如果使用第三方轮子出现问题，我能否能找到合适的解决方案，甚至参与共建 ？</li>
+<li>以上提到了这些问题，不妨问问自己，如果没有做的足够好，都是你可以提升的方向。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">我想知道你为什么对前端这个职业(行业)，总是保持一颗好奇心，每天都不停探索，每天保持学习进步，你是怎样坚持下来的呢 ？</p>
+<p dir="auto">就像医院里的医生(教授/专家)，在这个行业刻苦钻研了大半辈子，怎样保持每天学习的这种精神 ？探索精神 ？并且长久坚持下去 ？为社会做出了非常多的贡献。</p>
+<p dir="auto">我知道你是以怎样的决心和毅力保持每天学习，不停探索前进 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>主要是兴趣驱动吧，对技术保持热情和好奇。</li>
+<li>另外就是成就感，当我 get 到某个新技能，解决了某个复杂的问题的时候会非常有成就感。</li>
+<li>工作前几年的时间是非常关键的，是成长空间大且精力最旺盛的阶段，一定要在这个阶段多学知识。</li>
+<li>学习是无止境的，尤大说过一句话我印象非常深刻 "做脑力工作的人，往往钻研得越深，越发现自己的渺小和无知" ，与君共勉。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">最近拿到了滴滴出行的实习生 offer，我想问一下您对实习生 (或者说初步踏入 IT 行业的学生) 在融入部门和提升上有什么建议 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>实习生一定要多做业务，工作要积极主动，争取转正机会。</li>
+<li>另外，非常推荐去我之前的团队，现在是苗老板负责，你可以私下联系他喔~</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">感觉自己的 js 基础很薄弱啊，我想问如果想进大厂你指的基础具体一点到底指啥啊，我是一个非科班出身的求解呀 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>如果是应届生，大厂关注的是你的基础和潜力。</li>
+<li>如果是社招，大厂会关注你的经验和能力，以及潜力。</li>
+<li>如果你有心仪的大厂，不妨去看一下他们的招聘要求，以及关注一下他们对外输出的东西。</li>
+<li>非科班是一个劣势，那么你就务必要花时间去补一些计算机相关的理论知识，简历有需要亮点，最好能有一些技术输出，比如很多人会做博客、写系列文章、做有趣的项目等等。</li>
+<li>另外，最好的时机是等大厂缺人，招人名额多的时候去投简历，也可以多认识一些找内推机会。</li>
+<li>最后，一切的一切，都离不开硬实力，所以优先提升自己的硬实力，多花时间学习。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">黄轶老师，你对于在项目中推行 BFF 模式有什么见解吗 ？<br>
+希望你可以回答的略广一点，非常期待您的回答。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>BFF 在服务聚合上还是很有优势的吧，特别是微服务特别火的今天，前端只需要关注所需要的数据，不用关注底层提供这些数据的服务。我在滴滴和 Zoom 的时候都是这么玩的~</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">请问一下，你做兼职的话，一般是关注那些方面呢 ？ 还有比较建议在哪些渠道寻找兼职做呢 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>主要关注的是性价比，因为牺牲了自己的业余时间，要么是多挣钱（很难），要么是提升能力。</li>
+<li>最好是熟人介绍，没有的话可以去水木论坛找找看（我曾经找到过），其它渠道没有经验，我就不推荐了。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">黄老师，想问下你对于前后端数据交互的最佳实践的看法，ajax ？axios ？等等，有没有系统学习的推荐。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>前后端交互通常有 HTTP 和 WebSocket 2 种通讯方式，建议你首先系统的学习一下 HTTP 相关知识，推荐看 《HTTP 权威指南》或者是 《图解 HTTP》。</li>
+<li>另外你提到的 axios 只是对 Ajax 的封装，如果你想了解它的实现原理，正好前阵子我在慕课网做了一门课程《基于 TypeScript 从零重构 axios》，学一遍后你会对 axios 的实现细节会了如执掌，同时也可以巩固不少 HTTP 相关的知识。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">黄老师，我现在刚入门前端，能力有很大的欠缺，想找一些视频学习，现在主要用到的是 Vue 框架，有什么视频可以推荐给我吗 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>这里不打广告都不行了，可以关注我在慕课网的实战课程喔~ Vue 三步曲，入门 - 进阶的都有。</li>
+<li>不过除了看视频学习，我也建议你务必多去读官方文档，敲一敲上面的示例。<br>
+最后附上链接  <a href="http://www.imooc.com/t/3017249" rel="nofollow">http://www.imooc.com/t/3017249</a></li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">我目前是一名后端工程师，工作快五年了。刚工作时，认为前端只是写页面，写交互，技能项要求少。<br>
+我自己也是比较喜欢前端，因为做后端的也会接触到前端东西，所以暂时没有转到前端。<br>
+工作之中也在加强前端基础技术技能。慢慢发现前端并不是刚开始认为的那样，现在的前端能应用于各个客户端，服务端，以及组件化，模块化，激发了我更想学习前端的欲望，于是我利用空闲时间学习更多前端相关技术。<br>
+现在流行前后端分离，后端只做接口，完全不会接触我喜欢的前端部分，我喜欢技术，不喜欢业务，但是业务也很重要，在我的经历中一个项目完成上线后，基本就是后端解决运营或用户使用中出现的问题，因此正在考虑转专职前端。<br>
+这几年工作中写过接口，写过 h5 嵌入 App，写过前后不分离的项目，也写过前后分离的项目，想问问黄大仙站在前端的角度有什么看法 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>其实你有丰富的后端经验，不妨就直接转全栈，并不一定要做专职的前端。</li>
+<li>即使是前后端分离的开发方式，也可以一个人完成 2 端的开发。</li>
+<li>而且越往上走，如果前后端都精通的人，可以走的更远。</li>
+<li>所以你往前端方向走是好事，不过后端也不要扔下。</li>
+<li>后端也不仅仅是 curd，当业务复杂，用户规模大的时候，面临的挑战比前端要大的多，如果你所在的公司没这方面的挑战，建议去大厂感受一下。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">关于前端开发，如何完善自己的工作流呢，目前的工作流十分原始，流程是明确需求-项目开发(开发环境/正式环境)-测试-上线。<br>
+如果在大厂面试，工作流这块比较吃亏。像黄老这种包括了项目初始化、本地开发、联调、测试、上线等各个环节，是如何探索出来的呢 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>这些都是在大厂训练出来的，其实程序员更多的应该去思考一个需求从产生 - 落地的各个环节。</li>
+<li>现在大部分人能做到从一个项目的开发-上线各个流程的属性，其实在 Zoom 我们会从产品的设计开始，自己会去设计产品应该如何实现，用户需要什么样的功能，从 owner 的角度去设计和开发，并负责产品的测试和上线，这才是工程师应该有的素质。</li>
+<li>所以即使在一个有很多产品经理的公司，工程师也可以多参与产品的设计和讨论喔。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">大佬，对于 flutter 持什么看法，以后会成为全端的解决方案吗 ？特别是 flutter 转 web 之后 。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>肯定不会替代 Web 开发的，至于双端的应用，可以关注一些主做移动端的公司，比如滴滴、阿里、腾讯、头条等大厂在这方面的应用实践吧。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">中级怎么突破到高级前端工程师呢？ 自己尝试写框架和库吗 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>中级前端基本上就是能够独立开发，满足基本功能需求，质量一般，对于复杂业务需求实现吃力，需要指导，对标阿里 p5。</li>
+<li>高级前具备独挡一面的能力，能够高质量完成工作，胜任复杂业务需求开发，能把握一个系统/团队的整体实现，在推行过程中能提炼新的方法或方案，或对现有方案提出改进建议并被证明有效，对标阿里 p6。</li>
+<li>其实级别的突破，侧面反馈就是能力的成长，那怎么提升能力呢？既要会偷懒，又要勤奋。<br>
+这里说的"偷懒"，并不是说少做需求，而是从业务开发中多去思考和总结，学会抽象，学会复用代码，减少重复的劳动。学会使用工具来帮我们解决人肉的问题。</li>
+<li>举个例子，前端最近非常火热的编程思想就是模块化、组件化，本质上都是为了复用代码，提升代码的可维护性，比如我们是不是需要开发通用组件库、JS 库等等，来辅助我们的业务代码。还有几乎现在所有项目都会用构建化工具帮助我们开发，最有代表性的就是 webpack，它能帮我初始化代码，调试，编译打包等等，极大的帮助我们节约了开发时间，我们是不是多花点时间去研究它的配置，甚至是它的源码。</li>
+<li>所以，去花时间学习这些编程思想，掌握这些工具，都能够很好的帮助我们提升技术。除了会"偷懒"之外，我们也要勤奋，虽然业务忙，但往往也不会忙到 8 小时工作时间都在写代码的地步吧。</li>
+<li>如果我们把每天在群里斗图、刷微信朋友圈等等的时间节约下来学习技术的话，相信只要坚持，技术一定会提升比别人快，特别是初级的同学，你们的进步空间还很大，一定要多花时间在学习，而不是浪费时间问 "我工作 1-3 年，出去要多少钱合适" 这类的问题，薪资一定是和能力匹配的。</li>
+<li>至于学习的方向，只要和你工作相关，你没有掌握透彻的技术，都是可以的。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">学习到了一个进度学不进去了，静不下心看书。想问问大佬有没有遇到类似的情况，有什么调解方法吗 ？谢谢~</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>学习学不下去的时候，不妨做一些放松自己的事情，然后在状态好的时候再回过头去看喔~</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">Node.js 对于前端是必备的么，但目前公司并没有应用场景， 学了用不上，就忘了。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>Node.js 至少在工具方面的表现还是很不错的，比如一些构建工具、脚手架工具都是通过 Node.js 写的，可以通过学习他们的源码去了解 Node.js。</li>
+<li>另外一些不错的 Node.js 后端框架，比如 express，也可以去了解一下，因为通常使用 webpack 起的内置 server 就是使用了 express。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">作为一名初级前端工程师，前路很迷茫，不知道要怎么学习提升，老师，您可以给点建议吗 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>首先是基础，这里不仅仅是前端基础，还有计算机相关的基础知识（数据结构、网络），基础务必要打牢。可以通过反复看书、coding 练习的方式。</li>
+<li>其次是项目开发，你工作中用到技术栈，一定要熟练掌握，可以通过官方文档入门，通过工作中的 coding 巩固，并可以去看一些高质量的进阶教学视频课程做提升（这里有广告嫌疑）。</li>
+<li>以上是入门-中级的阶段主要做的事情，其实就是不断花时间学习 +coding，想办法让自己先成为熟练工，初级可提升的空间还是很大的。</li>
+<li>中级-高级，下面有一个类似的问题喔。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">黄老师，请问一下中级前端开发和高级前端开发分别需要具备什么样的能力素质 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>中级前端基本上就是能够独立开发，满足基本功能需求，质量一般，对于复杂业务需求实现吃力，需要指导，对标阿里 p5。</li>
+<li>高级前具备独挡一面的能力，能够高质量完成工作，胜任复杂业务需求开发，能把握一个系统/团队的整体实现，在推行过程中能提炼新的方法或方案，或对现有方案提出改进建议并被证明有效，对标阿里 p6。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">node 对于前端是必备的么，但目前公司并没有应用场景 😢； 学了用不上，就忘了</p>
+<p dir="auto">解答</p>
+<p dir="auto">Node.js 至少在工具方面的表现还是很不错的，比如一些构建工具、脚手架工具都是通过 Node.js 写的，可以通过学习他们的源码去了解 Node.js。另外一些不错的 Node.js 后端框架，比如 express，也可以去了解一下，因为通常使用 webpack 起的内置 server 就是使用了 express。</p>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">node ts 确实自己都在玩，ts 是跟你课程面学的，但有的面试官就反问我，node ts 并没有在真正生产环境玩过还敢拿出来说会， 就把我拒绝了，这些东西确实会，只是之前公司没有机会发挥，但我不知该如何应付这样的面试官，希望你解答。很多东西也需要遇到一个好团队才能发挥，但现在没有这个机会。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>其实不妨把你自己玩的东西形成一些作品，发布到 GitHub 上，可以是文章，也可以是项目。</li>
+<li>我之前面试一个携程的小朋友，他们的技术栈是 React，但是他自己研究过 Vue.js 实现并写了一个 Mini 版本的 Vue 实现，这样给我的感觉就很好。</li>
+<li>所以虽然有些技术没有在生产环境中用过，但是你通过自学掌握了并且折腾出一些成果，我会认为你是一个喜欢技术，爱折腾的人。</li>
+<li>如果说你这么做了面试官依然不认可你，那说明你们的价值观不符，那么面试不通过也没什么好遗憾的，面试本来也是一个双向选择的过程~</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">对于一个中大型的前端项目来说，各种组件如何分类更合理呢 ？比如基础组件、业务组件。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>通常分为基础组件、业务组件、视图组件，基础组件通常都会在组件库里解决了。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">大佬，我现在就职一家比较大的公司，做前端，外包。每天平均 9 10 点下班，平常学习的时间感觉太少了，想补基础知识。<br>
+只能通勤时间看看电子书，回家了再敲一会代码。有时候，11 点，12 点。有点干下去了，有点迷茫，求大佬指导。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>你属于人力外包还是项目外包，如果是人力外包到大公司，就想办法转正。</li>
+<li>另外你需要评估一下你每天工作这么长时间是否有提升，还是一味地重复劳动。</li>
+<li>如果有提升的话，那还是可以继续做，如果没什么提升，并且也没什么好机会提升的话，那可以考虑出去看看机会了~</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">毕业三年，第一年在一个小公司，第二年在一个大公司的外包到现在。<br>
+现在的状态是这样的，公司有老项目（13 年一直用到现在的）需要维护，也有新项目( vue + 微服务)，总之我的工作上主要在维护那些老项目上，实际上工作上用的时间不多，每天有一定量的空闲时间，对应的工资也上不来，一年了也没有调薪，由于老项目的重要性自然是日益下降的，未来也不像是多能期待。<br>
+新项目实际上我也接触过，还做过一些脚手架整体升级一类的工作，所以现在工作中能带来的学习方向和提升实在不多，于是我现在在学习一些基础性的东西（ http 协议，数据结构与算法，网络硬件，甚至计算机组成）。<br>
+由于我是转行来的这些东西没有系统的学过，现在捡起来说有用也有用，但短期看来带不来什么明显的改变，我的问题就是，如果从现实出发，之后的岁月应该怎么规划合适，短期来说有什么能带来收益（比如方便面试 ？）的学习方向 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>短期如果是面向面试学习的话，我认为一方面你需要准备面试，可以看一下掘金那本面试相关的小册，查漏补缺。</li>
+<li>一方面需要好好地对你现有的工作总结，即使看上去技术含量不太高的工作，是不是也会有一些亮点，让面试官看到你对工作的思考。</li>
+<li>长期的话，如果想让自己的天花板变高，还是需要学习计算机的一些基础知识的。</li>
+<li>工作中如果遇到了相关知识不明白的，就认真去学习，直到弄明白为止。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">我大学也是 .net 方向，现在大三，已经转向前端，基础知识已了解，准备学习 vue。我现在有些焦虑，即将秋招，可是我还没有拿的出手的项目，怎么办啊 ？求解。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>校招主要看重的是候选人的基础和潜力，如果有实习经验更佳。</li>
+<li>建议你这段时间就认真备战秋招吧，先把基础好好学习，除了前端知识外，数据结构算法也是考点，刷刷题吧。</li>
+<li>至于项目的话，如果你有时间能高仿个 xx，并在掘金上发布文章 ，也可能是一个亮点吧。</li>
+<li>去年有个同学就通过这个方式获得滴滴的面试，不过可惜基础略薄弱。所以重点还是先搞基础吧~</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">我参加了滴滴的校招，但遗憾面试没有通过，后来我去了一个创业公司到现在也快一年了，负责开发公司的 webapp（ Cordova + vue ）和官网，node 和 mysql 对于正常的开发都能熟练使用，后台接口和前后端联调也要我负责，但是我非常想去大厂和优秀的人在一起，提升自己，不过我投过几家大厂要求 1 到 3 年经验却没有任何消息，所以我现在对于未来有点迷茫了，因为我真的真的想去大厂，现在的我该怎么办，是不是我太急躁了 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>不用太急，你也只工作一年而已，这个过程你可以提升的东西有很多，先多做业务，提升技术。</li>
+<li>等 2-3 年后，再尝试去投大厂，但你的简历一定要有亮点，并且基础足够扎实，相信以后机会还是会有很多的，加油~</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">现在多端统一开发框架这么多，有没有学习的建议 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>首先思考一下你的业务是否需要多端框架，比如 App、h5 和小程序需要一样的设计吗，答案是很多情况下是不一样的，从产品设计上来说，App 通常是最完善的功能，h5 保留主要功能，而小程序多半是一个快速入口。</li>
+<li>其次目前多端框架多半不成熟，如果是核心业务，务必谨慎使用，很多情况下，大公司也会在一些偏运营展示的简单业务中使用这类多端框架。</li>
+<li>最后，一定要做技术选型，那么就从技术栈、框架维护力度，以及社区的活跃度几个方向权衡吧。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">黄老师，请问应该怎么培养自己的架构思维呢 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>这个需要长期的经验积累的，说几个关键词吧，借鉴、思考、总结，交流。</li>
+<li>借鉴是站在巨人的肩膀上，比如可以学习张云龙大佬的博客： <a href="https://github.com/fouber/blog">https://github.com/fouber/blog</a></li>
+<li>思考是多去想我怎么设计才是最合理，能否解决当前业务的痛点，如何做到开发时对开发者友好，上线时对用户友好。</li>
+<li>总结就是每次经验用文字记录下来，积累和沉淀。这个时候也可以多思考思考，有没有哪些地方是不合理的，有没有更好的方案。</li>
+<li>交流就是把一些案例分享出去，和大家一起探讨和交流，碰撞一些不一样的思维火花。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">前端的职业发展，怎么建立良好的知识体系呢 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>深度优先，不忘发展广度，前端相关的知识体系可参考朴灵大佬这幅图：<a href="https://github.com/JacksonTian/fks">https://github.com/JacksonTian/fks</a>。</li>
+<li>当然，这幅图只是一个参考，你的知识体系还是要通过工作建立起来的，所以要以你的工作为准，深入学习周边的工具链技术，学习过程中要多思考，勤总结，对于每个知识点，最好是能学精学透，切忌囫囵吞枣。</li>
+<li>对于些热门的技术，不要盲目追新，如果工作用不到，除非很感兴趣，否则了解关注即可。</li>
+</ul>
+<p dir="auto">问题</p>
+<p dir="auto">老师好，我是一名工作一年的前端菜鸟，目前，有点迷茫，不知道以后自己的生涯规划朝那个方向发展，横行还是纵向，求教 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>对于初入行我的建议都是多做业务，多提升技术，等到 2-3 年，再考虑之后的发展方向。</li>
+<li>关于职业生涯规划，我下面有回答喔。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">黄老，这几年的前端趋势是 mvvm、组件化、工程化以及 typescript，您觉得接下来的近几年前端会向哪个方向重点发展呢 ？目前前端部分还有什么痛点需要解决呢 ？期待您的解答，感谢！</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>前端往深入做通常是几个方向，复杂应用（比如 web doc 这种规模的）、数据可视化（2D、3D）、前端工程化、架构。</li>
+<li>痛点如目前非常火的多端框架，本身是值得探索的一个方向，但是由于各个端的标准和实现不一致，导致目前的状态是调试困难，坑多。</li>
+<li>另外，感兴趣的话也可以把视野放更广一些，比如可以关注 AI，入门机器学习等等。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">你以前刚接触 web 前端时，每天看几本书 ？通过啥方式提升 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>我看的前端书并不多，也远达不到一天几本，经典的红宝书和犀牛书我有反复的看过，前期基本就是一个编码 - 看书 - 编码 - 看书的节奏。</li>
+<li>另外，我也比较推荐看一下广度相关的书籍，比如《http 权威指南》、《精通正则表达式》、《Head First 设计模式》《代码整洁之道》 等。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">大佬，请问下公司就我一个前端，没有经验比较丰富的人可以交流学习，依靠自己学习可以从初级进阶到中级前端工程师吗 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>现在学习资源比之前丰富太多了，除了看一些经典书籍，还有一些很不错的教学视频可以去学习，讲师很多也是一线互联网公司的大佬，投资自己总不会错的。</li>
+<li>也可以适当参加一些技术会议，认识一些人。</li>
+<li>另外，对于在小公司如何做技术提升，可以参考我下面的一些回答。</li>
+<li>当然，当你能力提升到一定水平后，能进大公司就去大公司。大公司相对来说，业务挑战更大，也更加规范，是一个非常不错的镀金机会。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">老师怎么看待未来桌面应用，例如 electron 的发展前景 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>electron 让前端工程师开发桌面应用更加容易，但它本身还是桌面应用，需要安装，大部分企业还是会更倾向于 web 的方式吧。</li>
+<li>另外，我觉得 PWA 可以多关注喔。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">大佬，天天加班严重，忙于业务，还是基于老的框架，如何能提升自身 ？感觉很困惑 。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>首先需要提升自己的开发效率，思考一下能不能抽象一些通用的模块和组件等，开发过程中有没有痛点，有没有能通过工具而不用人解决的问题，如果你能发现一些问题并通过技术手段解决，那么已经是一个提升了。</li>
+<li>其次，老的框架是否需要升级，如需要，如何平滑升级，如何做到升级对现有业务影响最小，如果影响很大，思考一下现有项目的组织方式是否合理。如果把上面这些问题都想清楚，并解决，也是一个提升了。</li>
+<li>再次，我每天做的业务，接触到的一些工具链和技术栈，我是否已经对它们的原理深入掌握了，出现 Bug 和坑我能否快速定位和解决，如果现有轮子不能满足需求的时候，我能不能快速造一个出来，做了这些又是一个提升。</li>
+<li>最后，如果觉得公司对技术重视程度不够，也可以考虑换一个坑。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">前端的架构师一般都做些什么呢 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>主要是分析当前业务的痛点和目标，结合场景去提出一套合理的解决方案。</li>
+<li>其中涉及到编码的部分包括不限于编写一些工具插件、脚手架、甚至是框架。</li>
+<li>前端架构是没有银弹的，不同场景的架构方案也往往是不同的。</li>
+</ul>
+<hr>
+<h2 id="main-heading-H2-1">2. 性能优化</h2>
+<p dir="auto">问题</p>
+<p dir="auto">性能优化有什么推荐的书吗？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>《高性能网站建设进阶指南》</li>
+</ul>
+<hr>
+<h2 id="main-heading-H2-2">3. Vue.js</h2>
+<p dir="auto">问题</p>
+<p dir="auto">你好，老师，前端使用 vue 技术栈的，有哪些提升开发效率的经验 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>对 Vue.js 熟练掌握，可以方便你快速开发。</li>
+<li>深入了解 Vue.js 的原理，对于快速定位 bug，了解它的职责边界有很大帮助。</li>
+<li>另外，尽量使用第三方成熟库，避免重复造轮子。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">培训结束一年，三大框架只了解 vue，目前准备跳槽，但是觉得自己 js 基础也不扎实，vue 也没有特别的熟练，react 更是完全都不了解，想问下接下来的学习路径大概是什么 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>查漏补缺吧，知道自己什么不足，就花时间去学习。</li>
+<li>Vue.js 技术栈方向的可以考虑去学习我的课程，不过会有一定难度，也是需要你花时间和耐心去学的。</li>
+<li>另外就是在工作中学习和成长了，如果是一年经验，还是多做业务，在业务中多思考和总结，使用 Vue 就先把 Vue 用熟，接下来研究其原理实现，学透。</li>
+<li>之后有需要再学 React、Angular 都比较容易了。</li>
+<li>总之前期还是先让自己成为一名熟练工，之后再去做一些有挑战的事情。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">黄轶老师，vue.js 源码都跟着您学完了，另外还学过 ts，网络，基础的构建，接下来如果像往前端继续深造应该学什么呢，深入算法还是可以看看 webpack 源码 ？谢谢。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>通常都是结合你工作中使用到的一些工具链，做深入的学习和研究。</li>
+<li>另外，你已经学习了这么多东西，可以尝试一下学以致用，比如用 ts 重构一些项目，给一些基础库和组件编写测试等等。</li>
+<li>学习了 Vue 源码，可以尝试去编写一些自定义指令、插件等，或者是去研究社区 Vue 相关生态工具，做进一步研究和学习。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">Vue 应该如何进阶和提升呢 ? 总感觉自己处在一个业务仔的技术水平。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>
+<ol dir="auto">
+<li>做复杂的应用，思考不同场景在 Vue 下如何解决，并搞清楚 Vue 的边界职责（即 Vue 能做什么，不能做什么）。</li>
+</ol>
+</li>
+<li>
+<ol dir="auto">
+<li>了解一下周边生态工具如 vue-router、vuex 的实现原理，尝试去写一些简单的轮子，比如自定义指令、插件等。</li>
+</ol>
+</li>
+<li>
+<ol dir="auto">
+<li>阅读源码，了解 Vue 的核心原理实现。</li>
+</ol>
+</li>
+<li>
+<ol dir="auto">
+<li>参与 Vue 或者周边生态工具源码的共建。</li>
+</ol>
+</li>
+<li>推荐学习工作中使用的工具链的源码，比如用了 webpack 就看研究一下 webpack，如果能顺手写一两个 webpack 插件就更好了。</li>
+<li>另外也可以多看一些经典的书籍和一些进阶的视频课程学习。</li>
+</ul>
+<hr>
+<h2 id="main-heading-H2-3">4. 个人成长</h2>
+<p dir="auto">问题</p>
+<p dir="auto">在对未来规划的方面老师可否给一些参考性的建议 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>一般建议只做 3 年内的规划，你作为一个应届生，前几年的目标就是多做业务，提升技术。</li>
+<li>关于职业规划，下面有个类似的问题喔。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">黄老师，你在滴滴的时候你是你们团队的第一个人 ，团队都是你组建起来的吗 ？可以分享一下组建团队的时候，你是怎样考虑自己要选择的队员 ，以及如何对他们的工作进行分配和评估的 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>是第一人，不过后来没有做 leader，有些事情就不便这里说啦。</li>
+<li>我可以分享一下我后来做 WebApp 前端架构团队负责人是如何招人的，主要看候选人是不是符合团队的整体气质，比如我们团队是一个爱折腾技术，喜欢分享的团队，如果候选人在这方面突出，肯定是大大的加分项。</li>
+<li>工作分配主要是看他们每个人的情况，通常一个人会负责一块业务，同时也有相关的技术方向。</li>
+<li>会把一些基础的开发工作分配给应届生，因为他们是需要大量做业务的阶段，会把一些有挑战的工作分配给一些有潜力的同学，让他们快速成长。</li>
+<li>另外我们团队还有很优秀的同学，会主动承担和负责一些技术方向，这些我都非常鼓励的。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">小公司没有什么大公司背景，没有牛逼的项目，怎么走上前端架构之路 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>首先，你需要能快速响应公司的业务需求，成为一名熟练工。</li>
+<li>然后可以思考开发过程中有没有什么痛点，能不能通过技术的手段，比如开发一些工具和插件来提升开发效率，在这个过程中，你可以去调研业内有没有成熟的轮子，轮子能不能满不满足你的需求，可以对轮子做研究甚至去做贡献，这个过程你会接触到学习到很多不曾接触到的知识，积累沉淀下来。</li>
+<li>另外，你也需要多花业余时间去学习，学习的方向是你工作相关的技术栈，学精学通。</li>
+<li>等自己有一定能力了，不妨去投简历到心仪的大公司，刚提到的这些经历可以成为简历的亮点。</li>
+<li>进入大公司后，你会遇到更多的挑战，业务规模、开发效率、性能、稳定性等等都会有更高的要求，在你不断去面对挑战，解决问题的过程中，你自然就会慢慢成长了。</li>
+<li>当然，进入大公司后你可能一开始也可能是一颗螺丝钉，但是你自己是可以多花时间，对自己接触到的工具链做研究，主动承担一些有挑战的任务，如果你的能力得到了认可，你就会有机会接触到更多有挑战的任务。能够分析出问题的痛点，提出一些适合场景且合理的解决方案，就是前端架构师通常做的事情。</li>
+<li>我以上说的，会有很多时候都需要跳出自己的舒适圈，并且需要付出更多的时间和努力，勤思考，多总结。所以，想成为前端架构师并不容易，加油吧~</li>
+</ul>
+<hr>
+<h2 id="main-heading-H2-4">5. 源码</h2>
+<p dir="auto">问题</p>
+<p dir="auto">黄老师，想问问您，前端进阶该怎么做呢？已经看了不少基础的 js 书，接下来主要看源码吗？如果看源码，初期哪些更合适呢？</p>
+<p dir="auto">看源码通常是提升 JS 内功的一个不错的方式，至于看哪些主要是结合你的工作接触到技术栈了。如何看源码，我之前写过一篇文章，你可以参考一下：<a href="https://juejin.cn/post/6844903617762492423" rel="nofollow">来聊聊源码学习</a></p>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">想请教一下大神在最初学习源码，组织开源时如何入门的，同时学习源码对于工作变现是不是有必然的联系，如何把控 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>拿 Vue.js 为例吧，最初是兴趣驱动，好奇，后来是写文章，需要深入研究，再之后就是工作中陆陆续续地看，然后录源码课程前系统地看了好几遍。</li>
+<li>看源码的好处在于可以提升自己的内功，工作中遇到 bug 能快速定位和解决，充分了解它的职责边界等，另外现在面试似乎都喜欢问原理实现，熟悉源码肯定是一个加分项咯。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">框架熟悉哪几个比较合适呢 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>通常优先精通工作中使用的框架，其它的了解即可。因为框架很多设计思想都是相通的，一旦精通一门，之后想学习其他框架非常容易。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">人到 30 ，该如何规划未来 5 年的时间 ？</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>职业规划我下面有回答，我个人认为这个时间还是应该做技术、写代码的时间。</li>
+</ul>
+<hr>
+<p dir="auto">问题</p>
+<p dir="auto">你认为如何做职业生涯规划呢 ？从前前端几年了，感觉处于瓶颈期，目前比较迷茫，目标不明确。</p>
+<p dir="auto">解答</p>
+<ul dir="auto">
+<li>通常做技术往上 2 条路。</li>
+<li>1 ：纯技术路线：架构师技术专家</li>
+<li>2 ：技术+管理路线。</li>
+<li>先找准你的方向，如果对技术感兴趣，建议走 1 路线，否则就走 2。</li>
+<li>对于管理，我不是很擅长，我的经验就是首先你自己的技术要过硬，让底下人认可你，其次就是思考怎么发挥团队的最大价值，为团队小伙伴谋福利，关注他们的成长等。</li>
+<li>但是无论哪条路线，你的技术一定要好，而且我是不太建议工作个 5，6 年就转纯管理，时间太短，即使做了也不要落下技术。</li>
+<li>所以你目前还是需要精进技术，突破瓶颈通过就需要跳出舒适圈，解决一些需要你跳一下才能搞定的问题，最好是能找到你目前工作中的一些痛点，通过技术的手段去解决。</li>
+<li>我看你在字节跳动，也可以关注一下其他团队做的事情。</li>
+<li>我知道头条有一个非常牛逼的大佬-张袁炜，他是我在百度时期的导师，你也可以找他交流下。</li>
+</ul>
+<hr>
+<h2 id="main-heading-H2-5">6. 最后</h2>
+<p dir="auto">以上问题及回答全部来自： <a href="https://juejin.im/pin/5d0799fd092dcb01f6f81d6a" rel="nofollow">我是开源库 better-scroll 的作者 -- 黄轶，你有什么问题要问我 ？</a></p>
+<p dir="auto">以上问题及回答，对笔者很有帮助，相信以上回答对前端开发者也会有很大的启发，能解决很多人的迷茫，所以整理成了这篇文章。</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(i,n,l,u,t){return{layout:"default",data:[{post:{id:2324759033,number:277,title:"前端架构师亲述：前端工程师成长之路的 N 问 及 回答（转贴）",created_at:"2024-05-30T05:47:12Z",updated_at:"2025-11-23T16:05:04Z",body_html:'<p dir="auto"><a href="https://camo.githubusercontent.com/49482a103716c672858f26ed8a50b720b5aedb062112a132baeb778a501afa1e/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d633062633566343336373264653664392e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/49482a103716c672858f26ed8a50b720b5aedb062112a132baeb778a501afa1e/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d633062633566343336373264653664392e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width: 100%;"></a></p>\n<blockquote>\n<p dir="auto">问题回答者：是开源库 better-scroll 的作者 -- 黄轶，你有什么问题要问我？</p>\n</blockquote>\n<blockquote>\n<p dir="auto">大家好，我是黄轶，目前就职于 Zoom 公司担任前端架构师，曾就职于滴滴和百度，毕业于北京科技大学。我是开源库 better-scroll 的作者，也是慕课网的老师，相信有很多同学通过我的课程学习掌握了 Vue.js 这门技术。</p>\n</blockquote>\n<blockquote>\n<p dir="auto">我在 2012 年毕业加入百度后，才开始正式接触 Web 前端，上学期间主要接触的是 .net，写过几个小作品到 CSDN，我非常庆幸转行，如果毕业还坚持做 .net 可能早就凉了。在百度的 3 年工作经历，我写过页面，写过网页游戏、写过 chrome 插件、写过组件、写过框架。</p>\n</blockquote>\n<blockquote>\n<p dir="auto">15 年 7 月份我加入滴滴，成为当时公共部门第一个前端。在滴滴的 3 年，我造过很多公司级别轮子（登录 sdk、jsbridge-sdk，地图 sdk 等），作为技术负责人主导过 2 次滴滴 WebApp 重构，负责架构设计和实现。在 16 年初把 Vue.js 引入滴滴的生产环境项目中，并在 WebApp 5.0 的重构项目得到全面应用。在滴滴的后期我负责 WebApp 架构组，开源了 cube-ui，折腾了多个技术方向（自动化测试框架、小程序框架）。</p>\n</blockquote>\n<blockquote>\n<p dir="auto">18 年 9 月，为追求喜欢的生活方式，我离开生活 12 年的帝都，回到家乡合肥，加入了目前的公司 Zoom。结合 Zoom Web 产品的特点我设计了一整套前后端分离的架构设计方案，包括了项目初始化、本地开发、联调、测试、上线等各个环节，并在多个项目中落地。同时，我们基于 element-ui fork 出 zoom-ui，并致力解决和优化 aceesibility 问题，另外除了基础组件之外我们针对一些业务场景设计了业务组件。</p>\n</blockquote>\n<blockquote>\n<p dir="auto">我在工作外也不忘发挥余热，从做兼职，到写书，做课程。它们不仅带来额外收入，也促进了我能力的提升，比如 Angular.js 的学习就是兼职中边做边学的；通过写书和做课程，我把 Vue.js 的源码翻烂了。我的理念是挣外快可以，但同时一定要提升自己，否则就是浪费时间。由于篇幅原因，完整介绍见图 2</p>\n</blockquote>\n<blockquote>\n<p dir="auto">我在 2019.06.18 - 2019.06.20 期间挑选有趣、有典型性、有意义的问题回答，你们可以问我 「前端开发」、「Vue.js」、「源码」、「前端架构」、「性能优化」、「个人成长」等相关问题。</p>\n</blockquote>\n<blockquote>\n<p dir="auto">原文出处：<a href="https://juejin.cn/pin/6844910434961588238" rel="nofollow">掘金话题</a> / <a href="https://github.com/biaochenxuying/blog/issues/33" data-hovercard-type="issue" data-hovercard-url="/biaochenxuying/blog/issues/33/hovercard">内容 zhengli</a></p>\n</blockquote>\n<h2 id="main-heading-H2-0">1. 前端开发</h2>\n<p dir="auto">问题</p>\n<p dir="auto">大佬，能分享下学习路径么，感觉天天忙着开发业务，但是能力好像没有太大提升，不知道该怎么充实自己 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>业务开发有没有痛点，能不能通过技术的手段解决 ？�</li>\n<li>平时开发业务用到了哪些技术栈和周边的生态链，我是否对他们熟练掌握了，对他们的实现原理呢 ？</li>\n<li>平时开发遇到了 bug，调试了很久，能不能提升自己快速定位 bug，解决问题的能力 ？</li>\n<li>如果上面分配了一个需求，没有现成的轮子可以用，我是否可以快速造一个出来 ？</li>\n<li>如果使用第三方轮子出现问题，我能否能找到合适的解决方案，甚至参与共建 ？</li>\n<li>以上提到了这些问题，不妨问问自己，如果没有做的足够好，都是你可以提升的方向。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">我想知道你为什么对前端这个职业(行业)，总是保持一颗好奇心，每天都不停探索，每天保持学习进步，你是怎样坚持下来的呢 ？</p>\n<p dir="auto">就像医院里的医生(教授/专家)，在这个行业刻苦钻研了大半辈子，怎样保持每天学习的这种精神 ？探索精神 ？并且长久坚持下去 ？为社会做出了非常多的贡献。</p>\n<p dir="auto">我知道你是以怎样的决心和毅力保持每天学习，不停探索前进 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>主要是兴趣驱动吧，对技术保持热情和好奇。</li>\n<li>另外就是成就感，当我 get 到某个新技能，解决了某个复杂的问题的时候会非常有成就感。</li>\n<li>工作前几年的时间是非常关键的，是成长空间大且精力最旺盛的阶段，一定要在这个阶段多学知识。</li>\n<li>学习是无止境的，尤大说过一句话我印象非常深刻 "做脑力工作的人，往往钻研得越深，越发现自己的渺小和无知" ，与君共勉。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">最近拿到了滴滴出行的实习生 offer，我想问一下您对实习生 (或者说初步踏入 IT 行业的学生) 在融入部门和提升上有什么建议 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>实习生一定要多做业务，工作要积极主动，争取转正机会。</li>\n<li>另外，非常推荐去我之前的团队，现在是苗老板负责，你可以私下联系他喔~</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">感觉自己的 js 基础很薄弱啊，我想问如果想进大厂你指的基础具体一点到底指啥啊，我是一个非科班出身的求解呀 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>如果是应届生，大厂关注的是你的基础和潜力。</li>\n<li>如果是社招，大厂会关注你的经验和能力，以及潜力。</li>\n<li>如果你有心仪的大厂，不妨去看一下他们的招聘要求，以及关注一下他们对外输出的东西。</li>\n<li>非科班是一个劣势，那么你就务必要花时间去补一些计算机相关的理论知识，简历有需要亮点，最好能有一些技术输出，比如很多人会做博客、写系列文章、做有趣的项目等等。</li>\n<li>另外，最好的时机是等大厂缺人，招人名额多的时候去投简历，也可以多认识一些找内推机会。</li>\n<li>最后，一切的一切，都离不开硬实力，所以优先提升自己的硬实力，多花时间学习。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">黄轶老师，你对于在项目中推行 BFF 模式有什么见解吗 ？<br>\n希望你可以回答的略广一点，非常期待您的回答。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>BFF 在服务聚合上还是很有优势的吧，特别是微服务特别火的今天，前端只需要关注所需要的数据，不用关注底层提供这些数据的服务。我在滴滴和 Zoom 的时候都是这么玩的~</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">请问一下，你做兼职的话，一般是关注那些方面呢 ？ 还有比较建议在哪些渠道寻找兼职做呢 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>主要关注的是性价比，因为牺牲了自己的业余时间，要么是多挣钱（很难），要么是提升能力。</li>\n<li>最好是熟人介绍，没有的话可以去水木论坛找找看（我曾经找到过），其它渠道没有经验，我就不推荐了。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">黄老师，想问下你对于前后端数据交互的最佳实践的看法，ajax ？axios ？等等，有没有系统学习的推荐。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>前后端交互通常有 HTTP 和 WebSocket 2 种通讯方式，建议你首先系统的学习一下 HTTP 相关知识，推荐看 《HTTP 权威指南》或者是 《图解 HTTP》。</li>\n<li>另外你提到的 axios 只是对 Ajax 的封装，如果你想了解它的实现原理，正好前阵子我在慕课网做了一门课程《基于 TypeScript 从零重构 axios》，学一遍后你会对 axios 的实现细节会了如执掌，同时也可以巩固不少 HTTP 相关的知识。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">黄老师，我现在刚入门前端，能力有很大的欠缺，想找一些视频学习，现在主要用到的是 Vue 框架，有什么视频可以推荐给我吗 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>这里不打广告都不行了，可以关注我在慕课网的实战课程喔~ Vue 三步曲，入门 - 进阶的都有。</li>\n<li>不过除了看视频学习，我也建议你务必多去读官方文档，敲一敲上面的示例。<br>\n最后附上链接  <a href="http://www.imooc.com/t/3017249" rel="nofollow">http://www.imooc.com/t/3017249</a></li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">我目前是一名后端工程师，工作快五年了。刚工作时，认为前端只是写页面，写交互，技能项要求少。<br>\n我自己也是比较喜欢前端，因为做后端的也会接触到前端东西，所以暂时没有转到前端。<br>\n工作之中也在加强前端基础技术技能。慢慢发现前端并不是刚开始认为的那样，现在的前端能应用于各个客户端，服务端，以及组件化，模块化，激发了我更想学习前端的欲望，于是我利用空闲时间学习更多前端相关技术。<br>\n现在流行前后端分离，后端只做接口，完全不会接触我喜欢的前端部分，我喜欢技术，不喜欢业务，但是业务也很重要，在我的经历中一个项目完成上线后，基本就是后端解决运营或用户使用中出现的问题，因此正在考虑转专职前端。<br>\n这几年工作中写过接口，写过 h5 嵌入 App，写过前后不分离的项目，也写过前后分离的项目，想问问黄大仙站在前端的角度有什么看法 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>其实你有丰富的后端经验，不妨就直接转全栈，并不一定要做专职的前端。</li>\n<li>即使是前后端分离的开发方式，也可以一个人完成 2 端的开发。</li>\n<li>而且越往上走，如果前后端都精通的人，可以走的更远。</li>\n<li>所以你往前端方向走是好事，不过后端也不要扔下。</li>\n<li>后端也不仅仅是 curd，当业务复杂，用户规模大的时候，面临的挑战比前端要大的多，如果你所在的公司没这方面的挑战，建议去大厂感受一下。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">关于前端开发，如何完善自己的工作流呢，目前的工作流十分原始，流程是明确需求-项目开发(开发环境/正式环境)-测试-上线。<br>\n如果在大厂面试，工作流这块比较吃亏。像黄老这种包括了项目初始化、本地开发、联调、测试、上线等各个环节，是如何探索出来的呢 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>这些都是在大厂训练出来的，其实程序员更多的应该去思考一个需求从产生 - 落地的各个环节。</li>\n<li>现在大部分人能做到从一个项目的开发-上线各个流程的属性，其实在 Zoom 我们会从产品的设计开始，自己会去设计产品应该如何实现，用户需要什么样的功能，从 owner 的角度去设计和开发，并负责产品的测试和上线，这才是工程师应该有的素质。</li>\n<li>所以即使在一个有很多产品经理的公司，工程师也可以多参与产品的设计和讨论喔。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">大佬，对于 flutter 持什么看法，以后会成为全端的解决方案吗 ？特别是 flutter 转 web 之后 。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>肯定不会替代 Web 开发的，至于双端的应用，可以关注一些主做移动端的公司，比如滴滴、阿里、腾讯、头条等大厂在这方面的应用实践吧。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">中级怎么突破到高级前端工程师呢？ 自己尝试写框架和库吗 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>中级前端基本上就是能够独立开发，满足基本功能需求，质量一般，对于复杂业务需求实现吃力，需要指导，对标阿里 p5。</li>\n<li>高级前具备独挡一面的能力，能够高质量完成工作，胜任复杂业务需求开发，能把握一个系统/团队的整体实现，在推行过程中能提炼新的方法或方案，或对现有方案提出改进建议并被证明有效，对标阿里 p6。</li>\n<li>其实级别的突破，侧面反馈就是能力的成长，那怎么提升能力呢？既要会偷懒，又要勤奋。<br>\n这里说的"偷懒"，并不是说少做需求，而是从业务开发中多去思考和总结，学会抽象，学会复用代码，减少重复的劳动。学会使用工具来帮我们解决人肉的问题。</li>\n<li>举个例子，前端最近非常火热的编程思想就是模块化、组件化，本质上都是为了复用代码，提升代码的可维护性，比如我们是不是需要开发通用组件库、JS 库等等，来辅助我们的业务代码。还有几乎现在所有项目都会用构建化工具帮助我们开发，最有代表性的就是 webpack，它能帮我初始化代码，调试，编译打包等等，极大的帮助我们节约了开发时间，我们是不是多花点时间去研究它的配置，甚至是它的源码。</li>\n<li>所以，去花时间学习这些编程思想，掌握这些工具，都能够很好的帮助我们提升技术。除了会"偷懒"之外，我们也要勤奋，虽然业务忙，但往往也不会忙到 8 小时工作时间都在写代码的地步吧。</li>\n<li>如果我们把每天在群里斗图、刷微信朋友圈等等的时间节约下来学习技术的话，相信只要坚持，技术一定会提升比别人快，特别是初级的同学，你们的进步空间还很大，一定要多花时间在学习，而不是浪费时间问 "我工作 1-3 年，出去要多少钱合适" 这类的问题，薪资一定是和能力匹配的。</li>\n<li>至于学习的方向，只要和你工作相关，你没有掌握透彻的技术，都是可以的。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">学习到了一个进度学不进去了，静不下心看书。想问问大佬有没有遇到类似的情况，有什么调解方法吗 ？谢谢~</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>学习学不下去的时候，不妨做一些放松自己的事情，然后在状态好的时候再回过头去看喔~</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">Node.js 对于前端是必备的么，但目前公司并没有应用场景， 学了用不上，就忘了。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>Node.js 至少在工具方面的表现还是很不错的，比如一些构建工具、脚手架工具都是通过 Node.js 写的，可以通过学习他们的源码去了解 Node.js。</li>\n<li>另外一些不错的 Node.js 后端框架，比如 express，也可以去了解一下，因为通常使用 webpack 起的内置 server 就是使用了 express。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">作为一名初级前端工程师，前路很迷茫，不知道要怎么学习提升，老师，您可以给点建议吗 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>首先是基础，这里不仅仅是前端基础，还有计算机相关的基础知识（数据结构、网络），基础务必要打牢。可以通过反复看书、coding 练习的方式。</li>\n<li>其次是项目开发，你工作中用到技术栈，一定要熟练掌握，可以通过官方文档入门，通过工作中的 coding 巩固，并可以去看一些高质量的进阶教学视频课程做提升（这里有广告嫌疑）。</li>\n<li>以上是入门-中级的阶段主要做的事情，其实就是不断花时间学习 +coding，想办法让自己先成为熟练工，初级可提升的空间还是很大的。</li>\n<li>中级-高级，下面有一个类似的问题喔。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">黄老师，请问一下中级前端开发和高级前端开发分别需要具备什么样的能力素质 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>中级前端基本上就是能够独立开发，满足基本功能需求，质量一般，对于复杂业务需求实现吃力，需要指导，对标阿里 p5。</li>\n<li>高级前具备独挡一面的能力，能够高质量完成工作，胜任复杂业务需求开发，能把握一个系统/团队的整体实现，在推行过程中能提炼新的方法或方案，或对现有方案提出改进建议并被证明有效，对标阿里 p6。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">node 对于前端是必备的么，但目前公司并没有应用场景 😢； 学了用不上，就忘了</p>\n<p dir="auto">解答</p>\n<p dir="auto">Node.js 至少在工具方面的表现还是很不错的，比如一些构建工具、脚手架工具都是通过 Node.js 写的，可以通过学习他们的源码去了解 Node.js。另外一些不错的 Node.js 后端框架，比如 express，也可以去了解一下，因为通常使用 webpack 起的内置 server 就是使用了 express。</p>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">node ts 确实自己都在玩，ts 是跟你课程面学的，但有的面试官就反问我，node ts 并没有在真正生产环境玩过还敢拿出来说会， 就把我拒绝了，这些东西确实会，只是之前公司没有机会发挥，但我不知该如何应付这样的面试官，希望你解答。很多东西也需要遇到一个好团队才能发挥，但现在没有这个机会。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>其实不妨把你自己玩的东西形成一些作品，发布到 GitHub 上，可以是文章，也可以是项目。</li>\n<li>我之前面试一个携程的小朋友，他们的技术栈是 React，但是他自己研究过 Vue.js 实现并写了一个 Mini 版本的 Vue 实现，这样给我的感觉就很好。</li>\n<li>所以虽然有些技术没有在生产环境中用过，但是你通过自学掌握了并且折腾出一些成果，我会认为你是一个喜欢技术，爱折腾的人。</li>\n<li>如果说你这么做了面试官依然不认可你，那说明你们的价值观不符，那么面试不通过也没什么好遗憾的，面试本来也是一个双向选择的过程~</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">对于一个中大型的前端项目来说，各种组件如何分类更合理呢 ？比如基础组件、业务组件。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>通常分为基础组件、业务组件、视图组件，基础组件通常都会在组件库里解决了。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">大佬，我现在就职一家比较大的公司，做前端，外包。每天平均 9 10 点下班，平常学习的时间感觉太少了，想补基础知识。<br>\n只能通勤时间看看电子书，回家了再敲一会代码。有时候，11 点，12 点。有点干下去了，有点迷茫，求大佬指导。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>你属于人力外包还是项目外包，如果是人力外包到大公司，就想办法转正。</li>\n<li>另外你需要评估一下你每天工作这么长时间是否有提升，还是一味地重复劳动。</li>\n<li>如果有提升的话，那还是可以继续做，如果没什么提升，并且也没什么好机会提升的话，那可以考虑出去看看机会了~</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">毕业三年，第一年在一个小公司，第二年在一个大公司的外包到现在。<br>\n现在的状态是这样的，公司有老项目（13 年一直用到现在的）需要维护，也有新项目( vue + 微服务)，总之我的工作上主要在维护那些老项目上，实际上工作上用的时间不多，每天有一定量的空闲时间，对应的工资也上不来，一年了也没有调薪，由于老项目的重要性自然是日益下降的，未来也不像是多能期待。<br>\n新项目实际上我也接触过，还做过一些脚手架整体升级一类的工作，所以现在工作中能带来的学习方向和提升实在不多，于是我现在在学习一些基础性的东西（ http 协议，数据结构与算法，网络硬件，甚至计算机组成）。<br>\n由于我是转行来的这些东西没有系统的学过，现在捡起来说有用也有用，但短期看来带不来什么明显的改变，我的问题就是，如果从现实出发，之后的岁月应该怎么规划合适，短期来说有什么能带来收益（比如方便面试 ？）的学习方向 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>短期如果是面向面试学习的话，我认为一方面你需要准备面试，可以看一下掘金那本面试相关的小册，查漏补缺。</li>\n<li>一方面需要好好地对你现有的工作总结，即使看上去技术含量不太高的工作，是不是也会有一些亮点，让面试官看到你对工作的思考。</li>\n<li>长期的话，如果想让自己的天花板变高，还是需要学习计算机的一些基础知识的。</li>\n<li>工作中如果遇到了相关知识不明白的，就认真去学习，直到弄明白为止。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">我大学也是 .net 方向，现在大三，已经转向前端，基础知识已了解，准备学习 vue。我现在有些焦虑，即将秋招，可是我还没有拿的出手的项目，怎么办啊 ？求解。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>校招主要看重的是候选人的基础和潜力，如果有实习经验更佳。</li>\n<li>建议你这段时间就认真备战秋招吧，先把基础好好学习，除了前端知识外，数据结构算法也是考点，刷刷题吧。</li>\n<li>至于项目的话，如果你有时间能高仿个 xx，并在掘金上发布文章 ，也可能是一个亮点吧。</li>\n<li>去年有个同学就通过这个方式获得滴滴的面试，不过可惜基础略薄弱。所以重点还是先搞基础吧~</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">我参加了滴滴的校招，但遗憾面试没有通过，后来我去了一个创业公司到现在也快一年了，负责开发公司的 webapp（ Cordova + vue ）和官网，node 和 mysql 对于正常的开发都能熟练使用，后台接口和前后端联调也要我负责，但是我非常想去大厂和优秀的人在一起，提升自己，不过我投过几家大厂要求 1 到 3 年经验却没有任何消息，所以我现在对于未来有点迷茫了，因为我真的真的想去大厂，现在的我该怎么办，是不是我太急躁了 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>不用太急，你也只工作一年而已，这个过程你可以提升的东西有很多，先多做业务，提升技术。</li>\n<li>等 2-3 年后，再尝试去投大厂，但你的简历一定要有亮点，并且基础足够扎实，相信以后机会还是会有很多的，加油~</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">现在多端统一开发框架这么多，有没有学习的建议 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>首先思考一下你的业务是否需要多端框架，比如 App、h5 和小程序需要一样的设计吗，答案是很多情况下是不一样的，从产品设计上来说，App 通常是最完善的功能，h5 保留主要功能，而小程序多半是一个快速入口。</li>\n<li>其次目前多端框架多半不成熟，如果是核心业务，务必谨慎使用，很多情况下，大公司也会在一些偏运营展示的简单业务中使用这类多端框架。</li>\n<li>最后，一定要做技术选型，那么就从技术栈、框架维护力度，以及社区的活跃度几个方向权衡吧。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">黄老师，请问应该怎么培养自己的架构思维呢 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>这个需要长期的经验积累的，说几个关键词吧，借鉴、思考、总结，交流。</li>\n<li>借鉴是站在巨人的肩膀上，比如可以学习张云龙大佬的博客： <a href="https://github.com/fouber/blog">https://github.com/fouber/blog</a></li>\n<li>思考是多去想我怎么设计才是最合理，能否解决当前业务的痛点，如何做到开发时对开发者友好，上线时对用户友好。</li>\n<li>总结就是每次经验用文字记录下来，积累和沉淀。这个时候也可以多思考思考，有没有哪些地方是不合理的，有没有更好的方案。</li>\n<li>交流就是把一些案例分享出去，和大家一起探讨和交流，碰撞一些不一样的思维火花。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">前端的职业发展，怎么建立良好的知识体系呢 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>深度优先，不忘发展广度，前端相关的知识体系可参考朴灵大佬这幅图：<a href="https://github.com/JacksonTian/fks">https://github.com/JacksonTian/fks</a>。</li>\n<li>当然，这幅图只是一个参考，你的知识体系还是要通过工作建立起来的，所以要以你的工作为准，深入学习周边的工具链技术，学习过程中要多思考，勤总结，对于每个知识点，最好是能学精学透，切忌囫囵吞枣。</li>\n<li>对于些热门的技术，不要盲目追新，如果工作用不到，除非很感兴趣，否则了解关注即可。</li>\n</ul>\n<p dir="auto">问题</p>\n<p dir="auto">老师好，我是一名工作一年的前端菜鸟，目前，有点迷茫，不知道以后自己的生涯规划朝那个方向发展，横行还是纵向，求教 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>对于初入行我的建议都是多做业务，多提升技术，等到 2-3 年，再考虑之后的发展方向。</li>\n<li>关于职业生涯规划，我下面有回答喔。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">黄老，这几年的前端趋势是 mvvm、组件化、工程化以及 typescript，您觉得接下来的近几年前端会向哪个方向重点发展呢 ？目前前端部分还有什么痛点需要解决呢 ？期待您的解答，感谢！</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>前端往深入做通常是几个方向，复杂应用（比如 web doc 这种规模的）、数据可视化（2D、3D）、前端工程化、架构。</li>\n<li>痛点如目前非常火的多端框架，本身是值得探索的一个方向，但是由于各个端的标准和实现不一致，导致目前的状态是调试困难，坑多。</li>\n<li>另外，感兴趣的话也可以把视野放更广一些，比如可以关注 AI，入门机器学习等等。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">你以前刚接触 web 前端时，每天看几本书 ？通过啥方式提升 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>我看的前端书并不多，也远达不到一天几本，经典的红宝书和犀牛书我有反复的看过，前期基本就是一个编码 - 看书 - 编码 - 看书的节奏。</li>\n<li>另外，我也比较推荐看一下广度相关的书籍，比如《http 权威指南》、《精通正则表达式》、《Head First 设计模式》《代码整洁之道》 等。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">大佬，请问下公司就我一个前端，没有经验比较丰富的人可以交流学习，依靠自己学习可以从初级进阶到中级前端工程师吗 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>现在学习资源比之前丰富太多了，除了看一些经典书籍，还有一些很不错的教学视频可以去学习，讲师很多也是一线互联网公司的大佬，投资自己总不会错的。</li>\n<li>也可以适当参加一些技术会议，认识一些人。</li>\n<li>另外，对于在小公司如何做技术提升，可以参考我下面的一些回答。</li>\n<li>当然，当你能力提升到一定水平后，能进大公司就去大公司。大公司相对来说，业务挑战更大，也更加规范，是一个非常不错的镀金机会。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">老师怎么看待未来桌面应用，例如 electron 的发展前景 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>electron 让前端工程师开发桌面应用更加容易，但它本身还是桌面应用，需要安装，大部分企业还是会更倾向于 web 的方式吧。</li>\n<li>另外，我觉得 PWA 可以多关注喔。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">大佬，天天加班严重，忙于业务，还是基于老的框架，如何能提升自身 ？感觉很困惑 。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>首先需要提升自己的开发效率，思考一下能不能抽象一些通用的模块和组件等，开发过程中有没有痛点，有没有能通过工具而不用人解决的问题，如果你能发现一些问题并通过技术手段解决，那么已经是一个提升了。</li>\n<li>其次，老的框架是否需要升级，如需要，如何平滑升级，如何做到升级对现有业务影响最小，如果影响很大，思考一下现有项目的组织方式是否合理。如果把上面这些问题都想清楚，并解决，也是一个提升了。</li>\n<li>再次，我每天做的业务，接触到的一些工具链和技术栈，我是否已经对它们的原理深入掌握了，出现 Bug 和坑我能否快速定位和解决，如果现有轮子不能满足需求的时候，我能不能快速造一个出来，做了这些又是一个提升。</li>\n<li>最后，如果觉得公司对技术重视程度不够，也可以考虑换一个坑。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">前端的架构师一般都做些什么呢 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>主要是分析当前业务的痛点和目标，结合场景去提出一套合理的解决方案。</li>\n<li>其中涉及到编码的部分包括不限于编写一些工具插件、脚手架、甚至是框架。</li>\n<li>前端架构是没有银弹的，不同场景的架构方案也往往是不同的。</li>\n</ul>\n<hr>\n<h2 id="main-heading-H2-1">2. 性能优化</h2>\n<p dir="auto">问题</p>\n<p dir="auto">性能优化有什么推荐的书吗？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>《高性能网站建设进阶指南》</li>\n</ul>\n<hr>\n<h2 id="main-heading-H2-2">3. Vue.js</h2>\n<p dir="auto">问题</p>\n<p dir="auto">你好，老师，前端使用 vue 技术栈的，有哪些提升开发效率的经验 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>对 Vue.js 熟练掌握，可以方便你快速开发。</li>\n<li>深入了解 Vue.js 的原理，对于快速定位 bug，了解它的职责边界有很大帮助。</li>\n<li>另外，尽量使用第三方成熟库，避免重复造轮子。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">培训结束一年，三大框架只了解 vue，目前准备跳槽，但是觉得自己 js 基础也不扎实，vue 也没有特别的熟练，react 更是完全都不了解，想问下接下来的学习路径大概是什么 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>查漏补缺吧，知道自己什么不足，就花时间去学习。</li>\n<li>Vue.js 技术栈方向的可以考虑去学习我的课程，不过会有一定难度，也是需要你花时间和耐心去学的。</li>\n<li>另外就是在工作中学习和成长了，如果是一年经验，还是多做业务，在业务中多思考和总结，使用 Vue 就先把 Vue 用熟，接下来研究其原理实现，学透。</li>\n<li>之后有需要再学 React、Angular 都比较容易了。</li>\n<li>总之前期还是先让自己成为一名熟练工，之后再去做一些有挑战的事情。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">黄轶老师，vue.js 源码都跟着您学完了，另外还学过 ts，网络，基础的构建，接下来如果像往前端继续深造应该学什么呢，深入算法还是可以看看 webpack 源码 ？谢谢。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>通常都是结合你工作中使用到的一些工具链，做深入的学习和研究。</li>\n<li>另外，你已经学习了这么多东西，可以尝试一下学以致用，比如用 ts 重构一些项目，给一些基础库和组件编写测试等等。</li>\n<li>学习了 Vue 源码，可以尝试去编写一些自定义指令、插件等，或者是去研究社区 Vue 相关生态工具，做进一步研究和学习。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">Vue 应该如何进阶和提升呢 ? 总感觉自己处在一个业务仔的技术水平。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>\n<ol dir="auto">\n<li>做复杂的应用，思考不同场景在 Vue 下如何解决，并搞清楚 Vue 的边界职责（即 Vue 能做什么，不能做什么）。</li>\n</ol>\n</li>\n<li>\n<ol dir="auto">\n<li>了解一下周边生态工具如 vue-router、vuex 的实现原理，尝试去写一些简单的轮子，比如自定义指令、插件等。</li>\n</ol>\n</li>\n<li>\n<ol dir="auto">\n<li>阅读源码，了解 Vue 的核心原理实现。</li>\n</ol>\n</li>\n<li>\n<ol dir="auto">\n<li>参与 Vue 或者周边生态工具源码的共建。</li>\n</ol>\n</li>\n<li>推荐学习工作中使用的工具链的源码，比如用了 webpack 就看研究一下 webpack，如果能顺手写一两个 webpack 插件就更好了。</li>\n<li>另外也可以多看一些经典的书籍和一些进阶的视频课程学习。</li>\n</ul>\n<hr>\n<h2 id="main-heading-H2-3">4. 个人成长</h2>\n<p dir="auto">问题</p>\n<p dir="auto">在对未来规划的方面老师可否给一些参考性的建议 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>一般建议只做 3 年内的规划，你作为一个应届生，前几年的目标就是多做业务，提升技术。</li>\n<li>关于职业规划，下面有个类似的问题喔。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">黄老师，你在滴滴的时候你是你们团队的第一个人 ，团队都是你组建起来的吗 ？可以分享一下组建团队的时候，你是怎样考虑自己要选择的队员 ，以及如何对他们的工作进行分配和评估的 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>是第一人，不过后来没有做 leader，有些事情就不便这里说啦。</li>\n<li>我可以分享一下我后来做 WebApp 前端架构团队负责人是如何招人的，主要看候选人是不是符合团队的整体气质，比如我们团队是一个爱折腾技术，喜欢分享的团队，如果候选人在这方面突出，肯定是大大的加分项。</li>\n<li>工作分配主要是看他们每个人的情况，通常一个人会负责一块业务，同时也有相关的技术方向。</li>\n<li>会把一些基础的开发工作分配给应届生，因为他们是需要大量做业务的阶段，会把一些有挑战的工作分配给一些有潜力的同学，让他们快速成长。</li>\n<li>另外我们团队还有很优秀的同学，会主动承担和负责一些技术方向，这些我都非常鼓励的。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">小公司没有什么大公司背景，没有牛逼的项目，怎么走上前端架构之路 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>首先，你需要能快速响应公司的业务需求，成为一名熟练工。</li>\n<li>然后可以思考开发过程中有没有什么痛点，能不能通过技术的手段，比如开发一些工具和插件来提升开发效率，在这个过程中，你可以去调研业内有没有成熟的轮子，轮子能不能满不满足你的需求，可以对轮子做研究甚至去做贡献，这个过程你会接触到学习到很多不曾接触到的知识，积累沉淀下来。</li>\n<li>另外，你也需要多花业余时间去学习，学习的方向是你工作相关的技术栈，学精学通。</li>\n<li>等自己有一定能力了，不妨去投简历到心仪的大公司，刚提到的这些经历可以成为简历的亮点。</li>\n<li>进入大公司后，你会遇到更多的挑战，业务规模、开发效率、性能、稳定性等等都会有更高的要求，在你不断去面对挑战，解决问题的过程中，你自然就会慢慢成长了。</li>\n<li>当然，进入大公司后你可能一开始也可能是一颗螺丝钉，但是你自己是可以多花时间，对自己接触到的工具链做研究，主动承担一些有挑战的任务，如果你的能力得到了认可，你就会有机会接触到更多有挑战的任务。能够分析出问题的痛点，提出一些适合场景且合理的解决方案，就是前端架构师通常做的事情。</li>\n<li>我以上说的，会有很多时候都需要跳出自己的舒适圈，并且需要付出更多的时间和努力，勤思考，多总结。所以，想成为前端架构师并不容易，加油吧~</li>\n</ul>\n<hr>\n<h2 id="main-heading-H2-4">5. 源码</h2>\n<p dir="auto">问题</p>\n<p dir="auto">黄老师，想问问您，前端进阶该怎么做呢？已经看了不少基础的 js 书，接下来主要看源码吗？如果看源码，初期哪些更合适呢？</p>\n<p dir="auto">看源码通常是提升 JS 内功的一个不错的方式，至于看哪些主要是结合你的工作接触到技术栈了。如何看源码，我之前写过一篇文章，你可以参考一下：<a href="https://juejin.cn/post/6844903617762492423" rel="nofollow">来聊聊源码学习</a></p>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">想请教一下大神在最初学习源码，组织开源时如何入门的，同时学习源码对于工作变现是不是有必然的联系，如何把控 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>拿 Vue.js 为例吧，最初是兴趣驱动，好奇，后来是写文章，需要深入研究，再之后就是工作中陆陆续续地看，然后录源码课程前系统地看了好几遍。</li>\n<li>看源码的好处在于可以提升自己的内功，工作中遇到 bug 能快速定位和解决，充分了解它的职责边界等，另外现在面试似乎都喜欢问原理实现，熟悉源码肯定是一个加分项咯。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">框架熟悉哪几个比较合适呢 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>通常优先精通工作中使用的框架，其它的了解即可。因为框架很多设计思想都是相通的，一旦精通一门，之后想学习其他框架非常容易。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">人到 30 ，该如何规划未来 5 年的时间 ？</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>职业规划我下面有回答，我个人认为这个时间还是应该做技术、写代码的时间。</li>\n</ul>\n<hr>\n<p dir="auto">问题</p>\n<p dir="auto">你认为如何做职业生涯规划呢 ？从前前端几年了，感觉处于瓶颈期，目前比较迷茫，目标不明确。</p>\n<p dir="auto">解答</p>\n<ul dir="auto">\n<li>通常做技术往上 2 条路。</li>\n<li>1 ：纯技术路线：架构师技术专家</li>\n<li>2 ：技术+管理路线。</li>\n<li>先找准你的方向，如果对技术感兴趣，建议走 1 路线，否则就走 2。</li>\n<li>对于管理，我不是很擅长，我的经验就是首先你自己的技术要过硬，让底下人认可你，其次就是思考怎么发挥团队的最大价值，为团队小伙伴谋福利，关注他们的成长等。</li>\n<li>但是无论哪条路线，你的技术一定要好，而且我是不太建议工作个 5，6 年就转纯管理，时间太短，即使做了也不要落下技术。</li>\n<li>所以你目前还是需要精进技术，突破瓶颈通过就需要跳出舒适圈，解决一些需要你跳一下才能搞定的问题，最好是能找到你目前工作中的一些痛点，通过技术的手段去解决。</li>\n<li>我看你在字节跳动，也可以关注一下其他团队做的事情。</li>\n<li>我知道头条有一个非常牛逼的大佬-张袁炜，他是我在百度时期的导师，你也可以找他交流下。</li>\n</ul>\n<hr>\n<h2 id="main-heading-H2-5">6. 最后</h2>\n<p dir="auto">以上问题及回答全部来自： <a href="https://juejin.im/pin/5d0799fd092dcb01f6f81d6a" rel="nofollow">我是开源库 better-scroll 的作者 -- 黄轶，你有什么问题要问我 ？</a></p>\n<p dir="auto">以上问题及回答，对笔者很有帮助，相信以上回答对前端开发者也会有很大的启发，能解决很多人的迷茫，所以整理成了这篇文章。</p>',user:{login:l,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:i,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:u,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:i}],html_url:"https://github.com/yanyue404/blog/issues/277"},navList:[{text:"1. 前端开发",id:"main-heading-H2-0",type:n,children:[]},{text:"2. 性能优化",id:"main-heading-H2-1",type:n,children:[]},{text:"3. Vue.js",id:"main-heading-H2-2",type:n,children:[]},{text:"4. 个人成长",id:"main-heading-H2-3",type:n,children:[]},{text:"5. 源码",id:"main-heading-H2-4",type:n,children:[]},{text:"6. 最后",id:"main-heading-H2-5",type:n,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:l,userEmail:"1656800216@qq.com",repository:"blog",blogName:t,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:t,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:i},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:i,avatar_url:i,name:i,html_url:i,bio:i,type:u}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

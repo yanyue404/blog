@@ -1,0 +1,277 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>React 项目代码规范 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="项目 项目目录结构清晰 Components Routes Config 代码格式化符合 eslint，运行以及 pre-commit 都检测 避免多层嵌套，webpack 配置别名 alias utils 导入方式，按需引入 git commit log 组件 Smart 组件 vs Dumb 组"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="React 项目代码规范"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="项目 项目目录结构清晰 Components Routes Config 代码格式化符合 eslint，运行以及 pre-commit 都检测 避免多层嵌套，webpack 配置别名 alias utils 导入方式，按需引入 git commit log 组件 Smart 组件 vs Dumb 组"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="React 项目代码规范"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="项目 项目目录结构清晰 Components Routes Config 代码格式化符合 eslint，运行以及 pre-commit 都检测 避免多层嵌套，webpack 配置别名 alias utils 导入方式，按需引入 git commit log 组件 Smart 组件 vs Dumb 组"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/127#main-heading-H2-0" title="项目" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              项目
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/127#main-heading-H2-1" title="组件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              组件
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/127#main-heading-H2-2" title="编码" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              编码
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>React 项目代码规范</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>React 项目代码规范</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2020-02-08</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 8 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">项目</h2>
+<ul dir="auto">
+<li>项目目录结构清晰 <code class="notranslate">Components</code> <code class="notranslate">Routes</code> <code class="notranslate">Config</code></li>
+<li>代码格式化符合 eslint，运行以及 pre-commit 都检测</li>
+<li>避免多层嵌套，webpack 配置别名 alias</li>
+<li>utils 导入方式，按需引入</li>
+<li>git commit log</li>
+</ul>
+<h2 id="main-heading-H2-1">组件</h2>
+<ul dir="auto">
+<li>Smart 组件 vs Dumb 组件<br>
+Smart 和 Dumb 组件分开到两个不同的目录，不再在 Dumb 组件内部进行 connect，在 src/ 目录下新建两个文件夹 components/ 和 containers/：</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="src/
+  components/
+  containers/"><pre class="notranslate"><span class="pl-s1">src</span><span class="pl-c1">/</span>
+  <span class="pl-s1">components</span><span class="pl-c1">/</span>
+  <span class="pl-s1">containers</span><span class="pl-c1">/</span></pre></div>
+<ul dir="auto">
+<li>组件命名</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad
+import Footer from './Footer/Footer';
+
+// bad
+import Footer from './Footer/index';
+
+// good
+import Footer from './Footer';"><pre class="notranslate"><span class="pl-c">// bad</span>
+<span class="pl-k">import</span> <span class="pl-v">Footer</span> <span class="pl-k">from</span> <span class="pl-s">'./Footer/Footer'</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// bad</span>
+<span class="pl-k">import</span> <span class="pl-v">Footer</span> <span class="pl-k">from</span> <span class="pl-s">'./Footer/index'</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-k">import</span> <span class="pl-v">Footer</span> <span class="pl-k">from</span> <span class="pl-s">'./Footer'</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>封装时最好提供 demo 以及 README，做好严格的类型检查（能做单元测试更好）</li>
+<li>复杂的 state 逻辑, 请抽离成 hooks 函数</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad
+
+function TargetComponent({ url, options }) {
+  const [data, setData] = useState([]);
+
+  useEffect(async ()=>{
+    cosnt data = await fetch(url, options);
+    setData(data)
+  }, [])
+
+  function handleOnUpdateData (nextOptions) {
+    cosnt data = await fetch(url, nextOptions);
+    setData(data)
+  }
+
+  return <OtherComponent data={data} onChange={handleOnUpdateData} />
+}"><pre class="notranslate"><span class="pl-c">// bad</span>
+
+<span class="pl-k">function</span> <span class="pl-v">TargetComponent</span><span class="pl-kos">(</span><span class="pl-kos">{</span> url<span class="pl-kos">,</span> options <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">data</span><span class="pl-kos">,</span> <span class="pl-s1">setData</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-en">useEffect</span><span class="pl-kos">(</span><span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=></span><span class="pl-kos">{</span>
+    <span class="pl-s1">cosnt</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-en">fetch</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">options</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">setData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span>
+
+  <span class="pl-k">function</span> <span class="pl-en">handleOnUpdateData</span> <span class="pl-kos">(</span><span class="pl-s1">nextOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">cosnt</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-en">fetch</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">nextOptions</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">setData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">OtherComponent</span> <span class="pl-c1">data</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">data</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">handleOnUpdateData</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+<span class="pl-kos">}</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// best
+
+// 将状态逻辑抽离至 hooks 文件夹内
+import useFetchData from 'src/hooks/useFetchData';
+
+function TargetComponent({ url, options }) {
+  // 复用 state 逻辑, 是 hooks 最重要的意义
+  const [data, updateData] = useFetchData(url, options);
+
+  return <OtherComponent data={data} onChange={updateData} />;
+}"><pre class="notranslate"><span class="pl-c">// best</span>
+
+<span class="pl-c">// 将状态逻辑抽离至 hooks 文件夹内</span>
+<span class="pl-k">import</span> <span class="pl-s1">useFetchData</span> <span class="pl-k">from</span> <span class="pl-s">'src/hooks/useFetchData'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">function</span> <span class="pl-v">TargetComponent</span><span class="pl-kos">(</span><span class="pl-kos">{</span> url<span class="pl-kos">,</span> options <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 复用 state 逻辑, 是 hooks 最重要的意义</span>
+  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">data</span><span class="pl-kos">,</span> <span class="pl-s1">updateData</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useFetchData</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">options</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">OtherComponent</span> <span class="pl-c1">data</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">data</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">updateData</span><span class="pl-kos">}</span> <span class="pl-kos">/></span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<ul dir="auto">
+<li>组件抽象，好的代码复用，HOC && Hook</li>
+</ul>
+<h2 id="main-heading-H2-2">编码</h2>
+<ul dir="auto">
+<li>尽量使用<code class="notranslate">PureComponent</code></li>
+<li>避免根据 props 去初始化 state</li>
+<li>为组件绑定事件处理器，使用箭头函数</li>
+<li>唯一 key 设置</li>
+<li>JSX 属性名使用骆驼式风格<code class="notranslate">camelCase</code></li>
+<li>仅在实例化生命周期中绑定 window 或 body 事件，在销毁期生命周期中解绑 window 或 body 事件</li>
+<li>shouldComponentUpdate 优化 immutable?</li>
+<li>代码分片(适当情况)</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const Artists = React.lazy(() => import('./Artists'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Artists />
+      </Suspense>
+    </div>
+  );
+}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">Artists</span> <span class="pl-c1">=</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">lazy</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">'./Artists'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-k">function</span> <span class="pl-v">MyComponent</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+      <span class="pl-c1">&lt;</span><span class="pl-v">Suspense</span> <span class="pl-c1">fallback</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>Loading...<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span><span class="pl-kos">}</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">Artists</span> <span class="pl-kos">/></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-v">Suspense</span><span class="pl-c1">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+  <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<ul dir="auto">
+<li>类组件编写</li>
+</ul>
+<ol dir="auto">
+<li>static 开头的类属性，如 defaultProps、propTypes。</li>
+<li>构造函数，constructor。</li>
+<li>getter/setter（还不了解的同学可以暂时忽略）。</li>
+<li>组件生命周期。</li>
+<li>_ 开头的私有方法。</li>
+<li>事件监听方法，handle*。</li>
+<li>render<em>开头的方法，有时候 render() 方法里面的内容会分开到不同函数里面进行，这些函数都以 render</em> 开头。</li>
+<li>render() 方法。</li>
+</ol>
+<ul dir="auto">
+<li>Hooks 的函数组件</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React, { useState, useEffect, useCallback } from 'react';
+
+function fixDataToPlan(data) {}
+
+function TargetComponent({ userInfo }) {
+  const [loading, setLoading] = useState(false);
+
+  useEffects(fn, [])getPhotops
+
+  useEffects(fn, [userInfo])
+
+  useEffects(fn)
+
+  // 除了 handle 函数, 其他函数都不要在组件内声明, 请声明在 [3. 内部函数声明] 中
+  // 因为函数组件每次重新执行, 内部函数都会重新声明, 所以要减少不必要的内部函数声明
+  // function fixDataToPlan(){}
+
+  // 6.4 被事件绑定的函数, 使用 handle 开头
+  function handleOnClick(){}
+
+  return <div>example</div>
+}
+
+// 7声明 propTypes
+TargetComponent.propTypes = {
+  ...
+};
+
+// 声明 mapStateToProps 函数
+function mapStateToProps (state) {}
+
+// 声明 mapDispatchToProps 函数
+function mapDispatchToProps (dispatch) {}
+
+// 导出 default 对象
+export default TargetComponent;
+
+// 导出 default 对象, 如果需要使用 HOC 处理组件, 请直接返回处理之后的组件
+export default connect(mapStateToProps, mapDispatchToProps)(TargetComponent);"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-s1">useState</span><span class="pl-kos">,</span> <span class="pl-s1">useEffect</span><span class="pl-kos">,</span> <span class="pl-s1">useCallback</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">function</span> <span class="pl-en">fixDataToPlan</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-v">TargetComponent</span><span class="pl-kos">(</span><span class="pl-kos">{</span> userInfo <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">loading</span><span class="pl-kos">,</span> <span class="pl-s1">setLoading</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-en">useEffects</span><span class="pl-kos">(</span><span class="pl-s1">fn</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos"></span><span class="pl-s1">getPhotops</span>
+
+  <span class="pl-en">useEffects</span><span class="pl-kos">(</span><span class="pl-s1">fn</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-s1">userInfo</span><span class="pl-kos">]</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">useEffects</span><span class="pl-kos">(</span><span class="pl-s1">fn</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// 除了 handle 函数, 其他函数都不要在组件内声明, 请声明在 [3. 内部函数声明] 中</span>
+  <span class="pl-c">// 因为函数组件每次重新执行, 内部函数都会重新声明, 所以要减少不必要的内部函数声明</span>
+  <span class="pl-c">// function fixDataToPlan(){}</span>
+
+  <span class="pl-c">// 6.4 被事件绑定的函数, 使用 handle 开头</span>
+  <span class="pl-k">function</span> <span class="pl-en">handleOnClick</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span><span class="pl-kos">}</span>
+
+  <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>example<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// 7声明 propTypes</span>
+<span class="pl-v">TargetComponent</span><span class="pl-kos">.</span><span class="pl-c1">propTypes</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  ...
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 声明 mapStateToProps 函数</span>
+<span class="pl-k">function</span> <span class="pl-en">mapStateToProps</span> <span class="pl-kos">(</span><span class="pl-s1">state</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>
+
+<span class="pl-c">// 声明 mapDispatchToProps 函数</span>
+<span class="pl-k">function</span> <span class="pl-en">mapDispatchToProps</span> <span class="pl-kos">(</span><span class="pl-s1">dispatch</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>
+
+<span class="pl-c">// 导出 default 对象</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">TargetComponent</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 导出 default 对象, 如果需要使用 HOC 处理组件, 请直接返回处理之后的组件</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-en">connect</span><span class="pl-kos">(</span><span class="pl-s1">mapStateToProps</span><span class="pl-kos">,</span> <span class="pl-s1">mapDispatchToProps</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-v">TargetComponent</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h4 dir="auto">参考链接</h4>
+<ul dir="auto">
+<li><a href="https://hateonion.me/books/react-bits-cn/anti-patterns/01.props-in-initial-state.html" rel="nofollow">根据 props 去初始化 state</a></li>
+<li><a href="http://www.alloyteam.com/2017/08/13065/" rel="nofollow">AlloyTeam ESLint 配置指南</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/35611054" rel="nofollow">react 代码规范-再烂的项目也得理</a></li>
+<li><a href="https://linguinecode.com/post/code-splitting-react-router-with-react-lazy-and-react-suspense" rel="nofollow">Code splitting React routes with React Lazy and React Suspense</a></li>
+<li><a href="https://github.com/JasonBoy/javascript/tree/master/react">Airbnb React/JSX 编码规范</a></li>
+<li><a href="https://www.zhihu.com/question/36516604/answer/82878351" rel="nofollow">https://www.zhihu.com/question/36516604/answer/82878351</a></li>
+<li><a href="https://github.com/ityak/front-end-gui">https://github.com/ityak/front-end-gui</a></li>
+<li><a href="https://github.com/yannickcr/eslint-plugin-react">https://github.com/yannickcr/eslint-plugin-react</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l){return{layout:"default",data:[{post:{id:561991350,number:127,title:"React 项目代码规范",created_at:"2020-02-08T08:51:14Z",updated_at:"2025-11-23T15:57:54Z",body_html:'<h2 id="main-heading-H2-0">项目</h2>\n<ul dir="auto">\n<li>项目目录结构清晰 <code class="notranslate">Components</code> <code class="notranslate">Routes</code> <code class="notranslate">Config</code></li>\n<li>代码格式化符合 eslint，运行以及 pre-commit 都检测</li>\n<li>避免多层嵌套，webpack 配置别名 alias</li>\n<li>utils 导入方式，按需引入</li>\n<li>git commit log</li>\n</ul>\n<h2 id="main-heading-H2-1">组件</h2>\n<ul dir="auto">\n<li>Smart 组件 vs Dumb 组件<br>\nSmart 和 Dumb 组件分开到两个不同的目录，不再在 Dumb 组件内部进行 connect，在 src/ 目录下新建两个文件夹 components/ 和 containers/：</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="src/\n  components/\n  containers/"><pre class="notranslate"><span class="pl-s1">src</span><span class="pl-c1">/</span>\n  <span class="pl-s1">components</span><span class="pl-c1">/</span>\n  <span class="pl-s1">containers</span><span class="pl-c1">/</span></pre></div>\n<ul dir="auto">\n<li>组件命名</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad\nimport Footer from \'./Footer/Footer\';\n\n// bad\nimport Footer from \'./Footer/index\';\n\n// good\nimport Footer from \'./Footer\';"><pre class="notranslate"><span class="pl-c">// bad</span>\n<span class="pl-k">import</span> <span class="pl-v">Footer</span> <span class="pl-k">from</span> <span class="pl-s">\'./Footer/Footer\'</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// bad</span>\n<span class="pl-k">import</span> <span class="pl-v">Footer</span> <span class="pl-k">from</span> <span class="pl-s">\'./Footer/index\'</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-k">import</span> <span class="pl-v">Footer</span> <span class="pl-k">from</span> <span class="pl-s">\'./Footer\'</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>封装时最好提供 demo 以及 README，做好严格的类型检查（能做单元测试更好）</li>\n<li>复杂的 state 逻辑, 请抽离成 hooks 函数</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad\n\nfunction TargetComponent({ url, options }) {\n  const [data, setData] = useState([]);\n\n  useEffect(async ()=&gt;{\n    cosnt data = await fetch(url, options);\n    setData(data)\n  }, [])\n\n  function handleOnUpdateData (nextOptions) {\n    cosnt data = await fetch(url, nextOptions);\n    setData(data)\n  }\n\n  return &lt;OtherComponent data={data} onChange={handleOnUpdateData} /&gt;\n}"><pre class="notranslate"><span class="pl-c">// bad</span>\n\n<span class="pl-k">function</span> <span class="pl-v">TargetComponent</span><span class="pl-kos">(</span><span class="pl-kos">{</span> url<span class="pl-kos">,</span> options <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">data</span><span class="pl-kos">,</span> <span class="pl-s1">setData</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n  <span class="pl-en">useEffect</span><span class="pl-kos">(</span><span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-c1">=&gt;</span><span class="pl-kos">{</span>\n    <span class="pl-s1">cosnt</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-en">fetch</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">options</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-s1">setData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span>\n\n  <span class="pl-k">function</span> <span class="pl-en">handleOnUpdateData</span> <span class="pl-kos">(</span><span class="pl-s1">nextOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">cosnt</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-en">fetch</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">nextOptions</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-s1">setData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">OtherComponent</span> <span class="pl-c1">data</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">data</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">handleOnUpdateData</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n<span class="pl-kos">}</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// best\n\n// 将状态逻辑抽离至 hooks 文件夹内\nimport useFetchData from \'src/hooks/useFetchData\';\n\nfunction TargetComponent({ url, options }) {\n  // 复用 state 逻辑, 是 hooks 最重要的意义\n  const [data, updateData] = useFetchData(url, options);\n\n  return &lt;OtherComponent data={data} onChange={updateData} /&gt;;\n}"><pre class="notranslate"><span class="pl-c">// best</span>\n\n<span class="pl-c">// 将状态逻辑抽离至 hooks 文件夹内</span>\n<span class="pl-k">import</span> <span class="pl-s1">useFetchData</span> <span class="pl-k">from</span> <span class="pl-s">\'src/hooks/useFetchData\'</span><span class="pl-kos">;</span>\n\n<span class="pl-k">function</span> <span class="pl-v">TargetComponent</span><span class="pl-kos">(</span><span class="pl-kos">{</span> url<span class="pl-kos">,</span> options <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 复用 state 逻辑, 是 hooks 最重要的意义</span>\n  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">data</span><span class="pl-kos">,</span> <span class="pl-s1">updateData</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useFetchData</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">options</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-v">OtherComponent</span> <span class="pl-c1">data</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">data</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">updateData</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<ul dir="auto">\n<li>组件抽象，好的代码复用，HOC &amp;&amp; Hook</li>\n</ul>\n<h2 id="main-heading-H2-2">编码</h2>\n<ul dir="auto">\n<li>尽量使用<code class="notranslate">PureComponent</code></li>\n<li>避免根据 props 去初始化 state</li>\n<li>为组件绑定事件处理器，使用箭头函数</li>\n<li>唯一 key 设置</li>\n<li>JSX 属性名使用骆驼式风格<code class="notranslate">camelCase</code></li>\n<li>仅在实例化生命周期中绑定 window 或 body 事件，在销毁期生命周期中解绑 window 或 body 事件</li>\n<li>shouldComponentUpdate 优化 immutable?</li>\n<li>代码分片(适当情况)</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const Artists = React.lazy(() =&gt; import(\'./Artists\'));\n\nfunction MyComponent() {\n  return (\n    &lt;div&gt;\n      &lt;Suspense fallback={&lt;div&gt;Loading...&lt;/div&gt;}&gt;\n        &lt;Artists /&gt;\n      &lt;/Suspense&gt;\n    &lt;/div&gt;\n  );\n}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">Artists</span> <span class="pl-c1">=</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">lazy</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">\'./Artists\'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-k">function</span> <span class="pl-v">MyComponent</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">return</span> <span class="pl-kos">(</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n      <span class="pl-c1">&lt;</span><span class="pl-v">Suspense</span> <span class="pl-c1">fallback</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>Loading...<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">Artists</span> <span class="pl-kos">/&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-v">Suspense</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n  <span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<ul dir="auto">\n<li>类组件编写</li>\n</ul>\n<ol dir="auto">\n<li>static 开头的类属性，如 defaultProps、propTypes。</li>\n<li>构造函数，constructor。</li>\n<li>getter/setter（还不了解的同学可以暂时忽略）。</li>\n<li>组件生命周期。</li>\n<li>_ 开头的私有方法。</li>\n<li>事件监听方法，handle*。</li>\n<li>render<em>开头的方法，有时候 render() 方法里面的内容会分开到不同函数里面进行，这些函数都以 render</em> 开头。</li>\n<li>render() 方法。</li>\n</ol>\n<ul dir="auto">\n<li>Hooks 的函数组件</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React, { useState, useEffect, useCallback } from \'react\';\n\nfunction fixDataToPlan(data) {}\n\nfunction TargetComponent({ userInfo }) {\n  const [loading, setLoading] = useState(false);\n\n  useEffects(fn, [])getPhotops\n\n  useEffects(fn, [userInfo])\n\n  useEffects(fn)\n\n  // 除了 handle 函数, 其他函数都不要在组件内声明, 请声明在 [3. 内部函数声明] 中\n  // 因为函数组件每次重新执行, 内部函数都会重新声明, 所以要减少不必要的内部函数声明\n  // function fixDataToPlan(){}\n\n  // 6.4 被事件绑定的函数, 使用 handle 开头\n  function handleOnClick(){}\n\n  return &lt;div&gt;example&lt;/div&gt;\n}\n\n// 7声明 propTypes\nTargetComponent.propTypes = {\n  ...\n};\n\n// 声明 mapStateToProps 函数\nfunction mapStateToProps (state) {}\n\n// 声明 mapDispatchToProps 函数\nfunction mapDispatchToProps (dispatch) {}\n\n// 导出 default 对象\nexport default TargetComponent;\n\n// 导出 default 对象, 如果需要使用 HOC 处理组件, 请直接返回处理之后的组件\nexport default connect(mapStateToProps, mapDispatchToProps)(TargetComponent);"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-s1">useState</span><span class="pl-kos">,</span> <span class="pl-s1">useEffect</span><span class="pl-kos">,</span> <span class="pl-s1">useCallback</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n\n<span class="pl-k">function</span> <span class="pl-en">fixDataToPlan</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>\n\n<span class="pl-k">function</span> <span class="pl-v">TargetComponent</span><span class="pl-kos">(</span><span class="pl-kos">{</span> userInfo <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">loading</span><span class="pl-kos">,</span> <span class="pl-s1">setLoading</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n  <span class="pl-en">useEffects</span><span class="pl-kos">(</span><span class="pl-s1">fn</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos"></span><span class="pl-s1">getPhotops</span>\n\n  <span class="pl-en">useEffects</span><span class="pl-kos">(</span><span class="pl-s1">fn</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-s1">userInfo</span><span class="pl-kos">]</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">useEffects</span><span class="pl-kos">(</span><span class="pl-s1">fn</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// 除了 handle 函数, 其他函数都不要在组件内声明, 请声明在 [3. 内部函数声明] 中</span>\n  <span class="pl-c">// 因为函数组件每次重新执行, 内部函数都会重新声明, 所以要减少不必要的内部函数声明</span>\n  <span class="pl-c">// function fixDataToPlan(){}</span>\n\n  <span class="pl-c">// 6.4 被事件绑定的函数, 使用 handle 开头</span>\n  <span class="pl-k">function</span> <span class="pl-en">handleOnClick</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">{</span><span class="pl-kos">}</span>\n\n  <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>example<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// 7声明 propTypes</span>\n<span class="pl-v">TargetComponent</span><span class="pl-kos">.</span><span class="pl-c1">propTypes</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  ...\n<span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 声明 mapStateToProps 函数</span>\n<span class="pl-k">function</span> <span class="pl-en">mapStateToProps</span> <span class="pl-kos">(</span><span class="pl-s1">state</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>\n\n<span class="pl-c">// 声明 mapDispatchToProps 函数</span>\n<span class="pl-k">function</span> <span class="pl-en">mapDispatchToProps</span> <span class="pl-kos">(</span><span class="pl-s1">dispatch</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>\n\n<span class="pl-c">// 导出 default 对象</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">TargetComponent</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 导出 default 对象, 如果需要使用 HOC 处理组件, 请直接返回处理之后的组件</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-en">connect</span><span class="pl-kos">(</span><span class="pl-s1">mapStateToProps</span><span class="pl-kos">,</span> <span class="pl-s1">mapDispatchToProps</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-v">TargetComponent</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h4 dir="auto">参考链接</h4>\n<ul dir="auto">\n<li><a href="https://hateonion.me/books/react-bits-cn/anti-patterns/01.props-in-initial-state.html" rel="nofollow">根据 props 去初始化 state</a></li>\n<li><a href="http://www.alloyteam.com/2017/08/13065/" rel="nofollow">AlloyTeam ESLint 配置指南</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/35611054" rel="nofollow">react 代码规范-再烂的项目也得理</a></li>\n<li><a href="https://linguinecode.com/post/code-splitting-react-router-with-react-lazy-and-react-suspense" rel="nofollow">Code splitting React routes with React Lazy and React Suspense</a></li>\n<li><a href="https://github.com/JasonBoy/javascript/tree/master/react">Airbnb React/JSX 编码规范</a></li>\n<li><a href="https://www.zhihu.com/question/36516604/answer/82878351" rel="nofollow">https://www.zhihu.com/question/36516604/answer/82878351</a></li>\n<li><a href="https://github.com/ityak/front-end-gui">https://github.com/ityak/front-end-gui</a></li>\n<li><a href="https://github.com/yannickcr/eslint-plugin-react">https://github.com/yannickcr/eslint-plugin-react</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:p,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/127"},navList:[{text:"项目",id:"main-heading-H2-0",type:a,children:[]},{text:"组件",id:"main-heading-H2-1",type:a,children:[]},{text:"编码",id:"main-heading-H2-2",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:p}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

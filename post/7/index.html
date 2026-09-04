@@ -1,0 +1,479 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>全面解析 Node.js 的包管理：npm、yarn 和 pnpm 的使用 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="npm 了解更多 node Packages，https://nodejs.org/api/packages.html npm 是 Node 的模块管理器，功能极其强大。它是 Node 获得成功的重要原因之一。 我们只要一行命令，就能安装需要的 node 模块 。 $ npm install pac"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="全面解析 Node.js 的包管理：npm、yarn 和 pnpm 的使用"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="npm 了解更多 node Packages，https://nodejs.org/api/packages.html npm 是 Node 的模块管理器，功能极其强大。它是 Node 获得成功的重要原因之一。 我们只要一行命令，就能安装需要的 node 模块 。 $ npm install pac"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="全面解析 Node.js 的包管理：npm、yarn 和 pnpm 的使用"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="npm 了解更多 node Packages，https://nodejs.org/api/packages.html npm 是 Node 的模块管理器，功能极其强大。它是 Node 获得成功的重要原因之一。 我们只要一行命令，就能安装需要的 node 模块 。 $ npm install pac"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-0" title="npm" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              npm
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-1" title="1. 基本使用" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              1. 基本使用
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-2" title="2. npm 常用命令" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              2. npm 常用命令
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-3" title="3. 切换镜像" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              3. 切换镜像
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-4" title="4. 版本" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              4. 版本
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-5" title="5. npm 发包" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              5. npm 发包
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H3-6" title="npm 配置双重身份验证后的部署方式" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  npm 配置双重身份验证后的部署方式
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-7" title="6. 代理配置" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              6. 代理配置
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-8" title="7.  修复 npm WARN config global --global、--local 已弃用。使用 --location=global 代替警告" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              7.  修复 npm WARN config global --global、--local 已弃用。使用 --location=global 代替警告
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-9" title="yarn" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              yarn
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/7#main-heading-H2-10" title="参考链接" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考链接
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>全面解析 Node.js 的包管理：npm、yarn 和 pnpm 的使用</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>全面解析 Node.js 的包管理：npm、yarn 和 pnpm 的使用</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-02-26</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 15 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">npm</h2>
+<blockquote>
+<p dir="auto">了解更多 node Packages，<a href="https://nodejs.org/api/packages.html" rel="nofollow">https://nodejs.org/api/packages.html</a></p>
+</blockquote>
+<p dir="auto">npm 是 Node 的模块管理器，功能极其强大。它是 Node 获得成功的重要原因之一。</p>
+<p dir="auto">我们只要一行命令，就能安装需要的 node 模块 。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install <packageName>"><pre class="notranslate">$ npm install <span class="pl-k">&lt;</span>packageName<span class="pl-k">></span></pre></div>
+<h2 id="main-heading-H2-1">1. 基本使用</h2>
+<p dir="auto">（1）打开 cmd，切换到项目所在文件夹</p>
+<p dir="auto">（2）在 cmd 中输入命令: <code class="notranslate">npm init</code>，会生成一个名为 <code class="notranslate">package.json</code> 的配置文件（省略设置配置信息 <code class="notranslate">npm init -y</code>）</p>
+<p dir="auto">（3）使用<code class="notranslate">npm install 包名</code> 来下载我们想要在在项目中使用的包 （这个包会下载到，当前项目下 node_modules 文件夹 中）</p>
+<p dir="auto">（4）指定版本号下载</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install webpack@3.10.0 -g"><pre class="notranslate">npm install webpack@3.10.0 -g</pre></div>
+<p dir="auto">（5）开发依赖及运行依赖</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>配置项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>devDependencies</td>
+<td>开发依赖，上线不需要</td>
+</tr>
+<tr>
+<td>dependencies</td>
+<td>项目运行的依赖，上线依旧要使用</td>
+</tr>
+<tr>
+<td><code class="notranslate">--save</code> / <code class="notranslate">-S</code></td>
+<td>配置信息写入<strong>dependencies</strong></td>
+</tr>
+<tr>
+<td><code class="notranslate">--save–dev</code> / <code class="notranslate">-D</code></td>
+<td>配置信息写入<strong>devDependencies</strong></td>
+</tr>
+<tr>
+<td><code class="notranslate">npm i jquery -S</code></td>
+<td>下载 jquery 并保存到 package.json 的开发依赖中</td>
+</tr>
+<tr>
+<td>npm config get cache</td>
+<td>查看全局的 npm 下载 taz 压缩包缓存路径</td>
+</tr>
+<tr>
+<td>npm cache ls vue</td>
+<td>查看全局的 npm 下载缓存的 vue 版本信息</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">（6） 移除模块</p>
+<p dir="auto"><strong>删除全局模块</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm uninstall -g <package>"><pre class="notranslate">npm uninstall -g <span class="pl-k">&lt;</span>package<span class="pl-k">></span></pre></div>
+<p dir="auto"><strong>删除本地模块</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm uninstall 模块
+
+npm uninstall 模块：删除模块，但不删除模块留在package.json中的对应信息
+npm uninstall 模块 --save 删除模块，同时删除模块留在package.json中dependencies下的对应信息
+npm uninstall 模块 --save-dev 删除模块，同时删除模块留在package.json中devDependencies下的对应信息"><pre class="notranslate">npm uninstall 模块
+
+npm uninstall 模块：删除模块，但不删除模块留在package.json中的对应信息
+npm uninstall 模块 --save 删除模块，同时删除模块留在package.json中dependencies下的对应信息
+npm uninstall 模块 --save-dev 删除模块，同时删除模块留在package.json中devDependencies下的对应信息</pre></div>
+<h2 id="main-heading-H2-2">2. npm 常用命令</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>命令说明</th>
+<th>header 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm init -y</td>
+<td>省略项目初始化需要填写的信息</td>
+</tr>
+<tr>
+<td>npm config list</td>
+<td>查看自己 npm 的配置信息</td>
+</tr>
+<tr>
+<td>script <strong>执行命令</strong></td>
+<td>npm run 去执行这个命令。</td>
+</tr>
+<tr>
+<td>npm list -g --depth 0</td>
+<td>查看已全局安装的依赖</td>
+</tr>
+<tr>
+<td>npm prefix -g</td>
+<td>查看全局 node 模块的安装路径</td>
+</tr>
+<tr>
+<td>npm home react</td>
+<td>快速打开 react 的官网</td>
+</tr>
+<tr>
+<td>npm repo react</td>
+<td>快速打开 react 的代码仓库</td>
+</tr>
+<tr>
+<td>npm view react versions</td>
+<td>查看 react 的 npm 所有历史版本号</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 id="main-heading-H2-3">3. 切换镜像</h2>
+<p dir="auto"><strong>使用淘宝源</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm config set registry https://registry.npmmirror.com --global"><pre class="notranslate">npm config <span class="pl-c1">set</span> registry https://registry.npmmirror.com --global</pre></div>
+<p dir="auto"><strong>还原 npm 官方仓库</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm config set registry https://registry.npmjs.org/"><pre class="notranslate">npm config <span class="pl-c1">set</span> registry https://registry.npmjs.org/</pre></div>
+<h2 id="main-heading-H2-4">4. 版本</h2>
+<p dir="auto"><a href="https://semver.npmjs.com/" rel="nofollow">官方计算版本范围</a></p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>range</th>
+<th>含义</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^2.2.1</td>
+<td>指定的 MAJOR 版本号下, 所有更新的版本</td>
+<td>匹配 >= 2.2.1 并且&lt; 2.3.0; 不匹配 1.0.3, 3.0.1</td>
+</tr>
+<tr>
+<td>^0.2.3</td>
+<td>指定的 MAJOR 版本号下, 所有更新的版本</td>
+<td>匹配 >= 0.2.3 并且 &lt; 0.3.0</td>
+</tr>
+<tr>
+<td>^0.0.3</td>
+<td>指定的 MAJOR 版本号下, 所有更新的版本</td>
+<td>匹配 >= 0.0.3 并且 &lt; 0.0.4</td>
+</tr>
+<tr>
+<td>~2.2.1</td>
+<td>指定 MAJOR.MINOR 版本号下，所有更新的版本</td>
+<td>匹配 2.2.3, 2.2.9 ; 不匹配 2.3.0, 2.4.5</td>
+</tr>
+<tr>
+<td><code class="notranslate">>=2.1</code></td>
+<td>版本号大于或等于 2.1.0</td>
+<td>匹配 2.1.2, 3.1</td>
+</tr>
+<tr>
+<td>&lt;=2.2</td>
+<td>版本号小于或等于 2.2</td>
+<td>匹配 1.0.0, 2.2.1, 2.2.11</td>
+</tr>
+<tr>
+<td>1.0.0 - 2.0.0</td>
+<td>版本号从 1.0.0 (含) 到 2.0.0 (含)</td>
+<td>匹配 1.0.0, 1.3.4, 2.0.0</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<blockquote>
+<p dir="auto">注意：^ 指明的版本范围，只要不修改 [major, minor, patch] 三元组中，最左侧的第一个非0位，都是可以的。也就是说，要确定 ^版本包含的范围，先要找到 最左侧的第一个非0位 ，只有在这一位右侧的变动，才被包含在这个 ^ 指定的范围内。</p>
+</blockquote>
+<p dir="auto">官网还找到一个 npm命令行工具：semver，可以安装到全局：npm i -g semver ，之后，可以用这个工具来检查某个范围版本具体包含哪些:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="semver -r ^0.12.0 0.12.0 0.13.0 0.13.1
+
+# output
+0.12.0
+
+semver -r ^17.0.1 18.1.1 17.7.1
+
+# output
+17.7.1 "><pre class="notranslate">semver -r ^0.12.0 0.12.0 0.13.0 0.13.1
+
+<span class="pl-c"><span class="pl-c">#</span> output</span>
+0.12.0
+
+semver -r ^17.0.1 18.1.1 17.7.1
+
+<span class="pl-c"><span class="pl-c">#</span> output</span>
+17.7.1 </pre></div>
+<p dir="auto">任意两条规则，通过 || 连接起来，则表示两条规则的并集:</p>
+<p dir="auto">如 ^2 >=2.3.1 || ^3 >3.2 可以匹配:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="* `2.3.1`, `2,8.1`, `3.3.1`
+* 但不匹配 `1.0.0`, `2.2.0`, `3.1.0`, `4.0.0`
+PS: 除了这几种，还有如下更直观的表示版本号范围的写法:"><pre class="notranslate"><code class="notranslate">* `2.3.1`, `2,8.1`, `3.3.1`
+* 但不匹配 `1.0.0`, `2.2.0`, `3.1.0`, `4.0.0`
+PS: 除了这几种，还有如下更直观的表示版本号范围的写法:
+</code></pre></div>
+<ul dir="auto">
+<li><code class="notranslate">*</code> 或 x 匹配所有主版本</li>
+<li>1 或 1.x 匹配 主版本号为 1 的所有版本</li>
+<li>1.2 或 1.2.x 匹配 版本号为 1.2 开头的所有版本</li>
+</ul>
+<p dir="auto">PS: 在常规仅包含数字的版本号之外，semver 还允许在 MAJOR.MINOR.PATCH 后追加 - 后跟点号分隔的标签，作为预发布版本标签 - Prerelese Tags，通常被视为不稳定、不建议生产使用的版本。例如：</p>
+<ul dir="auto">
+<li>1.0.0-alpha</li>
+<li>1.0.0-beta.1</li>
+<li>1.0.0-rc.3</li>
+</ul>
+<p dir="auto">上表中我们最常见的是 ^1.8.11 这种格式的 range, 因为我们在使用 npm install 安装包时，npm 默认安装当前最新版本，例如 1.8.11, 然后在所安装的版本号前加^号, 将 ^1.8.11 写入 package.json 依赖配置，意味着可以匹配 1.8.11 以上，2.0.0 以下的所有版本。</p>
+<h2 id="main-heading-H2-5">5. npm 发包</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm config list # 本地配置需修改为官方的仓库
+npm set registry https://registry.npmjs.org/ # 还原为官方仓库
+npm login # 登录
+npm publish # 发布
+npm unpublish --force #撤回已经发布的包(在 npm 包目录下)
+
+npm config set registry https://registry.npmmirror.com # 切换回日常使用的淘宝镜像库"><pre class="notranslate">npm config list <span class="pl-c"><span class="pl-c">#</span> 本地配置需修改为官方的仓库</span>
+npm <span class="pl-c1">set</span> registry https://registry.npmjs.org/ <span class="pl-c"><span class="pl-c">#</span> 还原为官方仓库</span>
+npm login <span class="pl-c"><span class="pl-c">#</span> 登录</span>
+npm publish <span class="pl-c"><span class="pl-c">#</span> 发布</span>
+npm unpublish --force <span class="pl-c"><span class="pl-c">#</span>撤回已经发布的包(在 npm 包目录下)</span>
+
+npm config <span class="pl-c1">set</span> registry https://registry.npmmirror.com <span class="pl-c"><span class="pl-c">#</span> 切换回日常使用的淘宝镜像库</span></pre></div>
+<h3 id="main-heading-H3-6">npm 配置双重身份验证后的部署方式</h3>
+<p dir="auto">检查当前 registry：<br>
+注册表是官方源，没问题。那 404 可能是 OTP 过期或 token 权限问题。再试一次，确保用最新的 OTP：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm publish --otp=你的6位验证码"><pre class="notranslate">npm publish --otp=你的6位验证码</pre></div>
+<p dir="auto">如果仍然 404，试试先生成 access token：</p>
+<ol dir="auto">
+<li>去 <a href="https://www.npmjs.com/settings/yanyue404/tokens" rel="nofollow">npmjs.com → Access Tokens</a> 创建一个 <strong>Granular Access Token</strong>，勾选 <strong>Read and write</strong> 权限，开启 <strong>Require 2FA</strong> 的 bypass</li>
+<li>然后用 token 发布：</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm publish --auth-type=legacy --otp=你的6位验证码"><pre class="notranslate">npm publish --auth-type=legacy --otp=你的6位验证码</pre></div>
+<p dir="auto">或者直接用 token：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='# 配置到本地环境
+# 一次性使用（仅本次终端会话有效）
+npm config set //registry.npmjs.org/:_authToken=你的令牌字符串
+
+# 或永久保存到项目（推荐）
+echo "//registry.npmjs.org/:_authToken=你的令牌字符串" >> .npmrc
+
+npm publish'><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 配置到本地环境</span>
+<span class="pl-c"><span class="pl-c">#</span> 一次性使用（仅本次终端会话有效）</span>
+npm config <span class="pl-c1">set</span> //registry.npmjs.org/:_authToken=你的令牌字符串
+
+<span class="pl-c"><span class="pl-c">#</span> 或永久保存到项目（推荐）</span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>//registry.npmjs.org/:_authToken=你的令牌字符串<span class="pl-pds">"</span></span> <span class="pl-k">>></span> .npmrc
+
+npm publish</pre></div>
+<h2 id="main-heading-H2-7">6. 代理配置</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 配置 npm 代理 
+npm config set proxy=http://xxx:808
+npm config set https-proxy=http://xxx:808
+
+# 删除代理方法
+
+npm config delete proxy
+npm config delete https-proxy"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 配置 npm 代理 </span>
+npm config <span class="pl-c1">set</span> proxy=http://xxx:808
+npm config <span class="pl-c1">set</span> https-proxy=http://xxx:808
+
+<span class="pl-c"><span class="pl-c">#</span> 删除代理方法</span>
+
+npm config delete proxy
+npm config delete https-proxy</pre></div>
+<h2 id="main-heading-H2-8">7.  修复 npm WARN config global --global、--local 已弃用。使用 --location=global 代替警告</h2>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="# 这个警告官方在npm 8.12.1中得到了修复，故可以升级安装npm
+# 安装最新版
+npm install -g npm@latest
+
+# 安装指定版本
+npm install -g npm@8.12.1"><pre class="notranslate"><code class="notranslate"># 这个警告官方在npm 8.12.1中得到了修复，故可以升级安装npm
+# 安装最新版
+npm install -g npm@latest
+
+# 安装指定版本
+npm install -g npm@8.12.1
+</code></pre></div>
+<h2 id="main-heading-H2-9">yarn</h2>
+<p dir="auto">1、 下载地址</p>
+<ul dir="auto">
+<li><a href="https://yarn.bootcss.com/" rel="nofollow">https://yarn.bootcss.com/</a></li>
+</ul>
+<p dir="auto">2、配置淘宝镜像</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="yarn config set registry https://registry.npmmirror.com -g"><pre class="notranslate"><code class="notranslate">yarn config set registry https://registry.npmmirror.com -g
+</code></pre></div>
+<p dir="auto">3、中文介绍说明</p>
+<ul dir="auto">
+<li><a href="https://yarnpkg.com/zh-Hans/docs/cli" rel="nofollow">yarn cli 介绍</a></li>
+</ul>
+<p dir="auto">4、使用 yarn</p>
+<ul dir="auto">
+<li>开始一个新工程</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn init"><pre class="notranslate">yarn init</pre></div>
+<ul dir="auto">
+<li>添加一个依赖</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# dependencies
+yarn add [package]
+yarn add [package]@[version]
+yarn add [package]@[tag]
+
+# devDependencies
+yarn add redux-devtools-extension --dev"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> dependencies</span>
+yarn add [package]
+yarn add [package]@[version]
+yarn add [package]@[tag]
+
+<span class="pl-c"><span class="pl-c">#</span> devDependencies</span>
+yarn add redux-devtools-extension --dev</pre></div>
+<ul dir="auto">
+<li>全局安装</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global add webapck@3.10.0"><pre class="notranslate">yarn global add webapck@3.10.0</pre></div>
+<p dir="auto">全局安装后仍然无法使用命令的话，需要添加<code class="notranslate">环境变量</code>配置</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 获取bin目录，复制粘贴到系统变量里面
+yarn global bin"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 获取bin目录，复制粘贴到系统变量里面</span>
+yarn global bin</pre></div>
+<ul dir="auto">
+<li>更新一个依赖</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn upgrade [package]
+yarn upgrade [package]@[version]
+yarn upgrade [package]@[tag]"><pre class="notranslate">yarn upgrade [package]
+yarn upgrade [package]@[version]
+yarn upgrade [package]@[tag]</pre></div>
+<ul dir="auto">
+<li>移除一个依赖</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn remove [package]"><pre class="notranslate">yarn remove [package]</pre></div>
+<ul dir="auto">
+<li>查看 yarn 全局安装路径</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global bin"><pre class="notranslate">yarn global bin</pre></div>
+<ul dir="auto">
+<li>从全局移除一个依赖</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global remove @tarojs/cli"><pre class="notranslate">yarn global remove @tarojs/cli</pre></div>
+<ul dir="auto">
+<li>全局更新至最新的版本</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global add  @tarojs/cli@latest"><pre class="notranslate">yarn global add  @tarojs/cli@latest</pre></div>
+<ul dir="auto">
+<li>查看全局安装的列表</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global list"><pre class="notranslate">yarn global list</pre></div>
+<p dir="auto">5、node-sass 安装</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install # 首次安装所有依赖直接指向
+
+set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ # 先 set ，后 install
+npm install node-sass"><pre class="notranslate">SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install <span class="pl-c"><span class="pl-c">#</span> 首次安装所有依赖直接指向</span>
+
+<span class="pl-c1">set</span> SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ <span class="pl-c"><span class="pl-c">#</span> 先 set ，后 install</span>
+npm install node-sass</pre></div>
+<p dir="auto">或者新建 <code class="notranslate">.npmrc</code> 文件，内容为：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="sass_binary_site=https://npm.taobao.org/mirrors/node-sass/"><pre class="notranslate">sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</pre></div>
+<p dir="auto"><strong>最新更新</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn add node-sass-install"><pre class="notranslate">yarn add node-sass-install</pre></div>
+<p dir="auto">当安装 node-sass-install 的时候，会依赖并下载 dart-sass，然后重命名为 node-sass：</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "dependencies": {
+    "node-sass": "npm:dart-sass@latest"
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"dependencies"</span>: {
+    <span class="pl-ent">"node-sass"</span>: <span class="pl-s"><span class="pl-pds">"</span>npm:dart-sass@latest<span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+<p dir="auto"><strong>更新</strong>：使用 <code class="notranslate">dart-sass</code>代替 <code class="notranslate">node-sass</code></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn add sass-loader sass fibers  -D"><pre class="notranslate">yarn add sass-loader sass fibers  -D</pre></div>
+<p dir="auto">webpack 配置更新</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+              sassOptions: {
+                fiber: require("fibers"),
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};'><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">module</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">use</span>: <span class="pl-kos">[</span>
+          <span class="pl-s">"style-loader"</span><span class="pl-kos">,</span>
+          <span class="pl-s">"css-loader"</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">loader</span>: <span class="pl-s">"sass-loader"</span><span class="pl-kos">,</span>
+            <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">implementation</span>: <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"sass"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+              <span class="pl-c1">sassOptions</span>: <span class="pl-kos">{</span>
+                <span class="pl-c1">fiber</span>: <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"fibers"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-kos">]</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-10">参考链接</h2>
+<ul dir="auto">
+<li><a href="https://zhuanlan.zhihu.com/p/130398131" rel="nofollow">一秒钟解决安装 node-sass 慢的问题(yarn add node-sass-install)</a></li>
+<li><a href="https://github.com/lmk123/blog/issues/28" data-hovercard-type="issue" data-hovercard-url="/lmk123/blog/issues/28/hovercard">安装 node-sass 的正确姿势</a></li>
+<li><a href="https://github.com/klren0312/daliy_knowledge/issues/54" data-hovercard-type="issue" data-hovercard-url="/klren0312/daliy_knowledge/issues/54/hovercard">webpack node-sass 改为 dart-sass</a></li>
+<li><a href="https://github.com/webpack-contrib/sass-loader#examples">https://github.com/webpack-contrib/sass-loader#examples</a></li>
+<li><a href="https://juejin.cn/post/7126372907697045511" rel="nofollow">npm WARN config global --global, --local are deprecated. Use --location=global i<br>
+npm WARN config global --global、--local 已弃用。使用 --location=global i</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/66039729" rel="nofollow">npm install 版本号^的坑</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2016/01/npm-install.html" rel="nofollow">npm 模块安装机制简介</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(n,s,a,t,l){return{layout:"default",data:[{post:{id:300140323,number:7,title:"全面解析 Node.js 的包管理：npm、yarn 和 pnpm 的使用",created_at:"2018-02-26T08:00:03Z",updated_at:"2026-08-27T06:58:43Z",body_html:'<h2 id="main-heading-H2-0">npm</h2>\n<blockquote>\n<p dir="auto">了解更多 node Packages，<a href="https://nodejs.org/api/packages.html" rel="nofollow">https://nodejs.org/api/packages.html</a></p>\n</blockquote>\n<p dir="auto">npm 是 Node 的模块管理器，功能极其强大。它是 Node 获得成功的重要原因之一。</p>\n<p dir="auto">我们只要一行命令，就能安装需要的 node 模块 。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install &lt;packageName&gt;"><pre class="notranslate">$ npm install <span class="pl-k">&lt;</span>packageName<span class="pl-k">&gt;</span></pre></div>\n<h2 id="main-heading-H2-1">1. 基本使用</h2>\n<p dir="auto">（1）打开 cmd，切换到项目所在文件夹</p>\n<p dir="auto">（2）在 cmd 中输入命令: <code class="notranslate">npm init</code>，会生成一个名为 <code class="notranslate">package.json</code> 的配置文件（省略设置配置信息 <code class="notranslate">npm init -y</code>）</p>\n<p dir="auto">（3）使用<code class="notranslate">npm install 包名</code> 来下载我们想要在在项目中使用的包 （这个包会下载到，当前项目下 node_modules 文件夹 中）</p>\n<p dir="auto">（4）指定版本号下载</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install webpack@3.10.0 -g"><pre class="notranslate">npm install webpack@3.10.0 -g</pre></div>\n<p dir="auto">（5）开发依赖及运行依赖</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>配置项</th>\n<th>说明</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>devDependencies</td>\n<td>开发依赖，上线不需要</td>\n</tr>\n<tr>\n<td>dependencies</td>\n<td>项目运行的依赖，上线依旧要使用</td>\n</tr>\n<tr>\n<td><code class="notranslate">--save</code> / <code class="notranslate">-S</code></td>\n<td>配置信息写入<strong>dependencies</strong></td>\n</tr>\n<tr>\n<td><code class="notranslate">--save–dev</code> / <code class="notranslate">-D</code></td>\n<td>配置信息写入<strong>devDependencies</strong></td>\n</tr>\n<tr>\n<td><code class="notranslate">npm i jquery -S</code></td>\n<td>下载 jquery 并保存到 package.json 的开发依赖中</td>\n</tr>\n<tr>\n<td>npm config get cache</td>\n<td>查看全局的 npm 下载 taz 压缩包缓存路径</td>\n</tr>\n<tr>\n<td>npm cache ls vue</td>\n<td>查看全局的 npm 下载缓存的 vue 版本信息</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto">（6） 移除模块</p>\n<p dir="auto"><strong>删除全局模块</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm uninstall -g &lt;package&gt;"><pre class="notranslate">npm uninstall -g <span class="pl-k">&lt;</span>package<span class="pl-k">&gt;</span></pre></div>\n<p dir="auto"><strong>删除本地模块</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm uninstall 模块\n\nnpm uninstall 模块：删除模块，但不删除模块留在package.json中的对应信息\nnpm uninstall 模块 --save 删除模块，同时删除模块留在package.json中dependencies下的对应信息\nnpm uninstall 模块 --save-dev 删除模块，同时删除模块留在package.json中devDependencies下的对应信息"><pre class="notranslate">npm uninstall 模块\n\nnpm uninstall 模块：删除模块，但不删除模块留在package.json中的对应信息\nnpm uninstall 模块 --save 删除模块，同时删除模块留在package.json中dependencies下的对应信息\nnpm uninstall 模块 --save-dev 删除模块，同时删除模块留在package.json中devDependencies下的对应信息</pre></div>\n<h2 id="main-heading-H2-2">2. npm 常用命令</h2>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>命令说明</th>\n<th>header 2</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>npm init -y</td>\n<td>省略项目初始化需要填写的信息</td>\n</tr>\n<tr>\n<td>npm config list</td>\n<td>查看自己 npm 的配置信息</td>\n</tr>\n<tr>\n<td>script <strong>执行命令</strong></td>\n<td>npm run 去执行这个命令。</td>\n</tr>\n<tr>\n<td>npm list -g --depth 0</td>\n<td>查看已全局安装的依赖</td>\n</tr>\n<tr>\n<td>npm prefix -g</td>\n<td>查看全局 node 模块的安装路径</td>\n</tr>\n<tr>\n<td>npm home react</td>\n<td>快速打开 react 的官网</td>\n</tr>\n<tr>\n<td>npm repo react</td>\n<td>快速打开 react 的代码仓库</td>\n</tr>\n<tr>\n<td>npm view react versions</td>\n<td>查看 react 的 npm 所有历史版本号</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h2 id="main-heading-H2-3">3. 切换镜像</h2>\n<p dir="auto"><strong>使用淘宝源</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm config set registry https://registry.npmmirror.com --global"><pre class="notranslate">npm config <span class="pl-c1">set</span> registry https://registry.npmmirror.com --global</pre></div>\n<p dir="auto"><strong>还原 npm 官方仓库</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm config set registry https://registry.npmjs.org/"><pre class="notranslate">npm config <span class="pl-c1">set</span> registry https://registry.npmjs.org/</pre></div>\n<h2 id="main-heading-H2-4">4. 版本</h2>\n<p dir="auto"><a href="https://semver.npmjs.com/" rel="nofollow">官方计算版本范围</a></p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>range</th>\n<th>含义</th>\n<th>例</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>^2.2.1</td>\n<td>指定的 MAJOR 版本号下, 所有更新的版本</td>\n<td>匹配 &gt;= 2.2.1 并且&lt; 2.3.0; 不匹配 1.0.3, 3.0.1</td>\n</tr>\n<tr>\n<td>^0.2.3</td>\n<td>指定的 MAJOR 版本号下, 所有更新的版本</td>\n<td>匹配 &gt;= 0.2.3 并且 &lt; 0.3.0</td>\n</tr>\n<tr>\n<td>^0.0.3</td>\n<td>指定的 MAJOR 版本号下, 所有更新的版本</td>\n<td>匹配 &gt;= 0.0.3 并且 &lt; 0.0.4</td>\n</tr>\n<tr>\n<td>~2.2.1</td>\n<td>指定 MAJOR.MINOR 版本号下，所有更新的版本</td>\n<td>匹配 2.2.3, 2.2.9 ; 不匹配 2.3.0, 2.4.5</td>\n</tr>\n<tr>\n<td><code class="notranslate">&gt;=2.1</code></td>\n<td>版本号大于或等于 2.1.0</td>\n<td>匹配 2.1.2, 3.1</td>\n</tr>\n<tr>\n<td>&lt;=2.2</td>\n<td>版本号小于或等于 2.2</td>\n<td>匹配 1.0.0, 2.2.1, 2.2.11</td>\n</tr>\n<tr>\n<td>1.0.0 - 2.0.0</td>\n<td>版本号从 1.0.0 (含) 到 2.0.0 (含)</td>\n<td>匹配 1.0.0, 1.3.4, 2.0.0</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<blockquote>\n<p dir="auto">注意：^ 指明的版本范围，只要不修改 [major, minor, patch] 三元组中，最左侧的第一个非0位，都是可以的。也就是说，要确定 ^版本包含的范围，先要找到 最左侧的第一个非0位 ，只有在这一位右侧的变动，才被包含在这个 ^ 指定的范围内。</p>\n</blockquote>\n<p dir="auto">官网还找到一个 npm命令行工具：semver，可以安装到全局：npm i -g semver ，之后，可以用这个工具来检查某个范围版本具体包含哪些:</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="semver -r ^0.12.0 0.12.0 0.13.0 0.13.1\n\n# output\n0.12.0\n\nsemver -r ^17.0.1 18.1.1 17.7.1\n\n# output\n17.7.1 "><pre class="notranslate">semver -r ^0.12.0 0.12.0 0.13.0 0.13.1\n\n<span class="pl-c"><span class="pl-c">#</span> output</span>\n0.12.0\n\nsemver -r ^17.0.1 18.1.1 17.7.1\n\n<span class="pl-c"><span class="pl-c">#</span> output</span>\n17.7.1 </pre></div>\n<p dir="auto">任意两条规则，通过 || 连接起来，则表示两条规则的并集:</p>\n<p dir="auto">如 ^2 &gt;=2.3.1 || ^3 &gt;3.2 可以匹配:</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="* `2.3.1`, `2,8.1`, `3.3.1`\n* 但不匹配 `1.0.0`, `2.2.0`, `3.1.0`, `4.0.0`\nPS: 除了这几种，还有如下更直观的表示版本号范围的写法:"><pre class="notranslate"><code class="notranslate">* `2.3.1`, `2,8.1`, `3.3.1`\n* 但不匹配 `1.0.0`, `2.2.0`, `3.1.0`, `4.0.0`\nPS: 除了这几种，还有如下更直观的表示版本号范围的写法:\n</code></pre></div>\n<ul dir="auto">\n<li><code class="notranslate">*</code> 或 x 匹配所有主版本</li>\n<li>1 或 1.x 匹配 主版本号为 1 的所有版本</li>\n<li>1.2 或 1.2.x 匹配 版本号为 1.2 开头的所有版本</li>\n</ul>\n<p dir="auto">PS: 在常规仅包含数字的版本号之外，semver 还允许在 MAJOR.MINOR.PATCH 后追加 - 后跟点号分隔的标签，作为预发布版本标签 - Prerelese Tags，通常被视为不稳定、不建议生产使用的版本。例如：</p>\n<ul dir="auto">\n<li>1.0.0-alpha</li>\n<li>1.0.0-beta.1</li>\n<li>1.0.0-rc.3</li>\n</ul>\n<p dir="auto">上表中我们最常见的是 ^1.8.11 这种格式的 range, 因为我们在使用 npm install 安装包时，npm 默认安装当前最新版本，例如 1.8.11, 然后在所安装的版本号前加^号, 将 ^1.8.11 写入 package.json 依赖配置，意味着可以匹配 1.8.11 以上，2.0.0 以下的所有版本。</p>\n<h2 id="main-heading-H2-5">5. npm 发包</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm config list # 本地配置需修改为官方的仓库\nnpm set registry https://registry.npmjs.org/ # 还原为官方仓库\nnpm login # 登录\nnpm publish # 发布\nnpm unpublish --force #撤回已经发布的包(在 npm 包目录下)\n\nnpm config set registry https://registry.npmmirror.com # 切换回日常使用的淘宝镜像库"><pre class="notranslate">npm config list <span class="pl-c"><span class="pl-c">#</span> 本地配置需修改为官方的仓库</span>\nnpm <span class="pl-c1">set</span> registry https://registry.npmjs.org/ <span class="pl-c"><span class="pl-c">#</span> 还原为官方仓库</span>\nnpm login <span class="pl-c"><span class="pl-c">#</span> 登录</span>\nnpm publish <span class="pl-c"><span class="pl-c">#</span> 发布</span>\nnpm unpublish --force <span class="pl-c"><span class="pl-c">#</span>撤回已经发布的包(在 npm 包目录下)</span>\n\nnpm config <span class="pl-c1">set</span> registry https://registry.npmmirror.com <span class="pl-c"><span class="pl-c">#</span> 切换回日常使用的淘宝镜像库</span></pre></div>\n<h3 id="main-heading-H3-6">npm 配置双重身份验证后的部署方式</h3>\n<p dir="auto">检查当前 registry：<br>\n注册表是官方源，没问题。那 404 可能是 OTP 过期或 token 权限问题。再试一次，确保用最新的 OTP：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm publish --otp=你的6位验证码"><pre class="notranslate">npm publish --otp=你的6位验证码</pre></div>\n<p dir="auto">如果仍然 404，试试先生成 access token：</p>\n<ol dir="auto">\n<li>去 <a href="https://www.npmjs.com/settings/yanyue404/tokens" rel="nofollow">npmjs.com → Access Tokens</a> 创建一个 <strong>Granular Access Token</strong>，勾选 <strong>Read and write</strong> 权限，开启 <strong>Require 2FA</strong> 的 bypass</li>\n<li>然后用 token 发布：</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm publish --auth-type=legacy --otp=你的6位验证码"><pre class="notranslate">npm publish --auth-type=legacy --otp=你的6位验证码</pre></div>\n<p dir="auto">或者直接用 token：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 配置到本地环境\n# 一次性使用（仅本次终端会话有效）\nnpm config set //registry.npmjs.org/:_authToken=你的令牌字符串\n\n# 或永久保存到项目（推荐）\necho &quot;//registry.npmjs.org/:_authToken=你的令牌字符串&quot; &gt;&gt; .npmrc\n\nnpm publish"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 配置到本地环境</span>\n<span class="pl-c"><span class="pl-c">#</span> 一次性使用（仅本次终端会话有效）</span>\nnpm config <span class="pl-c1">set</span> //registry.npmjs.org/:_authToken=你的令牌字符串\n\n<span class="pl-c"><span class="pl-c">#</span> 或永久保存到项目（推荐）</span>\n<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>//registry.npmjs.org/:_authToken=你的令牌字符串<span class="pl-pds">"</span></span> <span class="pl-k">&gt;&gt;</span> .npmrc\n\nnpm publish</pre></div>\n<h2 id="main-heading-H2-7">6. 代理配置</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 配置 npm 代理 \nnpm config set proxy=http://xxx:808\nnpm config set https-proxy=http://xxx:808\n\n# 删除代理方法\n\nnpm config delete proxy\nnpm config delete https-proxy"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 配置 npm 代理 </span>\nnpm config <span class="pl-c1">set</span> proxy=http://xxx:808\nnpm config <span class="pl-c1">set</span> https-proxy=http://xxx:808\n\n<span class="pl-c"><span class="pl-c">#</span> 删除代理方法</span>\n\nnpm config delete proxy\nnpm config delete https-proxy</pre></div>\n<h2 id="main-heading-H2-8">7.  修复 npm WARN config global --global、--local 已弃用。使用 --location=global 代替警告</h2>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="# 这个警告官方在npm 8.12.1中得到了修复，故可以升级安装npm\n# 安装最新版\nnpm install -g npm@latest\n\n# 安装指定版本\nnpm install -g npm@8.12.1"><pre class="notranslate"><code class="notranslate"># 这个警告官方在npm 8.12.1中得到了修复，故可以升级安装npm\n# 安装最新版\nnpm install -g npm@latest\n\n# 安装指定版本\nnpm install -g npm@8.12.1\n</code></pre></div>\n<h2 id="main-heading-H2-9">yarn</h2>\n<p dir="auto">1、 下载地址</p>\n<ul dir="auto">\n<li><a href="https://yarn.bootcss.com/" rel="nofollow">https://yarn.bootcss.com/</a></li>\n</ul>\n<p dir="auto">2、配置淘宝镜像</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="yarn config set registry https://registry.npmmirror.com -g"><pre class="notranslate"><code class="notranslate">yarn config set registry https://registry.npmmirror.com -g\n</code></pre></div>\n<p dir="auto">3、中文介绍说明</p>\n<ul dir="auto">\n<li><a href="https://yarnpkg.com/zh-Hans/docs/cli" rel="nofollow">yarn cli 介绍</a></li>\n</ul>\n<p dir="auto">4、使用 yarn</p>\n<ul dir="auto">\n<li>开始一个新工程</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn init"><pre class="notranslate">yarn init</pre></div>\n<ul dir="auto">\n<li>添加一个依赖</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# dependencies\nyarn add [package]\nyarn add [package]@[version]\nyarn add [package]@[tag]\n\n# devDependencies\nyarn add redux-devtools-extension --dev"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> dependencies</span>\nyarn add [package]\nyarn add [package]@[version]\nyarn add [package]@[tag]\n\n<span class="pl-c"><span class="pl-c">#</span> devDependencies</span>\nyarn add redux-devtools-extension --dev</pre></div>\n<ul dir="auto">\n<li>全局安装</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global add webapck@3.10.0"><pre class="notranslate">yarn global add webapck@3.10.0</pre></div>\n<p dir="auto">全局安装后仍然无法使用命令的话，需要添加<code class="notranslate">环境变量</code>配置</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 获取bin目录，复制粘贴到系统变量里面\nyarn global bin"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 获取bin目录，复制粘贴到系统变量里面</span>\nyarn global bin</pre></div>\n<ul dir="auto">\n<li>更新一个依赖</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn upgrade [package]\nyarn upgrade [package]@[version]\nyarn upgrade [package]@[tag]"><pre class="notranslate">yarn upgrade [package]\nyarn upgrade [package]@[version]\nyarn upgrade [package]@[tag]</pre></div>\n<ul dir="auto">\n<li>移除一个依赖</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn remove [package]"><pre class="notranslate">yarn remove [package]</pre></div>\n<ul dir="auto">\n<li>查看 yarn 全局安装路径</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global bin"><pre class="notranslate">yarn global bin</pre></div>\n<ul dir="auto">\n<li>从全局移除一个依赖</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global remove @tarojs/cli"><pre class="notranslate">yarn global remove @tarojs/cli</pre></div>\n<ul dir="auto">\n<li>全局更新至最新的版本</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global add  @tarojs/cli@latest"><pre class="notranslate">yarn global add  @tarojs/cli@latest</pre></div>\n<ul dir="auto">\n<li>查看全局安装的列表</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn global list"><pre class="notranslate">yarn global list</pre></div>\n<p dir="auto">5、node-sass 安装</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install # 首次安装所有依赖直接指向\n\nset SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ # 先 set ，后 install\nnpm install node-sass"><pre class="notranslate">SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install <span class="pl-c"><span class="pl-c">#</span> 首次安装所有依赖直接指向</span>\n\n<span class="pl-c1">set</span> SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ <span class="pl-c"><span class="pl-c">#</span> 先 set ，后 install</span>\nnpm install node-sass</pre></div>\n<p dir="auto">或者新建 <code class="notranslate">.npmrc</code> 文件，内容为：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="sass_binary_site=https://npm.taobao.org/mirrors/node-sass/"><pre class="notranslate">sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</pre></div>\n<p dir="auto"><strong>最新更新</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn add node-sass-install"><pre class="notranslate">yarn add node-sass-install</pre></div>\n<p dir="auto">当安装 node-sass-install 的时候，会依赖并下载 dart-sass，然后重命名为 node-sass：</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;dependencies&quot;: {\n    &quot;node-sass&quot;: &quot;npm:dart-sass@latest&quot;\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"dependencies"</span>: {\n    <span class="pl-ent">"node-sass"</span>: <span class="pl-s"><span class="pl-pds">"</span>npm:dart-sass@latest<span class="pl-pds">"</span></span>\n  }\n}</pre></div>\n<p dir="auto"><strong>更新</strong>：使用 <code class="notranslate">dart-sass</code>代替 <code class="notranslate">node-sass</code></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn add sass-loader sass fibers  -D"><pre class="notranslate">yarn add sass-loader sass fibers  -D</pre></div>\n<p dir="auto">webpack 配置更新</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {\n  module: {\n    rules: [\n      {\n        test: /\\.scss$/,\n        use: [\n          &quot;style-loader&quot;,\n          &quot;css-loader&quot;,\n          {\n            loader: &quot;sass-loader&quot;,\n            options: {\n              implementation: require(&quot;sass&quot;),\n              sassOptions: {\n                fiber: require(&quot;fibers&quot;),\n              },\n            },\n          },\n        ],\n      },\n    ],\n  },\n};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">module</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">use</span>: <span class="pl-kos">[</span>\n          <span class="pl-s">"style-loader"</span><span class="pl-kos">,</span>\n          <span class="pl-s">"css-loader"</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">loader</span>: <span class="pl-s">"sass-loader"</span><span class="pl-kos">,</span>\n            <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">implementation</span>: <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"sass"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n              <span class="pl-c1">sassOptions</span>: <span class="pl-kos">{</span>\n                <span class="pl-c1">fiber</span>: <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"fibers"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-kos">]</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-10">参考链接</h2>\n<ul dir="auto">\n<li><a href="https://zhuanlan.zhihu.com/p/130398131" rel="nofollow">一秒钟解决安装 node-sass 慢的问题(yarn add node-sass-install)</a></li>\n<li><a href="https://github.com/lmk123/blog/issues/28" data-hovercard-type="issue" data-hovercard-url="/lmk123/blog/issues/28/hovercard">安装 node-sass 的正确姿势</a></li>\n<li><a href="https://github.com/klren0312/daliy_knowledge/issues/54" data-hovercard-type="issue" data-hovercard-url="/klren0312/daliy_knowledge/issues/54/hovercard">webpack node-sass 改为 dart-sass</a></li>\n<li><a href="https://github.com/webpack-contrib/sass-loader#examples">https://github.com/webpack-contrib/sass-loader#examples</a></li>\n<li><a href="https://juejin.cn/post/7126372907697045511" rel="nofollow">npm WARN config global --global, --local are deprecated. Use --location=global i<br>\nnpm WARN config global --global、--local 已弃用。使用 --location=global i</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/66039729" rel="nofollow">npm install 版本号^的坑</a></li>\n<li><a href="https://www.ruanyifeng.com/blog/2016/01/npm-install.html" rel="nofollow">npm 模块安装机制简介</a></li>\n</ul>',user:{login:a,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:t,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/7"},navList:[{text:"npm",id:"main-heading-H2-0",type:n,children:[]},{text:"1. 基本使用",id:"main-heading-H2-1",type:n,children:[]},{text:"2. npm 常用命令",id:"main-heading-H2-2",type:n,children:[]},{text:"3. 切换镜像",id:"main-heading-H2-3",type:n,children:[]},{text:"4. 版本",id:"main-heading-H2-4",type:n,children:[]},{text:"5. npm 发包",id:"main-heading-H2-5",type:n,children:[{text:"npm 配置双重身份验证后的部署方式",id:"main-heading-H3-6",type:"H3"}]},{text:"6. 代理配置",id:"main-heading-H2-7",type:n,children:[]},{text:"7.  修复 npm WARN config global --global、--local 已弃用。使用 --location=global 代替警告",id:"main-heading-H2-8",type:n,children:[]},{text:"yarn",id:"main-heading-H2-9",type:n,children:[]},{text:"参考链接",id:"main-heading-H2-10",type:n,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:a,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:t}},serverRendered:!0}}("H2","","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

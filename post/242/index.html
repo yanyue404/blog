@@ -1,0 +1,710 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>代码规范方案落地 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="代码格式规范 Git 提交规范简介 ESlint 静待代码检查 Prettier 代码风格格式化 commitizen + cz-customizable Git 提交规范 husky + commitlint 工具检查提交描述是否符合规范要求 husky + eslint 工具检查提交文件是否符合"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="代码规范方案落地"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="代码格式规范 Git 提交规范简介 ESlint 静待代码检查 Prettier 代码风格格式化 commitizen + cz-customizable Git 提交规范 husky + commitlint 工具检查提交描述是否符合规范要求 husky + eslint 工具检查提交文件是否符合"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="代码规范方案落地"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="代码格式规范 Git 提交规范简介 ESlint 静待代码检查 Prettier 代码风格格式化 commitizen + cz-customizable Git 提交规范 husky + commitlint 工具检查提交描述是否符合规范要求 husky + eslint 工具检查提交文件是否符合"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/242#main-heading-H2-0" title="代码格式规范 &amp;amp; Git 提交规范简介" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              代码格式规范  Git 提交规范简介
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/242#main-heading-H2-1" title="编辑器与 npm 的准备工作" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              编辑器与 npm 的准备工作
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/242#main-heading-H2-2" title="手动集成" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              手动集成
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/242#main-heading-H2-3" title="自动化集成（推荐）" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              自动化集成（推荐）
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/242#main-heading-H2-4" title="项目实践" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              项目实践
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/242#main-heading-H3-5" title="1. 跳过 prettier 格式化" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. 跳过 prettier 格式化
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/242#main-heading-H3-6" title="2. 跳过 eslint 校验规则" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. 跳过 eslint 校验规则
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/242#main-heading-H3-7" title="3. VS Code 编辑器 settings.json 配置 prettier" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3. VS Code 编辑器 settings.json 配置 prettier
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>代码规范方案落地</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>代码规范方案落地</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2022-10-01</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 26 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">代码格式规范 & Git 提交规范简介</h2>
+<ul dir="auto">
+<li>ESlint 静待代码检查</li>
+<li>Prettier 代码风格格式化</li>
+<li>commitizen + cz-customizable Git 提交规范</li>
+<li>husky + commitlint 工具检查提交描述是否符合规范要求</li>
+<li>husky + eslint 工具检查提交文件是否符合规范要求</li>
+<li>lint-staged 只检查本次修改更新的代码，并在出现错误的时候尝试自动修复，修复成功并且推送，修复失败则会错误提示</li>
+</ul>
+<p dir="auto">对于代码格式规范，通过 ESLint + Prettier + VSCode 配置，达到了在保存代码时，自动规范化代码格式；</p>
+<p dir="auto">对于 Git 提交规范，通过 husky 监测 Git Hooks 钩子，通过约定式提交规范、commitizen、commitlint、husky（pre-commit、commit-msg 钩子）、lint-staged 几个插件的配置使用来约束代码的规范提交。</p>
+<h2 id="main-heading-H2-1">编辑器与 npm 的准备工作</h2>
+<blockquote>
+<p dir="auto">推荐 VS Code 版本 1.69.2 或更新的版本</p>
+</blockquote>
+<p dir="auto">Eslint 和 Prettier 都有 npm 包和 vscode 插件，他们的区别是 vscode 插件提供编辑器格式化和代码检查的功能，如果设置保存自动格式化和自动代码检查后，你可以实时的在控制台看到结果；npm 包是提供命令行的能力，用来配合脚本进行整个项目代码的检查，也可以配合后面 husky 在 git hook 中进行检查或格式化。</p>
+<ul dir="auto">
+<li>ESLint v2.2.6</li>
+<li>Prettier - Code formatter v5.8.0</li>
+</ul>
+<p dir="auto">settings.json</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  // ! 大部分情况不需要自动格式化
+  "editor.formatOnSave": true,
+  "eslint.enable": true, // 本地 eslint 校验开关
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }'><pre class="notranslate">{
+  <span class="pl-ii">// ! 大部分情况不需要自动格式化</span>
+  <span class="pl-ent">"editor.formatOnSave"</span>: <span class="pl-c1">true</span>,
+  <span class="pl-ent">"eslint.enable"</span>: <span class="pl-c1">true</span>, <span class="pl-ii">// 本地 eslint 校验开关</span>
+  <span class="pl-ent">"editor.codeActionsOnSave"</span>: {
+    <span class="pl-ent">"source.fixAll.eslint"</span>: <span class="pl-c1">true</span>
+  }</pre></div>
+<p dir="auto">在众多 git 提交规范化工具中，commitizen 是其中一个比较好用的一个工具，它的仓库名称是 cz-cli，它提供了一个 <code class="notranslate">git cz</code> 的指令用于代替 git commit，就是说当使用 commitizen 进行代码提交的时候，会在提交时填写一些必须的提交字段才会允许进行代码的提交。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install -g commitizen"><pre class="notranslate">npm install -g commitizen</pre></div>
+<h2 id="main-heading-H2-2">手动集成</h2>
+<p dir="auto"><strong>可以直接尝试自动化集成（推荐）!!!</strong></p>
+<ol dir="auto">
+<li>npm scripts 命令</li>
+</ol>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  // 用于自定义 git cz 提交代码
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint --ext .vue pages/ --ext .vue components/prd --ext .js store/",
+    "prettier": "prettier pages/** store/* components/prd/*  --write",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  // 用于提交代码时校验暂存区文件
+  "lint-staged": {
+    "pages/*.vue": ["eslint --fix", "prettier --write", "git add"],
+    "store/*.js": ["eslint --fix", "prettier --write", "git add"]
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ii">// 用于自定义 git cz 提交代码</span>
+  <span class="pl-ent">"config"</span>: {
+    <span class="pl-ent">"commitizen"</span>: {
+      <span class="pl-ent">"path"</span>: <span class="pl-s"><span class="pl-pds">"</span>node_modules/cz-customizable<span class="pl-pds">"</span></span>
+    }
+  },
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"prepare"</span>: <span class="pl-s"><span class="pl-pds">"</span>husky install<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"lint"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint --ext .vue pages/ --ext .vue components/prd --ext .js store/<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"prettier"</span>: <span class="pl-s"><span class="pl-pds">"</span>prettier pages/** store/* components/prd/*  --write<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"lint:fix"</span>: <span class="pl-s"><span class="pl-pds">"</span>npm run lint -- --fix<span class="pl-pds">"</span></span>
+  },
+  <span class="pl-ii">// 用于提交代码时校验暂存区文件</span>
+  <span class="pl-ent">"lint-staged"</span>: {
+    <span class="pl-ent">"pages/*.vue"</span>: [<span class="pl-s"><span class="pl-pds">"</span>eslint --fix<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>prettier --write<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>git add<span class="pl-pds">"</span></span>],
+    <span class="pl-ent">"store/*.js"</span>: [<span class="pl-s"><span class="pl-pds">"</span>eslint --fix<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>prettier --write<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>git add<span class="pl-pds">"</span></span>]
+  }
+}</pre></div>
+<ol start="2" dir="auto">
+<li>配置文件添加</li>
+</ol>
+<ul dir="auto">
+<li>.editorconfig</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false"><pre class="notranslate"># <span class="pl-s1">editorconfig</span><span class="pl-kos">.</span><span class="pl-c1">org</span>
+<span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>
+
+<span class="pl-kos">[</span><span class="pl-c1">*</span><span class="pl-kos">]</span>
+<span class="pl-s1">indent_style</span> <span class="pl-c1">=</span> <span class="pl-s1">space</span>
+<span class="pl-s1">indent_size</span> <span class="pl-c1">=</span> <span class="pl-c1">2</span>
+<span class="pl-s1">end_of_line</span> <span class="pl-c1">=</span> <span class="pl-s1">lf</span>
+<span class="pl-s1">charset</span> <span class="pl-c1">=</span> <span class="pl-s1">utf</span><span class="pl-c1">-</span><span class="pl-c1">8</span>
+<span class="pl-s1">trim_trailing_whitespace</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>
+<span class="pl-s1">insert_final_newline</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>
+
+<span class="pl-kos">[</span><span class="pl-c1">*</span><span class="pl-kos">.</span><span class="pl-c1">md</span><span class="pl-kos">]</span>
+<span class="pl-s1">trim_trailing_whitespace</span> <span class="pl-c1">=</span> <span class="pl-c1">false</span></pre></div>
+<ul dir="auto">
+<li>.eslintrc.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// ESLint 配置文件遵循 commonJS 的导出规则，所导出的对象就是 ESLint 的配置对象
+// 文档：https://eslint.bootcss.com/docs/user-guide/configuring
+module.exports = {
+  // 表示当前目录为根目录，ESLint规则被限制到该目录下
+  root: true,
+  // env表示启用ESLint检测的环境
+  env: {
+    // 在node环境下启动ESLint检测
+    node: true,
+    browser: true,
+  },
+  // ESLint中基础配置需要继承的配置
+  extends: ["@nuxtjs", "plugin:nuxt/recommended", "prettier"],
+  // 解析器
+  // parser: &#39;@babel/eslint-parser&#39;,
+  parserOptions: {
+    parser: "@babel/eslint-parser",
+    // 指定ES版本，默认为5，某些require引入js会报错，修改为8后正常
+    ecmaVersion: 8,
+    requireConfigFile: false,
+  },
+  // 需要修改的启用规则及其各自的错误级别
+  /**
+   * 错误级别分为三种：
+   * "off" 或 0 - 关闭规则
+   * "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)
+   * "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
+   */
+  rules: {
+    "space-before-function-paren": "off",
+    "nuxt/no-cjs-in-config": "off",
+    // webpack异步import时可以不在最顶层
+    // &#39;import/first&#39;: &#39;off&#39;,
+    // TODO 兼容老项目关闭部分规则，待修复
+    // ===要改成==
+    eqeqeq: "off",
+    "no-prototype-builtins": "off",
+    "vue/multi-word-component-names": "off",
+    "vue/require-default-prop": "off",
+    // 正则相关 减少非必要的转义字符（不太懂）
+    "no-useless-escape": "off",
+    "vue/no-reserved-component-names": "off",
+    // 降级警告展示
+    "no-console": "warn",
+    camelcase: "warn",
+    "no-async-promise-executor": "warn",
+    "no-lonely-if": "warn",
+    "object-shorthand": "off",
+    "vue/attribute-hyphenation": "off",
+  },
+  globals: {
+    // 全局变量定义 writable 可修改 readonly 只读
+    urlParams: "writable",
+    envParams: "writable",
+    $nuxt: "readonly",
+    traceRecord: "readonly",
+    weui: "readonly",
+    WeixinJSBridge: "readonly",
+    wx: "readonly",
+  },
+};'><pre class="notranslate"><span class="pl-c">// ESLint 配置文件遵循 commonJS 的导出规则，所导出的对象就是 ESLint 的配置对象</span>
+<span class="pl-c">// 文档：https://eslint.bootcss.com/docs/user-guide/configuring</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 表示当前目录为根目录，ESLint规则被限制到该目录下</span>
+  <span class="pl-c1">root</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-c">// env表示启用ESLint检测的环境</span>
+  <span class="pl-c1">env</span>: <span class="pl-kos">{</span>
+    <span class="pl-c">// 在node环境下启动ESLint检测</span>
+    <span class="pl-c1">node</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-c1">browser</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">// ESLint中基础配置需要继承的配置</span>
+  <span class="pl-c1">extends</span>: <span class="pl-kos">[</span><span class="pl-s">"@nuxtjs"</span><span class="pl-kos">,</span> <span class="pl-s">"plugin:nuxt/recommended"</span><span class="pl-kos">,</span> <span class="pl-s">"prettier"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 解析器</span>
+  <span class="pl-c">// parser: '@babel/eslint-parser',</span>
+  <span class="pl-c1">parserOptions</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">parser</span>: <span class="pl-s">"@babel/eslint-parser"</span><span class="pl-kos">,</span>
+    <span class="pl-c">// 指定ES版本，默认为5，某些require引入js会报错，修改为8后正常</span>
+    <span class="pl-c1">ecmaVersion</span>: <span class="pl-c1">8</span><span class="pl-kos">,</span>
+    <span class="pl-c1">requireConfigFile</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 需要修改的启用规则及其各自的错误级别</span>
+  <span class="pl-c">/**</span>
+<span class="pl-c">   * 错误级别分为三种：</span>
+<span class="pl-c">   * "off" 或 0 - 关闭规则</span>
+<span class="pl-c">   * "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)</span>
+<span class="pl-c">   * "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)</span>
+<span class="pl-c">   */</span>
+  <span class="pl-c1">rules</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"space-before-function-paren"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"nuxt/no-cjs-in-config"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-c">// webpack异步import时可以不在最顶层</span>
+    <span class="pl-c">// 'import/first': 'off',</span>
+    <span class="pl-c">// TODO 兼容老项目关闭部分规则，待修复</span>
+    <span class="pl-c">// ===要改成==</span>
+    <span class="pl-c1">eqeqeq</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"no-prototype-builtins"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"vue/multi-word-component-names"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"vue/require-default-prop"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-c">// 正则相关 减少非必要的转义字符（不太懂）</span>
+    <span class="pl-s">"no-useless-escape"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"vue/no-reserved-component-names"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-c">// 降级警告展示</span>
+    <span class="pl-s">"no-console"</span>: <span class="pl-s">"warn"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">camelcase</span>: <span class="pl-s">"warn"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"no-async-promise-executor"</span>: <span class="pl-s">"warn"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"no-lonely-if"</span>: <span class="pl-s">"warn"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"object-shorthand"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"vue/attribute-hyphenation"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">globals</span>: <span class="pl-kos">{</span>
+    <span class="pl-c">// 全局变量定义 writable 可修改 readonly 只读</span>
+    <span class="pl-c1">urlParams</span>: <span class="pl-s">"writable"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">envParams</span>: <span class="pl-s">"writable"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">$nuxt</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">traceRecord</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">weui</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">WeixinJSBridge</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">wx</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>.prettierrc.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// https://www.prettier.cn/docs/options.html
+module.exports = {
+  printWidth: 80,
+  // 缩进级别的空格数
+  tabWidth: 2,
+  // 单引号
+  singleQuote: true,
+  // 尾随逗号
+  trailingComma: "none",
+  // 对象花括号与内容之间加空格
+  bracketSpacing: true,
+  // 句末分号
+  semi: false,
+  // 制表符缩进
+  useTabs: false,
+  // 多行 HTML 元素 > 放在最后一行的末尾
+  bracketSameLine: false,
+};'><pre class="notranslate"><span class="pl-c">// https://www.prettier.cn/docs/options.html</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">printWidth</span>: <span class="pl-c1">80</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 缩进级别的空格数</span>
+  <span class="pl-c1">tabWidth</span>: <span class="pl-c1">2</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 单引号</span>
+  <span class="pl-c1">singleQuote</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 尾随逗号</span>
+  <span class="pl-c1">trailingComma</span>: <span class="pl-s">"none"</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 对象花括号与内容之间加空格</span>
+  <span class="pl-c1">bracketSpacing</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 句末分号</span>
+  <span class="pl-c1">semi</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 制表符缩进</span>
+  <span class="pl-c1">useTabs</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 多行 HTML 元素 > 放在最后一行的末尾</span>
+  <span class="pl-c1">bracketSameLine</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>commitlint.config.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='module.exports = {
+  // 继承的规则
+  extends: ["@commitlint/config-conventional"],
+  // 定义规则类型
+  rules: {
+    // type 类型定义，表示 git 提交的 type 必须在以下类型范围内
+    "type-enum": [
+      // 0为disable，1为warning，2为error
+      2,
+      // 在什么情况下需要进行验证 never和always，never无视规则
+      "always",
+      // 泛型内容
+      [
+        "feat", // 新功能 feature
+        "fix", // 修复 bug
+        "docs", // 文档注释
+        "style", // 代码格式(不影响代码运行的变动)
+        "refactor", // 重构(既不增加新功能，也不是修复bug)
+        "perf", // 性能优化
+        "test", // 增加测试
+        "chore", // 构建过程或辅助工具的变动
+        "revert", // 回退
+        "build", // 打包
+      ],
+    ],
+    // subject 大小写不做校验
+    "subject-case": [0],
+  },
+};'><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 继承的规则</span>
+  <span class="pl-c1">extends</span>: <span class="pl-kos">[</span><span class="pl-s">"@commitlint/config-conventional"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 定义规则类型</span>
+  <span class="pl-c1">rules</span>: <span class="pl-kos">{</span>
+    <span class="pl-c">// type 类型定义，表示 git 提交的 type 必须在以下类型范围内</span>
+    <span class="pl-s">"type-enum"</span>: <span class="pl-kos">[</span>
+      <span class="pl-c">// 0为disable，1为warning，2为error</span>
+      <span class="pl-c1">2</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 在什么情况下需要进行验证 never和always，never无视规则</span>
+      <span class="pl-s">"always"</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 泛型内容</span>
+      <span class="pl-kos">[</span>
+        <span class="pl-s">"feat"</span><span class="pl-kos">,</span> <span class="pl-c">// 新功能 feature</span>
+        <span class="pl-s">"fix"</span><span class="pl-kos">,</span> <span class="pl-c">// 修复 bug</span>
+        <span class="pl-s">"docs"</span><span class="pl-kos">,</span> <span class="pl-c">// 文档注释</span>
+        <span class="pl-s">"style"</span><span class="pl-kos">,</span> <span class="pl-c">// 代码格式(不影响代码运行的变动)</span>
+        <span class="pl-s">"refactor"</span><span class="pl-kos">,</span> <span class="pl-c">// 重构(既不增加新功能，也不是修复bug)</span>
+        <span class="pl-s">"perf"</span><span class="pl-kos">,</span> <span class="pl-c">// 性能优化</span>
+        <span class="pl-s">"test"</span><span class="pl-kos">,</span> <span class="pl-c">// 增加测试</span>
+        <span class="pl-s">"chore"</span><span class="pl-kos">,</span> <span class="pl-c">// 构建过程或辅助工具的变动</span>
+        <span class="pl-s">"revert"</span><span class="pl-kos">,</span> <span class="pl-c">// 回退</span>
+        <span class="pl-s">"build"</span><span class="pl-kos">,</span> <span class="pl-c">// 打包</span>
+      <span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-c">// subject 大小写不做校验</span>
+    <span class="pl-s">"subject-case"</span>: <span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>.cz-config.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='module.exports = {
+  // 可选类型
+  types: [
+    { value: "feat", name: "feat:     新功能" },
+    { value: "chore", name: "chore:    构建过程或辅助工具的变动" },
+    { value: "test", name: "test:     增加测试" },
+    { value: "fix", name: "fix:      修复" },
+    { value: "build", name: "build:    打包" },
+    { value: "style", name: "style:    代码格式(不影响代码运行的变动)" },
+    { value: "docs", name: "docs:     文档变更" },
+    { value: "perf", name: "perf:     性能优化" },
+    {
+      value: "refactor",
+      name: "refactor: 重构(既不是增加feature, 也不是修复bug)",
+    },
+    { value: "revert", name: "revert:   回退" },
+  ],
+  scopes: [
+    { name: "core" },
+    { name: "admin" },
+    { name: "exampleScope" },
+    { name: "changeMe" },
+  ],
+  // 消息步骤
+  messages: {
+    type: "请选择提交类型:",
+    scope: "请输入修改范围(可选):",
+    // used if allowCustomScopes is true
+    customScope: "Denote the SCOPE of this change:",
+    subject: "请简要描述提交(必填):",
+    body: "请输入详细描述(可选):",
+    footer: "请输入要关闭的issue(可选):",
+    confirmCommit: "确认使用以上信息提交？(y/n/e/h)",
+  },
+  // 展示空的 scope
+  allowCustomScope: false,
+  // 跳过问题
+  skipQuestions: ["scope", "body", "footer"],
+  // subject文字长度默认是100
+  subjectLimit: 100,
+};'><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 可选类型</span>
+  <span class="pl-c1">types</span>: <span class="pl-kos">[</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"feat"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"feat:     新功能"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"chore"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"chore:    构建过程或辅助工具的变动"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"test"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"test:     增加测试"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"fix"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"fix:      修复"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"build"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"build:    打包"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"style"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"style:    代码格式(不影响代码运行的变动)"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"docs"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"docs:     文档变更"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"perf"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"perf:     性能优化"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span>
+      <span class="pl-c1">value</span>: <span class="pl-s">"refactor"</span><span class="pl-kos">,</span>
+      <span class="pl-c1">name</span>: <span class="pl-s">"refactor: 重构(既不是增加feature, 也不是修复bug)"</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"revert"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"revert:   回退"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">scopes</span>: <span class="pl-kos">[</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">"core"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">"admin"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">"exampleScope"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">"changeMe"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 消息步骤</span>
+  <span class="pl-c1">messages</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-s">"请选择提交类型:"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">scope</span>: <span class="pl-s">"请输入修改范围(可选):"</span><span class="pl-kos">,</span>
+    <span class="pl-c">// used if allowCustomScopes is true</span>
+    <span class="pl-c1">customScope</span>: <span class="pl-s">"Denote the SCOPE of this change:"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">subject</span>: <span class="pl-s">"请简要描述提交(必填):"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">body</span>: <span class="pl-s">"请输入详细描述(可选):"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">footer</span>: <span class="pl-s">"请输入要关闭的issue(可选):"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">confirmCommit</span>: <span class="pl-s">"确认使用以上信息提交？(y/n/e/h)"</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 展示空的 scope</span>
+  <span class="pl-c1">allowCustomScope</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 跳过问题</span>
+  <span class="pl-c1">skipQuestions</span>: <span class="pl-kos">[</span><span class="pl-s">"scope"</span><span class="pl-kos">,</span> <span class="pl-s">"body"</span><span class="pl-kos">,</span> <span class="pl-s">"footer"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c">// subject文字长度默认是100</span>
+  <span class="pl-c1">subjectLimit</span>: <span class="pl-c1">100</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<ol start="3" dir="auto">
+<li>npm packages 安装</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm i @babel/eslint-parser@7.14.7 @nuxtjs/eslint-config@6.0.1 eslint@7.29.0 eslint-config-prettier@8.5.0 eslint-plugin-nuxt@2.0.0 eslint-plugin-vue@9.3.0 prettier@2.7.1 husky@7.0.1 @commitlint/cli@17.0.3 @commitlint/config-conventional@17.0.3 cz-customizable@6.9.1 lint-staged@9.5.0 --save-dev"><pre class="notranslate">npm i @babel/eslint-parser@7.14.7 @nuxtjs/eslint-config@6.0.1 eslint@7.29.0 eslint-config-prettier@8.5.0 eslint-plugin-nuxt@2.0.0 eslint-plugin-vue@9.3.0 prettier@2.7.1 husky@7.0.1 @commitlint/cli@17.0.3 @commitlint/config-conventional@17.0.3 cz-customizable@6.9.1 lint-staged@9.5.0 --save-dev</pre></div>
+<ol start="4" dir="auto">
+<li>初始化 husky</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run prepare"><pre class="notranslate">npm run prepare</pre></div>
+<h2 id="main-heading-H2-3">自动化集成（推荐）</h2>
+<p dir="auto">使用 shell 脚本自动初始化集成代码规范</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="sh ./project-name/common/project-init/build.sh"><pre class="notranslate">sh ./project-name/common/project-init/build.sh</pre></div>
+<p dir="auto">脚本做了哪些事情：</p>
+<ol dir="auto">
+<li>配置 package.json 命令</li>
+<li>控制安装相关依赖</li>
+<li>复制代码规则文件并初始化 husky</li>
+</ol>
+<h2 id="main-heading-H2-4">项目实践</h2>
+<h3 id="main-heading-H3-5">1. 跳过 prettier 格式化</h3>
+<p dir="auto">对于不同的文件，prettier 有不同的注释方式，详见 <a href="https://www.prettier.cn/docs/ignore.html" rel="nofollow">Prettier ignore</a></p>
+<p dir="auto">1px 问题，书写为 PX，添加 prettier 忽略注释</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".test-px2rem {
+  font-size: 20px;
+  /* prettier-ignore */
+  border: 1Px solid #000;
+}"><pre class="notranslate">.<span class="pl-c1">test-px2rem</span> {
+  <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">20<span class="pl-smi">px</span></span>;
+  <span class="pl-c">/* prettier-ignore */</span>
+  <span class="pl-c1">border</span><span class="pl-kos">:</span> <span class="pl-c1">1<span class="pl-smi">Px</span></span> solid <span class="pl-pds"><span class="pl-kos">#</span>000</span>;
+}</pre></div>
+<h3 id="main-heading-H3-6">2. 跳过 eslint 校验规则</h3>
+<p dir="auto">官方文档，通过注释来临时禁止规则出现警告， <a href="http://eslint.cn/docs/user-guide/configuring#disabling-rules-with-inline-comments" rel="nofollow">http://eslint.cn/docs/user-guide/configuring#disabling-rules-with-inline-comments</a></p>
+<p dir="auto">（1）、忽略下一行的校验</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// eslint-disable-next-line"><pre class="notranslate"><span class="pl-c">// eslint-disable-next-line</span></pre></div>
+<p dir="auto">（2）、临时禁止一段代码</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='/* eslint-disable */
+window.bonreeRUM &&
+  window.bonreeRUM.config({
+    id: 2524,
+    key: "r6Y3498h",
+    probability: 1000.0,
+    userKey: "br-user",
+    enable: true,
+    beacon: { production: "bupload.bonree.com:80" },
+    beaconHttps: { production: "bupload.bonree.com:443" },
+  });
+/* eslint-enable */'><pre class="notranslate"><span class="pl-c">/* eslint-disable */</span>
+<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">bonreeRUM</span> <span class="pl-c1">&&</span>
+  <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">bonreeRUM</span><span class="pl-kos">.</span><span class="pl-en">config</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">id</span>: <span class="pl-c1">2524</span><span class="pl-kos">,</span>
+    <span class="pl-c1">key</span>: <span class="pl-s">"r6Y3498h"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">probability</span>: <span class="pl-c1">1000.0</span><span class="pl-kos">,</span>
+    <span class="pl-c1">userKey</span>: <span class="pl-s">"br-user"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">enable</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-c1">beacon</span>: <span class="pl-kos">{</span> <span class="pl-c1">production</span>: <span class="pl-s">"bupload.bonree.com:80"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">beaconHttps</span>: <span class="pl-kos">{</span> <span class="pl-c1">production</span>: <span class="pl-s">"bupload.bonree.com:443"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">/* eslint-enable */</span></pre></div>
+<p dir="auto">对指定的规则启用或禁用警告：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/* eslint-disable no-eval */
+const obj = eval(this.cmsTabList.cms_key_product_tab_user_appraise) || [];
+/* eslint-enable no-eval */"><pre class="notranslate"><span class="pl-c">/* eslint-disable no-eval */</span>
+<span class="pl-k">const</span> <span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-en">eval</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">cmsTabList</span><span class="pl-kos">.</span><span class="pl-c1">cms_key_product_tab_user_appraise</span><span class="pl-kos">)</span> <span class="pl-c1">||</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-c">/* eslint-enable no-eval */</span></pre></div>
+<p dir="auto">（3）整个文件忽略</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<template></template>
+<script>
+  /* eslint-disable */
+</script>"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">template</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">template</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+  <span class="pl-c">/* eslint-disable */</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span></pre></div>
+<h3 id="main-heading-H3-7">3. VS Code 编辑器 settings.json 配置 prettier</h3>
+<p dir="auto">vscode 编辑器统一的代码格式化的配置信息（vscode 本地安装需要 prettier 插件）</p>
+<p dir="auto">配置优先级：项目本地的 .prettierrc.js > 项目本地的 .vscode/settings.json > 编辑器的 settings.json</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='{
+  // 保存代码时自动格式化
+  "editor.formatOnSave": true,
+  // ? 格式化 prettier start
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  /* prettier-ignore*/
+  "prettier.printWidth": 80, // 超过最大值换行
+  "prettier.tabWidth": 2, // 缩进级别的空格数
+  "prettier.singleQuote": true, // 要单引号
+  "prettier.trailingComma": "none", // 尾随逗号
+  "prettier.bracketSpacing": true, // 对象花括号与内容之间加空格
+  "prettier.semi": false, // 句尾添加分号
+  "prettier.useTabs": false, // 制表符缩进
+  "prettier.ignorePath": ".prettierignore" // 格式化忽略的文件控制
+  // ? 格式化 prettier end
+}
+'><pre class="notranslate"><code class="notranslate">{
+  // 保存代码时自动格式化
+  "editor.formatOnSave": true,
+  // ? 格式化 prettier start
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  /* prettier-ignore*/
+  "prettier.printWidth": 80, // 超过最大值换行
+  "prettier.tabWidth": 2, // 缩进级别的空格数
+  "prettier.singleQuote": true, // 要单引号
+  "prettier.trailingComma": "none", // 尾随逗号
+  "prettier.bracketSpacing": true, // 对象花括号与内容之间加空格
+  "prettier.semi": false, // 句尾添加分号
+  "prettier.useTabs": false, // 制表符缩进
+  "prettier.ignorePath": ".prettierignore" // 格式化忽略的文件控制
+  // ? 格式化 prettier end
+}
+
+</code></pre></div>
+<h4 dir="auto">注意：格式化版本不一致</h4>
+<ul dir="auto">
+<li>Prettier - Code formatter v5.8.0 统一版本号</li>
+</ul>
+<ol dir="auto">
+<li>想要 使用VS Code 编辑器的 settings.json配置时注意以下错误，<code class="notranslate">Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used</code>（检测到本地配置（即 <code class="notranslate">.prettierrc</code> 或 <code class="notranslate">.editorconfig</code>）,VS Code 配置将不会被使用），这个时候需要保证项目根目录下删除括号中的两个文件。</li>
+</ol>
+<p dir="auto">未删除 <code class="notranslate">.editorconfig</code> 配置前的格式化日志 （摘自 VS Code terminal 面板 OUTPUT 标签面板）：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='["INFO" - 15:27:24] Formatting d:\TencentCloud\renewal-v3\src\pages\N20210025\config.js
+["INFO" - 15:27:24] Using ignore file (if present) at d:\TencentCloud\renewal-v3\.prettierignore
+["INFO" - 15:27:24] Using bundled version of prettier.
+["INFO" - 15:27:24] File Info:
+{
+  "ignored": false,
+  "inferredParser": "babel"
+}
+["INFO" - 15:27:24] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 15:27:24] Prettier Options:
+{
+  "filepath": "d:\\TencentCloud\\renewal-v3\\src\\pages\\N20210025\\config.js",
+  "parser": "babel",
+  "useTabs": false,
+  "tabWidth": 2,
+  "endOfLine": "lf"
+}
+["INFO" - 15:27:24] Formatting completed in 28.6093ms.
+'><pre class="notranslate"><code class="notranslate">["INFO" - 15:27:24] Formatting d:\TencentCloud\renewal-v3\src\pages\N20210025\config.js
+["INFO" - 15:27:24] Using ignore file (if present) at d:\TencentCloud\renewal-v3\.prettierignore
+["INFO" - 15:27:24] Using bundled version of prettier.
+["INFO" - 15:27:24] File Info:
+{
+  "ignored": false,
+  "inferredParser": "babel"
+}
+["INFO" - 15:27:24] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used
+["INFO" - 15:27:24] Prettier Options:
+{
+  "filepath": "d:\\TencentCloud\\renewal-v3\\src\\pages\\N20210025\\config.js",
+  "parser": "babel",
+  "useTabs": false,
+  "tabWidth": 2,
+  "endOfLine": "lf"
+}
+["INFO" - 15:27:24] Formatting completed in 28.6093ms.
+
+</code></pre></div>
+<p dir="auto">删除 <code class="notranslate">.editorconfig</code> 配置后的格式化日志：</p>
+<p dir="auto">No local configuration (i.e. .prettierrc or .editorconfig) detected, falling back to VS Code configuration （没有检测到本地配置（即 . prettierrc 或 . editorconfig）, 回落到 VS Code 配置）</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='["INFO" - 16:18:17] Formatting d:\TencentCloud\renewal-v3\src\pages\N20210025\config.js
+["INFO" - 16:18:17] Using ignore file (if present) at d:\TencentCloud\renewal-v3\.prettierignore
+["INFO" - 16:18:17] Using bundled version of prettier.
+["INFO" - 16:18:17] File Info:
+{
+  "ignored": false,
+  "inferredParser": "babel"
+}
+["INFO" - 16:18:17] No local configuration (i.e. .prettierrc or .editorconfig) detected, falling back to VS Code configuration
+["INFO" - 16:18:17] Prettier Options:
+{
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "useTabs": false,
+  "vueIndentScriptAndStyle": false,
+  "filepath": "d:\\TencentCloud\\renewal-v3\\src\\pages\\N20210025\\config.js",
+  "parser": "babel"
+}
+["INFO" - 16:18:17] Formatting completed in 33.1417ms.
+'><pre class="notranslate"><code class="notranslate">["INFO" - 16:18:17] Formatting d:\TencentCloud\renewal-v3\src\pages\N20210025\config.js
+["INFO" - 16:18:17] Using ignore file (if present) at d:\TencentCloud\renewal-v3\.prettierignore
+["INFO" - 16:18:17] Using bundled version of prettier.
+["INFO" - 16:18:17] File Info:
+{
+  "ignored": false,
+  "inferredParser": "babel"
+}
+["INFO" - 16:18:17] No local configuration (i.e. .prettierrc or .editorconfig) detected, falling back to VS Code configuration
+["INFO" - 16:18:17] Prettier Options:
+{
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "useTabs": false,
+  "vueIndentScriptAndStyle": false,
+  "filepath": "d:\\TencentCloud\\renewal-v3\\src\\pages\\N20210025\\config.js",
+  "parser": "babel"
+}
+["INFO" - 16:18:17] Formatting completed in 33.1417ms.
+
+</code></pre></div></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,n,a,p,l,t){return{layout:"default",data:[{post:{id:1393271618,number:242,title:"代码规范方案落地",created_at:"2022-10-01T06:50:55Z",updated_at:"2023-04-12T11:14:05Z",body_html:'<h2 id="main-heading-H2-0">代码格式规范 &amp; Git 提交规范简介</h2>\n<ul dir="auto">\n<li>ESlint 静待代码检查</li>\n<li>Prettier 代码风格格式化</li>\n<li>commitizen + cz-customizable Git 提交规范</li>\n<li>husky + commitlint 工具检查提交描述是否符合规范要求</li>\n<li>husky + eslint 工具检查提交文件是否符合规范要求</li>\n<li>lint-staged 只检查本次修改更新的代码，并在出现错误的时候尝试自动修复，修复成功并且推送，修复失败则会错误提示</li>\n</ul>\n<p dir="auto">对于代码格式规范，通过 ESLint + Prettier + VSCode 配置，达到了在保存代码时，自动规范化代码格式；</p>\n<p dir="auto">对于 Git 提交规范，通过 husky 监测 Git Hooks 钩子，通过约定式提交规范、commitizen、commitlint、husky（pre-commit、commit-msg 钩子）、lint-staged 几个插件的配置使用来约束代码的规范提交。</p>\n<h2 id="main-heading-H2-1">编辑器与 npm 的准备工作</h2>\n<blockquote>\n<p dir="auto">推荐 VS Code 版本 1.69.2 或更新的版本</p>\n</blockquote>\n<p dir="auto">Eslint 和 Prettier 都有 npm 包和 vscode 插件，他们的区别是 vscode 插件提供编辑器格式化和代码检查的功能，如果设置保存自动格式化和自动代码检查后，你可以实时的在控制台看到结果；npm 包是提供命令行的能力，用来配合脚本进行整个项目代码的检查，也可以配合后面 husky 在 git hook 中进行检查或格式化。</p>\n<ul dir="auto">\n<li>ESLint v2.2.6</li>\n<li>Prettier - Code formatter v5.8.0</li>\n</ul>\n<p dir="auto">settings.json</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  // ! 大部分情况不需要自动格式化\n  &quot;editor.formatOnSave&quot;: true,\n  &quot;eslint.enable&quot;: true, // 本地 eslint 校验开关\n  &quot;editor.codeActionsOnSave&quot;: {\n    &quot;source.fixAll.eslint&quot;: true\n  }"><pre class="notranslate">{\n  <span class="pl-ii">// ! 大部分情况不需要自动格式化</span>\n  <span class="pl-ent">"editor.formatOnSave"</span>: <span class="pl-c1">true</span>,\n  <span class="pl-ent">"eslint.enable"</span>: <span class="pl-c1">true</span>, <span class="pl-ii">// 本地 eslint 校验开关</span>\n  <span class="pl-ent">"editor.codeActionsOnSave"</span>: {\n    <span class="pl-ent">"source.fixAll.eslint"</span>: <span class="pl-c1">true</span>\n  }</pre></div>\n<p dir="auto">在众多 git 提交规范化工具中，commitizen 是其中一个比较好用的一个工具，它的仓库名称是 cz-cli，它提供了一个 <code class="notranslate">git cz</code> 的指令用于代替 git commit，就是说当使用 commitizen 进行代码提交的时候，会在提交时填写一些必须的提交字段才会允许进行代码的提交。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install -g commitizen"><pre class="notranslate">npm install -g commitizen</pre></div>\n<h2 id="main-heading-H2-2">手动集成</h2>\n<p dir="auto"><strong>可以直接尝试自动化集成（推荐）!!!</strong></p>\n<ol dir="auto">\n<li>npm scripts 命令</li>\n</ol>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  // 用于自定义 git cz 提交代码\n  &quot;config&quot;: {\n    &quot;commitizen&quot;: {\n      &quot;path&quot;: &quot;node_modules/cz-customizable&quot;\n    }\n  },\n  &quot;scripts&quot;: {\n    &quot;prepare&quot;: &quot;husky install&quot;,\n    &quot;lint&quot;: &quot;eslint --ext .vue pages/ --ext .vue components/prd --ext .js store/&quot;,\n    &quot;prettier&quot;: &quot;prettier pages/** store/* components/prd/*  --write&quot;,\n    &quot;lint:fix&quot;: &quot;npm run lint -- --fix&quot;\n  },\n  // 用于提交代码时校验暂存区文件\n  &quot;lint-staged&quot;: {\n    &quot;pages/*.vue&quot;: [&quot;eslint --fix&quot;, &quot;prettier --write&quot;, &quot;git add&quot;],\n    &quot;store/*.js&quot;: [&quot;eslint --fix&quot;, &quot;prettier --write&quot;, &quot;git add&quot;]\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ii">// 用于自定义 git cz 提交代码</span>\n  <span class="pl-ent">"config"</span>: {\n    <span class="pl-ent">"commitizen"</span>: {\n      <span class="pl-ent">"path"</span>: <span class="pl-s"><span class="pl-pds">"</span>node_modules/cz-customizable<span class="pl-pds">"</span></span>\n    }\n  },\n  <span class="pl-ent">"scripts"</span>: {\n    <span class="pl-ent">"prepare"</span>: <span class="pl-s"><span class="pl-pds">"</span>husky install<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"lint"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint --ext .vue pages/ --ext .vue components/prd --ext .js store/<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"prettier"</span>: <span class="pl-s"><span class="pl-pds">"</span>prettier pages/** store/* components/prd/*  --write<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"lint:fix"</span>: <span class="pl-s"><span class="pl-pds">"</span>npm run lint -- --fix<span class="pl-pds">"</span></span>\n  },\n  <span class="pl-ii">// 用于提交代码时校验暂存区文件</span>\n  <span class="pl-ent">"lint-staged"</span>: {\n    <span class="pl-ent">"pages/*.vue"</span>: [<span class="pl-s"><span class="pl-pds">"</span>eslint --fix<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>prettier --write<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>git add<span class="pl-pds">"</span></span>],\n    <span class="pl-ent">"store/*.js"</span>: [<span class="pl-s"><span class="pl-pds">"</span>eslint --fix<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>prettier --write<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>git add<span class="pl-pds">"</span></span>]\n  }\n}</pre></div>\n<ol start="2" dir="auto">\n<li>配置文件添加</li>\n</ol>\n<ul dir="auto">\n<li>.editorconfig</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# editorconfig.org\nroot = true\n\n[*]\nindent_style = space\nindent_size = 2\nend_of_line = lf\ncharset = utf-8\ntrim_trailing_whitespace = true\ninsert_final_newline = true\n\n[*.md]\ntrim_trailing_whitespace = false"><pre class="notranslate"># <span class="pl-s1">editorconfig</span><span class="pl-kos">.</span><span class="pl-c1">org</span>\n<span class="pl-s1">root</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>\n\n<span class="pl-kos">[</span><span class="pl-c1">*</span><span class="pl-kos">]</span>\n<span class="pl-s1">indent_style</span> <span class="pl-c1">=</span> <span class="pl-s1">space</span>\n<span class="pl-s1">indent_size</span> <span class="pl-c1">=</span> <span class="pl-c1">2</span>\n<span class="pl-s1">end_of_line</span> <span class="pl-c1">=</span> <span class="pl-s1">lf</span>\n<span class="pl-s1">charset</span> <span class="pl-c1">=</span> <span class="pl-s1">utf</span><span class="pl-c1">-</span><span class="pl-c1">8</span>\n<span class="pl-s1">trim_trailing_whitespace</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>\n<span class="pl-s1">insert_final_newline</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>\n\n<span class="pl-kos">[</span><span class="pl-c1">*</span><span class="pl-kos">.</span><span class="pl-c1">md</span><span class="pl-kos">]</span>\n<span class="pl-s1">trim_trailing_whitespace</span> <span class="pl-c1">=</span> <span class="pl-c1">false</span></pre></div>\n<ul dir="auto">\n<li>.eslintrc.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// ESLint 配置文件遵循 commonJS 的导出规则，所导出的对象就是 ESLint 的配置对象\n// 文档：https://eslint.bootcss.com/docs/user-guide/configuring\nmodule.exports = {\n  // 表示当前目录为根目录，ESLint规则被限制到该目录下\n  root: true,\n  // env表示启用ESLint检测的环境\n  env: {\n    // 在node环境下启动ESLint检测\n    node: true,\n    browser: true,\n  },\n  // ESLint中基础配置需要继承的配置\n  extends: [&quot;@nuxtjs&quot;, &quot;plugin:nuxt/recommended&quot;, &quot;prettier&quot;],\n  // 解析器\n  // parser: \'@babel/eslint-parser\',\n  parserOptions: {\n    parser: &quot;@babel/eslint-parser&quot;,\n    // 指定ES版本，默认为5，某些require引入js会报错，修改为8后正常\n    ecmaVersion: 8,\n    requireConfigFile: false,\n  },\n  // 需要修改的启用规则及其各自的错误级别\n  /**\n   * 错误级别分为三种：\n   * &quot;off&quot; 或 0 - 关闭规则\n   * &quot;warn&quot; 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)\n   * &quot;error&quot; 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)\n   */\n  rules: {\n    &quot;space-before-function-paren&quot;: &quot;off&quot;,\n    &quot;nuxt/no-cjs-in-config&quot;: &quot;off&quot;,\n    // webpack异步import时可以不在最顶层\n    // \'import/first\': \'off\',\n    // TODO 兼容老项目关闭部分规则，待修复\n    // ===要改成==\n    eqeqeq: &quot;off&quot;,\n    &quot;no-prototype-builtins&quot;: &quot;off&quot;,\n    &quot;vue/multi-word-component-names&quot;: &quot;off&quot;,\n    &quot;vue/require-default-prop&quot;: &quot;off&quot;,\n    // 正则相关 减少非必要的转义字符（不太懂）\n    &quot;no-useless-escape&quot;: &quot;off&quot;,\n    &quot;vue/no-reserved-component-names&quot;: &quot;off&quot;,\n    // 降级警告展示\n    &quot;no-console&quot;: &quot;warn&quot;,\n    camelcase: &quot;warn&quot;,\n    &quot;no-async-promise-executor&quot;: &quot;warn&quot;,\n    &quot;no-lonely-if&quot;: &quot;warn&quot;,\n    &quot;object-shorthand&quot;: &quot;off&quot;,\n    &quot;vue/attribute-hyphenation&quot;: &quot;off&quot;,\n  },\n  globals: {\n    // 全局变量定义 writable 可修改 readonly 只读\n    urlParams: &quot;writable&quot;,\n    envParams: &quot;writable&quot;,\n    $nuxt: &quot;readonly&quot;,\n    traceRecord: &quot;readonly&quot;,\n    weui: &quot;readonly&quot;,\n    WeixinJSBridge: &quot;readonly&quot;,\n    wx: &quot;readonly&quot;,\n  },\n};"><pre class="notranslate"><span class="pl-c">// ESLint 配置文件遵循 commonJS 的导出规则，所导出的对象就是 ESLint 的配置对象</span>\n<span class="pl-c">// 文档：https://eslint.bootcss.com/docs/user-guide/configuring</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 表示当前目录为根目录，ESLint规则被限制到该目录下</span>\n  <span class="pl-c1">root</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n  <span class="pl-c">// env表示启用ESLint检测的环境</span>\n  <span class="pl-c1">env</span>: <span class="pl-kos">{</span>\n    <span class="pl-c">// 在node环境下启动ESLint检测</span>\n    <span class="pl-c1">node</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-c1">browser</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">// ESLint中基础配置需要继承的配置</span>\n  <span class="pl-c1">extends</span>: <span class="pl-kos">[</span><span class="pl-s">"@nuxtjs"</span><span class="pl-kos">,</span> <span class="pl-s">"plugin:nuxt/recommended"</span><span class="pl-kos">,</span> <span class="pl-s">"prettier"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 解析器</span>\n  <span class="pl-c">// parser: \'@babel/eslint-parser\',</span>\n  <span class="pl-c1">parserOptions</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">parser</span>: <span class="pl-s">"@babel/eslint-parser"</span><span class="pl-kos">,</span>\n    <span class="pl-c">// 指定ES版本，默认为5，某些require引入js会报错，修改为8后正常</span>\n    <span class="pl-c1">ecmaVersion</span>: <span class="pl-c1">8</span><span class="pl-kos">,</span>\n    <span class="pl-c1">requireConfigFile</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 需要修改的启用规则及其各自的错误级别</span>\n  <span class="pl-c">/**</span>\n<span class="pl-c">   * 错误级别分为三种：</span>\n<span class="pl-c">   * "off" 或 0 - 关闭规则</span>\n<span class="pl-c">   * "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)</span>\n<span class="pl-c">   * "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)</span>\n<span class="pl-c">   */</span>\n  <span class="pl-c1">rules</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"space-before-function-paren"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"nuxt/no-cjs-in-config"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-c">// webpack异步import时可以不在最顶层</span>\n    <span class="pl-c">// \'import/first\': \'off\',</span>\n    <span class="pl-c">// TODO 兼容老项目关闭部分规则，待修复</span>\n    <span class="pl-c">// ===要改成==</span>\n    <span class="pl-c1">eqeqeq</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"no-prototype-builtins"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"vue/multi-word-component-names"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"vue/require-default-prop"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-c">// 正则相关 减少非必要的转义字符（不太懂）</span>\n    <span class="pl-s">"no-useless-escape"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"vue/no-reserved-component-names"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-c">// 降级警告展示</span>\n    <span class="pl-s">"no-console"</span>: <span class="pl-s">"warn"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">camelcase</span>: <span class="pl-s">"warn"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"no-async-promise-executor"</span>: <span class="pl-s">"warn"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"no-lonely-if"</span>: <span class="pl-s">"warn"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"object-shorthand"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"vue/attribute-hyphenation"</span>: <span class="pl-s">"off"</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">globals</span>: <span class="pl-kos">{</span>\n    <span class="pl-c">// 全局变量定义 writable 可修改 readonly 只读</span>\n    <span class="pl-c1">urlParams</span>: <span class="pl-s">"writable"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">envParams</span>: <span class="pl-s">"writable"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">$nuxt</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">traceRecord</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">weui</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">WeixinJSBridge</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">wx</span>: <span class="pl-s">"readonly"</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>.prettierrc.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// https://www.prettier.cn/docs/options.html\nmodule.exports = {\n  printWidth: 80,\n  // 缩进级别的空格数\n  tabWidth: 2,\n  // 单引号\n  singleQuote: true,\n  // 尾随逗号\n  trailingComma: &quot;none&quot;,\n  // 对象花括号与内容之间加空格\n  bracketSpacing: true,\n  // 句末分号\n  semi: false,\n  // 制表符缩进\n  useTabs: false,\n  // 多行 HTML 元素 &gt; 放在最后一行的末尾\n  bracketSameLine: false,\n};"><pre class="notranslate"><span class="pl-c">// https://www.prettier.cn/docs/options.html</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">printWidth</span>: <span class="pl-c1">80</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 缩进级别的空格数</span>\n  <span class="pl-c1">tabWidth</span>: <span class="pl-c1">2</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 单引号</span>\n  <span class="pl-c1">singleQuote</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 尾随逗号</span>\n  <span class="pl-c1">trailingComma</span>: <span class="pl-s">"none"</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 对象花括号与内容之间加空格</span>\n  <span class="pl-c1">bracketSpacing</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 句末分号</span>\n  <span class="pl-c1">semi</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 制表符缩进</span>\n  <span class="pl-c1">useTabs</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 多行 HTML 元素 &gt; 放在最后一行的末尾</span>\n  <span class="pl-c1">bracketSameLine</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>commitlint.config.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {\n  // 继承的规则\n  extends: [&quot;@commitlint/config-conventional&quot;],\n  // 定义规则类型\n  rules: {\n    // type 类型定义，表示 git 提交的 type 必须在以下类型范围内\n    &quot;type-enum&quot;: [\n      // 0为disable，1为warning，2为error\n      2,\n      // 在什么情况下需要进行验证 never和always，never无视规则\n      &quot;always&quot;,\n      // 泛型内容\n      [\n        &quot;feat&quot;, // 新功能 feature\n        &quot;fix&quot;, // 修复 bug\n        &quot;docs&quot;, // 文档注释\n        &quot;style&quot;, // 代码格式(不影响代码运行的变动)\n        &quot;refactor&quot;, // 重构(既不增加新功能，也不是修复bug)\n        &quot;perf&quot;, // 性能优化\n        &quot;test&quot;, // 增加测试\n        &quot;chore&quot;, // 构建过程或辅助工具的变动\n        &quot;revert&quot;, // 回退\n        &quot;build&quot;, // 打包\n      ],\n    ],\n    // subject 大小写不做校验\n    &quot;subject-case&quot;: [0],\n  },\n};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 继承的规则</span>\n  <span class="pl-c1">extends</span>: <span class="pl-kos">[</span><span class="pl-s">"@commitlint/config-conventional"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 定义规则类型</span>\n  <span class="pl-c1">rules</span>: <span class="pl-kos">{</span>\n    <span class="pl-c">// type 类型定义，表示 git 提交的 type 必须在以下类型范围内</span>\n    <span class="pl-s">"type-enum"</span>: <span class="pl-kos">[</span>\n      <span class="pl-c">// 0为disable，1为warning，2为error</span>\n      <span class="pl-c1">2</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 在什么情况下需要进行验证 never和always，never无视规则</span>\n      <span class="pl-s">"always"</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 泛型内容</span>\n      <span class="pl-kos">[</span>\n        <span class="pl-s">"feat"</span><span class="pl-kos">,</span> <span class="pl-c">// 新功能 feature</span>\n        <span class="pl-s">"fix"</span><span class="pl-kos">,</span> <span class="pl-c">// 修复 bug</span>\n        <span class="pl-s">"docs"</span><span class="pl-kos">,</span> <span class="pl-c">// 文档注释</span>\n        <span class="pl-s">"style"</span><span class="pl-kos">,</span> <span class="pl-c">// 代码格式(不影响代码运行的变动)</span>\n        <span class="pl-s">"refactor"</span><span class="pl-kos">,</span> <span class="pl-c">// 重构(既不增加新功能，也不是修复bug)</span>\n        <span class="pl-s">"perf"</span><span class="pl-kos">,</span> <span class="pl-c">// 性能优化</span>\n        <span class="pl-s">"test"</span><span class="pl-kos">,</span> <span class="pl-c">// 增加测试</span>\n        <span class="pl-s">"chore"</span><span class="pl-kos">,</span> <span class="pl-c">// 构建过程或辅助工具的变动</span>\n        <span class="pl-s">"revert"</span><span class="pl-kos">,</span> <span class="pl-c">// 回退</span>\n        <span class="pl-s">"build"</span><span class="pl-kos">,</span> <span class="pl-c">// 打包</span>\n      <span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-c">// subject 大小写不做校验</span>\n    <span class="pl-s">"subject-case"</span>: <span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>.cz-config.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {\n  // 可选类型\n  types: [\n    { value: &quot;feat&quot;, name: &quot;feat:     新功能&quot; },\n    { value: &quot;chore&quot;, name: &quot;chore:    构建过程或辅助工具的变动&quot; },\n    { value: &quot;test&quot;, name: &quot;test:     增加测试&quot; },\n    { value: &quot;fix&quot;, name: &quot;fix:      修复&quot; },\n    { value: &quot;build&quot;, name: &quot;build:    打包&quot; },\n    { value: &quot;style&quot;, name: &quot;style:    代码格式(不影响代码运行的变动)&quot; },\n    { value: &quot;docs&quot;, name: &quot;docs:     文档变更&quot; },\n    { value: &quot;perf&quot;, name: &quot;perf:     性能优化&quot; },\n    {\n      value: &quot;refactor&quot;,\n      name: &quot;refactor: 重构(既不是增加feature, 也不是修复bug)&quot;,\n    },\n    { value: &quot;revert&quot;, name: &quot;revert:   回退&quot; },\n  ],\n  scopes: [\n    { name: &quot;core&quot; },\n    { name: &quot;admin&quot; },\n    { name: &quot;exampleScope&quot; },\n    { name: &quot;changeMe&quot; },\n  ],\n  // 消息步骤\n  messages: {\n    type: &quot;请选择提交类型:&quot;,\n    scope: &quot;请输入修改范围(可选):&quot;,\n    // used if allowCustomScopes is true\n    customScope: &quot;Denote the SCOPE of this change:&quot;,\n    subject: &quot;请简要描述提交(必填):&quot;,\n    body: &quot;请输入详细描述(可选):&quot;,\n    footer: &quot;请输入要关闭的issue(可选):&quot;,\n    confirmCommit: &quot;确认使用以上信息提交？(y/n/e/h)&quot;,\n  },\n  // 展示空的 scope\n  allowCustomScope: false,\n  // 跳过问题\n  skipQuestions: [&quot;scope&quot;, &quot;body&quot;, &quot;footer&quot;],\n  // subject文字长度默认是100\n  subjectLimit: 100,\n};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 可选类型</span>\n  <span class="pl-c1">types</span>: <span class="pl-kos">[</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"feat"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"feat:     新功能"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"chore"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"chore:    构建过程或辅助工具的变动"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"test"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"test:     增加测试"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"fix"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"fix:      修复"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"build"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"build:    打包"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"style"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"style:    代码格式(不影响代码运行的变动)"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"docs"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"docs:     文档变更"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"perf"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"perf:     性能优化"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span>\n      <span class="pl-c1">value</span>: <span class="pl-s">"refactor"</span><span class="pl-kos">,</span>\n      <span class="pl-c1">name</span>: <span class="pl-s">"refactor: 重构(既不是增加feature, 也不是修复bug)"</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">value</span>: <span class="pl-s">"revert"</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">"revert:   回退"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">scopes</span>: <span class="pl-kos">[</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">"core"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">"admin"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">"exampleScope"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">"changeMe"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 消息步骤</span>\n  <span class="pl-c1">messages</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-s">"请选择提交类型:"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">scope</span>: <span class="pl-s">"请输入修改范围(可选):"</span><span class="pl-kos">,</span>\n    <span class="pl-c">// used if allowCustomScopes is true</span>\n    <span class="pl-c1">customScope</span>: <span class="pl-s">"Denote the SCOPE of this change:"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">subject</span>: <span class="pl-s">"请简要描述提交(必填):"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">body</span>: <span class="pl-s">"请输入详细描述(可选):"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">footer</span>: <span class="pl-s">"请输入要关闭的issue(可选):"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">confirmCommit</span>: <span class="pl-s">"确认使用以上信息提交？(y/n/e/h)"</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 展示空的 scope</span>\n  <span class="pl-c1">allowCustomScope</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 跳过问题</span>\n  <span class="pl-c1">skipQuestions</span>: <span class="pl-kos">[</span><span class="pl-s">"scope"</span><span class="pl-kos">,</span> <span class="pl-s">"body"</span><span class="pl-kos">,</span> <span class="pl-s">"footer"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c">// subject文字长度默认是100</span>\n  <span class="pl-c1">subjectLimit</span>: <span class="pl-c1">100</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<ol start="3" dir="auto">\n<li>npm packages 安装</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm i @babel/eslint-parser@7.14.7 @nuxtjs/eslint-config@6.0.1 eslint@7.29.0 eslint-config-prettier@8.5.0 eslint-plugin-nuxt@2.0.0 eslint-plugin-vue@9.3.0 prettier@2.7.1 husky@7.0.1 @commitlint/cli@17.0.3 @commitlint/config-conventional@17.0.3 cz-customizable@6.9.1 lint-staged@9.5.0 --save-dev"><pre class="notranslate">npm i @babel/eslint-parser@7.14.7 @nuxtjs/eslint-config@6.0.1 eslint@7.29.0 eslint-config-prettier@8.5.0 eslint-plugin-nuxt@2.0.0 eslint-plugin-vue@9.3.0 prettier@2.7.1 husky@7.0.1 @commitlint/cli@17.0.3 @commitlint/config-conventional@17.0.3 cz-customizable@6.9.1 lint-staged@9.5.0 --save-dev</pre></div>\n<ol start="4" dir="auto">\n<li>初始化 husky</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run prepare"><pre class="notranslate">npm run prepare</pre></div>\n<h2 id="main-heading-H2-3">自动化集成（推荐）</h2>\n<p dir="auto">使用 shell 脚本自动初始化集成代码规范</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="sh ./project-name/common/project-init/build.sh"><pre class="notranslate">sh ./project-name/common/project-init/build.sh</pre></div>\n<p dir="auto">脚本做了哪些事情：</p>\n<ol dir="auto">\n<li>配置 package.json 命令</li>\n<li>控制安装相关依赖</li>\n<li>复制代码规则文件并初始化 husky</li>\n</ol>\n<h2 id="main-heading-H2-4">项目实践</h2>\n<h3 id="main-heading-H3-5">1. 跳过 prettier 格式化</h3>\n<p dir="auto">对于不同的文件，prettier 有不同的注释方式，详见 <a href="https://www.prettier.cn/docs/ignore.html" rel="nofollow">Prettier ignore</a></p>\n<p dir="auto">1px 问题，书写为 PX，添加 prettier 忽略注释</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".test-px2rem {\n  font-size: 20px;\n  /* prettier-ignore */\n  border: 1Px solid #000;\n}"><pre class="notranslate">.<span class="pl-c1">test-px2rem</span> {\n  <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">20<span class="pl-smi">px</span></span>;\n  <span class="pl-c">/* prettier-ignore */</span>\n  <span class="pl-c1">border</span><span class="pl-kos">:</span> <span class="pl-c1">1<span class="pl-smi">Px</span></span> solid <span class="pl-pds"><span class="pl-kos">#</span>000</span>;\n}</pre></div>\n<h3 id="main-heading-H3-6">2. 跳过 eslint 校验规则</h3>\n<p dir="auto">官方文档，通过注释来临时禁止规则出现警告， <a href="http://eslint.cn/docs/user-guide/configuring#disabling-rules-with-inline-comments" rel="nofollow">http://eslint.cn/docs/user-guide/configuring#disabling-rules-with-inline-comments</a></p>\n<p dir="auto">（1）、忽略下一行的校验</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// eslint-disable-next-line"><pre class="notranslate"><span class="pl-c">// eslint-disable-next-line</span></pre></div>\n<p dir="auto">（2）、临时禁止一段代码</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/* eslint-disable */\nwindow.bonreeRUM &amp;&amp;\n  window.bonreeRUM.config({\n    id: 2524,\n    key: &quot;r6Y3498h&quot;,\n    probability: 1000.0,\n    userKey: &quot;br-user&quot;,\n    enable: true,\n    beacon: { production: &quot;bupload.bonree.com:80&quot; },\n    beaconHttps: { production: &quot;bupload.bonree.com:443&quot; },\n  });\n/* eslint-enable */"><pre class="notranslate"><span class="pl-c">/* eslint-disable */</span>\n<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">bonreeRUM</span> <span class="pl-c1">&amp;&amp;</span>\n  <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">bonreeRUM</span><span class="pl-kos">.</span><span class="pl-en">config</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n    <span class="pl-c1">id</span>: <span class="pl-c1">2524</span><span class="pl-kos">,</span>\n    <span class="pl-c1">key</span>: <span class="pl-s">"r6Y3498h"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">probability</span>: <span class="pl-c1">1000.0</span><span class="pl-kos">,</span>\n    <span class="pl-c1">userKey</span>: <span class="pl-s">"br-user"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">enable</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-c1">beacon</span>: <span class="pl-kos">{</span> <span class="pl-c1">production</span>: <span class="pl-s">"bupload.bonree.com:80"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c1">beaconHttps</span>: <span class="pl-kos">{</span> <span class="pl-c1">production</span>: <span class="pl-s">"bupload.bonree.com:443"</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-c">/* eslint-enable */</span></pre></div>\n<p dir="auto">对指定的规则启用或禁用警告：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/* eslint-disable no-eval */\nconst obj = eval(this.cmsTabList.cms_key_product_tab_user_appraise) || [];\n/* eslint-enable no-eval */"><pre class="notranslate"><span class="pl-c">/* eslint-disable no-eval */</span>\n<span class="pl-k">const</span> <span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-en">eval</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">cmsTabList</span><span class="pl-kos">.</span><span class="pl-c1">cms_key_product_tab_user_appraise</span><span class="pl-kos">)</span> <span class="pl-c1">||</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n<span class="pl-c">/* eslint-enable no-eval */</span></pre></div>\n<p dir="auto">（3）整个文件忽略</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template&gt;&lt;/template&gt;\n&lt;script&gt;\n  /* eslint-disable */\n&lt;/script&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">template</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">template</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n  <span class="pl-c">/* eslint-disable */</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span></pre></div>\n<h3 id="main-heading-H3-7">3. VS Code 编辑器 settings.json 配置 prettier</h3>\n<p dir="auto">vscode 编辑器统一的代码格式化的配置信息（vscode 本地安装需要 prettier 插件）</p>\n<p dir="auto">配置优先级：项目本地的 .prettierrc.js &gt; 项目本地的 .vscode/settings.json &gt; 编辑器的 settings.json</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{\n  // 保存代码时自动格式化\n  &quot;editor.formatOnSave&quot;: true,\n  // ? 格式化 prettier start\n  &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;,\n  &quot;[javascript]&quot;: {\n    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;\n  },\n  &quot;[json]&quot;: {\n    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;\n  },\n  &quot;[vue]&quot;: {\n    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;\n  },\n  /* prettier-ignore*/\n  &quot;prettier.printWidth&quot;: 80, // 超过最大值换行\n  &quot;prettier.tabWidth&quot;: 2, // 缩进级别的空格数\n  &quot;prettier.singleQuote&quot;: true, // 要单引号\n  &quot;prettier.trailingComma&quot;: &quot;none&quot;, // 尾随逗号\n  &quot;prettier.bracketSpacing&quot;: true, // 对象花括号与内容之间加空格\n  &quot;prettier.semi&quot;: false, // 句尾添加分号\n  &quot;prettier.useTabs&quot;: false, // 制表符缩进\n  &quot;prettier.ignorePath&quot;: &quot;.prettierignore&quot; // 格式化忽略的文件控制\n  // ? 格式化 prettier end\n}\n"><pre class="notranslate"><code class="notranslate">{\n  // 保存代码时自动格式化\n  "editor.formatOnSave": true,\n  // ? 格式化 prettier start\n  "editor.defaultFormatter": "esbenp.prettier-vscode",\n  "[javascript]": {\n    "editor.defaultFormatter": "esbenp.prettier-vscode"\n  },\n  "[json]": {\n    "editor.defaultFormatter": "esbenp.prettier-vscode"\n  },\n  "[vue]": {\n    "editor.defaultFormatter": "esbenp.prettier-vscode"\n  },\n  /* prettier-ignore*/\n  "prettier.printWidth": 80, // 超过最大值换行\n  "prettier.tabWidth": 2, // 缩进级别的空格数\n  "prettier.singleQuote": true, // 要单引号\n  "prettier.trailingComma": "none", // 尾随逗号\n  "prettier.bracketSpacing": true, // 对象花括号与内容之间加空格\n  "prettier.semi": false, // 句尾添加分号\n  "prettier.useTabs": false, // 制表符缩进\n  "prettier.ignorePath": ".prettierignore" // 格式化忽略的文件控制\n  // ? 格式化 prettier end\n}\n\n</code></pre></div>\n<h4 dir="auto">注意：格式化版本不一致</h4>\n<ul dir="auto">\n<li>Prettier - Code formatter v5.8.0 统一版本号</li>\n</ul>\n<ol dir="auto">\n<li>想要 使用VS Code 编辑器的 settings.json配置时注意以下错误，<code class="notranslate">Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used</code>（检测到本地配置（即 <code class="notranslate">.prettierrc</code> 或 <code class="notranslate">.editorconfig</code>）,VS Code 配置将不会被使用），这个时候需要保证项目根目录下删除括号中的两个文件。</li>\n</ol>\n<p dir="auto">未删除 <code class="notranslate">.editorconfig</code> 配置前的格式化日志 （摘自 VS Code terminal 面板 OUTPUT 标签面板）：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[&quot;INFO&quot; - 15:27:24] Formatting d:\\TencentCloud\\renewal-v3\\src\\pages\\N20210025\\config.js\n[&quot;INFO&quot; - 15:27:24] Using ignore file (if present) at d:\\TencentCloud\\renewal-v3\\.prettierignore\n[&quot;INFO&quot; - 15:27:24] Using bundled version of prettier.\n[&quot;INFO&quot; - 15:27:24] File Info:\n{\n  &quot;ignored&quot;: false,\n  &quot;inferredParser&quot;: &quot;babel&quot;\n}\n[&quot;INFO&quot; - 15:27:24] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used\n[&quot;INFO&quot; - 15:27:24] Prettier Options:\n{\n  &quot;filepath&quot;: &quot;d:\\\\TencentCloud\\\\renewal-v3\\\\src\\\\pages\\\\N20210025\\\\config.js&quot;,\n  &quot;parser&quot;: &quot;babel&quot;,\n  &quot;useTabs&quot;: false,\n  &quot;tabWidth&quot;: 2,\n  &quot;endOfLine&quot;: &quot;lf&quot;\n}\n[&quot;INFO&quot; - 15:27:24] Formatting completed in 28.6093ms.\n"><pre class="notranslate"><code class="notranslate">["INFO" - 15:27:24] Formatting d:\\TencentCloud\\renewal-v3\\src\\pages\\N20210025\\config.js\n["INFO" - 15:27:24] Using ignore file (if present) at d:\\TencentCloud\\renewal-v3\\.prettierignore\n["INFO" - 15:27:24] Using bundled version of prettier.\n["INFO" - 15:27:24] File Info:\n{\n  "ignored": false,\n  "inferredParser": "babel"\n}\n["INFO" - 15:27:24] Detected local configuration (i.e. .prettierrc or .editorconfig), VS Code configuration will not be used\n["INFO" - 15:27:24] Prettier Options:\n{\n  "filepath": "d:\\\\TencentCloud\\\\renewal-v3\\\\src\\\\pages\\\\N20210025\\\\config.js",\n  "parser": "babel",\n  "useTabs": false,\n  "tabWidth": 2,\n  "endOfLine": "lf"\n}\n["INFO" - 15:27:24] Formatting completed in 28.6093ms.\n\n</code></pre></div>\n<p dir="auto">删除 <code class="notranslate">.editorconfig</code> 配置后的格式化日志：</p>\n<p dir="auto">No local configuration (i.e. .prettierrc or .editorconfig) detected, falling back to VS Code configuration （没有检测到本地配置（即 . prettierrc 或 . editorconfig）, 回落到 VS Code 配置）</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[&quot;INFO&quot; - 16:18:17] Formatting d:\\TencentCloud\\renewal-v3\\src\\pages\\N20210025\\config.js\n[&quot;INFO&quot; - 16:18:17] Using ignore file (if present) at d:\\TencentCloud\\renewal-v3\\.prettierignore\n[&quot;INFO&quot; - 16:18:17] Using bundled version of prettier.\n[&quot;INFO&quot; - 16:18:17] File Info:\n{\n  &quot;ignored&quot;: false,\n  &quot;inferredParser&quot;: &quot;babel&quot;\n}\n[&quot;INFO&quot; - 16:18:17] No local configuration (i.e. .prettierrc or .editorconfig) detected, falling back to VS Code configuration\n[&quot;INFO&quot; - 16:18:17] Prettier Options:\n{\n  &quot;arrowParens&quot;: &quot;always&quot;,\n  &quot;bracketSpacing&quot;: true,\n  &quot;endOfLine&quot;: &quot;lf&quot;,\n  &quot;htmlWhitespaceSensitivity&quot;: &quot;css&quot;,\n  &quot;insertPragma&quot;: false,\n  &quot;jsxBracketSameLine&quot;: false,\n  &quot;jsxSingleQuote&quot;: false,\n  &quot;printWidth&quot;: 80,\n  &quot;proseWrap&quot;: &quot;preserve&quot;,\n  &quot;quoteProps&quot;: &quot;as-needed&quot;,\n  &quot;requirePragma&quot;: false,\n  &quot;semi&quot;: false,\n  &quot;singleQuote&quot;: true,\n  &quot;tabWidth&quot;: 2,\n  &quot;trailingComma&quot;: &quot;none&quot;,\n  &quot;useTabs&quot;: false,\n  &quot;vueIndentScriptAndStyle&quot;: false,\n  &quot;filepath&quot;: &quot;d:\\\\TencentCloud\\\\renewal-v3\\\\src\\\\pages\\\\N20210025\\\\config.js&quot;,\n  &quot;parser&quot;: &quot;babel&quot;\n}\n[&quot;INFO&quot; - 16:18:17] Formatting completed in 33.1417ms.\n"><pre class="notranslate"><code class="notranslate">["INFO" - 16:18:17] Formatting d:\\TencentCloud\\renewal-v3\\src\\pages\\N20210025\\config.js\n["INFO" - 16:18:17] Using ignore file (if present) at d:\\TencentCloud\\renewal-v3\\.prettierignore\n["INFO" - 16:18:17] Using bundled version of prettier.\n["INFO" - 16:18:17] File Info:\n{\n  "ignored": false,\n  "inferredParser": "babel"\n}\n["INFO" - 16:18:17] No local configuration (i.e. .prettierrc or .editorconfig) detected, falling back to VS Code configuration\n["INFO" - 16:18:17] Prettier Options:\n{\n  "arrowParens": "always",\n  "bracketSpacing": true,\n  "endOfLine": "lf",\n  "htmlWhitespaceSensitivity": "css",\n  "insertPragma": false,\n  "jsxBracketSameLine": false,\n  "jsxSingleQuote": false,\n  "printWidth": 80,\n  "proseWrap": "preserve",\n  "quoteProps": "as-needed",\n  "requirePragma": false,\n  "semi": false,\n  "singleQuote": true,\n  "tabWidth": 2,\n  "trailingComma": "none",\n  "useTabs": false,\n  "vueIndentScriptAndStyle": false,\n  "filepath": "d:\\\\TencentCloud\\\\renewal-v3\\\\src\\\\pages\\\\N20210025\\\\config.js",\n  "parser": "babel"\n}\n["INFO" - 16:18:17] Formatting completed in 33.1417ms.\n\n</code></pre></div>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/242"},navList:[{text:"代码格式规范 &amp; Git 提交规范简介",id:"main-heading-H2-0",type:n,children:[]},{text:"编辑器与 npm 的准备工作",id:"main-heading-H2-1",type:n,children:[]},{text:"手动集成",id:"main-heading-H2-2",type:n,children:[]},{text:"自动化集成（推荐）",id:"main-heading-H2-3",type:n,children:[]},{text:"项目实践",id:"main-heading-H2-4",type:n,children:[{text:"1. 跳过 prettier 格式化",id:"main-heading-H3-5",type:a},{text:"2. 跳过 eslint 校验规则",id:"main-heading-H3-6",type:a},{text:"3. VS Code 编辑器 settings.json 配置 prettier",id:"main-heading-H3-7",type:a}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:t,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:t,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H2","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,367 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>使用fis3构建工程化项目 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="介绍 FIS3 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。（官方文档） 我把它定义为一个项目后期部署上线的工具,可以使用它压缩css，js与图片压缩（png），支持Css精灵图的合并"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="使用fis3构建工程化项目"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="介绍 FIS3 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。（官方文档） 我把它定义为一个项目后期部署上线的工具,可以使用它压缩css，js与图片压缩（png），支持Css精灵图的合并"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="使用fis3构建工程化项目"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="介绍 FIS3 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。（官方文档） 我把它定义为一个项目后期部署上线的工具,可以使用它压缩css，js与图片压缩（png），支持Css精灵图的合并"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/14#main-heading-H2-0" title="介绍" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              介绍
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/14#main-heading-H2-1" title="安装" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              安装
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/14#main-heading-H2-2" title="配置文件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              配置文件
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/14#main-heading-H2-3" title="内置插件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              内置插件
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/14#main-heading-H2-4" title="一套配置" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              一套配置
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/14#main-heading-H2-5" title="构建发布" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              构建发布
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/14#main-heading-H2-6" title="调试" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              调试
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/14#main-heading-H2-7" title="安装一些插件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              安装一些插件
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>使用fis3构建工程化项目</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>使用fis3构建工程化项目</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-03-14</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 10 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">介绍</h2>
+<p dir="auto"><a href="http://fis.baidu.com/fis3/docs/beginning/intro.html" rel="nofollow">FIS3</a> 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。（官方文档）</p>
+<p dir="auto">我把它定义为一个项目后期部署上线的工具,可以使用它压缩css，js与图片压缩（png），支持Css精灵图的合并，做到文件指纹（添加md5戳），方便项目部署的更新迭代，本地调试可模拟线上发布后的状态，便于调试。</p>
+<h2 id="main-heading-H2-1">安装</h2>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm install -g fis3"><pre class="notranslate"><code class="notranslate">npm install -g fis3
+</code></pre></div>
+<h2 id="main-heading-H2-2">配置文件</h2>
+<blockquote>
+<p dir="auto">默认为fis.conf.js文件</p>
+</blockquote>
+<h4 dir="auto">fis.match()</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis.match(selector, props);"><pre class="notranslate"><code class="notranslate">fis.match(selector, props);
+</code></pre></div>
+<blockquote>
+<p dir="auto">使用props配置规则编译selector匹配到的文件</p>
+</blockquote>
+<h4 dir="auto">fis.media()</h4>
+<p dir="auto">fis.media() 接口提供多种状态功能，比如有些配置是仅供开发环境下使用，有些则是仅供生产环境使用的。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis.match('*', {
+  useHash: false
+});
+
+fis.media('prod').match('*.js', {
+  optimizer: fis.plugin('uglify-js')
+});"><pre class="notranslate"><code class="notranslate">fis.match('*', {
+  useHash: false
+});
+
+fis.media('prod').match('*.js', {
+  optimizer: fis.plugin('uglify-js')
+});
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 release <media>"><pre class="notranslate"><code class="notranslate">fis3 release &lt;media>
+</code></pre></div>
+<ul dir="auto">
+<li> 配置的 media 值</li>
+</ul>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 release prod"><pre class="notranslate"><code class="notranslate">fis3 release prod
+</code></pre></div>
+<p dir="auto">编译时使用 prod 指定的编译配置，即对 js 进行压缩。</p>
+<p dir="auto">如上，fis.media() 可以使配置文件变为多份（多个状态，一个状态一份配置）。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis.media('rd').match('*', {
+  deploy: fis.plugin('http-push', {
+    receiver: 'http://remote-rd-host/receiver.php'
+  })
+});
+
+fis.media('qa').match('*', {
+  deploy: fis.plugin('http-push', {
+    receiver: 'http://remote-qa-host/receiver.php'
+  })
+});"><pre class="notranslate"><code class="notranslate">fis.media('rd').match('*', {
+  deploy: fis.plugin('http-push', {
+    receiver: 'http://remote-rd-host/receiver.php'
+  })
+});
+
+fis.media('qa').match('*', {
+  deploy: fis.plugin('http-push', {
+    receiver: 'http://remote-qa-host/receiver.php'
+  })
+});
+</code></pre></div>
+<ul dir="auto">
+<li>fis3 release rd push 到 RD 的远端机器上</li>
+<li>fis3 release qa push 到 QA 的远端机器上</li>
+</ul>
+<blockquote>
+<p dir="auto">media dev 已经被占用，默认情况下不加  参数时默认为 dev</p>
+</blockquote>
+<h4 dir="auto">fis3 inspect</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 在项目根目录下执行查看项目文件将如何被编译处理
+fis3 inspect
+//查看指定media的分配情况
+fis3 inspect <media>"><pre class="notranslate"><code class="notranslate">// 在项目根目录下执行查看项目文件将如何被编译处理
+fis3 inspect
+//查看指定media的分配情况
+fis3 inspect &lt;media>
+</code></pre></div>
+<h2 id="main-heading-H2-3">内置插件</h2>
+<p dir="auto">在本地执行<code class="notranslate">npm install -g fis3</code>安装 fis3 命令行工具后，将会支持一下内置的插件，可直接使用命令行工具配置，操作使用。</p>
+<ul dir="auto">
+<li><a href="https://github.com/fex-team/fis-optimizer-clean-css">fis-optimizer-clean-css</a> 压缩css</li>
+</ul>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis
+  .media('prod')
+  .match('*.css', {
+    optimizer: fis.plugin('clean-css')
+  });"><pre class="notranslate"><code class="notranslate">fis
+  .media('prod')
+  .match('*.css', {
+    optimizer: fis.plugin('clean-css')
+  });
+</code></pre></div>
+<ul dir="auto">
+<li><a href="https://github.com/fex-team/fis-optimizer-uglify-js">fis-optimizer-uglify-js</a> 压缩js(+混淆)</li>
+</ul>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis
+  .media('prod')
+  .match('*.js', {
+    optimizer: fis.plugin('uglify-js', {
+    })
+  });
+"><pre class="notranslate"><code class="notranslate">fis
+  .media('prod')
+  .match('*.js', {
+    optimizer: fis.plugin('uglify-js', {
+    })
+  });
+
+</code></pre></div>
+<ul dir="auto">
+<li><a href="https://github.com/fex-team/fis-optimizer-png-compressor">fis-optimizer-png-compressor</a> 压缩png图片</li>
+</ul>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis
+  .media('prod')
+  .match('*.png', {
+    optimizer: fis.plugin('png-compressor', {
+
+      // pngcrush or pngquant
+      // default is pngcrush
+      type : 'pngquant'
+    })
+  });
+"><pre class="notranslate"><code class="notranslate">fis
+  .media('prod')
+  .match('*.png', {
+    optimizer: fis.plugin('png-compressor', {
+
+      // pngcrush or pngquant
+      // default is pngcrush
+      type : 'pngquant'
+    })
+  });
+
+</code></pre></div>
+<ul dir="auto">
+<li><a href="https://github.com/fex-team/fis-spriter-csssprites">fis-spriter-csssprites</a> CssSprite图片合并</li>
+</ul>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 启用 fis-spriter-csssprites 插件
+fis.match('::package', {
+  spriter: fis.plugin('csssprites')
+})
+
+// 对 CSS 进行图片合并
+fis.match('*.css', {
+  // 给匹配到的文件分配属性 `useSprite`
+  useSprite: true
+});
+"><pre class="notranslate"><code class="notranslate">// 启用 fis-spriter-csssprites 插件
+fis.match('::package', {
+  spriter: fis.plugin('csssprites')
+})
+
+// 对 CSS 进行图片合并
+fis.match('*.css', {
+  // 给匹配到的文件分配属性 `useSprite`
+  useSprite: true
+});
+
+</code></pre></div>
+<p dir="auto">　<br>
+　　针对 css 规则中的 background-image 做图片优化，将多张零碎小图片合并，并自动修改 css 背景图片位置。</p>
+<blockquote>
+<p dir="auto">此插件并不会处理所有的 background-image 规则，而只会处理 url 中带 ?__sprite 图片的规则。</p>
+</blockquote>
+<h2 id="main-heading-H2-4">一套配置</h2>
+<p dir="auto">FIS3 做压缩、文件指纹、图片合并、资源定位，现在把这些功能组合起来，配置文件如下</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 加 md5
+fis.match('*.{js,css,png}', {
+  useHash: true
+});
+
+// 启用 fis-spriter-csssprites 插件
+fis.match('::package', {
+  spriter: fis.plugin('csssprites')
+});
+
+// 对 CSS 进行图片合并
+fis.match('*.css', {
+  // 给匹配到的文件分配属性 `useSprite`
+  useSprite: true
+});
+
+fis.match('*.js', {
+  // fis-optimizer-uglify-js 插件进行压缩，已内置
+  optimizer: fis.plugin('uglify-js')
+});
+
+fis.match('*.css', {
+  // fis-optimizer-clean-css 插件进行压缩，已内置
+  optimizer: fis.plugin('clean-css')
+});
+
+fis.match('*.png', {
+  // fis-optimizer-png-compressor 插件进行压缩，已内置
+  optimizer: fis.plugin('png-compressor')
+});"><pre class="notranslate"><code class="notranslate">// 加 md5
+fis.match('*.{js,css,png}', {
+  useHash: true
+});
+
+// 启用 fis-spriter-csssprites 插件
+fis.match('::package', {
+  spriter: fis.plugin('csssprites')
+});
+
+// 对 CSS 进行图片合并
+fis.match('*.css', {
+  // 给匹配到的文件分配属性 `useSprite`
+  useSprite: true
+});
+
+fis.match('*.js', {
+  // fis-optimizer-uglify-js 插件进行压缩，已内置
+  optimizer: fis.plugin('uglify-js')
+});
+
+fis.match('*.css', {
+  // fis-optimizer-clean-css 插件进行压缩，已内置
+  optimizer: fis.plugin('clean-css')
+});
+
+fis.match('*.png', {
+  // fis-optimizer-png-compressor 插件进行压缩，已内置
+  optimizer: fis.plugin('png-compressor')
+});
+</code></pre></div>
+<p dir="auto">可能有时候开发的时候不需要压缩、合并图片、也不需要 hash。那么给上面配置追加如下配置；</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis.media('debug').match('*.{js,css,png}', {
+  useHash: false,
+  useSprite: false,
+  optimizer: null
+})"><pre class="notranslate"><code class="notranslate">fis.media('debug').match('*.{js,css,png}', {
+  useHash: false,
+  useSprite: false,
+  optimizer: null
+})
+</code></pre></div>
+<blockquote>
+<p dir="auto">fis3 release debug 启用 media debug 的配置，覆盖上面的配置，把诸多功能关掉。</p>
+</blockquote>
+<h2 id="main-heading-H2-5">构建发布</h2>
+<p dir="auto">在项目根目录执行下面命令构建发布，在项目根目录下的<code class="notranslate">fis-conf.js</code>文件内书写配置文件。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 构建发布到当前项目父级目录的 dist 目录下
+fis3 release -d ../dist
+
+//构建发布到当前项目下的 output 目录下
+fis3 release -d ./output
+
+//发布到其他盘 （Windows）
+fis3 release -d D:\output
+
+"><pre class="notranslate"><code class="notranslate">// 构建发布到当前项目父级目录的 dist 目录下
+fis3 release -d ../dist
+
+//构建发布到当前项目下的 output 目录下
+fis3 release -d ./output
+
+//发布到其他盘 （Windows）
+fis3 release -d D:\output
+
+
+</code></pre></div>
+<blockquote>
+<p dir="auto">在构建发布命令执行后，相对于<code class="notranslate">根目录</code>进行版本发布，这使用做<code class="notranslate">线上使用</code>的</p>
+</blockquote>
+<h2 id="main-heading-H2-6">调试</h2>
+<p dir="auto">FIS3 构建后，默认情况下会对资源的 URL 进行修改，改成绝对路径。这时候本地双击打开文件是无法正常工作的。这给开发调试带来了绝大的困惑。</p>
+<p dir="auto">FIS3 内置一个简易 Web Server，可以方便调试构建结果。</p>
+<h4 dir="auto">1. 本地发布</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 release
+fis3 release -w  // 文件监听
+fis3 release -wL //浏览器自动刷新"><pre class="notranslate"><code class="notranslate">fis3 release
+fis3 release -w  // 文件监听
+fis3 release -wL //浏览器自动刷新
+</code></pre></div>
+<p dir="auto">不加<code class="notranslate">-d</code> 参数默认被发布到内置 Web Server的根目录下，当启动服务时访问此目录下的资源。</p>
+<h4 dir="auto">2.启动</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 server start"><pre class="notranslate"><code class="notranslate">fis3 server start
+</code></pre></div>
+<p dir="auto">启动本地 Web Server，当此 Server 启动后，会自动浏览器打开 <a href="http://127.0.0.1:8080%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9B%91%E5%90%AC%E7%AB%AF%E5%8F%A3" rel="nofollow">http://127.0.0.1:8080，默认监听端口</a> 8080</p>
+<p dir="auto">通过执行以下命令得到更多启动参数，可以设置不同的端口号（当 8080 占用时）</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 server -h"><pre class="notranslate"><code class="notranslate">fis3 server -h
+</code></pre></div>
+<h4 dir="auto">3.预览</h4>
+<p dir="auto">FIS3 内置的 Server 是常驻的，如果不重启计算机或者调用命令关闭是不会关闭的。</p>
+<p dir="auto">所以后续只需访问对应链接即可，而不需要每次 release 就启动一次 server。</p>
+<blockquote>
+<p dir="auto">程序停止用快捷键 <code class="notranslate">CTRL+c</code>,测试不管用</p>
+</blockquote>
+<h2 id="main-heading-H2-7">安装一些插件</h2>
+<ul dir="auto">
+<li>fis-parser-less：less 预处理插件</li>
+<li>fis3-postpackager-loader：可对页面散列文件进行合并</li>
+</ul>
+<blockquote>
+<p dir="auto">给 loader 插件配置 allInOne 属性，即可对散列的引用链接进行合并，而不需要进行配置 packTo 指定合并包名。</p>
+</blockquote>
+<ul dir="auto">
+<li>es6 的打包使用babel</li>
+<li>使用相对路径
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="180229508" data-permission-text="Title is private" data-url="https://github.com/fex-team/fis3/issues/990" data-hovercard-type="issue" data-hovercard-url="/fex-team/fis3/issues/990/hovercard" href="https://github.com/fex-team/fis3/issues/990">fex-team/fis3#990</a></li>
+<li><a href="https://github.com/fex-team/fis3-hook-relative">https://github.com/fex-team/fis3-hook-relative</a></li>
+</ul>
+</li>
+<li>fis3实战
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="258288409" data-permission-text="Title is private" data-url="https://github.com/zhiqiang21/blog/issues/41" data-hovercard-type="issue" data-hovercard-url="/zhiqiang21/blog/issues/41/hovercard" href="https://github.com/zhiqiang21/blog/issues/41">zhiqiang21/blog#41</a></li>
+</ul>
+</li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(e,n,s,t,i){return{layout:"default",data:[{post:{id:305009958,number:14,title:"使用fis3构建工程化项目",created_at:"2018-03-14T03:23:22Z",updated_at:"2025-11-23T17:04:35Z",body_html:'<h2 id="main-heading-H2-0">介绍</h2>\n<p dir="auto"><a href="http://fis.baidu.com/fis3/docs/beginning/intro.html" rel="nofollow">FIS3</a> 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。（官方文档）</p>\n<p dir="auto">我把它定义为一个项目后期部署上线的工具,可以使用它压缩css，js与图片压缩（png），支持Css精灵图的合并，做到文件指纹（添加md5戳），方便项目部署的更新迭代，本地调试可模拟线上发布后的状态，便于调试。</p>\n<h2 id="main-heading-H2-1">安装</h2>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm install -g fis3"><pre class="notranslate"><code class="notranslate">npm install -g fis3\n</code></pre></div>\n<h2 id="main-heading-H2-2">配置文件</h2>\n<blockquote>\n<p dir="auto">默认为fis.conf.js文件</p>\n</blockquote>\n<h4 dir="auto">fis.match()</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis.match(selector, props);"><pre class="notranslate"><code class="notranslate">fis.match(selector, props);\n</code></pre></div>\n<blockquote>\n<p dir="auto">使用props配置规则编译selector匹配到的文件</p>\n</blockquote>\n<h4 dir="auto">fis.media()</h4>\n<p dir="auto">fis.media() 接口提供多种状态功能，比如有些配置是仅供开发环境下使用，有些则是仅供生产环境使用的。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis.match(\'*\', {\n  useHash: false\n});\n\nfis.media(\'prod\').match(\'*.js\', {\n  optimizer: fis.plugin(\'uglify-js\')\n});"><pre class="notranslate"><code class="notranslate">fis.match(\'*\', {\n  useHash: false\n});\n\nfis.media(\'prod\').match(\'*.js\', {\n  optimizer: fis.plugin(\'uglify-js\')\n});\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 release &lt;media&gt;"><pre class="notranslate"><code class="notranslate">fis3 release &lt;media&gt;\n</code></pre></div>\n<ul dir="auto">\n<li> 配置的 media 值</li>\n</ul>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 release prod"><pre class="notranslate"><code class="notranslate">fis3 release prod\n</code></pre></div>\n<p dir="auto">编译时使用 prod 指定的编译配置，即对 js 进行压缩。</p>\n<p dir="auto">如上，fis.media() 可以使配置文件变为多份（多个状态，一个状态一份配置）。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis.media(\'rd\').match(\'*\', {\n  deploy: fis.plugin(\'http-push\', {\n    receiver: \'http://remote-rd-host/receiver.php\'\n  })\n});\n\nfis.media(\'qa\').match(\'*\', {\n  deploy: fis.plugin(\'http-push\', {\n    receiver: \'http://remote-qa-host/receiver.php\'\n  })\n});"><pre class="notranslate"><code class="notranslate">fis.media(\'rd\').match(\'*\', {\n  deploy: fis.plugin(\'http-push\', {\n    receiver: \'http://remote-rd-host/receiver.php\'\n  })\n});\n\nfis.media(\'qa\').match(\'*\', {\n  deploy: fis.plugin(\'http-push\', {\n    receiver: \'http://remote-qa-host/receiver.php\'\n  })\n});\n</code></pre></div>\n<ul dir="auto">\n<li>fis3 release rd push 到 RD 的远端机器上</li>\n<li>fis3 release qa push 到 QA 的远端机器上</li>\n</ul>\n<blockquote>\n<p dir="auto">media dev 已经被占用，默认情况下不加  参数时默认为 dev</p>\n</blockquote>\n<h4 dir="auto">fis3 inspect</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 在项目根目录下执行查看项目文件将如何被编译处理\nfis3 inspect\n//查看指定media的分配情况\nfis3 inspect &lt;media&gt;"><pre class="notranslate"><code class="notranslate">// 在项目根目录下执行查看项目文件将如何被编译处理\nfis3 inspect\n//查看指定media的分配情况\nfis3 inspect &lt;media&gt;\n</code></pre></div>\n<h2 id="main-heading-H2-3">内置插件</h2>\n<p dir="auto">在本地执行<code class="notranslate">npm install -g fis3</code>安装 fis3 命令行工具后，将会支持一下内置的插件，可直接使用命令行工具配置，操作使用。</p>\n<ul dir="auto">\n<li><a href="https://github.com/fex-team/fis-optimizer-clean-css">fis-optimizer-clean-css</a> 压缩css</li>\n</ul>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis\n  .media(\'prod\')\n  .match(\'*.css\', {\n    optimizer: fis.plugin(\'clean-css\')\n  });"><pre class="notranslate"><code class="notranslate">fis\n  .media(\'prod\')\n  .match(\'*.css\', {\n    optimizer: fis.plugin(\'clean-css\')\n  });\n</code></pre></div>\n<ul dir="auto">\n<li><a href="https://github.com/fex-team/fis-optimizer-uglify-js">fis-optimizer-uglify-js</a> 压缩js(+混淆)</li>\n</ul>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis\n  .media(\'prod\')\n  .match(\'*.js\', {\n    optimizer: fis.plugin(\'uglify-js\', {\n    })\n  });\n"><pre class="notranslate"><code class="notranslate">fis\n  .media(\'prod\')\n  .match(\'*.js\', {\n    optimizer: fis.plugin(\'uglify-js\', {\n    })\n  });\n\n</code></pre></div>\n<ul dir="auto">\n<li><a href="https://github.com/fex-team/fis-optimizer-png-compressor">fis-optimizer-png-compressor</a> 压缩png图片</li>\n</ul>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis\n  .media(\'prod\')\n  .match(\'*.png\', {\n    optimizer: fis.plugin(\'png-compressor\', {\n\n      // pngcrush or pngquant\n      // default is pngcrush\n      type : \'pngquant\'\n    })\n  });\n"><pre class="notranslate"><code class="notranslate">fis\n  .media(\'prod\')\n  .match(\'*.png\', {\n    optimizer: fis.plugin(\'png-compressor\', {\n\n      // pngcrush or pngquant\n      // default is pngcrush\n      type : \'pngquant\'\n    })\n  });\n\n</code></pre></div>\n<ul dir="auto">\n<li><a href="https://github.com/fex-team/fis-spriter-csssprites">fis-spriter-csssprites</a> CssSprite图片合并</li>\n</ul>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 启用 fis-spriter-csssprites 插件\nfis.match(\'::package\', {\n  spriter: fis.plugin(\'csssprites\')\n})\n\n// 对 CSS 进行图片合并\nfis.match(\'*.css\', {\n  // 给匹配到的文件分配属性 `useSprite`\n  useSprite: true\n});\n"><pre class="notranslate"><code class="notranslate">// 启用 fis-spriter-csssprites 插件\nfis.match(\'::package\', {\n  spriter: fis.plugin(\'csssprites\')\n})\n\n// 对 CSS 进行图片合并\nfis.match(\'*.css\', {\n  // 给匹配到的文件分配属性 `useSprite`\n  useSprite: true\n});\n\n</code></pre></div>\n<p dir="auto">　<br>\n　　针对 css 规则中的 background-image 做图片优化，将多张零碎小图片合并，并自动修改 css 背景图片位置。</p>\n<blockquote>\n<p dir="auto">此插件并不会处理所有的 background-image 规则，而只会处理 url 中带 ?__sprite 图片的规则。</p>\n</blockquote>\n<h2 id="main-heading-H2-4">一套配置</h2>\n<p dir="auto">FIS3 做压缩、文件指纹、图片合并、资源定位，现在把这些功能组合起来，配置文件如下</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 加 md5\nfis.match(\'*.{js,css,png}\', {\n  useHash: true\n});\n\n// 启用 fis-spriter-csssprites 插件\nfis.match(\'::package\', {\n  spriter: fis.plugin(\'csssprites\')\n});\n\n// 对 CSS 进行图片合并\nfis.match(\'*.css\', {\n  // 给匹配到的文件分配属性 `useSprite`\n  useSprite: true\n});\n\nfis.match(\'*.js\', {\n  // fis-optimizer-uglify-js 插件进行压缩，已内置\n  optimizer: fis.plugin(\'uglify-js\')\n});\n\nfis.match(\'*.css\', {\n  // fis-optimizer-clean-css 插件进行压缩，已内置\n  optimizer: fis.plugin(\'clean-css\')\n});\n\nfis.match(\'*.png\', {\n  // fis-optimizer-png-compressor 插件进行压缩，已内置\n  optimizer: fis.plugin(\'png-compressor\')\n});"><pre class="notranslate"><code class="notranslate">// 加 md5\nfis.match(\'*.{js,css,png}\', {\n  useHash: true\n});\n\n// 启用 fis-spriter-csssprites 插件\nfis.match(\'::package\', {\n  spriter: fis.plugin(\'csssprites\')\n});\n\n// 对 CSS 进行图片合并\nfis.match(\'*.css\', {\n  // 给匹配到的文件分配属性 `useSprite`\n  useSprite: true\n});\n\nfis.match(\'*.js\', {\n  // fis-optimizer-uglify-js 插件进行压缩，已内置\n  optimizer: fis.plugin(\'uglify-js\')\n});\n\nfis.match(\'*.css\', {\n  // fis-optimizer-clean-css 插件进行压缩，已内置\n  optimizer: fis.plugin(\'clean-css\')\n});\n\nfis.match(\'*.png\', {\n  // fis-optimizer-png-compressor 插件进行压缩，已内置\n  optimizer: fis.plugin(\'png-compressor\')\n});\n</code></pre></div>\n<p dir="auto">可能有时候开发的时候不需要压缩、合并图片、也不需要 hash。那么给上面配置追加如下配置；</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis.media(\'debug\').match(\'*.{js,css,png}\', {\n  useHash: false,\n  useSprite: false,\n  optimizer: null\n})"><pre class="notranslate"><code class="notranslate">fis.media(\'debug\').match(\'*.{js,css,png}\', {\n  useHash: false,\n  useSprite: false,\n  optimizer: null\n})\n</code></pre></div>\n<blockquote>\n<p dir="auto">fis3 release debug 启用 media debug 的配置，覆盖上面的配置，把诸多功能关掉。</p>\n</blockquote>\n<h2 id="main-heading-H2-5">构建发布</h2>\n<p dir="auto">在项目根目录执行下面命令构建发布，在项目根目录下的<code class="notranslate">fis-conf.js</code>文件内书写配置文件。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 构建发布到当前项目父级目录的 dist 目录下\nfis3 release -d ../dist\n\n//构建发布到当前项目下的 output 目录下\nfis3 release -d ./output\n\n//发布到其他盘 （Windows）\nfis3 release -d D:\\output\n\n"><pre class="notranslate"><code class="notranslate">// 构建发布到当前项目父级目录的 dist 目录下\nfis3 release -d ../dist\n\n//构建发布到当前项目下的 output 目录下\nfis3 release -d ./output\n\n//发布到其他盘 （Windows）\nfis3 release -d D:\\output\n\n\n</code></pre></div>\n<blockquote>\n<p dir="auto">在构建发布命令执行后，相对于<code class="notranslate">根目录</code>进行版本发布，这使用做<code class="notranslate">线上使用</code>的</p>\n</blockquote>\n<h2 id="main-heading-H2-6">调试</h2>\n<p dir="auto">FIS3 构建后，默认情况下会对资源的 URL 进行修改，改成绝对路径。这时候本地双击打开文件是无法正常工作的。这给开发调试带来了绝大的困惑。</p>\n<p dir="auto">FIS3 内置一个简易 Web Server，可以方便调试构建结果。</p>\n<h4 dir="auto">1. 本地发布</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 release\nfis3 release -w  // 文件监听\nfis3 release -wL //浏览器自动刷新"><pre class="notranslate"><code class="notranslate">fis3 release\nfis3 release -w  // 文件监听\nfis3 release -wL //浏览器自动刷新\n</code></pre></div>\n<p dir="auto">不加<code class="notranslate">-d</code> 参数默认被发布到内置 Web Server的根目录下，当启动服务时访问此目录下的资源。</p>\n<h4 dir="auto">2.启动</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 server start"><pre class="notranslate"><code class="notranslate">fis3 server start\n</code></pre></div>\n<p dir="auto">启动本地 Web Server，当此 Server 启动后，会自动浏览器打开 <a href="http://127.0.0.1:8080%EF%BC%8C%E9%BB%98%E8%AE%A4%E7%9B%91%E5%90%AC%E7%AB%AF%E5%8F%A3" rel="nofollow">http://127.0.0.1:8080，默认监听端口</a> 8080</p>\n<p dir="auto">通过执行以下命令得到更多启动参数，可以设置不同的端口号（当 8080 占用时）</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fis3 server -h"><pre class="notranslate"><code class="notranslate">fis3 server -h\n</code></pre></div>\n<h4 dir="auto">3.预览</h4>\n<p dir="auto">FIS3 内置的 Server 是常驻的，如果不重启计算机或者调用命令关闭是不会关闭的。</p>\n<p dir="auto">所以后续只需访问对应链接即可，而不需要每次 release 就启动一次 server。</p>\n<blockquote>\n<p dir="auto">程序停止用快捷键 <code class="notranslate">CTRL+c</code>,测试不管用</p>\n</blockquote>\n<h2 id="main-heading-H2-7">安装一些插件</h2>\n<ul dir="auto">\n<li>fis-parser-less：less 预处理插件</li>\n<li>fis3-postpackager-loader：可对页面散列文件进行合并</li>\n</ul>\n<blockquote>\n<p dir="auto">给 loader 插件配置 allInOne 属性，即可对散列的引用链接进行合并，而不需要进行配置 packTo 指定合并包名。</p>\n</blockquote>\n<ul dir="auto">\n<li>es6 的打包使用babel</li>\n<li>使用相对路径\n<ul dir="auto">\n<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="180229508" data-permission-text="Title is private" data-url="https://github.com/fex-team/fis3/issues/990" data-hovercard-type="issue" data-hovercard-url="/fex-team/fis3/issues/990/hovercard" href="https://github.com/fex-team/fis3/issues/990">fex-team/fis3#990</a></li>\n<li><a href="https://github.com/fex-team/fis3-hook-relative">https://github.com/fex-team/fis3-hook-relative</a></li>\n</ul>\n</li>\n<li>fis3实战\n<ul dir="auto">\n<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="258288409" data-permission-text="Title is private" data-url="https://github.com/zhiqiang21/blog/issues/41" data-hovercard-type="issue" data-hovercard-url="/zhiqiang21/blog/issues/41/hovercard" href="https://github.com/zhiqiang21/blog/issues/41">zhiqiang21/blog#41</a></li>\n</ul>\n</li>\n</ul>',user:{login:s,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:e,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:t,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:e}],html_url:"https://github.com/yanyue404/blog/issues/14"},navList:[{text:"介绍",id:"main-heading-H2-0",type:n,children:[]},{text:"安装",id:"main-heading-H2-1",type:n,children:[]},{text:"配置文件",id:"main-heading-H2-2",type:n,children:[]},{text:"内置插件",id:"main-heading-H2-3",type:n,children:[]},{text:"一套配置",id:"main-heading-H2-4",type:n,children:[]},{text:"构建发布",id:"main-heading-H2-5",type:n,children:[]},{text:"调试",id:"main-heading-H2-6",type:n,children:[]},{text:"安装一些插件",id:"main-heading-H2-7",type:n,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:s,userEmail:"1656800216@qq.com",repository:"blog",blogName:i,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:i,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:e},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:e,avatar_url:e,name:e,html_url:e,bio:e,type:t}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

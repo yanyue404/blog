@@ -1,0 +1,206 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Git 分支管理模型团队规范 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="虽然一个人走的更快，但是一群人可以走得更远，前提是统一的步调和策略！ 一、git 简介 Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库 二、分支管理 2.1 分支类型 TKFlow 使用以下两类共 4 种分支类型： "><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Git 分支管理模型团队规范"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="虽然一个人走的更快，但是一群人可以走得更远，前提是统一的步调和策略！ 一、git 简介 Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库 二、分支管理 2.1 分支类型 TKFlow 使用以下两类共 4 种分支类型： "><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Git 分支管理模型团队规范"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="虽然一个人走的更快，但是一群人可以走得更远，前提是统一的步调和策略！ 一、git 简介 Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库 二、分支管理 2.1 分支类型 TKFlow 使用以下两类共 4 种分支类型： "><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H2-0" title="一、git 简介" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              一、git 简介
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H2-1" title="二、分支管理" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              二、分支管理
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H3-2" title="2.1 分支类型" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.1 分支类型
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H3-3" title="2.2 版本号规约" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.2 版本号规约
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H3-4" title="2.3 分支管理规则" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.3 分支管理规则
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H3-5" title="2.4 补充说明" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.4 补充说明
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H2-6" title="三、commit 提交规范" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              三、commit 提交规范
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H2-7" title="四、常用命令" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              四、常用命令
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/169#main-heading-H2-8" title="五：高频 git 面试题" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              五：高频 git 面试题
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Git 分支管理模型团队规范</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Git 分支管理模型团队规范</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2020-08-12</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 9 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><blockquote>
+<p dir="auto">虽然一个人走的更快，但是一群人可以走得更远，前提是统一的步调和策略！</p>
+</blockquote>
+<h2 id="main-heading-H2-0">一、git 简介</h2>
+<ul dir="auto">
+<li>Workspace：工作区</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+<h2 id="main-heading-H2-1">二、分支管理</h2>
+<h3 id="main-heading-H3-2">2.1 分支类型</h3>
+<p dir="auto">TKFlow 使用以下两类共 4 种分支类型：</p>
+<p dir="auto"><strong>固定分支：</strong></p>
+<ul dir="auto">
+<li>master 分支：主分支（生产分支），代表当前项目的基线，保护分支，不允许直接修<br>
+改，只接受合并请求。保证 master 代码与正式生产环境发布的最新代码相同。</li>
+<li>dev 分支（develop 分支）：</li>
+<li>测试分支（开发提测分支），用于需求提测和测试环境部<br>
+署，保护分支，不允许直接修改，只接受合并请求。</li>
+</ul>
+<p dir="auto"><strong>临时分支：</strong></p>
+<ul dir="auto">
+<li>feature 分支：特性分支（变更分支、需求分支），用于具体的需求开发。</li>
+<li>hotfix 分支：BUG 修复分支，用于线上 BUG 修复与重大事故应用版本回滚。</li>
+<li>release 分支（可选）：集成分支，用于集成和发布，在上线发布前对各 feature 分支进行集成和<br>
+部署，不同的环境下可以使用不同的 release 分支（如预发环境 release_pre，生产环境<br>
+release_prod）。</li>
+</ul>
+<p dir="auto"><strong>分支发布工作流下的分支类型（适合一个项目多个任务并行开发）</strong></p>
+<ul dir="auto">
+<li>master 主分支：代表当前项目的基线，保护分支，不允许直接修改，只接受合并请求。master 代码保留历史上线过的所有代码。</li>
+<li>feature 特性分支：（变更分支、需求分支），用于具体的需求开发，以及测试部署（每个独立的需求都有一个 对应的 feature 分支）。</li>
+<li>hotfix 修复分支：用于线上 BUG 修复与重大事故应用版本回滚。</li>
+<li>online 上线分支（可选）：用于灰度环境发布和生产环境发布，在上线发布前对各 feature 分支进行集成和<br>
+部署。每次上线都有对应的上线分支，上线分支经过严格的测试后，将代码直接发布生产，进行生产验证。生产验证通过后，合入 master,并提交 tag。 （当只有一个需求上线时，上线分支就是 feature 分支 或 hotfix 分支）</li>
+</ul>
+<h3 id="main-heading-H3-3">2.2 版本号规约</h3>
+<p dir="auto">版本号用于项目发布后 master 分支添加 tag，记录版本，我们常用的版本号为三位数版<br>
+本号，其构成如下：</p>
+<p dir="auto">V 主版本号.次版本号.小版本号</p>
+<p dir="auto">eg：V1.0.0、V1.5.0、V1.13.1 等</p>
+<p dir="auto"><strong>2.2.1 主版本号（首位版本号）</strong></p>
+<p dir="auto">主版本号，也叫首位版本号、顶位版本号，即 V 后第一个版本号。主版本号一般代表<br>
+项目的期数与产品方向。除非项目合同改变、大规模 api 不兼容、产品方向改变、底层架构<br>
+升级等情况外不轻易更新。</p>
+<p dir="auto">另外，项目未正式发布、未正式孵化、未正式上线，则首位版本号为 0，一期发布，则项目 GIT 分支管理模型为 V1，二期发布则为 V2。</p>
+<p dir="auto"><strong>2.2.2 次版本号（迭代号）</strong></p>
+<p dir="auto">次版本号，也叫迭代号，一般代表某个迭代发布的功能集合（一个迭代发布会包含若干<br>
+个功能更新）。</p>
+<p dir="auto">如 V1.1.0：第一期项目第一迭代发布版本、V1.2.0：第一期第二迭代发布版本、第一期</p>
+<p dir="auto">第十八个迭代发布版本:V1.18.0。</p>
+<p dir="auto"><strong>2.2.3 小版本号</strong></p>
+<p dir="auto">小版本号，是为了某些小功能的临时上线，热修复的临时上线设置的小迭代，通常不包<br>
+含大的功能性更新，常常是围绕某个功能点进行升级或者某个 bug 的修复进行上线。</p>
+<h3 id="main-heading-H3-4">2.3 分支管理规则</h3>
+<p dir="auto">代码合并需遵循以下几条基本规则：</p>
+<p dir="auto">规则一：开始工作前，从 master 分支创建 feature 分支。</p>
+<p dir="auto">为每个需求单独创建一个通常以 feature_前缀命名的特性分支，然后在这个分支上提交<br>
+代码修改。前缀命名规则为 OA 号。</p>
+<p dir="auto">规则二：提测时将 feature 分支合并到 dev 分支。</p>
+<p dir="auto">需求开发完成充分自测后，根据测试管理的要求，提交提测申请，将提测需求的 feature<br>
+分支合并到 dev 分支，测试自动将 dev 分支代码发布到测试环境。</p>
+<p dir="auto">规则三（可选）：上线前从 master 分支创建 release 分支，合并所有需上线的 feature 分支到 release<br>
+分支。</p>
+<p dir="auto">若生产环境存在灰测环境，可先将 release 分支发布到灰测环境进行生产验证。若只有<br>
+生产环境，则将 release 分支发布到生产环境。上线时可使用 jenkins 或流水线选择 release<br>
+分支发布。</p>
+<p dir="auto">规则四（可选）：发布完成后，合并相应的 release 分支到 master 分支，在 master 分支上添加<br>
+tag 版本号，同时删除该 release 分支和相关联的 feature 分支。</p>
+<p dir="auto">规则五：生产环境出现 BUG 需修复，从 master 分支最新版本拉取 hotfix 分支，修复后<br>
+合并到 dev 分支测试，测试通过后将 hotfix 分支发布到生产环境，发布完成后合并 hotfix 分<br>
+支到 master 分支，同时删除该 hotfix 分支。</p>
+<p dir="auto">规则六：线上出现重大事故需回滚代码，可从 master 分支历史版本创建 hotfix 分支后<br>
+发布，线上应用回滚后需及时修复 BUG 并合并回 master 分支，master 分支本身不得回滚。需要 Jenkins 配置</p>
+<p dir="auto">规则七：定期清理无用分支</p>
+<h3 id="main-heading-H3-5">2.4 补充说明</h3>
+<ol dir="auto">
+<li>feature 分支需经过严格自测之后才能合并到 dev 分支，合并 dev 分支需提交提测申<br>
+请，不得随意合并；</li>
+<li>每次生产发版后 dev 分支和所有正在开发的 feature 分支需从 master 拉取最新代码，<br>
+保持代码与生产最新版本一致；</li>
+<li>只有 hotfix 分支和 release 分支才能往 master 分支上面合并，feature 以及 dev 分支<br>
+均不能直接合并到 master 分支；</li>
+<li>所有临时分支在合并到 master 分支后需及时删除，避免分支过多，无开发任务时<br>
+gitlab 中应只存在两条固定分支；</li>
+</ol>
+<h2 id="main-heading-H2-6">三、commit 提交规范</h2>
+<ul dir="auto">
+<li>feat ：新功能</li>
+<li>fix ：修复</li>
+<li>chore ：对构建或者辅助工具的更改</li>
+<li>refactor ：既不是修复 bug 也不是添加新功能的代码更改</li>
+<li>style ：不影响代码含义的更改 (例如空格、格式化、少了分号)</li>
+<li>docs ： 只是文档的更改</li>
+<li>perf ：提高性能的代码更改</li>
+<li>revert ：撤回提交</li>
+<li>test ：添加或修正测试</li>
+</ul>
+<h2 id="main-heading-H2-7">四、常用命令</h2>
+<p dir="auto"><strong>创建仓库命令</strong></p>
+<p dir="auto">下表列出了 git 创建仓库的命令：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 初始化仓库
+git init
+
+# 拷贝一份远程仓库，也就是下载一个项目
+git clone"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 初始化仓库</span>
+git init
+
+<span class="pl-c"><span class="pl-c">#</span> 拷贝一份远程仓库，也就是下载一个项目</span>
+git clone</pre></div>
+<p dir="auto"><strong>提交与修改</strong><br>
+Git 的工作就是创建和保存你的项目的快照及与之后的快照进行对比。</p>
+<p dir="auto">下面列出了有关创建与提交你的项目的快照的命令：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git add	    #添加文件到暂存区
+git status	#查看仓库当前的状态，显示有变更的文件。
+git diff	#比较文件的不同，即暂存区和工作区的差异。
+git commit	#提交暂存区到本地仓库。
+git reset	#回退版本。
+git rm    	#删除工作区文件。
+git mv  	#移动或重命名工作区文件。
+git cherry-pick	#将指定的提交应用于其他分支。
+git stash	#将暂存区未提交的数据保存起来，便于工作目录切换其他分支。
+git rebase	#手动编辑指定的commit，便于合并多次提交记录。"><pre class="notranslate">git add	    <span class="pl-c"><span class="pl-c">#</span>添加文件到暂存区</span>
+git status	<span class="pl-c"><span class="pl-c">#</span>查看仓库当前的状态，显示有变更的文件。</span>
+git diff	<span class="pl-c"><span class="pl-c">#</span>比较文件的不同，即暂存区和工作区的差异。</span>
+git commit	<span class="pl-c"><span class="pl-c">#</span>提交暂存区到本地仓库。</span>
+git reset	<span class="pl-c"><span class="pl-c">#</span>回退版本。</span>
+git rm    	<span class="pl-c"><span class="pl-c">#</span>删除工作区文件。</span>
+git mv  	<span class="pl-c"><span class="pl-c">#</span>移动或重命名工作区文件。</span>
+git cherry-pick	<span class="pl-c"><span class="pl-c">#</span>将指定的提交应用于其他分支。</span>
+git stash	<span class="pl-c"><span class="pl-c">#</span>将暂存区未提交的数据保存起来，便于工作目录切换其他分支。</span>
+git rebase	<span class="pl-c"><span class="pl-c">#</span>手动编辑指定的commit，便于合并多次提交记录。</span></pre></div>
+<p dir="auto">提交日志</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git log	            #查看历史提交记录
+git blame <file>	#以列表形式查看指定文件的历史修改记录"><pre class="notranslate">git log	            <span class="pl-c"><span class="pl-c">#</span>查看历史提交记录</span>
+git blame <span class="pl-k">&lt;</span>file<span class="pl-k">></span>	<span class="pl-c"><span class="pl-c">#</span>以列表形式查看指定文件的历史修改记录</span></pre></div>
+<p dir="auto">远程操作</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git remote	#远程仓库操作
+git fetch	#从远程获取代码库
+git pull	#下载远程代码并合并
+git push	#上传远程代码并合并"><pre class="notranslate">git remote	<span class="pl-c"><span class="pl-c">#</span>远程仓库操作</span>
+git fetch	<span class="pl-c"><span class="pl-c">#</span>从远程获取代码库</span>
+git pull	<span class="pl-c"><span class="pl-c">#</span>下载远程代码并合并</span>
+git push	<span class="pl-c"><span class="pl-c">#</span>上传远程代码并合并</span></pre></div>
+<h2 id="main-heading-H2-8">五：高频 git 面试题</h2>
+<ol dir="auto">
+<li>Git fetch & git pull 区别</li>
+<li>Git rebase</li>
+</ol></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(t,a,n,s,i,e){return{layout:"default",data:[{post:{id:677354745,number:169,title:"Git 分支管理模型团队规范",created_at:"2020-08-12T03:31:48Z",updated_at:"2022-06-24T02:40:47Z",body_html:'<blockquote>\n<p dir="auto">虽然一个人走的更快，但是一群人可以走得更远，前提是统一的步调和策略！</p>\n</blockquote>\n<h2 id="main-heading-H2-0">一、git 简介</h2>\n<ul dir="auto">\n<li>Workspace：工作区</li>\n<li>Index / Stage：暂存区</li>\n<li>Repository：仓库区（或本地仓库）</li>\n<li>Remote：远程仓库</li>\n</ul>\n<h2 id="main-heading-H2-1">二、分支管理</h2>\n<h3 id="main-heading-H3-2">2.1 分支类型</h3>\n<p dir="auto">TKFlow 使用以下两类共 4 种分支类型：</p>\n<p dir="auto"><strong>固定分支：</strong></p>\n<ul dir="auto">\n<li>master 分支：主分支（生产分支），代表当前项目的基线，保护分支，不允许直接修<br>\n改，只接受合并请求。保证 master 代码与正式生产环境发布的最新代码相同。</li>\n<li>dev 分支（develop 分支）：</li>\n<li>测试分支（开发提测分支），用于需求提测和测试环境部<br>\n署，保护分支，不允许直接修改，只接受合并请求。</li>\n</ul>\n<p dir="auto"><strong>临时分支：</strong></p>\n<ul dir="auto">\n<li>feature 分支：特性分支（变更分支、需求分支），用于具体的需求开发。</li>\n<li>hotfix 分支：BUG 修复分支，用于线上 BUG 修复与重大事故应用版本回滚。</li>\n<li>release 分支（可选）：集成分支，用于集成和发布，在上线发布前对各 feature 分支进行集成和<br>\n部署，不同的环境下可以使用不同的 release 分支（如预发环境 release_pre，生产环境<br>\nrelease_prod）。</li>\n</ul>\n<p dir="auto"><strong>分支发布工作流下的分支类型（适合一个项目多个任务并行开发）</strong></p>\n<ul dir="auto">\n<li>master 主分支：代表当前项目的基线，保护分支，不允许直接修改，只接受合并请求。master 代码保留历史上线过的所有代码。</li>\n<li>feature 特性分支：（变更分支、需求分支），用于具体的需求开发，以及测试部署（每个独立的需求都有一个 对应的 feature 分支）。</li>\n<li>hotfix 修复分支：用于线上 BUG 修复与重大事故应用版本回滚。</li>\n<li>online 上线分支（可选）：用于灰度环境发布和生产环境发布，在上线发布前对各 feature 分支进行集成和<br>\n部署。每次上线都有对应的上线分支，上线分支经过严格的测试后，将代码直接发布生产，进行生产验证。生产验证通过后，合入 master,并提交 tag。 （当只有一个需求上线时，上线分支就是 feature 分支 或 hotfix 分支）</li>\n</ul>\n<h3 id="main-heading-H3-3">2.2 版本号规约</h3>\n<p dir="auto">版本号用于项目发布后 master 分支添加 tag，记录版本，我们常用的版本号为三位数版<br>\n本号，其构成如下：</p>\n<p dir="auto">V 主版本号.次版本号.小版本号</p>\n<p dir="auto">eg：V1.0.0、V1.5.0、V1.13.1 等</p>\n<p dir="auto"><strong>2.2.1 主版本号（首位版本号）</strong></p>\n<p dir="auto">主版本号，也叫首位版本号、顶位版本号，即 V 后第一个版本号。主版本号一般代表<br>\n项目的期数与产品方向。除非项目合同改变、大规模 api 不兼容、产品方向改变、底层架构<br>\n升级等情况外不轻易更新。</p>\n<p dir="auto">另外，项目未正式发布、未正式孵化、未正式上线，则首位版本号为 0，一期发布，则项目 GIT 分支管理模型为 V1，二期发布则为 V2。</p>\n<p dir="auto"><strong>2.2.2 次版本号（迭代号）</strong></p>\n<p dir="auto">次版本号，也叫迭代号，一般代表某个迭代发布的功能集合（一个迭代发布会包含若干<br>\n个功能更新）。</p>\n<p dir="auto">如 V1.1.0：第一期项目第一迭代发布版本、V1.2.0：第一期第二迭代发布版本、第一期</p>\n<p dir="auto">第十八个迭代发布版本:V1.18.0。</p>\n<p dir="auto"><strong>2.2.3 小版本号</strong></p>\n<p dir="auto">小版本号，是为了某些小功能的临时上线，热修复的临时上线设置的小迭代，通常不包<br>\n含大的功能性更新，常常是围绕某个功能点进行升级或者某个 bug 的修复进行上线。</p>\n<h3 id="main-heading-H3-4">2.3 分支管理规则</h3>\n<p dir="auto">代码合并需遵循以下几条基本规则：</p>\n<p dir="auto">规则一：开始工作前，从 master 分支创建 feature 分支。</p>\n<p dir="auto">为每个需求单独创建一个通常以 feature_前缀命名的特性分支，然后在这个分支上提交<br>\n代码修改。前缀命名规则为 OA 号。</p>\n<p dir="auto">规则二：提测时将 feature 分支合并到 dev 分支。</p>\n<p dir="auto">需求开发完成充分自测后，根据测试管理的要求，提交提测申请，将提测需求的 feature<br>\n分支合并到 dev 分支，测试自动将 dev 分支代码发布到测试环境。</p>\n<p dir="auto">规则三（可选）：上线前从 master 分支创建 release 分支，合并所有需上线的 feature 分支到 release<br>\n分支。</p>\n<p dir="auto">若生产环境存在灰测环境，可先将 release 分支发布到灰测环境进行生产验证。若只有<br>\n生产环境，则将 release 分支发布到生产环境。上线时可使用 jenkins 或流水线选择 release<br>\n分支发布。</p>\n<p dir="auto">规则四（可选）：发布完成后，合并相应的 release 分支到 master 分支，在 master 分支上添加<br>\ntag 版本号，同时删除该 release 分支和相关联的 feature 分支。</p>\n<p dir="auto">规则五：生产环境出现 BUG 需修复，从 master 分支最新版本拉取 hotfix 分支，修复后<br>\n合并到 dev 分支测试，测试通过后将 hotfix 分支发布到生产环境，发布完成后合并 hotfix 分<br>\n支到 master 分支，同时删除该 hotfix 分支。</p>\n<p dir="auto">规则六：线上出现重大事故需回滚代码，可从 master 分支历史版本创建 hotfix 分支后<br>\n发布，线上应用回滚后需及时修复 BUG 并合并回 master 分支，master 分支本身不得回滚。需要 Jenkins 配置</p>\n<p dir="auto">规则七：定期清理无用分支</p>\n<h3 id="main-heading-H3-5">2.4 补充说明</h3>\n<ol dir="auto">\n<li>feature 分支需经过严格自测之后才能合并到 dev 分支，合并 dev 分支需提交提测申<br>\n请，不得随意合并；</li>\n<li>每次生产发版后 dev 分支和所有正在开发的 feature 分支需从 master 拉取最新代码，<br>\n保持代码与生产最新版本一致；</li>\n<li>只有 hotfix 分支和 release 分支才能往 master 分支上面合并，feature 以及 dev 分支<br>\n均不能直接合并到 master 分支；</li>\n<li>所有临时分支在合并到 master 分支后需及时删除，避免分支过多，无开发任务时<br>\ngitlab 中应只存在两条固定分支；</li>\n</ol>\n<h2 id="main-heading-H2-6">三、commit 提交规范</h2>\n<ul dir="auto">\n<li>feat ：新功能</li>\n<li>fix ：修复</li>\n<li>chore ：对构建或者辅助工具的更改</li>\n<li>refactor ：既不是修复 bug 也不是添加新功能的代码更改</li>\n<li>style ：不影响代码含义的更改 (例如空格、格式化、少了分号)</li>\n<li>docs ： 只是文档的更改</li>\n<li>perf ：提高性能的代码更改</li>\n<li>revert ：撤回提交</li>\n<li>test ：添加或修正测试</li>\n</ul>\n<h2 id="main-heading-H2-7">四、常用命令</h2>\n<p dir="auto"><strong>创建仓库命令</strong></p>\n<p dir="auto">下表列出了 git 创建仓库的命令：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 初始化仓库\ngit init\n\n# 拷贝一份远程仓库，也就是下载一个项目\ngit clone"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 初始化仓库</span>\ngit init\n\n<span class="pl-c"><span class="pl-c">#</span> 拷贝一份远程仓库，也就是下载一个项目</span>\ngit clone</pre></div>\n<p dir="auto"><strong>提交与修改</strong><br>\nGit 的工作就是创建和保存你的项目的快照及与之后的快照进行对比。</p>\n<p dir="auto">下面列出了有关创建与提交你的项目的快照的命令：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git add\t    #添加文件到暂存区\ngit status\t#查看仓库当前的状态，显示有变更的文件。\ngit diff\t#比较文件的不同，即暂存区和工作区的差异。\ngit commit\t#提交暂存区到本地仓库。\ngit reset\t#回退版本。\ngit rm    \t#删除工作区文件。\ngit mv  \t#移动或重命名工作区文件。\ngit cherry-pick\t#将指定的提交应用于其他分支。\ngit stash\t#将暂存区未提交的数据保存起来，便于工作目录切换其他分支。\ngit rebase\t#手动编辑指定的commit，便于合并多次提交记录。"><pre class="notranslate">git add\t    <span class="pl-c"><span class="pl-c">#</span>添加文件到暂存区</span>\ngit status\t<span class="pl-c"><span class="pl-c">#</span>查看仓库当前的状态，显示有变更的文件。</span>\ngit diff\t<span class="pl-c"><span class="pl-c">#</span>比较文件的不同，即暂存区和工作区的差异。</span>\ngit commit\t<span class="pl-c"><span class="pl-c">#</span>提交暂存区到本地仓库。</span>\ngit reset\t<span class="pl-c"><span class="pl-c">#</span>回退版本。</span>\ngit rm    \t<span class="pl-c"><span class="pl-c">#</span>删除工作区文件。</span>\ngit mv  \t<span class="pl-c"><span class="pl-c">#</span>移动或重命名工作区文件。</span>\ngit cherry-pick\t<span class="pl-c"><span class="pl-c">#</span>将指定的提交应用于其他分支。</span>\ngit stash\t<span class="pl-c"><span class="pl-c">#</span>将暂存区未提交的数据保存起来，便于工作目录切换其他分支。</span>\ngit rebase\t<span class="pl-c"><span class="pl-c">#</span>手动编辑指定的commit，便于合并多次提交记录。</span></pre></div>\n<p dir="auto">提交日志</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git log\t            #查看历史提交记录\ngit blame &lt;file&gt;\t#以列表形式查看指定文件的历史修改记录"><pre class="notranslate">git log\t            <span class="pl-c"><span class="pl-c">#</span>查看历史提交记录</span>\ngit blame <span class="pl-k">&lt;</span>file<span class="pl-k">&gt;</span>\t<span class="pl-c"><span class="pl-c">#</span>以列表形式查看指定文件的历史修改记录</span></pre></div>\n<p dir="auto">远程操作</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git remote\t#远程仓库操作\ngit fetch\t#从远程获取代码库\ngit pull\t#下载远程代码并合并\ngit push\t#上传远程代码并合并"><pre class="notranslate">git remote\t<span class="pl-c"><span class="pl-c">#</span>远程仓库操作</span>\ngit fetch\t<span class="pl-c"><span class="pl-c">#</span>从远程获取代码库</span>\ngit pull\t<span class="pl-c"><span class="pl-c">#</span>下载远程代码并合并</span>\ngit push\t<span class="pl-c"><span class="pl-c">#</span>上传远程代码并合并</span></pre></div>\n<h2 id="main-heading-H2-8">五：高频 git 面试题</h2>\n<ol dir="auto">\n<li>Git fetch &amp; git pull 区别</li>\n<li>Git rebase</li>\n</ol>',user:{login:s,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:t,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:i,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:t}],html_url:"https://github.com/yanyue404/blog/issues/169"},navList:[{text:"一、git 简介",id:"main-heading-H2-0",type:a,children:[]},{text:"二、分支管理",id:"main-heading-H2-1",type:a,children:[{text:"2.1 分支类型",id:"main-heading-H3-2",type:n},{text:"2.2 版本号规约",id:"main-heading-H3-3",type:n},{text:"2.3 分支管理规则",id:"main-heading-H3-4",type:n},{text:"2.4 补充说明",id:"main-heading-H3-5",type:n}]},{text:"三、commit 提交规范",id:"main-heading-H2-6",type:a,children:[]},{text:"四、常用命令",id:"main-heading-H2-7",type:a,children:[]},{text:"五：高频 git 面试题",id:"main-heading-H2-8",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:s,userEmail:"1656800216@qq.com",repository:"blog",blogName:e,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:e,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:t},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:t,avatar_url:t,name:t,html_url:t,bio:t,type:i}},serverRendered:!0}}("","H2","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,1871 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>2019前端工具调查-结果（译文） | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="原文地址：frontend-tooling-survey-2019-results 到现在已经有一段时间了，但是 2019 年 前端工具调查的结果就在这里！ 今年，3005 名开发人员回答了 27 个问题，涉及范围广泛的前端工具和方法学。 像往常一样，我衷心感谢每一位花时间填写这封信的人。 组织和撰"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="2019前端工具调查-结果（译文）"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="原文地址：frontend-tooling-survey-2019-results 到现在已经有一段时间了，但是 2019 年 前端工具调查的结果就在这里！ 今年，3005 名开发人员回答了 27 个问题，涉及范围广泛的前端工具和方法学。 像往常一样，我衷心感谢每一位花时间填写这封信的人。 组织和撰"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="2019前端工具调查-结果（译文）"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="原文地址：frontend-tooling-survey-2019-results 到现在已经有一段时间了，但是 2019 年 前端工具调查的结果就在这里！ 今年，3005 名开发人员回答了 27 个问题，涉及范围广泛的前端工具和方法学。 像往常一样，我衷心感谢每一位花时间填写这封信的人。 组织和撰"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-0" title="快速感谢" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              快速感谢
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-1" title="结果" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              结果
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-2" title="前言免责声明" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言免责声明
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-3" title="回应" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              回应
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-4" title="问题索引" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              问题索引
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-5" title="Q1 - 一般前端经验" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q1 - 一般前端经验
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-6" title="Q2 - CSS 知识水平" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q2 - CSS 知识水平
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-7" title="Q3 - 使用 CSS 处理器" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q3 - 使用 CSS 处理器
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-8" title="Q4 - CSS 处理器经验" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q4 - CSS 处理器经验
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-9" title="Q5 - 使用 CSS 框架" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q5 - 使用 CSS 框架
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-10" title="Q6 - CSS 命名模式" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q6 - CSS 命名模式
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-11" title="Q7 - CSS Linting" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q7 - CSS Linting
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-12" title="Q8 - CSS 工具体验" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q8 - CSS 工具体验
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-13" title="Q9 - CSS 方法和命名体验" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q9 - CSS 方法和命名体验
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-14" title="Q10 - 使用 CSS 工具" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q10 - 使用 CSS 工具
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-15" title="Q11 - CSS-in-JS 用法" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q11 - CSS-in-JS 用法
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-16" title="Q12 - 使用 CSS 功能" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q12 - 使用 CSS 功能
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-17" title="Q13 - JavaScript 知识水平" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q13 - JavaScript 知识水平
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-18" title="Q14 - 任务执行者" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q14 - 任务执行者
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-19" title="Q15 - 了解 JavaScript 库和框架" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q15 - 了解 JavaScript 库和框架
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-20" title="Q16 - 最常用的 JS 框架 / 库" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q16 - 最常用的 JS 框架 / 库
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-21" title="Q17 - 最基本的 JS 框架 / 库" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q17 - 最基本的 JS 框架 / 库
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-22" title="Q18 - 模块打包器的使用" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q18 - 模块打包器的使用
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-23" title="Q19 - 模块打包器和任务管理器的经验" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q19 - 模块打包器和任务管理器的经验
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-24" title="Q20 - JavaScript-转换器" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q20 - JavaScript-转换器
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-25" title="Q21 - JavaScript 扩展语言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q21 - JavaScript 扩展语言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-26" title="Q22 - JavaScript 静态代码检查" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q22 - JavaScript 静态代码检查
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-27" title="Q23 - JavaScript 测试" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q23 - JavaScript 测试
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-28" title="Q24 - 性能工具及特点" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q24 - 性能工具及特点
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-29" title="Q25 - 辅助工具" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q25 - 辅助工具
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-30" title="Q26 - JavaScript 包管理器" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q26 - JavaScript 包管理器
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-31" title="Q27 - 杂项工具" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Q27 - 杂项工具
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/101#main-heading-H2-32" title="总结" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              总结
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>2019前端工具调查-结果（译文）</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>2019前端工具调查-结果（译文）</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2019-11-16</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 54 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><blockquote>
+<p dir="auto">原文地址：<a href="https://ashleynolan.co.uk/blog/frontend-tooling-survey-2019-results" rel="nofollow">frontend-tooling-survey-2019-results</a></p>
+</blockquote>
+<p dir="auto">到现在已经有一段时间了，但是 2019 年 前端工具调查的结果就在这里！</p>
+<p dir="auto">今年，3005 名开发人员回答了 27 个问题，涉及范围广泛的前端工具和方法学。 像往常一样，我衷心感谢每一位花时间填写这封信的人。 组织和撰写这项调查今年特别具有挑战性，因为我们家又多了一个女婴(因此这些调查结果被推迟了!)。</p>
+<p dir="auto">像往常一样，查看前端工具在过去 12 个月中发生了什么变化，看看我们的想法和观点是否得到业内其他开发人员的赞同，这是很有趣的。</p>
+<p dir="auto">这些结果（希望）有助于洞悉前端工具的当前使用趋势和知识水平，并通过查看<a href="https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results" rel="nofollow">先前调查的数据</a>来显示这些趋势随着时间的变化。</p>
+<h2 id="main-heading-H2-0">快速感谢</h2>
+<p dir="auto">这项调查每年都要花费大量时间，而且得到了 Wes Bos (通过参与调查)和我的雇主 Just Eat 的支持。</p>
+<h2 id="main-heading-H2-1">结果</h2>
+<p dir="auto">那么，让我们开始吧！ 自己拿一杯茶 / 咖啡 / 饮料，让我们来看看结果...</p>
+<h2 id="main-heading-H2-2">前言免责声明</h2>
+<p dir="auto">这些结果代表了在该行业工作的前端开发人员的一个样本。 因此，他们不应该被当作福音书，仅仅指出一个粗略的趋势。</p>
+<h2 id="main-heading-H2-3">回应</h2>
+<p dir="auto">如上所述，今年的调查收到了 3,005 份回复。与去年的调查（5,461 份）相比略有下降。</p>
+<p dir="auto">我发现今年宣传这个调查有点困难，可能是因为网络开发调查的数量在不断增加，但也可能是因为我可以花费大量的个人时间来宣传这个词。 综合考虑，超过 3000 个回复仍然是难以置信的。</p>
+<p dir="auto">至于今年的回复来自哪里，该调查的链接发布在 Twitter、 Reddit、 HackerNews、 designnernews、 Echo.js、 LinkedIn 和 Frontendfront 上。许多新闻通讯（包括 FrontEnd Focus 和 CSS Weekly 等）也有用到。</p>
+<p dir="auto">在可能的情况下，您会看到我已将 2018 年调查的百分比变化与今年的数字一起包括在内。</p>
+<h2 id="main-heading-H2-4">问题索引</h2>
+<ol dir="auto">
+<li><a href="#Q1---%E4%B8%80%E8%88%AC%E5%89%8D%E7%AB%AF%E7%BB%8F%E9%AA%8C">一般前端经验</a></li>
+<li><a href="#Q2---CSS-%E7%9F%A5%E8%AF%86%E6%B0%B4%E5%B9%B3">CSS 知识水平</a></li>
+<li><a href="#Q3---%E4%BD%BF%E7%94%A8-CSS-%E5%A4%84%E7%90%86%E5%99%A8">使用 CSS 处理器</a></li>
+<li><a href="#Q4---CSS-%E5%A4%84%E7%90%86%E5%99%A8%E7%BB%8F%E9%AA%8C">CSS 处理器经验</a></li>
+<li><a href="#Q5---%E4%BD%BF%E7%94%A8-CSS-%E6%A1%86%E6%9E%B6">使用 CSS 框架</a></li>
+<li><a href="#Q6---CSS-%E5%91%BD%E5%90%8D%E6%A8%A1%E5%BC%8F">CSS 命名模式</a></li>
+<li><a href="#Q7---CSS-Linting">CSS Linting</a></li>
+<li><a href="#Q8---CSS-%E5%B7%A5%E5%85%B7%E4%BD%93%E9%AA%8C">CSS 工具体验</a></li>
+<li><a href="#Q9---CSS-%E6%96%B9%E6%B3%95%E5%92%8C%E5%91%BD%E5%90%8D%E4%BD%93%E9%AA%8C">Css 方法和命名体验</a></li>
+<li><a href="#Q10---%E4%BD%BF%E7%94%A8-CSS-%E5%B7%A5%E5%85%B7">使用 CSS 工具</a></li>
+<li><a href="#Q11---CSS-in-JS-%E7%94%A8%E6%B3%95">CSS-in-JS 用法</a></li>
+<li><a href="#Q12---%E4%BD%BF%E7%94%A8-CSS-%E5%8A%9F%E8%83%BD">使用 CSS 功能</a></li>
+<li><a href="#Q13---JavaScript-%E7%9F%A5%E8%AF%86%E6%B0%B4%E5%B9%B3">JavaScript 知识水平</a></li>
+<li><a href="#Q14---%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E8%80%85">任务执行者</a></li>
+<li><a href="#Q15---%E4%BA%86%E8%A7%A3-JavaScript-%E5%BA%93%E5%92%8C%E6%A1%86%E6%9E%B6">了解 JavaScript 库和框架</a></li>
+<li><a href="#Q16---%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84-JS-%E6%A1%86%E6%9E%B6-/-%E5%BA%93">最常用的 JS 框架 / 库</a></li>
+<li><a href="#Q17---%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84-JS-%E6%A1%86%E6%9E%B6-/-%E5%BA%93">最基本的 JS 框架 / 库</a></li>
+<li><a href="#Q18---%E6%A8%A1%E5%9D%97%E6%89%93%E5%8C%85%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8">模块打包器的使用</a></li>
+<li><a href="#Q19---%E6%A8%A1%E5%9D%97%E6%89%93%E5%8C%85%E5%99%A8%E5%92%8C%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E7%9A%84%E7%BB%8F%E9%AA%8C">模块打包器和任务管理器的经验</a></li>
+<li><a href="#Q20---JavaScript-%E8%BD%AC%E6%8D%A2%E5%99%A8">JavaScript 转换器</a></li>
+<li><a href="#Q21---JavaScript-%E6%89%A9%E5%B1%95%E8%AF%AD%E8%A8%80">JavaScript 扩展语言</a></li>
+<li><a href="#Q22---JavaScript-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5">JavaScript 静态代码检查</a></li>
+<li><a href="#Q23---JavaScript-%E6%B5%8B%E8%AF%95">JavaScript 测试</a></li>
+<li><a href="#Q24---%E6%80%A7%E8%83%BD%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%89%B9%E7%82%B9">性能工具及特点</a></li>
+<li><a href="#Q25---%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7">辅助工具</a></li>
+<li><a href="#Q26---JavaScript-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8">JavaScript 包管理器</a></li>
+<li><a href="#Q27---%E6%9D%82%E9%A1%B9%E5%B7%A5%E5%85%B7">杂项工具</a></li>
+</ol>
+<h2 id="main-heading-H2-5">Q1 - 一般前端经验</h2>
+<p dir="auto">调查的第一个问题是用来找出每个受访者的前端经验的数量。</p>
+<p dir="auto">问题是-大概有多长时间，你一直与前端技术？</p>
+<p dir="auto">以下是调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>回答</th>
+<th>投票数</th>
+<th>百分比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-1 年</td>
+<td>91</td>
+<td>3.03%</td>
+</tr>
+<tr>
+<td>1-2 年</td>
+<td>279</td>
+<td>9.28%</td>
+</tr>
+<tr>
+<td>2-5 年</td>
+<td>859</td>
+<td>28.59%</td>
+</tr>
+<tr>
+<td>5-10 年</td>
+<td>860</td>
+<td>28.62%</td>
+</tr>
+<tr>
+<td>10-15 年</td>
+<td>503</td>
+<td>16.74%</td>
+</tr>
+<tr>
+<td>超过 15 年</td>
+<td>413</td>
+<td>13.74%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7b36a9cb53267a0f9e2aab7d023b894d928732a3b3f82dfcd2f07d700bdc932e/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71312e6a7067"><img src="https://camo.githubusercontent.com/7b36a9cb53267a0f9e2aab7d023b894d928732a3b3f82dfcd2f07d700bdc932e/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71312e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q1.jpg" style="max-width:100%"></a></p>
+<p dir="auto">59.1% 的受访者从事前端技术工作超过 5 年。 这比去年(54.18%)略有上升，所以今年的受访者对前端技术有更多的经验。 然而，值得注意的是，这可能部分是由于一些参与了去年调查的受访者，现在(自然)将有更多的经验。</p>
+<p dir="auto">只有 12.31% 的受访者表示他们的工作经验少于两年。</p>
+<p dir="auto">与以前的调查一样，绝大多数调查对象在前端技术方面具有相当高的经验。 在考虑其他调查结果时，这一点是值得考虑的。</p>
+<h2 id="main-heading-H2-6">Q2 - CSS 知识水平</h2>
+<p dir="auto">第二个问题是看受访者如何评价他们自己对 CSS 的知识，问: 你如何评价你自己对 CSS 及其相关工具和方法的知识？</p>
+<p dir="auto">以下是他们的回答:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>水平</th>
+<th>投票数</th>
+<th>百分比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初学者</td>
+<td>35</td>
+<td>1.16%</td>
+</tr>
+<tr>
+<td>初学者(初级和中级之间)</td>
+<td>243</td>
+<td>8.09%</td>
+</tr>
+<tr>
+<td>中级</td>
+<td>815</td>
+<td>27.12%</td>
+</tr>
+<tr>
+<td>高级(介于中级和专家之间)</td>
+<td>1452</td>
+<td>48.32%</td>
+</tr>
+<tr>
+<td>专家</td>
+<td>460</td>
+<td>15.31%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5d0fba3669781b38fd66f6107df2478ebedb80483d7ea3e9a9bf8c39d93dbfbd/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71322e6a7067"><img src="https://camo.githubusercontent.com/5d0fba3669781b38fd66f6107df2478ebedb80483d7ea3e9a9bf8c39d93dbfbd/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71322e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q2.jpg" style="max-width:100%"></a></p>
+<p dir="auto">90.75% 的受访者表示，他们对社会服务方面的知识处于中等或以上水平，大多数(63.63%)认为自己是高级或专家。</p>
+<p dir="auto">正如我每年提到的，任何关于广泛知识水平的问题，这是非常主观的答复。 一个人对于如何成为 CSS 专家的想法可能与另一个人的想法有很大的不同。</p>
+<p dir="auto">尽管如此，能够将这些知识水平与调查中其他问题的结果进行过滤是很有用的——例如，看看经验更丰富的开发人员是否更喜欢某些工具，而不是那些初学者可能使用的工具。 在以后的问题中，我将在适当的地方回顾这些结果。</p>
+<h2 id="main-heading-H2-7">Q3 - 使用 CSS 处理器</h2>
+<p dir="auto">我们关于 CSS 工具的第一个问题是关于 CSS 处理工具的。</p>
+<p dir="auto">在前几年，这个问题要求受访者选择他们喜欢的 CSS 预处理工具。 今年，这个问题稍微改变了一下，允许受访者选择多个工具，问哪个是你经常使用的 CSS 处理器？</p>
+<p dir="auto">自 2016 年调查开始以来，Sass 一直是这个领域的主要工具，那么今年有什么变化吗？</p>
+<p dir="auto">注意: 我已经将这些数据与去年的数据进行了比较，但重要的是要考虑到受访者现在可以选择多个答案，而不仅仅是一个。 因此，结果很可能显示，所有工具的使用率至少有小幅上升。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>预处理器</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>差异百分比（至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sass</td>
+<td>2,322</td>
+<td>77.27%</td>
+<td>+11.88% + 11.88%</td>
+</tr>
+<tr>
+<td>PostCSS</td>
+<td>863</td>
+<td>28.72%</td>
+<td>+20.06% + 20.06%</td>
+</tr>
+<tr>
+<td>Less</td>
+<td>422</td>
+<td>14.04%</td>
+<td>+7.52% + 7.52%</td>
+</tr>
+<tr>
+<td>没有预处理器</td>
+<td>395</td>
+<td>13.14%</td>
+<td>-1.44% - 1.44%</td>
+</tr>
+<tr>
+<td>Stylus</td>
+<td>98</td>
+<td>3.26%</td>
+<td>+1.08% + 1.08%</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>80</td>
+<td>2.66%</td>
+<td>-0.01% - 0.01%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c48a598cf36292735219ec10b3c0486ad86d81191b51b0319459e27ed8fd6128/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71332e6a7067"><img src="https://camo.githubusercontent.com/c48a598cf36292735219ec10b3c0486ad86d81191b51b0319459e27ed8fd6128/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71332e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q3.jpg" style="max-width:100%"></a></p>
+<p dir="auto">和前几年一样，Sass 仍然是开发人员使用的主要 CSS 处理工具，77.27% 的受访者表示他们使用了它。</p>
+<p dir="auto">有趣的是，PostCSS 现在是第二常用的工具，有 28.72% 的受访者使用它。 受访者现在可以选择多种工具，这显然有助于更准确地表示 PostCSS 的使用情况，除了使用像 Sass 这样的工具之外，还经常使用 PostCSS。</p>
+<h2 id="main-heading-H2-8">Q4 - CSS 处理器经验</h2>
+<p dir="auto">下一个问题是继上一个问题之后的又一个问题，受访者被要求说明他们在 CSS 处理工具方面的经验水平。</p>
+<p dir="auto">以下是调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>从没听说过</th>
+<th>听说过 / 了解过</th>
+<th>用了一点</th>
+<th>使用时感觉舒适</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sass 或 SCSS 语法</td>
+<td>0.33% (10)</td>
+<td>6.82% (205)</td>
+<td>15.34% (461)</td>
+<td>77.50% (2,329)</td>
+</tr>
+<tr>
+<td>Less</td>
+<td>1.40% (42))</td>
+<td>35.81% (1,076)</td>
+<td>35.34% (1,062)</td>
+<td>27.45% (825)</td>
+</tr>
+<tr>
+<td>Stylus</td>
+<td>21.06% (633)</td>
+<td>61.93% (1,861)</td>
+<td>11.35% (341)</td>
+<td>5.66% (170)</td>
+</tr>
+<tr>
+<td>PostCSS</td>
+<td>15.44% (464)</td>
+<td>41.30% (1,241)</td>
+<td>22.73% (683)</td>
+<td>20.53% (617)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/cce4c016c96f399f4c45c9a109a9c6854546709fef248214e0cc3f6b0dc33cff/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71342e6a7067"><img src="https://camo.githubusercontent.com/cce4c016c96f399f4c45c9a109a9c6854546709fef248214e0cc3f6b0dc33cff/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71342e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q4.jpg" style="max-width:100%"></a></p>
+<p dir="auto">这些结果与前一个问题的结果一致，超过四分之三的受访者(77.50%)说他们觉得使用 Sass 很舒服，而只有 7.15% 的人说他们从未使用过 Sass。</p>
+<p dir="auto">PostCSS 知识水平相对于去年的结果有所提高，因为 20.53％的受访者表示他们对使用该工具感到满意。</p>
+<p dir="auto">与去年的结果相比，Less 和 Stylus 的知识水平看起来相当停滞。</p>
+<p dir="auto">从问题 3 和 4 的结果来看，很明显 Sass 仍然是 CSS 处理的主要工具。</p>
+<h2 id="main-heading-H2-9">Q5 - 使用 CSS 框架</h2>
+<p dir="auto">下一个问题是关于 CSS 框架的使用情况，回答者要求说明下列哪个 CSS 框架是您在项目中使用最频繁的(如果有的话)。</p>
+<p dir="auto">去年我们看到 Bootstrap 在这个领域处于领先地位，但是 12 个月过去了，情况有所改变吗？</p>
+<p dir="auto">让我们来看看结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>回答</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>差异百分比（至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>没有框架</td>
+<td>1,054</td>
+<td>35.07%</td>
+<td>+2.15% + 2.15%</td>
+</tr>
+<tr>
+<td>Bootstrap</td>
+<td>840</td>
+<td>27.95%</td>
+<td>-7.01% - 7.01%</td>
+</tr>
+<tr>
+<td>自定义框架</td>
+<td>497</td>
+<td>16.54%</td>
+<td>+1.29% + 1.29%</td>
+</tr>
+<tr>
+<td>Tailwind CSS</td>
+<td>129</td>
+<td>4.29%</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Bulma</td>
+<td>96</td>
+<td>3.19%</td>
+<td>+0.75% + 0.75%</td>
+</tr>
+<tr>
+<td>Foundation</td>
+<td>79</td>
+<td>2.63%</td>
+<td>-1.31% - 1.31%</td>
+</tr>
+<tr>
+<td>Materialize</td>
+<td>72</td>
+<td>2.40%</td>
+<td>-0.24% - 0.24%</td>
+</tr>
+<tr>
+<td>Semantic UI</td>
+<td>63</td>
+<td>2.10%</td>
+<td>+0.16% + 0.16%</td>
+</tr>
+<tr>
+<td>Tachyons</td>
+<td>25</td>
+<td>0.83%</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>PureCSS</td>
+<td>18</td>
+<td>0.60%</td>
+<td>-0.10% - 0.10%</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>132</td>
+<td>4.39%</td>
+<td>-0.83% - 0.83%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/53c9cc16b9ed23bcaa31ab51785386e3f6f22ee276130fd5c102987f4a7b6fb3/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71352e6a7067"><img src="https://camo.githubusercontent.com/53c9cc16b9ed23bcaa31ab51785386e3f6f22ee276130fd5c102987f4a7b6fb3/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71352e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q5.jpg" style="max-width:100%"></a></p>
+<p dir="auto">与去年的结果相比，最流行的答案——只有三分之一多一点(35.07%)——是来自那些声称他们没有使用任何框架的开发人员。</p>
+<p dir="auto">虽然不再是这个问题的首选，Bootstrap 仍然是最流行的 CSS 框架，有 27.95% 的受访者使用它。 与去年相比，下降了 7.01% 。</p>
+<p dir="auto">在 Bootstrap 之后，第二流行的 CSS 框架是 Tailwind CSS。</p>
+<p dir="auto">与去年的结果显示了类似的趋势，当观察 CSS 框架对 CSS 知识水平的使用时，有一个明显的区别。 例如，声称自己是初学者或初学者级别的开发人员比声称自己是高级或专家级别开发人员的开发人员更有可能使用 Bootstrap (43.17%)。</p>
+<p dir="auto">在研究自定义 CSS 框架的使用时，还发现了知识水平之间的明显差异(但可以说是预料到的)。 总体而言，16.54% 的受访者表示他们使用了定制框架。 在调查那些声称自己是 CSS 初学者或初学者的受访者时，这一比例下降到了 8.63% ，而在调查拥有 CSS 高级或专家知识的开发者时，这一比例上升到了 20.35% 。</p>
+<p dir="auto">不过总体而言，与去年的结果相比，现成的 CSS 框架的使用似乎略有下降。</p>
+<h2 id="main-heading-H2-10">Q6 - CSS 命名模式</h2>
+<p dir="auto">调查中的下一个问题是: 你在编写 CSS 时使用 CSS 命名方案吗? 比如 BEM 或者 SUIT？</p>
+<p dir="auto">答复如下:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>回答</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>差异百分比（至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是的</td>
+<td>1,565</td>
+<td>52.08%</td>
+<td>+3.15% + 3.15%</td>
+</tr>
+<tr>
+<td>没有-我听说过 CSS 命名方案，但没有使用</td>
+<td>1,153</td>
+<td>38.37%</td>
+<td>-0.76% - 0.76%</td>
+</tr>
+<tr>
+<td>没有-我从来没有听说过 CSS 命名方案</td>
+<td>287</td>
+<td>9.55%</td>
+<td>-2.39% - 2.39%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5846643c562891b3118e14641149bf161815654ccaa75aa4ce826952a40ff7f7/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71362e6a7067"><img src="https://camo.githubusercontent.com/5846643c562891b3118e14641149bf161815654ccaa75aa4ce826952a40ff7f7/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71362e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q6.jpg" style="max-width:100%"></a></p>
+<p dir="auto">自从 2016 年调查开始询问开发者关于 CSS 命名方案以来，大多数人(52.08%)回答说他们使用了 CSS 命名方案，比去年的结果增加了 3.15% 。</p>
+<p dir="auto">从未听说过 CSS 命名方案的开发人员也下降到了 9.55% ，比去年同期下降了 2.39% 。</p>
+<p dir="auto">从这些结果可以清楚地看出，这个工具领域的使用水平仍在上升，目前少数开发人员没有使用 CSS 命名方案。</p>
+<h2 id="main-heading-H2-11">Q7 - CSS Linting</h2>
+<p dir="auto">自从我们在 2016 年开始询问受访者关于这个主题的意见以来，CSS Linting 的使用量一直在逐渐增加。</p>
+<p dir="auto">去年，大多数开发人员(50.56%)仍然选择不使用他们的 CSS 代码风格检查工具，所以看看一年后这种动态是否发生了变化是很有趣的。</p>
+<p dir="auto">问题是——你用工具来格式化你的 CSS 吗？</p>
+<p dir="auto">以下是调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>回答</th>
+<th>投票数</th>
+<th>百分比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是的</td>
+<td>1,599</td>
+<td>53.21%</td>
+</tr>
+<tr>
+<td>不-我不 lint 我的 CSS</td>
+<td>1,406</td>
+<td>46.79% -3.77% - 3.77%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/32313016c36399c8c990e5e77645939ffb263a5919921383392a1b68036e8f78/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71372e6a7067"><img src="https://camo.githubusercontent.com/32313016c36399c8c990e5e77645939ffb263a5919921383392a1b68036e8f78/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71372e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q7.jpg" style="max-width:100%"></a></p>
+<p dir="auto">与 CSS 命名方案一样，结果显示，大多数受访者(53.21%)首次选择 lint 他们的 CSS，比去年的调查结果相同的人数增加了 3.77% 。</p>
+<p dir="auto">从结果中也可以清楚地看出，更高级的 CSS 开发人员更有可能 lint 他们的 CSS 嵌入其中。 只有 28.42% 的拥有初学者或初学者 CSS 知识的人说他们使用 CSS 连接器，而拥有高级 CSS 知识或更高级 CSS 知识的人只有 60.15% 。</p>
+<p dir="auto">从结果中还可以清楚地看到，更高级的 CSS 开发人员更有可能 lint 他们的 CSS。初学者或新手 CSS 知识的人中只有 28.42％的人说他们使用 CSS linter，而具有高级 CSS 知识或更高水平的人中有 60.15％。</p>
+<p dir="auto">随着 Stylelint 这样伟大的工具变得越来越广为人知(我们将在下一个问题中看到) ，CSS lint 在开发人员中稳步上升。</p>
+<h2 id="main-heading-H2-12">Q8 - CSS 工具体验</h2>
+<p dir="auto">接下来的四个问题涉及许多不同的 CSS 方法和帮助工具的知识和使用级别。</p>
+<p dir="auto">首先，问题 8 要求被调查者陈述他们使用 Autoprefixer、 Modernizr 和 Stylelint 的经验。</p>
+<p dir="auto">结果如下:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>从没听说过</th>
+<th>听说过 / 了解过</th>
+<th>用了一点</th>
+<th>使用时感觉舒适</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autoprefixer</td>
+<td>16.71% (502)</td>
+<td>15.17% (456)</td>
+<td>17.60% (529)</td>
+<td>50.52% (1,518)</td>
+</tr>
+<tr>
+<td>Modernizr</td>
+<td>12.51% (376)</td>
+<td>28.99% (871)</td>
+<td>34.48% (1,036)</td>
+<td>24.03% (722)</td>
+</tr>
+<tr>
+<td>Stylelint</td>
+<td>37.74% (1,134)</td>
+<td>24.86% (747)</td>
+<td>14.38% (432)</td>
+<td>23.03% (692)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d1ee6996210f60fcbdc4ce9599779fec4a2880ae82fcb94307183cf32569866f/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71382e6a7067"><img src="https://camo.githubusercontent.com/d1ee6996210f60fcbdc4ce9599779fec4a2880ae82fcb94307183cf32569866f/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71382e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q8.jpg" style="max-width:100%"></a></p>
+<p dir="auto">在这三个工具中，Autoprefixer 是最著名的，有 50.52% 的开发者回复说他们觉得使用它很舒服。</p>
+<p dir="auto">在过去的 12 个月中，Stylelint 知识水平增长最快，有 23.03% 的开发者现在对使用该工具感到满意——增长了 5.16% 。</p>
+<p dir="auto">Modernizr 略有下降，表示从未听说过它的受访者数量有所上升，表示使用它感到舒适的受访者数量有所下降(下降了 3.49% ，降至 24.03%)。</p>
+<h2 id="main-heading-H2-13">Q9 - CSS 方法和命名体验</h2>
+<p dir="auto">继上一个问题之后，调查对象被问到-请说明你使用以下 CSS 方法的经验。</p>
+<p dir="auto">结果如下:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>从没听说过</th>
+<th>听说过 / 了解过</th>
+<th>用了一点</th>
+<th>使用时感觉舒适</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSS-in-JS</td>
+<td>7.72% (232)</td>
+<td>39.43% (1,185)</td>
+<td>25.32% (761)</td>
+<td>27.52% (827</td>
+</tr>
+<tr>
+<td>SMACSS</td>
+<td>40.27% (1,210)</td>
+<td>39.13% (1,176)</td>
+<td>12.71% (382)</td>
+<td>7.89% (237)</td>
+</tr>
+<tr>
+<td>面向对象 CSS (OOCSS)</td>
+<td>30.22% (908)</td>
+<td>47.29% (1,421)</td>
+<td>14.18% (426)</td>
+<td>8.32% (250)</td>
+</tr>
+<tr>
+<td>Atomic Design</td>
+<td>27.99% (841)</td>
+<td>40.60% (1,220)</td>
+<td>16.87% (507)</td>
+<td>14.54% (437)</td>
+</tr>
+<tr>
+<td>ITCSS</td>
+<td>63.89% (1,920)</td>
+<td>24.29% (730)</td>
+<td>5.56% (167)</td>
+<td>6.26% (188)</td>
+</tr>
+<tr>
+<td>BEM</td>
+<td>13.48% (405)</td>
+<td>22.16% (666)</td>
+<td>20.83% (626)</td>
+<td>43.53% (1,308)</td>
+</tr>
+<tr>
+<td>SUIT CSS</td>
+<td>68.92% (2,071)</td>
+<td>24.96% (750)</td>
+<td>3.73% (112)</td>
+<td>2.40% (72)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4a6c474f8e085f34397c3965930eaedcf4eef47df382dad8b951c08651c21a40/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71392e6a7067"><img src="https://camo.githubusercontent.com/4a6c474f8e085f34397c3965930eaedcf4eef47df382dad8b951c08651c21a40/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71392e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q9.jpg" style="max-width:100%"></a></p>
+<p dir="auto">与去年的结果稍有不同，大多数 CSS 方法在知识水平方面都有所提高。</p>
+<p dir="auto">BEM 仍然是大多数受访者(43.53%)表示他们感到舒适的使用方法，比去年的结果上升了 5.37% 。</p>
+<p dir="auto">12 个月增幅最大的是 CSS-in-JS，开发人员表示，他们对使用该软件感到满意的比例上升了 7.6% ，达到 27.52% 。</p>
+<p dir="auto">与去年相比，SMACSS、 OOCSS、 Atomic Design 和 ITCSS 的受访者中至少听说过它们或者稍微使用过它们的人数都有所增加，其中 Atomic Design 和 ITCSS 的受访者增加最为显著。</p>
+<p dir="auto">具体而言，纵观上述 CSS 架构方法，即 SMACSS、 OOCSS、 Atomic Design、 ITCSS 和 CSS-in-js，认为使用其中至少一种方法感到舒适的受访者比例，从去年的 34.90% 上升至 2019 年的 42.26% 。 上升了 7.36% 。 当看到那些至少有一点点使用这些 CSS 方法的受访者时，这个数字从 2018 年的 66.49% 上升到了 70.75%</p>
+<p dir="auto">这些结果表明跨 CSS 方法和命名模式的知识水平正在上升，BEM、 CSS in-js 和 Atomic Design 是这一领域最著名的。</p>
+<h2 id="main-heading-H2-14">Q10 - 使用 CSS 工具</h2>
+<p dir="auto">继续关注 CSS 方法，问题 10-这些 CSS 方法或工具你目前在你的项目中使用？</p>
+<p dir="auto">让我们来看看结果。</p>
+<p dir="auto">在下面的可用答案中省略了 n.b.CSS-in-JS，因为问题 11 只关注 CSS-in-JS 的用法。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>工具 / 方法</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分百变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Autoprefixer</td>
+<td>1708</td>
+<td>56.84%</td>
+<td>+0.13% + 0.13%</td>
+</tr>
+<tr>
+<td>BEM</td>
+<td>1368</td>
+<td>45.52%</td>
+<td>+2.01% + 2.01%</td>
+</tr>
+<tr>
+<td>Stylelint</td>
+<td>826</td>
+<td>27.49%</td>
+<td>+4.71% + 4.71%</td>
+</tr>
+<tr>
+<td>Modernizr</td>
+<td>634</td>
+<td>21.10%</td>
+<td>-8.24% - 8.24%</td>
+</tr>
+<tr>
+<td>Atomic Design</td>
+<td>463</td>
+<td>15.41%</td>
+<td>+0.19% + 0.19%</td>
+</tr>
+<tr>
+<td>面向对象 CSS (OOCSS)</td>
+<td>218</td>
+<td>7.25%</td>
+<td>-1.98% - 1.98%</td>
+</tr>
+<tr>
+<td>SMACSS</td>
+<td>173</td>
+<td>5.76%</td>
+<td>-0.89% - 0.89%</td>
+</tr>
+<tr>
+<td>ITCSS</td>
+<td>155</td>
+<td>5.16%</td>
+<td>+0.36% + 0.36%</td>
+</tr>
+<tr>
+<td>SUIT CSS</td>
+<td>46</td>
+<td>1.53%</td>
+<td>+0.03% + 0.03%</td>
+</tr>
+<tr>
+<td>我不使用任何这些方法或工具</td>
+<td>664</td>
+<td>22.10%</td>
+<td>+5.18% + 5.18%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/56d144bf1f71ac40d6c1b96e9b286456f38fdf71e2f039fc8abdd10f9fd4c21e/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131302e6a7067"><img src="https://camo.githubusercontent.com/56d144bf1f71ac40d6c1b96e9b286456f38fdf71e2f039fc8abdd10f9fd4c21e/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131302e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q10.jpg" style="max-width:100%"></a></p>
+<p dir="auto">Autoprefixer 在这些工具和方法中使用最多(56.84%) ，其次是 BEM (45.52%)和 Stylelint (27.49%)。 这些数据都比 2018 年略有增长，其中 Stylelint 的增幅最大，达到 4.71% 。</p>
+<p dir="auto">在过去的 12 个月里，Modernizr 的使用率下降了 8.24% ，至 21.10% ，延续了去年观察到的使用率下降的趋势。</p>
+<p dir="auto">虽然 CSS 方法的知识水平似乎略有增长，但它们的使用水平与 2018 年的水平相当接近。 Atomic Design 仍然是最流行的 CSS 设计方法，有 15.41% 的开发者使用它。</p>
+<p dir="auto">总体而言，这些数字表明，自 2018 年以来，这一领域已经进入了整合的一年。</p>
+<h2 id="main-heading-H2-15">Q11 - CSS-in-JS 用法</h2>
+<p dir="auto">下一个问题是今年调查的一个新问题，它询问了一个最近很受关注的领域—— css in-js。</p>
+<p dir="auto">使用 CSS-in-JS 工具的开发人员数量已经增长到了这样一个程度，看看哪些工具在这个领域是最流行的会很有趣。</p>
+<p dir="auto">所以问题是-你更喜欢哪个 CSS-in-JS 工具？</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>工具 / 方法</th>
+<th>投票数</th>
+<th>百分比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我不在我的项目中使用 css in-js</td>
+<td>1,662</td>
+<td>55.31%</td>
+</tr>
+<tr>
+<td>Styled Components</td>
+<td>812</td>
+<td>27.02%</td>
+</tr>
+<tr>
+<td>CSS Modules</td>
+<td>292</td>
+<td>9.72%</td>
+</tr>
+<tr>
+<td>Emotion</td>
+<td>119</td>
+<td>3.96%</td>
+</tr>
+<tr>
+<td>JSS</td>
+<td>50</td>
+<td>1.66%</td>
+</tr>
+<tr>
+<td>Aphrodite</td>
+<td>10</td>
+<td>0.33%</td>
+</tr>
+<tr>
+<td>Radium</td>
+<td>1</td>
+<td>0.03%</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>59</td>
+<td>1.96%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4322110f9e291c9bf28eb25f3059f9c4239afb407ba9fe60002a0b517f9eeddc/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131312e6a7067"><img src="https://camo.githubusercontent.com/4322110f9e291c9bf28eb25f3059f9c4239afb407ba9fe60002a0b517f9eeddc/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131312e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q11.jpg" style="max-width:100%"></a></p>
+<p dir="auto">44.69% 的受访者表示，他们现在使用 css in-js 工具，其中最流行的选项是 Styled Components (27.02%)。 CSS Modules(9.72%)和 Emotion (3.96%)是开发人员接下来最流行的工具。</p>
+<p dir="auto">大多数开发人员(55.31%)回答说他们不使用 css in-js 工具。 这仍然是一个相对较新的工具领域，并且考虑到它是专门用于某些用例的，因此看到这种情况并不令人惊讶。</p>
+<p dir="auto">正如您可能预期的那样，当声称拥有高级或专业 JS 技能的开发人员进行过滤时，使用 css in-JS 工具的受访者比例上升到了 51.38% 。 这也许并不奇怪，因为 CSS-in-JS 通常与 JavaScript 框架结合使用。</p>
+<p dir="auto">总的来说，很明显 css in-js 正在成为许多开发人员工具包的重要组成部分。 看看这些数字在未来会有什么变化是很有趣的。</p>
+<h2 id="main-heading-H2-16">Q12 - 使用 CSS 功能</h2>
+<p dir="auto">最后一个与 CSS 相关的问题集中在受访者对最近 CSS 特性的了解上。</p>
+<p dir="auto">关于最新的 CSS 特性，有这么多的文章和讨论，了解有多少开发人员已经开始将这些特性付诸实践，并获得了使用它们的经验，总是很有趣。</p>
+<p dir="auto">因此，受访者被要求-请说明您的经验，以下 CSS 功能。</p>
+<p dir="auto">以下是调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>从没听说过</th>
+<th>听说过 / 了解过</th>
+<th>用了一点</th>
+<th>使用时感觉舒适</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSS Grid</td>
+<td>0.90% (27)</td>
+<td>21.90% (658)</td>
+<td>48.62% (1,461)</td>
+<td>28.59% (859)</td>
+</tr>
+<tr>
+<td>Flexbox</td>
+<td>0.43% (13)</td>
+<td>2.50% (75)</td>
+<td>16.67% (501)</td>
+<td>80.40% (2,416)</td>
+</tr>
+<tr>
+<td>CSS 自定义属性</td>
+<td>8.95% (269)</td>
+<td>30.58% (919）</td>
+<td>32.58% (979)</td>
+<td>27.89% (838)</td>
+</tr>
+<tr>
+<td>CSS Houdini</td>
+<td>51.75% (1,555)</td>
+<td>46.46% (1,396)</td>
+<td>1.56% (47)</td>
+<td>0.23% (7)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/056dde1dfcf7bd24ef9ec5f4b8272f19fc7b4a6eddd34fd4cb2f9ca4529758b1/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131322e6a7067"><img src="https://camo.githubusercontent.com/056dde1dfcf7bd24ef9ec5f4b8272f19fc7b4a6eddd34fd4cb2f9ca4529758b1/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131322e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q12.jpg" style="max-width:100%"></a></p>
+<p dir="auto">Flexbox (上涨 12.81% 至 80.40%)、 CSS Grid (上涨 10.11% 至 28.59%)和 CSS 自定义属性(上涨 8.86% 至 27.89%)的开发人员数量都有所上升，他们现在觉得使用它们很舒服。</p>
+<p dir="auto">几乎所有受访的开发者都使用过 Flexbox，97.07% 的受访者表示他们至少使用过一点(2018 年这一数字为 93.53%)。 可以肯定地说，现在所有前端开发人员都期望拥有 Flexbox 的知识。</p>
+<p dir="auto">CSS Grid 和 CSS 自定义属性都发现，从听说过或读到过它们到至少使用过一点这个功能的受访者数量有很大的变化。 对这些功能的了解似乎仍在增长，更多的受访者表示他们已经使用了一些这些功能，而不是那些觉得使用它们很舒服的人。</p>
+<p dir="auto">Css Houdini ——一组帮助开发人员本地扩展 CSS 的 api ——今年第一次被问及。 46.46% 的受访者表示他们听说过或读过该功能，但只有 1.79% 的人至少使用过一点。 这个特性仍然是最前沿的，所以目前很少有开发人员使用它也许并不奇怪。</p>
+<h2 id="main-heading-H2-17">Q13 - JavaScript 知识水平</h2>
+<p dir="auto">接下来是调查的第二部分，问题集中在 JavaScript 和它的工具生态系统上。</p>
+<p dir="auto">首先，我问了受访者-你如何评价自己对 JavaScript 及其相关工具和方法的知识？</p>
+<p dir="auto">以下是结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>知识</th>
+<th>投票数</th>
+<th>百分比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初学者</td>
+<td>70</td>
+<td>2.33%</td>
+</tr>
+<tr>
+<td>初学者(初级和中级之间)</td>
+<td>261</td>
+<td>8.69%</td>
+</tr>
+<tr>
+<td>中级</td>
+<td>901</td>
+<td>29.98%</td>
+</tr>
+<tr>
+<td>中级</td>
+<td>901</td>
+<td>29.98%</td>
+</tr>
+<tr>
+<td>高级(介于中级和专家之间)</td>
+<td>1,237</td>
+<td>41.16%</td>
+</tr>
+<tr>
+<td>专家</td>
+<td>536</td>
+<td>17.84%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/13f337f9668662692e8d075daed37ed55b66a13797404632271b200bf3f753a0/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131332e6a7067"><img src="https://camo.githubusercontent.com/13f337f9668662692e8d075daed37ed55b66a13797404632271b200bf3f753a0/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131332e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q13.jpg" style="max-width:100%"></a></p>
+<p dir="auto">绝大部分受访者认为自己至少达到中级或中级以上水平(88.98%) ，大多数受访者认为自己是高级或专家(59.0%)。</p>
+<p dir="auto">如果说这反映了我们整个行业的知识水平，那就错了——更有可能的是，这只反映了参加这样一个调查的人的知识水平。 正如您在此上下文中可能期望的那样，权重更倾向于高级端。</p>
+<h2 id="main-heading-H2-18">Q14 - 任务执行者</h2>
+<p dir="auto">去年我们看到 NPM Scripts 的使用在一定程度上领先于 Gulp。 他们在 12 个月内巩固了他们的地位吗？</p>
+<p dir="auto">受访者被问到的问题是: 在典型的项目工作流程中，您更喜欢使用哪个任务运行器？</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>任务执行者</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分比变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NPM Scripts</td>
+<td>1,933</td>
+<td>64.33%</td>
+<td>+16.44% + 16.44%</td>
+</tr>
+<tr>
+<td>Gulp</td>
+<td>557</td>
+<td>18.54%</td>
+<td>-11.02% - 11.02%</td>
+</tr>
+<tr>
+<td>没有使用</td>
+<td>273</td>
+<td>9.08%</td>
+<td>-1.61% - 1.61%</td>
+</tr>
+<tr>
+<td>Grunt</td>
+<td>76</td>
+<td>2.53%</td>
+<td>-3.26% - 3.26%</td>
+</tr>
+<tr>
+<td>图形用户界面应用程序(即 Codekit)</td>
+<td>30</td>
+<td>1.00%</td>
+<td>-0.04% - 0.04%</td>
+</tr>
+<tr>
+<td>Make</td>
+<td>21</td>
+<td>0.70%</td>
+<td>+0.06% + 0.06%</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>115</td>
+<td>3.83%</td>
+<td>-0.56% - 0.56%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b797c7c33d42954efb81b5ded21622666429d1ebebceeff7ab322fad4ed0cd91/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131342e6a7067"><img src="https://camo.githubusercontent.com/b797c7c33d42954efb81b5ded21622666429d1ebebceeff7ab322fad4ed0cd91/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131342e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q14.jpg" style="max-width:100%"></a></p>
+<p dir="auto">从这些结果可以清楚地看出，NPM 脚本已经稳固地巩固了它在这一类别中的地位。 64.33% 的受访者表示他们现在它，比去年增加了 16.44% 。</p>
+<p dir="auto">几乎所有这类工具的使用率都有所下降，18.54% 的开发人员使用 Gulp (下降了-11.02%) ，只有 2.53% 的开发人员使用 Grunt (下降了-3.26%)。</p>
+<p dir="auto">9.08% 的受访者表示他们没有使用任务运行器，尽管这一比例比去年的结果下降了 1.61% 。</p>
+<p dir="auto">因此，这种趋势似乎继承了去年的结果，开发人员稳步地从 Gulp 和 Grunt 迁移到 NPM Scripts。</p>
+<h2 id="main-heading-H2-19">Q15 - 了解 JavaScript 库和框架</h2>
+<p dir="auto">在以下三个问题中，我们询问了受访者对 JavaScript 库和框架的知识和使用水平。</p>
+<p dir="auto">去年，React，Vue 和 Angular 2 + 在知识水平上获得了最大的收益。 仍然是大多数开发人员感到舒适的工具，但它的实际使用水平大幅下降。</p>
+<p dir="auto">这个问题着眼于各种工具的知识水平，要求受访者指出他们在哪些 JavaScript 库和框架中有经验。</p>
+<p dir="auto">以下是调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>从没听说过</th>
+<th>听说过 / 了解过</th>
+<th>用了一点</th>
+<th>使用时感觉舒适</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jQuery</td>
+<td>0.03% (1)</td>
+<td>2.80% (84)</td>
+<td>21.80%</td>
+<td>75.37% (2,265)</td>
+</tr>
+<tr>
+<td>Lodash</td>
+<td>8.09% (243</td>
+<td>22.50% (676)</td>
+<td>28.75% (864)</td>
+<td>40.67% (1,222)</td>
+</tr>
+<tr>
+<td>Underscore</td>
+<td>12.58% (378)</td>
+<td>32.58% (979)</td>
+<td>26.39% (793)</td>
+<td>28.45% (855)</td>
+</tr>
+<tr>
+<td>React</td>
+<td>0.27% (8)</td>
+<td>24.53% (737)</td>
+<td>26.86% (807)</td>
+<td>48.35% (1,453)</td>
+</tr>
+<tr>
+<td>Vue.js</td>
+<td>0.43% (13)</td>
+<td>50.18% (1,508)</td>
+<td>26.19% (787)</td>
+<td>23.19% (697)</td>
+</tr>
+<tr>
+<td>Angular 1</td>
+<td>0.57% (17)</td>
+<td>50.75% (1,525)</td>
+<td>29.85% (897)</td>
+<td>29.85% (897)</td>
+</tr>
+<tr>
+<td>Angular 2+</td>
+<td>0.40% (12)</td>
+<td>63.73% (1,915)</td>
+<td>20.07% (603)</td>
+<td>15.81% (475)</td>
+</tr>
+<tr>
+<td>Ember</td>
+<td>5.49% (165)</td>
+<td>79.03% (2,375)</td>
+<td>8.22% (247)</td>
+<td>7.25% (218)</td>
+</tr>
+<tr>
+<td>Preact</td>
+<td>21.30% (640)</td>
+<td>65.02% (1,954)</td>
+<td>9.08% (273)</td>
+<td>4.59% (138)</td>
+</tr>
+<tr>
+<td>Backbone</td>
+<td>8.55% (257)</td>
+<td>65.69% (1,974)</td>
+<td>18.20% (547)</td>
+<td>7.55% (227)</td>
+</tr>
+<tr>
+<td>Knockout</td>
+<td>23.43% (704)</td>
+<td>62.53% (1,879)</td>
+<td>10.88% (327)</td>
+<td>3.16% (95)</td>
+</tr>
+<tr>
+<td>Aurelia</td>
+<td>44.79% (1,346)</td>
+<td>51.48% (1,547)</td>
+<td>2.73% (82)</td>
+<td>1.00% (30)</td>
+</tr>
+<tr>
+<td>MeteorJS</td>
+<td>18.24% (548)</td>
+<td>71.45% (2,147)</td>
+<td>8.95% (269)</td>
+<td>1.36% (41)</td>
+</tr>
+<tr>
+<td>Polymer</td>
+<td>18.64% (560)</td>
+<td>71.48% (2,148)</td>
+<td>8.39% (252)</td>
+<td>1.50% (45)</td>
+</tr>
+<tr>
+<td>D3.js</td>
+<td>13.48% (405)</td>
+<td>49.68% (1,493)</td>
+<td>29.55% (888)</td>
+<td>7.29% (219)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/07c8e5ff270b07a73606b6b94e977f39a161086879b2d9d56a5cb8c571c22038/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131352e6a7067"><img src="https://camo.githubusercontent.com/07c8e5ff270b07a73606b6b94e977f39a161086879b2d9d56a5cb8c571c22038/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131352e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q15.jpg" style="max-width:100%"></a></p>
+<p dir="auto">调查结果显示，使用 jQuery (75.37%)、 React (48.35%)、 Lodash (40.67%)、 underline (28.45%)和 Vue.js (23.19%)的调查对象中，使用效果最好的工具是 jQuery (75.37%)。</p>
+<p dir="auto">使用 React 和 Vue 的开发人员数量增长最快，48.35% 的开发人员说他们现在使用 React 感到很舒服(比 2018 年增加了 7.92%) ，23.19% 的开发人员说 Vue 也是如此(增加了 6.12%)。</p>
+<p dir="auto">对 jQuery 持相同观点的受访者数量略有下降，为 75.37% (比 2018 年下降了 4.36%)。</p>
+<p dir="auto">Lodash 的知识水平也有所提高，使用该知识的人稍微增加了（28.75％），使用它的人感到舒适（40.67％）分别增加了+ 3.15％和+ 3.70％。</p>
+<p dir="auto">今年，D3.js 首次成为这个问题的一个选项，7.29% 的开发者表示他们觉得使用 D3.js 很舒服。</p>
+<p dir="auto">查看所有 JavaScript MV * 框架的知识水平——因此列表中除了 jQuery、Underscore、 Lodash 和 D3.js 之外的所有框架——78.54% 的受访者表示，他们觉得至少可以使用其中一个框架。 这个数字比去年增长了 8.04% ，自 2016 年以来增长了 28% ，表明了前端开发者至少了解其中一个工具的重要性。</p>
+<h2 id="main-heading-H2-20">Q16 - 最常用的 JS 框架 / 库</h2>
+<p dir="auto">接下来的问题是: 您目前在项目中使用最频繁的 JavaScript 库和 / 或框架是什么？</p>
+<p dir="auto">受访者被要求选择他们在项目中使用的所有(或者没有)工具。</p>
+<p dir="auto">答复如下:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分比变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>React</td>
+<td>1,569</td>
+<td>52.21% 5.21%</td>
+<td>+4.82% + 4.82%</td>
+</tr>
+<tr>
+<td>jQuery</td>
+<td>1,106</td>
+<td>36.81%</td>
+<td>-14.24% - 14.24%</td>
+</tr>
+<tr>
+<td>Lodash</td>
+<td>986</td>
+<td>32.81%</td>
+<td>-1.01% - 1.01%</td>
+</tr>
+<tr>
+<td>Vue.js</td>
+<td>816</td>
+<td>27.15% 2.15%</td>
+<td>+4.21% + 4.21%</td>
+</tr>
+<tr>
+<td>Angular (v2+)</td>
+<td>472</td>
+<td>15.71%</td>
+<td>+1.59% + 1.59%</td>
+</tr>
+<tr>
+<td>D3.js</td>
+<td>267</td>
+<td>8.89%</td>
+<td>N/A 不适用</td>
+</tr>
+<tr>
+<td>Ember</td>
+<td>201</td>
+<td>6.69%</td>
+<td>+0.68% + 0.68%</td>
+</tr>
+<tr>
+<td>Underscore</td>
+<td>199</td>
+<td>6.62%</td>
+<td>-1.22% - 1.22%</td>
+</tr>
+<tr>
+<td>AngularJS</td>
+<td>191</td>
+<td>6.36%</td>
+<td>-4.06% - 4.06%</td>
+</tr>
+<tr>
+<td>Preact</td>
+<td>75</td>
+<td>2.50%</td>
+<td>-0.48% - 0.48%</td>
+</tr>
+<tr>
+<td>Backbone</td>
+<td>55</td>
+<td>1.83%</td>
+<td>-0.72% - 0.72%</td>
+</tr>
+<tr>
+<td>Polymer</td>
+<td>35</td>
+<td>1.16%</td>
+<td>-0.58% - 0.58%</td>
+</tr>
+<tr>
+<td>Knockout</td>
+<td>30</td>
+<td>1.00%</td>
+<td>-0.83% - 0.83%</td>
+</tr>
+<tr>
+<td>Aurelia</td>
+<td>26</td>
+<td>0.87%</td>
+<td>-0.25% - 0.25%</td>
+</tr>
+<tr>
+<td>MeteorJS</td>
+<td>24</td>
+<td>0.80%</td>
+<td>-0.57% - 0.57%</td>
+</tr>
+<tr>
+<td>我不使用任何这些方法或工具</td>
+<td>120</td>
+<td>3.99%</td>
+<td>+0.38% + 0.38%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/011c3ea619248e8a1cacf62944563bb2424ec9a355794ea6ec21341b8eceb060/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131362e6a7067"><img src="https://camo.githubusercontent.com/011c3ea619248e8a1cacf62944563bb2424ec9a355794ea6ec21341b8eceb060/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131362e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q16.jpg" style="max-width:100%"></a></p>
+<p dir="auto">自 2015 年调查开始以来，jQuery 第一次不再是最常用的 JS 工具，React 现在占据了这个位置。</p>
+<p dir="auto">52.21% 的开发者说他们经常使用 React 在他们的项目，比去年增加了 4.82% 。 36.81% 的受访者表示他们经常使用 jQuery，比去年下降了 14.24% 。</p>
+<p dir="auto">其次是 Lodash (32.81%)、 Vue.js (27.15%)和 Angular v2 + (15.71%) ，与 2018 年相比分别有 -1.01% 、 + 4.21% 和 + 1.59% 的变化。</p>
+<h2 id="main-heading-H2-21">Q17 - 最基本的 JS 框架 / 库</h2>
+<p dir="auto">最后一个关于 JS 框架的问题是: 在你的大多数项目中，你认为哪个 JavaScript 库或框架对你来说是必不可少的？</p>
+<p dir="auto">去年，React 获得了来自开发者的最大份额的回复，但是 12 个月以来有什么变化吗？</p>
+<p dir="auto">让我们来看看:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分比变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>React</td>
+<td>985</td>
+<td>32.78%</td>
+<td>+4.31% + 4.31%</td>
+</tr>
+<tr>
+<td>它们都不是必不可少的——我只是在我的项目中使用本地 JavaScript 就感到很舒服</td>
+<td>651</td>
+<td>21.66%</td>
+<td>+0.05% + 0.05%</td>
+</tr>
+<tr>
+<td>Vue.js</td>
+<td>404</td>
+<td>13.44%</td>
+<td>+3.22% + 3.22%</td>
+</tr>
+<tr>
+<td>jQuery</td>
+<td>335</td>
+<td>11.15%</td>
+<td>-8.59% - 8.59%</td>
+</tr>
+<tr>
+<td>Angular (v2+)</td>
+<td>255</td>
+<td>8.49%</td>
+<td>+2.30% + 2.30%</td>
+</tr>
+<tr>
+<td>Ember</td>
+<td>167</td>
+<td>5.56%</td>
+<td>+1.17% + 1.17%</td>
+</tr>
+<tr>
+<td>Lodash</td>
+<td>73</td>
+<td>2.43%</td>
+<td>-0.99% - 0.99%</td>
+</tr>
+<tr>
+<td>AngularJS</td>
+<td>22</td>
+<td>0.73%</td>
+<td>-0.97% - 0.97%</td>
+</tr>
+<tr>
+<td>Aurelia</td>
+<td>18</td>
+<td>0.60%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Backbone</td>
+<td>11</td>
+<td>0.37%</td>
+<td>+0.08% + 0.08%</td>
+</tr>
+<tr>
+<td>Preact</td>
+<td>8</td>
+<td>0.27%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Underscore</td>
+<td>7</td>
+<td>0.23%</td>
+<td>-0.19% - 0.19%</td>
+</tr>
+<tr>
+<td>Polymer</td>
+<td>7</td>
+<td>0.23%</td>
+<td>-0.28% - 0.28%</td>
+</tr>
+<tr>
+<td>MeteorJS</td>
+<td>4</td>
+<td>0.13%</td>
+<td>-0.05% - 0.05%</td>
+</tr>
+<tr>
+<td>Knockout</td>
+<td>1</td>
+<td>0.03%</td>
+<td>-0.13% - 0.13%</td>
+</tr>
+<tr>
+<td>D3.js</td>
+<td>1</td>
+<td>0.03%</td>
+<td>N/A 不适用</td>
+</tr>
+<tr>
+<td>其他(请注明)</td>
+<td>56</td>
+<td>1.86%</td>
+<td>+0.07% + 0.07%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2c1a238b57529f439ced8fb93cdbf1ddea59df5ebfdaf06fb4f4a9b7d2f804ea/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131372e6a7067"><img src="https://camo.githubusercontent.com/2c1a238b57529f439ced8fb93cdbf1ddea59df5ebfdaf06fb4f4a9b7d2f804ea/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131372e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q17.jpg" style="max-width:100%"></a></p>
+<p dir="auto">在 32.78％的受访者中，React 巩固了其在今年业绩中的地位，他们认为这是最重要的 JavaScript 库或框架。这个数字比去年的调查增长了+ 4.31％。</p>
+<p dir="auto">21.66% 的开发者表示，他们认为在这个类别中没有必要的工具。</p>
+<p dir="auto">其次是 Vue.js，增长了 13.44% (比去年增长了 3.22%) ，jQuery 增长了 11.15% (下降了 8.59%) ，Angular v2 + 增长了 8.49% (上升了 2.3%)。</p>
+<p dir="auto">当按经验水平过滤时，结果会更加明显。 具有 0-2 年前端开发经验的开发人员中，有 45.14％的人表示 React 对他们至关重要。 当查看那些具有 10 年以上经验的开发人员时，这一数字下降到了 24.02％。 具有该经验水平的开发人员中，有 28.06％的人还说，没有库或工具对他们来说是必不可少的。</p>
+<p dir="auto">总的来说，从与 JS 库和框架相关的所有三个问题的结果来看，React 的知识水平和使用率仍在增长，而 vue.JS 显然是第二受欢迎的 JavaScript 框架(尽管仍然落后于 React 的受欢迎程度)。</p>
+<p dir="auto">jQuery 的使用率虽然稳步下降，但仍然很高——比起 Lodash，它仍然被更多的受访者频繁使用。</p>
+<h2 id="main-heading-H2-22">Q18 - 模块打包器的使用</h2>
+<p dir="auto">在过去的几次调查中，Webpack 在这类工具中占据了主导地位。 那么，是否有工具开始削弱它的统治地位呢？</p>
+<p dir="auto">问题是——您是否在工作流程中使用了 JavaScript 模块打包器？</p>
+<p dir="auto">以下是调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>模块打包器</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分比变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Webpack</td>
+<td>2,204</td>
+<td>73.34%</td>
+<td>+7.66% + 7.66%</td>
+</tr>
+<tr>
+<td>我不使用模块打包器</td>
+<td>440</td>
+<td>14.64%</td>
+<td>-5.91% - 5.91%</td>
+</tr>
+<tr>
+<td>Parcel</td>
+<td>85</td>
+<td>2.83%</td>
+<td>+1.79% + 1.79%</td>
+</tr>
+<tr>
+<td>Rollup</td>
+<td>62</td>
+<td>2.06%</td>
+<td>-0.12% - 0.12%</td>
+</tr>
+<tr>
+<td>Browserify</td>
+<td>49</td>
+<td>1.63%</td>
+<td>-2.09% - 2.09%</td>
+</tr>
+<tr>
+<td>RequireJS</td>
+<td>37</td>
+<td>1.23%</td>
+<td>-1.32% - 1.32%</td>
+</tr>
+<tr>
+<td>SystemJS</td>
+<td>3</td>
+<td>0.10%</td>
+<td>N/A 不适用</td>
+</tr>
+<tr>
+<td>其他(请注明)</td>
+<td>125</td>
+<td>4.16%</td>
+<td>+0.15% + 0.15%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/93c75450bbe9a0db6965dbd793a9c7c7554362e00ac59a3a454b271809539527/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131382e6a7067"><img src="https://camo.githubusercontent.com/93c75450bbe9a0db6965dbd793a9c7c7554362e00ac59a3a454b271809539527/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131382e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q18.jpg" style="max-width:100%"></a></p>
+<p dir="auto">在过去的 12 个月里，Webpack 持续增长，73.34% 的受访者表示他们把 Webpack 作为他们的模块捆绑器。 这比去年增长了 7.66% 。</p>
+<p dir="auto">其次是 Parcel and Rollup，分别占 2.83% 和 2.06% 。</p>
+<p dir="auto">声称自己没有使用模块打包器的开发人员数量也下降了 5.91% ，降至 14.64% 。 这意味着 85.36% 的受访者正在使用模块打包器。</p>
+<h2 id="main-heading-H2-23">Q19 - 模块打包器和任务管理器的经验</h2>
+<p dir="auto">下一个问题是询问被调查者关于他们在前面提到的模块打包机和任务管理器中的经验水平。</p>
+<p dir="auto">结果如下:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>从没听说过</th>
+<th>听说过 / 了解过</th>
+<th>用了一点</th>
+<th>使用时感觉舒适</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gulp</td>
+<td>1.66% (50)</td>
+<td>+0.21%</td>
+<td>20.33% (611)</td>
+<td>+1.34%</td>
+</tr>
+<tr>
+<td>NPM Scripts</td>
+<td>3.13% (94)</td>
+<td>- 1.23%</td>
+<td>9.15% (275)</td>
+<td>- 3.59%</td>
+</tr>
+<tr>
+<td>Grunt</td>
+<td>2.93% (88)</td>
+<td>+ 0.68%</td>
+<td>34.51% (1,037)</td>
+<td>+1.37%</td>
+</tr>
+<tr>
+<td>Webpack</td>
+<td>2.03% (61)</td>
+<td>-0.61%</td>
+<td>13.28% (399)</td>
+<td>-6.02%</td>
+</tr>
+<tr>
+<td>Browserify</td>
+<td>11.91% (358)</td>
+<td>+2.33%</td>
+<td>52.95% (1,591)</td>
+<td>+0.84%</td>
+</tr>
+<tr>
+<td>Parcel</td>
+<td>30.18% (907)</td>
+<td>-15.14%</td>
+<td>49.78% (1,496)</td>
+<td>+3.34%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/484c579c720f4d8a169e60f3bbd44bc613b748783dd5c1a31f163f78f4e28ea6/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131392e6a7067"><img src="https://camo.githubusercontent.com/484c579c720f4d8a169e60f3bbd44bc613b748783dd5c1a31f163f78f4e28ea6/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131392e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q19.jpg" style="max-width:100%"></a></p>
+<p dir="auto">结果显示，大部分受访者认为最适合使用的工具是 NPM Scripts (64.39%)、 Webpack (52.38%)和 Gulp (45.79%)。</p>
+<p dir="auto">Npm Scripts 和 Webpack 发现，使用它们的开发人员数量增长最快。</p>
+<p dir="auto">使用 Parcel 的人数也出现了不错的增长，使用过至少一点 Parcel 的受访者(12.98% ，上升了 7.47%)和使用得心应手的受访者(7.05% ，上升了 4.32%)均比 2018 年有所上升。</p>
+<h2 id="main-heading-H2-24">Q20 - JavaScript-转换器</h2>
+<p dir="auto">在最近的两次调查中，Javascript 的转换器已经发展到一个水平，以至于现在绝大多数开发人员现在都在其工作流程中使用它。</p>
+<p dir="auto">虽然我不认为 JavaScript 的使用在过去的 12 个月里有所下降，但是看看它的使用水平以及它仍在增长的程度还是很有趣的。</p>
+<p dir="auto">问题是-您是否使用工具将您的 JavaScript 从 ES6 转移到 ES5？ (即 Babel)</p>
+<p dir="auto">研究结果如下:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>回答</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分比变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是的</td>
+<td>2,451</td>
+<td>81.56%</td>
+<td>+ 4.80%</td>
+</tr>
+<tr>
+<td>不，我听说过这些工具，但没用过</td>
+<td>466</td>
+<td>15.51%</td>
+<td>- 4.01%</td>
+</tr>
+<tr>
+<td>没有我从没听说过 JavaScript 转换器</td>
+<td>88</td>
+<td>2.93%</td>
+<td>- 0.79%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5aaff8616b479bd101dba52b4063e38e7ec00caadf0a46b308452a0fdb2df413/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132302e6a7067"><img src="https://camo.githubusercontent.com/5aaff8616b479bd101dba52b4063e38e7ec00caadf0a46b308452a0fdb2df413/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132302e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q20.jpg" style="max-width:100%"></a></p>
+<p dir="auto">编译器的使用持续增长，目前有 81.56％的受访者在其工作流程中使用，增长了 4.8％。</p>
+<p dir="auto">如您所料，在前端开发方面经验较少的开发人员不太可能使用编译器，有 0-2 年经验的受访者中有 70％表示这样做。</p>
+<h2 id="main-heading-H2-25">Q21 - JavaScript 扩展语言</h2>
+<p dir="auto">下一个问题是去年增加的一个新问题，关注扩展语言，比如 TypeScript 和 Flow。</p>
+<p dir="auto">TypeScript 是当时大多数受访者都习惯使用的工具，但是这种情况在 12 个月后发生了变化吗？</p>
+<p dir="auto">问题是-请说明您使用以下 JavaScript 扩展的经验。</p>
+<p dir="auto">以下是今年的调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>从没听说过</th>
+<th>听说过 / 了解过</th>
+<th>用了一点</th>
+<th>使用时感觉舒适</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TypeScript</td>
+<td>1.16% (35)</td>
+<td>- 1.07%</td>
+<td>36.74% (1,104)</td>
+<td>- 11.31%</td>
+</tr>
+<tr>
+<td>Flow</td>
+<td>27.92% (839)</td>
+<td>- 5.99%</td>
+<td>55.97% (1,682)</td>
+<td>+ 5.50%</td>
+</tr>
+<tr>
+<td>Elm</td>
+<td>29.42% (884)</td>
+<td>+ 0.10%</td>
+<td>63.93% (1,921)</td>
+<td>- 0.47%</td>
+</tr>
+<tr>
+<td>ClojureScript</td>
+<td>32.31% (971)</td>
+<td>- 1.24%</td>
+<td>65.69% (1974)</td>
+<td>+ 2.09%</td>
+</tr>
+<tr>
+<td>Dart</td>
+<td>27.75% (834)</td>
+<td>N/A 不适用</td>
+<td>67.62% (2032)</td>
+<td>N/A 不适用</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7f5e4c2c63521d1dfce8f2387fd2a559bbbada7a37559f7c87d094091dfc0d8a/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132312e6a7067"><img src="https://camo.githubusercontent.com/7f5e4c2c63521d1dfce8f2387fd2a559bbbada7a37559f7c87d094091dfc0d8a/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132312e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q21.jpg" style="max-width:100%"></a></p>
+<p dir="auto">TypeScript 仍然是大多数受访者感到舒服的工具，其使用率为 31.91% ，比去年增长了 10.03% 。</p>
+<p dir="auto">这一类别中的其他工具的数据没有真正的变化，没有真正的增长或下降。</p>
+<p dir="auto">这些结果似乎表明，当涉及到这类工具时，TypeScript 是大多数开发人员正在寻找的工具。 虽然大多数开发人员还不知道，但是它正在逐年稳步增长，看看这种情况在未来是否会继续下去是很有趣的。</p>
+<h2 id="main-heading-H2-26">Q22 - JavaScript 静态代码检查</h2>
+<p dir="auto">当涉及到 JS 工作流时，JavaScript lint 工具实际上是组成的一部分，去年，ESL​​int 显然是大多数开发人员所使用的工具。</p>
+<p dir="auto">我问的问题是——你用什么工具来编译你的 JavaScript？ (如有的话)</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>工具</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分比变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESLint</td>
+<td>2,286</td>
+<td>76.07%</td>
+<td>+15.39%</td>
+</tr>
+<tr>
+<td>我不使用 JavaScript linter</td>
+<td>360</td>
+<td>11.98%</td>
+<td>-3.42%</td>
+</tr>
+<tr>
+<td>JSLint</td>
+<td>143</td>
+<td>4.76%</td>
+<td>-2.44%</td>
+</tr>
+<tr>
+<td>JSHint</td>
+<td>67</td>
+<td>2.23%</td>
+<td>-1.74%</td>
+</tr>
+<tr>
+<td>StandardJS</td>
+<td>43</td>
+<td>1.43%</td>
+<td>-0.16%</td>
+</tr>
+<tr>
+<td>其他(请注明)</td>
+<td>106</td>
+<td>3.53%</td>
+<td>+2.54%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8ddf379e684a8351c4386f05289dacc7acc9b84ac45005ba55e64d92c2da2b54/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132322e6a7067"><img src="https://camo.githubusercontent.com/8ddf379e684a8351c4386f05289dacc7acc9b84ac45005ba55e64d92c2da2b54/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132322e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q22.jpg" style="max-width:100%"></a></p>
+<p dir="auto">结果显示了一个非常明显的趋势，ESLint 的使用量仍然在上升，而所有其他临时工具的使用量似乎都在下降。 76.07% 的受访者表示他们使用 ESLint，比去年增加了 15.39% 。</p>
+<p dir="auto">ESLint 使用率的提高可能要归功于 TSLint 团队在 2 月份决定弃用 TSLint，并将精力集中在<a href="https://medium.com/palantir/tslint-in-2019-1a144c2317a9" rel="nofollow">改善 ESLint 的 TypeScript 支持</a>上。</p>
+<p dir="auto">表示不使用 JavaScript linter 的受访者比例今年也下降到了 11.98% 。 这意味着 88.02% 的开发者正在使用一个工具来帮助他们在这个领域工作，这比 12 个月前的 84.6% 的调查对象增加了 3.42% 。</p>
+<p dir="auto">因此，没有真正的惊喜，但进一步巩固与 ESLint 非常认为是该类别的首选工具。</p>
+<h2 id="main-heading-H2-27">Q23 - JavaScript 测试</h2>
+<p dir="auto">下一个问题是关于 JavaScript 测试工具的使用。</p>
+<p dir="auto">今年，这个问题的格式略有改变，因为受访者的反馈显示，许多开发人员使用了多种工具，而不仅仅是一种。 因此，受访者可以选择多个答案，而不是只选择一个来反映这种行为。</p>
+<p dir="auto">我在去年的结果中加入了百分比差异作为参考，但是由于这种格式上的改变，所有的工具的使用率都可能至少会有一个小小的增长。</p>
+<p dir="auto">问题是-这些工具中的哪一个是你用来测试你的 JavaScript 的？ (如有的话)</p>
+<p dir="auto">以下是调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>工具</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分比变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jest</td>
+<td>1,348</td>
+<td>44.86%</td>
+<td>+22.83%</td>
+</tr>
+<tr>
+<td>我不使用工具来测试我的 JS</td>
+<td>1,071</td>
+<td>35.64%</td>
+<td>-7.98%</td>
+</tr>
+<tr>
+<td>Mocha</td>
+<td>785</td>
+<td>26.12%</td>
+<td>+12.17%</td>
+</tr>
+<tr>
+<td>Jasmine</td>
+<td>585</td>
+<td>19.47%</td>
+<td>+8.52%</td>
+</tr>
+<tr>
+<td>Enzyme</td>
+<td>560</td>
+<td>18.64%</td>
+<td>+16.86%</td>
+</tr>
+<tr>
+<td>Cypress</td>
+<td>378</td>
+<td>12.58%</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>QUnit</td>
+<td>184</td>
+<td>6.12%</td>
+<td>+1.94%</td>
+</tr>
+<tr>
+<td>Ava</td>
+<td>102</td>
+<td>3.39%</td>
+<td>+2.25%</td>
+</tr>
+<tr>
+<td>Tape</td>
+<td>57</td>
+<td>1.90%</td>
+<td>+0.98%</td>
+</tr>
+<tr>
+<td>其他(请注明)</td>
+<td>109</td>
+<td>3.63%</td>
+<td>+3.63%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/6186a0afe08532db72350922c3f5fbeffbb8bf6c4bb0b700a8b4a948229b1711/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132332e6a7067"><img src="https://camo.githubusercontent.com/6186a0afe08532db72350922c3f5fbeffbb8bf6c4bb0b700a8b4a948229b1711/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132332e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q23.jpg" style="max-width:100%"></a></p>
+<p dir="auto">和 2018 年一样，Jest 仍然是大多数受访者使用的工具，占 44.86% 。 其次是 Mocha(26.12%)、Jasmine(19.47%)和 Enzyme(18.64%)。</p>
+<p dir="auto">使用任何工具测试 JavaScript 的开发者比例上升到 64.36% ，比去年增加了 7.98% 。</p>
+<p dir="auto">我认为今年的结果表明，现在有非常广泛的工具可用来进行 JavaScript 测试。 尽管 Jest 是目前最流行的工具，但在这个领域还有很多其他值得探索的流行选项。</p>
+<h2 id="main-heading-H2-28">Q24 - 性能工具及特点</h2>
+<p dir="auto">下一个问题是关于开发人员如何在构建项目时考虑性能的新增问题。</p>
+<p dir="auto">现在有这么多的工具和原生特性，当提到页面性能时，我很好奇哪些工具在整个社区中使用最多。</p>
+<p dir="auto">我问的问题是，这些工具、库或语言特性中，哪些是你用来帮助提高性能的？ (如有的话)。 受访者可以选择一个或多个选项列出。</p>
+<p dir="auto">让我们来看看结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>工具</th>
+<th>投票数</th>
+<th>百分比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lighthouse</td>
+<td>1,566</td>
+<td>52.11%</td>
+</tr>
+<tr>
+<td>这些工具都没有</td>
+<td>952</td>
+<td>31.68%</td>
+</tr>
+<tr>
+<td>WebPageTest</td>
+<td>730</td>
+<td>24.29%</td>
+</tr>
+<tr>
+<td>Service Workers</td>
+<td>695</td>
+<td>23.13%</td>
+</tr>
+<tr>
+<td>Pingdom</td>
+<td>317</td>
+<td>10.55%</td>
+</tr>
+<tr>
+<td>AMP (Accelerated Mobile Pages)</td>
+<td>174</td>
+<td>5.79%</td>
+</tr>
+<tr>
+<td>其他(请注明)</td>
+<td>109</td>
+<td>3.63%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8577a5161e2a3ba9218d832f797718ab5d0004e36ab4043cabf1faa89c16a189/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132342e6a7067"><img src="https://camo.githubusercontent.com/8577a5161e2a3ba9218d832f797718ab5d0004e36ab4043cabf1faa89c16a189/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132342e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q24.jpg" style="max-width:100%"></a></p>
+<p dir="auto">Lighthouse 是最受受访者欢迎的选择，有 52.11％的人说他们在进行性能测试时使用了它。</p>
+<p dir="auto">令人惊讶的是，第二受欢迎的选项是“这些工具都没有 ，31.68% 的受访者说他们没有使用任何提到的工具或特性。</p>
+<p dir="auto">在其他可用的选项中，24.29% 的开发者说他们使用 WebPageTest，23.13% 的开发者说他们在他们的项目中使用了 Service Workers。</p>
+<p dir="auto">有趣的是，只有 5.79% 的开发者说他们在他们的项目中实现了 AMP (加速移动页面)。 考虑到谷歌在过去几年里为 AMP 的实施所付出的努力，似乎在受访者的使用水平方面仍然是相当小众的。</p>
+<h2 id="main-heading-H2-29">Q25 - 辅助工具</h2>
+<p dir="auto">今年调查的另一个新问题是，调查受访者对可访问性测试工具的使用水平。</p>
+<p dir="auto">问题是这些可访问性工具中哪些是你用来测试你的网站 / 应用程序的？ 受访者可以选择指定的一个或多个选项。</p>
+<p dir="auto">以下是调查结果:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>工具</th>
+<th>投票数</th>
+<th>百分比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我不使用任何工具来测试我的网站 / 应用程序的可访问性</td>
+<td>1,897</td>
+<td>63.13%</td>
+</tr>
+<tr>
+<td>Colour Contrast Checker (i.e. contrastchecker.com)</td>
+<td>667</td>
+<td>22.20%</td>
+</tr>
+<tr>
+<td>Screenreader (i.e. JAWS, Voiceover)</td>
+<td>464</td>
+<td>15.44%</td>
+</tr>
+<tr>
+<td>WAVE</td>
+<td>285</td>
+<td>9.48%</td>
+</tr>
+<tr>
+<td>其他(请注明)</td>
+<td>282</td>
+<td>9.38%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/458242677b35ce1f7bb5f60db5719b260eec4ac9c0f2760e14fc5a4ff102cb67/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132352e6a7067"><img src="https://camo.githubusercontent.com/458242677b35ce1f7bb5f60db5719b260eec4ac9c0f2760e14fc5a4ff102cb67/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132352e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q25.jpg" style="max-width:100%"></a></p>
+<p dir="auto">令人惊讶的是，63.13% 的受访者表示他们没有使用任何工具来测试他们的项目的可访问性。</p>
+<p dir="auto">22.20% 的受访者表示他们使用了颜色对比度检查器，只有 15.44% 的人表示他们使用了屏幕阅读器进行可访问性测试。</p>
+<p dir="auto">我不得不说，这些数字读起来非常令人沮丧。</p>
+<p dir="auto">看看这些原始数据，你就会发现为什么人们不使用这些工具，但是作为一个相信每个人都有权访问我们正在建设的网站的人，看到几乎三分之二的开发者没有使用工具来测试他们的项目的可访问性是令人失望的。</p>
+<p dir="auto">像 Wave 和 Axe 这样的工具(很多受访者在“其他工具”下提到过)非常容易使用，如果你还没有使用过，我强烈建议你试试看。</p>
+<p dir="auto">希望我们能够更多地展示这些工具的价值和易用性，这些使用数字在开发人员中可能会增加更多。</p>
+<h2 id="main-heading-H2-30">Q26 - JavaScript 包管理器</h2>
+<p dir="auto">今年调查的倒数第二个问题是关于 JS 包管理器的，问题是——您在工作流中主要使用哪个 JavaScript 包管理器？</p>
+<p dir="auto">去年，NPM 是最受欢迎的软件包管理器，但是 Yarn 在过去的 12 个月里有什么进展吗？</p>
+<p dir="auto">大家是这样回应的:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>回答</th>
+<th>投票数</th>
+<th>百分比</th>
+<th>百分比变化(截至 2018 年)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NPM</td>
+<td>1,965</td>
+<td>65.39%</td>
+<td>+2.00%</td>
+</tr>
+<tr>
+<td>Yarn</td>
+<td>895</td>
+<td>29.78%</td>
+<td>-0.36%</td>
+</tr>
+<tr>
+<td>我不使用包管理器</td>
+<td>135</td>
+<td>4.49%</td>
+<td>-1.24%</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>10</td>
+<td>0.33%</td>
+<td>-0.40%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b1891545838a24c6c8f7f57f843818af186aa258d3809e26328482ff09cf0dc0/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132362e6a7067"><img src="https://camo.githubusercontent.com/b1891545838a24c6c8f7f57f843818af186aa258d3809e26328482ff09cf0dc0/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132362e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q26.jpg" style="max-width:100%"></a></p>
+<p dir="auto">查看调查结果，NPM 的使用率略有增长，65.39% 的受访者说他们现在使用它。</p>
+<p dir="auto">Yarn 使用率保持相当稳定，下降了一小部分，为 29.78% 。</p>
+<p dir="auto">总的来说，大多数人似乎很高兴使用 NPM 作为他们的软件包管理器，与去年的数据相比，在这个类别中没有观察到真正的变化。</p>
+<h2 id="main-heading-H2-31">Q27 - 杂项工具</h2>
+<p dir="auto">最后一个问题考察了各种前端工具的知识水平(其中一些工具不完全适合前面提到的任何类别)。</p>
+<p dir="auto">被调查者被要求-请说明您使用以下前端工具的经验。</p>
+<p dir="auto">以下是人们的反应:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>从没听说过</th>
+<th>听说过 / 了解过</th>
+<th>用了一点</th>
+<th>使用时感觉舒适</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NPM</td>
+<td>0.43% (13)</td>
+<td>-0.41%</td>
+<td>1.80% (54)</td>
+<td>-0.69%</td>
+</tr>
+<tr>
+<td>Yarn</td>
+<td>3.29% (99)</td>
+<td>-2.95%</td>
+<td>22.30% (670)</td>
+<td>-4.21%</td>
+</tr>
+<tr>
+<td>Babel</td>
+<td>2.70% (81)</td>
+<td>-1.07%</td>
+<td>16.71% (502)</td>
+<td>-4.22%</td>
+</tr>
+<tr>
+<td>Prettier</td>
+<td>15.67% (471)</td>
+<td>-14.76%</td>
+<td>21.60% (649)</td>
+<td>-8.03%</td>
+</tr>
+<tr>
+<td>Yeoman</td>
+<td>24.76% (744)</td>
+<td>+5.63%</td>
+<td>40.67% (1,222)</td>
+<td>-1.18%</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2131bf12e1f14b05c0461dae656261a25a17b59079652add5c6953f71c6b3ea9/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132372e6a7067"><img src="https://camo.githubusercontent.com/2131bf12e1f14b05c0461dae656261a25a17b59079652add5c6953f71c6b3ea9/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132372e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q27.jpg" style="max-width:100%"></a></p>
+<p dir="auto">在这些工具中，NPM 是大多数受访者认为他们感觉舒服的工具(87.02%)， 和 Babel，分别占 50.62% 和 49.62% ，是开发人员第二熟悉的工具，在过去的 12 个月里，这两个工具的开发人员知识水平都有小幅提升。</p>
+<p dir="auto">与去年的调查结果相比，最大的变化是现在使用 Prettier 的受访者数量增加了 16.53% ，达到 40.43% 。</p>
+<p dir="auto">自由开发者的知识水平略有下降，去年也出现了这一趋势。</p>
+<h2 id="main-heading-H2-32">总结</h2>
+<p dir="auto">这样我们就可以了–在工具方面又是有趣的一年！</p>
+<p dir="auto">在工具的某些领域，开发人员显然是在围绕一个工具进行整合。 例如，ESLint、 NPM Scripts 和 Webpack 分别用于 JavaScript 的 lint、任务运行和模块打包。</p>
+<p dir="auto">看看 JavaScript 框架和库，React 保持了它作为受访者中最重要的框架的地位，受访者将 Vue.JS 列为第二重要的 JS 框架 / 库。 很大比例的开发人员(21.66%)仍然认为没有单一的框架或库是必不可少的，原生 JS 每年都在变得更加强大。</p>
+<p dir="auto">今年调查结果中最令人震惊的数字来自无障碍测试，63.13% 的受访者表示他们没有使用任何工具来测试他们的项目。 作为一个行业，我们必须做得更好——不仅仅是因为这是道德上应该做的正确事情，还因为从法律的角度来看，<a href="https://www.zdnet.com/article/supreme-court-lets-blind-man-sue-dominos-over-website-accessibility/" rel="nofollow">无障碍诉讼正变得越来越普遍</a>。</p>
+<p dir="auto">在 CSS 工具方面，Sass 仍然是最流行的 CSS 处理器，但是 Bootstrap 的流行度略有下降，因为大多数开发者现在选择不在他们的项目中使用任何 CSS 框架。</p>
+<p dir="auto">现在有 53.21% 的开发者使用 CSS linter，52.08% 的开发者使用 CSS 命名方案。</p>
+<p dir="auto">Css in-js 也在以稳定的速度增长，44.69% 的开发人员表示他们使用了 css in-js 工具。</p>
+<p dir="auto">总的来说，我认为随着我们的前端工具变得更加成熟，整合似乎正在发生，这是令人鼓舞的。 随着更强大的工具的出现，取代这些工具的需求不再那么普遍，我认为我们正在这些结果中看到这一点的证据。</p>
+<p dir="auto">在大多数工具类别中，现在都有明确的领导者-几年前还没有做到这一点。 这有助于减少知识流失，可能使所有级别的开发人员都可以更轻松地知道在选择新工具时最好在哪里花时间，这只是一件好事。</p>
+<p dir="auto">再次感谢参加今年活动的每一个人。</p>
+<p dir="auto">如果任何人对任何结果有任何疑问，请在 <a href="https://twitter.com/WelshAsh_" rel="nofollow">Twitter</a> 上与我联系，我会尽我所能提供帮助。</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(t,n,d,e,a){return{layout:"default",data:[{post:{id:523787995,number:101,title:"2019前端工具调查-结果（译文）",created_at:"2019-11-16T04:15:02Z",updated_at:"2025-11-23T16:08:56Z",body_html:'<blockquote>\n<p dir="auto">原文地址：<a href="https://ashleynolan.co.uk/blog/frontend-tooling-survey-2019-results" rel="nofollow">frontend-tooling-survey-2019-results</a></p>\n</blockquote>\n<p dir="auto">到现在已经有一段时间了，但是 2019 年 前端工具调查的结果就在这里！</p>\n<p dir="auto">今年，3005 名开发人员回答了 27 个问题，涉及范围广泛的前端工具和方法学。 像往常一样，我衷心感谢每一位花时间填写这封信的人。 组织和撰写这项调查今年特别具有挑战性，因为我们家又多了一个女婴(因此这些调查结果被推迟了!)。</p>\n<p dir="auto">像往常一样，查看前端工具在过去 12 个月中发生了什么变化，看看我们的想法和观点是否得到业内其他开发人员的赞同，这是很有趣的。</p>\n<p dir="auto">这些结果（希望）有助于洞悉前端工具的当前使用趋势和知识水平，并通过查看<a href="https://ashleynolan.co.uk/blog/frontend-tooling-survey-2018-results" rel="nofollow">先前调查的数据</a>来显示这些趋势随着时间的变化。</p>\n<h2 id="main-heading-H2-0">快速感谢</h2>\n<p dir="auto">这项调查每年都要花费大量时间，而且得到了 Wes Bos (通过参与调查)和我的雇主 Just Eat 的支持。</p>\n<h2 id="main-heading-H2-1">结果</h2>\n<p dir="auto">那么，让我们开始吧！ 自己拿一杯茶 / 咖啡 / 饮料，让我们来看看结果...</p>\n<h2 id="main-heading-H2-2">前言免责声明</h2>\n<p dir="auto">这些结果代表了在该行业工作的前端开发人员的一个样本。 因此，他们不应该被当作福音书，仅仅指出一个粗略的趋势。</p>\n<h2 id="main-heading-H2-3">回应</h2>\n<p dir="auto">如上所述，今年的调查收到了 3,005 份回复。与去年的调查（5,461 份）相比略有下降。</p>\n<p dir="auto">我发现今年宣传这个调查有点困难，可能是因为网络开发调查的数量在不断增加，但也可能是因为我可以花费大量的个人时间来宣传这个词。 综合考虑，超过 3000 个回复仍然是难以置信的。</p>\n<p dir="auto">至于今年的回复来自哪里，该调查的链接发布在 Twitter、 Reddit、 HackerNews、 designnernews、 Echo.js、 LinkedIn 和 Frontendfront 上。许多新闻通讯（包括 FrontEnd Focus 和 CSS Weekly 等）也有用到。</p>\n<p dir="auto">在可能的情况下，您会看到我已将 2018 年调查的百分比变化与今年的数字一起包括在内。</p>\n<h2 id="main-heading-H2-4">问题索引</h2>\n<ol dir="auto">\n<li><a href="#Q1---%E4%B8%80%E8%88%AC%E5%89%8D%E7%AB%AF%E7%BB%8F%E9%AA%8C">一般前端经验</a></li>\n<li><a href="#Q2---CSS-%E7%9F%A5%E8%AF%86%E6%B0%B4%E5%B9%B3">CSS 知识水平</a></li>\n<li><a href="#Q3---%E4%BD%BF%E7%94%A8-CSS-%E5%A4%84%E7%90%86%E5%99%A8">使用 CSS 处理器</a></li>\n<li><a href="#Q4---CSS-%E5%A4%84%E7%90%86%E5%99%A8%E7%BB%8F%E9%AA%8C">CSS 处理器经验</a></li>\n<li><a href="#Q5---%E4%BD%BF%E7%94%A8-CSS-%E6%A1%86%E6%9E%B6">使用 CSS 框架</a></li>\n<li><a href="#Q6---CSS-%E5%91%BD%E5%90%8D%E6%A8%A1%E5%BC%8F">CSS 命名模式</a></li>\n<li><a href="#Q7---CSS-Linting">CSS Linting</a></li>\n<li><a href="#Q8---CSS-%E5%B7%A5%E5%85%B7%E4%BD%93%E9%AA%8C">CSS 工具体验</a></li>\n<li><a href="#Q9---CSS-%E6%96%B9%E6%B3%95%E5%92%8C%E5%91%BD%E5%90%8D%E4%BD%93%E9%AA%8C">Css 方法和命名体验</a></li>\n<li><a href="#Q10---%E4%BD%BF%E7%94%A8-CSS-%E5%B7%A5%E5%85%B7">使用 CSS 工具</a></li>\n<li><a href="#Q11---CSS-in-JS-%E7%94%A8%E6%B3%95">CSS-in-JS 用法</a></li>\n<li><a href="#Q12---%E4%BD%BF%E7%94%A8-CSS-%E5%8A%9F%E8%83%BD">使用 CSS 功能</a></li>\n<li><a href="#Q13---JavaScript-%E7%9F%A5%E8%AF%86%E6%B0%B4%E5%B9%B3">JavaScript 知识水平</a></li>\n<li><a href="#Q14---%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E8%80%85">任务执行者</a></li>\n<li><a href="#Q15---%E4%BA%86%E8%A7%A3-JavaScript-%E5%BA%93%E5%92%8C%E6%A1%86%E6%9E%B6">了解 JavaScript 库和框架</a></li>\n<li><a href="#Q16---%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84-JS-%E6%A1%86%E6%9E%B6-/-%E5%BA%93">最常用的 JS 框架 / 库</a></li>\n<li><a href="#Q17---%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84-JS-%E6%A1%86%E6%9E%B6-/-%E5%BA%93">最基本的 JS 框架 / 库</a></li>\n<li><a href="#Q18---%E6%A8%A1%E5%9D%97%E6%89%93%E5%8C%85%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8">模块打包器的使用</a></li>\n<li><a href="#Q19---%E6%A8%A1%E5%9D%97%E6%89%93%E5%8C%85%E5%99%A8%E5%92%8C%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E7%9A%84%E7%BB%8F%E9%AA%8C">模块打包器和任务管理器的经验</a></li>\n<li><a href="#Q20---JavaScript-%E8%BD%AC%E6%8D%A2%E5%99%A8">JavaScript 转换器</a></li>\n<li><a href="#Q21---JavaScript-%E6%89%A9%E5%B1%95%E8%AF%AD%E8%A8%80">JavaScript 扩展语言</a></li>\n<li><a href="#Q22---JavaScript-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5">JavaScript 静态代码检查</a></li>\n<li><a href="#Q23---JavaScript-%E6%B5%8B%E8%AF%95">JavaScript 测试</a></li>\n<li><a href="#Q24---%E6%80%A7%E8%83%BD%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%89%B9%E7%82%B9">性能工具及特点</a></li>\n<li><a href="#Q25---%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7">辅助工具</a></li>\n<li><a href="#Q26---JavaScript-%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8">JavaScript 包管理器</a></li>\n<li><a href="#Q27---%E6%9D%82%E9%A1%B9%E5%B7%A5%E5%85%B7">杂项工具</a></li>\n</ol>\n<h2 id="main-heading-H2-5">Q1 - 一般前端经验</h2>\n<p dir="auto">调查的第一个问题是用来找出每个受访者的前端经验的数量。</p>\n<p dir="auto">问题是-大概有多长时间，你一直与前端技术？</p>\n<p dir="auto">以下是调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>回答</th>\n<th>投票数</th>\n<th>百分比</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>0-1 年</td>\n<td>91</td>\n<td>3.03%</td>\n</tr>\n<tr>\n<td>1-2 年</td>\n<td>279</td>\n<td>9.28%</td>\n</tr>\n<tr>\n<td>2-5 年</td>\n<td>859</td>\n<td>28.59%</td>\n</tr>\n<tr>\n<td>5-10 年</td>\n<td>860</td>\n<td>28.62%</td>\n</tr>\n<tr>\n<td>10-15 年</td>\n<td>503</td>\n<td>16.74%</td>\n</tr>\n<tr>\n<td>超过 15 年</td>\n<td>413</td>\n<td>13.74%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7b36a9cb53267a0f9e2aab7d023b894d928732a3b3f82dfcd2f07d700bdc932e/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71312e6a7067"><img src="https://camo.githubusercontent.com/7b36a9cb53267a0f9e2aab7d023b894d928732a3b3f82dfcd2f07d700bdc932e/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71312e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q1.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">59.1% 的受访者从事前端技术工作超过 5 年。 这比去年(54.18%)略有上升，所以今年的受访者对前端技术有更多的经验。 然而，值得注意的是，这可能部分是由于一些参与了去年调查的受访者，现在(自然)将有更多的经验。</p>\n<p dir="auto">只有 12.31% 的受访者表示他们的工作经验少于两年。</p>\n<p dir="auto">与以前的调查一样，绝大多数调查对象在前端技术方面具有相当高的经验。 在考虑其他调查结果时，这一点是值得考虑的。</p>\n<h2 id="main-heading-H2-6">Q2 - CSS 知识水平</h2>\n<p dir="auto">第二个问题是看受访者如何评价他们自己对 CSS 的知识，问: 你如何评价你自己对 CSS 及其相关工具和方法的知识？</p>\n<p dir="auto">以下是他们的回答:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>水平</th>\n<th>投票数</th>\n<th>百分比</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>初学者</td>\n<td>35</td>\n<td>1.16%</td>\n</tr>\n<tr>\n<td>初学者(初级和中级之间)</td>\n<td>243</td>\n<td>8.09%</td>\n</tr>\n<tr>\n<td>中级</td>\n<td>815</td>\n<td>27.12%</td>\n</tr>\n<tr>\n<td>高级(介于中级和专家之间)</td>\n<td>1452</td>\n<td>48.32%</td>\n</tr>\n<tr>\n<td>专家</td>\n<td>460</td>\n<td>15.31%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5d0fba3669781b38fd66f6107df2478ebedb80483d7ea3e9a9bf8c39d93dbfbd/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71322e6a7067"><img src="https://camo.githubusercontent.com/5d0fba3669781b38fd66f6107df2478ebedb80483d7ea3e9a9bf8c39d93dbfbd/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71322e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q2.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">90.75% 的受访者表示，他们对社会服务方面的知识处于中等或以上水平，大多数(63.63%)认为自己是高级或专家。</p>\n<p dir="auto">正如我每年提到的，任何关于广泛知识水平的问题，这是非常主观的答复。 一个人对于如何成为 CSS 专家的想法可能与另一个人的想法有很大的不同。</p>\n<p dir="auto">尽管如此，能够将这些知识水平与调查中其他问题的结果进行过滤是很有用的——例如，看看经验更丰富的开发人员是否更喜欢某些工具，而不是那些初学者可能使用的工具。 在以后的问题中，我将在适当的地方回顾这些结果。</p>\n<h2 id="main-heading-H2-7">Q3 - 使用 CSS 处理器</h2>\n<p dir="auto">我们关于 CSS 工具的第一个问题是关于 CSS 处理工具的。</p>\n<p dir="auto">在前几年，这个问题要求受访者选择他们喜欢的 CSS 预处理工具。 今年，这个问题稍微改变了一下，允许受访者选择多个工具，问哪个是你经常使用的 CSS 处理器？</p>\n<p dir="auto">自 2016 年调查开始以来，Sass 一直是这个领域的主要工具，那么今年有什么变化吗？</p>\n<p dir="auto">注意: 我已经将这些数据与去年的数据进行了比较，但重要的是要考虑到受访者现在可以选择多个答案，而不仅仅是一个。 因此，结果很可能显示，所有工具的使用率至少有小幅上升。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>预处理器</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>差异百分比（至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Sass</td>\n<td>2,322</td>\n<td>77.27%</td>\n<td>+11.88% + 11.88%</td>\n</tr>\n<tr>\n<td>PostCSS</td>\n<td>863</td>\n<td>28.72%</td>\n<td>+20.06% + 20.06%</td>\n</tr>\n<tr>\n<td>Less</td>\n<td>422</td>\n<td>14.04%</td>\n<td>+7.52% + 7.52%</td>\n</tr>\n<tr>\n<td>没有预处理器</td>\n<td>395</td>\n<td>13.14%</td>\n<td>-1.44% - 1.44%</td>\n</tr>\n<tr>\n<td>Stylus</td>\n<td>98</td>\n<td>3.26%</td>\n<td>+1.08% + 1.08%</td>\n</tr>\n<tr>\n<td>Other</td>\n<td>80</td>\n<td>2.66%</td>\n<td>-0.01% - 0.01%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c48a598cf36292735219ec10b3c0486ad86d81191b51b0319459e27ed8fd6128/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71332e6a7067"><img src="https://camo.githubusercontent.com/c48a598cf36292735219ec10b3c0486ad86d81191b51b0319459e27ed8fd6128/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71332e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q3.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">和前几年一样，Sass 仍然是开发人员使用的主要 CSS 处理工具，77.27% 的受访者表示他们使用了它。</p>\n<p dir="auto">有趣的是，PostCSS 现在是第二常用的工具，有 28.72% 的受访者使用它。 受访者现在可以选择多种工具，这显然有助于更准确地表示 PostCSS 的使用情况，除了使用像 Sass 这样的工具之外，还经常使用 PostCSS。</p>\n<h2 id="main-heading-H2-8">Q4 - CSS 处理器经验</h2>\n<p dir="auto">下一个问题是继上一个问题之后的又一个问题，受访者被要求说明他们在 CSS 处理工具方面的经验水平。</p>\n<p dir="auto">以下是调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>从没听说过</th>\n<th>听说过 / 了解过</th>\n<th>用了一点</th>\n<th>使用时感觉舒适</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Sass 或 SCSS 语法</td>\n<td>0.33% (10)</td>\n<td>6.82% (205)</td>\n<td>15.34% (461)</td>\n<td>77.50% (2,329)</td>\n</tr>\n<tr>\n<td>Less</td>\n<td>1.40% (42))</td>\n<td>35.81% (1,076)</td>\n<td>35.34% (1,062)</td>\n<td>27.45% (825)</td>\n</tr>\n<tr>\n<td>Stylus</td>\n<td>21.06% (633)</td>\n<td>61.93% (1,861)</td>\n<td>11.35% (341)</td>\n<td>5.66% (170)</td>\n</tr>\n<tr>\n<td>PostCSS</td>\n<td>15.44% (464)</td>\n<td>41.30% (1,241)</td>\n<td>22.73% (683)</td>\n<td>20.53% (617)</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/cce4c016c96f399f4c45c9a109a9c6854546709fef248214e0cc3f6b0dc33cff/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71342e6a7067"><img src="https://camo.githubusercontent.com/cce4c016c96f399f4c45c9a109a9c6854546709fef248214e0cc3f6b0dc33cff/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71342e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q4.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">这些结果与前一个问题的结果一致，超过四分之三的受访者(77.50%)说他们觉得使用 Sass 很舒服，而只有 7.15% 的人说他们从未使用过 Sass。</p>\n<p dir="auto">PostCSS 知识水平相对于去年的结果有所提高，因为 20.53％的受访者表示他们对使用该工具感到满意。</p>\n<p dir="auto">与去年的结果相比，Less 和 Stylus 的知识水平看起来相当停滞。</p>\n<p dir="auto">从问题 3 和 4 的结果来看，很明显 Sass 仍然是 CSS 处理的主要工具。</p>\n<h2 id="main-heading-H2-9">Q5 - 使用 CSS 框架</h2>\n<p dir="auto">下一个问题是关于 CSS 框架的使用情况，回答者要求说明下列哪个 CSS 框架是您在项目中使用最频繁的(如果有的话)。</p>\n<p dir="auto">去年我们看到 Bootstrap 在这个领域处于领先地位，但是 12 个月过去了，情况有所改变吗？</p>\n<p dir="auto">让我们来看看结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>回答</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>差异百分比（至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>没有框架</td>\n<td>1,054</td>\n<td>35.07%</td>\n<td>+2.15% + 2.15%</td>\n</tr>\n<tr>\n<td>Bootstrap</td>\n<td>840</td>\n<td>27.95%</td>\n<td>-7.01% - 7.01%</td>\n</tr>\n<tr>\n<td>自定义框架</td>\n<td>497</td>\n<td>16.54%</td>\n<td>+1.29% + 1.29%</td>\n</tr>\n<tr>\n<td>Tailwind CSS</td>\n<td>129</td>\n<td>4.29%</td>\n<td>N/A</td>\n</tr>\n<tr>\n<td>Bulma</td>\n<td>96</td>\n<td>3.19%</td>\n<td>+0.75% + 0.75%</td>\n</tr>\n<tr>\n<td>Foundation</td>\n<td>79</td>\n<td>2.63%</td>\n<td>-1.31% - 1.31%</td>\n</tr>\n<tr>\n<td>Materialize</td>\n<td>72</td>\n<td>2.40%</td>\n<td>-0.24% - 0.24%</td>\n</tr>\n<tr>\n<td>Semantic UI</td>\n<td>63</td>\n<td>2.10%</td>\n<td>+0.16% + 0.16%</td>\n</tr>\n<tr>\n<td>Tachyons</td>\n<td>25</td>\n<td>0.83%</td>\n<td>N/A</td>\n</tr>\n<tr>\n<td>PureCSS</td>\n<td>18</td>\n<td>0.60%</td>\n<td>-0.10% - 0.10%</td>\n</tr>\n<tr>\n<td>其他</td>\n<td>132</td>\n<td>4.39%</td>\n<td>-0.83% - 0.83%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/53c9cc16b9ed23bcaa31ab51785386e3f6f22ee276130fd5c102987f4a7b6fb3/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71352e6a7067"><img src="https://camo.githubusercontent.com/53c9cc16b9ed23bcaa31ab51785386e3f6f22ee276130fd5c102987f4a7b6fb3/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71352e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q5.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">与去年的结果相比，最流行的答案——只有三分之一多一点(35.07%)——是来自那些声称他们没有使用任何框架的开发人员。</p>\n<p dir="auto">虽然不再是这个问题的首选，Bootstrap 仍然是最流行的 CSS 框架，有 27.95% 的受访者使用它。 与去年相比，下降了 7.01% 。</p>\n<p dir="auto">在 Bootstrap 之后，第二流行的 CSS 框架是 Tailwind CSS。</p>\n<p dir="auto">与去年的结果显示了类似的趋势，当观察 CSS 框架对 CSS 知识水平的使用时，有一个明显的区别。 例如，声称自己是初学者或初学者级别的开发人员比声称自己是高级或专家级别开发人员的开发人员更有可能使用 Bootstrap (43.17%)。</p>\n<p dir="auto">在研究自定义 CSS 框架的使用时，还发现了知识水平之间的明显差异(但可以说是预料到的)。 总体而言，16.54% 的受访者表示他们使用了定制框架。 在调查那些声称自己是 CSS 初学者或初学者的受访者时，这一比例下降到了 8.63% ，而在调查拥有 CSS 高级或专家知识的开发者时，这一比例上升到了 20.35% 。</p>\n<p dir="auto">不过总体而言，与去年的结果相比，现成的 CSS 框架的使用似乎略有下降。</p>\n<h2 id="main-heading-H2-10">Q6 - CSS 命名模式</h2>\n<p dir="auto">调查中的下一个问题是: 你在编写 CSS 时使用 CSS 命名方案吗? 比如 BEM 或者 SUIT？</p>\n<p dir="auto">答复如下:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>回答</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>差异百分比（至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>是的</td>\n<td>1,565</td>\n<td>52.08%</td>\n<td>+3.15% + 3.15%</td>\n</tr>\n<tr>\n<td>没有-我听说过 CSS 命名方案，但没有使用</td>\n<td>1,153</td>\n<td>38.37%</td>\n<td>-0.76% - 0.76%</td>\n</tr>\n<tr>\n<td>没有-我从来没有听说过 CSS 命名方案</td>\n<td>287</td>\n<td>9.55%</td>\n<td>-2.39% - 2.39%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5846643c562891b3118e14641149bf161815654ccaa75aa4ce826952a40ff7f7/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71362e6a7067"><img src="https://camo.githubusercontent.com/5846643c562891b3118e14641149bf161815654ccaa75aa4ce826952a40ff7f7/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71362e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q6.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">自从 2016 年调查开始询问开发者关于 CSS 命名方案以来，大多数人(52.08%)回答说他们使用了 CSS 命名方案，比去年的结果增加了 3.15% 。</p>\n<p dir="auto">从未听说过 CSS 命名方案的开发人员也下降到了 9.55% ，比去年同期下降了 2.39% 。</p>\n<p dir="auto">从这些结果可以清楚地看出，这个工具领域的使用水平仍在上升，目前少数开发人员没有使用 CSS 命名方案。</p>\n<h2 id="main-heading-H2-11">Q7 - CSS Linting</h2>\n<p dir="auto">自从我们在 2016 年开始询问受访者关于这个主题的意见以来，CSS Linting 的使用量一直在逐渐增加。</p>\n<p dir="auto">去年，大多数开发人员(50.56%)仍然选择不使用他们的 CSS 代码风格检查工具，所以看看一年后这种动态是否发生了变化是很有趣的。</p>\n<p dir="auto">问题是——你用工具来格式化你的 CSS 吗？</p>\n<p dir="auto">以下是调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>回答</th>\n<th>投票数</th>\n<th>百分比</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>是的</td>\n<td>1,599</td>\n<td>53.21%</td>\n</tr>\n<tr>\n<td>不-我不 lint 我的 CSS</td>\n<td>1,406</td>\n<td>46.79% -3.77% - 3.77%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/32313016c36399c8c990e5e77645939ffb263a5919921383392a1b68036e8f78/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71372e6a7067"><img src="https://camo.githubusercontent.com/32313016c36399c8c990e5e77645939ffb263a5919921383392a1b68036e8f78/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71372e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q7.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">与 CSS 命名方案一样，结果显示，大多数受访者(53.21%)首次选择 lint 他们的 CSS，比去年的调查结果相同的人数增加了 3.77% 。</p>\n<p dir="auto">从结果中也可以清楚地看出，更高级的 CSS 开发人员更有可能 lint 他们的 CSS 嵌入其中。 只有 28.42% 的拥有初学者或初学者 CSS 知识的人说他们使用 CSS 连接器，而拥有高级 CSS 知识或更高级 CSS 知识的人只有 60.15% 。</p>\n<p dir="auto">从结果中还可以清楚地看到，更高级的 CSS 开发人员更有可能 lint 他们的 CSS。初学者或新手 CSS 知识的人中只有 28.42％的人说他们使用 CSS linter，而具有高级 CSS 知识或更高水平的人中有 60.15％。</p>\n<p dir="auto">随着 Stylelint 这样伟大的工具变得越来越广为人知(我们将在下一个问题中看到) ，CSS lint 在开发人员中稳步上升。</p>\n<h2 id="main-heading-H2-12">Q8 - CSS 工具体验</h2>\n<p dir="auto">接下来的四个问题涉及许多不同的 CSS 方法和帮助工具的知识和使用级别。</p>\n<p dir="auto">首先，问题 8 要求被调查者陈述他们使用 Autoprefixer、 Modernizr 和 Stylelint 的经验。</p>\n<p dir="auto">结果如下:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>从没听说过</th>\n<th>听说过 / 了解过</th>\n<th>用了一点</th>\n<th>使用时感觉舒适</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Autoprefixer</td>\n<td>16.71% (502)</td>\n<td>15.17% (456)</td>\n<td>17.60% (529)</td>\n<td>50.52% (1,518)</td>\n</tr>\n<tr>\n<td>Modernizr</td>\n<td>12.51% (376)</td>\n<td>28.99% (871)</td>\n<td>34.48% (1,036)</td>\n<td>24.03% (722)</td>\n</tr>\n<tr>\n<td>Stylelint</td>\n<td>37.74% (1,134)</td>\n<td>24.86% (747)</td>\n<td>14.38% (432)</td>\n<td>23.03% (692)</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d1ee6996210f60fcbdc4ce9599779fec4a2880ae82fcb94307183cf32569866f/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71382e6a7067"><img src="https://camo.githubusercontent.com/d1ee6996210f60fcbdc4ce9599779fec4a2880ae82fcb94307183cf32569866f/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71382e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q8.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">在这三个工具中，Autoprefixer 是最著名的，有 50.52% 的开发者回复说他们觉得使用它很舒服。</p>\n<p dir="auto">在过去的 12 个月中，Stylelint 知识水平增长最快，有 23.03% 的开发者现在对使用该工具感到满意——增长了 5.16% 。</p>\n<p dir="auto">Modernizr 略有下降，表示从未听说过它的受访者数量有所上升，表示使用它感到舒适的受访者数量有所下降(下降了 3.49% ，降至 24.03%)。</p>\n<h2 id="main-heading-H2-13">Q9 - CSS 方法和命名体验</h2>\n<p dir="auto">继上一个问题之后，调查对象被问到-请说明你使用以下 CSS 方法的经验。</p>\n<p dir="auto">结果如下:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>从没听说过</th>\n<th>听说过 / 了解过</th>\n<th>用了一点</th>\n<th>使用时感觉舒适</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>CSS-in-JS</td>\n<td>7.72% (232)</td>\n<td>39.43% (1,185)</td>\n<td>25.32% (761)</td>\n<td>27.52% (827</td>\n</tr>\n<tr>\n<td>SMACSS</td>\n<td>40.27% (1,210)</td>\n<td>39.13% (1,176)</td>\n<td>12.71% (382)</td>\n<td>7.89% (237)</td>\n</tr>\n<tr>\n<td>面向对象 CSS (OOCSS)</td>\n<td>30.22% (908)</td>\n<td>47.29% (1,421)</td>\n<td>14.18% (426)</td>\n<td>8.32% (250)</td>\n</tr>\n<tr>\n<td>Atomic Design</td>\n<td>27.99% (841)</td>\n<td>40.60% (1,220)</td>\n<td>16.87% (507)</td>\n<td>14.54% (437)</td>\n</tr>\n<tr>\n<td>ITCSS</td>\n<td>63.89% (1,920)</td>\n<td>24.29% (730)</td>\n<td>5.56% (167)</td>\n<td>6.26% (188)</td>\n</tr>\n<tr>\n<td>BEM</td>\n<td>13.48% (405)</td>\n<td>22.16% (666)</td>\n<td>20.83% (626)</td>\n<td>43.53% (1,308)</td>\n</tr>\n<tr>\n<td>SUIT CSS</td>\n<td>68.92% (2,071)</td>\n<td>24.96% (750)</td>\n<td>3.73% (112)</td>\n<td>2.40% (72)</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4a6c474f8e085f34397c3965930eaedcf4eef47df382dad8b951c08651c21a40/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71392e6a7067"><img src="https://camo.githubusercontent.com/4a6c474f8e085f34397c3965930eaedcf4eef47df382dad8b951c08651c21a40/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f71392e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q9.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">与去年的结果稍有不同，大多数 CSS 方法在知识水平方面都有所提高。</p>\n<p dir="auto">BEM 仍然是大多数受访者(43.53%)表示他们感到舒适的使用方法，比去年的结果上升了 5.37% 。</p>\n<p dir="auto">12 个月增幅最大的是 CSS-in-JS，开发人员表示，他们对使用该软件感到满意的比例上升了 7.6% ，达到 27.52% 。</p>\n<p dir="auto">与去年相比，SMACSS、 OOCSS、 Atomic Design 和 ITCSS 的受访者中至少听说过它们或者稍微使用过它们的人数都有所增加，其中 Atomic Design 和 ITCSS 的受访者增加最为显著。</p>\n<p dir="auto">具体而言，纵观上述 CSS 架构方法，即 SMACSS、 OOCSS、 Atomic Design、 ITCSS 和 CSS-in-js，认为使用其中至少一种方法感到舒适的受访者比例，从去年的 34.90% 上升至 2019 年的 42.26% 。 上升了 7.36% 。 当看到那些至少有一点点使用这些 CSS 方法的受访者时，这个数字从 2018 年的 66.49% 上升到了 70.75%</p>\n<p dir="auto">这些结果表明跨 CSS 方法和命名模式的知识水平正在上升，BEM、 CSS in-js 和 Atomic Design 是这一领域最著名的。</p>\n<h2 id="main-heading-H2-14">Q10 - 使用 CSS 工具</h2>\n<p dir="auto">继续关注 CSS 方法，问题 10-这些 CSS 方法或工具你目前在你的项目中使用？</p>\n<p dir="auto">让我们来看看结果。</p>\n<p dir="auto">在下面的可用答案中省略了 n.b.CSS-in-JS，因为问题 11 只关注 CSS-in-JS 的用法。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>工具 / 方法</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分百变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Autoprefixer</td>\n<td>1708</td>\n<td>56.84%</td>\n<td>+0.13% + 0.13%</td>\n</tr>\n<tr>\n<td>BEM</td>\n<td>1368</td>\n<td>45.52%</td>\n<td>+2.01% + 2.01%</td>\n</tr>\n<tr>\n<td>Stylelint</td>\n<td>826</td>\n<td>27.49%</td>\n<td>+4.71% + 4.71%</td>\n</tr>\n<tr>\n<td>Modernizr</td>\n<td>634</td>\n<td>21.10%</td>\n<td>-8.24% - 8.24%</td>\n</tr>\n<tr>\n<td>Atomic Design</td>\n<td>463</td>\n<td>15.41%</td>\n<td>+0.19% + 0.19%</td>\n</tr>\n<tr>\n<td>面向对象 CSS (OOCSS)</td>\n<td>218</td>\n<td>7.25%</td>\n<td>-1.98% - 1.98%</td>\n</tr>\n<tr>\n<td>SMACSS</td>\n<td>173</td>\n<td>5.76%</td>\n<td>-0.89% - 0.89%</td>\n</tr>\n<tr>\n<td>ITCSS</td>\n<td>155</td>\n<td>5.16%</td>\n<td>+0.36% + 0.36%</td>\n</tr>\n<tr>\n<td>SUIT CSS</td>\n<td>46</td>\n<td>1.53%</td>\n<td>+0.03% + 0.03%</td>\n</tr>\n<tr>\n<td>我不使用任何这些方法或工具</td>\n<td>664</td>\n<td>22.10%</td>\n<td>+5.18% + 5.18%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/56d144bf1f71ac40d6c1b96e9b286456f38fdf71e2f039fc8abdd10f9fd4c21e/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131302e6a7067"><img src="https://camo.githubusercontent.com/56d144bf1f71ac40d6c1b96e9b286456f38fdf71e2f039fc8abdd10f9fd4c21e/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131302e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q10.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">Autoprefixer 在这些工具和方法中使用最多(56.84%) ，其次是 BEM (45.52%)和 Stylelint (27.49%)。 这些数据都比 2018 年略有增长，其中 Stylelint 的增幅最大，达到 4.71% 。</p>\n<p dir="auto">在过去的 12 个月里，Modernizr 的使用率下降了 8.24% ，至 21.10% ，延续了去年观察到的使用率下降的趋势。</p>\n<p dir="auto">虽然 CSS 方法的知识水平似乎略有增长，但它们的使用水平与 2018 年的水平相当接近。 Atomic Design 仍然是最流行的 CSS 设计方法，有 15.41% 的开发者使用它。</p>\n<p dir="auto">总体而言，这些数字表明，自 2018 年以来，这一领域已经进入了整合的一年。</p>\n<h2 id="main-heading-H2-15">Q11 - CSS-in-JS 用法</h2>\n<p dir="auto">下一个问题是今年调查的一个新问题，它询问了一个最近很受关注的领域—— css in-js。</p>\n<p dir="auto">使用 CSS-in-JS 工具的开发人员数量已经增长到了这样一个程度，看看哪些工具在这个领域是最流行的会很有趣。</p>\n<p dir="auto">所以问题是-你更喜欢哪个 CSS-in-JS 工具？</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>工具 / 方法</th>\n<th>投票数</th>\n<th>百分比</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>我不在我的项目中使用 css in-js</td>\n<td>1,662</td>\n<td>55.31%</td>\n</tr>\n<tr>\n<td>Styled Components</td>\n<td>812</td>\n<td>27.02%</td>\n</tr>\n<tr>\n<td>CSS Modules</td>\n<td>292</td>\n<td>9.72%</td>\n</tr>\n<tr>\n<td>Emotion</td>\n<td>119</td>\n<td>3.96%</td>\n</tr>\n<tr>\n<td>JSS</td>\n<td>50</td>\n<td>1.66%</td>\n</tr>\n<tr>\n<td>Aphrodite</td>\n<td>10</td>\n<td>0.33%</td>\n</tr>\n<tr>\n<td>Radium</td>\n<td>1</td>\n<td>0.03%</td>\n</tr>\n<tr>\n<td>其他</td>\n<td>59</td>\n<td>1.96%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4322110f9e291c9bf28eb25f3059f9c4239afb407ba9fe60002a0b517f9eeddc/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131312e6a7067"><img src="https://camo.githubusercontent.com/4322110f9e291c9bf28eb25f3059f9c4239afb407ba9fe60002a0b517f9eeddc/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131312e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q11.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">44.69% 的受访者表示，他们现在使用 css in-js 工具，其中最流行的选项是 Styled Components (27.02%)。 CSS Modules(9.72%)和 Emotion (3.96%)是开发人员接下来最流行的工具。</p>\n<p dir="auto">大多数开发人员(55.31%)回答说他们不使用 css in-js 工具。 这仍然是一个相对较新的工具领域，并且考虑到它是专门用于某些用例的，因此看到这种情况并不令人惊讶。</p>\n<p dir="auto">正如您可能预期的那样，当声称拥有高级或专业 JS 技能的开发人员进行过滤时，使用 css in-JS 工具的受访者比例上升到了 51.38% 。 这也许并不奇怪，因为 CSS-in-JS 通常与 JavaScript 框架结合使用。</p>\n<p dir="auto">总的来说，很明显 css in-js 正在成为许多开发人员工具包的重要组成部分。 看看这些数字在未来会有什么变化是很有趣的。</p>\n<h2 id="main-heading-H2-16">Q12 - 使用 CSS 功能</h2>\n<p dir="auto">最后一个与 CSS 相关的问题集中在受访者对最近 CSS 特性的了解上。</p>\n<p dir="auto">关于最新的 CSS 特性，有这么多的文章和讨论，了解有多少开发人员已经开始将这些特性付诸实践，并获得了使用它们的经验，总是很有趣。</p>\n<p dir="auto">因此，受访者被要求-请说明您的经验，以下 CSS 功能。</p>\n<p dir="auto">以下是调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>从没听说过</th>\n<th>听说过 / 了解过</th>\n<th>用了一点</th>\n<th>使用时感觉舒适</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>CSS Grid</td>\n<td>0.90% (27)</td>\n<td>21.90% (658)</td>\n<td>48.62% (1,461)</td>\n<td>28.59% (859)</td>\n</tr>\n<tr>\n<td>Flexbox</td>\n<td>0.43% (13)</td>\n<td>2.50% (75)</td>\n<td>16.67% (501)</td>\n<td>80.40% (2,416)</td>\n</tr>\n<tr>\n<td>CSS 自定义属性</td>\n<td>8.95% (269)</td>\n<td>30.58% (919）</td>\n<td>32.58% (979)</td>\n<td>27.89% (838)</td>\n</tr>\n<tr>\n<td>CSS Houdini</td>\n<td>51.75% (1,555)</td>\n<td>46.46% (1,396)</td>\n<td>1.56% (47)</td>\n<td>0.23% (7)</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/056dde1dfcf7bd24ef9ec5f4b8272f19fc7b4a6eddd34fd4cb2f9ca4529758b1/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131322e6a7067"><img src="https://camo.githubusercontent.com/056dde1dfcf7bd24ef9ec5f4b8272f19fc7b4a6eddd34fd4cb2f9ca4529758b1/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131322e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q12.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">Flexbox (上涨 12.81% 至 80.40%)、 CSS Grid (上涨 10.11% 至 28.59%)和 CSS 自定义属性(上涨 8.86% 至 27.89%)的开发人员数量都有所上升，他们现在觉得使用它们很舒服。</p>\n<p dir="auto">几乎所有受访的开发者都使用过 Flexbox，97.07% 的受访者表示他们至少使用过一点(2018 年这一数字为 93.53%)。 可以肯定地说，现在所有前端开发人员都期望拥有 Flexbox 的知识。</p>\n<p dir="auto">CSS Grid 和 CSS 自定义属性都发现，从听说过或读到过它们到至少使用过一点这个功能的受访者数量有很大的变化。 对这些功能的了解似乎仍在增长，更多的受访者表示他们已经使用了一些这些功能，而不是那些觉得使用它们很舒服的人。</p>\n<p dir="auto">Css Houdini ——一组帮助开发人员本地扩展 CSS 的 api ——今年第一次被问及。 46.46% 的受访者表示他们听说过或读过该功能，但只有 1.79% 的人至少使用过一点。 这个特性仍然是最前沿的，所以目前很少有开发人员使用它也许并不奇怪。</p>\n<h2 id="main-heading-H2-17">Q13 - JavaScript 知识水平</h2>\n<p dir="auto">接下来是调查的第二部分，问题集中在 JavaScript 和它的工具生态系统上。</p>\n<p dir="auto">首先，我问了受访者-你如何评价自己对 JavaScript 及其相关工具和方法的知识？</p>\n<p dir="auto">以下是结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>知识</th>\n<th>投票数</th>\n<th>百分比</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>初学者</td>\n<td>70</td>\n<td>2.33%</td>\n</tr>\n<tr>\n<td>初学者(初级和中级之间)</td>\n<td>261</td>\n<td>8.69%</td>\n</tr>\n<tr>\n<td>中级</td>\n<td>901</td>\n<td>29.98%</td>\n</tr>\n<tr>\n<td>中级</td>\n<td>901</td>\n<td>29.98%</td>\n</tr>\n<tr>\n<td>高级(介于中级和专家之间)</td>\n<td>1,237</td>\n<td>41.16%</td>\n</tr>\n<tr>\n<td>专家</td>\n<td>536</td>\n<td>17.84%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/13f337f9668662692e8d075daed37ed55b66a13797404632271b200bf3f753a0/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131332e6a7067"><img src="https://camo.githubusercontent.com/13f337f9668662692e8d075daed37ed55b66a13797404632271b200bf3f753a0/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131332e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q13.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">绝大部分受访者认为自己至少达到中级或中级以上水平(88.98%) ，大多数受访者认为自己是高级或专家(59.0%)。</p>\n<p dir="auto">如果说这反映了我们整个行业的知识水平，那就错了——更有可能的是，这只反映了参加这样一个调查的人的知识水平。 正如您在此上下文中可能期望的那样，权重更倾向于高级端。</p>\n<h2 id="main-heading-H2-18">Q14 - 任务执行者</h2>\n<p dir="auto">去年我们看到 NPM Scripts 的使用在一定程度上领先于 Gulp。 他们在 12 个月内巩固了他们的地位吗？</p>\n<p dir="auto">受访者被问到的问题是: 在典型的项目工作流程中，您更喜欢使用哪个任务运行器？</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>任务执行者</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分比变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NPM Scripts</td>\n<td>1,933</td>\n<td>64.33%</td>\n<td>+16.44% + 16.44%</td>\n</tr>\n<tr>\n<td>Gulp</td>\n<td>557</td>\n<td>18.54%</td>\n<td>-11.02% - 11.02%</td>\n</tr>\n<tr>\n<td>没有使用</td>\n<td>273</td>\n<td>9.08%</td>\n<td>-1.61% - 1.61%</td>\n</tr>\n<tr>\n<td>Grunt</td>\n<td>76</td>\n<td>2.53%</td>\n<td>-3.26% - 3.26%</td>\n</tr>\n<tr>\n<td>图形用户界面应用程序(即 Codekit)</td>\n<td>30</td>\n<td>1.00%</td>\n<td>-0.04% - 0.04%</td>\n</tr>\n<tr>\n<td>Make</td>\n<td>21</td>\n<td>0.70%</td>\n<td>+0.06% + 0.06%</td>\n</tr>\n<tr>\n<td>其他</td>\n<td>115</td>\n<td>3.83%</td>\n<td>-0.56% - 0.56%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b797c7c33d42954efb81b5ded21622666429d1ebebceeff7ab322fad4ed0cd91/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131342e6a7067"><img src="https://camo.githubusercontent.com/b797c7c33d42954efb81b5ded21622666429d1ebebceeff7ab322fad4ed0cd91/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131342e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q14.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">从这些结果可以清楚地看出，NPM 脚本已经稳固地巩固了它在这一类别中的地位。 64.33% 的受访者表示他们现在它，比去年增加了 16.44% 。</p>\n<p dir="auto">几乎所有这类工具的使用率都有所下降，18.54% 的开发人员使用 Gulp (下降了-11.02%) ，只有 2.53% 的开发人员使用 Grunt (下降了-3.26%)。</p>\n<p dir="auto">9.08% 的受访者表示他们没有使用任务运行器，尽管这一比例比去年的结果下降了 1.61% 。</p>\n<p dir="auto">因此，这种趋势似乎继承了去年的结果，开发人员稳步地从 Gulp 和 Grunt 迁移到 NPM Scripts。</p>\n<h2 id="main-heading-H2-19">Q15 - 了解 JavaScript 库和框架</h2>\n<p dir="auto">在以下三个问题中，我们询问了受访者对 JavaScript 库和框架的知识和使用水平。</p>\n<p dir="auto">去年，React，Vue 和 Angular 2 + 在知识水平上获得了最大的收益。 仍然是大多数开发人员感到舒适的工具，但它的实际使用水平大幅下降。</p>\n<p dir="auto">这个问题着眼于各种工具的知识水平，要求受访者指出他们在哪些 JavaScript 库和框架中有经验。</p>\n<p dir="auto">以下是调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>从没听说过</th>\n<th>听说过 / 了解过</th>\n<th>用了一点</th>\n<th>使用时感觉舒适</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>jQuery</td>\n<td>0.03% (1)</td>\n<td>2.80% (84)</td>\n<td>21.80%</td>\n<td>75.37% (2,265)</td>\n</tr>\n<tr>\n<td>Lodash</td>\n<td>8.09% (243</td>\n<td>22.50% (676)</td>\n<td>28.75% (864)</td>\n<td>40.67% (1,222)</td>\n</tr>\n<tr>\n<td>Underscore</td>\n<td>12.58% (378)</td>\n<td>32.58% (979)</td>\n<td>26.39% (793)</td>\n<td>28.45% (855)</td>\n</tr>\n<tr>\n<td>React</td>\n<td>0.27% (8)</td>\n<td>24.53% (737)</td>\n<td>26.86% (807)</td>\n<td>48.35% (1,453)</td>\n</tr>\n<tr>\n<td>Vue.js</td>\n<td>0.43% (13)</td>\n<td>50.18% (1,508)</td>\n<td>26.19% (787)</td>\n<td>23.19% (697)</td>\n</tr>\n<tr>\n<td>Angular 1</td>\n<td>0.57% (17)</td>\n<td>50.75% (1,525)</td>\n<td>29.85% (897)</td>\n<td>29.85% (897)</td>\n</tr>\n<tr>\n<td>Angular 2+</td>\n<td>0.40% (12)</td>\n<td>63.73% (1,915)</td>\n<td>20.07% (603)</td>\n<td>15.81% (475)</td>\n</tr>\n<tr>\n<td>Ember</td>\n<td>5.49% (165)</td>\n<td>79.03% (2,375)</td>\n<td>8.22% (247)</td>\n<td>7.25% (218)</td>\n</tr>\n<tr>\n<td>Preact</td>\n<td>21.30% (640)</td>\n<td>65.02% (1,954)</td>\n<td>9.08% (273)</td>\n<td>4.59% (138)</td>\n</tr>\n<tr>\n<td>Backbone</td>\n<td>8.55% (257)</td>\n<td>65.69% (1,974)</td>\n<td>18.20% (547)</td>\n<td>7.55% (227)</td>\n</tr>\n<tr>\n<td>Knockout</td>\n<td>23.43% (704)</td>\n<td>62.53% (1,879)</td>\n<td>10.88% (327)</td>\n<td>3.16% (95)</td>\n</tr>\n<tr>\n<td>Aurelia</td>\n<td>44.79% (1,346)</td>\n<td>51.48% (1,547)</td>\n<td>2.73% (82)</td>\n<td>1.00% (30)</td>\n</tr>\n<tr>\n<td>MeteorJS</td>\n<td>18.24% (548)</td>\n<td>71.45% (2,147)</td>\n<td>8.95% (269)</td>\n<td>1.36% (41)</td>\n</tr>\n<tr>\n<td>Polymer</td>\n<td>18.64% (560)</td>\n<td>71.48% (2,148)</td>\n<td>8.39% (252)</td>\n<td>1.50% (45)</td>\n</tr>\n<tr>\n<td>D3.js</td>\n<td>13.48% (405)</td>\n<td>49.68% (1,493)</td>\n<td>29.55% (888)</td>\n<td>7.29% (219)</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/07c8e5ff270b07a73606b6b94e977f39a161086879b2d9d56a5cb8c571c22038/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131352e6a7067"><img src="https://camo.githubusercontent.com/07c8e5ff270b07a73606b6b94e977f39a161086879b2d9d56a5cb8c571c22038/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131352e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q15.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">调查结果显示，使用 jQuery (75.37%)、 React (48.35%)、 Lodash (40.67%)、 underline (28.45%)和 Vue.js (23.19%)的调查对象中，使用效果最好的工具是 jQuery (75.37%)。</p>\n<p dir="auto">使用 React 和 Vue 的开发人员数量增长最快，48.35% 的开发人员说他们现在使用 React 感到很舒服(比 2018 年增加了 7.92%) ，23.19% 的开发人员说 Vue 也是如此(增加了 6.12%)。</p>\n<p dir="auto">对 jQuery 持相同观点的受访者数量略有下降，为 75.37% (比 2018 年下降了 4.36%)。</p>\n<p dir="auto">Lodash 的知识水平也有所提高，使用该知识的人稍微增加了（28.75％），使用它的人感到舒适（40.67％）分别增加了+ 3.15％和+ 3.70％。</p>\n<p dir="auto">今年，D3.js 首次成为这个问题的一个选项，7.29% 的开发者表示他们觉得使用 D3.js 很舒服。</p>\n<p dir="auto">查看所有 JavaScript MV * 框架的知识水平——因此列表中除了 jQuery、Underscore、 Lodash 和 D3.js 之外的所有框架——78.54% 的受访者表示，他们觉得至少可以使用其中一个框架。 这个数字比去年增长了 8.04% ，自 2016 年以来增长了 28% ，表明了前端开发者至少了解其中一个工具的重要性。</p>\n<h2 id="main-heading-H2-20">Q16 - 最常用的 JS 框架 / 库</h2>\n<p dir="auto">接下来的问题是: 您目前在项目中使用最频繁的 JavaScript 库和 / 或框架是什么？</p>\n<p dir="auto">受访者被要求选择他们在项目中使用的所有(或者没有)工具。</p>\n<p dir="auto">答复如下:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分比变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>React</td>\n<td>1,569</td>\n<td>52.21% 5.21%</td>\n<td>+4.82% + 4.82%</td>\n</tr>\n<tr>\n<td>jQuery</td>\n<td>1,106</td>\n<td>36.81%</td>\n<td>-14.24% - 14.24%</td>\n</tr>\n<tr>\n<td>Lodash</td>\n<td>986</td>\n<td>32.81%</td>\n<td>-1.01% - 1.01%</td>\n</tr>\n<tr>\n<td>Vue.js</td>\n<td>816</td>\n<td>27.15% 2.15%</td>\n<td>+4.21% + 4.21%</td>\n</tr>\n<tr>\n<td>Angular (v2+)</td>\n<td>472</td>\n<td>15.71%</td>\n<td>+1.59% + 1.59%</td>\n</tr>\n<tr>\n<td>D3.js</td>\n<td>267</td>\n<td>8.89%</td>\n<td>N/A 不适用</td>\n</tr>\n<tr>\n<td>Ember</td>\n<td>201</td>\n<td>6.69%</td>\n<td>+0.68% + 0.68%</td>\n</tr>\n<tr>\n<td>Underscore</td>\n<td>199</td>\n<td>6.62%</td>\n<td>-1.22% - 1.22%</td>\n</tr>\n<tr>\n<td>AngularJS</td>\n<td>191</td>\n<td>6.36%</td>\n<td>-4.06% - 4.06%</td>\n</tr>\n<tr>\n<td>Preact</td>\n<td>75</td>\n<td>2.50%</td>\n<td>-0.48% - 0.48%</td>\n</tr>\n<tr>\n<td>Backbone</td>\n<td>55</td>\n<td>1.83%</td>\n<td>-0.72% - 0.72%</td>\n</tr>\n<tr>\n<td>Polymer</td>\n<td>35</td>\n<td>1.16%</td>\n<td>-0.58% - 0.58%</td>\n</tr>\n<tr>\n<td>Knockout</td>\n<td>30</td>\n<td>1.00%</td>\n<td>-0.83% - 0.83%</td>\n</tr>\n<tr>\n<td>Aurelia</td>\n<td>26</td>\n<td>0.87%</td>\n<td>-0.25% - 0.25%</td>\n</tr>\n<tr>\n<td>MeteorJS</td>\n<td>24</td>\n<td>0.80%</td>\n<td>-0.57% - 0.57%</td>\n</tr>\n<tr>\n<td>我不使用任何这些方法或工具</td>\n<td>120</td>\n<td>3.99%</td>\n<td>+0.38% + 0.38%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/011c3ea619248e8a1cacf62944563bb2424ec9a355794ea6ec21341b8eceb060/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131362e6a7067"><img src="https://camo.githubusercontent.com/011c3ea619248e8a1cacf62944563bb2424ec9a355794ea6ec21341b8eceb060/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131362e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q16.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">自 2015 年调查开始以来，jQuery 第一次不再是最常用的 JS 工具，React 现在占据了这个位置。</p>\n<p dir="auto">52.21% 的开发者说他们经常使用 React 在他们的项目，比去年增加了 4.82% 。 36.81% 的受访者表示他们经常使用 jQuery，比去年下降了 14.24% 。</p>\n<p dir="auto">其次是 Lodash (32.81%)、 Vue.js (27.15%)和 Angular v2 + (15.71%) ，与 2018 年相比分别有 -1.01% 、 + 4.21% 和 + 1.59% 的变化。</p>\n<h2 id="main-heading-H2-21">Q17 - 最基本的 JS 框架 / 库</h2>\n<p dir="auto">最后一个关于 JS 框架的问题是: 在你的大多数项目中，你认为哪个 JavaScript 库或框架对你来说是必不可少的？</p>\n<p dir="auto">去年，React 获得了来自开发者的最大份额的回复，但是 12 个月以来有什么变化吗？</p>\n<p dir="auto">让我们来看看:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分比变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>React</td>\n<td>985</td>\n<td>32.78%</td>\n<td>+4.31% + 4.31%</td>\n</tr>\n<tr>\n<td>它们都不是必不可少的——我只是在我的项目中使用本地 JavaScript 就感到很舒服</td>\n<td>651</td>\n<td>21.66%</td>\n<td>+0.05% + 0.05%</td>\n</tr>\n<tr>\n<td>Vue.js</td>\n<td>404</td>\n<td>13.44%</td>\n<td>+3.22% + 3.22%</td>\n</tr>\n<tr>\n<td>jQuery</td>\n<td>335</td>\n<td>11.15%</td>\n<td>-8.59% - 8.59%</td>\n</tr>\n<tr>\n<td>Angular (v2+)</td>\n<td>255</td>\n<td>8.49%</td>\n<td>+2.30% + 2.30%</td>\n</tr>\n<tr>\n<td>Ember</td>\n<td>167</td>\n<td>5.56%</td>\n<td>+1.17% + 1.17%</td>\n</tr>\n<tr>\n<td>Lodash</td>\n<td>73</td>\n<td>2.43%</td>\n<td>-0.99% - 0.99%</td>\n</tr>\n<tr>\n<td>AngularJS</td>\n<td>22</td>\n<td>0.73%</td>\n<td>-0.97% - 0.97%</td>\n</tr>\n<tr>\n<td>Aurelia</td>\n<td>18</td>\n<td>0.60%</td>\n<td>0%</td>\n</tr>\n<tr>\n<td>Backbone</td>\n<td>11</td>\n<td>0.37%</td>\n<td>+0.08% + 0.08%</td>\n</tr>\n<tr>\n<td>Preact</td>\n<td>8</td>\n<td>0.27%</td>\n<td>0%</td>\n</tr>\n<tr>\n<td>Underscore</td>\n<td>7</td>\n<td>0.23%</td>\n<td>-0.19% - 0.19%</td>\n</tr>\n<tr>\n<td>Polymer</td>\n<td>7</td>\n<td>0.23%</td>\n<td>-0.28% - 0.28%</td>\n</tr>\n<tr>\n<td>MeteorJS</td>\n<td>4</td>\n<td>0.13%</td>\n<td>-0.05% - 0.05%</td>\n</tr>\n<tr>\n<td>Knockout</td>\n<td>1</td>\n<td>0.03%</td>\n<td>-0.13% - 0.13%</td>\n</tr>\n<tr>\n<td>D3.js</td>\n<td>1</td>\n<td>0.03%</td>\n<td>N/A 不适用</td>\n</tr>\n<tr>\n<td>其他(请注明)</td>\n<td>56</td>\n<td>1.86%</td>\n<td>+0.07% + 0.07%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2c1a238b57529f439ced8fb93cdbf1ddea59df5ebfdaf06fb4f4a9b7d2f804ea/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131372e6a7067"><img src="https://camo.githubusercontent.com/2c1a238b57529f439ced8fb93cdbf1ddea59df5ebfdaf06fb4f4a9b7d2f804ea/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131372e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q17.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">在 32.78％的受访者中，React 巩固了其在今年业绩中的地位，他们认为这是最重要的 JavaScript 库或框架。这个数字比去年的调查增长了+ 4.31％。</p>\n<p dir="auto">21.66% 的开发者表示，他们认为在这个类别中没有必要的工具。</p>\n<p dir="auto">其次是 Vue.js，增长了 13.44% (比去年增长了 3.22%) ，jQuery 增长了 11.15% (下降了 8.59%) ，Angular v2 + 增长了 8.49% (上升了 2.3%)。</p>\n<p dir="auto">当按经验水平过滤时，结果会更加明显。 具有 0-2 年前端开发经验的开发人员中，有 45.14％的人表示 React 对他们至关重要。 当查看那些具有 10 年以上经验的开发人员时，这一数字下降到了 24.02％。 具有该经验水平的开发人员中，有 28.06％的人还说，没有库或工具对他们来说是必不可少的。</p>\n<p dir="auto">总的来说，从与 JS 库和框架相关的所有三个问题的结果来看，React 的知识水平和使用率仍在增长，而 vue.JS 显然是第二受欢迎的 JavaScript 框架(尽管仍然落后于 React 的受欢迎程度)。</p>\n<p dir="auto">jQuery 的使用率虽然稳步下降，但仍然很高——比起 Lodash，它仍然被更多的受访者频繁使用。</p>\n<h2 id="main-heading-H2-22">Q18 - 模块打包器的使用</h2>\n<p dir="auto">在过去的几次调查中，Webpack 在这类工具中占据了主导地位。 那么，是否有工具开始削弱它的统治地位呢？</p>\n<p dir="auto">问题是——您是否在工作流程中使用了 JavaScript 模块打包器？</p>\n<p dir="auto">以下是调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>模块打包器</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分比变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Webpack</td>\n<td>2,204</td>\n<td>73.34%</td>\n<td>+7.66% + 7.66%</td>\n</tr>\n<tr>\n<td>我不使用模块打包器</td>\n<td>440</td>\n<td>14.64%</td>\n<td>-5.91% - 5.91%</td>\n</tr>\n<tr>\n<td>Parcel</td>\n<td>85</td>\n<td>2.83%</td>\n<td>+1.79% + 1.79%</td>\n</tr>\n<tr>\n<td>Rollup</td>\n<td>62</td>\n<td>2.06%</td>\n<td>-0.12% - 0.12%</td>\n</tr>\n<tr>\n<td>Browserify</td>\n<td>49</td>\n<td>1.63%</td>\n<td>-2.09% - 2.09%</td>\n</tr>\n<tr>\n<td>RequireJS</td>\n<td>37</td>\n<td>1.23%</td>\n<td>-1.32% - 1.32%</td>\n</tr>\n<tr>\n<td>SystemJS</td>\n<td>3</td>\n<td>0.10%</td>\n<td>N/A 不适用</td>\n</tr>\n<tr>\n<td>其他(请注明)</td>\n<td>125</td>\n<td>4.16%</td>\n<td>+0.15% + 0.15%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/93c75450bbe9a0db6965dbd793a9c7c7554362e00ac59a3a454b271809539527/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131382e6a7067"><img src="https://camo.githubusercontent.com/93c75450bbe9a0db6965dbd793a9c7c7554362e00ac59a3a454b271809539527/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131382e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q18.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">在过去的 12 个月里，Webpack 持续增长，73.34% 的受访者表示他们把 Webpack 作为他们的模块捆绑器。 这比去年增长了 7.66% 。</p>\n<p dir="auto">其次是 Parcel and Rollup，分别占 2.83% 和 2.06% 。</p>\n<p dir="auto">声称自己没有使用模块打包器的开发人员数量也下降了 5.91% ，降至 14.64% 。 这意味着 85.36% 的受访者正在使用模块打包器。</p>\n<h2 id="main-heading-H2-23">Q19 - 模块打包器和任务管理器的经验</h2>\n<p dir="auto">下一个问题是询问被调查者关于他们在前面提到的模块打包机和任务管理器中的经验水平。</p>\n<p dir="auto">结果如下:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>从没听说过</th>\n<th>听说过 / 了解过</th>\n<th>用了一点</th>\n<th>使用时感觉舒适</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Gulp</td>\n<td>1.66% (50)</td>\n<td>+0.21%</td>\n<td>20.33% (611)</td>\n<td>+1.34%</td>\n</tr>\n<tr>\n<td>NPM Scripts</td>\n<td>3.13% (94)</td>\n<td>- 1.23%</td>\n<td>9.15% (275)</td>\n<td>- 3.59%</td>\n</tr>\n<tr>\n<td>Grunt</td>\n<td>2.93% (88)</td>\n<td>+ 0.68%</td>\n<td>34.51% (1,037)</td>\n<td>+1.37%</td>\n</tr>\n<tr>\n<td>Webpack</td>\n<td>2.03% (61)</td>\n<td>-0.61%</td>\n<td>13.28% (399)</td>\n<td>-6.02%</td>\n</tr>\n<tr>\n<td>Browserify</td>\n<td>11.91% (358)</td>\n<td>+2.33%</td>\n<td>52.95% (1,591)</td>\n<td>+0.84%</td>\n</tr>\n<tr>\n<td>Parcel</td>\n<td>30.18% (907)</td>\n<td>-15.14%</td>\n<td>49.78% (1,496)</td>\n<td>+3.34%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/484c579c720f4d8a169e60f3bbd44bc613b748783dd5c1a31f163f78f4e28ea6/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131392e6a7067"><img src="https://camo.githubusercontent.com/484c579c720f4d8a169e60f3bbd44bc613b748783dd5c1a31f163f78f4e28ea6/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7131392e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q19.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">结果显示，大部分受访者认为最适合使用的工具是 NPM Scripts (64.39%)、 Webpack (52.38%)和 Gulp (45.79%)。</p>\n<p dir="auto">Npm Scripts 和 Webpack 发现，使用它们的开发人员数量增长最快。</p>\n<p dir="auto">使用 Parcel 的人数也出现了不错的增长，使用过至少一点 Parcel 的受访者(12.98% ，上升了 7.47%)和使用得心应手的受访者(7.05% ，上升了 4.32%)均比 2018 年有所上升。</p>\n<h2 id="main-heading-H2-24">Q20 - JavaScript-转换器</h2>\n<p dir="auto">在最近的两次调查中，Javascript 的转换器已经发展到一个水平，以至于现在绝大多数开发人员现在都在其工作流程中使用它。</p>\n<p dir="auto">虽然我不认为 JavaScript 的使用在过去的 12 个月里有所下降，但是看看它的使用水平以及它仍在增长的程度还是很有趣的。</p>\n<p dir="auto">问题是-您是否使用工具将您的 JavaScript 从 ES6 转移到 ES5？ (即 Babel)</p>\n<p dir="auto">研究结果如下:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>回答</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分比变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>是的</td>\n<td>2,451</td>\n<td>81.56%</td>\n<td>+ 4.80%</td>\n</tr>\n<tr>\n<td>不，我听说过这些工具，但没用过</td>\n<td>466</td>\n<td>15.51%</td>\n<td>- 4.01%</td>\n</tr>\n<tr>\n<td>没有我从没听说过 JavaScript 转换器</td>\n<td>88</td>\n<td>2.93%</td>\n<td>- 0.79%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5aaff8616b479bd101dba52b4063e38e7ec00caadf0a46b308452a0fdb2df413/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132302e6a7067"><img src="https://camo.githubusercontent.com/5aaff8616b479bd101dba52b4063e38e7ec00caadf0a46b308452a0fdb2df413/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132302e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q20.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">编译器的使用持续增长，目前有 81.56％的受访者在其工作流程中使用，增长了 4.8％。</p>\n<p dir="auto">如您所料，在前端开发方面经验较少的开发人员不太可能使用编译器，有 0-2 年经验的受访者中有 70％表示这样做。</p>\n<h2 id="main-heading-H2-25">Q21 - JavaScript 扩展语言</h2>\n<p dir="auto">下一个问题是去年增加的一个新问题，关注扩展语言，比如 TypeScript 和 Flow。</p>\n<p dir="auto">TypeScript 是当时大多数受访者都习惯使用的工具，但是这种情况在 12 个月后发生了变化吗？</p>\n<p dir="auto">问题是-请说明您使用以下 JavaScript 扩展的经验。</p>\n<p dir="auto">以下是今年的调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>从没听说过</th>\n<th>听说过 / 了解过</th>\n<th>用了一点</th>\n<th>使用时感觉舒适</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>TypeScript</td>\n<td>1.16% (35)</td>\n<td>- 1.07%</td>\n<td>36.74% (1,104)</td>\n<td>- 11.31%</td>\n</tr>\n<tr>\n<td>Flow</td>\n<td>27.92% (839)</td>\n<td>- 5.99%</td>\n<td>55.97% (1,682)</td>\n<td>+ 5.50%</td>\n</tr>\n<tr>\n<td>Elm</td>\n<td>29.42% (884)</td>\n<td>+ 0.10%</td>\n<td>63.93% (1,921)</td>\n<td>- 0.47%</td>\n</tr>\n<tr>\n<td>ClojureScript</td>\n<td>32.31% (971)</td>\n<td>- 1.24%</td>\n<td>65.69% (1974)</td>\n<td>+ 2.09%</td>\n</tr>\n<tr>\n<td>Dart</td>\n<td>27.75% (834)</td>\n<td>N/A 不适用</td>\n<td>67.62% (2032)</td>\n<td>N/A 不适用</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7f5e4c2c63521d1dfce8f2387fd2a559bbbada7a37559f7c87d094091dfc0d8a/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132312e6a7067"><img src="https://camo.githubusercontent.com/7f5e4c2c63521d1dfce8f2387fd2a559bbbada7a37559f7c87d094091dfc0d8a/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132312e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q21.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">TypeScript 仍然是大多数受访者感到舒服的工具，其使用率为 31.91% ，比去年增长了 10.03% 。</p>\n<p dir="auto">这一类别中的其他工具的数据没有真正的变化，没有真正的增长或下降。</p>\n<p dir="auto">这些结果似乎表明，当涉及到这类工具时，TypeScript 是大多数开发人员正在寻找的工具。 虽然大多数开发人员还不知道，但是它正在逐年稳步增长，看看这种情况在未来是否会继续下去是很有趣的。</p>\n<h2 id="main-heading-H2-26">Q22 - JavaScript 静态代码检查</h2>\n<p dir="auto">当涉及到 JS 工作流时，JavaScript lint 工具实际上是组成的一部分，去年，ESL​​int 显然是大多数开发人员所使用的工具。</p>\n<p dir="auto">我问的问题是——你用什么工具来编译你的 JavaScript？ (如有的话)</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>工具</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分比变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>ESLint</td>\n<td>2,286</td>\n<td>76.07%</td>\n<td>+15.39%</td>\n</tr>\n<tr>\n<td>我不使用 JavaScript linter</td>\n<td>360</td>\n<td>11.98%</td>\n<td>-3.42%</td>\n</tr>\n<tr>\n<td>JSLint</td>\n<td>143</td>\n<td>4.76%</td>\n<td>-2.44%</td>\n</tr>\n<tr>\n<td>JSHint</td>\n<td>67</td>\n<td>2.23%</td>\n<td>-1.74%</td>\n</tr>\n<tr>\n<td>StandardJS</td>\n<td>43</td>\n<td>1.43%</td>\n<td>-0.16%</td>\n</tr>\n<tr>\n<td>其他(请注明)</td>\n<td>106</td>\n<td>3.53%</td>\n<td>+2.54%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8ddf379e684a8351c4386f05289dacc7acc9b84ac45005ba55e64d92c2da2b54/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132322e6a7067"><img src="https://camo.githubusercontent.com/8ddf379e684a8351c4386f05289dacc7acc9b84ac45005ba55e64d92c2da2b54/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132322e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q22.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">结果显示了一个非常明显的趋势，ESLint 的使用量仍然在上升，而所有其他临时工具的使用量似乎都在下降。 76.07% 的受访者表示他们使用 ESLint，比去年增加了 15.39% 。</p>\n<p dir="auto">ESLint 使用率的提高可能要归功于 TSLint 团队在 2 月份决定弃用 TSLint，并将精力集中在<a href="https://medium.com/palantir/tslint-in-2019-1a144c2317a9" rel="nofollow">改善 ESLint 的 TypeScript 支持</a>上。</p>\n<p dir="auto">表示不使用 JavaScript linter 的受访者比例今年也下降到了 11.98% 。 这意味着 88.02% 的开发者正在使用一个工具来帮助他们在这个领域工作，这比 12 个月前的 84.6% 的调查对象增加了 3.42% 。</p>\n<p dir="auto">因此，没有真正的惊喜，但进一步巩固与 ESLint 非常认为是该类别的首选工具。</p>\n<h2 id="main-heading-H2-27">Q23 - JavaScript 测试</h2>\n<p dir="auto">下一个问题是关于 JavaScript 测试工具的使用。</p>\n<p dir="auto">今年，这个问题的格式略有改变，因为受访者的反馈显示，许多开发人员使用了多种工具，而不仅仅是一种。 因此，受访者可以选择多个答案，而不是只选择一个来反映这种行为。</p>\n<p dir="auto">我在去年的结果中加入了百分比差异作为参考，但是由于这种格式上的改变，所有的工具的使用率都可能至少会有一个小小的增长。</p>\n<p dir="auto">问题是-这些工具中的哪一个是你用来测试你的 JavaScript 的？ (如有的话)</p>\n<p dir="auto">以下是调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>工具</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分比变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Jest</td>\n<td>1,348</td>\n<td>44.86%</td>\n<td>+22.83%</td>\n</tr>\n<tr>\n<td>我不使用工具来测试我的 JS</td>\n<td>1,071</td>\n<td>35.64%</td>\n<td>-7.98%</td>\n</tr>\n<tr>\n<td>Mocha</td>\n<td>785</td>\n<td>26.12%</td>\n<td>+12.17%</td>\n</tr>\n<tr>\n<td>Jasmine</td>\n<td>585</td>\n<td>19.47%</td>\n<td>+8.52%</td>\n</tr>\n<tr>\n<td>Enzyme</td>\n<td>560</td>\n<td>18.64%</td>\n<td>+16.86%</td>\n</tr>\n<tr>\n<td>Cypress</td>\n<td>378</td>\n<td>12.58%</td>\n<td>N/A</td>\n</tr>\n<tr>\n<td>QUnit</td>\n<td>184</td>\n<td>6.12%</td>\n<td>+1.94%</td>\n</tr>\n<tr>\n<td>Ava</td>\n<td>102</td>\n<td>3.39%</td>\n<td>+2.25%</td>\n</tr>\n<tr>\n<td>Tape</td>\n<td>57</td>\n<td>1.90%</td>\n<td>+0.98%</td>\n</tr>\n<tr>\n<td>其他(请注明)</td>\n<td>109</td>\n<td>3.63%</td>\n<td>+3.63%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/6186a0afe08532db72350922c3f5fbeffbb8bf6c4bb0b700a8b4a948229b1711/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132332e6a7067"><img src="https://camo.githubusercontent.com/6186a0afe08532db72350922c3f5fbeffbb8bf6c4bb0b700a8b4a948229b1711/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132332e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q23.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">和 2018 年一样，Jest 仍然是大多数受访者使用的工具，占 44.86% 。 其次是 Mocha(26.12%)、Jasmine(19.47%)和 Enzyme(18.64%)。</p>\n<p dir="auto">使用任何工具测试 JavaScript 的开发者比例上升到 64.36% ，比去年增加了 7.98% 。</p>\n<p dir="auto">我认为今年的结果表明，现在有非常广泛的工具可用来进行 JavaScript 测试。 尽管 Jest 是目前最流行的工具，但在这个领域还有很多其他值得探索的流行选项。</p>\n<h2 id="main-heading-H2-28">Q24 - 性能工具及特点</h2>\n<p dir="auto">下一个问题是关于开发人员如何在构建项目时考虑性能的新增问题。</p>\n<p dir="auto">现在有这么多的工具和原生特性，当提到页面性能时，我很好奇哪些工具在整个社区中使用最多。</p>\n<p dir="auto">我问的问题是，这些工具、库或语言特性中，哪些是你用来帮助提高性能的？ (如有的话)。 受访者可以选择一个或多个选项列出。</p>\n<p dir="auto">让我们来看看结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>工具</th>\n<th>投票数</th>\n<th>百分比</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Lighthouse</td>\n<td>1,566</td>\n<td>52.11%</td>\n</tr>\n<tr>\n<td>这些工具都没有</td>\n<td>952</td>\n<td>31.68%</td>\n</tr>\n<tr>\n<td>WebPageTest</td>\n<td>730</td>\n<td>24.29%</td>\n</tr>\n<tr>\n<td>Service Workers</td>\n<td>695</td>\n<td>23.13%</td>\n</tr>\n<tr>\n<td>Pingdom</td>\n<td>317</td>\n<td>10.55%</td>\n</tr>\n<tr>\n<td>AMP (Accelerated Mobile Pages)</td>\n<td>174</td>\n<td>5.79%</td>\n</tr>\n<tr>\n<td>其他(请注明)</td>\n<td>109</td>\n<td>3.63%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8577a5161e2a3ba9218d832f797718ab5d0004e36ab4043cabf1faa89c16a189/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132342e6a7067"><img src="https://camo.githubusercontent.com/8577a5161e2a3ba9218d832f797718ab5d0004e36ab4043cabf1faa89c16a189/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132342e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q24.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">Lighthouse 是最受受访者欢迎的选择，有 52.11％的人说他们在进行性能测试时使用了它。</p>\n<p dir="auto">令人惊讶的是，第二受欢迎的选项是“这些工具都没有 ，31.68% 的受访者说他们没有使用任何提到的工具或特性。</p>\n<p dir="auto">在其他可用的选项中，24.29% 的开发者说他们使用 WebPageTest，23.13% 的开发者说他们在他们的项目中使用了 Service Workers。</p>\n<p dir="auto">有趣的是，只有 5.79% 的开发者说他们在他们的项目中实现了 AMP (加速移动页面)。 考虑到谷歌在过去几年里为 AMP 的实施所付出的努力，似乎在受访者的使用水平方面仍然是相当小众的。</p>\n<h2 id="main-heading-H2-29">Q25 - 辅助工具</h2>\n<p dir="auto">今年调查的另一个新问题是，调查受访者对可访问性测试工具的使用水平。</p>\n<p dir="auto">问题是这些可访问性工具中哪些是你用来测试你的网站 / 应用程序的？ 受访者可以选择指定的一个或多个选项。</p>\n<p dir="auto">以下是调查结果:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>工具</th>\n<th>投票数</th>\n<th>百分比</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>我不使用任何工具来测试我的网站 / 应用程序的可访问性</td>\n<td>1,897</td>\n<td>63.13%</td>\n</tr>\n<tr>\n<td>Colour Contrast Checker (i.e. contrastchecker.com)</td>\n<td>667</td>\n<td>22.20%</td>\n</tr>\n<tr>\n<td>Screenreader (i.e. JAWS, Voiceover)</td>\n<td>464</td>\n<td>15.44%</td>\n</tr>\n<tr>\n<td>WAVE</td>\n<td>285</td>\n<td>9.48%</td>\n</tr>\n<tr>\n<td>其他(请注明)</td>\n<td>282</td>\n<td>9.38%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/458242677b35ce1f7bb5f60db5719b260eec4ac9c0f2760e14fc5a4ff102cb67/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132352e6a7067"><img src="https://camo.githubusercontent.com/458242677b35ce1f7bb5f60db5719b260eec4ac9c0f2760e14fc5a4ff102cb67/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132352e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q25.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">令人惊讶的是，63.13% 的受访者表示他们没有使用任何工具来测试他们的项目的可访问性。</p>\n<p dir="auto">22.20% 的受访者表示他们使用了颜色对比度检查器，只有 15.44% 的人表示他们使用了屏幕阅读器进行可访问性测试。</p>\n<p dir="auto">我不得不说，这些数字读起来非常令人沮丧。</p>\n<p dir="auto">看看这些原始数据，你就会发现为什么人们不使用这些工具，但是作为一个相信每个人都有权访问我们正在建设的网站的人，看到几乎三分之二的开发者没有使用工具来测试他们的项目的可访问性是令人失望的。</p>\n<p dir="auto">像 Wave 和 Axe 这样的工具(很多受访者在“其他工具”下提到过)非常容易使用，如果你还没有使用过，我强烈建议你试试看。</p>\n<p dir="auto">希望我们能够更多地展示这些工具的价值和易用性，这些使用数字在开发人员中可能会增加更多。</p>\n<h2 id="main-heading-H2-30">Q26 - JavaScript 包管理器</h2>\n<p dir="auto">今年调查的倒数第二个问题是关于 JS 包管理器的，问题是——您在工作流中主要使用哪个 JavaScript 包管理器？</p>\n<p dir="auto">去年，NPM 是最受欢迎的软件包管理器，但是 Yarn 在过去的 12 个月里有什么进展吗？</p>\n<p dir="auto">大家是这样回应的:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>回答</th>\n<th>投票数</th>\n<th>百分比</th>\n<th>百分比变化(截至 2018 年)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NPM</td>\n<td>1,965</td>\n<td>65.39%</td>\n<td>+2.00%</td>\n</tr>\n<tr>\n<td>Yarn</td>\n<td>895</td>\n<td>29.78%</td>\n<td>-0.36%</td>\n</tr>\n<tr>\n<td>我不使用包管理器</td>\n<td>135</td>\n<td>4.49%</td>\n<td>-1.24%</td>\n</tr>\n<tr>\n<td>其他</td>\n<td>10</td>\n<td>0.33%</td>\n<td>-0.40%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b1891545838a24c6c8f7f57f843818af186aa258d3809e26328482ff09cf0dc0/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132362e6a7067"><img src="https://camo.githubusercontent.com/b1891545838a24c6c8f7f57f843818af186aa258d3809e26328482ff09cf0dc0/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132362e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q26.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">查看调查结果，NPM 的使用率略有增长，65.39% 的受访者说他们现在使用它。</p>\n<p dir="auto">Yarn 使用率保持相当稳定，下降了一小部分，为 29.78% 。</p>\n<p dir="auto">总的来说，大多数人似乎很高兴使用 NPM 作为他们的软件包管理器，与去年的数据相比，在这个类别中没有观察到真正的变化。</p>\n<h2 id="main-heading-H2-31">Q27 - 杂项工具</h2>\n<p dir="auto">最后一个问题考察了各种前端工具的知识水平(其中一些工具不完全适合前面提到的任何类别)。</p>\n<p dir="auto">被调查者被要求-请说明您使用以下前端工具的经验。</p>\n<p dir="auto">以下是人们的反应:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th></th>\n<th>从没听说过</th>\n<th>听说过 / 了解过</th>\n<th>用了一点</th>\n<th>使用时感觉舒适</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>NPM</td>\n<td>0.43% (13)</td>\n<td>-0.41%</td>\n<td>1.80% (54)</td>\n<td>-0.69%</td>\n</tr>\n<tr>\n<td>Yarn</td>\n<td>3.29% (99)</td>\n<td>-2.95%</td>\n<td>22.30% (670)</td>\n<td>-4.21%</td>\n</tr>\n<tr>\n<td>Babel</td>\n<td>2.70% (81)</td>\n<td>-1.07%</td>\n<td>16.71% (502)</td>\n<td>-4.22%</td>\n</tr>\n<tr>\n<td>Prettier</td>\n<td>15.67% (471)</td>\n<td>-14.76%</td>\n<td>21.60% (649)</td>\n<td>-8.03%</td>\n</tr>\n<tr>\n<td>Yeoman</td>\n<td>24.76% (744)</td>\n<td>+5.63%</td>\n<td>40.67% (1,222)</td>\n<td>-1.18%</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2131bf12e1f14b05c0461dae656261a25a17b59079652add5c6953f71c6b3ea9/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132372e6a7067"><img src="https://camo.githubusercontent.com/2131bf12e1f14b05c0461dae656261a25a17b59079652add5c6953f71c6b3ea9/68747470733a2f2f6173686c65796e6f6c616e2e636f2e756b2f6173736574732f696d672f626c6f672f746f6f6c696e672d7375727665792f323031392f7132372e6a7067" alt="" data-canonical-src="https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2019/q27.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">在这些工具中，NPM 是大多数受访者认为他们感觉舒服的工具(87.02%)， 和 Babel，分别占 50.62% 和 49.62% ，是开发人员第二熟悉的工具，在过去的 12 个月里，这两个工具的开发人员知识水平都有小幅提升。</p>\n<p dir="auto">与去年的调查结果相比，最大的变化是现在使用 Prettier 的受访者数量增加了 16.53% ，达到 40.43% 。</p>\n<p dir="auto">自由开发者的知识水平略有下降，去年也出现了这一趋势。</p>\n<h2 id="main-heading-H2-32">总结</h2>\n<p dir="auto">这样我们就可以了–在工具方面又是有趣的一年！</p>\n<p dir="auto">在工具的某些领域，开发人员显然是在围绕一个工具进行整合。 例如，ESLint、 NPM Scripts 和 Webpack 分别用于 JavaScript 的 lint、任务运行和模块打包。</p>\n<p dir="auto">看看 JavaScript 框架和库，React 保持了它作为受访者中最重要的框架的地位，受访者将 Vue.JS 列为第二重要的 JS 框架 / 库。 很大比例的开发人员(21.66%)仍然认为没有单一的框架或库是必不可少的，原生 JS 每年都在变得更加强大。</p>\n<p dir="auto">今年调查结果中最令人震惊的数字来自无障碍测试，63.13% 的受访者表示他们没有使用任何工具来测试他们的项目。 作为一个行业，我们必须做得更好——不仅仅是因为这是道德上应该做的正确事情，还因为从法律的角度来看，<a href="https://www.zdnet.com/article/supreme-court-lets-blind-man-sue-dominos-over-website-accessibility/" rel="nofollow">无障碍诉讼正变得越来越普遍</a>。</p>\n<p dir="auto">在 CSS 工具方面，Sass 仍然是最流行的 CSS 处理器，但是 Bootstrap 的流行度略有下降，因为大多数开发者现在选择不在他们的项目中使用任何 CSS 框架。</p>\n<p dir="auto">现在有 53.21% 的开发者使用 CSS linter，52.08% 的开发者使用 CSS 命名方案。</p>\n<p dir="auto">Css in-js 也在以稳定的速度增长，44.69% 的开发人员表示他们使用了 css in-js 工具。</p>\n<p dir="auto">总的来说，我认为随着我们的前端工具变得更加成熟，整合似乎正在发生，这是令人鼓舞的。 随着更强大的工具的出现，取代这些工具的需求不再那么普遍，我认为我们正在这些结果中看到这一点的证据。</p>\n<p dir="auto">在大多数工具类别中，现在都有明确的领导者-几年前还没有做到这一点。 这有助于减少知识流失，可能使所有级别的开发人员都可以更轻松地知道在选择新工具时最好在哪里花时间，这只是一件好事。</p>\n<p dir="auto">再次感谢参加今年活动的每一个人。</p>\n<p dir="auto">如果任何人对任何结果有任何疑问，请在 <a href="https://twitter.com/WelshAsh_" rel="nofollow">Twitter</a> 上与我联系，我会尽我所能提供帮助。</p>',user:{login:d,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:e,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/101"},navList:[{text:"快速感谢",id:"main-heading-H2-0",type:t,children:[]},{text:"结果",id:"main-heading-H2-1",type:t,children:[]},{text:"前言免责声明",id:"main-heading-H2-2",type:t,children:[]},{text:"回应",id:"main-heading-H2-3",type:t,children:[]},{text:"问题索引",id:"main-heading-H2-4",type:t,children:[]},{text:"Q1 - 一般前端经验",id:"main-heading-H2-5",type:t,children:[]},{text:"Q2 - CSS 知识水平",id:"main-heading-H2-6",type:t,children:[]},{text:"Q3 - 使用 CSS 处理器",id:"main-heading-H2-7",type:t,children:[]},{text:"Q4 - CSS 处理器经验",id:"main-heading-H2-8",type:t,children:[]},{text:"Q5 - 使用 CSS 框架",id:"main-heading-H2-9",type:t,children:[]},{text:"Q6 - CSS 命名模式",id:"main-heading-H2-10",type:t,children:[]},{text:"Q7 - CSS Linting",id:"main-heading-H2-11",type:t,children:[]},{text:"Q8 - CSS 工具体验",id:"main-heading-H2-12",type:t,children:[]},{text:"Q9 - CSS 方法和命名体验",id:"main-heading-H2-13",type:t,children:[]},{text:"Q10 - 使用 CSS 工具",id:"main-heading-H2-14",type:t,children:[]},{text:"Q11 - CSS-in-JS 用法",id:"main-heading-H2-15",type:t,children:[]},{text:"Q12 - 使用 CSS 功能",id:"main-heading-H2-16",type:t,children:[]},{text:"Q13 - JavaScript 知识水平",id:"main-heading-H2-17",type:t,children:[]},{text:"Q14 - 任务执行者",id:"main-heading-H2-18",type:t,children:[]},{text:"Q15 - 了解 JavaScript 库和框架",id:"main-heading-H2-19",type:t,children:[]},{text:"Q16 - 最常用的 JS 框架 / 库",id:"main-heading-H2-20",type:t,children:[]},{text:"Q17 - 最基本的 JS 框架 / 库",id:"main-heading-H2-21",type:t,children:[]},{text:"Q18 - 模块打包器的使用",id:"main-heading-H2-22",type:t,children:[]},{text:"Q19 - 模块打包器和任务管理器的经验",id:"main-heading-H2-23",type:t,children:[]},{text:"Q20 - JavaScript-转换器",id:"main-heading-H2-24",type:t,children:[]},{text:"Q21 - JavaScript 扩展语言",id:"main-heading-H2-25",type:t,children:[]},{text:"Q22 - JavaScript 静态代码检查",id:"main-heading-H2-26",type:t,children:[]},{text:"Q23 - JavaScript 测试",id:"main-heading-H2-27",type:t,children:[]},{text:"Q24 - 性能工具及特点",id:"main-heading-H2-28",type:t,children:[]},{text:"Q25 - 辅助工具",id:"main-heading-H2-29",type:t,children:[]},{text:"Q26 - JavaScript 包管理器",id:"main-heading-H2-30",type:t,children:[]},{text:"Q27 - 杂项工具",id:"main-heading-H2-31",type:t,children:[]},{text:"总结",id:"main-heading-H2-32",type:t,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:d,userEmail:"1656800216@qq.com",repository:"blog",blogName:a,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:a,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:e}},serverRendered:!0}}("H2","","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,1039 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Vue SSR 技术栈 —— Nuxt 项目优化实践 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="目录 增加打包命令，根据参数切换测试生产环境 静态资源切换 CDNcategory 自定义 html 模板 优化打包体积 去除重复打包依赖 bn.js（废弃） 加密库 crypto-js 只引入 AES 加密相关（废弃） 按需引入 lodash（废弃） 外部引入 vue、encrypt、vue-aw"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Vue SSR 技术栈 —— Nuxt 项目优化实践"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="目录 增加打包命令，根据参数切换测试生产环境 静态资源切换 CDNcategory 自定义 html 模板 优化打包体积 去除重复打包依赖 bn.js（废弃） 加密库 crypto-js 只引入 AES 加密相关（废弃） 按需引入 lodash（废弃） 外部引入 vue、encrypt、vue-aw"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Vue SSR 技术栈 —— Nuxt 项目优化实践"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="目录 增加打包命令，根据参数切换测试生产环境 静态资源切换 CDNcategory 自定义 html 模板 优化打包体积 去除重复打包依赖 bn.js（废弃） 加密库 crypto-js 只引入 AES 加密相关（废弃） 按需引入 lodash（废弃） 外部引入 vue、encrypt、vue-aw"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/202#main-heading-H2-0" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/202#main-heading-H2-1" title="一、增加打包命令，根据参数切换测试生产环境" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              一、增加打包命令，根据参数切换测试生产环境
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/202#main-heading-H2-2" title="二、静态资源切换 CDN category" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              二、静态资源切换 CDN category
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/202#main-heading-H2-3" title="三、自定义 html 模板" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              三、自定义 html 模板
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/202#main-heading-H2-4" title="四、优化打包体积" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              四、优化打包体积
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/202#main-heading-H2-5" title="五、首屏优化" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              五、首屏优化
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/202#main-heading-H2-6" title="六、其他优化" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              六、其他优化
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Vue SSR 技术栈 —— Nuxt 项目优化实践</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Vue SSR 技术栈 —— Nuxt 项目优化实践</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2021-02-21</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 39 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">目录</h2>
+<ul dir="auto">
+<li>增加打包命令，根据参数切换测试生产环境</li>
+<li>静态资源切换 CDNcategory</li>
+<li>自定义 html 模板</li>
+<li>优化打包体积
+<ul dir="auto">
+<li>去除重复打包依赖 bn.js（废弃）</li>
+<li>加密库 crypto-js 只引入 AES 加密相关（废弃）</li>
+<li>按需引入 lodash（废弃）</li>
+<li>外部引入 vue、encrypt、vue-awesome-swiper</li>
+<li>按需引入 vant、lodash</li>
+</ul>
+</li>
+<li>首屏优化
+<ul dir="auto">
+<li>图片懒加载</li>
+<li>css 优先加载，JS 后置</li>
+</ul>
+</li>
+<li>其他优化
+<ul dir="auto">
+<li>node-sass 更换为 sass</li>
+</ul>
+</li>
+</ul>
+<h2 id="main-heading-H2-1">一、增加打包命令，根据参数切换测试生产环境</h2>
+<p dir="auto">原 package.json 中一般有 dev 和 generate 两个命令，现增加 serve 命令，修改如下：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=' "scripts": {
+    "serve": "cross-env PATH_TYPE=development nuxt",      //开发环境，环境参数为development
+    "dev": "cross-env PATH_TYPE=trial nuxt generate",	  //测试环境，环境参数为trial
+    "generate": "cross-env PATH_TYPE=production  nuxt generate",    //生产环境，环境参数为production
+    "build": "nuxt build"
+  }'><pre class="notranslate"> <span class="pl-s">"scripts"</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"serve"</span>: <span class="pl-s">"cross-env PATH_TYPE=development nuxt"</span><span class="pl-kos">,</span>      <span class="pl-c">//开发环境，环境参数为development</span>
+    <span class="pl-s">"dev"</span>: <span class="pl-s">"cross-env PATH_TYPE=trial nuxt generate"</span><span class="pl-kos">,</span>	  <span class="pl-c">//测试环境，环境参数为trial</span>
+    <span class="pl-s">"generate"</span>: <span class="pl-s">"cross-env PATH_TYPE=production  nuxt generate"</span><span class="pl-kos">,</span>    <span class="pl-c">//生产环境，环境参数为production</span>
+    <span class="pl-s">"build"</span>: <span class="pl-s">"nuxt build"</span>
+  <span class="pl-kos">}</span></pre></div>
+<p dir="auto">对应开发环、测试和生产环境打包命令分别为 serve、dev 和 generate，配置完成后测试环境需要在jenkins 下打包，打包命令选择 npm run dev</p>
+<p dir="auto">特殊的，对于采用 Git子模块方式引用的，打包命令需修改为 sh build.sh [dev|generate]</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='
+"scripts": {
+    "serve": "cross-env PATH_TYPE=development nuxt",   //开发环境
+    "dev": "sh build.sh dev",     //测试环境
+    "generate": "sh build.sh generate",   //生产环境
+	"build": "nuxt build"
+  }
+'><pre class="notranslate"><span class="pl-s">"scripts"</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"serve"</span>: <span class="pl-s">"cross-env PATH_TYPE=development nuxt"</span><span class="pl-kos">,</span>   <span class="pl-c">//开发环境</span>
+    <span class="pl-s">"dev"</span>: <span class="pl-s">"sh build.sh dev"</span><span class="pl-kos">,</span>     <span class="pl-c">//测试环境</span>
+    <span class="pl-s">"generate"</span>: <span class="pl-s">"sh build.sh generate"</span><span class="pl-kos">,</span>   <span class="pl-c">//生产环境</span>
+	<span class="pl-s">"build"</span>: <span class="pl-s">"nuxt build"</span>
+  <span class="pl-kos">}</span></pre></div>
+<p dir="auto">build.sh 也需要做如下更改：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="echo &#34;EXEC git clone -b dev http://gitlab.xxx.com/nuxt-common.git &#34;
+git clone -b dev http://gitlab.xxx.com/nuxt-common.git
+
+if [[ $1 == &#34;dev&#34; ]]; then
+    echo '开始编译测试环境'
+    cross-env PATH_TYPE=trial nuxt generate
+    exit
+fi
+
+if [[ $1 == &#34;generate&#34; ]]; then
+    echo '开始生产环境编译'
+    cross-env PATH_TYPE=production  nuxt generate
+    exit
+fi
+
+echo '请指定编译方式  dev 或者 generate'"><pre class="notranslate"><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>EXEC git clone -b dev http://gitlab.xxx.com/nuxt-common.git <span class="pl-pds">"</span></span>
+git clone -b dev http://gitlab.xxx.com/nuxt-common.git
+
+<span class="pl-k">if</span> [[ <span class="pl-smi">$1</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>dev<span class="pl-pds">"</span></span> ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
+    <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>开始编译测试环境<span class="pl-pds">'</span></span>
+    cross-env PATH_TYPE=trial nuxt generate
+    <span class="pl-c1">exit</span>
+<span class="pl-k">fi</span>
+
+<span class="pl-k">if</span> [[ <span class="pl-smi">$1</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>generate<span class="pl-pds">"</span></span> ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
+    <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>开始生产环境编译<span class="pl-pds">'</span></span>
+    cross-env PATH_TYPE=production  nuxt generate
+    <span class="pl-c1">exit</span>
+<span class="pl-k">fi</span>
+
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>请指定编译方式  dev 或者 generate<span class="pl-pds">'</span></span></pre></div>
+<p dir="auto">在 nuxt.config.js 中增加环境参数配置：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {
+  mode: 'universal',
+  env: {
+    PATH_TYPE: process.env.PATH_TYPE
+  }
+};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">mode</span>: <span class="pl-s">'universal'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">env</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">PATH_TYPE</span>: <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">在项目代码中直接使用 process.env.PATH_TYPE 直接获取环境参数，例如根据环境参数切换接口 baseUrl</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="let host = !process.server ? location.origin : '';
+let path = process.env.PATH_TYPE !== 'production' ? '/test-api' : '/api';
+
+// 1)实例化一个axios对象 http（根据当前环境配置baseURL）
+const http = axios.create({
+  baseURL: host + path,
+  timeout: 10000
+});"><pre class="notranslate"><span class="pl-k">let</span> <span class="pl-s1">host</span> <span class="pl-c1">=</span> <span class="pl-c1">!</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">server</span> ? <span class="pl-s1">location</span><span class="pl-kos">.</span><span class="pl-c1">origin</span> : <span class="pl-s">''</span><span class="pl-kos">;</span>
+<span class="pl-k">let</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">!==</span> <span class="pl-s">'production'</span> ? <span class="pl-s">'/test-api'</span> : <span class="pl-s">'/api'</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 1)实例化一个axios对象 http（根据当前环境配置baseURL）</span>
+<span class="pl-k">const</span> <span class="pl-s1">http</span> <span class="pl-c1">=</span> <span class="pl-s1">axios</span><span class="pl-kos">.</span><span class="pl-en">create</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">baseURL</span>: <span class="pl-s1">host</span> <span class="pl-c1">+</span> <span class="pl-s1">path</span><span class="pl-kos">,</span>
+  <span class="pl-c1">timeout</span>: <span class="pl-c1">10000</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-2">二、静态资源切换 CDN category</h2>
+<p dir="auto">目前仅生产环境有 cdn 域名，所以配置中需要区分测试和生产环境，nuxt.config.js 增加如下配置</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//项目访问路径
+let baseUrl = '/project-path/';
+//资源路径前缀，生产环境使用cdn域名
+let publicPath =
+  process.env.PATH_TYPE !== 'production' ? '/_nuxt/' : `//cdn.xx.cn/${baseUrl}`;
+export default {
+  mode: 'universal',
+  router: {
+    base: baseUrl //项目访问路径
+  },
+  build: {
+    publicPath: publicPath //静态资源路径，默认为/_nuxt/,生产环境配置为 //cdn.xx.cn
+  }
+};"><pre class="notranslate"><span class="pl-c">//项目访问路径</span>
+<span class="pl-k">let</span> <span class="pl-s1">baseUrl</span> <span class="pl-c1">=</span> <span class="pl-s">'/project-path/'</span><span class="pl-kos">;</span>
+<span class="pl-c">//资源路径前缀，生产环境使用cdn域名</span>
+<span class="pl-k">let</span> <span class="pl-s1">publicPath</span> <span class="pl-c1">=</span>
+  <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">!==</span> <span class="pl-s">'production'</span> ? <span class="pl-s">'/_nuxt/'</span> : <span class="pl-s">`//cdn.xx.cn/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">baseUrl</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">mode</span>: <span class="pl-s">'universal'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">router</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">base</span>: <span class="pl-s1">baseUrl</span> <span class="pl-c">//项目访问路径</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">publicPath</span>: <span class="pl-s1">publicPath</span> <span class="pl-c">//静态资源路径，默认为/_nuxt/,生产环境配置为 //cdn.xx.cn</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">配置完成后，使用 npm run generate 打包，项目 dist 目录下查看 index.html,静态资源已经切换为//cdn.xx.cn 域名</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<!-- 生产环境打包后静态资源和图片资源域名都是//cdn.xx.cn -->
+<link
+  rel="preload"
+  href="//cdn.xx.cn/0001/ab8c55e7bbe08cb5535b.js"
+  as="script"
+/>
+<!-- 测试环境打包静态资源会在/_nuxt目录下，生产环境打包会在根目录下，因此访问地址稍有不同 -->
+<!-- <link rel="preload" href="/project-path/_nuxt/cfe229c4b19f0c0e605f.js" as="script"> -->
+<link
+  rel="preload"
+  href="//cdn.xx.cn/0001/c37e933a0ed58670cf09.js"
+  as="script"
+/>
+<link
+  rel="preload"
+  href="//cdn.xx.cn/0001/82b7242da0af4228da8e.css"
+  as="style"
+/>
+<link
+  rel="preload"
+  href="//cdn.xx.cn/0001/89ed111ab3dd0c94c966.js"
+  as="script"
+/>
+<link
+  rel="preload"
+  href="//cdn.xx.cn/0001/0b6786c39409821386d9.css"
+  as="style"
+/>
+<link
+  rel="preload"
+  href="//cdn.xx.cn/0001/62bb49672485b605cbb5.js"
+  as="script"
+/>
+<link
+  rel="preload"
+  href="//cdn.xx.cn/0001/26de14d649e499f9125c.css"
+  as="style"
+/>
+<link
+  rel="preload"
+  href="//cdn.xx.cn/0001/4e8179eeaba3480b7378.js"
+  as="script"
+/>
+<link rel="stylesheet" href="//cdn.xx.cn/0001/82b7242da0af4228da8e.css" />
+<link rel="stylesheet" href="//cdn.xx.cn/0001/0b6786c39409821386d9.css" />
+<link rel="stylesheet" href="//cdn.xx.cn/0001/26de14d649e499f9125c.css" />'><pre class="notranslate"><span class="pl-c">&lt;!-- 生产环境打包后静态资源和图片资源域名都是//cdn.xx.cn --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>
+  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"
+  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/ab8c55e7bbe08cb5535b.js</span>"
+  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"
+<span class="pl-kos">/></span>
+<span class="pl-c">&lt;!-- 测试环境打包静态资源会在/_nuxt目录下，生产环境打包会在根目录下，因此访问地址稍有不同 --></span>
+<span class="pl-c">&lt;!-- &lt;link rel="preload" href="/project-path/_nuxt/cfe229c4b19f0c0e605f.js" as="script"> --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>
+  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"
+  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/c37e933a0ed58670cf09.js</span>"
+  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"
+<span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>
+  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"
+  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/82b7242da0af4228da8e.css</span>"
+  <span class="pl-c1">as</span>="<span class="pl-s">style</span>"
+<span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>
+  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"
+  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/89ed111ab3dd0c94c966.js</span>"
+  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"
+<span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>
+  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"
+  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/0b6786c39409821386d9.css</span>"
+  <span class="pl-c1">as</span>="<span class="pl-s">style</span>"
+<span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>
+  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"
+  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/62bb49672485b605cbb5.js</span>"
+  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"
+<span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>
+  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"
+  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/26de14d649e499f9125c.css</span>"
+  <span class="pl-c1">as</span>="<span class="pl-s">style</span>"
+<span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>
+  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"
+  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/4e8179eeaba3480b7378.js</span>"
+  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"
+<span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/82b7242da0af4228da8e.css</span>" <span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/0b6786c39409821386d9.css</span>" <span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/26de14d649e499f9125c.css</span>" <span class="pl-kos">/></span></pre></div>
+<p dir="auto">不参与打包的静态资源切换 cdn（如 static 下的 js）</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="script: [
+  {
+    //直接更换域名
+    src: '//cdn.xx.cn/assets//trace-record.js'
+  },
+  {
+    src: '//cdn.xx.cn/js/reference.js'
+  }
+];"><pre class="notranslate">script: <span class="pl-kos">[</span>
+  <span class="pl-kos">{</span>
+    <span class="pl-c">//直接更换域名</span>
+    <span class="pl-c1">src</span>: <span class="pl-s">'//cdn.xx.cn/assets//trace-record.js'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">{</span>
+    <span class="pl-c1">src</span>: <span class="pl-s">'//cdn.xx.cn/js/reference.js'</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-3">三、自定义 html 模板</h2>
+<p dir="auto">在项目根目录下新建 app.html，将 meta 和 rem.js 直接写到 head 中，保持原有{{HEAD}}和{{APP}}不动</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, initial-scale=1, maximun-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="full-screen" content="yes" />
+    <meta name="browsermode" content="application" />
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script>
+      //插入rem.js
+    </script>
+    {{HEAD}}
+  </head>
+  <body>
+    {{APP}}
+  </body>
+</html>'><pre class="notranslate"><span class="pl-c1">&lt;!doctype html<span class="pl-kos">></span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">utf-8</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span>
+      <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>"
+      <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1, initial-scale=1, maximun-scale=1, user-scalable=no, viewport-fit=cover</span>"
+    <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">apple-mobile-web-app-capable</span>" <span class="pl-c1">content</span>="<span class="pl-s">yes</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">apple-mobile-web-app-status-bar-style</span>" <span class="pl-c1">content</span>="<span class="pl-s">black</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">format-detection</span>" <span class="pl-c1">content</span>="<span class="pl-s">telephone=no</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">screen-orientation</span>" <span class="pl-c1">content</span>="<span class="pl-s">portrait</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">full-screen</span>" <span class="pl-c1">content</span>="<span class="pl-s">yes</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">browsermode</span>" <span class="pl-c1">content</span>="<span class="pl-s">application</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">x5-orientation</span>" <span class="pl-c1">content</span>="<span class="pl-s">portrait</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">x5-fullscreen</span>" <span class="pl-c1">content</span>="<span class="pl-s">true</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">icon</span>" <span class="pl-c1">type</span>="<span class="pl-s">image/x-icon</span>" <span class="pl-c1">href</span>="<span class="pl-s">favicon.ico</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+      <span class="pl-c">//插入rem.js</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+    {{HEAD}}
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+    {{APP}}
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">新建完成后，可以删除 nuxt.config.js 中 head 属性下静态 meta 和 icon 的配置</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="head: {
+  title: '产品名称',
+  //删除静态meta设置，仅保留seo信息
+  meta: [{
+    hid: 'description',
+    name: 'description',
+    content: '描述内容'
+  }],
+  link: [],   //删除icon配置
+  script: []  //正常引入外部js，删除原有 rem.js 引用
+}"><pre class="notranslate">head: <span class="pl-kos">{</span>
+  <span class="pl-c1">title</span>: <span class="pl-s">'产品名称'</span><span class="pl-kos">,</span>
+  <span class="pl-c">//删除静态meta设置，仅保留seo信息</span>
+  <span class="pl-c1">meta</span>: <span class="pl-kos">[</span><span class="pl-kos">{</span>
+    <span class="pl-c1">hid</span>: <span class="pl-s">'description'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">name</span>: <span class="pl-s">'description'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">content</span>: <span class="pl-s">'描述内容'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">link</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span>   <span class="pl-c">//删除icon配置</span>
+  <span class="pl-c1">script</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span>  <span class="pl-c">//正常引入外部js，删除原有 rem.js 引用</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-4">四、优化打包体积</h2>
+<p dir="auto">如果项目安装了 nuxt-common 依赖，则去除重复打包依赖 bn.js 和加密库 crypto-js 只引入 AES 加密相关可以参照外部引入 vue、encrypt、vue-awesome-swiper 配置</p>
+<p dir="auto">按需引入 lodash 可以参照按需引入 vant 配置重要，使用 npm 包引入 node-rsa 会引入 es6，导致低版本浏览器加载异常，若不单独做 babel 处理，强烈推荐使用 cdn 引入 encrypt；在 IE 9 浏览器中可以模拟验证</p>
+<p dir="auto">查看打包体积需要依赖 webpack-bundle-analyzer 插件，nuxt 集成了该插件，在 nuxt.config.js 做如下配置：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {
+  build: {
+    analyze: true
+  }
+};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">analyze</span>: <span class="pl-c1">true</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">然后<code class="notranslate">npm run build --analyze</code>或<code class="notranslate">npm run build -a</code>，等待打包完毕后，在自动打开的网页中可以查看打包情况（或手动打开/.nuxt/stats/client.html）</p>
+<p dir="auto"><strong>去除重复打包依赖 bn.js（废弃）</strong></p>
+<p dir="auto">多个库都依赖了 bn.js，会导致重复打包，nuxt.config.js 中加入如下配置：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require('path');
+export default {
+  mode: 'universal',
+  build: {
+    extend(config) {
+      //增加别名，指定bn.js路径
+      config.resolve.alias['bn.js'] = path.resolve(
+        process.cwd(),
+        'node_modules',
+        'bn.js'
+      );
+    }
+  }
+};"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'path'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">mode</span>: <span class="pl-s">'universal'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>
+    <span class="pl-en">extend</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">//增加别名，指定bn.js路径</span>
+      <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">resolve</span><span class="pl-kos">.</span><span class="pl-c1">alias</span><span class="pl-kos">[</span><span class="pl-s">'bn.js'</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span>
+        <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">cwd</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+        <span class="pl-s">'node_modules'</span><span class="pl-kos">,</span>
+        <span class="pl-s">'bn.js'</span>
+      <span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">查看打包结果，如下左图为添加配置前，bn.js 被多次打包，添加配置后，只会打包一次依赖</p>
+<p dir="auto"><strong>加密库 crypto-js 只引入 AES 加密相关（废弃）</strong></p>
+<p dir="auto">加密库 crypto-js 提供多种加密方式，项目中仅用到 AES 加密，在 api.js 中单独引入相关模块，代码如下：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// import CryptoJS from 'crypto-js';
+const CryptoJS = require('crypto-js/core.js');
+//仅引入AES加密所需库
+require('crypto-js/enc-base64.js');
+require('crypto-js/md5.js');
+require('crypto-js/mode-ecb.js');
+require('crypto-js/pad-nopadding.js');
+require('crypto-js/aes.js');"><pre class="notranslate"><span class="pl-c">// import CryptoJS from 'crypto-js';</span>
+<span class="pl-k">const</span> <span class="pl-v">CryptoJS</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto-js/core.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//仅引入AES加密所需库</span>
+<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto-js/enc-base64.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto-js/md5.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto-js/mode-ecb.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto-js/pad-nopadding.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto-js/aes.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">仅修改引入方式，加密代码不用做更改。</p>
+<p dir="auto"><strong>按需引入 lodash（废弃）</strong></p>
+<p dir="auto">项目中多处引用 loadsh，直接使用引入会导致库文件整体打包，体积庞大。可以指定具体引用 js 文件按需加载，如：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//直接引入会导致loadsh整体打包
+//import {cloneDeep, debounce} from 'lodash';
+//指定cloneDeep引入，具体文件目录可以在lodash源码中查看
+import cloneDeep from 'lodash/cloneDeep';
+import debounce from 'lodash/debounce';"><pre class="notranslate"><span class="pl-c">//直接引入会导致loadsh整体打包</span>
+<span class="pl-c">//import {cloneDeep, debounce} from 'lodash';</span>
+<span class="pl-c">//指定cloneDeep引入，具体文件目录可以在lodash源码中查看</span>
+<span class="pl-k">import</span> <span class="pl-s1">cloneDeep</span> <span class="pl-k">from</span> <span class="pl-s">'lodash/cloneDeep'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">debounce</span> <span class="pl-k">from</span> <span class="pl-s">'lodash/debounce'</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">如果项目中引入 loadsh 的地方过多，不好更改，可以使用 lodash-webpack-plugin 插件自动按需加载 lodash，配置方式如下：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//需要安装依赖
+//npm i lodash-webpack-plugin --save-dev
+//npm i babel-plugin-lodash --save-dev
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+export default {
+  mode: 'universal',
+  build: {
+    extend(config) {
+      config.plugins.unshift(new LodashModuleReplacementPlugin());
+      config.module.rules[2].use[0].options.plugins = ['lodash'];
+    }
+  }
+};"><pre class="notranslate"><span class="pl-c">//需要安装依赖</span>
+<span class="pl-c">//npm i lodash-webpack-plugin --save-dev</span>
+<span class="pl-c">//npm i babel-plugin-lodash --save-dev</span>
+<span class="pl-k">const</span> <span class="pl-v">LodashModuleReplacementPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'lodash-webpack-plugin'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">mode</span>: <span class="pl-s">'universal'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>
+    <span class="pl-en">extend</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">unshift</span><span class="pl-kos">(</span><span class="pl-k">new</span> <span class="pl-v">LodashModuleReplacementPlugin</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">module</span><span class="pl-kos">.</span><span class="pl-c1">rules</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">use</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'lodash'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>外部引入 vue、encrypt、vue-awesome-swiper</strong></p>
+<p dir="auto">多个产品里面都用到相同版本的 vue、node-rsa、crypto-js、swiper。不通过外部引入会打包到项目文件中去，导致产品切换的时候都要重新下载一次这些公共文件。通过外部引入的方式，在第一个产品加载后，访问后面的产品就不需要再下</p>
+<ol dir="auto">
+<li>配置 webpack externals</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{ build: {
+    transpile: [/nuxt-common/],
+    extend(config, {isClient}) {
+      if(isClient){
+        config.externals = {};
+		//本地不使用cdn,runtime包不能使用vue-devtool
+		if (process.env.PATH_TYPE != 'development') {
+          config.externals['vue'] = 'Vue';
+          config.externals['vuex'] = 'Vuex';
+          config.externals['vue-router'] = 'VueRouter';
+        }
+      }
+    },
+}"><pre class="notranslate"><span class="pl-kos">{</span> <span class="pl-c1">build</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">transpile</span>: <span class="pl-kos">[</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">n</span><span class="pl-s">u</span><span class="pl-s">x</span><span class="pl-s">t</span><span class="pl-s">-</span><span class="pl-s">c</span><span class="pl-s">o</span><span class="pl-s">m</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">n</span><span class="pl-c1">/</span></span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-en">extend</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>isClient<span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-s1">isClient</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+        <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+		<span class="pl-c">//本地不使用cdn,runtime包不能使用vue-devtool</span>
+		<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">!=</span> <span class="pl-s">'development'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span><span class="pl-kos">[</span><span class="pl-s">'vue'</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s">'Vue'</span><span class="pl-kos">;</span>
+          <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span><span class="pl-kos">[</span><span class="pl-s">'vuex'</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s">'Vuex'</span><span class="pl-kos">;</span>
+          <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span><span class="pl-kos">[</span><span class="pl-s">'vue-router'</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s">'VueRouter'</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span></pre></div>
+<ol start="2" dir="auto">
+<li>使用 nuxt-common/common/http/encrypt</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { AESEncrypt, encryptData } from 'nuxt-common/common/http/encrypt';"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">AESEncrypt</span><span class="pl-kos">,</span> <span class="pl-s1">encryptData</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'nuxt-common/common/http/encrypt'</span><span class="pl-kos">;</span></pre></div>
+<ol start="3" dir="auto">
+<li>配置外部引入 vue，encrypt</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  script: [
+    {
+      defer: true,
+      src: '//cdn.xx.cn/assets/public-js/common/http/encrypt.js'
+    },
+    {
+      defer: true,
+      src: '//cdn.xx.cn/assets/public-js/lib/vue.all.runtime.js'
+    }
+  ];
+}"><pre class="notranslate"><span class="pl-kos">{</span>
+  script: <span class="pl-kos">[</span>
+    <span class="pl-kos">{</span>
+      <span class="pl-c1">defer</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c1">src</span>: <span class="pl-s">'//cdn.xx.cn/assets/public-js/common/http/encrypt.js'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span>
+      <span class="pl-c1">defer</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c1">src</span>: <span class="pl-s">'//cdn.xx.cn/assets/public-js/lib/vue.all.runtime.js'</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<ol start="4" dir="auto">
+<li>根据需要加载 vue-awesome-swiper</li>
+</ol>
+<p dir="auto">（1）使用 swiper 组件的方式可选加载方式</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='/*
+* plugins/main.js
+*/
+loadCss(&#39;/assets/public-js/lib/vue-awesome-swiper3.1.3.css&#39;);
+loadJs(&#39;/assets/public-js/lib/vue-awesome-swiper3.1.3.js&#39;).then(() => {
+    Vue.use(window.VueAwesomeSwiper);
+});
+
+
+
+/*
+* 使用swiper的vue文件
+*/
+<template>
+    <swiper v-show="confirmType == &#39;A&#39;" ref="mySwiper" :options="swiperOptions">
+        <swiper-slide class=&#39;swiper-slide&#39; v-for="(item,index) in contents" :key="index" :class="{&#39;single-slide&#39;: contents.length == 1, &#39;last-slide&#39;: index == contents.length - 1 && contents.length != 1}">
+          <img class="content-tab-img" src="./img/icon-title.png"/>
+          <div class="content">
+            <div class="content-title">{{item.title}}</div>
+            <div class="content-tips">{{item.tips}}</div>
+            <div class=&#39;content-line&#39; v-html="item.content"></div>
+          </div>
+          <span @click="confirmA(index)" class="content-confirm">知道了</span>
+        </swiper-slide>
+        <div slot="pagination" v-show="contents.length > 1" class="swiper-pagination"></div>
+    </swiper>
+</template>
+<script>
+export default {
+ data() {
+    return {
+      activeIndex: 0,
+      swiperOptions: {
+        slidesPerView: "auto",
+        pagination: {
+          el: &#39;.swiper-pagination&#39;,
+          type: &#39;bullets&#39;
+        }
+      }
+    };
+  },
+  methods: {
+	confirmA(index){
+      //点击的不是最后一个
+      if(this.contents.length > 1 && index != this.contents.length - 1){
+        this.$refs.mySwiper.swiper.slideNext(300);
+        setTimeout(() => {
+          this.contents.splice(index, 1);
+          this.sendCode(&#39;左侧弹窗关闭&#39;);
+          this.$refs.mySwiper.swiper.updateSlides();
+        }, 300)
+      }else if(this.contents.length == 1 || index == this.contents.length - 1){
+        //点击最后一个
+        this.sendCode(&#39;右侧弹窗关闭&#39;);
+        this.updateConfirmed(true);
+        this.$emit(&#39;confirm&#39;);
+      }
+    },
+  }
+}
+</script>'><pre class="notranslate"><span class="pl-c">/*</span>
+<span class="pl-c">* plugins/main.js</span>
+<span class="pl-c">*/</span>
+<span class="pl-en">loadCss</span><span class="pl-kos">(</span><span class="pl-s">'/assets/public-js/lib/vue-awesome-swiper3.1.3.css'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">loadJs</span><span class="pl-kos">(</span><span class="pl-s">'/assets/public-js/lib/vue-awesome-swiper3.1.3.js'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">VueAwesomeSwiper</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+
+
+<span class="pl-c">/*</span>
+<span class="pl-c">* 使用swiper的vue文件</span>
+<span class="pl-c">*/</span>
+<span class="pl-c1">&lt;</span><span class="pl-s1">template</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">swiper</span> <span class="pl-c1">v-show</span><span class="pl-c1">=</span><span class="pl-s">"confirmType == 'A'"</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"mySwiper"</span> :<span class="pl-c1">options</span><span class="pl-c1">=</span><span class="pl-s">"swiperOptions"</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">swiper-slide</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">'swiper-slide'</span> <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item,index) in contents"</span> :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span> :<span class="pl-k">class</span><span class="pl-c1">=</span><span class="pl-s">"{'single-slide': contents.length == 1, 'last-slide': index == contents.length - 1 && contents.length != 1}"</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"content-tab-img"</span> <span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"./img/icon-title.png"</span><span class="pl-kos">/></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">"content"</span><span class="pl-c1">></span>
+            <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"content-title"</span><span class="pl-c1">></span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-s1">item</span><span class="pl-kos">.</span>title<span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+            <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">"content-tips"</span><span class="pl-c1">></span><span class="pl-kos">{</span><span class="pl-kos">{</span>item<span class="pl-kos">.</span><span class="pl-s1">tips</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">i</span><span class="pl-s">v</span><span class="pl-s">></span>
+            <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">'content-line'</span> <span class="pl-c1">v-html</span><span class="pl-c1">=</span><span class="pl-s">"item.content"</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">i</span><span class="pl-s">v</span><span class="pl-s">></span></span><span class="pl-c1"></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">span</span> @<span class="pl-s1">click</span><span class="pl-c1">=</span><span class="pl-s">"confirmA(index)"</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">"content-confirm"</span><span class="pl-c1">></span><span class="pl-s1">知道了</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">s</span><span class="pl-s">p</span><span class="pl-s">a</span><span class="pl-s">n</span><span class="pl-s">></span>
+        &lt;/<span class="pl-s1">swiper</span><span class="pl-c1">-</span><span class="pl-s1">slide</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">slot</span><span class="pl-c1">=</span><span class="pl-s">"pagination"</span> <span class="pl-c1">v-show</span><span class="pl-c1">=</span><span class="pl-s">"contents.length > 1"</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-pagination"</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">s</span><span class="pl-s">w</span><span class="pl-s">i</span><span class="pl-s">p</span><span class="pl-s">e</span><span class="pl-s">r</span><span class="pl-s">></span>
+&lt;/<span class="pl-s1">template</span><span class="pl-c1">></span>
+<span class="pl-c1">&lt;</span><span class="pl-s1">script</span><span class="pl-c1">></span>
+export default <span class="pl-kos">{</span>
+ <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">return</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">activeIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span>
+      <span class="pl-c1">swiperOptions</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">slidesPerView</span>: <span class="pl-s">"auto"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">pagination</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">el</span>: <span class="pl-s">'.swiper-pagination'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">type</span>: <span class="pl-s">'bullets'</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>,
+  methods: <span class="pl-kos">{</span>
+	<span class="pl-en">confirmA</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">)</span><span class="pl-kos"></span><span class="pl-kos">{</span>
+      <span class="pl-c">//点击的不是最后一个</span>
+      <span class="pl-en">if</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">contents</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">></span> <span class="pl-c1">1</span> <span class="pl-c1">&&</span> <span class="pl-s1">index</span> <span class="pl-c1">!=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">contents</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos"></span><span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$refs</span><span class="pl-kos">.</span><span class="pl-c1">mySwiper</span><span class="pl-kos">.</span><span class="pl-c1">swiper</span><span class="pl-kos">.</span><span class="pl-en">slideNext</span><span class="pl-kos">(</span><span class="pl-c1">300</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">contents</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">sendCode</span><span class="pl-kos">(</span><span class="pl-s">'左侧弹窗关闭'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$refs</span><span class="pl-kos">.</span><span class="pl-c1">mySwiper</span><span class="pl-kos">.</span><span class="pl-c1">swiper</span><span class="pl-kos">.</span><span class="pl-en">updateSlides</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">300</span><span class="pl-kos">)</span>
+      <span class="pl-kos">}</span>else if(this.contents.length == 1 || index == this.contents.length - 1)<span class="pl-kos">{</span>
+        <span class="pl-c">//点击最后一个</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">sendCode</span><span class="pl-kos">(</span><span class="pl-s">'右侧弹窗关闭'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">updateConfirmed</span><span class="pl-kos">(</span><span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">$emit</span><span class="pl-kos">(</span><span class="pl-s">'confirm'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+<span class="pl-kos">&lt;/</span><span class="pl-s1">script</span><span class="pl-c1">></span></pre></div>
+<p dir="auto">（2）使用 v-swiper 指令的方式使用 swiper（注意：一定要在使用 v-swiper 之前，执行 Vue.use(window.VueAwesomeSwiper)）</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='/*
+* nuxt.config.js
+*/
+{
+ head: {
+    link: [
+      {
+        rel: "stylesheet",
+        href: `/assets/public-js/lib/vue-awesome-swiper3.1.3.css`
+      }
+    ],
+    script: [
+      {
+        defer: true,
+        src: &#39;/assets/public-js/lib/vue-awesome-swiper3.1.3.ssr.js&#39;
+      },
+    ]
+  },
+}
+
+
+
+
+/*
+* plugins/main.js
+*/
+if(!isServer()){
+  Vue.use(window.VueAwesomeSwiper);
+}
+
+
+/*
+* 使用swiper的vue文件
+*/
+<template>
+    <div v-swiper:mySwiper="swiperOptions" v-show="claimCaseList.length > 0">
+        <div class=&#39;swiper-wrapper&#39;>
+           <div class="swiper-slide" v-for="(item, index) in claimCaseList" :key="index">
+              <img class="img-case" :src="item.src" />
+           </div>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+ data() {
+    return {
+      activeIndex: 0,
+      swiperOptions: {
+        slidesPerView: "auto",
+        on: {
+          slideChange: () => {
+            this.sendTD({
+              eventId: "prod_claimCaseSwitch"
+            });
+          }
+        }
+      },
+    };
+  }
+}
+</script>'><pre class="notranslate"><span class="pl-c">/*</span>
+<span class="pl-c">* nuxt.config.js</span>
+<span class="pl-c">*/</span>
+<span class="pl-kos">{</span>
+ <span class="pl-c1">head</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">link</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">rel</span>: <span class="pl-s">"stylesheet"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">href</span>: <span class="pl-s">`/assets/public-js/lib/vue-awesome-swiper3.1.3.css`</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-c1">script</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">defer</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">src</span>: <span class="pl-s">'/assets/public-js/lib/vue-awesome-swiper3.1.3.ssr.js'</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span>
+
+
+
+
+<span class="pl-c">/*</span>
+<span class="pl-c">* plugins/main.js</span>
+<span class="pl-c">*/</span>
+<span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-en">isServer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">{</span>
+  <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">VueAwesomeSwiper</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+
+<span class="pl-c">/*</span>
+<span class="pl-c">* 使用swiper的vue文件</span>
+<span class="pl-c">*/</span>
+<span class="pl-c1">&lt;</span><span class="pl-s1">template</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">v-swiper</span>:<span class="pl-s1">mySwiper</span><span class="pl-c1">=</span><span class="pl-s">"swiperOptions"</span> <span class="pl-c1">v-show</span><span class="pl-c1">=</span><span class="pl-s">"claimCaseList.length > 0"</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">'swiper-wrapper'</span><span class="pl-c1">></span>
+           <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-slide"</span> <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item, index) in claimCaseList"</span> :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span><span class="pl-c1">></span>
+              <span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"img-case"</span> :<span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"item.src"</span> <span class="pl-kos">/></span>
+           <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-s1">template</span><span class="pl-c1">></span>
+<span class="pl-c1">&lt;</span><span class="pl-s1">script</span><span class="pl-c1">></span>
+<span class="pl-k">export</span> <span class="pl-s1">default</span> <span class="pl-kos">{</span>
+ <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">activeIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span>
+      <span class="pl-c1">swiperOptions</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">slidesPerView</span>: <span class="pl-s">"auto"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">on</span>: <span class="pl-kos">{</span>
+          <span class="pl-en">slideChange</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+            <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">sendTD</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+              <span class="pl-c1">eventId</span>: <span class="pl-s">"prod_claimCaseSwitch"</span>
+            <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">r</span><span class="pl-s">i</span><span class="pl-s">p</span><span class="pl-s">t</span><span class="pl-s">></span></pre></div>
+<p dir="auto"><strong>按需引入 vant、lodash</strong></p>
+<p dir="auto">项目中使用 vant，如果直接全量引入，会导致打包体积过大，可以使用 babel-plugin-import 实现按需引入，在 nuxt.config.js 中做如下配置：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//加载babel-plugin-import依赖
+//npm i babel-plugin-import --save-dev
+//vant打包需要less依赖
+//npm i less --save-dev
+//npm i less-loader --save-dev
+export default {
+  mode: 'universal',
+  build: {
+    transpile: [/vant.*?less/],
+    babel: {
+      plugins: [
+        [
+          'lodash',
+          {
+            libraryName: 'lodash', //配置lodash按需加载
+            libraryDirectory: '',
+            camel2DashComponentName: false
+          },
+          'lodash'
+        ],
+        [
+          'import',
+          {
+            libraryName: 'vant', //配置vant按需加载
+            style: (name) => `${name}/style/less.js`
+          },
+          'vant'
+        ]
+      ]
+    }
+  }
+};"><pre class="notranslate"><span class="pl-c">//加载babel-plugin-import依赖</span>
+<span class="pl-c">//npm i babel-plugin-import --save-dev</span>
+<span class="pl-c">//vant打包需要less依赖</span>
+<span class="pl-c">//npm i less --save-dev</span>
+<span class="pl-c">//npm i less-loader --save-dev</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">mode</span>: <span class="pl-s">'universal'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">transpile</span>: <span class="pl-kos">[</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">v</span><span class="pl-s">a</span><span class="pl-s">n</span><span class="pl-s">t</span>.<span class="pl-c1">*</span>?<span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-c1">/</span></span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-c1">babel</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>
+        <span class="pl-kos">[</span>
+          <span class="pl-s">'lodash'</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">libraryName</span>: <span class="pl-s">'lodash'</span><span class="pl-kos">,</span> <span class="pl-c">//配置lodash按需加载</span>
+            <span class="pl-c1">libraryDirectory</span>: <span class="pl-s">''</span><span class="pl-kos">,</span>
+            <span class="pl-c1">camel2DashComponentName</span>: <span class="pl-c1">false</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-s">'lodash'</span>
+        <span class="pl-kos">]</span><span class="pl-kos">,</span>
+        <span class="pl-kos">[</span>
+          <span class="pl-s">'import'</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">libraryName</span>: <span class="pl-s">'vant'</span><span class="pl-kos">,</span> <span class="pl-c">//配置vant按需加载</span>
+            <span class="pl-en">style</span>: <span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>/style/less.js`</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-s">'vant'</span>
+        <span class="pl-kos">]</span>
+      <span class="pl-kos">]</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">配置完成后，在项目中正常引入 vant 即可</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import Vue from 'vue';
+import { Button } from 'vant';
+Vue.use(Button);
+//注意:配置按需加载后，不允许全量引入vant
+//import Vant from 'vant';
+//import 'vant/lib/index.css';
+//Vue.use(vant);"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">Vue</span> <span class="pl-k">from</span> <span class="pl-s">'vue'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">Button</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'vant'</span><span class="pl-kos">;</span>
+<span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Button</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">//注意:配置按需加载后，不允许全量引入vant</span>
+<span class="pl-c">//import Vant from 'vant';</span>
+<span class="pl-c">//import 'vant/lib/index.css';</span>
+<span class="pl-c">//Vue.use(vant);</span></pre></div>
+<h2 id="main-heading-H2-5">五、首屏优化</h2>
+<p dir="auto"><strong>图片懒加载</strong></p>
+<p dir="auto">使用 vant 的核心依赖 vue-lazyload，实现组件懒加载：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// plugins\plugin\main.js
+
+import { Lazyload, Image as VantImage } from 'vant';
+
+Vue.use(Toast).use(Dialog).use(VantImage).use(Lazyload, {
+  lazyComponent: true
+});"><pre class="notranslate"><span class="pl-c">// plugins\plugin\main.js</span>
+
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">Lazyload</span><span class="pl-kos">,</span> <span class="pl-v">Image</span> <span class="pl-k">as</span> <span class="pl-v">VantImage</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'vant'</span><span class="pl-kos">;</span>
+
+<span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Toast</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Dialog</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">VantImage</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Lazyload</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">lazyComponent</span>: <span class="pl-c1">true</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">注册 Lazyload 可配置的其他常用参数：</p>
+<ul dir="auto">
+<li>lazyComponent: false // 开启后会在全局注册名为 lazy-component 的懒加载组件</li>
+<li>preLoad: preLoad || 1.3, // 1.3 的距离是 还未展示的 dom 距离视口顶部的高度小于视口高度的 1.3 倍时就开始加载图片了</li>
+<li>preLoadTop: preLoadTop || 0, // dom 的底部距离页面顶部多少距离还是加载</li>
+<li>error: error || DEFAULT_URL, // 加载失败显示的图片</li>
+<li>loading: loading || DEFAULT_URL, // 加载中显示的图片</li>
+<li>attempt: attempt || 3, // 图片加载失败，最多重试的次数</li>
+</ul>
+<p dir="auto"><strong>懒加载代码例子</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<template>
+  <div>
+    <div class="detail">
+      <img
+        v-for="(item,index) in characterImages"
+        :key="index"
+        v-lazy="item.src"
+        :class="`${videoImages.length > 0  ? &#39;swiper_img&#39; : &#39;video_img&#39;}`"
+        @click="imageClick(item , $event)"
+      />
+    </div>
+    <lazy-component>
+      <productVideo />
+    </lazy-component>
+    <lazy-component>
+      <div v-swiper:mySwiper="swiperOptions" class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(item, index) in bannerImages" :key="index">
+            <img v-lazy="item.src" alt />
+          </div>
+        </div>
+      </div>
+    </lazy-component>
+    <div class="detail-features">
+      <img v-for="(item,index) in featuresImages" :key="index"  v-lazy="item.src" />
+    </div>
+    <Mask :show="showMask" @click="onHideMask" class="custom-dialog">
+      <div class="custom-wrap">
+        <div class="helper"></div>
+        <div class="content">
+          <h3>{{custom.title}}</h3>
+          <div v-html="custom.content"></div>
+        </div>
+      </div>
+    </Mask>
+  </div>
+</template>'><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">template</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"detail"</span><span class="pl-c1">></span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">img</span>
+        <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item,index) in characterImages"</span>
+        :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span>
+        <span class="pl-c1">v-lazy</span><span class="pl-c1">=</span><span class="pl-s">"item.src"</span>
+        :<span class="pl-k">class</span><span class="pl-c1">=</span><span class="pl-s">"`${videoImages.length > 0  ? 'swiper_img' : 'video_img'}`"</span>
+        @<span class="pl-en">click</span><span class="pl-c1">=</span>"<span class="pl-s1">imageClick</span><span class="pl-kos">(</span><span class="pl-s1">item</span> <span class="pl-kos">,</span> <span class="pl-s1">$event</span><span class="pl-kos">)</span>"
+      <span class="pl-c1">/</span><span class="pl-s">></span>
+    &lt;/<span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">lazy-component</span><span class="pl-c1">></span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">productVideo</span> <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-s1">lazy-component</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">lazy</span><span class="pl-c1">-</span><span class="pl-s1">component</span><span class="pl-c1">></span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">v-swiper</span>:<span class="pl-s1">mySwiper</span><span class="pl-c1">=</span><span class="pl-s">"swiperOptions"</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-container"</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-wrapper"</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-slide"</span> <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item, index) in bannerImages"</span> :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span><span class="pl-c1">></span>
+            <span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">v-lazy</span><span class="pl-c1">=</span><span class="pl-s">"item.src"</span> <span class="pl-c1">alt</span> <span class="pl-kos">/></span>
+          <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">l</span><span class="pl-s">a</span><span class="pl-s">z</span><span class="pl-s">y</span><span class="pl-s">-</span><span class="pl-s">c</span><span class="pl-s">o</span><span class="pl-s">m</span><span class="pl-s">p</span><span class="pl-s">o</span><span class="pl-s">n</span><span class="pl-s">e</span><span class="pl-s">n</span><span class="pl-s">t</span><span class="pl-s">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"detail-features"</span><span class="pl-c1">></span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item,index) in featuresImages"</span> :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span>  <span class="pl-c1">v-lazy</span><span class="pl-c1">=</span><span class="pl-s">"item.src"</span> <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-v">Mask</span> :<span class="pl-s1">show</span><span class="pl-c1">=</span><span class="pl-s">"showMask"</span> @<span class="pl-s1">click</span><span class="pl-c1">=</span><span class="pl-s">"onHideMask"</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">"custom-dialog"</span><span class="pl-c1">></span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"custom-wrap"</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"helper"</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"content"</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">h3</span><span class="pl-c1">></span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-s1">custom</span><span class="pl-kos">.</span>title<span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">h3</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">v-html</span><span class="pl-c1">=</span><span class="pl-s">"custom.content"</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">M</span><span class="pl-s">a</span><span class="pl-s">s</span><span class="pl-s">k</span><span class="pl-s">></span>
+  &lt;/<span class="pl-s1">div</span><span class="pl-c1">></span>
+<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s1">template</span><span class="pl-c1">></span></pre></div>
+<p dir="auto"><strong>关于 谷歌浏览器勾选 disable cache 图片加载两次的问题（暂不用考虑，以下项目也有出现）</strong></p>
+<ul dir="auto">
+<li>v-lazy 官网 demo</li>
+<li>vant 官网 懒加载 demo</li>
+</ul>
+<p dir="auto"><strong>css 优先加载，JS 后置</strong></p>
+<p dir="auto">默认情况下，打包 css 和 js 都会位于 head 中，js 会减慢页面渲染速度，在 nuxt.config.js 中做如下配置：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {
+  mode: 'universal',
+  render: {
+    //移除preload
+    resourceHints: false,
+    //将js移动到body中，添加defer标记
+    asyncScripts: true
+  }
+};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">mode</span>: <span class="pl-s">'universal'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">render</span>: <span class="pl-kos">{</span>
+    <span class="pl-c">//移除preload</span>
+    <span class="pl-c1">resourceHints</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+    <span class="pl-c">//将js移动到body中，添加defer标记</span>
+    <span class="pl-c1">asyncScripts</span>: <span class="pl-c1">true</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">配置完成后，打包页面主体结构如下：</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<html lang="en" style="font-size: 50px;">
+  <head>
+    <title>产品标题</title>
+    <link rel="stylesheet" href="/0001/_nuxt/vendors/app.7508770.css" />
+    <link rel="stylesheet" href="/0001/_nuxt/app.3f7b217.css" />
+    <link rel="stylesheet" href="/0001/_nuxt/pages/index.3f90c5c.css" />
+  </head>
+  <body>
+    <script src="/0001/_nuxt/cda622d.js" defer=""></script>
+    <script src="/0001/_nuxt/d0fb5d1.js" defer=""></script>
+    <script src="/0001/_nuxt/5dc59b2.js" defer=""></script>
+    <script src="/0001/_nuxt/2335657.js" defer=""></script>
+    <script src="/0001/_nuxt/23e2c42.js" defer=""></script>
+    <script src="/0001/_nuxt/c062255.js" defer=""></script>
+  </body>
+</html>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>" <span class="pl-c1">style</span>="<span class="pl-s">font-size: 50px;</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">></span>产品标题<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">/0001/_nuxt/vendors/app.7508770.css</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">/0001/_nuxt/app.3f7b217.css</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">/0001/_nuxt/pages/index.3f90c5c.css</span>" <span class="pl-kos">/></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/cda622d.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/d0fb5d1.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/5dc59b2.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/2335657.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/23e2c42.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/c062255.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">></span></pre></div>
+<h2 id="main-heading-H2-6">六、其他优化</h2>
+<p dir="auto"><strong>node-sass 更换为 sass</strong></p>
+<p dir="auto">主要 npm 包 替换：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 移除 node-sass
+npm remove node-sass -D
+
+
+# 安装 最新版 sass
+npm i sass -D"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 移除 node-sass</span>
+npm remove node-sass -D
+
+
+<span class="pl-c"><span class="pl-c">#</span> 安装 最新版 sass</span>
+npm i sass -D</pre></div>
+<p dir="auto">接下来搜索全局搜索 \deep\ 替换 为 ::v-deep。(注意：如果使用了 nuxt-common 子模块，不需要更改该子模块下的 \deep)。最后重新启动项目，启动成功，则修改完毕！</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l){return{layout:"default",data:[{post:{id:812889899,number:202,title:"Vue SSR 技术栈 —— Nuxt 项目优化实践",created_at:"2021-02-21T16:12:36Z",updated_at:"2023-11-22T12:17:44Z",body_html:'<h2 id="main-heading-H2-0">目录</h2>\n<ul dir="auto">\n<li>增加打包命令，根据参数切换测试生产环境</li>\n<li>静态资源切换 CDNcategory</li>\n<li>自定义 html 模板</li>\n<li>优化打包体积\n<ul dir="auto">\n<li>去除重复打包依赖 bn.js（废弃）</li>\n<li>加密库 crypto-js 只引入 AES 加密相关（废弃）</li>\n<li>按需引入 lodash（废弃）</li>\n<li>外部引入 vue、encrypt、vue-awesome-swiper</li>\n<li>按需引入 vant、lodash</li>\n</ul>\n</li>\n<li>首屏优化\n<ul dir="auto">\n<li>图片懒加载</li>\n<li>css 优先加载，JS 后置</li>\n</ul>\n</li>\n<li>其他优化\n<ul dir="auto">\n<li>node-sass 更换为 sass</li>\n</ul>\n</li>\n</ul>\n<h2 id="main-heading-H2-1">一、增加打包命令，根据参数切换测试生产环境</h2>\n<p dir="auto">原 package.json 中一般有 dev 和 generate 两个命令，现增加 serve 命令，修改如下：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" &quot;scripts&quot;: {\n    &quot;serve&quot;: &quot;cross-env PATH_TYPE=development nuxt&quot;,      //开发环境，环境参数为development\n    &quot;dev&quot;: &quot;cross-env PATH_TYPE=trial nuxt generate&quot;,\t  //测试环境，环境参数为trial\n    &quot;generate&quot;: &quot;cross-env PATH_TYPE=production  nuxt generate&quot;,    //生产环境，环境参数为production\n    &quot;build&quot;: &quot;nuxt build&quot;\n  }"><pre class="notranslate"> <span class="pl-s">"scripts"</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"serve"</span>: <span class="pl-s">"cross-env PATH_TYPE=development nuxt"</span><span class="pl-kos">,</span>      <span class="pl-c">//开发环境，环境参数为development</span>\n    <span class="pl-s">"dev"</span>: <span class="pl-s">"cross-env PATH_TYPE=trial nuxt generate"</span><span class="pl-kos">,</span>\t  <span class="pl-c">//测试环境，环境参数为trial</span>\n    <span class="pl-s">"generate"</span>: <span class="pl-s">"cross-env PATH_TYPE=production  nuxt generate"</span><span class="pl-kos">,</span>    <span class="pl-c">//生产环境，环境参数为production</span>\n    <span class="pl-s">"build"</span>: <span class="pl-s">"nuxt build"</span>\n  <span class="pl-kos">}</span></pre></div>\n<p dir="auto">对应开发环、测试和生产环境打包命令分别为 serve、dev 和 generate，配置完成后测试环境需要在jenkins 下打包，打包命令选择 npm run dev</p>\n<p dir="auto">特殊的，对于采用 Git子模块方式引用的，打包命令需修改为 sh build.sh [dev|generate]</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="\n&quot;scripts&quot;: {\n    &quot;serve&quot;: &quot;cross-env PATH_TYPE=development nuxt&quot;,   //开发环境\n    &quot;dev&quot;: &quot;sh build.sh dev&quot;,     //测试环境\n    &quot;generate&quot;: &quot;sh build.sh generate&quot;,   //生产环境\n\t&quot;build&quot;: &quot;nuxt build&quot;\n  }\n"><pre class="notranslate"><span class="pl-s">"scripts"</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"serve"</span>: <span class="pl-s">"cross-env PATH_TYPE=development nuxt"</span><span class="pl-kos">,</span>   <span class="pl-c">//开发环境</span>\n    <span class="pl-s">"dev"</span>: <span class="pl-s">"sh build.sh dev"</span><span class="pl-kos">,</span>     <span class="pl-c">//测试环境</span>\n    <span class="pl-s">"generate"</span>: <span class="pl-s">"sh build.sh generate"</span><span class="pl-kos">,</span>   <span class="pl-c">//生产环境</span>\n\t<span class="pl-s">"build"</span>: <span class="pl-s">"nuxt build"</span>\n  <span class="pl-kos">}</span></pre></div>\n<p dir="auto">build.sh 也需要做如下更改：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="echo &quot;EXEC git clone -b dev http://gitlab.xxx.com/nuxt-common.git &quot;\ngit clone -b dev http://gitlab.xxx.com/nuxt-common.git\n\nif [[ $1 == &quot;dev&quot; ]]; then\n    echo \'开始编译测试环境\'\n    cross-env PATH_TYPE=trial nuxt generate\n    exit\nfi\n\nif [[ $1 == &quot;generate&quot; ]]; then\n    echo \'开始生产环境编译\'\n    cross-env PATH_TYPE=production  nuxt generate\n    exit\nfi\n\necho \'请指定编译方式  dev 或者 generate\'"><pre class="notranslate"><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>EXEC git clone -b dev http://gitlab.xxx.com/nuxt-common.git <span class="pl-pds">"</span></span>\ngit clone -b dev http://gitlab.xxx.com/nuxt-common.git\n\n<span class="pl-k">if</span> [[ <span class="pl-smi">$1</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>dev<span class="pl-pds">"</span></span> ]]<span class="pl-k">;</span> <span class="pl-k">then</span>\n    <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">\'</span>开始编译测试环境<span class="pl-pds">\'</span></span>\n    cross-env PATH_TYPE=trial nuxt generate\n    <span class="pl-c1">exit</span>\n<span class="pl-k">fi</span>\n\n<span class="pl-k">if</span> [[ <span class="pl-smi">$1</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>generate<span class="pl-pds">"</span></span> ]]<span class="pl-k">;</span> <span class="pl-k">then</span>\n    <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">\'</span>开始生产环境编译<span class="pl-pds">\'</span></span>\n    cross-env PATH_TYPE=production  nuxt generate\n    <span class="pl-c1">exit</span>\n<span class="pl-k">fi</span>\n\n<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">\'</span>请指定编译方式  dev 或者 generate<span class="pl-pds">\'</span></span></pre></div>\n<p dir="auto">在 nuxt.config.js 中增加环境参数配置：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  mode: \'universal\',\n  env: {\n    PATH_TYPE: process.env.PATH_TYPE\n  }\n};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">mode</span>: <span class="pl-s">\'universal\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">env</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">PATH_TYPE</span>: <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">在项目代码中直接使用 process.env.PATH_TYPE 直接获取环境参数，例如根据环境参数切换接口 baseUrl</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="let host = !process.server ? location.origin : \'\';\nlet path = process.env.PATH_TYPE !== \'production\' ? \'/test-api\' : \'/api\';\n\n// 1)实例化一个axios对象 http（根据当前环境配置baseURL）\nconst http = axios.create({\n  baseURL: host + path,\n  timeout: 10000\n});"><pre class="notranslate"><span class="pl-k">let</span> <span class="pl-s1">host</span> <span class="pl-c1">=</span> <span class="pl-c1">!</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">server</span> ? <span class="pl-s1">location</span><span class="pl-kos">.</span><span class="pl-c1">origin</span> : <span class="pl-s">\'\'</span><span class="pl-kos">;</span>\n<span class="pl-k">let</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">!==</span> <span class="pl-s">\'production\'</span> ? <span class="pl-s">\'/test-api\'</span> : <span class="pl-s">\'/api\'</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 1)实例化一个axios对象 http（根据当前环境配置baseURL）</span>\n<span class="pl-k">const</span> <span class="pl-s1">http</span> <span class="pl-c1">=</span> <span class="pl-s1">axios</span><span class="pl-kos">.</span><span class="pl-en">create</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">baseURL</span>: <span class="pl-s1">host</span> <span class="pl-c1">+</span> <span class="pl-s1">path</span><span class="pl-kos">,</span>\n  <span class="pl-c1">timeout</span>: <span class="pl-c1">10000</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-2">二、静态资源切换 CDN category</h2>\n<p dir="auto">目前仅生产环境有 cdn 域名，所以配置中需要区分测试和生产环境，nuxt.config.js 增加如下配置</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//项目访问路径\nlet baseUrl = \'/project-path/\';\n//资源路径前缀，生产环境使用cdn域名\nlet publicPath =\n  process.env.PATH_TYPE !== \'production\' ? \'/_nuxt/\' : `//cdn.xx.cn/${baseUrl}`;\nexport default {\n  mode: \'universal\',\n  router: {\n    base: baseUrl //项目访问路径\n  },\n  build: {\n    publicPath: publicPath //静态资源路径，默认为/_nuxt/,生产环境配置为 //cdn.xx.cn\n  }\n};"><pre class="notranslate"><span class="pl-c">//项目访问路径</span>\n<span class="pl-k">let</span> <span class="pl-s1">baseUrl</span> <span class="pl-c1">=</span> <span class="pl-s">\'/project-path/\'</span><span class="pl-kos">;</span>\n<span class="pl-c">//资源路径前缀，生产环境使用cdn域名</span>\n<span class="pl-k">let</span> <span class="pl-s1">publicPath</span> <span class="pl-c1">=</span>\n  <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">!==</span> <span class="pl-s">\'production\'</span> ? <span class="pl-s">\'/_nuxt/\'</span> : <span class="pl-s">`//cdn.xx.cn/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">baseUrl</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">mode</span>: <span class="pl-s">\'universal\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">router</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">base</span>: <span class="pl-s1">baseUrl</span> <span class="pl-c">//项目访问路径</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">publicPath</span>: <span class="pl-s1">publicPath</span> <span class="pl-c">//静态资源路径，默认为/_nuxt/,生产环境配置为 //cdn.xx.cn</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">配置完成后，使用 npm run generate 打包，项目 dist 目录下查看 index.html,静态资源已经切换为//cdn.xx.cn 域名</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!-- 生产环境打包后静态资源和图片资源域名都是//cdn.xx.cn --&gt;\n&lt;link\n  rel=&quot;preload&quot;\n  href=&quot;//cdn.xx.cn/0001/ab8c55e7bbe08cb5535b.js&quot;\n  as=&quot;script&quot;\n/&gt;\n&lt;!-- 测试环境打包静态资源会在/_nuxt目录下，生产环境打包会在根目录下，因此访问地址稍有不同 --&gt;\n&lt;!-- &lt;link rel=&quot;preload&quot; href=&quot;/project-path/_nuxt/cfe229c4b19f0c0e605f.js&quot; as=&quot;script&quot;&gt; --&gt;\n&lt;link\n  rel=&quot;preload&quot;\n  href=&quot;//cdn.xx.cn/0001/c37e933a0ed58670cf09.js&quot;\n  as=&quot;script&quot;\n/&gt;\n&lt;link\n  rel=&quot;preload&quot;\n  href=&quot;//cdn.xx.cn/0001/82b7242da0af4228da8e.css&quot;\n  as=&quot;style&quot;\n/&gt;\n&lt;link\n  rel=&quot;preload&quot;\n  href=&quot;//cdn.xx.cn/0001/89ed111ab3dd0c94c966.js&quot;\n  as=&quot;script&quot;\n/&gt;\n&lt;link\n  rel=&quot;preload&quot;\n  href=&quot;//cdn.xx.cn/0001/0b6786c39409821386d9.css&quot;\n  as=&quot;style&quot;\n/&gt;\n&lt;link\n  rel=&quot;preload&quot;\n  href=&quot;//cdn.xx.cn/0001/62bb49672485b605cbb5.js&quot;\n  as=&quot;script&quot;\n/&gt;\n&lt;link\n  rel=&quot;preload&quot;\n  href=&quot;//cdn.xx.cn/0001/26de14d649e499f9125c.css&quot;\n  as=&quot;style&quot;\n/&gt;\n&lt;link\n  rel=&quot;preload&quot;\n  href=&quot;//cdn.xx.cn/0001/4e8179eeaba3480b7378.js&quot;\n  as=&quot;script&quot;\n/&gt;\n&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.xx.cn/0001/82b7242da0af4228da8e.css&quot; /&gt;\n&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.xx.cn/0001/0b6786c39409821386d9.css&quot; /&gt;\n&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.xx.cn/0001/26de14d649e499f9125c.css&quot; /&gt;"><pre class="notranslate"><span class="pl-c">&lt;!-- 生产环境打包后静态资源和图片资源域名都是//cdn.xx.cn --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>\n  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"\n  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/ab8c55e7bbe08cb5535b.js</span>"\n  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"\n<span class="pl-kos">/&gt;</span>\n<span class="pl-c">&lt;!-- 测试环境打包静态资源会在/_nuxt目录下，生产环境打包会在根目录下，因此访问地址稍有不同 --&gt;</span>\n<span class="pl-c">&lt;!-- &lt;link rel="preload" href="/project-path/_nuxt/cfe229c4b19f0c0e605f.js" as="script"&gt; --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>\n  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"\n  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/c37e933a0ed58670cf09.js</span>"\n  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"\n<span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>\n  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"\n  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/82b7242da0af4228da8e.css</span>"\n  <span class="pl-c1">as</span>="<span class="pl-s">style</span>"\n<span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>\n  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"\n  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/89ed111ab3dd0c94c966.js</span>"\n  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"\n<span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>\n  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"\n  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/0b6786c39409821386d9.css</span>"\n  <span class="pl-c1">as</span>="<span class="pl-s">style</span>"\n<span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>\n  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"\n  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/62bb49672485b605cbb5.js</span>"\n  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"\n<span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>\n  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"\n  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/26de14d649e499f9125c.css</span>"\n  <span class="pl-c1">as</span>="<span class="pl-s">style</span>"\n<span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span>\n  <span class="pl-c1">rel</span>="<span class="pl-s">preload</span>"\n  <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/4e8179eeaba3480b7378.js</span>"\n  <span class="pl-c1">as</span>="<span class="pl-s">script</span>"\n<span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/82b7242da0af4228da8e.css</span>" <span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/0b6786c39409821386d9.css</span>" <span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">//cdn.xx.cn/0001/26de14d649e499f9125c.css</span>" <span class="pl-kos">/&gt;</span></pre></div>\n<p dir="auto">不参与打包的静态资源切换 cdn（如 static 下的 js）</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="script: [\n  {\n    //直接更换域名\n    src: \'//cdn.xx.cn/assets//trace-record.js\'\n  },\n  {\n    src: \'//cdn.xx.cn/js/reference.js\'\n  }\n];"><pre class="notranslate">script: <span class="pl-kos">[</span>\n  <span class="pl-kos">{</span>\n    <span class="pl-c">//直接更换域名</span>\n    <span class="pl-c1">src</span>: <span class="pl-s">\'//cdn.xx.cn/assets//trace-record.js\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">{</span>\n    <span class="pl-c1">src</span>: <span class="pl-s">\'//cdn.xx.cn/js/reference.js\'</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-3">三、自定义 html 模板</h2>\n<p dir="auto">在项目根目录下新建 app.html，将 meta 和 rem.js 直接写到 head 中，保持原有{{HEAD}}和{{APP}}不动</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!doctype html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;utf-8&quot; /&gt;\n    &lt;meta\n      name=&quot;viewport&quot;\n      content=&quot;width=device-width, initial-scale=1, initial-scale=1, maximun-scale=1, user-scalable=no, viewport-fit=cover&quot;\n    /&gt;\n    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;\n    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;\n    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt;\n    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot; /&gt;\n    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot; /&gt;\n    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot; /&gt;\n    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot; /&gt;\n    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot; /&gt;\n    &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot; /&gt;\n    &lt;script&gt;\n      //插入rem.js\n    &lt;/script&gt;\n    {{HEAD}}\n  &lt;/head&gt;\n  &lt;body&gt;\n    {{APP}}\n  &lt;/body&gt;\n&lt;/html&gt;"><pre class="notranslate"><span class="pl-c1">&lt;!doctype html<span class="pl-kos">&gt;</span></span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">utf-8</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span>\n      <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>"\n      <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1, initial-scale=1, maximun-scale=1, user-scalable=no, viewport-fit=cover</span>"\n    <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">apple-mobile-web-app-capable</span>" <span class="pl-c1">content</span>="<span class="pl-s">yes</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">apple-mobile-web-app-status-bar-style</span>" <span class="pl-c1">content</span>="<span class="pl-s">black</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">format-detection</span>" <span class="pl-c1">content</span>="<span class="pl-s">telephone=no</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">screen-orientation</span>" <span class="pl-c1">content</span>="<span class="pl-s">portrait</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">full-screen</span>" <span class="pl-c1">content</span>="<span class="pl-s">yes</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">browsermode</span>" <span class="pl-c1">content</span>="<span class="pl-s">application</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">x5-orientation</span>" <span class="pl-c1">content</span>="<span class="pl-s">portrait</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">x5-fullscreen</span>" <span class="pl-c1">content</span>="<span class="pl-s">true</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">icon</span>" <span class="pl-c1">type</span>="<span class="pl-s">image/x-icon</span>" <span class="pl-c1">href</span>="<span class="pl-s">favicon.ico</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n      <span class="pl-c">//插入rem.js</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n    {{HEAD}}\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n    {{APP}}\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">新建完成后，可以删除 nuxt.config.js 中 head 属性下静态 meta 和 icon 的配置</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="head: {\n  title: \'产品名称\',\n  //删除静态meta设置，仅保留seo信息\n  meta: [{\n    hid: \'description\',\n    name: \'description\',\n    content: \'描述内容\'\n  }],\n  link: [],   //删除icon配置\n  script: []  //正常引入外部js，删除原有 rem.js 引用\n}"><pre class="notranslate">head: <span class="pl-kos">{</span>\n  <span class="pl-c1">title</span>: <span class="pl-s">\'产品名称\'</span><span class="pl-kos">,</span>\n  <span class="pl-c">//删除静态meta设置，仅保留seo信息</span>\n  <span class="pl-c1">meta</span>: <span class="pl-kos">[</span><span class="pl-kos">{</span>\n    <span class="pl-c1">hid</span>: <span class="pl-s">\'description\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">name</span>: <span class="pl-s">\'description\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">content</span>: <span class="pl-s">\'描述内容\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">link</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span>   <span class="pl-c">//删除icon配置</span>\n  <span class="pl-c1">script</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span>  <span class="pl-c">//正常引入外部js，删除原有 rem.js 引用</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-4">四、优化打包体积</h2>\n<p dir="auto">如果项目安装了 nuxt-common 依赖，则去除重复打包依赖 bn.js 和加密库 crypto-js 只引入 AES 加密相关可以参照外部引入 vue、encrypt、vue-awesome-swiper 配置</p>\n<p dir="auto">按需引入 lodash 可以参照按需引入 vant 配置重要，使用 npm 包引入 node-rsa 会引入 es6，导致低版本浏览器加载异常，若不单独做 babel 处理，强烈推荐使用 cdn 引入 encrypt；在 IE 9 浏览器中可以模拟验证</p>\n<p dir="auto">查看打包体积需要依赖 webpack-bundle-analyzer 插件，nuxt 集成了该插件，在 nuxt.config.js 做如下配置：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  build: {\n    analyze: true\n  }\n};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">analyze</span>: <span class="pl-c1">true</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">然后<code class="notranslate">npm run build --analyze</code>或<code class="notranslate">npm run build -a</code>，等待打包完毕后，在自动打开的网页中可以查看打包情况（或手动打开/.nuxt/stats/client.html）</p>\n<p dir="auto"><strong>去除重复打包依赖 bn.js（废弃）</strong></p>\n<p dir="auto">多个库都依赖了 bn.js，会导致重复打包，nuxt.config.js 中加入如下配置：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require(\'path\');\nexport default {\n  mode: \'universal\',\n  build: {\n    extend(config) {\n      //增加别名，指定bn.js路径\n      config.resolve.alias[\'bn.js\'] = path.resolve(\n        process.cwd(),\n        \'node_modules\',\n        \'bn.js\'\n      );\n    }\n  }\n};"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'path\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">mode</span>: <span class="pl-s">\'universal\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>\n    <span class="pl-en">extend</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">//增加别名，指定bn.js路径</span>\n      <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">resolve</span><span class="pl-kos">.</span><span class="pl-c1">alias</span><span class="pl-kos">[</span><span class="pl-s">\'bn.js\'</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span>\n        <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">cwd</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n        <span class="pl-s">\'node_modules\'</span><span class="pl-kos">,</span>\n        <span class="pl-s">\'bn.js\'</span>\n      <span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">查看打包结果，如下左图为添加配置前，bn.js 被多次打包，添加配置后，只会打包一次依赖</p>\n<p dir="auto"><strong>加密库 crypto-js 只引入 AES 加密相关（废弃）</strong></p>\n<p dir="auto">加密库 crypto-js 提供多种加密方式，项目中仅用到 AES 加密，在 api.js 中单独引入相关模块，代码如下：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// import CryptoJS from \'crypto-js\';\nconst CryptoJS = require(\'crypto-js/core.js\');\n//仅引入AES加密所需库\nrequire(\'crypto-js/enc-base64.js\');\nrequire(\'crypto-js/md5.js\');\nrequire(\'crypto-js/mode-ecb.js\');\nrequire(\'crypto-js/pad-nopadding.js\');\nrequire(\'crypto-js/aes.js\');"><pre class="notranslate"><span class="pl-c">// import CryptoJS from \'crypto-js\';</span>\n<span class="pl-k">const</span> <span class="pl-v">CryptoJS</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'crypto-js/core.js\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-c">//仅引入AES加密所需库</span>\n<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'crypto-js/enc-base64.js\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'crypto-js/md5.js\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'crypto-js/mode-ecb.js\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'crypto-js/pad-nopadding.js\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'crypto-js/aes.js\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">仅修改引入方式，加密代码不用做更改。</p>\n<p dir="auto"><strong>按需引入 lodash（废弃）</strong></p>\n<p dir="auto">项目中多处引用 loadsh，直接使用引入会导致库文件整体打包，体积庞大。可以指定具体引用 js 文件按需加载，如：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//直接引入会导致loadsh整体打包\n//import {cloneDeep, debounce} from \'lodash\';\n//指定cloneDeep引入，具体文件目录可以在lodash源码中查看\nimport cloneDeep from \'lodash/cloneDeep\';\nimport debounce from \'lodash/debounce\';"><pre class="notranslate"><span class="pl-c">//直接引入会导致loadsh整体打包</span>\n<span class="pl-c">//import {cloneDeep, debounce} from \'lodash\';</span>\n<span class="pl-c">//指定cloneDeep引入，具体文件目录可以在lodash源码中查看</span>\n<span class="pl-k">import</span> <span class="pl-s1">cloneDeep</span> <span class="pl-k">from</span> <span class="pl-s">\'lodash/cloneDeep\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">debounce</span> <span class="pl-k">from</span> <span class="pl-s">\'lodash/debounce\'</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">如果项目中引入 loadsh 的地方过多，不好更改，可以使用 lodash-webpack-plugin 插件自动按需加载 lodash，配置方式如下：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//需要安装依赖\n//npm i lodash-webpack-plugin --save-dev\n//npm i babel-plugin-lodash --save-dev\nconst LodashModuleReplacementPlugin = require(\'lodash-webpack-plugin\');\nexport default {\n  mode: \'universal\',\n  build: {\n    extend(config) {\n      config.plugins.unshift(new LodashModuleReplacementPlugin());\n      config.module.rules[2].use[0].options.plugins = [\'lodash\'];\n    }\n  }\n};"><pre class="notranslate"><span class="pl-c">//需要安装依赖</span>\n<span class="pl-c">//npm i lodash-webpack-plugin --save-dev</span>\n<span class="pl-c">//npm i babel-plugin-lodash --save-dev</span>\n<span class="pl-k">const</span> <span class="pl-v">LodashModuleReplacementPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'lodash-webpack-plugin\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">mode</span>: <span class="pl-s">\'universal\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>\n    <span class="pl-en">extend</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">unshift</span><span class="pl-kos">(</span><span class="pl-k">new</span> <span class="pl-v">LodashModuleReplacementPlugin</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">module</span><span class="pl-kos">.</span><span class="pl-c1">rules</span><span class="pl-kos">[</span><span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">use</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">\'lodash\'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>外部引入 vue、encrypt、vue-awesome-swiper</strong></p>\n<p dir="auto">多个产品里面都用到相同版本的 vue、node-rsa、crypto-js、swiper。不通过外部引入会打包到项目文件中去，导致产品切换的时候都要重新下载一次这些公共文件。通过外部引入的方式，在第一个产品加载后，访问后面的产品就不需要再下</p>\n<ol dir="auto">\n<li>配置 webpack externals</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{ build: {\n    transpile: [/nuxt-common/],\n    extend(config, {isClient}) {\n      if(isClient){\n        config.externals = {};\n\t\t//本地不使用cdn,runtime包不能使用vue-devtool\n\t\tif (process.env.PATH_TYPE != \'development\') {\n          config.externals[\'vue\'] = \'Vue\';\n          config.externals[\'vuex\'] = \'Vuex\';\n          config.externals[\'vue-router\'] = \'VueRouter\';\n        }\n      }\n    },\n}"><pre class="notranslate"><span class="pl-kos">{</span> <span class="pl-c1">build</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">transpile</span>: <span class="pl-kos">[</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">n</span><span class="pl-s">u</span><span class="pl-s">x</span><span class="pl-s">t</span><span class="pl-s">-</span><span class="pl-s">c</span><span class="pl-s">o</span><span class="pl-s">m</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">n</span><span class="pl-c1">/</span></span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-en">extend</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>isClient<span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-s1">isClient</span><span class="pl-kos">)</span><span class="pl-kos">{</span>\n        <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>\n\t\t<span class="pl-c">//本地不使用cdn,runtime包不能使用vue-devtool</span>\n\t\t<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">!=</span> <span class="pl-s">\'development\'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span><span class="pl-kos">[</span><span class="pl-s">\'vue\'</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s">\'Vue\'</span><span class="pl-kos">;</span>\n          <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span><span class="pl-kos">[</span><span class="pl-s">\'vuex\'</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s">\'Vuex\'</span><span class="pl-kos">;</span>\n          <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span><span class="pl-kos">[</span><span class="pl-s">\'vue-router\'</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s">\'VueRouter\'</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span></pre></div>\n<ol start="2" dir="auto">\n<li>使用 nuxt-common/common/http/encrypt</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { AESEncrypt, encryptData } from \'nuxt-common/common/http/encrypt\';"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">AESEncrypt</span><span class="pl-kos">,</span> <span class="pl-s1">encryptData</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'nuxt-common/common/http/encrypt\'</span><span class="pl-kos">;</span></pre></div>\n<ol start="3" dir="auto">\n<li>配置外部引入 vue，encrypt</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  script: [\n    {\n      defer: true,\n      src: \'//cdn.xx.cn/assets/public-js/common/http/encrypt.js\'\n    },\n    {\n      defer: true,\n      src: \'//cdn.xx.cn/assets/public-js/lib/vue.all.runtime.js\'\n    }\n  ];\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  script: <span class="pl-kos">[</span>\n    <span class="pl-kos">{</span>\n      <span class="pl-c1">defer</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c1">src</span>: <span class="pl-s">\'//cdn.xx.cn/assets/public-js/common/http/encrypt.js\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span>\n      <span class="pl-c1">defer</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c1">src</span>: <span class="pl-s">\'//cdn.xx.cn/assets/public-js/lib/vue.all.runtime.js\'</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">]</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<ol start="4" dir="auto">\n<li>根据需要加载 vue-awesome-swiper</li>\n</ol>\n<p dir="auto">（1）使用 swiper 组件的方式可选加载方式</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*\n* plugins/main.js\n*/\nloadCss(\'/assets/public-js/lib/vue-awesome-swiper3.1.3.css\');\nloadJs(\'/assets/public-js/lib/vue-awesome-swiper3.1.3.js\').then(() =&gt; {\n    Vue.use(window.VueAwesomeSwiper);\n});\n\n\n\n/*\n* 使用swiper的vue文件\n*/\n&lt;template&gt;\n    &lt;swiper v-show=&quot;confirmType == \'A\'&quot; ref=&quot;mySwiper&quot; :options=&quot;swiperOptions&quot;&gt;\n        &lt;swiper-slide class=\'swiper-slide\' v-for=&quot;(item,index) in contents&quot; :key=&quot;index&quot; :class=&quot;{\'single-slide\': contents.length == 1, \'last-slide\': index == contents.length - 1 &amp;&amp; contents.length != 1}&quot;&gt;\n          &lt;img class=&quot;content-tab-img&quot; src=&quot;./img/icon-title.png&quot;/&gt;\n          &lt;div class=&quot;content&quot;&gt;\n            &lt;div class=&quot;content-title&quot;&gt;{{item.title}}&lt;/div&gt;\n            &lt;div class=&quot;content-tips&quot;&gt;{{item.tips}}&lt;/div&gt;\n            &lt;div class=\'content-line\' v-html=&quot;item.content&quot;&gt;&lt;/div&gt;\n          &lt;/div&gt;\n          &lt;span @click=&quot;confirmA(index)&quot; class=&quot;content-confirm&quot;&gt;知道了&lt;/span&gt;\n        &lt;/swiper-slide&gt;\n        &lt;div slot=&quot;pagination&quot; v-show=&quot;contents.length &gt; 1&quot; class=&quot;swiper-pagination&quot;&gt;&lt;/div&gt;\n    &lt;/swiper&gt;\n&lt;/template&gt;\n&lt;script&gt;\nexport default {\n data() {\n    return {\n      activeIndex: 0,\n      swiperOptions: {\n        slidesPerView: &quot;auto&quot;,\n        pagination: {\n          el: \'.swiper-pagination\',\n          type: \'bullets\'\n        }\n      }\n    };\n  },\n  methods: {\n\tconfirmA(index){\n      //点击的不是最后一个\n      if(this.contents.length &gt; 1 &amp;&amp; index != this.contents.length - 1){\n        this.$refs.mySwiper.swiper.slideNext(300);\n        setTimeout(() =&gt; {\n          this.contents.splice(index, 1);\n          this.sendCode(\'左侧弹窗关闭\');\n          this.$refs.mySwiper.swiper.updateSlides();\n        }, 300)\n      }else if(this.contents.length == 1 || index == this.contents.length - 1){\n        //点击最后一个\n        this.sendCode(\'右侧弹窗关闭\');\n        this.updateConfirmed(true);\n        this.$emit(\'confirm\');\n      }\n    },\n  }\n}\n&lt;/script&gt;"><pre class="notranslate"><span class="pl-c">/*</span>\n<span class="pl-c">* plugins/main.js</span>\n<span class="pl-c">*/</span>\n<span class="pl-en">loadCss</span><span class="pl-kos">(</span><span class="pl-s">\'/assets/public-js/lib/vue-awesome-swiper3.1.3.css\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-en">loadJs</span><span class="pl-kos">(</span><span class="pl-s">\'/assets/public-js/lib/vue-awesome-swiper3.1.3.js\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">VueAwesomeSwiper</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n\n\n<span class="pl-c">/*</span>\n<span class="pl-c">* 使用swiper的vue文件</span>\n<span class="pl-c">*/</span>\n<span class="pl-c1">&lt;</span><span class="pl-s1">template</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">swiper</span> <span class="pl-c1">v-show</span><span class="pl-c1">=</span><span class="pl-s">"confirmType == \'A\'"</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"mySwiper"</span> :<span class="pl-c1">options</span><span class="pl-c1">=</span><span class="pl-s">"swiperOptions"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">swiper-slide</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">\'swiper-slide\'</span> <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item,index) in contents"</span> :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span> :<span class="pl-k">class</span><span class="pl-c1">=</span><span class="pl-s">"{\'single-slide\': contents.length == 1, \'last-slide\': index == contents.length - 1 &amp;&amp; contents.length != 1}"</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"content-tab-img"</span> <span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"./img/icon-title.png"</span><span class="pl-kos">/&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">"content"</span><span class="pl-c1">&gt;</span>\n            <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"content-title"</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-s1">item</span><span class="pl-kos">.</span>title<span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n            <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">"content-tips"</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-kos">{</span>item<span class="pl-kos">.</span><span class="pl-s1">tips</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">i</span><span class="pl-s">v</span><span class="pl-s">&gt;</span>\n            <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">\'content-line\'</span> <span class="pl-c1">v-html</span><span class="pl-c1">=</span><span class="pl-s">"item.content"</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">i</span><span class="pl-s">v</span><span class="pl-s">&gt;</span></span><span class="pl-c1"></span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">span</span> @<span class="pl-s1">click</span><span class="pl-c1">=</span><span class="pl-s">"confirmA(index)"</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">"content-confirm"</span><span class="pl-c1">&gt;</span><span class="pl-s1">知道了</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">s</span><span class="pl-s">p</span><span class="pl-s">a</span><span class="pl-s">n</span><span class="pl-s">&gt;</span>\n        &lt;/<span class="pl-s1">swiper</span><span class="pl-c1">-</span><span class="pl-s1">slide</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">slot</span><span class="pl-c1">=</span><span class="pl-s">"pagination"</span> <span class="pl-c1">v-show</span><span class="pl-c1">=</span><span class="pl-s">"contents.length &gt; 1"</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-pagination"</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">s</span><span class="pl-s">w</span><span class="pl-s">i</span><span class="pl-s">p</span><span class="pl-s">e</span><span class="pl-s">r</span><span class="pl-s">&gt;</span>\n&lt;/<span class="pl-s1">template</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">&lt;</span><span class="pl-s1">script</span><span class="pl-c1">&gt;</span>\nexport default <span class="pl-kos">{</span>\n <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">return</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">activeIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span>\n      <span class="pl-c1">swiperOptions</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">slidesPerView</span>: <span class="pl-s">"auto"</span><span class="pl-kos">,</span>\n        <span class="pl-c1">pagination</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">el</span>: <span class="pl-s">\'.swiper-pagination\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">type</span>: <span class="pl-s">\'bullets\'</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>,\n  methods: <span class="pl-kos">{</span>\n\t<span class="pl-en">confirmA</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">)</span><span class="pl-kos"></span><span class="pl-kos">{</span>\n      <span class="pl-c">//点击的不是最后一个</span>\n      <span class="pl-en">if</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">contents</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">1</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">index</span> <span class="pl-c1">!=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">contents</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos"></span><span class="pl-kos">{</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$refs</span><span class="pl-kos">.</span><span class="pl-c1">mySwiper</span><span class="pl-kos">.</span><span class="pl-c1">swiper</span><span class="pl-kos">.</span><span class="pl-en">slideNext</span><span class="pl-kos">(</span><span class="pl-c1">300</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">contents</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">sendCode</span><span class="pl-kos">(</span><span class="pl-s">\'左侧弹窗关闭\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$refs</span><span class="pl-kos">.</span><span class="pl-c1">mySwiper</span><span class="pl-kos">.</span><span class="pl-c1">swiper</span><span class="pl-kos">.</span><span class="pl-en">updateSlides</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">300</span><span class="pl-kos">)</span>\n      <span class="pl-kos">}</span>else if(this.contents.length == 1 || index == this.contents.length - 1)<span class="pl-kos">{</span>\n        <span class="pl-c">//点击最后一个</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">sendCode</span><span class="pl-kos">(</span><span class="pl-s">\'右侧弹窗关闭\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">updateConfirmed</span><span class="pl-kos">(</span><span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">$emit</span><span class="pl-kos">(</span><span class="pl-s">\'confirm\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n<span class="pl-kos">&lt;/</span><span class="pl-s1">script</span><span class="pl-c1">&gt;</span></pre></div>\n<p dir="auto">（2）使用 v-swiper 指令的方式使用 swiper（注意：一定要在使用 v-swiper 之前，执行 Vue.use(window.VueAwesomeSwiper)）</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*\n* nuxt.config.js\n*/\n{\n head: {\n    link: [\n      {\n        rel: &quot;stylesheet&quot;,\n        href: `/assets/public-js/lib/vue-awesome-swiper3.1.3.css`\n      }\n    ],\n    script: [\n      {\n        defer: true,\n        src: \'/assets/public-js/lib/vue-awesome-swiper3.1.3.ssr.js\'\n      },\n    ]\n  },\n}\n\n\n\n\n/*\n* plugins/main.js\n*/\nif(!isServer()){\n  Vue.use(window.VueAwesomeSwiper);\n}\n\n\n/*\n* 使用swiper的vue文件\n*/\n&lt;template&gt;\n    &lt;div v-swiper:mySwiper=&quot;swiperOptions&quot; v-show=&quot;claimCaseList.length &gt; 0&quot;&gt;\n        &lt;div class=\'swiper-wrapper\'&gt;\n           &lt;div class=&quot;swiper-slide&quot; v-for=&quot;(item, index) in claimCaseList&quot; :key=&quot;index&quot;&gt;\n              &lt;img class=&quot;img-case&quot; :src=&quot;item.src&quot; /&gt;\n           &lt;/div&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n&lt;/template&gt;\n&lt;script&gt;\nexport default {\n data() {\n    return {\n      activeIndex: 0,\n      swiperOptions: {\n        slidesPerView: &quot;auto&quot;,\n        on: {\n          slideChange: () =&gt; {\n            this.sendTD({\n              eventId: &quot;prod_claimCaseSwitch&quot;\n            });\n          }\n        }\n      },\n    };\n  }\n}\n&lt;/script&gt;"><pre class="notranslate"><span class="pl-c">/*</span>\n<span class="pl-c">* nuxt.config.js</span>\n<span class="pl-c">*/</span>\n<span class="pl-kos">{</span>\n <span class="pl-c1">head</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">link</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">rel</span>: <span class="pl-s">"stylesheet"</span><span class="pl-kos">,</span>\n        <span class="pl-c1">href</span>: <span class="pl-s">`/assets/public-js/lib/vue-awesome-swiper3.1.3.css`</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-c1">script</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">defer</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">src</span>: <span class="pl-s">\'/assets/public-js/lib/vue-awesome-swiper3.1.3.ssr.js\'</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span>\n\n\n\n\n<span class="pl-c">/*</span>\n<span class="pl-c">* plugins/main.js</span>\n<span class="pl-c">*/</span>\n<span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-en">isServer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">{</span>\n  <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">VueAwesomeSwiper</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n\n<span class="pl-c">/*</span>\n<span class="pl-c">* 使用swiper的vue文件</span>\n<span class="pl-c">*/</span>\n<span class="pl-c1">&lt;</span><span class="pl-s1">template</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">v-swiper</span>:<span class="pl-s1">mySwiper</span><span class="pl-c1">=</span><span class="pl-s">"swiperOptions"</span> <span class="pl-c1">v-show</span><span class="pl-c1">=</span><span class="pl-s">"claimCaseList.length &gt; 0"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">\'swiper-wrapper\'</span><span class="pl-c1">&gt;</span>\n           <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-slide"</span> <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item, index) in claimCaseList"</span> :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span><span class="pl-c1">&gt;</span>\n              <span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"img-case"</span> :<span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"item.src"</span> <span class="pl-kos">/&gt;</span>\n           <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-s1">template</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">&lt;</span><span class="pl-s1">script</span><span class="pl-c1">&gt;</span>\n<span class="pl-k">export</span> <span class="pl-s1">default</span> <span class="pl-kos">{</span>\n <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">activeIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span>\n      <span class="pl-c1">swiperOptions</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">slidesPerView</span>: <span class="pl-s">"auto"</span><span class="pl-kos">,</span>\n        <span class="pl-c1">on</span>: <span class="pl-kos">{</span>\n          <span class="pl-en">slideChange</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n            <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">sendTD</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n              <span class="pl-c1">eventId</span>: <span class="pl-s">"prod_claimCaseSwitch"</span>\n            <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">r</span><span class="pl-s">i</span><span class="pl-s">p</span><span class="pl-s">t</span><span class="pl-s">&gt;</span></pre></div>\n<p dir="auto"><strong>按需引入 vant、lodash</strong></p>\n<p dir="auto">项目中使用 vant，如果直接全量引入，会导致打包体积过大，可以使用 babel-plugin-import 实现按需引入，在 nuxt.config.js 中做如下配置：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//加载babel-plugin-import依赖\n//npm i babel-plugin-import --save-dev\n//vant打包需要less依赖\n//npm i less --save-dev\n//npm i less-loader --save-dev\nexport default {\n  mode: \'universal\',\n  build: {\n    transpile: [/vant.*?less/],\n    babel: {\n      plugins: [\n        [\n          \'lodash\',\n          {\n            libraryName: \'lodash\', //配置lodash按需加载\n            libraryDirectory: \'\',\n            camel2DashComponentName: false\n          },\n          \'lodash\'\n        ],\n        [\n          \'import\',\n          {\n            libraryName: \'vant\', //配置vant按需加载\n            style: (name) =&gt; `${name}/style/less.js`\n          },\n          \'vant\'\n        ]\n      ]\n    }\n  }\n};"><pre class="notranslate"><span class="pl-c">//加载babel-plugin-import依赖</span>\n<span class="pl-c">//npm i babel-plugin-import --save-dev</span>\n<span class="pl-c">//vant打包需要less依赖</span>\n<span class="pl-c">//npm i less --save-dev</span>\n<span class="pl-c">//npm i less-loader --save-dev</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">mode</span>: <span class="pl-s">\'universal\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">build</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">transpile</span>: <span class="pl-kos">[</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">v</span><span class="pl-s">a</span><span class="pl-s">n</span><span class="pl-s">t</span>.<span class="pl-c1">*</span>?<span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-c1">/</span></span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-c1">babel</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>\n        <span class="pl-kos">[</span>\n          <span class="pl-s">\'lodash\'</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">libraryName</span>: <span class="pl-s">\'lodash\'</span><span class="pl-kos">,</span> <span class="pl-c">//配置lodash按需加载</span>\n            <span class="pl-c1">libraryDirectory</span>: <span class="pl-s">\'\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">camel2DashComponentName</span>: <span class="pl-c1">false</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-s">\'lodash\'</span>\n        <span class="pl-kos">]</span><span class="pl-kos">,</span>\n        <span class="pl-kos">[</span>\n          <span class="pl-s">\'import\'</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">libraryName</span>: <span class="pl-s">\'vant\'</span><span class="pl-kos">,</span> <span class="pl-c">//配置vant按需加载</span>\n            <span class="pl-en">style</span>: <span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>/style/less.js`</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-s">\'vant\'</span>\n        <span class="pl-kos">]</span>\n      <span class="pl-kos">]</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">配置完成后，在项目中正常引入 vant 即可</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import Vue from \'vue\';\nimport { Button } from \'vant\';\nVue.use(Button);\n//注意:配置按需加载后，不允许全量引入vant\n//import Vant from \'vant\';\n//import \'vant/lib/index.css\';\n//Vue.use(vant);"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">Vue</span> <span class="pl-k">from</span> <span class="pl-s">\'vue\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">Button</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'vant\'</span><span class="pl-kos">;</span>\n<span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Button</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-c">//注意:配置按需加载后，不允许全量引入vant</span>\n<span class="pl-c">//import Vant from \'vant\';</span>\n<span class="pl-c">//import \'vant/lib/index.css\';</span>\n<span class="pl-c">//Vue.use(vant);</span></pre></div>\n<h2 id="main-heading-H2-5">五、首屏优化</h2>\n<p dir="auto"><strong>图片懒加载</strong></p>\n<p dir="auto">使用 vant 的核心依赖 vue-lazyload，实现组件懒加载：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// plugins\\plugin\\main.js\n\nimport { Lazyload, Image as VantImage } from \'vant\';\n\nVue.use(Toast).use(Dialog).use(VantImage).use(Lazyload, {\n  lazyComponent: true\n});"><pre class="notranslate"><span class="pl-c">// plugins\\plugin\\main.js</span>\n\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">Lazyload</span><span class="pl-kos">,</span> <span class="pl-v">Image</span> <span class="pl-k">as</span> <span class="pl-v">VantImage</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'vant\'</span><span class="pl-kos">;</span>\n\n<span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Toast</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Dialog</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">VantImage</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Lazyload</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">lazyComponent</span>: <span class="pl-c1">true</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">注册 Lazyload 可配置的其他常用参数：</p>\n<ul dir="auto">\n<li>lazyComponent: false // 开启后会在全局注册名为 lazy-component 的懒加载组件</li>\n<li>preLoad: preLoad || 1.3, // 1.3 的距离是 还未展示的 dom 距离视口顶部的高度小于视口高度的 1.3 倍时就开始加载图片了</li>\n<li>preLoadTop: preLoadTop || 0, // dom 的底部距离页面顶部多少距离还是加载</li>\n<li>error: error || DEFAULT_URL, // 加载失败显示的图片</li>\n<li>loading: loading || DEFAULT_URL, // 加载中显示的图片</li>\n<li>attempt: attempt || 3, // 图片加载失败，最多重试的次数</li>\n</ul>\n<p dir="auto"><strong>懒加载代码例子</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template&gt;\n  &lt;div&gt;\n    &lt;div class=&quot;detail&quot;&gt;\n      &lt;img\n        v-for=&quot;(item,index) in characterImages&quot;\n        :key=&quot;index&quot;\n        v-lazy=&quot;item.src&quot;\n        :class=&quot;`${videoImages.length &gt; 0  ? \'swiper_img\' : \'video_img\'}`&quot;\n        @click=&quot;imageClick(item , $event)&quot;\n      /&gt;\n    &lt;/div&gt;\n    &lt;lazy-component&gt;\n      &lt;productVideo /&gt;\n    &lt;/lazy-component&gt;\n    &lt;lazy-component&gt;\n      &lt;div v-swiper:mySwiper=&quot;swiperOptions&quot; class=&quot;swiper-container&quot;&gt;\n        &lt;div class=&quot;swiper-wrapper&quot;&gt;\n          &lt;div class=&quot;swiper-slide&quot; v-for=&quot;(item, index) in bannerImages&quot; :key=&quot;index&quot;&gt;\n            &lt;img v-lazy=&quot;item.src&quot; alt /&gt;\n          &lt;/div&gt;\n        &lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/lazy-component&gt;\n    &lt;div class=&quot;detail-features&quot;&gt;\n      &lt;img v-for=&quot;(item,index) in featuresImages&quot; :key=&quot;index&quot;  v-lazy=&quot;item.src&quot; /&gt;\n    &lt;/div&gt;\n    &lt;Mask :show=&quot;showMask&quot; @click=&quot;onHideMask&quot; class=&quot;custom-dialog&quot;&gt;\n      &lt;div class=&quot;custom-wrap&quot;&gt;\n        &lt;div class=&quot;helper&quot;&gt;&lt;/div&gt;\n        &lt;div class=&quot;content&quot;&gt;\n          &lt;h3&gt;{{custom.title}}&lt;/h3&gt;\n          &lt;div v-html=&quot;custom.content&quot;&gt;&lt;/div&gt;\n        &lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/Mask&gt;\n  &lt;/div&gt;\n&lt;/template&gt;"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">template</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"detail"</span><span class="pl-c1">&gt;</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">img</span>\n        <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item,index) in characterImages"</span>\n        :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span>\n        <span class="pl-c1">v-lazy</span><span class="pl-c1">=</span><span class="pl-s">"item.src"</span>\n        :<span class="pl-k">class</span><span class="pl-c1">=</span><span class="pl-s">"`${videoImages.length &gt; 0  ? \'swiper_img\' : \'video_img\'}`"</span>\n        @<span class="pl-en">click</span><span class="pl-c1">=</span>"<span class="pl-s1">imageClick</span><span class="pl-kos">(</span><span class="pl-s1">item</span> <span class="pl-kos">,</span> <span class="pl-s1">$event</span><span class="pl-kos">)</span>"\n      <span class="pl-c1">/</span><span class="pl-s">&gt;</span>\n    &lt;/<span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">lazy-component</span><span class="pl-c1">&gt;</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">productVideo</span> <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-s1">lazy-component</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">lazy</span><span class="pl-c1">-</span><span class="pl-s1">component</span><span class="pl-c1">&gt;</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">v-swiper</span>:<span class="pl-s1">mySwiper</span><span class="pl-c1">=</span><span class="pl-s">"swiperOptions"</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-container"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-wrapper"</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"swiper-slide"</span> <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item, index) in bannerImages"</span> :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span><span class="pl-c1">&gt;</span>\n            <span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">v-lazy</span><span class="pl-c1">=</span><span class="pl-s">"item.src"</span> <span class="pl-c1">alt</span> <span class="pl-kos">/&gt;</span>\n          <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">l</span><span class="pl-s">a</span><span class="pl-s">z</span><span class="pl-s">y</span><span class="pl-s">-</span><span class="pl-s">c</span><span class="pl-s">o</span><span class="pl-s">m</span><span class="pl-s">p</span><span class="pl-s">o</span><span class="pl-s">n</span><span class="pl-s">e</span><span class="pl-s">n</span><span class="pl-s">t</span><span class="pl-s">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"detail-features"</span><span class="pl-c1">&gt;</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">v-for</span><span class="pl-c1">=</span><span class="pl-s">"(item,index) in featuresImages"</span> :<span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-s">"index"</span>  <span class="pl-c1">v-lazy</span><span class="pl-c1">=</span><span class="pl-s">"item.src"</span> <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-v">Mask</span> :<span class="pl-s1">show</span><span class="pl-c1">=</span><span class="pl-s">"showMask"</span> @<span class="pl-s1">click</span><span class="pl-c1">=</span><span class="pl-s">"onHideMask"</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">"custom-dialog"</span><span class="pl-c1">&gt;</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"custom-wrap"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"helper"</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">"content"</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">h3</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-s1">custom</span><span class="pl-kos">.</span>title<span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">h3</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">v-html</span><span class="pl-c1">=</span><span class="pl-s">"custom.content"</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">M</span><span class="pl-s">a</span><span class="pl-s">s</span><span class="pl-s">k</span><span class="pl-s">&gt;</span>\n  &lt;/<span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s1">template</span><span class="pl-c1">&gt;</span></pre></div>\n<p dir="auto"><strong>关于 谷歌浏览器勾选 disable cache 图片加载两次的问题（暂不用考虑，以下项目也有出现）</strong></p>\n<ul dir="auto">\n<li>v-lazy 官网 demo</li>\n<li>vant 官网 懒加载 demo</li>\n</ul>\n<p dir="auto"><strong>css 优先加载，JS 后置</strong></p>\n<p dir="auto">默认情况下，打包 css 和 js 都会位于 head 中，js 会减慢页面渲染速度，在 nuxt.config.js 中做如下配置：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  mode: \'universal\',\n  render: {\n    //移除preload\n    resourceHints: false,\n    //将js移动到body中，添加defer标记\n    asyncScripts: true\n  }\n};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">mode</span>: <span class="pl-s">\'universal\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">render</span>: <span class="pl-kos">{</span>\n    <span class="pl-c">//移除preload</span>\n    <span class="pl-c1">resourceHints</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n    <span class="pl-c">//将js移动到body中，添加defer标记</span>\n    <span class="pl-c1">asyncScripts</span>: <span class="pl-c1">true</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">配置完成后，打包页面主体结构如下：</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;html lang=&quot;en&quot; style=&quot;font-size: 50px;&quot;&gt;\n  &lt;head&gt;\n    &lt;title&gt;产品标题&lt;/title&gt;\n    &lt;link rel=&quot;stylesheet&quot; href=&quot;/0001/_nuxt/vendors/app.7508770.css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; href=&quot;/0001/_nuxt/app.3f7b217.css&quot; /&gt;\n    &lt;link rel=&quot;stylesheet&quot; href=&quot;/0001/_nuxt/pages/index.3f90c5c.css&quot; /&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;script src=&quot;/0001/_nuxt/cda622d.js&quot; defer=&quot;&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;/0001/_nuxt/d0fb5d1.js&quot; defer=&quot;&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;/0001/_nuxt/5dc59b2.js&quot; defer=&quot;&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;/0001/_nuxt/2335657.js&quot; defer=&quot;&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;/0001/_nuxt/23e2c42.js&quot; defer=&quot;&quot;&gt;&lt;/script&gt;\n    &lt;script src=&quot;/0001/_nuxt/c062255.js&quot; defer=&quot;&quot;&gt;&lt;/script&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>" <span class="pl-c1">style</span>="<span class="pl-s">font-size: 50px;</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>产品标题<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">/0001/_nuxt/vendors/app.7508770.css</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">/0001/_nuxt/app.3f7b217.css</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">rel</span>="<span class="pl-s">stylesheet</span>" <span class="pl-c1">href</span>="<span class="pl-s">/0001/_nuxt/pages/index.3f90c5c.css</span>" <span class="pl-kos">/&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/cda622d.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/d0fb5d1.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/5dc59b2.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/2335657.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/23e2c42.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">/0001/_nuxt/c062255.js</span>" <span class="pl-c1">defer</span>=""<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>\n<h2 id="main-heading-H2-6">六、其他优化</h2>\n<p dir="auto"><strong>node-sass 更换为 sass</strong></p>\n<p dir="auto">主要 npm 包 替换：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 移除 node-sass\nnpm remove node-sass -D\n\n\n# 安装 最新版 sass\nnpm i sass -D"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 移除 node-sass</span>\nnpm remove node-sass -D\n\n\n<span class="pl-c"><span class="pl-c">#</span> 安装 最新版 sass</span>\nnpm i sass -D</pre></div>\n<p dir="auto">接下来搜索全局搜索 \\deep\\ 替换 为 ::v-deep。(注意：如果使用了 nuxt-common 子模块，不需要更改该子模块下的 \\deep)。最后重新启动项目，启动成功，则修改完毕！</p>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:n,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/202"},navList:[{text:"目录",id:"main-heading-H2-0",type:a,children:[]},{text:"一、增加打包命令，根据参数切换测试生产环境",id:"main-heading-H2-1",type:a,children:[]},{text:"二、静态资源切换 CDN category",id:"main-heading-H2-2",type:a,children:[]},{text:"三、自定义 html 模板",id:"main-heading-H2-3",type:a,children:[]},{text:"四、优化打包体积",id:"main-heading-H2-4",type:a,children:[]},{text:"五、首屏优化",id:"main-heading-H2-5",type:a,children:[]},{text:"六、其他优化",id:"main-heading-H2-6",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:n}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,521 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Javascript 编程风格修正 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="目录 类型 对象 函数 比较运算符 注释 类型 1.1 var vs let const 所有的变量赋值尽量使用 const 而不是 var，如果一定要对变量重新赋值，那就使用 let。 对象 2.1 浅拷贝 // very bad const original = { a: 1, b: 2 }; "><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Javascript 编程风格修正"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="目录 类型 对象 函数 比较运算符 注释 类型 1.1 var vs let const 所有的变量赋值尽量使用 const 而不是 var，如果一定要对变量重新赋值，那就使用 let。 对象 2.1 浅拷贝 // very bad const original = { a: 1, b: 2 }; "><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Javascript 编程风格修正"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="目录 类型 对象 函数 比较运算符 注释 类型 1.1 var vs let const 所有的变量赋值尽量使用 const 而不是 var，如果一定要对变量重新赋值，那就使用 let。 对象 2.1 浅拷贝 // very bad const original = { a: 1, b: 2 }; "><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/11#main-heading-H2-0" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/11#main-heading-H2-1" title="类型" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              类型
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/11#main-heading-H2-2" title="对象" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              对象
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/11#main-heading-H2-3" title="函数" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              函数
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/11#main-heading-H2-4" title="比较运算符" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              比较运算符
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/11#main-heading-H2-5" title="注释" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              注释
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/11#main-heading-H2-6" title="参考" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Javascript 编程风格修正</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Javascript 编程风格修正</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-03-01</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 11 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">目录</h2>
+<ul dir="auto">
+<li><a href="#%E7%B1%BB%E5%9E%8B">类型</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1">对象</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a></li>
+<li><a href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6">比较运算符</a></li>
+<li><a href="#%E6%B3%A8%E9%87%8A">注释</a></li>
+</ul>
+<h2 id="main-heading-H2-1">类型</h2>
+<p dir="auto">1.1 <code class="notranslate">var</code> vs <code class="notranslate">let</code>&<code class="notranslate">const</code></p>
+<p dir="auto">所有的变量赋值尽量使用 const 而不是 var，如果一定要对变量重新赋值，那就使用 let。</p>
+<h2 id="main-heading-H2-2">对象</h2>
+<p dir="auto">2.1 浅拷贝</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// very bad
+const original = { a: 1, b: 2 };
+const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ
+delete copy.a; // so does this
+
+// bad
+const original = { a: 1, b: 2 };
+const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
+
+// good es6扩展运算符 ...
+const original = { a: 1, b: 2 };
+// 浅拷贝
+const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
+
+// rest 赋值运算符
+const { a, ...noA } = copy; // noA => { b: 2, c: 3 }"><pre class="notranslate"><span class="pl-c">// very bad</span>
+<span class="pl-k">const</span> <span class="pl-s1">original</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">a</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">b</span>: <span class="pl-c1">2</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">copy</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">assign</span><span class="pl-kos">(</span><span class="pl-s1">original</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">c</span>: <span class="pl-c1">3</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// this mutates `original` ಠ_ಠ</span>
+<span class="pl-k">delete</span> <span class="pl-s1">copy</span><span class="pl-kos">.</span><span class="pl-c1">a</span><span class="pl-kos">;</span> <span class="pl-c">// so does this</span>
+
+<span class="pl-c">// bad</span>
+<span class="pl-k">const</span> <span class="pl-s1">original</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">a</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">b</span>: <span class="pl-c1">2</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">copy</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">assign</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-s1">original</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">c</span>: <span class="pl-c1">3</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// copy => { a: 1, b: 2, c: 3 }</span>
+
+<span class="pl-c">// good es6扩展运算符 ...</span>
+<span class="pl-k">const</span> <span class="pl-s1">original</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">a</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">b</span>: <span class="pl-c1">2</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-c">// 浅拷贝</span>
+<span class="pl-k">const</span> <span class="pl-s1">copy</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> ...<span class="pl-s1">original</span><span class="pl-kos">,</span> <span class="pl-c1">c</span>: <span class="pl-c1">3</span> <span class="pl-kos">}</span><span class="pl-kos">;</span> <span class="pl-c">// copy => { a: 1, b: 2, c: 3 }</span>
+
+<span class="pl-c">// rest 赋值运算符</span>
+<span class="pl-k">const</span> <span class="pl-kos">{</span> a<span class="pl-kos">,</span> ...<span class="pl-s1">noA</span> <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">copy</span><span class="pl-kos">;</span> <span class="pl-c">// noA => { b: 2, c: 3 }</span></pre></div>
+<p dir="auto">2.2 检测对象有效值</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const obj = { name: 'yue', age: '18', friend: 'heizi' };
+
+// bad
+
+const { name, age, friend } = obj;
+if (!name || !age || !friend) {
+}
+
+// good
+
+Object.values(obj).every((v) => v);"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">'yue'</span><span class="pl-kos">,</span> <span class="pl-c1">age</span>: <span class="pl-s">'18'</span><span class="pl-kos">,</span> <span class="pl-c1">friend</span>: <span class="pl-s">'heizi'</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// bad</span>
+
+<span class="pl-k">const</span> <span class="pl-kos">{</span> name<span class="pl-kos">,</span> age<span class="pl-kos">,</span> friend <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">obj</span><span class="pl-kos">;</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">name</span> <span class="pl-c1">||</span> <span class="pl-c1">!</span><span class="pl-s1">age</span> <span class="pl-c1">||</span> <span class="pl-c1">!</span><span class="pl-s1">friend</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+
+<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">values</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">every</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">v</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">2.3 多个返回值用对象的解构</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad
+function processInput(input) {
+  // 然后就是见证奇迹的时刻
+  return [left, right, top, bottom];
+}
+
+// 调用者需要想一想返回值的顺序
+const [left, __, top] = processInput(input);
+
+// good
+function processInput(input) {
+  // oops， 奇迹又发生了
+  return { left, right, top, bottom };
+}
+
+// 调用者只需要选择他想用的值就好了
+const { left, top } = processInput(input);"><pre class="notranslate"><span class="pl-c">// bad</span>
+<span class="pl-k">function</span> <span class="pl-en">processInput</span><span class="pl-kos">(</span><span class="pl-s1">input</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 然后就是见证奇迹的时刻</span>
+  <span class="pl-k">return</span> <span class="pl-kos">[</span><span class="pl-s1">left</span><span class="pl-kos">,</span> <span class="pl-s1">right</span><span class="pl-kos">,</span> <span class="pl-s1">top</span><span class="pl-kos">,</span> <span class="pl-s1">bottom</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// 调用者需要想一想返回值的顺序</span>
+<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">left</span><span class="pl-kos">,</span> <span class="pl-c1">__</span><span class="pl-kos">,</span> <span class="pl-s1">top</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">processInput</span><span class="pl-kos">(</span><span class="pl-s1">input</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-k">function</span> <span class="pl-en">processInput</span><span class="pl-kos">(</span><span class="pl-s1">input</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// oops， 奇迹又发生了</span>
+  <span class="pl-k">return</span> <span class="pl-kos">{</span> left<span class="pl-kos">,</span> right<span class="pl-kos">,</span> top<span class="pl-kos">,</span> bottom <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// 调用者只需要选择他想用的值就好了</span>
+<span class="pl-k">const</span> <span class="pl-kos">{</span> left<span class="pl-kos">,</span> top <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-en">processInput</span><span class="pl-kos">(</span><span class="pl-s1">input</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-3">函数</h2>
+<p dir="auto">3.1 用默认参数语法而不是在函数里对参数重新赋值。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// really bad
+function handleThings(opts) {
+  // 不， 我们不该改arguments
+  // 第二： 如果 opts 的值为 false, 它会被赋值为 {}
+  // 虽然你想这么写， 但是这个会带来一些细微的bug
+  opts = opts || {};
+  // ...
+}
+
+// still bad
+function handleThings(opts) {
+  if (opts === void 0) {
+    opts = {};
+  }
+  // ...
+}
+
+// good
+function handleThings(opts = {}) {
+  // ...
+}"><pre class="notranslate"><span class="pl-c">// really bad</span>
+<span class="pl-k">function</span> <span class="pl-en">handleThings</span><span class="pl-kos">(</span><span class="pl-s1">opts</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 不， 我们不该改arguments</span>
+  <span class="pl-c">// 第二： 如果 opts 的值为 false, 它会被赋值为 {}</span>
+  <span class="pl-c">// 虽然你想这么写， 但是这个会带来一些细微的bug</span>
+  <span class="pl-s1">opts</span> <span class="pl-c1">=</span> <span class="pl-s1">opts</span> <span class="pl-c1">||</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// still bad</span>
+<span class="pl-k">function</span> <span class="pl-en">handleThings</span><span class="pl-kos">(</span><span class="pl-s1">opts</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">opts</span> <span class="pl-c1">===</span> <span class="pl-k">void</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">opts</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-k">function</span> <span class="pl-en">handleThings</span><span class="pl-kos">(</span><span class="pl-s1">opts</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">3.2 切勿重新分配参数。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad
+function f1(a) {
+  a = 1;
+  // ...
+}
+
+function f2(a) {
+  if (!a) {
+    a = 1;
+  }
+  // ...
+}
+
+// good
+function f3(a) {
+  const b = a || 1;
+  // ...
+}
+
+function f4(a = 1) {
+  // ...
+}"><pre class="notranslate"><span class="pl-c">// bad</span>
+<span class="pl-k">function</span> <span class="pl-en">f1</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">f2</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-k">function</span> <span class="pl-en">f3</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-s1">b</span> <span class="pl-c1">=</span> <span class="pl-s1">a</span> <span class="pl-c1">||</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">function</span> <span class="pl-en">f4</span><span class="pl-kos">(</span><span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-4">比较运算符</h2>
+<p dir="auto">4.1 严格相等</p>
+<p dir="auto">Javascript 有两个表示"相等"的运算符："相等"（==）和"严格相等"（===），使用<code class="notranslate">==</code>有可能促使类型转换，建议主加<code class="notranslate">===</code>。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="1 == '1'; // true
+1 == [1]; // true
+1 == true; // true
+0 == ''; // true
+0 == '0'; // true
+0 == false; // true"><pre class="notranslate"><span class="pl-c1">1</span> <span class="pl-c1">==</span> <span class="pl-s">'1'</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>
+<span class="pl-c1">1</span> <span class="pl-c1">==</span> <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>
+<span class="pl-c1">1</span> <span class="pl-c1">==</span> <span class="pl-c1">true</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>
+<span class="pl-c1">0</span> <span class="pl-c1">==</span> <span class="pl-s">''</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>
+<span class="pl-c1">0</span> <span class="pl-c1">==</span> <span class="pl-s">'0'</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>
+<span class="pl-c1">0</span> <span class="pl-c1">==</span> <span class="pl-c1">false</span><span class="pl-kos">;</span> <span class="pl-c">// true</span></pre></div>
+<p dir="auto">你有什么理由不用我？</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="console.log('' === ''); // true"><pre class="notranslate"><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">''</span> <span class="pl-c1">===</span> <span class="pl-s">''</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// true</span></pre></div>
+<p dir="auto">4.2 布尔值用缩写，而字符串和数字要明确比较对象</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad
+if (isValid === true) {
+  // ...
+}
+
+// good
+if (isValid) {
+  // ...
+}
+
+// bad
+if (name) {
+  // ...
+}
+
+// good
+if (name !== '') {
+  // ...
+}
+
+// bad
+if (collection.length) {
+  // ...
+}
+
+// good
+if (collection.length > 0) {
+  // ...
+}"><pre class="notranslate"><span class="pl-c">// bad</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isValid</span> <span class="pl-c1">===</span> <span class="pl-c1">true</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isValid</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// bad</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">name</span> <span class="pl-c1">!==</span> <span class="pl-s">''</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// bad</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">collection</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">collection</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">></span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-5">注释</h2>
+<p dir="auto">5.1 <code class="notranslate">/** ... */</code>用于多行注释。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad
+// make() returns a new element
+// based on the passed in tag name
+//
+// @param {String} tag
+// @return {Element} element
+function make(tag) {
+  // ...
+
+  return element;
+}
+
+// good
+/**
+ * make() returns a new element
+ * based on the passed-in tag name
+ */
+function make(tag) {
+  // ...
+
+  return element;
+}"><pre class="notranslate"><span class="pl-c">// bad</span>
+<span class="pl-c">// make() returns a new element</span>
+<span class="pl-c">// based on the passed in tag name</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// <span class="pl-k">@param</span> {<span class="pl-smi">String</span>} tag</span>
+<span class="pl-c">// <span class="pl-k">@return</span> {<span class="pl-smi">Element</span>} element</span>
+<span class="pl-k">function</span> <span class="pl-en">make</span><span class="pl-kos">(</span><span class="pl-s1">tag</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">element</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-c">/**</span>
+<span class="pl-c"> * make() returns a new element</span>
+<span class="pl-c"> * based on the passed-in tag name</span>
+<span class="pl-c"> */</span>
+<span class="pl-k">function</span> <span class="pl-en">make</span><span class="pl-kos">(</span><span class="pl-s1">tag</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">element</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">5.2 <code class="notranslate">//</code>用于单行注释。 将单行注释放在注释主题上方的换行符上。 除非注释所在的第一行，否则在注释之前放置一个空行。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad
+const active = true; // is current tab
+
+// good
+// is current tab
+const active = true;
+
+// bad
+function getType() {
+  console.log('fetching type...');
+  // set the default type to 'no type'
+  const type = this._type || 'no type';
+
+  return type;
+}
+
+// good
+function getType() {
+  console.log('fetching type...');
+
+  // set the default type to 'no type'
+  const type = this._type || 'no type';
+
+  return type;
+}
+
+// also good
+function getType() {
+  // set the default type to 'no type'
+  const type = this._type || 'no type';
+
+  return type;
+}"><pre class="notranslate"><span class="pl-c">// bad</span>
+<span class="pl-k">const</span> <span class="pl-s1">active</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span> <span class="pl-c">// is current tab</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-c">// is current tab</span>
+<span class="pl-k">const</span> <span class="pl-s1">active</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// bad</span>
+<span class="pl-k">function</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'fetching type...'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-c">// set the default type to 'no type'</span>
+  <span class="pl-k">const</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">_type</span> <span class="pl-c1">||</span> <span class="pl-s">'no type'</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">type</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-k">function</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'fetching type...'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-c">// set the default type to 'no type'</span>
+  <span class="pl-k">const</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">_type</span> <span class="pl-c1">||</span> <span class="pl-s">'no type'</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">type</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// also good</span>
+<span class="pl-k">function</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// set the default type to 'no type'</span>
+  <span class="pl-k">const</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">_type</span> <span class="pl-c1">||</span> <span class="pl-s">'no type'</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">type</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">5.2 在所有注释的开头加一个空格，以使其易于阅读。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad
+//is current tab
+const active = true;
+
+// good
+// is current tab
+const active = true;
+
+// bad
+/**
+ *make() returns a new element
+ *based on the passed-in tag name
+ */
+function make(tag) {
+  // ...
+
+  return element;
+}
+
+// good
+/**
+ * make() returns a new element
+ * based on the passed-in tag name
+ */
+function make(tag) {
+  // ...
+
+  return element;
+}"><pre class="notranslate"><span class="pl-c">// bad</span>
+<span class="pl-c">//is current tab</span>
+<span class="pl-k">const</span> <span class="pl-s1">active</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-c">// is current tab</span>
+<span class="pl-k">const</span> <span class="pl-s1">active</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// bad</span>
+<span class="pl-c">/**</span>
+<span class="pl-c"> *make() returns a new element</span>
+<span class="pl-c"> *based on the passed-in tag name</span>
+<span class="pl-c"> */</span>
+<span class="pl-k">function</span> <span class="pl-en">make</span><span class="pl-kos">(</span><span class="pl-s1">tag</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">element</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// good</span>
+<span class="pl-c">/**</span>
+<span class="pl-c"> * make() returns a new element</span>
+<span class="pl-c"> * based on the passed-in tag name</span>
+<span class="pl-c"> */</span>
+<span class="pl-k">function</span> <span class="pl-en">make</span><span class="pl-kos">(</span><span class="pl-s1">tag</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// ...</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">element</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">5.3 在注释前使用 FIXME 或 TODO 前缀，这些不同于常规注释，因为它们是可操作的。 动作是 <code class="notranslate">FIXME： - 需要计算出来</code>或 <code class="notranslate">TODO： - 需要实现</code>。</p>
+<p dir="auto">用<code class="notranslate">// FIXME:</code>给问题做注释</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Calculator extends Abacus {
+  constructor() {
+    super();
+
+    // FIXME: shouldn't use a global here
+    total = 0;
+  }
+}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Calculator</span> <span class="pl-k">extends</span> <span class="pl-v">Abacus</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+    <span class="pl-c">// FIXME: shouldn't use a global here</span>
+    <span class="pl-s1">total</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">用<code class="notranslate">// TODO:</code>去注释问题的解决方案</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Calculator extends Abacus {
+  constructor() {
+    super();
+
+    // TODO: total should be configurable by an options param
+    this.total = 0;
+  }
+}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Calculator</span> <span class="pl-k">extends</span> <span class="pl-v">Abacus</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+    <span class="pl-c">// TODO: total should be configurable by an options param</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">total</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-6">参考</h2>
+<ul dir="auto">
+<li><a href="http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html" rel="nofollow">http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/38066626" rel="nofollow">https://zhuanlan.zhihu.com/p/38066626</a></li>
+<li><a href="https://github.com/airbnb/javascript">https://github.com/airbnb/javascript</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l){return{layout:"default",data:[{post:{id:301331549,number:11,title:"Javascript 编程风格修正",created_at:"2018-03-01T09:22:58Z",updated_at:"2021-05-30T16:50:33Z",body_html:'<h2 id="main-heading-H2-0">目录</h2>\n<ul dir="auto">\n<li><a href="#%E7%B1%BB%E5%9E%8B">类型</a></li>\n<li><a href="#%E5%AF%B9%E8%B1%A1">对象</a></li>\n<li><a href="#%E5%87%BD%E6%95%B0">函数</a></li>\n<li><a href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6">比较运算符</a></li>\n<li><a href="#%E6%B3%A8%E9%87%8A">注释</a></li>\n</ul>\n<h2 id="main-heading-H2-1">类型</h2>\n<p dir="auto">1.1 <code class="notranslate">var</code> vs <code class="notranslate">let</code>&amp;<code class="notranslate">const</code></p>\n<p dir="auto">所有的变量赋值尽量使用 const 而不是 var，如果一定要对变量重新赋值，那就使用 let。</p>\n<h2 id="main-heading-H2-2">对象</h2>\n<p dir="auto">2.1 浅拷贝</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// very bad\nconst original = { a: 1, b: 2 };\nconst copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ\ndelete copy.a; // so does this\n\n// bad\nconst original = { a: 1, b: 2 };\nconst copy = Object.assign({}, original, { c: 3 }); // copy =&gt; { a: 1, b: 2, c: 3 }\n\n// good es6扩展运算符 ...\nconst original = { a: 1, b: 2 };\n// 浅拷贝\nconst copy = { ...original, c: 3 }; // copy =&gt; { a: 1, b: 2, c: 3 }\n\n// rest 赋值运算符\nconst { a, ...noA } = copy; // noA =&gt; { b: 2, c: 3 }"><pre class="notranslate"><span class="pl-c">// very bad</span>\n<span class="pl-k">const</span> <span class="pl-s1">original</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">a</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">b</span>: <span class="pl-c1">2</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-k">const</span> <span class="pl-s1">copy</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">assign</span><span class="pl-kos">(</span><span class="pl-s1">original</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">c</span>: <span class="pl-c1">3</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// this mutates `original` ಠ_ಠ</span>\n<span class="pl-k">delete</span> <span class="pl-s1">copy</span><span class="pl-kos">.</span><span class="pl-c1">a</span><span class="pl-kos">;</span> <span class="pl-c">// so does this</span>\n\n<span class="pl-c">// bad</span>\n<span class="pl-k">const</span> <span class="pl-s1">original</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">a</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">b</span>: <span class="pl-c1">2</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-k">const</span> <span class="pl-s1">copy</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">assign</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-s1">original</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">c</span>: <span class="pl-c1">3</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// copy =&gt; { a: 1, b: 2, c: 3 }</span>\n\n<span class="pl-c">// good es6扩展运算符 ...</span>\n<span class="pl-k">const</span> <span class="pl-s1">original</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">a</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">b</span>: <span class="pl-c1">2</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-c">// 浅拷贝</span>\n<span class="pl-k">const</span> <span class="pl-s1">copy</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> ...<span class="pl-s1">original</span><span class="pl-kos">,</span> <span class="pl-c1">c</span>: <span class="pl-c1">3</span> <span class="pl-kos">}</span><span class="pl-kos">;</span> <span class="pl-c">// copy =&gt; { a: 1, b: 2, c: 3 }</span>\n\n<span class="pl-c">// rest 赋值运算符</span>\n<span class="pl-k">const</span> <span class="pl-kos">{</span> a<span class="pl-kos">,</span> ...<span class="pl-s1">noA</span> <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">copy</span><span class="pl-kos">;</span> <span class="pl-c">// noA =&gt; { b: 2, c: 3 }</span></pre></div>\n<p dir="auto">2.2 检测对象有效值</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const obj = { name: \'yue\', age: \'18\', friend: \'heizi\' };\n\n// bad\n\nconst { name, age, friend } = obj;\nif (!name || !age || !friend) {\n}\n\n// good\n\nObject.values(obj).every((v) =&gt; v);"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">\'yue\'</span><span class="pl-kos">,</span> <span class="pl-c1">age</span>: <span class="pl-s">\'18\'</span><span class="pl-kos">,</span> <span class="pl-c1">friend</span>: <span class="pl-s">\'heizi\'</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// bad</span>\n\n<span class="pl-k">const</span> <span class="pl-kos">{</span> name<span class="pl-kos">,</span> age<span class="pl-kos">,</span> friend <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">obj</span><span class="pl-kos">;</span>\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">name</span> <span class="pl-c1">||</span> <span class="pl-c1">!</span><span class="pl-s1">age</span> <span class="pl-c1">||</span> <span class="pl-c1">!</span><span class="pl-s1">friend</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n\n<span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">values</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">every</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">v</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">2.3 多个返回值用对象的解构</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad\nfunction processInput(input) {\n  // 然后就是见证奇迹的时刻\n  return [left, right, top, bottom];\n}\n\n// 调用者需要想一想返回值的顺序\nconst [left, __, top] = processInput(input);\n\n// good\nfunction processInput(input) {\n  // oops， 奇迹又发生了\n  return { left, right, top, bottom };\n}\n\n// 调用者只需要选择他想用的值就好了\nconst { left, top } = processInput(input);"><pre class="notranslate"><span class="pl-c">// bad</span>\n<span class="pl-k">function</span> <span class="pl-en">processInput</span><span class="pl-kos">(</span><span class="pl-s1">input</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 然后就是见证奇迹的时刻</span>\n  <span class="pl-k">return</span> <span class="pl-kos">[</span><span class="pl-s1">left</span><span class="pl-kos">,</span> <span class="pl-s1">right</span><span class="pl-kos">,</span> <span class="pl-s1">top</span><span class="pl-kos">,</span> <span class="pl-s1">bottom</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// 调用者需要想一想返回值的顺序</span>\n<span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">left</span><span class="pl-kos">,</span> <span class="pl-c1">__</span><span class="pl-kos">,</span> <span class="pl-s1">top</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">processInput</span><span class="pl-kos">(</span><span class="pl-s1">input</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-k">function</span> <span class="pl-en">processInput</span><span class="pl-kos">(</span><span class="pl-s1">input</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// oops， 奇迹又发生了</span>\n  <span class="pl-k">return</span> <span class="pl-kos">{</span> left<span class="pl-kos">,</span> right<span class="pl-kos">,</span> top<span class="pl-kos">,</span> bottom <span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// 调用者只需要选择他想用的值就好了</span>\n<span class="pl-k">const</span> <span class="pl-kos">{</span> left<span class="pl-kos">,</span> top <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-en">processInput</span><span class="pl-kos">(</span><span class="pl-s1">input</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-3">函数</h2>\n<p dir="auto">3.1 用默认参数语法而不是在函数里对参数重新赋值。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// really bad\nfunction handleThings(opts) {\n  // 不， 我们不该改arguments\n  // 第二： 如果 opts 的值为 false, 它会被赋值为 {}\n  // 虽然你想这么写， 但是这个会带来一些细微的bug\n  opts = opts || {};\n  // ...\n}\n\n// still bad\nfunction handleThings(opts) {\n  if (opts === void 0) {\n    opts = {};\n  }\n  // ...\n}\n\n// good\nfunction handleThings(opts = {}) {\n  // ...\n}"><pre class="notranslate"><span class="pl-c">// really bad</span>\n<span class="pl-k">function</span> <span class="pl-en">handleThings</span><span class="pl-kos">(</span><span class="pl-s1">opts</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 不， 我们不该改arguments</span>\n  <span class="pl-c">// 第二： 如果 opts 的值为 false, 它会被赋值为 {}</span>\n  <span class="pl-c">// 虽然你想这么写， 但是这个会带来一些细微的bug</span>\n  <span class="pl-s1">opts</span> <span class="pl-c1">=</span> <span class="pl-s1">opts</span> <span class="pl-c1">||</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// still bad</span>\n<span class="pl-k">function</span> <span class="pl-en">handleThings</span><span class="pl-kos">(</span><span class="pl-s1">opts</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">opts</span> <span class="pl-c1">===</span> <span class="pl-k">void</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">opts</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-k">function</span> <span class="pl-en">handleThings</span><span class="pl-kos">(</span><span class="pl-s1">opts</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">3.2 切勿重新分配参数。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad\nfunction f1(a) {\n  a = 1;\n  // ...\n}\n\nfunction f2(a) {\n  if (!a) {\n    a = 1;\n  }\n  // ...\n}\n\n// good\nfunction f3(a) {\n  const b = a || 1;\n  // ...\n}\n\nfunction f4(a = 1) {\n  // ...\n}"><pre class="notranslate"><span class="pl-c">// bad</span>\n<span class="pl-k">function</span> <span class="pl-en">f1</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">function</span> <span class="pl-en">f2</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-k">function</span> <span class="pl-en">f3</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-s1">b</span> <span class="pl-c1">=</span> <span class="pl-s1">a</span> <span class="pl-c1">||</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">function</span> <span class="pl-en">f4</span><span class="pl-kos">(</span><span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-4">比较运算符</h2>\n<p dir="auto">4.1 严格相等</p>\n<p dir="auto">Javascript 有两个表示"相等"的运算符："相等"（==）和"严格相等"（===），使用<code class="notranslate">==</code>有可能促使类型转换，建议主加<code class="notranslate">===</code>。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="1 == \'1\'; // true\n1 == [1]; // true\n1 == true; // true\n0 == \'\'; // true\n0 == \'0\'; // true\n0 == false; // true"><pre class="notranslate"><span class="pl-c1">1</span> <span class="pl-c1">==</span> <span class="pl-s">\'1\'</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>\n<span class="pl-c1">1</span> <span class="pl-c1">==</span> <span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>\n<span class="pl-c1">1</span> <span class="pl-c1">==</span> <span class="pl-c1">true</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>\n<span class="pl-c1">0</span> <span class="pl-c1">==</span> <span class="pl-s">\'\'</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>\n<span class="pl-c1">0</span> <span class="pl-c1">==</span> <span class="pl-s">\'0\'</span><span class="pl-kos">;</span> <span class="pl-c">// true</span>\n<span class="pl-c1">0</span> <span class="pl-c1">==</span> <span class="pl-c1">false</span><span class="pl-kos">;</span> <span class="pl-c">// true</span></pre></div>\n<p dir="auto">你有什么理由不用我？</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="console.log(\'\' === \'\'); // true"><pre class="notranslate"><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'\'</span> <span class="pl-c1">===</span> <span class="pl-s">\'\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// true</span></pre></div>\n<p dir="auto">4.2 布尔值用缩写，而字符串和数字要明确比较对象</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad\nif (isValid === true) {\n  // ...\n}\n\n// good\nif (isValid) {\n  // ...\n}\n\n// bad\nif (name) {\n  // ...\n}\n\n// good\nif (name !== \'\') {\n  // ...\n}\n\n// bad\nif (collection.length) {\n  // ...\n}\n\n// good\nif (collection.length &gt; 0) {\n  // ...\n}"><pre class="notranslate"><span class="pl-c">// bad</span>\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isValid</span> <span class="pl-c1">===</span> <span class="pl-c1">true</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isValid</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// bad</span>\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">name</span> <span class="pl-c1">!==</span> <span class="pl-s">\'\'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// bad</span>\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">collection</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">collection</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-5">注释</h2>\n<p dir="auto">5.1 <code class="notranslate">/** ... */</code>用于多行注释。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad\n// make() returns a new element\n// based on the passed in tag name\n//\n// @param {String} tag\n// @return {Element} element\nfunction make(tag) {\n  // ...\n\n  return element;\n}\n\n// good\n/**\n * make() returns a new element\n * based on the passed-in tag name\n */\nfunction make(tag) {\n  // ...\n\n  return element;\n}"><pre class="notranslate"><span class="pl-c">// bad</span>\n<span class="pl-c">// make() returns a new element</span>\n<span class="pl-c">// based on the passed in tag name</span>\n<span class="pl-c">//</span>\n<span class="pl-c">// <span class="pl-k">@param</span> {<span class="pl-smi">String</span>} tag</span>\n<span class="pl-c">// <span class="pl-k">@return</span> {<span class="pl-smi">Element</span>} element</span>\n<span class="pl-k">function</span> <span class="pl-en">make</span><span class="pl-kos">(</span><span class="pl-s1">tag</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">element</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-c">/**</span>\n<span class="pl-c"> * make() returns a new element</span>\n<span class="pl-c"> * based on the passed-in tag name</span>\n<span class="pl-c"> */</span>\n<span class="pl-k">function</span> <span class="pl-en">make</span><span class="pl-kos">(</span><span class="pl-s1">tag</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">element</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">5.2 <code class="notranslate">//</code>用于单行注释。 将单行注释放在注释主题上方的换行符上。 除非注释所在的第一行，否则在注释之前放置一个空行。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad\nconst active = true; // is current tab\n\n// good\n// is current tab\nconst active = true;\n\n// bad\nfunction getType() {\n  console.log(\'fetching type...\');\n  // set the default type to \'no type\'\n  const type = this._type || \'no type\';\n\n  return type;\n}\n\n// good\nfunction getType() {\n  console.log(\'fetching type...\');\n\n  // set the default type to \'no type\'\n  const type = this._type || \'no type\';\n\n  return type;\n}\n\n// also good\nfunction getType() {\n  // set the default type to \'no type\'\n  const type = this._type || \'no type\';\n\n  return type;\n}"><pre class="notranslate"><span class="pl-c">// bad</span>\n<span class="pl-k">const</span> <span class="pl-s1">active</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span> <span class="pl-c">// is current tab</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-c">// is current tab</span>\n<span class="pl-k">const</span> <span class="pl-s1">active</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// bad</span>\n<span class="pl-k">function</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'fetching type...\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-c">// set the default type to \'no type\'</span>\n  <span class="pl-k">const</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">_type</span> <span class="pl-c1">||</span> <span class="pl-s">\'no type\'</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">type</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-k">function</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'fetching type...\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n  <span class="pl-c">// set the default type to \'no type\'</span>\n  <span class="pl-k">const</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">_type</span> <span class="pl-c1">||</span> <span class="pl-s">\'no type\'</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">type</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// also good</span>\n<span class="pl-k">function</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// set the default type to \'no type\'</span>\n  <span class="pl-k">const</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">_type</span> <span class="pl-c1">||</span> <span class="pl-s">\'no type\'</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">type</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">5.2 在所有注释的开头加一个空格，以使其易于阅读。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// bad\n//is current tab\nconst active = true;\n\n// good\n// is current tab\nconst active = true;\n\n// bad\n/**\n *make() returns a new element\n *based on the passed-in tag name\n */\nfunction make(tag) {\n  // ...\n\n  return element;\n}\n\n// good\n/**\n * make() returns a new element\n * based on the passed-in tag name\n */\nfunction make(tag) {\n  // ...\n\n  return element;\n}"><pre class="notranslate"><span class="pl-c">// bad</span>\n<span class="pl-c">//is current tab</span>\n<span class="pl-k">const</span> <span class="pl-s1">active</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-c">// is current tab</span>\n<span class="pl-k">const</span> <span class="pl-s1">active</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// bad</span>\n<span class="pl-c">/**</span>\n<span class="pl-c"> *make() returns a new element</span>\n<span class="pl-c"> *based on the passed-in tag name</span>\n<span class="pl-c"> */</span>\n<span class="pl-k">function</span> <span class="pl-en">make</span><span class="pl-kos">(</span><span class="pl-s1">tag</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">element</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// good</span>\n<span class="pl-c">/**</span>\n<span class="pl-c"> * make() returns a new element</span>\n<span class="pl-c"> * based on the passed-in tag name</span>\n<span class="pl-c"> */</span>\n<span class="pl-k">function</span> <span class="pl-en">make</span><span class="pl-kos">(</span><span class="pl-s1">tag</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// ...</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">element</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">5.3 在注释前使用 FIXME 或 TODO 前缀，这些不同于常规注释，因为它们是可操作的。 动作是 <code class="notranslate">FIXME： - 需要计算出来</code>或 <code class="notranslate">TODO： - 需要实现</code>。</p>\n<p dir="auto">用<code class="notranslate">// FIXME:</code>给问题做注释</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Calculator extends Abacus {\n  constructor() {\n    super();\n\n    // FIXME: shouldn\'t use a global here\n    total = 0;\n  }\n}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Calculator</span> <span class="pl-k">extends</span> <span class="pl-v">Abacus</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n    <span class="pl-c">// FIXME: shouldn\'t use a global here</span>\n    <span class="pl-s1">total</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">用<code class="notranslate">// TODO:</code>去注释问题的解决方案</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Calculator extends Abacus {\n  constructor() {\n    super();\n\n    // TODO: total should be configurable by an options param\n    this.total = 0;\n  }\n}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Calculator</span> <span class="pl-k">extends</span> <span class="pl-v">Abacus</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n    <span class="pl-c">// TODO: total should be configurable by an options param</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">total</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-6">参考</h2>\n<ul dir="auto">\n<li><a href="http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html" rel="nofollow">http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/38066626" rel="nofollow">https://zhuanlan.zhihu.com/p/38066626</a></li>\n<li><a href="https://github.com/airbnb/javascript">https://github.com/airbnb/javascript</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:p,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/11"},navList:[{text:"目录",id:"main-heading-H2-0",type:a,children:[]},{text:"类型",id:"main-heading-H2-1",type:a,children:[]},{text:"对象",id:"main-heading-H2-2",type:a,children:[]},{text:"函数",id:"main-heading-H2-3",type:a,children:[]},{text:"比较运算符",id:"main-heading-H2-4",type:a,children:[]},{text:"注释",id:"main-heading-H2-5",type:a,children:[]},{text:"参考",id:"main-heading-H2-6",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:p}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

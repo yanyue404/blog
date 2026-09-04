@@ -1,0 +1,764 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>深入bootstrap响应式布局 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 bootstrap响应式布局用的不熟，在网上找了现成的bootstrap响应单页很多，在这里通过分析一个bootstrap中文网主页的响应来分析响应式布局的原理，从此畅通，以后专注写media... 前往：Bootstrap中文网 视口 获取viewport的大小(布局视口) 获取layout"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="深入bootstrap响应式布局"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 bootstrap响应式布局用的不熟，在网上找了现成的bootstrap响应单页很多，在这里通过分析一个bootstrap中文网主页的响应来分析响应式布局的原理，从此畅通，以后专注写media... 前往：Bootstrap中文网 视口 获取viewport的大小(布局视口) 获取layout"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="深入bootstrap响应式布局"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 bootstrap响应式布局用的不熟，在网上找了现成的bootstrap响应单页很多，在这里通过分析一个bootstrap中文网主页的响应来分析响应式布局的原理，从此畅通，以后专注写media... 前往：Bootstrap中文网 视口 获取viewport的大小(布局视口) 获取layout"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H2-1" title="视口" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              视口
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H3-2" title="屏幕适配" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  屏幕适配
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H2-3" title="媒体查询" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              媒体查询
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H2-4" title="Bootstrap的响应源码" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Bootstrap的响应源码
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H3-5" title="container" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  container
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H3-6" title="display" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  display
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H2-7" title="Response分析" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Response分析
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H3-8" title="header" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  header
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H3-9" title="masthead 报头" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  masthead 报头
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H3-10" title="social 社交" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  social 社交
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H3-11" title="projects" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  projects
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/37#main-heading-H3-12" title="footer" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  footer
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>深入bootstrap响应式布局</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>深入bootstrap响应式布局</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-06-19</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 24 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto">bootstrap响应式布局用的不熟，在网上找了现成的bootstrap响应单页很多，在这里通过分析一个<code class="notranslate">bootstrap中文网主页</code>的响应来分析响应式布局的原理，从此畅通，以后专注写media...</p>
+<p dir="auto">前往：<a href="http://www.bootcss.com/" rel="nofollow">Bootstrap中文网</a></p>
+<h2 id="main-heading-H2-1">视口</h2>
+<p dir="auto">获取viewport的大小(布局视口)</p>
+<p dir="auto"><strong>获取layout viewport</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="document.documentElement.clientWidth;
+document.documentElement.clientHeight;"><pre class="notranslate"><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">documentElement</span><span class="pl-kos">.</span><span class="pl-c1">clientWidth</span><span class="pl-kos">;</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">documentElement</span><span class="pl-kos">.</span><span class="pl-c1">clientHeight</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>ideal viewport（理想视口）设备屏幕区域</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 获取ideal viewport有两种情形
+
+// 新设备
+window.screen.width;
+window.screen.height;
+
+// 老设备
+window.screen.width / window.devicePixelRatio;
+window.screen.height / window.devicePixelRatio;"><pre class="notranslate"><span class="pl-c">// 获取ideal viewport有两种情形</span>
+
+<span class="pl-c">// 新设备</span>
+<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">screen</span><span class="pl-kos">.</span><span class="pl-c1">width</span><span class="pl-kos">;</span>
+<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">screen</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 老设备</span>
+<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">screen</span><span class="pl-kos">.</span><span class="pl-c1">width</span> <span class="pl-c1">/</span> <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">devicePixelRatio</span><span class="pl-kos">;</span>
+<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">screen</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">/</span> <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">devicePixelRatio</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">移动设备厂商认为将网页完整显示给用户才最合理，而不该出现滚动条，所以就将layout viewport进行了缩放，使其恰好完整显示在ideal viewport（屏幕）里，其缩放比例为ideal viewport / layout viewport。</p>
+<h3 id="main-heading-H3-2">屏幕适配</h3>
+<blockquote>
+<p dir="auto">移动页面最理想的状态是，避免滚动条且不被默认缩放处理</p>
+</blockquote>
+<blockquote>
+<p dir="auto">viewport 是由苹果公司为了解决移动设备浏览器渲染页面而提出的解决方案</p>
+</blockquote>
+<ul dir="auto">
+<li>控制缩放</li>
+</ul>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<meta name="viewport" content="width=device-width, initial-scale=1.0">'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>"<span class="pl-kos">></span></pre></div>
+<h2 id="main-heading-H2-3">媒体查询</h2>
+<p dir="auto">引入方法</p>
+<ol dir="auto">
+<li>link方法</li>
+</ol>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<link href="index.css" media="only screen and (max-width: 320px)">'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">href</span>="<span class="pl-s">index.css</span>" <span class="pl-c1">media</span>="<span class="pl-s">only screen and (max-width: 320px)</span>"<span class="pl-kos">></span></pre></div>
+<ol start="2" dir="auto">
+<li>media(css样式)</li>
+</ol>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media screen and (min-width: 768px) and (max-width: 979px) {}"><pre class="notranslate"><span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">979<span class="pl-smi">px</span></span>) {}</pre></div>
+<ul dir="auto">
+<li>关键字</li>
+</ul>
+<p dir="auto">关键字将媒体类型或多个媒体特性连接到一起做为媒体查询的条件。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>关键字</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>and</td>
+<td>将多个媒体特性连接起来，相当于"且"</td>
+</tr>
+<tr>
+<td>not</td>
+<td>排除某个媒体类型，相当于"非"，可以省略</td>
+</tr>
+<tr>
+<td>only</td>
+<td>指定某个特定的媒体类型，可以省略</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<ul dir="auto">
+<li>常用特性</li>
+</ul>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width / height</td>
+<td>完全等于layout viewport</td>
+</tr>
+<tr>
+<td>max-width / max-height</td>
+<td>小于等于layout viewport</td>
+</tr>
+<tr>
+<td>min-width / min-height</td>
+<td>大于等于layout viewport</td>
+</tr>
+<tr>
+<td>device-width / device-height</td>
+<td>完全等于ideal viewport</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 id="main-heading-H2-4">Bootstrap的响应源码</h2>
+<h3 id="main-heading-H3-5">container</h3>
+<p dir="auto">每个布局的大容器都在使用了<code class="notranslate">.container</code>这个class类名，保证所有设备padding和margin的同时候，保证响应设备的宽度控制。</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" /*最小设备以及公共padding与margin的控制*/
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto
+}
+
+@media (min-width: 768px) {
+  .container {
+      width:750px
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+      width:970px
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+      width:1170px;
+  }
+}"><pre class="notranslate"> <span class="pl-c">/*最小设备以及公共padding与margin的控制*/</span>
+.<span class="pl-c1">container</span> {
+  <span class="pl-c1">padding-right</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">padding-left</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">margin-right</span><span class="pl-kos">:</span> auto;
+  <span class="pl-c1">margin-left</span><span class="pl-kos">:</span> auto
+}
+
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">container</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span><span class="pl-c1">750<span class="pl-smi">px</span></span>
+  }
+}
+
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">container</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span><span class="pl-c1">970<span class="pl-smi">px</span></span>
+  }
+}
+
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">container</span> {
+      <span class="pl-c1">width</span><span class="pl-kos">:</span><span class="pl-c1">1170<span class="pl-smi">px</span></span>;
+  }
+}</pre></div>
+<h3 id="main-heading-H3-6">display</h3>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+/*当尺寸大于等于768px和小于等于991px时*/
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}"><pre class="notranslate"><span class="pl-k">@media</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">767<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">hidden-xs</span> {
+    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;
+  }
+}
+<span class="pl-c">/*当尺寸大于等于768px和小于等于991px时*/</span>
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">991<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">hidden-sm</span> {
+    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;
+  }
+}
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">1199<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">hidden-md</span> {
+    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;
+  }
+}
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">hidden-lg</span> {
+    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;
+  }
+}</pre></div>
+<h2 id="main-heading-H2-7">Response分析</h2>
+<p dir="auto">以Bootstrap中文网为例子，进一步完善媒体查询对响应式布局的功用。</p>
+<p dir="auto">我的PC设备是 1366x768,在这里选择<code class="notranslate">@media (min-width: 1200px)</code>的情况进行兼容，匹配PC设备</p>
+<h3 id="main-heading-H3-8">header</h3>
+<ol dir="auto">
+<li>使用<code class="notranslate">hidden-sm hidden-md</code>两个class类控制，当屏幕尺寸大于768px和小于等于1119时候,隐藏<strong>Bootstrap2中文文档</strong>。</li>
+</ol>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}"><pre class="notranslate"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">1199<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">hidden-md</span> {
+    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;
+  }
+}
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">991<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">hidden-sm</span> {
+    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;
+  }
+}</pre></div>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<li class="hidden-sm hidden-md">
+<a href="https://v2.bootcss.com/"target="_blank">Bootstrap2中文文档</a>
+</li>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">class</span>="<span class="pl-s">hidden-sm hidden-md</span>"<span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">https://v2.bootcss.com/</span>"<span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">></span>Bootstrap2中文文档<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span></pre></div>
+<ol start="2" dir="auto">
+<li>当屏幕尺寸大于768px和小于等于991px的时，使用<code class="notranslate">.hidden-sm</code>控制header左侧的<strong>Bootstrap中文网</strong>隐藏，控制右侧的<strong>关于</strong>隐藏。</li>
+</ol>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<a class="navbar-brand hidden-sm" >Bootstrap中文网</a>
+...
+<ul class="nav navbar-nav navbar-right hidden-sm">
+  <li><a>关于</a></li>
+</ul>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">navbar-brand hidden-sm</span>" <span class="pl-kos">></span>Bootstrap中文网<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+...
+<span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">nav navbar-nav navbar-right hidden-sm</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">></span><span class="pl-kos">&lt;</span><span class="pl-ent">a</span><span class="pl-kos">></span>关于<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span></pre></div>
+<ol start="3" dir="auto">
+<li>当屏幕尺寸小于768px时,<code class="notranslate">nav-toggle</code>不再控制菜单的隐藏状态，显示出来，header的各个子菜单，由<code class="notranslate">collapse</code>控制隐藏，同时改变了nav里面的li标签的布局方式(不设浮动)，变成树状态。</li>
+</ol>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media (min-width: 768px) {
+  .navbar-toggle {
+      display:none
+  }
+}
+@media (min-width: 768px) {
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+}
+
+@media (min-width: 768px) {
+.navbar-nav {
+    float: left;
+    margin: 0;
+    }
+}"><pre class="notranslate"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">navbar-toggle</span> {
+      <span class="pl-c1">display</span><span class="pl-kos">:</span>none
+  }
+}
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+  .<span class="pl-c1">navbar-collapse</span>.<span class="pl-c1">collapse</span> {
+    <span class="pl-c1">display</span><span class="pl-kos">:</span> block <span class="pl-k">!important</span>;
+    <span class="pl-c1">height</span><span class="pl-kos">:</span> auto <span class="pl-k">!important</span>;
+    <span class="pl-c1">padding-bottom</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;
+    <span class="pl-c1">overflow</span><span class="pl-kos">:</span> visible <span class="pl-k">!important</span>;
+  }
+}
+
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+.<span class="pl-c1">navbar-nav</span> {
+    <span class="pl-c1">float</span><span class="pl-kos">:</span> left;
+    <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;
+    }
+}</pre></div>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=' <div class="navbar-collapse collapse" role="navigation">
+    <ul class="nav navbar-nav">
+      <li class="hidden-sm hidden-md">
+        <a href="https://v2.bootcss.com/">Bootstrap2中文文档</a>
+      </li>
+      <li>
+        <a href="https://v3.bootcss.com/">Bootstrap3中文文档</a>
+      </li>
+    ...
+    </ul>
+    <ul class="nav navbar-nav navbar-right hidden-sm">
+      <li>
+        <a href="/about/">关于</a>
+      </li>
+    </ul>
+  </div>'><pre class="notranslate"> <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">navbar-collapse collapse</span>" <span class="pl-c1">role</span>="<span class="pl-s">navigation</span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">nav navbar-nav</span>"<span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">class</span>="<span class="pl-s">hidden-sm hidden-md</span>"<span class="pl-kos">></span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">https://v2.bootcss.com/</span>"<span class="pl-kos">></span>Bootstrap2中文文档<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">https://v3.bootcss.com/</span>"<span class="pl-kos">></span>Bootstrap3中文文档<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+    ...
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">nav navbar-nav navbar-right hidden-sm</span>"<span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">/about/</span>"<span class="pl-kos">></span>关于<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span></pre></div>
+<h3 id="main-heading-H3-9">masthead 报头</h3>
+<p dir="auto">masthead模块的响应主要是包含块container和居中<code class="notranslate">text-align：center</code>的结果,当然需要下面的css控制h1和h2的大小响应。</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media screen and (min-width: 768px) {
+    .masthead {
+        padding:90px 0 110px
+    }
+}
+
+.masthead h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -2px;
+    font-weight: 700
+}
+
+@media screen and (min-width: 768px) {
+    .masthead h1 {
+        font-size:90px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .masthead h1 {
+        font-size:100px;
+    }
+}
+
+.masthead h2 {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 1.25
+}
+
+@media screen and (min-width: 768px) {
+    .masthead h2 {
+        font-size:24px
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .masthead h2 {
+        font-size:30px
+    }
+}"><pre class="notranslate"><span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+    .<span class="pl-c1">masthead</span> {
+        <span class="pl-c1">padding</span><span class="pl-kos">:</span><span class="pl-c1">90<span class="pl-smi">px</span></span> <span class="pl-c1">0</span> <span class="pl-c1">110<span class="pl-smi">px</span></span>
+    }
+}
+
+.<span class="pl-c1">masthead</span> <span class="pl-ent">h1</span> {
+    <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">60<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">1</span>;
+    <span class="pl-c1">letter-spacing</span><span class="pl-kos">:</span> <span class="pl-c1">-2<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">700</span>
+}
+
+<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+    .<span class="pl-c1">masthead</span> <span class="pl-ent">h1</span> {
+        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">90<span class="pl-smi">px</span></span>;
+    }
+}
+
+<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {
+    .<span class="pl-c1">masthead</span> <span class="pl-ent">h1</span> {
+        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">100<span class="pl-smi">px</span></span>;
+    }
+}
+
+.<span class="pl-c1">masthead</span> <span class="pl-ent">h2</span> {
+    <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">18<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">200</span>;
+    <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">1.25</span>
+}
+
+<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+    .<span class="pl-c1">masthead</span> <span class="pl-ent">h2</span> {
+        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">24<span class="pl-smi">px</span></span>
+    }
+}
+
+<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {
+    .<span class="pl-c1">masthead</span> <span class="pl-ent">h2</span> {
+        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">30<span class="pl-smi">px</span></span>
+    }
+}</pre></div>
+<h3 id="main-heading-H3-10">social 社交</h3>
+<p dir="auto">下面是布局的简化版本，主要利用了<code class="notranslate">text-algn:center</code>与<code class="notranslate">container</code>:</p>
+<p dir="auto">css样式</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* {
+      box-sizing: border-box;
+    }
+
+    .text-align {
+      text-align: center;
+    }
+
+    .container {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .social-forum,
+    .social-weibo {
+      display: inline-block;
+    }"><pre class="notranslate"><span class="pl-ent"><span class="pl-c1">*</span></span> {
+      <span class="pl-c1">box-sizing</span><span class="pl-kos">:</span> border-box;
+    }
+
+    .<span class="pl-c1">text-align</span> {
+      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;
+    }
+
+    .<span class="pl-c1">container</span> {
+      <span class="pl-c1">padding-right</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">padding-left</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;
+      <span class="pl-c1">margin-right</span><span class="pl-kos">:</span> auto;
+      <span class="pl-c1">margin-left</span><span class="pl-kos">:</span> auto;
+    }
+
+    .<span class="pl-c1">social-forum</span><span class="pl-kos">,</span>
+    .<span class="pl-c1">social-weibo</span> {
+      <span class="pl-c1">display</span><span class="pl-kos">:</span> inline-block;
+    }</pre></div>
+<p dir="auto">html布局</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<div class="container text-align">
+    <ul class="bc-social-buttons">
+      <li class="social-forum">
+        Bootstrap问答社区
+      </li>
+      <li class="social-weibo">
+        新浪微博：@Bootstrap中文网
+      </li>
+    </ul>
+  </div>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">container text-align</span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">bc-social-buttons</span>"<span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">class</span>="<span class="pl-s">social-forum</span>"<span class="pl-kos">></span>
+        Bootstrap问答社区
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">class</span>="<span class="pl-s">social-weibo</span>"<span class="pl-kos">></span>
+        新浪微博：@Bootstrap中文网
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span></pre></div>
+<h3 id="main-heading-H3-11">projects</h3>
+<h4 dir="auto">header</h4>
+<p dir="auto">首先是包裹header的容器<code class="notranslate">projects-header</code>，使用百分比布局居中适应，保证容器内部的响应.</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".projects-header {
+    width: 60%;
+    text-align: center;
+    margin: 60px 0 10px;
+    font-weight: 200;
+    margin-bottom: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}"><pre class="notranslate">.<span class="pl-c1">projects-header</span> {
+    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">60<span class="pl-smi">%</span></span>;
+    <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;
+    <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">60<span class="pl-smi">px</span></span> <span class="pl-c1">0</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">200</span>;
+    <span class="pl-c1">margin-bottom</span><span class="pl-kos">:</span> <span class="pl-c1">40<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">display</span><span class="pl-kos">:</span> block;
+    <span class="pl-c1">margin-left</span><span class="pl-kos">:</span> auto;
+    <span class="pl-c1">margin-right</span><span class="pl-kos">:</span> auto;
+}</pre></div>
+<p dir="auto">header内部使用h2标签包裹的标题<code class="notranslate">Bootstrap相关优质项目推荐</code>,设置了响应，当在大于768px的时候字体大小为42px，小于768px的时候更改为30px；</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".projects-header h2 {
+    font-size: 30px;
+    letter-spacing: -1px
+}
+
+@media screen and (min-width: 768px) {
+    .projects-header h2 {
+        font-size:42px;
+    }
+}"><pre class="notranslate">.<span class="pl-c1">projects-header</span> <span class="pl-ent">h2</span> {
+    <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">letter-spacing</span><span class="pl-kos">:</span> <span class="pl-c1">-1<span class="pl-smi">px</span></span>
+}
+
+<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+    .<span class="pl-c1">projects-header</span> <span class="pl-ent">h2</span> {
+        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">42<span class="pl-smi">px</span></span>;
+    }
+}</pre></div>
+<h4 dir="auto">projects区域</h4>
+<p dir="auto">先说著名的12栅格布局，当屏幕大于<code class="notranslate">1200px</code>像素的时候使用<code class="notranslate">col-lg-3</code>将宽分为每份25%，这里的3指的是12份取其中的3份，就是1/4；当屏幕尺寸介于<code class="notranslate">992px-1200px</code>之间，使用<code class="notranslate">col-md-4</code>将宽度分成3份，每份占1/3；当屏幕尺寸介于<code class="notranslate">768px-992px</code>之间时，使用<code class="notranslate">col-sm-6</code>,将屏幕分成2份（都是在只使用单一的分法时），当屏幕尺寸小于768px的时候不再栅格，使用默认的样式控制左右padding向中间挤压.</p>
+<p dir="auto">由于采用<code class="notranslate">border-box</code>布局，上述栅格系统通过默认加入的左右padding 15px像素可以控制间隔。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}"><pre class="notranslate"><code class="notranslate">* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+</code></pre></div>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media (min-width: 1200px) {
+.col-lg-3 {
+    width: 25%;
+    }
+}
+@media (min-width: 1200px)
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {
+    float: left;
+@media (min-width: 992px) {
+.col-md-4 {
+    width: 33.33333333%;
+    }
+}
+@media (min-width: 992px) {
+.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+    float: left;
+    }
+}
+@media (min-width: 768px) {
+.col-sm-6 {
+    width: 50%;
+    }
+}
+/*左右距离控制*/
+@media (min-width: 768px) {
+.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+    float: left;
+    }
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+   }
+}"><pre class="notranslate"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>) {
+.<span class="pl-c1">col-lg-3</span> {
+    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">25<span class="pl-smi">%</span></span>;
+    }
+}
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>)
+.<span class="pl-c1">col-lg-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-9</span> {
+    <span class="pl-c1">float</span><span class="pl-kos">:</span> left;
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {
+.<span class="pl-c1">col-md-4</span> {
+    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">33.33333333<span class="pl-smi">%</span></span>;
+    }
+}
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {
+.<span class="pl-c1">col-md-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-9</span> {
+    <span class="pl-c1">float</span><span class="pl-kos">:</span> left;
+    }
+}
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+.<span class="pl-c1">col-sm-6</span> {
+    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">50<span class="pl-smi">%</span></span>;
+    }
+}
+<span class="pl-c">/*左右距离控制*/</span>
+<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {
+.<span class="pl-c1">col-sm-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-9</span> {
+    <span class="pl-c1">float</span><span class="pl-kos">:</span> left;
+    }
+.<span class="pl-c1">col-lg-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-9</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-9</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-9</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-9</span> {
+    <span class="pl-c1">position</span><span class="pl-kos">:</span> relative;
+    <span class="pl-c1">min-height</span><span class="pl-kos">:</span> <span class="pl-c1">1<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">padding-right</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">padding-left</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;
+   }
+}</pre></div>
+<h3 id="main-heading-H3-12">footer</h3>
+<p dir="auto">按照footer结构的布局，没有css样式的时候是上下结构布局，移动端响应比较好，在大设备上需要左右布局，这时候的栅格布局结构大致如下面的情况。</p>
+<p dir="auto">在大于768px设备上面，将右侧的公司结构目录再次分成12份的布局结构，小于768px像素的时候这些拆分栅格失效，还保留了公共的padding来控制间隔距离，设计不可谓不妙。</p>
+<p dir="auto">下面的<code class="notranslate">footer-bottom</code>结构基本与上面的social模块一样，不再赘述了...</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=' <footer class="footer ">
+    <div class="container">
+      <div class="row footer-top">
+        <div class="col-md-6 col-lg-6">
+          <h4>
+            <img src="https://assets.bootcss.com/www/assets/img/logo.png?1528519874373">
+          </h4>
+          <p>我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！</p>
+        </div>
+        <div class="col-md-6  col-lg-5 col-lg-offset-1">
+          <div class="row about">
+            <div class="col-sm-3">
+              <h4>关于</h4>
+              <ul class="list-unstyled">
+                li*4 ...
+              </ul>
+            </div>
+            <div class="col-sm-3">
+              <h4>联系方式</h4>
+              <ul class="list-unstyled">
+                li*2 ...
+              </ul>
+            </div>
+            <div class="col-sm-4">
+              <h4>旗下网站</h4>
+              <ul class="list-unstyled">
+                li*5 ...
+              </ul>
+            </div>
+            <div class="col-sm-2">
+              <h4>赞助商</h4>
+              <ul class="list-unstyled">
+
+                li ...
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <hr>
+      <div class="row footer-bottom">
+        <ul class="list-inline text-center">
+          <li>
+            <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备11008151号</a>
+          </li>
+          <li>京公网安备11010802014853</li>
+        </ul>
+      </div>
+    </div>
+  </footer>'><pre class="notranslate"> <span class="pl-kos">&lt;</span><span class="pl-ent">footer</span> <span class="pl-c1">class</span>="<span class="pl-s">footer </span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">container</span>"<span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">row footer-top</span>"<span class="pl-kos">></span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-md-6 col-lg-6</span>"<span class="pl-kos">></span>
+          <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">https://assets.bootcss.com/www/assets/img/logo.png?1528519874373</span>"<span class="pl-kos">></span>
+          <span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">></span>
+          <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">></span>我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-md-6  col-lg-5 col-lg-offset-1</span>"<span class="pl-kos">></span>
+          <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">row about</span>"<span class="pl-kos">></span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-sm-3</span>"<span class="pl-kos">></span>
+              <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">></span>关于<span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">></span>
+              <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-unstyled</span>"<span class="pl-kos">></span>
+                li*4 ...
+              <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-sm-3</span>"<span class="pl-kos">></span>
+              <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">></span>联系方式<span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">></span>
+              <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-unstyled</span>"<span class="pl-kos">></span>
+                li*2 ...
+              <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-sm-4</span>"<span class="pl-kos">></span>
+              <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">></span>旗下网站<span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">></span>
+              <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-unstyled</span>"<span class="pl-kos">></span>
+                li*5 ...
+              <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-sm-2</span>"<span class="pl-kos">></span>
+              <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">></span>赞助商<span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">></span>
+              <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-unstyled</span>"<span class="pl-kos">></span>
+
+                li ...
+              <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+          <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">hr</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">row footer-bottom</span>"<span class="pl-kos">></span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-inline text-center</span>"<span class="pl-kos">></span>
+          <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+            <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">http://www.miibeian.gov.cn/</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">></span>京ICP备11008151号<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+          <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+          <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">></span>京公网安备11010802014853<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">footer</span><span class="pl-kos">></span></pre></div></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,c){return{layout:"default",data:[{post:{id:333548527,number:37,title:"深入bootstrap响应式布局",created_at:"2018-06-19T07:23:57Z",updated_at:"2025-11-23T15:54:17Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto">bootstrap响应式布局用的不熟，在网上找了现成的bootstrap响应单页很多，在这里通过分析一个<code class="notranslate">bootstrap中文网主页</code>的响应来分析响应式布局的原理，从此畅通，以后专注写media...</p>\n<p dir="auto">前往：<a href="http://www.bootcss.com/" rel="nofollow">Bootstrap中文网</a></p>\n<h2 id="main-heading-H2-1">视口</h2>\n<p dir="auto">获取viewport的大小(布局视口)</p>\n<p dir="auto"><strong>获取layout viewport</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="document.documentElement.clientWidth;\ndocument.documentElement.clientHeight;"><pre class="notranslate"><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">documentElement</span><span class="pl-kos">.</span><span class="pl-c1">clientWidth</span><span class="pl-kos">;</span>\n<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">documentElement</span><span class="pl-kos">.</span><span class="pl-c1">clientHeight</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>ideal viewport（理想视口）设备屏幕区域</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 获取ideal viewport有两种情形\n\n// 新设备\nwindow.screen.width;\nwindow.screen.height;\n\n// 老设备\nwindow.screen.width / window.devicePixelRatio;\nwindow.screen.height / window.devicePixelRatio;"><pre class="notranslate"><span class="pl-c">// 获取ideal viewport有两种情形</span>\n\n<span class="pl-c">// 新设备</span>\n<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">screen</span><span class="pl-kos">.</span><span class="pl-c1">width</span><span class="pl-kos">;</span>\n<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">screen</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 老设备</span>\n<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">screen</span><span class="pl-kos">.</span><span class="pl-c1">width</span> <span class="pl-c1">/</span> <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">devicePixelRatio</span><span class="pl-kos">;</span>\n<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">screen</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">/</span> <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">devicePixelRatio</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">移动设备厂商认为将网页完整显示给用户才最合理，而不该出现滚动条，所以就将layout viewport进行了缩放，使其恰好完整显示在ideal viewport（屏幕）里，其缩放比例为ideal viewport / layout viewport。</p>\n<h3 id="main-heading-H3-2">屏幕适配</h3>\n<blockquote>\n<p dir="auto">移动页面最理想的状态是，避免滚动条且不被默认缩放处理</p>\n</blockquote>\n<blockquote>\n<p dir="auto">viewport 是由苹果公司为了解决移动设备浏览器渲染页面而提出的解决方案</p>\n</blockquote>\n<ul dir="auto">\n<li>控制缩放</li>\n</ul>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>"<span class="pl-kos">&gt;</span></pre></div>\n<h2 id="main-heading-H2-3">媒体查询</h2>\n<p dir="auto">引入方法</p>\n<ol dir="auto">\n<li>link方法</li>\n</ol>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;link href=&quot;index.css&quot; media=&quot;only screen and (max-width: 320px)&quot;&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">link</span> <span class="pl-c1">href</span>="<span class="pl-s">index.css</span>" <span class="pl-c1">media</span>="<span class="pl-s">only screen and (max-width: 320px)</span>"<span class="pl-kos">&gt;</span></pre></div>\n<ol start="2" dir="auto">\n<li>media(css样式)</li>\n</ol>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media screen and (min-width: 768px) and (max-width: 979px) {}"><pre class="notranslate"><span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">979<span class="pl-smi">px</span></span>) {}</pre></div>\n<ul dir="auto">\n<li>关键字</li>\n</ul>\n<p dir="auto">关键字将媒体类型或多个媒体特性连接到一起做为媒体查询的条件。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>关键字</th>\n<th>含义</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>and</td>\n<td>将多个媒体特性连接起来，相当于"且"</td>\n</tr>\n<tr>\n<td>not</td>\n<td>排除某个媒体类型，相当于"非"，可以省略</td>\n</tr>\n<tr>\n<td>only</td>\n<td>指定某个特定的媒体类型，可以省略</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<ul dir="auto">\n<li>常用特性</li>\n</ul>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>属性</th>\n<th>含义</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>width / height</td>\n<td>完全等于layout viewport</td>\n</tr>\n<tr>\n<td>max-width / max-height</td>\n<td>小于等于layout viewport</td>\n</tr>\n<tr>\n<td>min-width / min-height</td>\n<td>大于等于layout viewport</td>\n</tr>\n<tr>\n<td>device-width / device-height</td>\n<td>完全等于ideal viewport</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h2 id="main-heading-H2-4">Bootstrap的响应源码</h2>\n<h3 id="main-heading-H3-5">container</h3>\n<p dir="auto">每个布局的大容器都在使用了<code class="notranslate">.container</code>这个class类名，保证所有设备padding和margin的同时候，保证响应设备的宽度控制。</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" /*最小设备以及公共padding与margin的控制*/\n.container {\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto\n}\n\n@media (min-width: 768px) {\n  .container {\n      width:750px\n  }\n}\n\n@media (min-width: 992px) {\n  .container {\n      width:970px\n  }\n}\n\n@media (min-width: 1200px) {\n  .container {\n      width:1170px;\n  }\n}"><pre class="notranslate"> <span class="pl-c">/*最小设备以及公共padding与margin的控制*/</span>\n.<span class="pl-c1">container</span> {\n  <span class="pl-c1">padding-right</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">padding-left</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">margin-right</span><span class="pl-kos">:</span> auto;\n  <span class="pl-c1">margin-left</span><span class="pl-kos">:</span> auto\n}\n\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">container</span> {\n      <span class="pl-c1">width</span><span class="pl-kos">:</span><span class="pl-c1">750<span class="pl-smi">px</span></span>\n  }\n}\n\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">container</span> {\n      <span class="pl-c1">width</span><span class="pl-kos">:</span><span class="pl-c1">970<span class="pl-smi">px</span></span>\n  }\n}\n\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">container</span> {\n      <span class="pl-c1">width</span><span class="pl-kos">:</span><span class="pl-c1">1170<span class="pl-smi">px</span></span>;\n  }\n}</pre></div>\n<h3 id="main-heading-H3-6">display</h3>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media (max-width: 767px) {\n  .hidden-xs {\n    display: none !important;\n  }\n}\n/*当尺寸大于等于768px和小于等于991px时*/\n@media (min-width: 768px) and (max-width: 991px) {\n  .hidden-sm {\n    display: none !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .hidden-md {\n    display: none !important;\n  }\n}\n@media (min-width: 1200px) {\n  .hidden-lg {\n    display: none !important;\n  }\n}"><pre class="notranslate"><span class="pl-k">@media</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">767<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">hidden-xs</span> {\n    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;\n  }\n}\n<span class="pl-c">/*当尺寸大于等于768px和小于等于991px时*/</span>\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">991<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">hidden-sm</span> {\n    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;\n  }\n}\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">1199<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">hidden-md</span> {\n    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;\n  }\n}\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">hidden-lg</span> {\n    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;\n  }\n}</pre></div>\n<h2 id="main-heading-H2-7">Response分析</h2>\n<p dir="auto">以Bootstrap中文网为例子，进一步完善媒体查询对响应式布局的功用。</p>\n<p dir="auto">我的PC设备是 1366x768,在这里选择<code class="notranslate">@media (min-width: 1200px)</code>的情况进行兼容，匹配PC设备</p>\n<h3 id="main-heading-H3-8">header</h3>\n<ol dir="auto">\n<li>使用<code class="notranslate">hidden-sm hidden-md</code>两个class类控制，当屏幕尺寸大于768px和小于等于1119时候,隐藏<strong>Bootstrap2中文文档</strong>。</li>\n</ol>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media (min-width: 992px) and (max-width: 1199px) {\n  .hidden-md {\n    display: none !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .hidden-sm {\n    display: none !important;\n  }\n}"><pre class="notranslate"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">1199<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">hidden-md</span> {\n    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;\n  }\n}\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) <span class="pl-c1">and</span> (<span class="pl-c1">max-width</span><span class="pl-kos">:</span> <span class="pl-c1">991<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">hidden-sm</span> {\n    <span class="pl-c1">display</span><span class="pl-kos">:</span> none <span class="pl-k">!important</span>;\n  }\n}</pre></div>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;li class=&quot;hidden-sm hidden-md&quot;&gt;\n&lt;a href=&quot;https://v2.bootcss.com/&quot;target=&quot;_blank&quot;&gt;Bootstrap2中文文档&lt;/a&gt;\n&lt;/li&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">class</span>="<span class="pl-s">hidden-sm hidden-md</span>"<span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">https://v2.bootcss.com/</span>"<span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>Bootstrap2中文文档<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span></pre></div>\n<ol start="2" dir="auto">\n<li>当屏幕尺寸大于768px和小于等于991px的时，使用<code class="notranslate">.hidden-sm</code>控制header左侧的<strong>Bootstrap中文网</strong>隐藏，控制右侧的<strong>关于</strong>隐藏。</li>\n</ol>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;a class=&quot;navbar-brand hidden-sm&quot; &gt;Bootstrap中文网&lt;/a&gt;\n...\n&lt;ul class=&quot;nav navbar-nav navbar-right hidden-sm&quot;&gt;\n  &lt;li&gt;&lt;a&gt;关于&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">class</span>="<span class="pl-s">navbar-brand hidden-sm</span>" <span class="pl-kos">&gt;</span>Bootstrap中文网<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n...\n<span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">nav navbar-nav navbar-right hidden-sm</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>关于<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span></pre></div>\n<ol start="3" dir="auto">\n<li>当屏幕尺寸小于768px时,<code class="notranslate">nav-toggle</code>不再控制菜单的隐藏状态，显示出来，header的各个子菜单，由<code class="notranslate">collapse</code>控制隐藏，同时改变了nav里面的li标签的布局方式(不设浮动)，变成树状态。</li>\n</ol>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media (min-width: 768px) {\n  .navbar-toggle {\n      display:none\n  }\n}\n@media (min-width: 768px) {\n  .navbar-collapse.collapse {\n    display: block !important;\n    height: auto !important;\n    padding-bottom: 0;\n    overflow: visible !important;\n  }\n}\n\n@media (min-width: 768px) {\n.navbar-nav {\n    float: left;\n    margin: 0;\n    }\n}"><pre class="notranslate"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">navbar-toggle</span> {\n      <span class="pl-c1">display</span><span class="pl-kos">:</span>none\n  }\n}\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n  .<span class="pl-c1">navbar-collapse</span>.<span class="pl-c1">collapse</span> {\n    <span class="pl-c1">display</span><span class="pl-kos">:</span> block <span class="pl-k">!important</span>;\n    <span class="pl-c1">height</span><span class="pl-kos">:</span> auto <span class="pl-k">!important</span>;\n    <span class="pl-c1">padding-bottom</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;\n    <span class="pl-c1">overflow</span><span class="pl-kos">:</span> visible <span class="pl-k">!important</span>;\n  }\n}\n\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n.<span class="pl-c1">navbar-nav</span> {\n    <span class="pl-c1">float</span><span class="pl-kos">:</span> left;\n    <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">0</span>;\n    }\n}</pre></div>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" &lt;div class=&quot;navbar-collapse collapse&quot; role=&quot;navigation&quot;&gt;\n    &lt;ul class=&quot;nav navbar-nav&quot;&gt;\n      &lt;li class=&quot;hidden-sm hidden-md&quot;&gt;\n        &lt;a href=&quot;https://v2.bootcss.com/&quot;&gt;Bootstrap2中文文档&lt;/a&gt;\n      &lt;/li&gt;\n      &lt;li&gt;\n        &lt;a href=&quot;https://v3.bootcss.com/&quot;&gt;Bootstrap3中文文档&lt;/a&gt;\n      &lt;/li&gt;\n    ...\n    &lt;/ul&gt;\n    &lt;ul class=&quot;nav navbar-nav navbar-right hidden-sm&quot;&gt;\n      &lt;li&gt;\n        &lt;a href=&quot;/about/&quot;&gt;关于&lt;/a&gt;\n      &lt;/li&gt;\n    &lt;/ul&gt;\n  &lt;/div&gt;"><pre class="notranslate"> <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">navbar-collapse collapse</span>" <span class="pl-c1">role</span>="<span class="pl-s">navigation</span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">nav navbar-nav</span>"<span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">class</span>="<span class="pl-s">hidden-sm hidden-md</span>"<span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">https://v2.bootcss.com/</span>"<span class="pl-kos">&gt;</span>Bootstrap2中文文档<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">https://v3.bootcss.com/</span>"<span class="pl-kos">&gt;</span>Bootstrap3中文文档<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n    ...\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">nav navbar-nav navbar-right hidden-sm</span>"<span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">/about/</span>"<span class="pl-kos">&gt;</span>关于<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></pre></div>\n<h3 id="main-heading-H3-9">masthead 报头</h3>\n<p dir="auto">masthead模块的响应主要是包含块container和居中<code class="notranslate">text-align：center</code>的结果,当然需要下面的css控制h1和h2的大小响应。</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media screen and (min-width: 768px) {\n    .masthead {\n        padding:90px 0 110px\n    }\n}\n\n.masthead h1 {\n    font-size: 60px;\n    line-height: 1;\n    letter-spacing: -2px;\n    font-weight: 700\n}\n\n@media screen and (min-width: 768px) {\n    .masthead h1 {\n        font-size:90px;\n    }\n}\n\n@media screen and (min-width: 992px) {\n    .masthead h1 {\n        font-size:100px;\n    }\n}\n\n.masthead h2 {\n    font-size: 18px;\n    font-weight: 200;\n    line-height: 1.25\n}\n\n@media screen and (min-width: 768px) {\n    .masthead h2 {\n        font-size:24px\n    }\n}\n\n@media screen and (min-width: 992px) {\n    .masthead h2 {\n        font-size:30px\n    }\n}"><pre class="notranslate"><span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n    .<span class="pl-c1">masthead</span> {\n        <span class="pl-c1">padding</span><span class="pl-kos">:</span><span class="pl-c1">90<span class="pl-smi">px</span></span> <span class="pl-c1">0</span> <span class="pl-c1">110<span class="pl-smi">px</span></span>\n    }\n}\n\n.<span class="pl-c1">masthead</span> <span class="pl-ent">h1</span> {\n    <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">60<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">1</span>;\n    <span class="pl-c1">letter-spacing</span><span class="pl-kos">:</span> <span class="pl-c1">-2<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">700</span>\n}\n\n<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n    .<span class="pl-c1">masthead</span> <span class="pl-ent">h1</span> {\n        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">90<span class="pl-smi">px</span></span>;\n    }\n}\n\n<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {\n    .<span class="pl-c1">masthead</span> <span class="pl-ent">h1</span> {\n        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">100<span class="pl-smi">px</span></span>;\n    }\n}\n\n.<span class="pl-c1">masthead</span> <span class="pl-ent">h2</span> {\n    <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">18<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">200</span>;\n    <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">1.25</span>\n}\n\n<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n    .<span class="pl-c1">masthead</span> <span class="pl-ent">h2</span> {\n        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">24<span class="pl-smi">px</span></span>\n    }\n}\n\n<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {\n    .<span class="pl-c1">masthead</span> <span class="pl-ent">h2</span> {\n        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">30<span class="pl-smi">px</span></span>\n    }\n}</pre></div>\n<h3 id="main-heading-H3-10">social 社交</h3>\n<p dir="auto">下面是布局的简化版本，主要利用了<code class="notranslate">text-algn:center</code>与<code class="notranslate">container</code>:</p>\n<p dir="auto">css样式</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* {\n      box-sizing: border-box;\n    }\n\n    .text-align {\n      text-align: center;\n    }\n\n    .container {\n      padding-right: 15px;\n      padding-left: 15px;\n      margin-right: auto;\n      margin-left: auto;\n    }\n\n    .social-forum,\n    .social-weibo {\n      display: inline-block;\n    }"><pre class="notranslate"><span class="pl-ent"><span class="pl-c1">*</span></span> {\n      <span class="pl-c1">box-sizing</span><span class="pl-kos">:</span> border-box;\n    }\n\n    .<span class="pl-c1">text-align</span> {\n      <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;\n    }\n\n    .<span class="pl-c1">container</span> {\n      <span class="pl-c1">padding-right</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">padding-left</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;\n      <span class="pl-c1">margin-right</span><span class="pl-kos">:</span> auto;\n      <span class="pl-c1">margin-left</span><span class="pl-kos">:</span> auto;\n    }\n\n    .<span class="pl-c1">social-forum</span><span class="pl-kos">,</span>\n    .<span class="pl-c1">social-weibo</span> {\n      <span class="pl-c1">display</span><span class="pl-kos">:</span> inline-block;\n    }</pre></div>\n<p dir="auto">html布局</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;div class=&quot;container text-align&quot;&gt;\n    &lt;ul class=&quot;bc-social-buttons&quot;&gt;\n      &lt;li class=&quot;social-forum&quot;&gt;\n        Bootstrap问答社区\n      &lt;/li&gt;\n      &lt;li class=&quot;social-weibo&quot;&gt;\n        新浪微博：@Bootstrap中文网\n      &lt;/li&gt;\n    &lt;/ul&gt;\n  &lt;/div&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">container text-align</span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">bc-social-buttons</span>"<span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">class</span>="<span class="pl-s">social-forum</span>"<span class="pl-kos">&gt;</span>\n        Bootstrap问答社区\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">class</span>="<span class="pl-s">social-weibo</span>"<span class="pl-kos">&gt;</span>\n        新浪微博：@Bootstrap中文网\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></pre></div>\n<h3 id="main-heading-H3-11">projects</h3>\n<h4 dir="auto">header</h4>\n<p dir="auto">首先是包裹header的容器<code class="notranslate">projects-header</code>，使用百分比布局居中适应，保证容器内部的响应.</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".projects-header {\n    width: 60%;\n    text-align: center;\n    margin: 60px 0 10px;\n    font-weight: 200;\n    margin-bottom: 40px;\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}"><pre class="notranslate">.<span class="pl-c1">projects-header</span> {\n    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">60<span class="pl-smi">%</span></span>;\n    <span class="pl-c1">text-align</span><span class="pl-kos">:</span> center;\n    <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">60<span class="pl-smi">px</span></span> <span class="pl-c1">0</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">font-weight</span><span class="pl-kos">:</span> <span class="pl-c1">200</span>;\n    <span class="pl-c1">margin-bottom</span><span class="pl-kos">:</span> <span class="pl-c1">40<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">display</span><span class="pl-kos">:</span> block;\n    <span class="pl-c1">margin-left</span><span class="pl-kos">:</span> auto;\n    <span class="pl-c1">margin-right</span><span class="pl-kos">:</span> auto;\n}</pre></div>\n<p dir="auto">header内部使用h2标签包裹的标题<code class="notranslate">Bootstrap相关优质项目推荐</code>,设置了响应，当在大于768px的时候字体大小为42px，小于768px的时候更改为30px；</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".projects-header h2 {\n    font-size: 30px;\n    letter-spacing: -1px\n}\n\n@media screen and (min-width: 768px) {\n    .projects-header h2 {\n        font-size:42px;\n    }\n}"><pre class="notranslate">.<span class="pl-c1">projects-header</span> <span class="pl-ent">h2</span> {\n    <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">letter-spacing</span><span class="pl-kos">:</span> <span class="pl-c1">-1<span class="pl-smi">px</span></span>\n}\n\n<span class="pl-k">@media</span> screen <span class="pl-c1">and</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n    .<span class="pl-c1">projects-header</span> <span class="pl-ent">h2</span> {\n        <span class="pl-c1">font-size</span><span class="pl-kos">:</span><span class="pl-c1">42<span class="pl-smi">px</span></span>;\n    }\n}</pre></div>\n<h4 dir="auto">projects区域</h4>\n<p dir="auto">先说著名的12栅格布局，当屏幕大于<code class="notranslate">1200px</code>像素的时候使用<code class="notranslate">col-lg-3</code>将宽分为每份25%，这里的3指的是12份取其中的3份，就是1/4；当屏幕尺寸介于<code class="notranslate">992px-1200px</code>之间，使用<code class="notranslate">col-md-4</code>将宽度分成3份，每份占1/3；当屏幕尺寸介于<code class="notranslate">768px-992px</code>之间时，使用<code class="notranslate">col-sm-6</code>,将屏幕分成2份（都是在只使用单一的分法时），当屏幕尺寸小于768px的时候不再栅格，使用默认的样式控制左右padding向中间挤压.</p>\n<p dir="auto">由于采用<code class="notranslate">border-box</code>布局，上述栅格系统通过默认加入的左右padding 15px像素可以控制间隔。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}"><pre class="notranslate"><code class="notranslate">* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n</code></pre></div>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@media (min-width: 1200px) {\n.col-lg-3 {\n    width: 25%;\n    }\n}\n@media (min-width: 1200px)\n.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9 {\n    float: left;\n@media (min-width: 992px) {\n.col-md-4 {\n    width: 33.33333333%;\n    }\n}\n@media (min-width: 992px) {\n.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {\n    float: left;\n    }\n}\n@media (min-width: 768px) {\n.col-sm-6 {\n    width: 50%;\n    }\n}\n/*左右距离控制*/\n@media (min-width: 768px) {\n.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {\n    float: left;\n    }\n.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {\n    position: relative;\n    min-height: 1px;\n    padding-right: 15px;\n    padding-left: 15px;\n   }\n}"><pre class="notranslate"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>) {\n.<span class="pl-c1">col-lg-3</span> {\n    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">25<span class="pl-smi">%</span></span>;\n    }\n}\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">1200<span class="pl-smi">px</span></span>)\n.<span class="pl-c1">col-lg-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-9</span> {\n    <span class="pl-c1">float</span><span class="pl-kos">:</span> left;\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {\n.<span class="pl-c1">col-md-4</span> {\n    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">33.33333333<span class="pl-smi">%</span></span>;\n    }\n}\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">992<span class="pl-smi">px</span></span>) {\n.<span class="pl-c1">col-md-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-9</span> {\n    <span class="pl-c1">float</span><span class="pl-kos">:</span> left;\n    }\n}\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n.<span class="pl-c1">col-sm-6</span> {\n    <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">50<span class="pl-smi">%</span></span>;\n    }\n}\n<span class="pl-c">/*左右距离控制*/</span>\n<span class="pl-k">@media</span> (<span class="pl-c1">min-width</span><span class="pl-kos">:</span> <span class="pl-c1">768<span class="pl-smi">px</span></span>) {\n.<span class="pl-c1">col-sm-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-9</span> {\n    <span class="pl-c1">float</span><span class="pl-kos">:</span> left;\n    }\n.<span class="pl-c1">col-lg-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-lg-9</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-md-9</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-sm-9</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-1</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-10</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-11</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-12</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-2</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-3</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-4</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-5</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-6</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-7</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-8</span><span class="pl-kos">,</span> .<span class="pl-c1">col-xs-9</span> {\n    <span class="pl-c1">position</span><span class="pl-kos">:</span> relative;\n    <span class="pl-c1">min-height</span><span class="pl-kos">:</span> <span class="pl-c1">1<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">padding-right</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">padding-left</span><span class="pl-kos">:</span> <span class="pl-c1">15<span class="pl-smi">px</span></span>;\n   }\n}</pre></div>\n<h3 id="main-heading-H3-12">footer</h3>\n<p dir="auto">按照footer结构的布局，没有css样式的时候是上下结构布局，移动端响应比较好，在大设备上需要左右布局，这时候的栅格布局结构大致如下面的情况。</p>\n<p dir="auto">在大于768px设备上面，将右侧的公司结构目录再次分成12份的布局结构，小于768px像素的时候这些拆分栅格失效，还保留了公共的padding来控制间隔距离，设计不可谓不妙。</p>\n<p dir="auto">下面的<code class="notranslate">footer-bottom</code>结构基本与上面的social模块一样，不再赘述了...</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" &lt;footer class=&quot;footer &quot;&gt;\n    &lt;div class=&quot;container&quot;&gt;\n      &lt;div class=&quot;row footer-top&quot;&gt;\n        &lt;div class=&quot;col-md-6 col-lg-6&quot;&gt;\n          &lt;h4&gt;\n            &lt;img src=&quot;https://assets.bootcss.com/www/assets/img/logo.png?1528519874373&quot;&gt;\n          &lt;/h4&gt;\n          &lt;p&gt;我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！&lt;/p&gt;\n        &lt;/div&gt;\n        &lt;div class=&quot;col-md-6  col-lg-5 col-lg-offset-1&quot;&gt;\n          &lt;div class=&quot;row about&quot;&gt;\n            &lt;div class=&quot;col-sm-3&quot;&gt;\n              &lt;h4&gt;关于&lt;/h4&gt;\n              &lt;ul class=&quot;list-unstyled&quot;&gt;\n                li*4 ...\n              &lt;/ul&gt;\n            &lt;/div&gt;\n            &lt;div class=&quot;col-sm-3&quot;&gt;\n              &lt;h4&gt;联系方式&lt;/h4&gt;\n              &lt;ul class=&quot;list-unstyled&quot;&gt;\n                li*2 ...\n              &lt;/ul&gt;\n            &lt;/div&gt;\n            &lt;div class=&quot;col-sm-4&quot;&gt;\n              &lt;h4&gt;旗下网站&lt;/h4&gt;\n              &lt;ul class=&quot;list-unstyled&quot;&gt;\n                li*5 ...\n              &lt;/ul&gt;\n            &lt;/div&gt;\n            &lt;div class=&quot;col-sm-2&quot;&gt;\n              &lt;h4&gt;赞助商&lt;/h4&gt;\n              &lt;ul class=&quot;list-unstyled&quot;&gt;\n\n                li ...\n              &lt;/ul&gt;\n            &lt;/div&gt;\n          &lt;/div&gt;\n\n        &lt;/div&gt;\n      &lt;/div&gt;\n      &lt;hr&gt;\n      &lt;div class=&quot;row footer-bottom&quot;&gt;\n        &lt;ul class=&quot;list-inline text-center&quot;&gt;\n          &lt;li&gt;\n            &lt;a href=&quot;http://www.miibeian.gov.cn/&quot; target=&quot;_blank&quot;&gt;京ICP备11008151号&lt;/a&gt;\n          &lt;/li&gt;\n          &lt;li&gt;京公网安备11010802014853&lt;/li&gt;\n        &lt;/ul&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/footer&gt;"><pre class="notranslate"> <span class="pl-kos">&lt;</span><span class="pl-ent">footer</span> <span class="pl-c1">class</span>="<span class="pl-s">footer </span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">container</span>"<span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">row footer-top</span>"<span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-md-6 col-lg-6</span>"<span class="pl-kos">&gt;</span>\n          <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">https://assets.bootcss.com/www/assets/img/logo.png?1528519874373</span>"<span class="pl-kos">&gt;</span>\n          <span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>\n          <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>我们一直致力于为广大开发者提供更多的优质技术文档和辅助开发工具！<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-md-6  col-lg-5 col-lg-offset-1</span>"<span class="pl-kos">&gt;</span>\n          <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">row about</span>"<span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-sm-3</span>"<span class="pl-kos">&gt;</span>\n              <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>关于<span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>\n              <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-unstyled</span>"<span class="pl-kos">&gt;</span>\n                li*4 ...\n              <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-sm-3</span>"<span class="pl-kos">&gt;</span>\n              <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>联系方式<span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>\n              <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-unstyled</span>"<span class="pl-kos">&gt;</span>\n                li*2 ...\n              <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-sm-4</span>"<span class="pl-kos">&gt;</span>\n              <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>旗下网站<span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>\n              <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-unstyled</span>"<span class="pl-kos">&gt;</span>\n                li*5 ...\n              <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">col-sm-2</span>"<span class="pl-kos">&gt;</span>\n              <span class="pl-kos">&lt;</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>赞助商<span class="pl-kos">&lt;/</span><span class="pl-ent">h4</span><span class="pl-kos">&gt;</span>\n              <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-unstyled</span>"<span class="pl-kos">&gt;</span>\n\n                li ...\n              <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n          <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n\n        <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">hr</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">row footer-bottom</span>"<span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;</span><span class="pl-ent">ul</span> <span class="pl-c1">class</span>="<span class="pl-s">list-inline text-center</span>"<span class="pl-kos">&gt;</span>\n          <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n            <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">http://www.miibeian.gov.cn/</span>" <span class="pl-c1">target</span>="<span class="pl-s">_blank</span>"<span class="pl-kos">&gt;</span>京ICP备11008151号<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n          <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n          <span class="pl-kos">&lt;</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>京公网安备11010802014853<span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-ent">ul</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">footer</span><span class="pl-kos">&gt;</span></pre></div>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/37"},navList:[{text:"前言",id:"main-heading-H2-0",type:n,children:[]},{text:"视口",id:"main-heading-H2-1",type:n,children:[{text:"屏幕适配",id:"main-heading-H3-2",type:a}]},{text:"媒体查询",id:"main-heading-H2-3",type:n,children:[]},{text:"Bootstrap的响应源码",id:"main-heading-H2-4",type:n,children:[{text:"container",id:"main-heading-H3-5",type:a},{text:"display",id:"main-heading-H3-6",type:a}]},{text:"Response分析",id:"main-heading-H2-7",type:n,children:[{text:"header",id:"main-heading-H3-8",type:a},{text:"masthead 报头",id:"main-heading-H3-9",type:a},{text:"social 社交",id:"main-heading-H3-10",type:a},{text:"projects",id:"main-heading-H3-11",type:a},{text:"footer",id:"main-heading-H3-12",type:a}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H3","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

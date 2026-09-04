@@ -1,0 +1,561 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>对象排序示例及在 Vue 中的实际应用 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content='前言 在 JavaScript 中，为了保证对象遍历的有序性，我们需要将无序的对象转换为有序的数组。 对象排序 demo !DOCTYPE html html lang="en" head meta charset="UTF-8" / meta name="viewport" content="wi'><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="对象排序示例及在 Vue 中的实际应用"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content='前言 在 JavaScript 中，为了保证对象遍历的有序性，我们需要将无序的对象转换为有序的数组。 对象排序 demo !DOCTYPE html html lang="en" head meta charset="UTF-8" / meta name="viewport" content="wi'><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="对象排序示例及在 Vue 中的实际应用"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content='前言 在 JavaScript 中，为了保证对象遍历的有序性，我们需要将无序的对象转换为有序的数组。 对象排序 demo !DOCTYPE html html lang="en" head meta charset="UTF-8" / meta name="viewport" content="wi'><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/283#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/283#main-heading-H2-1" title="对象排序 demo" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              对象排序 demo
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/283#main-heading-H2-2" title="在 Vue 中遍历使用" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              在 Vue 中遍历使用
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/283#main-heading-H3-3" title="参考" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  参考
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>对象排序示例及在 Vue 中的实际应用</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>对象排序示例及在 Vue 中的实际应用</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2024-09-30</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 19 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto">在 JavaScript 中，为了保证对象遍历的有序性，我们需要将无序的对象转换为有序的数组。</p>
+<h2 id="main-heading-H2-1">对象排序 demo</h2>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<!DOCTYPE html>
+<html lang=&#34;en&#34;>
+  <head>
+    <meta charset=&#34;UTF-8&#34; />
+    <meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34; />
+    <title>对象排序 demo</title>
+  </head>
+  <body>
+    <script>
+      const props = {
+        pageType: {
+          desc: '选择页面类型',
+          displayOrder: 2
+        },
+        pageSetting: {
+          type: Object,
+          desc: '页面类型配置',
+          displayOrder: 3
+        },
+        appConfig: {
+          desc: '全局配置',
+          displayOrder: 1
+        },
+        seo: {
+          type: Object,
+          desc: 'seo 信息',
+          displayOrder: 8
+        },
+        share: {
+          type: Object,
+          desc: '分享配置',
+          displayOrder: 4
+        },
+        wxOauth: {
+          type: Object,
+          desc: '微信授权',
+          displayOrder: 5
+        },
+        schema: { type: 'SCHEMA', name: 'app', displayOrder: 6 },
+        assets: {
+          type: Object,
+          desc: 'js&css',
+          displayOrder: 9
+        },
+        htmlStyle: {
+          type: Array,
+          desc: '设置html的样式',
+          displayOrder: 7
+        },
+        other: {
+          type: Object,
+          desc: '其他配置',
+          displayOrder: 10
+        }
+      }
+
+      console.log('默认顺序', Object.keys(props))
+
+      console.log('sort 排序', Object.keys(props).sort())
+
+      console.log(
+        '自定义对象排序',
+        Object.keys(props).sort(function (a, b) {
+          return props[a].displayOrder - props[b].displayOrder
+        })
+      )
+
+      const toArraySort = (obj, sortKey) => {
+        const map = new Map()
+        const sortKeys = Object.keys(obj).sort(function (a, b) {
+          return obj[a][sortKey] - obj[b][sortKey]
+        })
+
+        sortKeys.forEach((prop, index) => {
+          map.set(index, {
+            key: prop,
+            value: obj[prop]
+          })
+        })
+        return Array.from(map.entries())
+      }
+
+      console.log('自定义对象排序的数组 1', toArraySort(props, 'displayOrder'))
+
+      const toSortByArray = (obj, referArr) => {
+        const map = new Map()
+        const sortKeys = Object.keys(obj).sort(function (a, b) {
+          const indexA = referArr.indexOf(a)
+          const indexB = referArr.indexOf(b)
+
+          // 当元素不在 referArr 时，将其索引设置为数组长度，放到后面
+          const orderA = indexA === -1 ? referArr.length : indexA
+          const orderB = indexB === -1 ? referArr.length : indexB
+          return orderA - orderB // 升序排序
+        })
+
+        sortKeys.forEach((prop, index) => {
+          map.set(index, {
+            key: prop,
+            value: obj[prop]
+          })
+        })
+        return Array.from(map.entries())
+      }
+
+      console.log(
+        '自定义对象排序的数组 2',
+        toSortByArray(props, [
+          'appConfig',
+          'seo',
+          'share',
+          'pageType',
+          'pageSetting'
+        ])
+      )
+    </script>
+  </body>
+</html>"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">></span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">></span>对象排序 demo<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+      <span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">pageType</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'选择页面类型'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">2</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">pageSetting</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'页面类型配置'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">3</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">appConfig</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'全局配置'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">1</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">seo</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'seo 信息'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">8</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">share</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'分享配置'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">4</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">wxOauth</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'微信授权'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">5</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">schema</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">'SCHEMA'</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">'app'</span><span class="pl-kos">,</span> <span class="pl-c1">displayOrder</span>: <span class="pl-c1">6</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">assets</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'js&css'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">9</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">htmlStyle</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Array</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'设置html的样式'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">7</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">other</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'其他配置'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">10</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'默认顺序'</span><span class="pl-kos">,</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'sort 排序'</span><span class="pl-kos">,</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span>
+        <span class="pl-s">'自定义对象排序'</span><span class="pl-kos">,</span>
+        <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">,</span> <span class="pl-s1">b</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-k">return</span> <span class="pl-s1">props</span><span class="pl-kos">[</span><span class="pl-s1">a</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">displayOrder</span> <span class="pl-c1">-</span> <span class="pl-s1">props</span><span class="pl-kos">[</span><span class="pl-s1">b</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">displayOrder</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+      <span class="pl-kos">)</span>
+
+      <span class="pl-k">const</span> <span class="pl-en">toArraySort</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">,</span> <span class="pl-s1">sortKey</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-k">const</span> <span class="pl-s1">map</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Map</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+        <span class="pl-k">const</span> <span class="pl-s1">sortKeys</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">,</span> <span class="pl-s1">b</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-k">return</span> <span class="pl-s1">obj</span><span class="pl-kos">[</span><span class="pl-s1">a</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">sortKey</span><span class="pl-kos">]</span> <span class="pl-c1">-</span> <span class="pl-s1">obj</span><span class="pl-kos">[</span><span class="pl-s1">b</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">sortKey</span><span class="pl-kos">]</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+        <span class="pl-s1">sortKeys</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">prop</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-s1">map</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+            <span class="pl-c1">key</span>: <span class="pl-s1">prop</span><span class="pl-kos">,</span>
+            <span class="pl-c1">value</span>: <span class="pl-s1">obj</span><span class="pl-kos">[</span><span class="pl-s1">prop</span><span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">)</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+        <span class="pl-k">return</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s1">map</span><span class="pl-kos">.</span><span class="pl-en">entries</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+      <span class="pl-kos">}</span>
+
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'自定义对象排序的数组 1'</span><span class="pl-kos">,</span> <span class="pl-en">toArraySort</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">,</span> <span class="pl-s">'displayOrder'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+      <span class="pl-k">const</span> <span class="pl-en">toSortByArray</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">,</span> <span class="pl-s1">referArr</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-k">const</span> <span class="pl-s1">map</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Map</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+        <span class="pl-k">const</span> <span class="pl-s1">sortKeys</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">,</span> <span class="pl-s1">b</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-k">const</span> <span class="pl-s1">indexA</span> <span class="pl-c1">=</span> <span class="pl-s1">referArr</span><span class="pl-kos">.</span><span class="pl-en">indexOf</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span>
+          <span class="pl-k">const</span> <span class="pl-s1">indexB</span> <span class="pl-c1">=</span> <span class="pl-s1">referArr</span><span class="pl-kos">.</span><span class="pl-en">indexOf</span><span class="pl-kos">(</span><span class="pl-s1">b</span><span class="pl-kos">)</span>
+
+          <span class="pl-c">// 当元素不在 referArr 时，将其索引设置为数组长度，放到后面</span>
+          <span class="pl-k">const</span> <span class="pl-s1">orderA</span> <span class="pl-c1">=</span> <span class="pl-s1">indexA</span> <span class="pl-c1">===</span> <span class="pl-c1">-</span><span class="pl-c1">1</span> ? <span class="pl-s1">referArr</span><span class="pl-kos">.</span><span class="pl-c1">length</span> : <span class="pl-s1">indexA</span>
+          <span class="pl-k">const</span> <span class="pl-s1">orderB</span> <span class="pl-c1">=</span> <span class="pl-s1">indexB</span> <span class="pl-c1">===</span> <span class="pl-c1">-</span><span class="pl-c1">1</span> ? <span class="pl-s1">referArr</span><span class="pl-kos">.</span><span class="pl-c1">length</span> : <span class="pl-s1">indexB</span>
+          <span class="pl-k">return</span> <span class="pl-s1">orderA</span> <span class="pl-c1">-</span> <span class="pl-s1">orderB</span> <span class="pl-c">// 升序排序</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+        <span class="pl-s1">sortKeys</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">prop</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-s1">map</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+            <span class="pl-c1">key</span>: <span class="pl-s1">prop</span><span class="pl-kos">,</span>
+            <span class="pl-c1">value</span>: <span class="pl-s1">obj</span><span class="pl-kos">[</span><span class="pl-s1">prop</span><span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">)</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+        <span class="pl-k">return</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s1">map</span><span class="pl-kos">.</span><span class="pl-en">entries</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+      <span class="pl-kos">}</span>
+
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span>
+        <span class="pl-s">'自定义对象排序的数组 2'</span><span class="pl-kos">,</span>
+        <span class="pl-en">toSortByArray</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">,</span> <span class="pl-kos">[</span>
+          <span class="pl-s">'appConfig'</span><span class="pl-kos">,</span>
+          <span class="pl-s">'seo'</span><span class="pl-kos">,</span>
+          <span class="pl-s">'share'</span><span class="pl-kos">,</span>
+          <span class="pl-s">'pageType'</span><span class="pl-kos">,</span>
+          <span class="pl-s">'pageSetting'</span>
+        <span class="pl-kos">]</span><span class="pl-kos">)</span>
+      <span class="pl-kos">)</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">></span></pre></div>
+<h2 id="main-heading-H2-2">在 Vue 中遍历使用</h2>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<!DOCTYPE html>
+<html lang=&#34;zh-CN&#34;>
+  <head>
+    <meta charset=&#34;UTF-8&#34; />
+    <meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34; />
+    <title>Vue Example</title>
+    <script src=&#34;https://cdn.jsdelivr.net/npm/vue@3&#34;></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h6 {
+        margin: 10px 0;
+      }
+      .obj-wrap {
+        border: 1px #ccc solid;
+        border-radius: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id=&#34;app&#34;>
+      <div class=&#34;obj-wrap&#34;>
+        <object-field
+          :properties=&#34;schemaProperty&#34;
+          v-model=&#34;moduleRef&#34;
+        ></object-field>
+      </div>
+    </div>
+
+    <script>
+      const ObjectField = {
+        props: {
+          properties: {
+            type: Object,
+            required: true
+          },
+          modelValue: {
+            type: Object,
+            required: true
+          }
+        },
+        emits: ['update:modelValue'],
+        computed: {
+          sortedProperties() {
+            return Object.entries(this.properties).map(([key, property]) => ({
+              key,
+              property,
+              value: this.modelValue[key]
+            }))
+          }
+        },
+        methods: {
+          getInputType(type) {
+            return type === 'String' ? 'text' : type
+          },
+          handleInput(key, value) {
+            // 这里需要确保我们只更新当前字段
+            this.$emit('update:modelValue', {
+              ...this.modelValue, // 创建一个新对象
+              [key]: value // 更新当前字段
+            })
+          }
+        },
+        template: `
+                <div>
+                    <div v-for=&#34;({ key, property, value }, index) in sortedProperties&#34; :key=&#34;key&#34;>
+                        <h6>{{ property.desc }}</h6>
+                        <div v-if=&#34;property.type !== 'Object'&#34;>
+                            <input
+                                :type=&#34;getInputType(property.type)&#34;
+                                :value=&#34;value&#34;
+                                @input=&#34;handleInput(key, $event.target.value)&#34;
+                                :placeholder=&#34;\`请输入\${property.desc}字段\`&#34;
+                            />
+                        </div>
+                        <div class=&#34;obj-wrap&#34; v-if=&#34;property.type === 'Object'&#34;>
+                            <object-field
+                                :properties=&#34;property.default()&#34;
+                                :modelValue=&#34;modelValue[key]&#34;
+                                @update:modelValue=&#34;handleInput(key, $event)&#34;
+                            ></object-field>
+                        </div>
+                    </div>
+                </div>
+            `
+      }
+
+      const app = Vue.createApp({
+        components: {
+          'object-field': ObjectField
+        },
+        data() {
+          return {
+            schemaKey: 'exampleSchema',
+            schemaProperty: {
+              name: { desc: '姓名', type: 'String' },
+              age: { desc: '年龄', type: 'Number' },
+              email: { desc: '电子邮件', type: 'String' },
+              address: {
+                desc: '地址',
+                type: 'Object',
+                default: () => {
+                  return {
+                    addressType: { desc: '地址类型', type: 'String' },
+                    detail: { desc: '详细地址', type: 'String' }
+                  }
+                }
+              }
+            },
+            moduleRef: {
+              name: 'yanyue404',
+              age: '18',
+              email: '1656800216@qq.com',
+              address: {
+                addressType: '家庭住址',
+                detail: '北京市昌平区'
+              }
+            }
+          }
+        },
+        methods: {
+          updateModel({ key, value }) {
+            this.moduleRef[key] = value // May be redundant now
+          }
+        }
+      })
+
+      app.component('object-field', ObjectField)
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">></span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">zh-CN</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">></span>Vue Example<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">https://cdn.jsdelivr.net/npm/vue@3</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">style</span><span class="pl-kos">></span>
+      <span class="pl-ent">body</span> {
+        <span class="pl-c1">font-family</span><span class="pl-kos">:</span> Arial<span class="pl-kos">,</span> sans-serif;
+        <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">20<span class="pl-smi">px</span></span>;
+      }
+      <span class="pl-ent">h6</span> {
+        <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span> <span class="pl-c1">0</span>;
+      }
+      .<span class="pl-c1">obj-wrap</span> {
+        <span class="pl-c1">border</span><span class="pl-kos">:</span> <span class="pl-c1">1<span class="pl-smi">px</span></span> <span class="pl-pds"><span class="pl-kos">#</span>ccc</span> solid;
+        <span class="pl-c1">border-radius</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;
+        <span class="pl-c1">padding</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;
+      }
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">style</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span>="<span class="pl-s">app</span>"<span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">obj-wrap</span>"<span class="pl-kos">></span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">object-field</span>
+          <span class="pl-c1">:properties</span>="<span class="pl-s">schemaProperty</span>"
+          <span class="pl-c1">v-model</span>="<span class="pl-s">moduleRef</span>"
+        <span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">object-field</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+      <span class="pl-k">const</span> <span class="pl-v">ObjectField</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>
+            <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+            <span class="pl-c1">required</span>: <span class="pl-c1">true</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-c1">modelValue</span>: <span class="pl-kos">{</span>
+            <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+            <span class="pl-c1">required</span>: <span class="pl-c1">true</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">emits</span>: <span class="pl-kos">[</span><span class="pl-s">'update:modelValue'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+        <span class="pl-c1">computed</span>: <span class="pl-kos">{</span>
+          <span class="pl-en">sortedProperties</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-k">return</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">entries</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">properties</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">property</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">(</span><span class="pl-kos">{</span>
+              key<span class="pl-kos">,</span>
+              property<span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">modelValue</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span>
+            <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>
+          <span class="pl-en">getInputType</span><span class="pl-kos">(</span><span class="pl-s1">type</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-k">return</span> <span class="pl-s1">type</span> <span class="pl-c1">===</span> <span class="pl-s">'String'</span> ? <span class="pl-s">'text'</span> : <span class="pl-s1">type</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-en">handleInput</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">value</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-c">// 这里需要确保我们只更新当前字段</span>
+            <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">$emit</span><span class="pl-kos">(</span><span class="pl-s">'update:modelValue'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+              ...<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">modelValue</span><span class="pl-kos">,</span> <span class="pl-c">// 创建一个新对象</span>
+              <span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span>: <span class="pl-s1">value</span> <span class="pl-c">// 更新当前字段</span>
+            <span class="pl-kos">}</span><span class="pl-kos">)</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">template</span>: <span class="pl-s">`</span>
+<span class="pl-s">                &lt;div></span>
+<span class="pl-s">                    &lt;div v-for="({ key, property, value }, index) in sortedProperties" :key="key"></span>
+<span class="pl-s">                        &lt;h6>{{ property.desc }}&lt;/h6></span>
+<span class="pl-s">                        &lt;div v-if="property.type !== 'Object'"></span>
+<span class="pl-s">                            &lt;input</span>
+<span class="pl-s">                                :type="getInputType(property.type)"</span>
+<span class="pl-s">                                :value="value"</span>
+<span class="pl-s">                                @input="handleInput(key, $event.target.value)"</span>
+<span class="pl-s">                                :placeholder="\`请输入\${property.desc}字段\`"</span>
+<span class="pl-s">                            /></span>
+<span class="pl-s">                        &lt;/div></span>
+<span class="pl-s">                        &lt;div class="obj-wrap" v-if="property.type === 'Object'"></span>
+<span class="pl-s">                            &lt;object-field</span>
+<span class="pl-s">                                :properties="property.default()"</span>
+<span class="pl-s">                                :modelValue="modelValue[key]"</span>
+<span class="pl-s">                                @update:modelValue="handleInput(key, $event)"</span>
+<span class="pl-s">                            >&lt;/object-field></span>
+<span class="pl-s">                        &lt;/div></span>
+<span class="pl-s">                    &lt;/div></span>
+<span class="pl-s">                &lt;/div></span>
+<span class="pl-s">            `</span>
+      <span class="pl-kos">}</span>
+
+      <span class="pl-k">const</span> <span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">createApp</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">components</span>: <span class="pl-kos">{</span>
+          <span class="pl-s">'object-field'</span>: <span class="pl-v">ObjectField</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-k">return</span> <span class="pl-kos">{</span>
+            <span class="pl-c1">schemaKey</span>: <span class="pl-s">'exampleSchema'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">schemaProperty</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">name</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">'姓名'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">'String'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-c1">age</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">'年龄'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">'Number'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-c1">email</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">'电子邮件'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">'String'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-c1">address</span>: <span class="pl-kos">{</span>
+                <span class="pl-c1">desc</span>: <span class="pl-s">'地址'</span><span class="pl-kos">,</span>
+                <span class="pl-c1">type</span>: <span class="pl-s">'Object'</span><span class="pl-kos">,</span>
+                <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+                  <span class="pl-k">return</span> <span class="pl-kos">{</span>
+                    <span class="pl-c1">addressType</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">'地址类型'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">'String'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+                    <span class="pl-c1">detail</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">'详细地址'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">'String'</span> <span class="pl-kos">}</span>
+                  <span class="pl-kos">}</span>
+                <span class="pl-kos">}</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">moduleRef</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">name</span>: <span class="pl-s">'yanyue404'</span><span class="pl-kos">,</span>
+              <span class="pl-c1">age</span>: <span class="pl-s">'18'</span><span class="pl-kos">,</span>
+              <span class="pl-c1">email</span>: <span class="pl-s">'1656800216@qq.com'</span><span class="pl-kos">,</span>
+              <span class="pl-c1">address</span>: <span class="pl-kos">{</span>
+                <span class="pl-c1">addressType</span>: <span class="pl-s">'家庭住址'</span><span class="pl-kos">,</span>
+                <span class="pl-c1">detail</span>: <span class="pl-s">'北京市昌平区'</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>
+          <span class="pl-en">updateModel</span><span class="pl-kos">(</span><span class="pl-kos">{</span> key<span class="pl-kos">,</span> value <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">moduleRef</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">value</span> <span class="pl-c">// May be redundant now</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+      <span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-s">'object-field'</span><span class="pl-kos">,</span> <span class="pl-v">ObjectField</span><span class="pl-kos">)</span>
+
+      <span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-s">'#app'</span><span class="pl-kos">)</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">></span></pre></div>
+<h3 id="main-heading-H3-3">参考</h3>
+<ul dir="auto">
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" rel="nofollow">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort</a></li>
+<li><a href="https://github.com/keithamus/sort-package-json">https://github.com/keithamus/sort-package-json</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l){return{layout:"default",data:[{post:{id:2555651243,number:283,title:"对象排序示例及在 Vue 中的实际应用",created_at:"2024-09-30T06:07:57Z",updated_at:"2024-12-20T02:18:39Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto">在 JavaScript 中，为了保证对象遍历的有序性，我们需要将无序的对象转换为有序的数组。</p>\n<h2 id="main-heading-H2-1">对象排序 demo</h2>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;对象排序 demo&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;script&gt;\n      const props = {\n        pageType: {\n          desc: \'选择页面类型\',\n          displayOrder: 2\n        },\n        pageSetting: {\n          type: Object,\n          desc: \'页面类型配置\',\n          displayOrder: 3\n        },\n        appConfig: {\n          desc: \'全局配置\',\n          displayOrder: 1\n        },\n        seo: {\n          type: Object,\n          desc: \'seo 信息\',\n          displayOrder: 8\n        },\n        share: {\n          type: Object,\n          desc: \'分享配置\',\n          displayOrder: 4\n        },\n        wxOauth: {\n          type: Object,\n          desc: \'微信授权\',\n          displayOrder: 5\n        },\n        schema: { type: \'SCHEMA\', name: \'app\', displayOrder: 6 },\n        assets: {\n          type: Object,\n          desc: \'js&amp;css\',\n          displayOrder: 9\n        },\n        htmlStyle: {\n          type: Array,\n          desc: \'设置html的样式\',\n          displayOrder: 7\n        },\n        other: {\n          type: Object,\n          desc: \'其他配置\',\n          displayOrder: 10\n        }\n      }\n\n      console.log(\'默认顺序\', Object.keys(props))\n\n      console.log(\'sort 排序\', Object.keys(props).sort())\n\n      console.log(\n        \'自定义对象排序\',\n        Object.keys(props).sort(function (a, b) {\n          return props[a].displayOrder - props[b].displayOrder\n        })\n      )\n\n      const toArraySort = (obj, sortKey) =&gt; {\n        const map = new Map()\n        const sortKeys = Object.keys(obj).sort(function (a, b) {\n          return obj[a][sortKey] - obj[b][sortKey]\n        })\n\n        sortKeys.forEach((prop, index) =&gt; {\n          map.set(index, {\n            key: prop,\n            value: obj[prop]\n          })\n        })\n        return Array.from(map.entries())\n      }\n\n      console.log(\'自定义对象排序的数组 1\', toArraySort(props, \'displayOrder\'))\n\n      const toSortByArray = (obj, referArr) =&gt; {\n        const map = new Map()\n        const sortKeys = Object.keys(obj).sort(function (a, b) {\n          const indexA = referArr.indexOf(a)\n          const indexB = referArr.indexOf(b)\n\n          // 当元素不在 referArr 时，将其索引设置为数组长度，放到后面\n          const orderA = indexA === -1 ? referArr.length : indexA\n          const orderB = indexB === -1 ? referArr.length : indexB\n          return orderA - orderB // 升序排序\n        })\n\n        sortKeys.forEach((prop, index) =&gt; {\n          map.set(index, {\n            key: prop,\n            value: obj[prop]\n          })\n        })\n        return Array.from(map.entries())\n      }\n\n      console.log(\n        \'自定义对象排序的数组 2\',\n        toSortByArray(props, [\n          \'appConfig\',\n          \'seo\',\n          \'share\',\n          \'pageType\',\n          \'pageSetting\'\n        ])\n      )\n    &lt;/script&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>对象排序 demo<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n      <span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">pageType</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'选择页面类型\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">2</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">pageSetting</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'页面类型配置\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">3</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">appConfig</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'全局配置\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">1</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">seo</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'seo 信息\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">8</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">share</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'分享配置\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">4</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">wxOauth</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'微信授权\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">5</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">schema</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">\'SCHEMA\'</span><span class="pl-kos">,</span> <span class="pl-c1">name</span>: <span class="pl-s">\'app\'</span><span class="pl-kos">,</span> <span class="pl-c1">displayOrder</span>: <span class="pl-c1">6</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">assets</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'js&amp;css\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">9</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">htmlStyle</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Array</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'设置html的样式\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">7</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">other</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'其他配置\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">displayOrder</span>: <span class="pl-c1">10</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'默认顺序\'</span><span class="pl-kos">,</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'sort 排序\'</span><span class="pl-kos">,</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span>\n        <span class="pl-s">\'自定义对象排序\'</span><span class="pl-kos">,</span>\n        <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">,</span> <span class="pl-s1">b</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-k">return</span> <span class="pl-s1">props</span><span class="pl-kos">[</span><span class="pl-s1">a</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">displayOrder</span> <span class="pl-c1">-</span> <span class="pl-s1">props</span><span class="pl-kos">[</span><span class="pl-s1">b</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">displayOrder</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n      <span class="pl-kos">)</span>\n\n      <span class="pl-k">const</span> <span class="pl-en">toArraySort</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">,</span> <span class="pl-s1">sortKey</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-k">const</span> <span class="pl-s1">map</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Map</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n        <span class="pl-k">const</span> <span class="pl-s1">sortKeys</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">,</span> <span class="pl-s1">b</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-k">return</span> <span class="pl-s1">obj</span><span class="pl-kos">[</span><span class="pl-s1">a</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">sortKey</span><span class="pl-kos">]</span> <span class="pl-c1">-</span> <span class="pl-s1">obj</span><span class="pl-kos">[</span><span class="pl-s1">b</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">sortKey</span><span class="pl-kos">]</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n        <span class="pl-s1">sortKeys</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">prop</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-s1">map</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n            <span class="pl-c1">key</span>: <span class="pl-s1">prop</span><span class="pl-kos">,</span>\n            <span class="pl-c1">value</span>: <span class="pl-s1">obj</span><span class="pl-kos">[</span><span class="pl-s1">prop</span><span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">)</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n        <span class="pl-k">return</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s1">map</span><span class="pl-kos">.</span><span class="pl-en">entries</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n      <span class="pl-kos">}</span>\n\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'自定义对象排序的数组 1\'</span><span class="pl-kos">,</span> <span class="pl-en">toArraySort</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">,</span> <span class="pl-s">\'displayOrder\'</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n\n      <span class="pl-k">const</span> <span class="pl-en">toSortByArray</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">,</span> <span class="pl-s1">referArr</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-k">const</span> <span class="pl-s1">map</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Map</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n        <span class="pl-k">const</span> <span class="pl-s1">sortKeys</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">obj</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">,</span> <span class="pl-s1">b</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-k">const</span> <span class="pl-s1">indexA</span> <span class="pl-c1">=</span> <span class="pl-s1">referArr</span><span class="pl-kos">.</span><span class="pl-en">indexOf</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span>\n          <span class="pl-k">const</span> <span class="pl-s1">indexB</span> <span class="pl-c1">=</span> <span class="pl-s1">referArr</span><span class="pl-kos">.</span><span class="pl-en">indexOf</span><span class="pl-kos">(</span><span class="pl-s1">b</span><span class="pl-kos">)</span>\n\n          <span class="pl-c">// 当元素不在 referArr 时，将其索引设置为数组长度，放到后面</span>\n          <span class="pl-k">const</span> <span class="pl-s1">orderA</span> <span class="pl-c1">=</span> <span class="pl-s1">indexA</span> <span class="pl-c1">===</span> <span class="pl-c1">-</span><span class="pl-c1">1</span> ? <span class="pl-s1">referArr</span><span class="pl-kos">.</span><span class="pl-c1">length</span> : <span class="pl-s1">indexA</span>\n          <span class="pl-k">const</span> <span class="pl-s1">orderB</span> <span class="pl-c1">=</span> <span class="pl-s1">indexB</span> <span class="pl-c1">===</span> <span class="pl-c1">-</span><span class="pl-c1">1</span> ? <span class="pl-s1">referArr</span><span class="pl-kos">.</span><span class="pl-c1">length</span> : <span class="pl-s1">indexB</span>\n          <span class="pl-k">return</span> <span class="pl-s1">orderA</span> <span class="pl-c1">-</span> <span class="pl-s1">orderB</span> <span class="pl-c">// 升序排序</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n        <span class="pl-s1">sortKeys</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">prop</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-s1">map</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n            <span class="pl-c1">key</span>: <span class="pl-s1">prop</span><span class="pl-kos">,</span>\n            <span class="pl-c1">value</span>: <span class="pl-s1">obj</span><span class="pl-kos">[</span><span class="pl-s1">prop</span><span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">)</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n        <span class="pl-k">return</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s1">map</span><span class="pl-kos">.</span><span class="pl-en">entries</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n      <span class="pl-kos">}</span>\n\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span>\n        <span class="pl-s">\'自定义对象排序的数组 2\'</span><span class="pl-kos">,</span>\n        <span class="pl-en">toSortByArray</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">,</span> <span class="pl-kos">[</span>\n          <span class="pl-s">\'appConfig\'</span><span class="pl-kos">,</span>\n          <span class="pl-s">\'seo\'</span><span class="pl-kos">,</span>\n          <span class="pl-s">\'share\'</span><span class="pl-kos">,</span>\n          <span class="pl-s">\'pageType\'</span><span class="pl-kos">,</span>\n          <span class="pl-s">\'pageSetting\'</span>\n        <span class="pl-kos">]</span><span class="pl-kos">)</span>\n      <span class="pl-kos">)</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>\n<h2 id="main-heading-H2-2">在 Vue 中遍历使用</h2>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;zh-CN&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Vue Example&lt;/title&gt;\n    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@3&quot;&gt;&lt;/script&gt;\n    &lt;style&gt;\n      body {\n        font-family: Arial, sans-serif;\n        margin: 20px;\n      }\n      h6 {\n        margin: 10px 0;\n      }\n      .obj-wrap {\n        border: 1px #ccc solid;\n        border-radius: 10px;\n        padding: 10px;\n      }\n    &lt;/style&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;div id=&quot;app&quot;&gt;\n      &lt;div class=&quot;obj-wrap&quot;&gt;\n        &lt;object-field\n          :properties=&quot;schemaProperty&quot;\n          v-model=&quot;moduleRef&quot;\n        &gt;&lt;/object-field&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n\n    &lt;script&gt;\n      const ObjectField = {\n        props: {\n          properties: {\n            type: Object,\n            required: true\n          },\n          modelValue: {\n            type: Object,\n            required: true\n          }\n        },\n        emits: [\'update:modelValue\'],\n        computed: {\n          sortedProperties() {\n            return Object.entries(this.properties).map(([key, property]) =&gt; ({\n              key,\n              property,\n              value: this.modelValue[key]\n            }))\n          }\n        },\n        methods: {\n          getInputType(type) {\n            return type === \'String\' ? \'text\' : type\n          },\n          handleInput(key, value) {\n            // 这里需要确保我们只更新当前字段\n            this.$emit(\'update:modelValue\', {\n              ...this.modelValue, // 创建一个新对象\n              [key]: value // 更新当前字段\n            })\n          }\n        },\n        template: `\n                &lt;div&gt;\n                    &lt;div v-for=&quot;({ key, property, value }, index) in sortedProperties&quot; :key=&quot;key&quot;&gt;\n                        &lt;h6&gt;{{ property.desc }}&lt;/h6&gt;\n                        &lt;div v-if=&quot;property.type !== \'Object\'&quot;&gt;\n                            &lt;input\n                                :type=&quot;getInputType(property.type)&quot;\n                                :value=&quot;value&quot;\n                                @input=&quot;handleInput(key, $event.target.value)&quot;\n                                :placeholder=&quot;\\`请输入\\${property.desc}字段\\`&quot;\n                            /&gt;\n                        &lt;/div&gt;\n                        &lt;div class=&quot;obj-wrap&quot; v-if=&quot;property.type === \'Object\'&quot;&gt;\n                            &lt;object-field\n                                :properties=&quot;property.default()&quot;\n                                :modelValue=&quot;modelValue[key]&quot;\n                                @update:modelValue=&quot;handleInput(key, $event)&quot;\n                            &gt;&lt;/object-field&gt;\n                        &lt;/div&gt;\n                    &lt;/div&gt;\n                &lt;/div&gt;\n            `\n      }\n\n      const app = Vue.createApp({\n        components: {\n          \'object-field\': ObjectField\n        },\n        data() {\n          return {\n            schemaKey: \'exampleSchema\',\n            schemaProperty: {\n              name: { desc: \'姓名\', type: \'String\' },\n              age: { desc: \'年龄\', type: \'Number\' },\n              email: { desc: \'电子邮件\', type: \'String\' },\n              address: {\n                desc: \'地址\',\n                type: \'Object\',\n                default: () =&gt; {\n                  return {\n                    addressType: { desc: \'地址类型\', type: \'String\' },\n                    detail: { desc: \'详细地址\', type: \'String\' }\n                  }\n                }\n              }\n            },\n            moduleRef: {\n              name: \'yanyue404\',\n              age: \'18\',\n              email: \'1656800216@qq.com\',\n              address: {\n                addressType: \'家庭住址\',\n                detail: \'北京市昌平区\'\n              }\n            }\n          }\n        },\n        methods: {\n          updateModel({ key, value }) {\n            this.moduleRef[key] = value // May be redundant now\n          }\n        }\n      })\n\n      app.component(\'object-field\', ObjectField)\n\n      app.mount(\'#app\')\n    &lt;/script&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">zh-CN</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>Vue Example<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">https://cdn.jsdelivr.net/npm/vue@3</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span>\n      <span class="pl-ent">body</span> {\n        <span class="pl-c1">font-family</span><span class="pl-kos">:</span> Arial<span class="pl-kos">,</span> sans-serif;\n        <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">20<span class="pl-smi">px</span></span>;\n      }\n      <span class="pl-ent">h6</span> {\n        <span class="pl-c1">margin</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span> <span class="pl-c1">0</span>;\n      }\n      .<span class="pl-c1">obj-wrap</span> {\n        <span class="pl-c1">border</span><span class="pl-kos">:</span> <span class="pl-c1">1<span class="pl-smi">px</span></span> <span class="pl-pds"><span class="pl-kos">#</span>ccc</span> solid;\n        <span class="pl-c1">border-radius</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;\n        <span class="pl-c1">padding</span><span class="pl-kos">:</span> <span class="pl-c1">10<span class="pl-smi">px</span></span>;\n      }\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span>="<span class="pl-s">app</span>"<span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">obj-wrap</span>"<span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;</span><span class="pl-ent">object-field</span>\n          <span class="pl-c1">:properties</span>="<span class="pl-s">schemaProperty</span>"\n          <span class="pl-c1">v-model</span>="<span class="pl-s">moduleRef</span>"\n        <span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">object-field</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n      <span class="pl-k">const</span> <span class="pl-v">ObjectField</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>\n            <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n            <span class="pl-c1">required</span>: <span class="pl-c1">true</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-c1">modelValue</span>: <span class="pl-kos">{</span>\n            <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n            <span class="pl-c1">required</span>: <span class="pl-c1">true</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">emits</span>: <span class="pl-kos">[</span><span class="pl-s">\'update:modelValue\'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n        <span class="pl-c1">computed</span>: <span class="pl-kos">{</span>\n          <span class="pl-en">sortedProperties</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n            <span class="pl-k">return</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">entries</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">properties</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">property</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">(</span><span class="pl-kos">{</span>\n              key<span class="pl-kos">,</span>\n              property<span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">modelValue</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span>\n            <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>\n          <span class="pl-en">getInputType</span><span class="pl-kos">(</span><span class="pl-s1">type</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n            <span class="pl-k">return</span> <span class="pl-s1">type</span> <span class="pl-c1">===</span> <span class="pl-s">\'String\'</span> ? <span class="pl-s">\'text\'</span> : <span class="pl-s1">type</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-en">handleInput</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">value</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n            <span class="pl-c">// 这里需要确保我们只更新当前字段</span>\n            <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">$emit</span><span class="pl-kos">(</span><span class="pl-s">\'update:modelValue\'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n              ...<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">modelValue</span><span class="pl-kos">,</span> <span class="pl-c">// 创建一个新对象</span>\n              <span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span>: <span class="pl-s1">value</span> <span class="pl-c">// 更新当前字段</span>\n            <span class="pl-kos">}</span><span class="pl-kos">)</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">template</span>: <span class="pl-s">`</span>\n<span class="pl-s">                &lt;div&gt;</span>\n<span class="pl-s">                    &lt;div v-for="({ key, property, value }, index) in sortedProperties" :key="key"&gt;</span>\n<span class="pl-s">                        &lt;h6&gt;{{ property.desc }}&lt;/h6&gt;</span>\n<span class="pl-s">                        &lt;div v-if="property.type !== \'Object\'"&gt;</span>\n<span class="pl-s">                            &lt;input</span>\n<span class="pl-s">                                :type="getInputType(property.type)"</span>\n<span class="pl-s">                                :value="value"</span>\n<span class="pl-s">                                @input="handleInput(key, $event.target.value)"</span>\n<span class="pl-s">                                :placeholder="\\`请输入\\${property.desc}字段\\`"</span>\n<span class="pl-s">                            /&gt;</span>\n<span class="pl-s">                        &lt;/div&gt;</span>\n<span class="pl-s">                        &lt;div class="obj-wrap" v-if="property.type === \'Object\'"&gt;</span>\n<span class="pl-s">                            &lt;object-field</span>\n<span class="pl-s">                                :properties="property.default()"</span>\n<span class="pl-s">                                :modelValue="modelValue[key]"</span>\n<span class="pl-s">                                @update:modelValue="handleInput(key, $event)"</span>\n<span class="pl-s">                            &gt;&lt;/object-field&gt;</span>\n<span class="pl-s">                        &lt;/div&gt;</span>\n<span class="pl-s">                    &lt;/div&gt;</span>\n<span class="pl-s">                &lt;/div&gt;</span>\n<span class="pl-s">            `</span>\n      <span class="pl-kos">}</span>\n\n      <span class="pl-k">const</span> <span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">createApp</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">components</span>: <span class="pl-kos">{</span>\n          <span class="pl-s">\'object-field\'</span>: <span class="pl-v">ObjectField</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-k">return</span> <span class="pl-kos">{</span>\n            <span class="pl-c1">schemaKey</span>: <span class="pl-s">\'exampleSchema\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">schemaProperty</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">name</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">\'姓名\'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">\'String\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-c1">age</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">\'年龄\'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">\'Number\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-c1">email</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">\'电子邮件\'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">\'String\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-c1">address</span>: <span class="pl-kos">{</span>\n                <span class="pl-c1">desc</span>: <span class="pl-s">\'地址\'</span><span class="pl-kos">,</span>\n                <span class="pl-c1">type</span>: <span class="pl-s">\'Object\'</span><span class="pl-kos">,</span>\n                <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n                  <span class="pl-k">return</span> <span class="pl-kos">{</span>\n                    <span class="pl-c1">addressType</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">\'地址类型\'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">\'String\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n                    <span class="pl-c1">detail</span>: <span class="pl-kos">{</span> <span class="pl-c1">desc</span>: <span class="pl-s">\'详细地址\'</span><span class="pl-kos">,</span> <span class="pl-c1">type</span>: <span class="pl-s">\'String\'</span> <span class="pl-kos">}</span>\n                  <span class="pl-kos">}</span>\n                <span class="pl-kos">}</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">moduleRef</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">name</span>: <span class="pl-s">\'yanyue404\'</span><span class="pl-kos">,</span>\n              <span class="pl-c1">age</span>: <span class="pl-s">\'18\'</span><span class="pl-kos">,</span>\n              <span class="pl-c1">email</span>: <span class="pl-s">\'1656800216@qq.com\'</span><span class="pl-kos">,</span>\n              <span class="pl-c1">address</span>: <span class="pl-kos">{</span>\n                <span class="pl-c1">addressType</span>: <span class="pl-s">\'家庭住址\'</span><span class="pl-kos">,</span>\n                <span class="pl-c1">detail</span>: <span class="pl-s">\'北京市昌平区\'</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>\n          <span class="pl-en">updateModel</span><span class="pl-kos">(</span><span class="pl-kos">{</span> key<span class="pl-kos">,</span> value <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n            <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">moduleRef</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">value</span> <span class="pl-c">// May be redundant now</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n      <span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-s">\'object-field\'</span><span class="pl-kos">,</span> <span class="pl-v">ObjectField</span><span class="pl-kos">)</span>\n\n      <span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-s">\'#app\'</span><span class="pl-kos">)</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>\n<h3 id="main-heading-H3-3">参考</h3>\n<ul dir="auto">\n<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" rel="nofollow">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort</a></li>\n<li><a href="https://github.com/keithamus/sort-package-json">https://github.com/keithamus/sort-package-json</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:n,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/283"},navList:[{text:"前言",id:"main-heading-H2-0",type:a,children:[]},{text:"对象排序 demo",id:"main-heading-H2-1",type:a,children:[]},{text:"在 Vue 中遍历使用",id:"main-heading-H2-2",type:a,children:[{text:"参考",id:"main-heading-H3-3",type:"H3"}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:n}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

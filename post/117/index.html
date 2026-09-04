@@ -1,0 +1,1046 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Git 使用进阶 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 随着 git 的使用普遍化，现在更需要关注使用的规范流程，在此纪录。 目录 漂亮的徽章 commit 日志 更好的 pull rebase-修改提交历史 merge 时忽略文件 git rebase vs git merge 分支管理策略 git 仓库迁移并保留 commit 历史 git 子"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Git 使用进阶"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 随着 git 的使用普遍化，现在更需要关注使用的规范流程，在此纪录。 目录 漂亮的徽章 commit 日志 更好的 pull rebase-修改提交历史 merge 时忽略文件 git rebase vs git merge 分支管理策略 git 仓库迁移并保留 commit 历史 git 子"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Git 使用进阶"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 随着 git 的使用普遍化，现在更需要关注使用的规范流程，在此纪录。 目录 漂亮的徽章 commit 日志 更好的 pull rebase-修改提交历史 merge 时忽略文件 git rebase vs git merge 分支管理策略 git 仓库迁移并保留 commit 历史 git 子"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-1" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-2" title="漂亮的徽章" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              漂亮的徽章
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-3" title="commit 日志" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              commit 日志
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-4" title="更好的 pull" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              更好的 pull
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-5" title="rebase-修改提交历史" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              rebase-修改提交历史
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-6" title="merge 时忽略文件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              merge 时忽略文件
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-7" title="git rebase vs git merge" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git rebase vs git merge
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-8" title="分支管理策略" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              分支管理策略
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-9" title="git 仓库迁移并保留 commit 历史" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git 仓库迁移并保留 commit 历史
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-10" title="git 子模块" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git 子模块
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-11" title="git-创建一个空分支" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git-创建一个空分支
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-12" title="git stash" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git stash
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-13" title="git revert 与 git reset 的区别" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git revert 与 git reset 的区别
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-14" title="git 合并另一个仓库" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git 合并另一个仓库
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-15" title="github actions" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              github actions
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-16" title="github.dev 写作" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              github.dev 写作
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-17" title="git 修改 commit 作者和邮箱" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git 修改 commit 作者和邮箱
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-18" title="github 搜索" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              github 搜索
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-19" title="github 大文件上传" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              github 大文件上传
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-20" title="git 克隆使用代理" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              git 克隆使用代理
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/117#main-heading-H2-21" title="参考链接" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考链接
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Git 使用进阶</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Git 使用进阶</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2020-01-04</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 40 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto">随着 git 的使用普遍化，现在更需要关注使用的规范流程，在此纪录。</p>
+<h2 id="main-heading-H2-1">目录</h2>
+<ul dir="auto">
+<li><a href="#%E6%BC%82%E4%BA%AE%E7%9A%84%E5%BE%BD%E7%AB%A0">漂亮的徽章</a></li>
+<li><a href="#commit-%E6%97%A5%E5%BF%97">commit 日志</a></li>
+<li><a href="#%E6%9B%B4%E5%A5%BD%E7%9A%84-pull">更好的 pull</a></li>
+<li><a href="#rebase-%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2">rebase-修改提交历史</a></li>
+<li><a href="#merge-%E6%97%B6%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6">merge 时忽略文件</a></li>
+<li><a href="#git-rebase-vs-git-merge">git rebase vs git merge</a></li>
+<li><a href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E7%AD%96%E7%95%A5">分支管理策略</a></li>
+<li><a href="#git-%E4%BB%93%E5%BA%93%E8%BF%81%E7%A7%BB%E5%B9%B6%E4%BF%9D%E7%95%99-commit-%E5%8E%86%E5%8F%B2">git 仓库迁移并保留 commit 历史</a></li>
+<li><a href="#git-%E5%AD%90%E6%A8%A1%E5%9D%97">git 子模块</a></li>
+<li><a href="#git-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A9%BA%E5%88%86%E6%94%AF">git-创建一个空分支</a></li>
+<li><a href="#git-stash">git stash</a></li>
+<li><a href="#git-cherry-pick">git cherry-pick</a></li>
+<li><a href="#git-revert-%E4%B8%8E-git-reset-%E7%9A%84%E5%8C%BA%E5%88%AB">git revert 与 git reset 的区别</a></li>
+<li><a href="#git-%E5%90%88%E5%B9%B6%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93">git 合并另一个仓库</a></li>
+<li><a href="#github-actions">github actions</a></li>
+<li><a href="git%E4%BF%AE%E6%94%B9commit%E4%BD%9C%E8%80%85%E5%92%8C%E9%82%AE%E7%AE%B1">git 修改 commit 作者和邮箱</a></li>
+<li><a href="#github-%E6%90%9C%E7%B4%A2">github 搜索</a></li>
+</ul>
+<h2 id="main-heading-H2-2">漂亮的徽章</h2>
+<ul dir="auto">
+<li><a href="https://github.com/badges/shields">https://github.com/badges/shields</a></li>
+<li><a href="https://github.com/pudding0503/github-badge-collection">https://github.com/pudding0503/github-badge-collection</a></li>
+</ul>
+<h2 id="main-heading-H2-3">commit 日志</h2>
+<ul dir="auto">
+<li>docs: 文档类修改</li>
+<li>feat: 新特性</li>
+<li>fix: bug 修改</li>
+<li>test: 新增、修改测试</li>
+<li>refactor: 重构代码</li>
+<li>perf: 性能优化</li>
+<li>build: 构建发布版本</li>
+<li>ci: 持续集成修改</li>
+<li>chore: 琐事，小修改</li>
+<li>revert: 版本回退</li>
+</ul>
+<h2 id="main-heading-H2-4">更好的 pull</h2>
+<p dir="auto"><strong>起因</strong></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/yanyue404/blog/blob/master/assets/git/pr1.jpg?raw=true"><img src="https://github.com/yanyue404/blog/blob/master/assets/git/pr1.jpg?raw=true" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/yanyue404/blog/blob/master/assets/git/pr2.jpg?raw=true"><img src="https://github.com/yanyue404/blog/blob/master/assets/git/pr2.jpg?raw=true" alt="" style="max-width:100%"></a></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git pull origin xxx --rebase
+
+# 直接按 rebase 的方式执行 pull
+git config --global pull.rebase true"><pre class="notranslate">git pull origin xxx --rebase
+
+<span class="pl-c"><span class="pl-c">#</span> 直接按 rebase 的方式执行 pull</span>
+git config --global pull.rebase <span class="pl-c1">true</span></pre></div>
+<p dir="auto">使用 rebase 就感觉所有人都在同一条直线上开发一样，很干净的 log，看着很舒服，而直接使用 pull 的 log 看起来就很乱。</p>
+<p dir="auto"><strong>git pull --rebase</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* | b9feea8 - chore: 添加C前往A埋点 (6 hours ago) <yanyue404>
+* | b3047fe - fix: ISO8601 time (6 hours ago) <yanyue404>
+* | bfb6c84 - test: formatTimeStr 兼容 ios (7 hours ago) <yanyue404>
+* | 0e13196 - chore: IOS 时间处理 (22 hours ago) <yanyue404>
+* | f15a0e8 - chore: 游客在名片页面进行授权 (24 hours ago) <yanyue404>
+* | ee8b125 - chore: 完善个人名片 (25 hours ago) <yanyue404>
+* | deb7a5a - chore: 个人名片添加用户角色校验 (26 hours ago) <yanyue404>
+* | 5106b02 - chore: 开始识别用户角色 (27 hours ago) <yanyue404>
+* | f16b6af - chore: 更换 appid (31 hours ago) <yanyue404>
+* | 7216da4 - chore: 同步 code (31 hours ago) <yanyue404>
+* | 9e542b4 - chore: uat 更新 (6 days ago) <yanyue404>
+* | 473e311 - fix: 修改环境 (6 days ago) <yanyue404>
+* | f54ae0f - chore: 埋点 (5 hours ago) <yanyue404>"><pre class="notranslate"><span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">b9feea8</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">添加C前往A埋点</span> <span class="pl-kos">(</span><span class="pl-c1">6</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">b3047fe</span> <span class="pl-c1">-</span> <span class="pl-s1">fix</span>: <span class="pl-c1">ISO8601</span> <span class="pl-en">time</span> <span class="pl-kos">(</span><span class="pl-c1">6</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">bfb6c84</span> <span class="pl-c1">-</span> <span class="pl-s1">test</span>: <span class="pl-s1">formatTimeStr</span> <span class="pl-s1">兼容</span> <span class="pl-en">ios</span> <span class="pl-kos">(</span><span class="pl-c1">7</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">0e13196</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-c1">IOS</span> <span class="pl-en">时间处理</span> <span class="pl-kos">(</span><span class="pl-c1">22</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">f15a0e8</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">游客在名片页面进行授权</span> <span class="pl-kos">(</span><span class="pl-c1">24</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">ee8b125</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">完善个人名片</span> <span class="pl-kos">(</span><span class="pl-c1">25</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">deb7a5a</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">个人名片添加用户角色校验</span> <span class="pl-kos">(</span><span class="pl-c1">26</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">5106</span><span class="pl-s1">b02</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">开始识别用户角色</span> <span class="pl-kos">(</span><span class="pl-c1">27</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">f16b6af</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-s1">更换</span> <span class="pl-en">appid</span> <span class="pl-kos">(</span><span class="pl-c1">31</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">7216</span><span class="pl-s1">da4</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-s1">同步</span> <span class="pl-en">code</span> <span class="pl-kos">(</span><span class="pl-c1">31</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">9e542</span><span class="pl-s1">b4</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-s1">uat</span> <span class="pl-en">更新</span> <span class="pl-kos">(</span><span class="pl-c1">6</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">473e311</span> <span class="pl-c1">-</span> <span class="pl-s1">fix</span>: <span class="pl-en">修改环境</span> <span class="pl-kos">(</span><span class="pl-c1">6</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">f54ae0f</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">埋点</span> <span class="pl-kos">(</span><span class="pl-c1">5</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span></pre></div>
+<p dir="auto"><strong>git pull</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* | ae57454 - feat: token 过期强制重新认证 (2 days ago) <yanyue404>
+* |   1b02194 - Merge remote-tracking branch 'origin/prod' into prod (2 days ago) <Joe>
+|\ \
+| * | 6284b85 - fix: 登录流程短视频播放 (2 days ago) <yanyue404>
+| * | 2bcb162 - styles: canvas 分享图位置优化 (2 days ago) <yanyue404>
+| * | d4c66a6 - chore: 页面分享控制 (2 days ago) <yanyue404>
+| * | 91baa28 - chore: 个人名片非分享人文字修改 (2 days ago) <yanyue404>
+* | | 60715e9 - 修改保单判断 (2 days ago) <Joe>
+|/ /
+* |   85f1032 - Merge remote-tracking branch 'origin/prod' into prod (2 days ago) <Joe>
+|\ \
+| * | ab884df - feat: 个人名片分享页授权 (4 days ago) <yanyue404>
+* | | e603434 - 优化加载速度 (2 days ago) <Joe>
+|/ /
+* | a255e59 - 微调样式  评论换行 (4 days ago) <Joe>
+* |   7251630 - Merge remote-tracking branch 'origin/prod' into prod (4 days ago) <Joe>
+|\ \
+| * | 1bd08fc - chore: loading 优化 (4 days ago) <yanyue404>
+* | | 7bc0e9e - 修改视频列表问题 (4 days ago) <Joe>
+|/ /
+* | 9e328af - 1.取消我的视频    个人名片换上来 (4 days ago) <Joe>"><pre class="notranslate"><span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">ae57454</span> <span class="pl-c1">-</span> <span class="pl-s1">feat</span>: <span class="pl-s1">token</span> <span class="pl-en">过期强制重新认证</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span>   <span class="pl-c1">1</span><span class="pl-s1">b02194</span> <span class="pl-c1">-</span> <span class="pl-v">Merge</span> <span class="pl-s1">remote</span><span class="pl-c1">-</span><span class="pl-s1">tracking</span> <span class="pl-s1">branch</span> <span class="pl-s">'origin/prod'</span> <span class="pl-s1">into</span> <span class="pl-en">prod</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">></span>
+<span class="pl-c1">|</span>\ \
+<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">6284</span><span class="pl-s1">b85</span> <span class="pl-c1">-</span> <span class="pl-s1">fix</span>: <span class="pl-en">登录流程短视频播放</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">2</span><span class="pl-s1">bcb162</span> <span class="pl-c1">-</span> <span class="pl-s1">styles</span>: <span class="pl-s1">canvas</span> <span class="pl-en">分享图位置优化</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">d4c66a6</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">页面分享控制</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">91</span><span class="pl-s1">baa28</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">个人名片非分享人文字修改</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">|</span> <span class="pl-c1">60715e9</span> <span class="pl-c1">-</span> <span class="pl-en">修改保单判断</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">></span><span class="pl-s1"></span>
+<span class="pl-c1">|</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s"> </span><span class="pl-c1">/</span></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span>   <span class="pl-c1">85</span><span class="pl-s1">f1032</span> <span class="pl-c1">-</span> <span class="pl-v">Merge</span> <span class="pl-s1">remote</span><span class="pl-c1">-</span><span class="pl-s1">tracking</span> <span class="pl-s1">branch</span> <span class="pl-s">'origin/prod'</span> <span class="pl-s1">into</span> <span class="pl-en">prod</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">></span>
+<span class="pl-c1">|</span>\ \
+<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">ab884df</span> <span class="pl-c1">-</span> <span class="pl-s1">feat</span>: <span class="pl-en">个人名片分享页授权</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">|</span> <span class="pl-s1">e603434</span> <span class="pl-c1">-</span> <span class="pl-en">优化加载速度</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">></span>
+<span class="pl-c1">|</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s"> </span><span class="pl-c1">/</span></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">a255e59</span> <span class="pl-c1">-</span> <span class="pl-s1">微调样式</span><span class="pl-kos"></span>  <span class="pl-en">评论换行</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span>   <span class="pl-c1">7251630</span> <span class="pl-c1">-</span> <span class="pl-v">Merge</span> <span class="pl-s1">remote</span><span class="pl-c1">-</span><span class="pl-s1">tracking</span> <span class="pl-s1">branch</span> <span class="pl-s">'origin/prod'</span> <span class="pl-s1">into</span> <span class="pl-en">prod</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">></span>
+<span class="pl-c1">|</span>\ \
+<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">1</span><span class="pl-s1">bd08fc</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-s1">loading</span> <span class="pl-en">优化</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">|</span> <span class="pl-c1">7</span><span class="pl-s1">bc0e9e</span> <span class="pl-c1">-</span> <span class="pl-en">修改视频列表问题</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">></span><span class="pl-s1"></span>
+<span class="pl-c1">|</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s"> </span><span class="pl-c1">/</span></span>
+<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">9e328</span><span class="pl-s1">af</span> <span class="pl-c1">-</span> <span class="pl-c1">1.</span><span class="pl-s1">取消我的视频</span>    <span class="pl-en">个人名片换上来</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">></span></pre></div>
+<h2 id="main-heading-H2-5">rebase-修改提交历史</h2>
+<p dir="auto">合并最近提交的历史，将 <code class="notranslate">ba4358d</code>到 <code class="notranslate">a549037</code> 变为一个 commit</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 输入
+git log --online
+
+# 输出
+ba4358d (HEAD -> master, origin/master, origin/HEAD) docs: 重
+ba4358d Update README.md
+ba4358d Update README.md # 此条目以上合并为一条
+36f95d9 docs
+0312afb init"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 输入</span>
+git log --online
+
+<span class="pl-c"><span class="pl-c">#</span> 输出</span>
+ba4358d (HEAD -<span class="pl-k">></span> master, origin/master, origin/HEAD) docs: 重
+ba4358d Update README.md
+ba4358d Update README.md <span class="pl-c"><span class="pl-c">#</span> 此条目以上合并为一条</span>
+36f95d9 docs
+0312afb init</pre></div>
+<p dir="auto">准备合并</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git rebase -i 36f95d9 | git rebase -i HEAD~3"><pre class="notranslate">git rebase -i 36f95d9 <span class="pl-k">|</span> git rebase -i HEAD~3</pre></div>
+<p dir="auto">选择合并</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 输出
+
+pick ba4358d   '注释**********'
+
+pick ba4358d   '注释*********'
+
+pick ba4358d   '注释**********'
+
+# pick 保留该commit（缩写:p）
+# squash 的意思是这个 commit 会被合并到前一个commit (省略写法 s)
+# reword：保留该commit，但我需要修改该commit的注释（缩写:r）
+# edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）
+# fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）
+# drop：我要丢弃该commit（缩写:d）
+# 在 vim 命令下输入 i 进入编辑模式，编辑完成后 :eq 保存退出
+
+# 输入
+
+pick 3ca6ec3   '注释**********'
+
+s 1b40566   '注释*********'
+
+s 53f244a   '注释**********'"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 输出</span>
+
+pick ba4358d   <span class="pl-s"><span class="pl-pds">'</span>注释**********<span class="pl-pds">'</span></span>
+
+pick ba4358d   <span class="pl-s"><span class="pl-pds">'</span>注释*********<span class="pl-pds">'</span></span>
+
+pick ba4358d   <span class="pl-s"><span class="pl-pds">'</span>注释**********<span class="pl-pds">'</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span> pick 保留该commit（缩写:p）</span>
+<span class="pl-c"><span class="pl-c">#</span> squash 的意思是这个 commit 会被合并到前一个commit (省略写法 s)</span>
+<span class="pl-c"><span class="pl-c">#</span> reword：保留该commit，但我需要修改该commit的注释（缩写:r）</span>
+<span class="pl-c"><span class="pl-c">#</span> edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）</span>
+<span class="pl-c"><span class="pl-c">#</span> fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）</span>
+<span class="pl-c"><span class="pl-c">#</span> drop：我要丢弃该commit（缩写:d）</span>
+<span class="pl-c"><span class="pl-c">#</span> 在 vim 命令下输入 i 进入编辑模式，编辑完成后 :eq 保存退出</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 输入</span>
+
+pick 3ca6ec3   <span class="pl-s"><span class="pl-pds">'</span>注释**********<span class="pl-pds">'</span></span>
+
+s 1b40566   <span class="pl-s"><span class="pl-pds">'</span>注释*********<span class="pl-pds">'</span></span>
+
+s 53f244a   <span class="pl-s"><span class="pl-pds">'</span>注释**********<span class="pl-pds">'</span></span></pre></div>
+<p dir="auto">保存完成后，你有两个选择</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git rebase --continue  #  确认 rebase
+git rebase --abort     # 取消 rebase
+
+#确认后，就可以上传到远程了。"><pre class="notranslate">git rebase --continue  <span class="pl-c"><span class="pl-c">#</span>  确认 rebase</span>
+git rebase --abort     <span class="pl-c"><span class="pl-c">#</span> 取消 rebase</span>
+
+<span class="pl-c"><span class="pl-c">#</span>确认后，就可以上传到远程了。</span></pre></div>
+<p dir="auto">如有冲突：当你修改完冲突的文件：执行<code class="notranslate">git add .</code>，然后继续 <code class="notranslate">git rebase --continue</code>就可以解决完冲突并合并到分支上了。</p>
+<p dir="auto">如果没有冲突，或者冲突已经解决，则会出现如下的编辑窗口, 输入<code class="notranslate">:wq</code> 保存并推出:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# This is a combination of 4 commits.
+#The first commit’s message is:
+注释......
+# The 2nd commit’s message is:
+注释......
+# The 3rd commit’s message is:
+注释......
+# Please enter the commit message for your changes. Lines starting # with ‘#’ will be ignored, and an empty message aborts the commit."><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> This is a combination of 4 commits.</span>
+<span class="pl-c"><span class="pl-c">#</span>The first commit’s message is:</span>
+注释......
+<span class="pl-c"><span class="pl-c">#</span> The 2nd commit’s message is:</span>
+注释......
+<span class="pl-c"><span class="pl-c">#</span> The 3rd commit’s message is:</span>
+注释......
+<span class="pl-c"><span class="pl-c">#</span> Please enter the commit message for your changes. Lines starting # with ‘#’ will be ignored, and an empty message aborts the commit.</span></pre></div>
+<p dir="auto">查看历史，已经改变</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git log --oneline
+d2d71a5 (HEAD -> master) Update README.md
+36f95d9 docs
+0312afb init"><pre class="notranslate">git log --oneline
+d2d71a5 (HEAD -<span class="pl-k">></span> master) Update README.md
+36f95d9 docs
+0312afb init</pre></div>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='git push -f  # 强制覆盖远程
+git commit --amend -m "新的注释" # 修改最新的 git commit 注释'><pre class="notranslate">git push -f  <span class="pl-c"><span class="pl-c">#</span> 强制覆盖远程</span>
+git commit --amend -m <span class="pl-s"><span class="pl-pds">"</span>新的注释<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">#</span> 修改最新的 git commit 注释</span></pre></div>
+<h2 id="main-heading-H2-6">merge 时忽略文件</h2>
+<blockquote>
+<p dir="auto"><strong>提醒</strong>： 只能 master 合并其他分支时忽略其他分支上的文件, 其他分支合并 master 无法忽略 master 上的文件. （master 为默认主分支）</p>
+</blockquote>
+<ol dir="auto">
+<li>创建自定义 merge driver</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git config --global merge.ours.driver true"><pre class="notranslate">git config --global merge.ours.driver <span class="pl-c1">true</span></pre></div>
+<ol start="2" dir="auto">
+<li>在要被 merge 的分支上创建.gitattributes 文件,并且在文件中置顶不 merge 的文件名</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="project.config.json merge=ours
+fetch.js merge=ours
+app.js merge=ours"><pre class="notranslate">project.config.json merge=ours
+fetch.js merge=ours
+app.js merge=ours</pre></div>
+<ol start="3" dir="auto">
+<li>回到要合并到的分支 master,执行 merge:</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git merge --no-ff uat"><pre class="notranslate">git merge --no-ff uat</pre></div>
+<blockquote>
+<p dir="auto"><code class="notranslate">--no-ff</code> 参数表示不使用 Fast forward 模式，保留分支合并的记录，加上<code class="notranslate">-m</code> 参数，把本地合并的 commit 描述写进去</p>
+</blockquote>
+<p dir="auto">在 <code class="notranslate">uat</code> 分支上的<code class="notranslate">project.config.json</code>、<code class="notranslate">fetch.js</code>、<code class="notranslate">app.js</code> 就不会被合并了 ！</p>
+<h2 id="main-heading-H2-7">git rebase vs git merge</h2>
+<p dir="auto">本地分支：</p>
+<ul dir="auto">
+<li>uat （主开发分支）</li>
+<li>develop-yue （个人独立开发分支）</li>
+</ul>
+<p dir="auto">merge 命令：它会把两个分支的最新快照以及二者最近的共同祖先进行三方合并，合并的结果是生成一个新的快照（并提交）。</p>
+<p dir="auto">rebase 命令：它将提交到某一分支上的所有修改都移至另一分支上，就好像“重新播放”一样。</p>
+<blockquote>
+<p dir="auto">先进行 rebase 处理再进行 merge 并入，可以使得提交历史更加整洁，提交历史是一条直线没有分叉。</p>
+</blockquote>
+<p dir="auto">例子：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 在自己的分支开发完成后（如果不在切换至自己的分支）
+git co develop-yue
+
+# 在自己的开发分支执行基于 uat 分支的变基操作，提取 develop-yue 的进度应用到 uat 的基础上
+git rebase uat
+
+# 切换至 uat
+git co uat
+
+# 进行一次性快速合并
+git merge develop-yue"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 在自己的分支开发完成后（如果不在切换至自己的分支）</span>
+git co develop-yue
+
+<span class="pl-c"><span class="pl-c">#</span> 在自己的开发分支执行基于 uat 分支的变基操作，提取 develop-yue 的进度应用到 uat 的基础上</span>
+git rebase uat
+
+<span class="pl-c"><span class="pl-c">#</span> 切换至 uat</span>
+git co uat
+
+<span class="pl-c"><span class="pl-c">#</span> 进行一次性快速合并</span>
+git merge develop-yue</pre></div>
+<p dir="auto"><strong>develop-yue 日志</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* ee4ceb2 - (HEAD -> develop-yue, origin/develop-yue) chore: 补充日志信息 (14 seconds ago) <yanyue404>
+* 8ef82e1 - docs: rebase.md (2 minutes ago) <yanyue404>
+* 9d8e3e9 - (origin/uat, origin/develop-yue, uat) 优化细节 (54 minutes ago) <Joe>
+*   9290637 - Merge remote-tracking branch 'origin/uat' into uat (57 minutes ago) <Joe>
+|\
+| * 0f0b5f7 - chore: 订单管理账号校验 (60 minutes ago) <yanyue404>
+| * 8cf0fb6 - chore: button 样式重置 (76 minutes ago) <yanyue404>
+| *   b859a6e - style: 合并 yue 分支整理 (2 hours ago) <yanyue404>
+| |\
+| | * b93e268 - chore: 打开注释 (2 hours ago) <yanyue404>
+| | *   8ca3e6a - Merge branch 'uat' into develop-yue (2 hours ago) <yanyue404>
+| | |\
+| | |/
+| |/|
+| | * eb95bbc - style: 设置所有需要禁用分享的列表 (2 hours ago) <yanyue404>
+| | * e129f08 - style: 玩转星福的问答评论删除控制 (3 hours ago) <yanyue404>
+| | *   455097e - Merge branch 'uat' into develop-yue (7 hours ago) <yanyue404>
+| | |\
+* | | | 7f095fb - 提交漏提代码 (69 minutes ago) <Joe>
+|/ / /
+* | |   58b7ccd - Merge branch 'devlop-li' into uat (2 hours ago) <lijunxaio>
+|\ \ \
+| * | | 9c5c4a9 - 修改转发 (2 hours ago) <lijunxaio>
+| * | | 57b90f2 - 修改文章详情转发 (7 hours ago) <xuyiqun>
+| * | |   b5258e8 - Merge branch 'uat' into devlop-li (8 hours ago) <xuyiqun>
+..."><pre class="notranslate"><span class="pl-k">*</span> ee4ceb2 - (HEAD -<span class="pl-k">></span> develop-yue, origin/develop-yue) chore: 补充日志信息 (14 seconds ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">*</span> 8ef82e1 - docs: rebase.md (2 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">*</span> 9d8e3e9 - (origin/uat, origin/develop-yue, uat) 优化细节 (54 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">></span>
+<span class="pl-k">*</span>   9290637 - Merge remote-tracking branch <span class="pl-s"><span class="pl-pds">'</span>origin/uat<span class="pl-pds">'</span></span> into uat (57 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">></span>
+<span class="pl-k">|</span>\
+<span class="pl-k">|</span> <span class="pl-k">*</span> 0f0b5f7 - chore: 订单管理账号校验 (60 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">*</span> 8cf0fb6 - chore: button 样式重置 (76 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">*</span>   b859a6e - style: 合并 yue 分支整理 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span>\
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> b93e268 - chore: 打开注释 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span>   8ca3e6a - Merge branch <span class="pl-s"><span class="pl-pds">'</span>uat<span class="pl-pds">'</span></span> into develop-yue (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>\
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>/
+<span class="pl-k">|</span> <span class="pl-k">|</span>/<span class="pl-k">|</span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> eb95bbc - style: 设置所有需要禁用分享的列表 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> e129f08 - style: 玩转星福的问答评论删除控制 (3 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span>   455097e - Merge branch <span class="pl-s"><span class="pl-pds">'</span>uat<span class="pl-pds">'</span></span> into develop-yue (7 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>\
+<span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 7f095fb - 提交漏提代码 (69 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">></span>
+<span class="pl-k">|</span>/ / /
+<span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span>   58b7ccd - Merge branch <span class="pl-s"><span class="pl-pds">'</span>devlop-li<span class="pl-pds">'</span></span> into uat (2 hours ago) <span class="pl-k">&lt;</span>lijunxaio<span class="pl-k">></span>
+<span class="pl-k">|</span><span class="pl-cce">\ \ </span>\
+<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 9c5c4a9 - 修改转发 (2 hours ago) <span class="pl-k">&lt;</span>lijunxaio<span class="pl-k">></span>
+<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 57b90f2 - 修改文章详情转发 (7 hours ago) <span class="pl-k">&lt;</span>xuyiqun<span class="pl-k">></span>
+<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span>   b5258e8 - Merge branch <span class="pl-s"><span class="pl-pds">'</span>uat<span class="pl-pds">'</span></span> into devlop-li (8 hours ago) <span class="pl-k">&lt;</span>xuyiqun<span class="pl-k">></span>
+...</pre></div>
+<p dir="auto"><strong>uat 日志</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* ee4ceb2 - (HEAD -> uat, origin/develop-yue, develop-yue) chore: 补充日志信息 (2 minutes ago) <yanyue404>
+* 8ef82e1 - docs: rebase.md (4 minutes ago) <yanyue404>
+* 9d8e3e9 - (origin/uat) 优化细节 (58 minutes ago) <Joe>
+*   9290637 - Merge remote-tracking branch 'origin/uat' into uat (61 minutes ago) <Joe>
+|\
+| * 0f0b5f7 - chore: 订单管理账号校验 (63 minutes ago) <yanyue404>
+| * 8cf0fb6 - chore: button 样式重置 (80 minutes ago) <yanyue404>
+| *   b859a6e - style: 合并 yue 分支整理 (2 hours ago) <yanyue404>
+| |\
+| | * b93e268 - chore: 打开注释 (2 hours ago) <yanyue404>
+| | *   8ca3e6a - Merge branch 'uat' into develop-yue (2 hours ago) <yanyue404>
+| | |\
+| | |/
+| |/|
+| | * eb95bbc - style: 设置所有需要禁用分享的列表 (2 hours ago) <yanyue404>
+| | * e129f08 - style: 玩转星福的问答评论删除控制 (3 hours ago) <yanyue404>
+| | *   455097e - Merge branch 'uat' into develop-yue (7 hours ago) <yanyue404>
+| | |\
+* | | | 7f095fb - 提交漏提代码 (73 minutes ago) <Joe>
+|/ / /
+* | |   58b7ccd - Merge branch 'devlop-li' into uat (2 hours ago) <lijunxaio>
+|\ \ \
+| * | | 9c5c4a9 - 修改转发 (2 hours ago) <lijunxaio>
+| * | | 57b90f2 - 修改文章详情转发 (7 hours ago) <xuyiqun>
+| * | |   b5258e8 - Merge branch 'uat' into devlop-li (8 hours ago) <xuyiqun>
+| |\ \ \
+| | | |/
+..."><pre class="notranslate"><span class="pl-k">*</span> ee4ceb2 - (HEAD -<span class="pl-k">></span> uat, origin/develop-yue, develop-yue) chore: 补充日志信息 (2 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">*</span> 8ef82e1 - docs: rebase.md (4 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">*</span> 9d8e3e9 - (origin/uat) 优化细节 (58 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">></span>
+<span class="pl-k">*</span>   9290637 - Merge remote-tracking branch <span class="pl-s"><span class="pl-pds">'</span>origin/uat<span class="pl-pds">'</span></span> into uat (61 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">></span>
+<span class="pl-k">|</span>\
+<span class="pl-k">|</span> <span class="pl-k">*</span> 0f0b5f7 - chore: 订单管理账号校验 (63 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">*</span> 8cf0fb6 - chore: button 样式重置 (80 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">*</span>   b859a6e - style: 合并 yue 分支整理 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span>\
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> b93e268 - chore: 打开注释 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span>   8ca3e6a - Merge branch <span class="pl-s"><span class="pl-pds">'</span>uat<span class="pl-pds">'</span></span> into develop-yue (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>\
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>/
+<span class="pl-k">|</span> <span class="pl-k">|</span>/<span class="pl-k">|</span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> eb95bbc - style: 设置所有需要禁用分享的列表 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> e129f08 - style: 玩转星福的问答评论删除控制 (3 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span>   455097e - Merge branch <span class="pl-s"><span class="pl-pds">'</span>uat<span class="pl-pds">'</span></span> into develop-yue (7 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>\
+<span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 7f095fb - 提交漏提代码 (73 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">></span>
+<span class="pl-k">|</span>/ / /
+<span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span>   58b7ccd - Merge branch <span class="pl-s"><span class="pl-pds">'</span>devlop-li<span class="pl-pds">'</span></span> into uat (2 hours ago) <span class="pl-k">&lt;</span>lijunxaio<span class="pl-k">></span>
+<span class="pl-k">|</span><span class="pl-cce">\ \ </span>\
+<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 9c5c4a9 - 修改转发 (2 hours ago) <span class="pl-k">&lt;</span>lijunxaio<span class="pl-k">></span>
+<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 57b90f2 - 修改文章详情转发 (7 hours ago) <span class="pl-k">&lt;</span>xuyiqun<span class="pl-k">></span>
+<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span>   b5258e8 - Merge branch <span class="pl-s"><span class="pl-pds">'</span>uat<span class="pl-pds">'</span></span> into devlop-li (8 hours ago) <span class="pl-k">&lt;</span>xuyiqun<span class="pl-k">></span>
+<span class="pl-k">|</span> <span class="pl-k">|</span><span class="pl-cce">\ \ </span>\
+<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>/
+...</pre></div>
+<h2 id="main-heading-H2-8">分支管理策略</h2>
+<p dir="auto">（1）git flow 工作流</p>
+<p dir="auto"><strong>主线分支（长期维护）</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">master</code>：主干分支，，这个分支最近发布到生产环境的代码，最近发布的 Release， 这个分支只能从其他分支合并，不能在这个分支直接修改，每个 Commit 都应该打 Tag （对应线上生产环境）</li>
+<li><code class="notranslate">develop</code>： 开发分支，各个任务分支都往这上边合并</li>
+</ul>
+<p dir="auto"><strong>辅助分支</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">feature-new</code>：新任务分支（服务于 develop），开发完毕应该合并到 develop（没写完就不要合进去了，不然影响 release，合并完建议删除）</li>
+<li><code class="notranslate">release-vxxx</code>：可以理解为发版分支，基于 develop ，一定周期内的开发任务统一在一个 release 中测试，测试中出现的 BUG 直接 commit 在 release 分支中，测试完毕后后并入到 develop 与 master</li>
+<li><code class="notranslate">hotfix</code> ：热修复分支（服务于 master），一般用于处理紧急 BUG，开发完毕后合并到 develop 以及 master</li>
+</ul>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/yanyue404/blog/blob/master/assets/git/git%20flow.png?raw=true"><img src="https://github.com/yanyue404/blog/blob/master/assets/git/git%20flow.png?raw=true" alt="" style="max-width:100%"></a></p>
+<p dir="auto">开发分支 develop:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 创建 develop 分支
+git co -b develop master
+
+# 将 develop 分支发布到 master
+git co master
+git merge --no-ff develop"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建 develop 分支</span>
+git co -b develop master
+
+<span class="pl-c"><span class="pl-c">#</span> 将 develop 分支发布到 master</span>
+git co master
+git merge --no-ff develop</pre></div>
+<p dir="auto">任务（功能）分支 feature：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 创建一个功能分支
+git co -b feature-x develop
+
+# 开发完成后，将功能分支合并到develop分支
+git co develop
+git merge --no-ff feature-x
+
+# 删除 feature 分支
+git branch -d feature-x"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建一个功能分支</span>
+git co -b feature-x develop
+
+<span class="pl-c"><span class="pl-c">#</span> 开发完成后，将功能分支合并到develop分支</span>
+git co develop
+git merge --no-ff feature-x
+
+<span class="pl-c"><span class="pl-c">#</span> 删除 feature 分支</span>
+git branch -d feature-x</pre></div>
+<p dir="auto">发版分支 release：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 创建一个预发布分支
+git co -b release-1.2 develop
+
+# 确认没有问题，合并到 master（有问题直接在此分支修改）
+git co master
+git merge --no-ff release-1.2
+git tag -a 1.2 # 对合并生成的新节点，做一个标签
+
+# 再合并到 develop 分支
+git co develop
+git merge --no-ff release-1.2
+
+# 最后，删除预发布分支
+git branch -d release-1.2"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建一个预发布分支</span>
+git co -b release-1.2 develop
+
+<span class="pl-c"><span class="pl-c">#</span> 确认没有问题，合并到 master（有问题直接在此分支修改）</span>
+git co master
+git merge --no-ff release-1.2
+git tag -a 1.2 <span class="pl-c"><span class="pl-c">#</span> 对合并生成的新节点，做一个标签</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 再合并到 develop 分支</span>
+git co develop
+git merge --no-ff release-1.2
+
+<span class="pl-c"><span class="pl-c">#</span> 最后，删除预发布分支</span>
+git branch -d release-1.2</pre></div>
+<p dir="auto">热修复分支 hotfix：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 创建一个修补bug分支
+git co -b fixbug-1.7.2 master
+
+# 修补结束后，合并到master分支
+git co master
+git merge --no-ff fixbug-1.7.2
+git tag -a 1.7.2
+
+# 再合并到develop分支
+git co develop
+git merge --no-ff fixbug-1.7.2
+
+# 最后删除热修复分支
+git branch -d fixbug-1.7.2"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建一个修补bug分支</span>
+git co -b fixbug-1.7.2 master
+
+<span class="pl-c"><span class="pl-c">#</span> 修补结束后，合并到master分支</span>
+git co master
+git merge --no-ff fixbug-1.7.2
+git tag -a 1.7.2
+
+<span class="pl-c"><span class="pl-c">#</span> 再合并到develop分支</span>
+git co develop
+git merge --no-ff fixbug-1.7.2
+
+<span class="pl-c"><span class="pl-c">#</span> 最后删除热修复分支</span>
+git branch -d fixbug-1.7.2</pre></div>
+<p dir="auto">（2） 我们使用的模型</p>
+<p dir="auto"><strong>主线分支</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">prod</code>: 主干分支，相当于 master + release</li>
+<li><code class="notranslate">uat</code>: 开发分支（dev）</li>
+</ul>
+<p dir="auto"><strong>辅助分支</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">dev-yue</code>：新任务分支（按人划分，服务于 uat）</li>
+<li><code class="notranslate">dev-joe</code>：新任务分支</li>
+</ul>
+<p dir="auto">下面是合并分支常规操作，自己的开发分支并入 dev（uat） 分支。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 先切换 uat 拉取最新 code，因为 merge 的时候选取的是本地分支
+git co uat
+git pull --rebase
+
+# 切回 个人开发分支获取 uat 最新 code
+git co dev-yue
+git rebase uat # 变基，有冲突在处理冲突后提交
+
+# 切回 uat 分支并入自己提交的 code
+git co uat
+git merge --no-ff dev-yue # 变基后重新 merge 可以使得提交历史一条直线
+git push
+
+# 1. uat 环境测试通过 2. prod 需要发版时合并 uat 修改
+git co prod
+git merge --no-ff uat # 必须 merge，因为 uat 与 prod有部分配置性文件不完全一致"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 先切换 uat 拉取最新 code，因为 merge 的时候选取的是本地分支</span>
+git co uat
+git pull --rebase
+
+<span class="pl-c"><span class="pl-c">#</span> 切回 个人开发分支获取 uat 最新 code</span>
+git co dev-yue
+git rebase uat <span class="pl-c"><span class="pl-c">#</span> 变基，有冲突在处理冲突后提交</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 切回 uat 分支并入自己提交的 code</span>
+git co uat
+git merge --no-ff dev-yue <span class="pl-c"><span class="pl-c">#</span> 变基后重新 merge 可以使得提交历史一条直线</span>
+git push
+
+<span class="pl-c"><span class="pl-c">#</span> 1. uat 环境测试通过 2. prod 需要发版时合并 uat 修改</span>
+git co prod
+git merge --no-ff uat <span class="pl-c"><span class="pl-c">#</span> 必须 merge，因为 uat 与 prod有部分配置性文件不完全一致</span></pre></div>
+<h2 id="main-heading-H2-9">git 仓库迁移并保留 commit 历史</h2>
+<ol dir="auto">
+<li>先将需要保存到新远端的分支迁到本地分支保存。</li>
+<li>修改远端仓库地址：</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 修改已注册的远端仓库地址
+git remote set-url origin [newUrl]"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 修改已注册的远端仓库地址</span>
+git remote set-url origin [newUrl]</pre></div>
+<blockquote>
+<p dir="auto">newUrl 为 <code class="notranslate">http://gitlab.xxx.com/todomvc-demos.git</code> 格式。 3. 选择所有的分支 <strong>push all branchs</strong>。 4. 访问新远端项目地址，分支已经迁移完毕。</p>
+</blockquote>
+<h2 id="main-heading-H2-10">git 子模块</h2>
+<p dir="auto">在一个项目中使用另一个项目，并保证项目间相对独立，这就是 git 的子模块可以实现的效果。</p>
+<p dir="auto"><strong>创建子模块</strong></p>
+<p dir="auto">先进入父仓库目录下，然后执行命令：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git submodule add -b <分支名> <仓库地址> <本地路径>"><pre class="notranslate">git submodule add -b <span class="pl-k">&lt;</span>分支名<span class="pl-k">></span> <span class="pl-k">&lt;</span>仓库地址<span class="pl-k">></span> <span class="pl-k">&lt;</span>本地路径<span class="pl-k">></span></pre></div>
+<p dir="auto">执行上面命令后，在父仓库根目录增加了.gitmodule 文件。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='[submodule "submodule-name"]
+	path = submodule-name
+	url = http://gitlab.it.xxx.com/submodule-name.git
+	branch = dev
+'><pre class="notranslate">[submodule <span class="pl-s"><span class="pl-pds">"</span>submodule-name<span class="pl-pds">"</span></span>]
+	path = submodule-name
+	url = http://gitlab.it.xxx.com/submodule-name.git
+	branch = dev
+</pre></div>
+<p dir="auto"><strong>git 子模块使用</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 初始化本地子项目配置
+ git subnodule init
+
+# 拉取子仓库文件
+ git subnodule update --remote
+
+# 或者使用组合指令
+git submodule update --init --recursive"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 初始化本地子项目配置</span>
+ git subnodule init
+
+<span class="pl-c"><span class="pl-c">#</span> 拉取子仓库文件</span>
+ git subnodule update --remote
+
+<span class="pl-c"><span class="pl-c">#</span> 或者使用组合指令</span>
+git submodule update --init --recursive</pre></div>
+<p dir="auto"><strong>git clone 子模块参与编译</strong></p>
+<p dir="auto">使用了子模块的项目并不会将子模块的所有代码提交上去，而会保留一个空文件夹与版本 id 指向 （submodule-name @ 462b5421），在真实编译发布的时候需要先 clone。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git clone -b dev http://gitlab.it.xxx.com/submodule-name.git"><pre class="notranslate">git clone -b dev http://gitlab.it.xxx.com/submodule-name.git</pre></div>
+<h2 id="main-heading-H2-11">git-创建一个空分支</h2>
+<ol dir="auto">
+<li>创建分支</li>
+</ol>
+<p dir="auto">使用 git checkout 的--orphan 参数，该命令会创建一个名为 doc 的分支，并且该分支下有前一个分支下的所有文件。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git checkout --orphan new-branchName"><pre class="notranslate">git checkout --orphan new-branchName</pre></div>
+<ol start="2" dir="auto">
+<li>删除所有内容我们不想提交任何内容，所以我们需要把当前内容全部删除，用 git 命令：</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git rm -rf ."><pre class="notranslate">git rm -rf <span class="pl-c1">.</span></pre></div>
+<ol start="3" dir="auto">
+<li>提交分支使用 commit 命令来提交分支</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='git commit -am "new branch for documentation"'><pre class="notranslate">git commit -am <span class="pl-s"><span class="pl-pds">"</span>new branch for documentation<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">如果没有任何文件提交的话，分支是看不到的，可以创建一个新文件后再次提交则新创建的 branch 就会显示出来。</p>
+<ol start="4" dir="auto">
+<li>使用 branch 来查看分支是否创建成功</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git branch -a"><pre class="notranslate">git branch -a</pre></div>
+<h2 id="main-heading-H2-12">git stash</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 暂时将未提交的变化移除，方便做其他操作
+git stash
+
+# 移入之前缓存的工作区修改
+git stash pop
+
+# 查看缓存的 stash 列表
+git stash list"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 暂时将未提交的变化移除，方便做其他操作</span>
+git stash
+
+<span class="pl-c"><span class="pl-c">#</span> 移入之前缓存的工作区修改</span>
+git stash pop
+
+<span class="pl-c"><span class="pl-c">#</span> 查看缓存的 stash 列表</span>
+git stash list</pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="## git cherry-pick
+
+作用：将指定的提交应用于当前分支, 这会在当前分支生成对应的新提交；
+
+```shell
+# 转移到一次提交到当前分支
+git cherry-pick <commitID>
+
+# 转移多次提交
+git cherry-pick <commitID_A> <commitID_B>"><pre class="notranslate"><code class="notranslate">## git cherry-pick
+
+作用：将指定的提交应用于当前分支, 这会在当前分支生成对应的新提交；
+
+```shell
+# 转移到一次提交到当前分支
+git cherry-pick &lt;commitID>
+
+# 转移多次提交
+git cherry-pick &lt;commitID_A> &lt;commitID_B>
+</code></pre></div>
+<p dir="auto">如果遇到冲突后，可以：</p>
+<p dir="auto">保存完成后，你有两个选择</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git cherry-pick --continue  #  确认 cherry-pick，继续执行
+git cherry-pick --abort     # 取消 cherry-pick, 回到操作前的样子"><pre class="notranslate">git cherry-pick --continue  <span class="pl-c"><span class="pl-c">#</span>  确认 cherry-pick，继续执行</span>
+git cherry-pick --abort     <span class="pl-c"><span class="pl-c">#</span> 取消 cherry-pick, 回到操作前的样子</span></pre></div>
+<h2 id="main-heading-H2-13">git revert 与 git reset 的区别</h2>
+<p dir="auto"><strong>git reset</strong> 可以回退 Git 的历史记录。例如当前分支有三个记录，并且 HEAD 指向 c 记录：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="c <- HEAD
+b
+a"><pre class="notranslate">c <span class="pl-k">&lt;</span>- HEAD
+b
+a</pre></div>
+<p dir="auto">如果我们想回退到 b 记录，只要执行 <strong>git reset b</strong> 就可以了：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="b <- HEAD
+a"><pre class="notranslate"><code class="notranslate">b &lt;- HEAD
+a
+</code></pre></div>
+<p dir="auto">接着使用 <strong>git push -f</strong> 将回退版本后的分支强制推送到远程仓库，这样本地分支和远程分支就同步了。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git push -f"><pre class="notranslate"><code class="notranslate">git push -f
+</code></pre></div>
+<p dir="auto"><strong>git revert</strong>  也可以撤销记录，只不过它撤销的记录不会消失，这一点和  <strong>git reset</strong>  不一样。<strong>git reset</strong>  撤销的记录就跟消失了一样。</p>
+<p dir="auto">现在我们用  <strong>git revert</strong>  来重新演示下刚才的操作：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="c
+b
+a"><pre class="notranslate"><code class="notranslate">c
+b
+a
+</code></pre></div>
+<p dir="auto">如果我们执行  <strong>git revert b</strong>，则会在当前分支上再生成一个新的 commit 记录，变成  <strong>a b c b'</strong>，这个  <strong>b'</strong>  的状态和记录  <strong>b</strong>  是一样的。</p>
+<p dir="auto">也就是说，执行  <strong>git reset b</strong>  后，当前的分支记录会变成  <strong>a b</strong>。执行  <strong>git revert b</strong>  后，当前的分支记录会变成   <strong>a b c b'</strong>。</p>
+<p dir="auto">如果你想让别人知道你撤销过记录，就使用  <strong>git revert</strong>，因为它会留下撤销的记录，否则用  <strong>git reset</strong>。</p>
+<h2 id="main-heading-H2-14">git 合并另一个仓库</h2>
+<p dir="auto">基于一个 git 脚手架项目基础上开发了一个新项目，同时这个脚手架项目也会更新迭代，这时就需要把脚手架项目合并到新开发的项目中来，编译同步合并脚手架项目仓库的代码。</p>
+<ol dir="auto">
+<li>在新项目初始化好后添加需要合并的远程仓库。</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ git remote add target http://aa.com//0033.git"><pre class="notranslate"><code class="notranslate">$ git remote add target http://aa.com//0033.git
+</code></pre></div>
+<p dir="auto">把 target 作为远程仓库，添加到本地仓库 origin 中，设置别名 target。</p>
+<ol start="2" dir="auto">
+<li>把 target 远程仓库中的数据抓取到本仓库</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ git fetch target
+
+  remote: Enumerating objects: 576, done.
+  remote: Counting objects: 100% (576/576), done.
+  remote: Compressing objects: 100% (385/385), done.
+  remote: Total 576 (delta 284), reused 462 (delta 174), pack-reused 0
+  Receiving objects: 100% (576/576), 1.23 MiB | 7.75 MiB/s, done.
+  Resolving deltas: 100% (284/284), done.
+  From http://aa.com/0033
+  * [new branch]      dev        -> target/dev
+  * [new branch]      master     -> target/master"><pre class="notranslate"><code class="notranslate">$ git fetch target
+
+  remote: Enumerating objects: 576, done.
+  remote: Counting objects: 100% (576/576), done.
+  remote: Compressing objects: 100% (385/385), done.
+  remote: Total 576 (delta 284), reused 462 (delta 174), pack-reused 0
+  Receiving objects: 100% (576/576), 1.23 MiB | 7.75 MiB/s, done.
+  Resolving deltas: 100% (284/284), done.
+  From http://aa.com/0033
+  * [new branch]      dev        -> target/dev
+  * [new branch]      master     -> target/master
+</code></pre></div>
+<ol start="3" dir="auto">
+<li>基于想要取的 target 远程目标分支创建为新项目的一个分支</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ git checkout -b 0033 target/dev
+  Switched to a new branch '0033'
+  Branch '0033' set up to track remote branch 'dev' from 'target'."><pre class="notranslate"><code class="notranslate">$ git checkout -b 0033 target/dev
+  Switched to a new branch '0033'
+  Branch '0033' set up to track remote branch 'dev' from 'target'.
+</code></pre></div>
+<ol start="4" dir="auto">
+<li>合并</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git checkout dev
+git merge 0033 --allow-unrelated-histories"><pre class="notranslate"><code class="notranslate">git checkout dev
+git merge 0033 --allow-unrelated-histories
+</code></pre></div>
+<p dir="auto">在上面执行 merge 后追加 <strong>--allow-unrelated-histories</strong>，是为了避免因两个分支没有取得联系而报 <strong>fatal: refusing to merge unrelated histories</strong> 的错误信息。</p>
+<h2 id="main-heading-H2-15">github actions</h2>
+<p dir="auto"><a href="https://github.com/yanyue404/my-bookmarks">https://github.com/yanyue404/my-bookmarks</a></p>
+<blockquote>
+<p dir="auto"><a href="https://github.com/yanyue404/my-bookmarks/blob/master/.github/workflows/vuepress-deploy.yml">https://github.com/yanyue404/my-bookmarks/blob/master/.github/workflows/vuepress-deploy.yml</a></p>
+</blockquote>
+<ul dir="auto">
+<li><a href="https://github.com/mqyqingfeng/Blog/issues/237" data-hovercard-type="issue" data-hovercard-url="/mqyqingfeng/Blog/issues/237/hovercard">还不会用 GitHub Actions ？看看这篇</a></li>
+</ul>
+<h2 id="main-heading-H2-16">github.dev 写作</h2>
+<p dir="auto"><a href="https://github.dev/yanyue404/my-bookmarks" rel="nofollow">https://github.dev/yanyue404/my-bookmarks</a></p>
+<h2 id="main-heading-H2-17">git 修改 commit 作者和邮箱</h2>
+<p dir="auto"><strong>原因</strong></p>
+<p dir="auto">没有为项目做 git 上的配置，于是使用了全局的 git 配置。</p>
+<p dir="auto">我们可以通过以下命令来修改最近一次提交的用户信息：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='git commit --amend --author="username <abcdef@gmail.com>" --no-edit'><pre class="notranslate"><code class="notranslate">git commit --amend --author="username &lt;abcdef@gmail.com>" --no-edit
+</code></pre></div>
+<p dir="auto"><code class="notranslate">username</code> 是用户名，用户邮箱旁边的 <code class="notranslate">&lt;></code> 符号不能去掉。修改后再执行 <code class="notranslate">git push -f</code> 推送到远程仓库</p>
+<p dir="auto">设置项目级：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='git config user.name "yanyue404"
+git config user.email "xiaoyueyue165@gmail.com"'><pre class="notranslate"><code class="notranslate">git config user.name "yanyue404"
+git config user.email "xiaoyueyue165@gmail.com"
+</code></pre></div>
+<blockquote>
+<p dir="auto">在当前项目下面查看的配置是全局配置+当前项目的配置：git config --list</p>
+</blockquote>
+<p dir="auto">将所有错误的 name，email 修改为正确的配置。</p>
+<p dir="auto">下面通过<code class="notranslate">git rebase -i</code>  命令 重写历史</p>
+<p dir="auto">选择修改范围</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git rebase -i HEAD~n"><pre class="notranslate"><code class="notranslate">git rebase -i HEAD~n
+</code></pre></div>
+<p dir="auto">输出如下</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="pick 208d348 XXX\
+pick c99c75e CCC\
+pick 35c4d4c FFF
+
+# Rebase 02097a2..35c4d4c onto 02097a2 (3 commands)\
+#\
+# Commands:"><pre class="notranslate"><code class="notranslate">pick 208d348 XXX\
+pick c99c75e CCC\
+pick 35c4d4c FFF
+
+# Rebase 02097a2..35c4d4c onto 02097a2 (3 commands)\
+#\
+# Commands:
+</code></pre></div>
+<p dir="auto">将要修改的提交所在行 pick 改为 e 保存退出 （e 是 edit 的意思）</p>
+<p dir="auto">通过命令一条一条修改 (无法修改时先执行 rebase 的 continue 命令再修改 commit )</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='git commit --amend --author "username <abcdef@gmail.com>"
+git rebase --continue'><pre class="notranslate"><code class="notranslate">git commit --amend --author "username &lt;abcdef@gmail.com>"
+git rebase --continue
+</code></pre></div>
+<p dir="auto">直至</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git rebase --continue\
+Successfully rebased and updated refs/heads/master."><pre class="notranslate"><code class="notranslate">git rebase --continue\
+Successfully rebased and updated refs/heads/master.
+</code></pre></div>
+<p dir="auto">可以推送了</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git push -f"><pre class="notranslate"><code class="notranslate">git push -f
+</code></pre></div>
+<p dir="auto"><strong>补充推荐：一个更快的方法</strong></p>
+<p dir="auto">修改仓库的配置文件（<code class="notranslate">.git/config</code>）</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/yanyue404/fe-attitude.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[user]
+	name = yanyue404
+	email = xiaoyueyue165@gmail.com
+[http]
+	proxy = http://127.0.0.1:33210
+[https]
+	proxy = http://127.0.0.1:33210'><pre class="notranslate">[core]
+	repositoryformatversion = 0
+	filemode = <span class="pl-c1">false</span>
+	bare = <span class="pl-c1">false</span>
+	logallrefupdates = <span class="pl-c1">true</span>
+	symlinks = <span class="pl-c1">false</span>
+	ignorecase = <span class="pl-c1">true</span>
+[remote <span class="pl-s"><span class="pl-pds">"</span>origin<span class="pl-pds">"</span></span>]
+	url = https://github.com/yanyue404/fe-attitude.git
+	fetch = +refs/heads/<span class="pl-k">*</span>:refs/remotes/origin/<span class="pl-k">*</span>
+[branch <span class="pl-s"><span class="pl-pds">"</span>master<span class="pl-pds">"</span></span>]
+	remote = origin
+	merge = refs/heads/master
+[user]
+	name = yanyue404
+	email = xiaoyueyue165@gmail.com
+[http]
+	proxy = http://127.0.0.1:33210
+[https]
+	proxy = http://127.0.0.1:33210</pre></div>
+<h2 id="main-heading-H2-18">github 搜索</h2>
+<blockquote>
+<p dir="auto">参考 <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="735462963" data-permission-text="Title is private" data-url="https://github.com/biaochenxuying/blog/issues/75" data-hovercard-type="issue" data-hovercard-url="/biaochenxuying/blog/issues/75/hovercard" href="https://github.com/biaochenxuying/blog/issues/75">biaochenxuying/blog#75</a></p>
+</blockquote>
+<p dir="auto"><strong>按关注者数量搜索</strong></p>
+<p dir="auto">您可以使用 <code class="notranslate">followers</code> 限定符以及<a href="https://docs.github.com/cn/free-pro-team@latest/articles/understanding-the-search-syntax">大于、小于和范围限定符</a>基于仓库拥有的关注者数量过滤仓库。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>限定符</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">followers:*n*</code></td>
+<td><a href="https://github.com/search?q=node+followers%3A%3E%3D10000"><strong>node followers:>=10000</strong></a> 匹配有 10,000 或更多关注者提及文字 "node" 的仓库。</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/search?q=styleguide+linter+followers%3A1..10&type=Repositories"><strong>styleguide linter followers:1..10</strong></a> 匹配拥有 1 到 10 个关注者并且提及 "styleguide linter" 一词的的仓库。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a href="https://camo.githubusercontent.com/fae6ca47c4ee19e91d8dc49f9dd7816cf3db1353d2fa5e66de20c19266540c3c/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d376261306465636439393164383836312e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/2c035a2402e368ee00e69f513b272aec4a09ef1dcde16a64ec1e850e56a42761/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d336463333439363630626236343766622e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><a href="https://camo.githubusercontent.com/2c035a2402e368ee00e69f513b272aec4a09ef1dcde16a64ec1e850e56a42761/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d336463333439363630626236343766622e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/86d9201f782a6e18bec66cdd40c526bbbea503ce591e1e4d5cd9bc2b981f73f8/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d663531373334623433323735313639632e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><strong>按复刻数量搜索</strong></p>
+<p dir="auto"><code class="notranslate">forks</code> 限定符使用<a href="https://docs.github.com/cn/free-pro-team@latest/articles/understanding-the-search-syntax">大于、小于和范围限定符</a>指定仓库应具有的复刻数量。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>限定符</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">forks:*n*</code></td>
+<td><a href="https://github.com/search?q=forks%3A5&type=Repositories"><strong>forks:5</strong></a> 匹配只有 5 个复刻的仓库。</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/search?q=forks%3A%3E%3D205&type=Repositories"><strong>forks:>=205</strong></a> 匹配具有至少 205 个复刻的仓库。</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/search?q=forks%3A%3C90&type=Repositories"><strong>forks:&lt;90</strong></a> 匹配具有少于 90 个复刻的仓库。</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/search?q=forks%3A10..20&type=Repositories"><strong>forks:10..20</strong></a> 匹配具有 10 到 20 个复刻的仓库。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a href="https://camo.githubusercontent.com/86d9201f782a6e18bec66cdd40c526bbbea503ce591e1e4d5cd9bc2b981f73f8/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d663531373334623433323735313639632e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/768a62cfac4c2a31582e1c043e84ffefb993fa7c3e07e9fe5866f3adac02daf8/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d663232633263663061623664646538352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><strong>按星号数量搜索</strong></p>
+<p dir="auto">您可以使用 <a href="https://docs.github.com/cn/free-pro-team@latest/articles/understanding-the-search-syntax">大于、小于和范围限定符</a> 基于仓库具有的 <a href="https://docs.github.com/cn/free-pro-team@latest/articles/saving-repositories-with-stars">星标</a> 数量搜索仓库</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>限定符</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">stars:*n*</code></td>
+<td><a href="https://github.com/search?utf8=%E2%9C%93&q=stars%3A500&type=Repositories"><strong>stars:500</strong></a> 匹配恰好具有 500 个星号的仓库。</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/search?q=stars%3A10..20+size%3A%3C1000&type=Repositories"><strong>stars:10..20</strong></a> 匹配具有 10 到 20 个星号、小于 1000 KB 的仓库。</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/search?q=stars%3A%3E%3D500+fork%3Atrue+language%3Avue&type=Repositories"><strong>stars:>=500 fork:true language:vue</strong></a> 匹配具有至少 500 个星号，包括复刻的星号（以 vue 编写）的仓库。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a href="https://camo.githubusercontent.com/768a62cfac4c2a31582e1c043e84ffefb993fa7c3e07e9fe5866f3adac02daf8/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d663232633263663061623664646538352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/65ba89607a3f8622874e23035da350d41d9039226745ce8dec8ff2ec12fd5768/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d383163623363623731346565363931332e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><strong>按仓库创建或上次更新时间搜索</strong></p>
+<p dir="auto">你可以基于创建时间或上次更新时间过滤仓库。</p>
+<ul dir="auto">
+<li>对于仓库创建，您可以使用 <code class="notranslate">created</code> 限定符；</li>
+<li>要了解仓库上次更新的时间，您要使用 <code class="notranslate">pushed</code> 限定符。 <code class="notranslate">pushed</code> 限定符将返回仓库列表，按仓库中任意分支上最近进行的提交排序。</li>
+</ul>
+<p dir="auto">两者均采用日期作为参数。 日期格式必须遵循 ISO8601 标准，即 <code class="notranslate">YYYY-MM-DD</code>（年-月-日）。</p>
+<p dir="auto">也可以在日期后添加可选的时间信息 <code class="notranslate">THH:MM:SS+00:00</code>，以便按小时、分钟和秒进行搜索。 这是 <code class="notranslate">T</code>，随后是 <code class="notranslate">HH:MM:SS</code>（时-分-秒）和 UTC 偏移 (<code class="notranslate">+00:00</code>)。</p>
+<p dir="auto">日期支持 <code class="notranslate">大于、小于和范围限定符</code>。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>限定符</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">created:*YYYY-MM-DD*</code></td>
+<td><a href="https://github.com/search?q=vue+created%3A%3C2020-01-01&type=Repositories"><strong>vue created:&lt;2020-01-01</strong></a> 匹配具有 "vue" 字样、在 2020 年之前创建的仓库。</td>
+</tr>
+<tr>
+<td><code class="notranslate">pushed:*YYYY-MM-DD*</code></td>
+<td><a href="https://github.com/search?utf8=%E2%9C%93&q=css+pushed%3A%3E2020-02-01&type=Repositories"><strong>css pushed:>2020-02-01</strong></a> 匹配具有 "css" 字样、在 2020 年 1 月之后收到推送的仓库。</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://github.com/search?q=vue+pushed%3A%3E%3D2020-03-06+fork%3Aonly&type=Repositories"><strong>vue pushed:>=2020-03-06 fork:only</strong></a> 匹配具有 "vue" 字样、在 2020 年 3 月 6 日或之后收到推送并且作为复刻的仓库。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><a href="https://camo.githubusercontent.com/65ba89607a3f8622874e23035da350d41d9039226745ce8dec8ff2ec12fd5768/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d383163623363623731346565363931332e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/22e901e49db3c0352f9caa3ce011806bd419769d8cdbba43d7d872ae3550507e/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d346238663765313365303761383539302e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><strong>按语言搜索</strong></p>
+<p dir="auto">您可以基于其编写采用的主要语言搜索仓库。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>限定符</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">language:*LANGUAGE*</code></td>
+<td><a href="https://github.com/search?q=vue+language%3Ajavascript&type=Repositories"><strong>vue language:javascript</strong></a> 匹配具有 "vue" 字样、以 JavaScript 编写的仓库。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 id="main-heading-H2-19">github 大文件上传</h2>
+<ul dir="auto">
+<li><a href="https://git-lfs.com/" rel="nofollow">https://git-lfs.com/</a></li>
+</ul>
+<h2 id="main-heading-H2-20">git 克隆使用代理</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git clone https://github.com/yanyue404/King-of-glory.git --config http.proxy=http://127.0.0.1:33210"><pre class="notranslate">git clone https://github.com/yanyue404/King-of-glory.git --config http.proxy=http://127.0.0.1:33210</pre></div>
+<h2 id="main-heading-H2-21">参考链接</h2>
+<ul dir="auto">
+<li><a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html" rel="nofollow">Git 使用规范流程</a>，by 阮一峰</li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/07/git.html" rel="nofollow">Git 分支管理策略</a>，by 阮一峰</li>
+<li><a href="http://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html" rel="nofollow">git cherry-pick 教程</a>，by 阮一峰</li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" rel="nofollow">Git 远程操作详解</a>，by 阮一峰</li>
+<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600/900005860592480" rel="nofollow">廖雪峰 - 分支管理策略</a></li>
+<li><a href="https://www.cnblogs.com/wish123/p/9785101.html" rel="nofollow">Git 在团队中的最佳实践--如何正确使用 Git Flow</a></li>
+<li><a href="https://guides.github.com/introduction/flow/">Understanding the GitHub flow</a></li>
+<li><a href="https://stackoverflow.com/questions/15232000/git-ignore-files-during-merge" rel="nofollow">https://stackoverflow.com/questions/15232000/git-ignore-files-during-merge</a></li>
+<li><a href="https://juejin.im/entry/6844903476498022414" rel="nofollow">GitHub 项目徽章的添加和设置</a></li>
+<li><a href="https://shields.io/" rel="nofollow">https://shields.io/</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/34592377" rel="nofollow">分支的整合：git rebase Or git merge</a></li>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" rel="nofollow">Git 工具 - 子模块</a></li>
+<li><a href="https://segmentfault.com/a/1190000004931751" rel="nofollow">在 GIT 中创建一个空分支</a></li>
+<li><a href="https://juejin.cn/post/7022746201598459940?utm_source=gold_browser_extension" rel="nofollow">一些常用的 Git 进阶知识与技巧</a></li>
+<li><a href="https://www.jianshu.com/p/50493c59c376" rel="nofollow">Git 学习之路</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l){return{layout:"default",data:[{post:{id:545271178,number:117,title:"Git 使用进阶",created_at:"2020-01-04T10:54:45Z",updated_at:"2026-07-22T06:06:39Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto">随着 git 的使用普遍化，现在更需要关注使用的规范流程，在此纪录。</p>\n<h2 id="main-heading-H2-1">目录</h2>\n<ul dir="auto">\n<li><a href="#%E6%BC%82%E4%BA%AE%E7%9A%84%E5%BE%BD%E7%AB%A0">漂亮的徽章</a></li>\n<li><a href="#commit-%E6%97%A5%E5%BF%97">commit 日志</a></li>\n<li><a href="#%E6%9B%B4%E5%A5%BD%E7%9A%84-pull">更好的 pull</a></li>\n<li><a href="#rebase-%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2">rebase-修改提交历史</a></li>\n<li><a href="#merge-%E6%97%B6%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6">merge 时忽略文件</a></li>\n<li><a href="#git-rebase-vs-git-merge">git rebase vs git merge</a></li>\n<li><a href="#%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E7%AD%96%E7%95%A5">分支管理策略</a></li>\n<li><a href="#git-%E4%BB%93%E5%BA%93%E8%BF%81%E7%A7%BB%E5%B9%B6%E4%BF%9D%E7%95%99-commit-%E5%8E%86%E5%8F%B2">git 仓库迁移并保留 commit 历史</a></li>\n<li><a href="#git-%E5%AD%90%E6%A8%A1%E5%9D%97">git 子模块</a></li>\n<li><a href="#git-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%A9%BA%E5%88%86%E6%94%AF">git-创建一个空分支</a></li>\n<li><a href="#git-stash">git stash</a></li>\n<li><a href="#git-cherry-pick">git cherry-pick</a></li>\n<li><a href="#git-revert-%E4%B8%8E-git-reset-%E7%9A%84%E5%8C%BA%E5%88%AB">git revert 与 git reset 的区别</a></li>\n<li><a href="#git-%E5%90%88%E5%B9%B6%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93">git 合并另一个仓库</a></li>\n<li><a href="#github-actions">github actions</a></li>\n<li><a href="git%E4%BF%AE%E6%94%B9commit%E4%BD%9C%E8%80%85%E5%92%8C%E9%82%AE%E7%AE%B1">git 修改 commit 作者和邮箱</a></li>\n<li><a href="#github-%E6%90%9C%E7%B4%A2">github 搜索</a></li>\n</ul>\n<h2 id="main-heading-H2-2">漂亮的徽章</h2>\n<ul dir="auto">\n<li><a href="https://github.com/badges/shields">https://github.com/badges/shields</a></li>\n<li><a href="https://github.com/pudding0503/github-badge-collection">https://github.com/pudding0503/github-badge-collection</a></li>\n</ul>\n<h2 id="main-heading-H2-3">commit 日志</h2>\n<ul dir="auto">\n<li>docs: 文档类修改</li>\n<li>feat: 新特性</li>\n<li>fix: bug 修改</li>\n<li>test: 新增、修改测试</li>\n<li>refactor: 重构代码</li>\n<li>perf: 性能优化</li>\n<li>build: 构建发布版本</li>\n<li>ci: 持续集成修改</li>\n<li>chore: 琐事，小修改</li>\n<li>revert: 版本回退</li>\n</ul>\n<h2 id="main-heading-H2-4">更好的 pull</h2>\n<p dir="auto"><strong>起因</strong></p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/yanyue404/blog/blob/master/assets/git/pr1.jpg?raw=true"><img src="https://github.com/yanyue404/blog/blob/master/assets/git/pr1.jpg?raw=true" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/yanyue404/blog/blob/master/assets/git/pr2.jpg?raw=true"><img src="https://github.com/yanyue404/blog/blob/master/assets/git/pr2.jpg?raw=true" alt="" style="max-width: 100%;"></a></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git pull origin xxx --rebase\n\n# 直接按 rebase 的方式执行 pull\ngit config --global pull.rebase true"><pre class="notranslate">git pull origin xxx --rebase\n\n<span class="pl-c"><span class="pl-c">#</span> 直接按 rebase 的方式执行 pull</span>\ngit config --global pull.rebase <span class="pl-c1">true</span></pre></div>\n<p dir="auto">使用 rebase 就感觉所有人都在同一条直线上开发一样，很干净的 log，看着很舒服，而直接使用 pull 的 log 看起来就很乱。</p>\n<p dir="auto"><strong>git pull --rebase</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* | b9feea8 - chore: 添加C前往A埋点 (6 hours ago) &lt;yanyue404&gt;\n* | b3047fe - fix: ISO8601 time (6 hours ago) &lt;yanyue404&gt;\n* | bfb6c84 - test: formatTimeStr 兼容 ios (7 hours ago) &lt;yanyue404&gt;\n* | 0e13196 - chore: IOS 时间处理 (22 hours ago) &lt;yanyue404&gt;\n* | f15a0e8 - chore: 游客在名片页面进行授权 (24 hours ago) &lt;yanyue404&gt;\n* | ee8b125 - chore: 完善个人名片 (25 hours ago) &lt;yanyue404&gt;\n* | deb7a5a - chore: 个人名片添加用户角色校验 (26 hours ago) &lt;yanyue404&gt;\n* | 5106b02 - chore: 开始识别用户角色 (27 hours ago) &lt;yanyue404&gt;\n* | f16b6af - chore: 更换 appid (31 hours ago) &lt;yanyue404&gt;\n* | 7216da4 - chore: 同步 code (31 hours ago) &lt;yanyue404&gt;\n* | 9e542b4 - chore: uat 更新 (6 days ago) &lt;yanyue404&gt;\n* | 473e311 - fix: 修改环境 (6 days ago) &lt;yanyue404&gt;\n* | f54ae0f - chore: 埋点 (5 hours ago) &lt;yanyue404&gt;"><pre class="notranslate"><span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">b9feea8</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">添加C前往A埋点</span> <span class="pl-kos">(</span><span class="pl-c1">6</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">b3047fe</span> <span class="pl-c1">-</span> <span class="pl-s1">fix</span>: <span class="pl-c1">ISO8601</span> <span class="pl-en">time</span> <span class="pl-kos">(</span><span class="pl-c1">6</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">bfb6c84</span> <span class="pl-c1">-</span> <span class="pl-s1">test</span>: <span class="pl-s1">formatTimeStr</span> <span class="pl-s1">兼容</span> <span class="pl-en">ios</span> <span class="pl-kos">(</span><span class="pl-c1">7</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">0e13196</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-c1">IOS</span> <span class="pl-en">时间处理</span> <span class="pl-kos">(</span><span class="pl-c1">22</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">f15a0e8</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">游客在名片页面进行授权</span> <span class="pl-kos">(</span><span class="pl-c1">24</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">ee8b125</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">完善个人名片</span> <span class="pl-kos">(</span><span class="pl-c1">25</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">deb7a5a</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">个人名片添加用户角色校验</span> <span class="pl-kos">(</span><span class="pl-c1">26</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">5106</span><span class="pl-s1">b02</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">开始识别用户角色</span> <span class="pl-kos">(</span><span class="pl-c1">27</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">f16b6af</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-s1">更换</span> <span class="pl-en">appid</span> <span class="pl-kos">(</span><span class="pl-c1">31</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">7216</span><span class="pl-s1">da4</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-s1">同步</span> <span class="pl-en">code</span> <span class="pl-kos">(</span><span class="pl-c1">31</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">9e542</span><span class="pl-s1">b4</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-s1">uat</span> <span class="pl-en">更新</span> <span class="pl-kos">(</span><span class="pl-c1">6</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">473e311</span> <span class="pl-c1">-</span> <span class="pl-s1">fix</span>: <span class="pl-en">修改环境</span> <span class="pl-kos">(</span><span class="pl-c1">6</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">f54ae0f</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">埋点</span> <span class="pl-kos">(</span><span class="pl-c1">5</span> <span class="pl-s1">hours</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span></pre></div>\n<p dir="auto"><strong>git pull</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* | ae57454 - feat: token 过期强制重新认证 (2 days ago) &lt;yanyue404&gt;\n* |   1b02194 - Merge remote-tracking branch \'origin/prod\' into prod (2 days ago) &lt;Joe&gt;\n|\\ \\\n| * | 6284b85 - fix: 登录流程短视频播放 (2 days ago) &lt;yanyue404&gt;\n| * | 2bcb162 - styles: canvas 分享图位置优化 (2 days ago) &lt;yanyue404&gt;\n| * | d4c66a6 - chore: 页面分享控制 (2 days ago) &lt;yanyue404&gt;\n| * | 91baa28 - chore: 个人名片非分享人文字修改 (2 days ago) &lt;yanyue404&gt;\n* | | 60715e9 - 修改保单判断 (2 days ago) &lt;Joe&gt;\n|/ /\n* |   85f1032 - Merge remote-tracking branch \'origin/prod\' into prod (2 days ago) &lt;Joe&gt;\n|\\ \\\n| * | ab884df - feat: 个人名片分享页授权 (4 days ago) &lt;yanyue404&gt;\n* | | e603434 - 优化加载速度 (2 days ago) &lt;Joe&gt;\n|/ /\n* | a255e59 - 微调样式  评论换行 (4 days ago) &lt;Joe&gt;\n* |   7251630 - Merge remote-tracking branch \'origin/prod\' into prod (4 days ago) &lt;Joe&gt;\n|\\ \\\n| * | 1bd08fc - chore: loading 优化 (4 days ago) &lt;yanyue404&gt;\n* | | 7bc0e9e - 修改视频列表问题 (4 days ago) &lt;Joe&gt;\n|/ /\n* | 9e328af - 1.取消我的视频    个人名片换上来 (4 days ago) &lt;Joe&gt;"><pre class="notranslate"><span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">ae57454</span> <span class="pl-c1">-</span> <span class="pl-s1">feat</span>: <span class="pl-s1">token</span> <span class="pl-en">过期强制重新认证</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span>   <span class="pl-c1">1</span><span class="pl-s1">b02194</span> <span class="pl-c1">-</span> <span class="pl-v">Merge</span> <span class="pl-s1">remote</span><span class="pl-c1">-</span><span class="pl-s1">tracking</span> <span class="pl-s1">branch</span> <span class="pl-s">\'origin/prod\'</span> <span class="pl-s1">into</span> <span class="pl-en">prod</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">|</span>\\ \\\n<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">6284</span><span class="pl-s1">b85</span> <span class="pl-c1">-</span> <span class="pl-s1">fix</span>: <span class="pl-en">登录流程短视频播放</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">2</span><span class="pl-s1">bcb162</span> <span class="pl-c1">-</span> <span class="pl-s1">styles</span>: <span class="pl-s1">canvas</span> <span class="pl-en">分享图位置优化</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">d4c66a6</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">页面分享控制</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">91</span><span class="pl-s1">baa28</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-en">个人名片非分享人文字修改</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">|</span> <span class="pl-c1">60715e9</span> <span class="pl-c1">-</span> <span class="pl-en">修改保单判断</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">&gt;</span><span class="pl-s1"></span>\n<span class="pl-c1">|</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s"> </span><span class="pl-c1">/</span></span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span>   <span class="pl-c1">85</span><span class="pl-s1">f1032</span> <span class="pl-c1">-</span> <span class="pl-v">Merge</span> <span class="pl-s1">remote</span><span class="pl-c1">-</span><span class="pl-s1">tracking</span> <span class="pl-s1">branch</span> <span class="pl-s">\'origin/prod\'</span> <span class="pl-s1">into</span> <span class="pl-en">prod</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">|</span>\\ \\\n<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">ab884df</span> <span class="pl-c1">-</span> <span class="pl-s1">feat</span>: <span class="pl-en">个人名片分享页授权</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">|</span> <span class="pl-s1">e603434</span> <span class="pl-c1">-</span> <span class="pl-en">优化加载速度</span> <span class="pl-kos">(</span><span class="pl-c1">2</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">|</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s"> </span><span class="pl-c1">/</span></span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-s1">a255e59</span> <span class="pl-c1">-</span> <span class="pl-s1">微调样式</span><span class="pl-kos"></span>  <span class="pl-en">评论换行</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span>   <span class="pl-c1">7251630</span> <span class="pl-c1">-</span> <span class="pl-v">Merge</span> <span class="pl-s1">remote</span><span class="pl-c1">-</span><span class="pl-s1">tracking</span> <span class="pl-s1">branch</span> <span class="pl-s">\'origin/prod\'</span> <span class="pl-s1">into</span> <span class="pl-en">prod</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">|</span>\\ \\\n<span class="pl-c1">|</span> <span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">1</span><span class="pl-s1">bd08fc</span> <span class="pl-c1">-</span> <span class="pl-s1">chore</span>: <span class="pl-s1">loading</span> <span class="pl-en">优化</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-s1">yanyue404</span><span class="pl-c1">&gt;</span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">|</span> <span class="pl-c1">7</span><span class="pl-s1">bc0e9e</span> <span class="pl-c1">-</span> <span class="pl-en">修改视频列表问题</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">&gt;</span><span class="pl-s1"></span>\n<span class="pl-c1">|</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s"> </span><span class="pl-c1">/</span></span>\n<span class="pl-c1">*</span> <span class="pl-c1">|</span> <span class="pl-c1">9e328</span><span class="pl-s1">af</span> <span class="pl-c1">-</span> <span class="pl-c1">1.</span><span class="pl-s1">取消我的视频</span>    <span class="pl-en">个人名片换上来</span> <span class="pl-kos">(</span><span class="pl-c1">4</span> <span class="pl-s1">days</span> <span class="pl-s1">ago</span><span class="pl-kos">)</span> <span class="pl-c1">&lt;</span><span class="pl-v">Joe</span><span class="pl-c1">&gt;</span></pre></div>\n<h2 id="main-heading-H2-5">rebase-修改提交历史</h2>\n<p dir="auto">合并最近提交的历史，将 <code class="notranslate">ba4358d</code>到 <code class="notranslate">a549037</code> 变为一个 commit</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 输入\ngit log --online\n\n# 输出\nba4358d (HEAD -&gt; master, origin/master, origin/HEAD) docs: 重\nba4358d Update README.md\nba4358d Update README.md # 此条目以上合并为一条\n36f95d9 docs\n0312afb init"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 输入</span>\ngit log --online\n\n<span class="pl-c"><span class="pl-c">#</span> 输出</span>\nba4358d (HEAD -<span class="pl-k">&gt;</span> master, origin/master, origin/HEAD) docs: 重\nba4358d Update README.md\nba4358d Update README.md <span class="pl-c"><span class="pl-c">#</span> 此条目以上合并为一条</span>\n36f95d9 docs\n0312afb init</pre></div>\n<p dir="auto">准备合并</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git rebase -i 36f95d9 | git rebase -i HEAD~3"><pre class="notranslate">git rebase -i 36f95d9 <span class="pl-k">|</span> git rebase -i HEAD~3</pre></div>\n<p dir="auto">选择合并</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 输出\n\npick ba4358d   \'注释**********\'\n\npick ba4358d   \'注释*********\'\n\npick ba4358d   \'注释**********\'\n\n# pick 保留该commit（缩写:p）\n# squash 的意思是这个 commit 会被合并到前一个commit (省略写法 s)\n# reword：保留该commit，但我需要修改该commit的注释（缩写:r）\n# edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）\n# fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）\n# drop：我要丢弃该commit（缩写:d）\n# 在 vim 命令下输入 i 进入编辑模式，编辑完成后 :eq 保存退出\n\n# 输入\n\npick 3ca6ec3   \'注释**********\'\n\ns 1b40566   \'注释*********\'\n\ns 53f244a   \'注释**********\'"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 输出</span>\n\npick ba4358d   <span class="pl-s"><span class="pl-pds">\'</span>注释**********<span class="pl-pds">\'</span></span>\n\npick ba4358d   <span class="pl-s"><span class="pl-pds">\'</span>注释*********<span class="pl-pds">\'</span></span>\n\npick ba4358d   <span class="pl-s"><span class="pl-pds">\'</span>注释**********<span class="pl-pds">\'</span></span>\n\n<span class="pl-c"><span class="pl-c">#</span> pick 保留该commit（缩写:p）</span>\n<span class="pl-c"><span class="pl-c">#</span> squash 的意思是这个 commit 会被合并到前一个commit (省略写法 s)</span>\n<span class="pl-c"><span class="pl-c">#</span> reword：保留该commit，但我需要修改该commit的注释（缩写:r）</span>\n<span class="pl-c"><span class="pl-c">#</span> edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）</span>\n<span class="pl-c"><span class="pl-c">#</span> fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）</span>\n<span class="pl-c"><span class="pl-c">#</span> drop：我要丢弃该commit（缩写:d）</span>\n<span class="pl-c"><span class="pl-c">#</span> 在 vim 命令下输入 i 进入编辑模式，编辑完成后 :eq 保存退出</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 输入</span>\n\npick 3ca6ec3   <span class="pl-s"><span class="pl-pds">\'</span>注释**********<span class="pl-pds">\'</span></span>\n\ns 1b40566   <span class="pl-s"><span class="pl-pds">\'</span>注释*********<span class="pl-pds">\'</span></span>\n\ns 53f244a   <span class="pl-s"><span class="pl-pds">\'</span>注释**********<span class="pl-pds">\'</span></span></pre></div>\n<p dir="auto">保存完成后，你有两个选择</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git rebase --continue  #  确认 rebase\ngit rebase --abort     # 取消 rebase\n\n#确认后，就可以上传到远程了。"><pre class="notranslate">git rebase --continue  <span class="pl-c"><span class="pl-c">#</span>  确认 rebase</span>\ngit rebase --abort     <span class="pl-c"><span class="pl-c">#</span> 取消 rebase</span>\n\n<span class="pl-c"><span class="pl-c">#</span>确认后，就可以上传到远程了。</span></pre></div>\n<p dir="auto">如有冲突：当你修改完冲突的文件：执行<code class="notranslate">git add .</code>，然后继续 <code class="notranslate">git rebase --continue</code>就可以解决完冲突并合并到分支上了。</p>\n<p dir="auto">如果没有冲突，或者冲突已经解决，则会出现如下的编辑窗口, 输入<code class="notranslate">:wq</code> 保存并推出:</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# This is a combination of 4 commits.\n#The first commit’s message is:\n注释......\n# The 2nd commit’s message is:\n注释......\n# The 3rd commit’s message is:\n注释......\n# Please enter the commit message for your changes. Lines starting # with ‘#’ will be ignored, and an empty message aborts the commit."><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> This is a combination of 4 commits.</span>\n<span class="pl-c"><span class="pl-c">#</span>The first commit’s message is:</span>\n注释......\n<span class="pl-c"><span class="pl-c">#</span> The 2nd commit’s message is:</span>\n注释......\n<span class="pl-c"><span class="pl-c">#</span> The 3rd commit’s message is:</span>\n注释......\n<span class="pl-c"><span class="pl-c">#</span> Please enter the commit message for your changes. Lines starting # with ‘#’ will be ignored, and an empty message aborts the commit.</span></pre></div>\n<p dir="auto">查看历史，已经改变</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git log --oneline\nd2d71a5 (HEAD -&gt; master) Update README.md\n36f95d9 docs\n0312afb init"><pre class="notranslate">git log --oneline\nd2d71a5 (HEAD -<span class="pl-k">&gt;</span> master) Update README.md\n36f95d9 docs\n0312afb init</pre></div>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git push -f  # 强制覆盖远程\ngit commit --amend -m &quot;新的注释&quot; # 修改最新的 git commit 注释"><pre class="notranslate">git push -f  <span class="pl-c"><span class="pl-c">#</span> 强制覆盖远程</span>\ngit commit --amend -m <span class="pl-s"><span class="pl-pds">"</span>新的注释<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">#</span> 修改最新的 git commit 注释</span></pre></div>\n<h2 id="main-heading-H2-6">merge 时忽略文件</h2>\n<blockquote>\n<p dir="auto"><strong>提醒</strong>： 只能 master 合并其他分支时忽略其他分支上的文件, 其他分支合并 master 无法忽略 master 上的文件. （master 为默认主分支）</p>\n</blockquote>\n<ol dir="auto">\n<li>创建自定义 merge driver</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git config --global merge.ours.driver true"><pre class="notranslate">git config --global merge.ours.driver <span class="pl-c1">true</span></pre></div>\n<ol start="2" dir="auto">\n<li>在要被 merge 的分支上创建.gitattributes 文件,并且在文件中置顶不 merge 的文件名</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="project.config.json merge=ours\nfetch.js merge=ours\napp.js merge=ours"><pre class="notranslate">project.config.json merge=ours\nfetch.js merge=ours\napp.js merge=ours</pre></div>\n<ol start="3" dir="auto">\n<li>回到要合并到的分支 master,执行 merge:</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git merge --no-ff uat"><pre class="notranslate">git merge --no-ff uat</pre></div>\n<blockquote>\n<p dir="auto"><code class="notranslate">--no-ff</code> 参数表示不使用 Fast forward 模式，保留分支合并的记录，加上<code class="notranslate">-m</code> 参数，把本地合并的 commit 描述写进去</p>\n</blockquote>\n<p dir="auto">在 <code class="notranslate">uat</code> 分支上的<code class="notranslate">project.config.json</code>、<code class="notranslate">fetch.js</code>、<code class="notranslate">app.js</code> 就不会被合并了 ！</p>\n<h2 id="main-heading-H2-7">git rebase vs git merge</h2>\n<p dir="auto">本地分支：</p>\n<ul dir="auto">\n<li>uat （主开发分支）</li>\n<li>develop-yue （个人独立开发分支）</li>\n</ul>\n<p dir="auto">merge 命令：它会把两个分支的最新快照以及二者最近的共同祖先进行三方合并，合并的结果是生成一个新的快照（并提交）。</p>\n<p dir="auto">rebase 命令：它将提交到某一分支上的所有修改都移至另一分支上，就好像“重新播放”一样。</p>\n<blockquote>\n<p dir="auto">先进行 rebase 处理再进行 merge 并入，可以使得提交历史更加整洁，提交历史是一条直线没有分叉。</p>\n</blockquote>\n<p dir="auto">例子：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 在自己的分支开发完成后（如果不在切换至自己的分支）\ngit co develop-yue\n\n# 在自己的开发分支执行基于 uat 分支的变基操作，提取 develop-yue 的进度应用到 uat 的基础上\ngit rebase uat\n\n# 切换至 uat\ngit co uat\n\n# 进行一次性快速合并\ngit merge develop-yue"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 在自己的分支开发完成后（如果不在切换至自己的分支）</span>\ngit co develop-yue\n\n<span class="pl-c"><span class="pl-c">#</span> 在自己的开发分支执行基于 uat 分支的变基操作，提取 develop-yue 的进度应用到 uat 的基础上</span>\ngit rebase uat\n\n<span class="pl-c"><span class="pl-c">#</span> 切换至 uat</span>\ngit co uat\n\n<span class="pl-c"><span class="pl-c">#</span> 进行一次性快速合并</span>\ngit merge develop-yue</pre></div>\n<p dir="auto"><strong>develop-yue 日志</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* ee4ceb2 - (HEAD -&gt; develop-yue, origin/develop-yue) chore: 补充日志信息 (14 seconds ago) &lt;yanyue404&gt;\n* 8ef82e1 - docs: rebase.md (2 minutes ago) &lt;yanyue404&gt;\n* 9d8e3e9 - (origin/uat, origin/develop-yue, uat) 优化细节 (54 minutes ago) &lt;Joe&gt;\n*   9290637 - Merge remote-tracking branch \'origin/uat\' into uat (57 minutes ago) &lt;Joe&gt;\n|\\\n| * 0f0b5f7 - chore: 订单管理账号校验 (60 minutes ago) &lt;yanyue404&gt;\n| * 8cf0fb6 - chore: button 样式重置 (76 minutes ago) &lt;yanyue404&gt;\n| *   b859a6e - style: 合并 yue 分支整理 (2 hours ago) &lt;yanyue404&gt;\n| |\\\n| | * b93e268 - chore: 打开注释 (2 hours ago) &lt;yanyue404&gt;\n| | *   8ca3e6a - Merge branch \'uat\' into develop-yue (2 hours ago) &lt;yanyue404&gt;\n| | |\\\n| | |/\n| |/|\n| | * eb95bbc - style: 设置所有需要禁用分享的列表 (2 hours ago) &lt;yanyue404&gt;\n| | * e129f08 - style: 玩转星福的问答评论删除控制 (3 hours ago) &lt;yanyue404&gt;\n| | *   455097e - Merge branch \'uat\' into develop-yue (7 hours ago) &lt;yanyue404&gt;\n| | |\\\n* | | | 7f095fb - 提交漏提代码 (69 minutes ago) &lt;Joe&gt;\n|/ / /\n* | |   58b7ccd - Merge branch \'devlop-li\' into uat (2 hours ago) &lt;lijunxaio&gt;\n|\\ \\ \\\n| * | | 9c5c4a9 - 修改转发 (2 hours ago) &lt;lijunxaio&gt;\n| * | | 57b90f2 - 修改文章详情转发 (7 hours ago) &lt;xuyiqun&gt;\n| * | |   b5258e8 - Merge branch \'uat\' into devlop-li (8 hours ago) &lt;xuyiqun&gt;\n..."><pre class="notranslate"><span class="pl-k">*</span> ee4ceb2 - (HEAD -<span class="pl-k">&gt;</span> develop-yue, origin/develop-yue) chore: 补充日志信息 (14 seconds ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">*</span> 8ef82e1 - docs: rebase.md (2 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">*</span> 9d8e3e9 - (origin/uat, origin/develop-yue, uat) 优化细节 (54 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">&gt;</span>\n<span class="pl-k">*</span>   9290637 - Merge remote-tracking branch <span class="pl-s"><span class="pl-pds">\'</span>origin/uat<span class="pl-pds">\'</span></span> into uat (57 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span>\\\n<span class="pl-k">|</span> <span class="pl-k">*</span> 0f0b5f7 - chore: 订单管理账号校验 (60 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">*</span> 8cf0fb6 - chore: button 样式重置 (76 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">*</span>   b859a6e - style: 合并 yue 分支整理 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span>\\\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> b93e268 - chore: 打开注释 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span>   8ca3e6a - Merge branch <span class="pl-s"><span class="pl-pds">\'</span>uat<span class="pl-pds">\'</span></span> into develop-yue (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>\\\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>/\n<span class="pl-k">|</span> <span class="pl-k">|</span>/<span class="pl-k">|</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> eb95bbc - style: 设置所有需要禁用分享的列表 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> e129f08 - style: 玩转星福的问答评论删除控制 (3 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span>   455097e - Merge branch <span class="pl-s"><span class="pl-pds">\'</span>uat<span class="pl-pds">\'</span></span> into develop-yue (7 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>\\\n<span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 7f095fb - 提交漏提代码 (69 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span>/ / /\n<span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span>   58b7ccd - Merge branch <span class="pl-s"><span class="pl-pds">\'</span>devlop-li<span class="pl-pds">\'</span></span> into uat (2 hours ago) <span class="pl-k">&lt;</span>lijunxaio<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span><span class="pl-cce">\\ \\ </span>\\\n<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 9c5c4a9 - 修改转发 (2 hours ago) <span class="pl-k">&lt;</span>lijunxaio<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 57b90f2 - 修改文章详情转发 (7 hours ago) <span class="pl-k">&lt;</span>xuyiqun<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span>   b5258e8 - Merge branch <span class="pl-s"><span class="pl-pds">\'</span>uat<span class="pl-pds">\'</span></span> into devlop-li (8 hours ago) <span class="pl-k">&lt;</span>xuyiqun<span class="pl-k">&gt;</span>\n...</pre></div>\n<p dir="auto"><strong>uat 日志</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="* ee4ceb2 - (HEAD -&gt; uat, origin/develop-yue, develop-yue) chore: 补充日志信息 (2 minutes ago) &lt;yanyue404&gt;\n* 8ef82e1 - docs: rebase.md (4 minutes ago) &lt;yanyue404&gt;\n* 9d8e3e9 - (origin/uat) 优化细节 (58 minutes ago) &lt;Joe&gt;\n*   9290637 - Merge remote-tracking branch \'origin/uat\' into uat (61 minutes ago) &lt;Joe&gt;\n|\\\n| * 0f0b5f7 - chore: 订单管理账号校验 (63 minutes ago) &lt;yanyue404&gt;\n| * 8cf0fb6 - chore: button 样式重置 (80 minutes ago) &lt;yanyue404&gt;\n| *   b859a6e - style: 合并 yue 分支整理 (2 hours ago) &lt;yanyue404&gt;\n| |\\\n| | * b93e268 - chore: 打开注释 (2 hours ago) &lt;yanyue404&gt;\n| | *   8ca3e6a - Merge branch \'uat\' into develop-yue (2 hours ago) &lt;yanyue404&gt;\n| | |\\\n| | |/\n| |/|\n| | * eb95bbc - style: 设置所有需要禁用分享的列表 (2 hours ago) &lt;yanyue404&gt;\n| | * e129f08 - style: 玩转星福的问答评论删除控制 (3 hours ago) &lt;yanyue404&gt;\n| | *   455097e - Merge branch \'uat\' into develop-yue (7 hours ago) &lt;yanyue404&gt;\n| | |\\\n* | | | 7f095fb - 提交漏提代码 (73 minutes ago) &lt;Joe&gt;\n|/ / /\n* | |   58b7ccd - Merge branch \'devlop-li\' into uat (2 hours ago) &lt;lijunxaio&gt;\n|\\ \\ \\\n| * | | 9c5c4a9 - 修改转发 (2 hours ago) &lt;lijunxaio&gt;\n| * | | 57b90f2 - 修改文章详情转发 (7 hours ago) &lt;xuyiqun&gt;\n| * | |   b5258e8 - Merge branch \'uat\' into devlop-li (8 hours ago) &lt;xuyiqun&gt;\n| |\\ \\ \\\n| | | |/\n..."><pre class="notranslate"><span class="pl-k">*</span> ee4ceb2 - (HEAD -<span class="pl-k">&gt;</span> uat, origin/develop-yue, develop-yue) chore: 补充日志信息 (2 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">*</span> 8ef82e1 - docs: rebase.md (4 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">*</span> 9d8e3e9 - (origin/uat) 优化细节 (58 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">&gt;</span>\n<span class="pl-k">*</span>   9290637 - Merge remote-tracking branch <span class="pl-s"><span class="pl-pds">\'</span>origin/uat<span class="pl-pds">\'</span></span> into uat (61 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span>\\\n<span class="pl-k">|</span> <span class="pl-k">*</span> 0f0b5f7 - chore: 订单管理账号校验 (63 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">*</span> 8cf0fb6 - chore: button 样式重置 (80 minutes ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">*</span>   b859a6e - style: 合并 yue 分支整理 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span>\\\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> b93e268 - chore: 打开注释 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span>   8ca3e6a - Merge branch <span class="pl-s"><span class="pl-pds">\'</span>uat<span class="pl-pds">\'</span></span> into develop-yue (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>\\\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>/\n<span class="pl-k">|</span> <span class="pl-k">|</span>/<span class="pl-k">|</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> eb95bbc - style: 设置所有需要禁用分享的列表 (2 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span> e129f08 - style: 玩转星福的问答评论删除控制 (3 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">*</span>   455097e - Merge branch <span class="pl-s"><span class="pl-pds">\'</span>uat<span class="pl-pds">\'</span></span> into develop-yue (7 hours ago) <span class="pl-k">&lt;</span>yanyue<span class="pl-k">404&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>\\\n<span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 7f095fb - 提交漏提代码 (73 minutes ago) <span class="pl-k">&lt;</span>Joe<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span>/ / /\n<span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span>   58b7ccd - Merge branch <span class="pl-s"><span class="pl-pds">\'</span>devlop-li<span class="pl-pds">\'</span></span> into uat (2 hours ago) <span class="pl-k">&lt;</span>lijunxaio<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span><span class="pl-cce">\\ \\ </span>\\\n<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 9c5c4a9 - 修改转发 (2 hours ago) <span class="pl-k">&lt;</span>lijunxaio<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span> 57b90f2 - 修改文章详情转发 (7 hours ago) <span class="pl-k">&lt;</span>xuyiqun<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">*</span> <span class="pl-k">|</span> <span class="pl-k">|</span>   b5258e8 - Merge branch <span class="pl-s"><span class="pl-pds">\'</span>uat<span class="pl-pds">\'</span></span> into devlop-li (8 hours ago) <span class="pl-k">&lt;</span>xuyiqun<span class="pl-k">&gt;</span>\n<span class="pl-k">|</span> <span class="pl-k">|</span><span class="pl-cce">\\ \\ </span>\\\n<span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span> <span class="pl-k">|</span>/\n...</pre></div>\n<h2 id="main-heading-H2-8">分支管理策略</h2>\n<p dir="auto">（1）git flow 工作流</p>\n<p dir="auto"><strong>主线分支（长期维护）</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">master</code>：主干分支，，这个分支最近发布到生产环境的代码，最近发布的 Release， 这个分支只能从其他分支合并，不能在这个分支直接修改，每个 Commit 都应该打 Tag （对应线上生产环境）</li>\n<li><code class="notranslate">develop</code>： 开发分支，各个任务分支都往这上边合并</li>\n</ul>\n<p dir="auto"><strong>辅助分支</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">feature-new</code>：新任务分支（服务于 develop），开发完毕应该合并到 develop（没写完就不要合进去了，不然影响 release，合并完建议删除）</li>\n<li><code class="notranslate">release-vxxx</code>：可以理解为发版分支，基于 develop ，一定周期内的开发任务统一在一个 release 中测试，测试中出现的 BUG 直接 commit 在 release 分支中，测试完毕后后并入到 develop 与 master</li>\n<li><code class="notranslate">hotfix</code> ：热修复分支（服务于 master），一般用于处理紧急 BUG，开发完毕后合并到 develop 以及 master</li>\n</ul>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/yanyue404/blog/blob/master/assets/git/git%20flow.png?raw=true"><img src="https://github.com/yanyue404/blog/blob/master/assets/git/git%20flow.png?raw=true" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto">开发分支 develop:</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 创建 develop 分支\ngit co -b develop master\n\n# 将 develop 分支发布到 master\ngit co master\ngit merge --no-ff develop"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建 develop 分支</span>\ngit co -b develop master\n\n<span class="pl-c"><span class="pl-c">#</span> 将 develop 分支发布到 master</span>\ngit co master\ngit merge --no-ff develop</pre></div>\n<p dir="auto">任务（功能）分支 feature：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 创建一个功能分支\ngit co -b feature-x develop\n\n# 开发完成后，将功能分支合并到develop分支\ngit co develop\ngit merge --no-ff feature-x\n\n# 删除 feature 分支\ngit branch -d feature-x"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建一个功能分支</span>\ngit co -b feature-x develop\n\n<span class="pl-c"><span class="pl-c">#</span> 开发完成后，将功能分支合并到develop分支</span>\ngit co develop\ngit merge --no-ff feature-x\n\n<span class="pl-c"><span class="pl-c">#</span> 删除 feature 分支</span>\ngit branch -d feature-x</pre></div>\n<p dir="auto">发版分支 release：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 创建一个预发布分支\ngit co -b release-1.2 develop\n\n# 确认没有问题，合并到 master（有问题直接在此分支修改）\ngit co master\ngit merge --no-ff release-1.2\ngit tag -a 1.2 # 对合并生成的新节点，做一个标签\n\n# 再合并到 develop 分支\ngit co develop\ngit merge --no-ff release-1.2\n\n# 最后，删除预发布分支\ngit branch -d release-1.2"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建一个预发布分支</span>\ngit co -b release-1.2 develop\n\n<span class="pl-c"><span class="pl-c">#</span> 确认没有问题，合并到 master（有问题直接在此分支修改）</span>\ngit co master\ngit merge --no-ff release-1.2\ngit tag -a 1.2 <span class="pl-c"><span class="pl-c">#</span> 对合并生成的新节点，做一个标签</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 再合并到 develop 分支</span>\ngit co develop\ngit merge --no-ff release-1.2\n\n<span class="pl-c"><span class="pl-c">#</span> 最后，删除预发布分支</span>\ngit branch -d release-1.2</pre></div>\n<p dir="auto">热修复分支 hotfix：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 创建一个修补bug分支\ngit co -b fixbug-1.7.2 master\n\n# 修补结束后，合并到master分支\ngit co master\ngit merge --no-ff fixbug-1.7.2\ngit tag -a 1.7.2\n\n# 再合并到develop分支\ngit co develop\ngit merge --no-ff fixbug-1.7.2\n\n# 最后删除热修复分支\ngit branch -d fixbug-1.7.2"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建一个修补bug分支</span>\ngit co -b fixbug-1.7.2 master\n\n<span class="pl-c"><span class="pl-c">#</span> 修补结束后，合并到master分支</span>\ngit co master\ngit merge --no-ff fixbug-1.7.2\ngit tag -a 1.7.2\n\n<span class="pl-c"><span class="pl-c">#</span> 再合并到develop分支</span>\ngit co develop\ngit merge --no-ff fixbug-1.7.2\n\n<span class="pl-c"><span class="pl-c">#</span> 最后删除热修复分支</span>\ngit branch -d fixbug-1.7.2</pre></div>\n<p dir="auto">（2） 我们使用的模型</p>\n<p dir="auto"><strong>主线分支</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">prod</code>: 主干分支，相当于 master + release</li>\n<li><code class="notranslate">uat</code>: 开发分支（dev）</li>\n</ul>\n<p dir="auto"><strong>辅助分支</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">dev-yue</code>：新任务分支（按人划分，服务于 uat）</li>\n<li><code class="notranslate">dev-joe</code>：新任务分支</li>\n</ul>\n<p dir="auto">下面是合并分支常规操作，自己的开发分支并入 dev（uat） 分支。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 先切换 uat 拉取最新 code，因为 merge 的时候选取的是本地分支\ngit co uat\ngit pull --rebase\n\n# 切回 个人开发分支获取 uat 最新 code\ngit co dev-yue\ngit rebase uat # 变基，有冲突在处理冲突后提交\n\n# 切回 uat 分支并入自己提交的 code\ngit co uat\ngit merge --no-ff dev-yue # 变基后重新 merge 可以使得提交历史一条直线\ngit push\n\n# 1. uat 环境测试通过 2. prod 需要发版时合并 uat 修改\ngit co prod\ngit merge --no-ff uat # 必须 merge，因为 uat 与 prod有部分配置性文件不完全一致"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 先切换 uat 拉取最新 code，因为 merge 的时候选取的是本地分支</span>\ngit co uat\ngit pull --rebase\n\n<span class="pl-c"><span class="pl-c">#</span> 切回 个人开发分支获取 uat 最新 code</span>\ngit co dev-yue\ngit rebase uat <span class="pl-c"><span class="pl-c">#</span> 变基，有冲突在处理冲突后提交</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 切回 uat 分支并入自己提交的 code</span>\ngit co uat\ngit merge --no-ff dev-yue <span class="pl-c"><span class="pl-c">#</span> 变基后重新 merge 可以使得提交历史一条直线</span>\ngit push\n\n<span class="pl-c"><span class="pl-c">#</span> 1. uat 环境测试通过 2. prod 需要发版时合并 uat 修改</span>\ngit co prod\ngit merge --no-ff uat <span class="pl-c"><span class="pl-c">#</span> 必须 merge，因为 uat 与 prod有部分配置性文件不完全一致</span></pre></div>\n<h2 id="main-heading-H2-9">git 仓库迁移并保留 commit 历史</h2>\n<ol dir="auto">\n<li>先将需要保存到新远端的分支迁到本地分支保存。</li>\n<li>修改远端仓库地址：</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 修改已注册的远端仓库地址\ngit remote set-url origin [newUrl]"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 修改已注册的远端仓库地址</span>\ngit remote set-url origin [newUrl]</pre></div>\n<blockquote>\n<p dir="auto">newUrl 为 <code class="notranslate">http://gitlab.xxx.com/todomvc-demos.git</code> 格式。 3. 选择所有的分支 <strong>push all branchs</strong>。 4. 访问新远端项目地址，分支已经迁移完毕。</p>\n</blockquote>\n<h2 id="main-heading-H2-10">git 子模块</h2>\n<p dir="auto">在一个项目中使用另一个项目，并保证项目间相对独立，这就是 git 的子模块可以实现的效果。</p>\n<p dir="auto"><strong>创建子模块</strong></p>\n<p dir="auto">先进入父仓库目录下，然后执行命令：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git submodule add -b &lt;分支名&gt; &lt;仓库地址&gt; &lt;本地路径&gt;"><pre class="notranslate">git submodule add -b <span class="pl-k">&lt;</span>分支名<span class="pl-k">&gt;</span> <span class="pl-k">&lt;</span>仓库地址<span class="pl-k">&gt;</span> <span class="pl-k">&lt;</span>本地路径<span class="pl-k">&gt;</span></pre></div>\n<p dir="auto">执行上面命令后，在父仓库根目录增加了.gitmodule 文件。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="[submodule &quot;submodule-name&quot;]\n\tpath = submodule-name\n\turl = http://gitlab.it.xxx.com/submodule-name.git\n\tbranch = dev\n"><pre class="notranslate">[submodule <span class="pl-s"><span class="pl-pds">"</span>submodule-name<span class="pl-pds">"</span></span>]\n\tpath = submodule-name\n\turl = http://gitlab.it.xxx.com/submodule-name.git\n\tbranch = dev\n</pre></div>\n<p dir="auto"><strong>git 子模块使用</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 初始化本地子项目配置\n git subnodule init\n\n# 拉取子仓库文件\n git subnodule update --remote\n\n# 或者使用组合指令\ngit submodule update --init --recursive"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 初始化本地子项目配置</span>\n git subnodule init\n\n<span class="pl-c"><span class="pl-c">#</span> 拉取子仓库文件</span>\n git subnodule update --remote\n\n<span class="pl-c"><span class="pl-c">#</span> 或者使用组合指令</span>\ngit submodule update --init --recursive</pre></div>\n<p dir="auto"><strong>git clone 子模块参与编译</strong></p>\n<p dir="auto">使用了子模块的项目并不会将子模块的所有代码提交上去，而会保留一个空文件夹与版本 id 指向 （submodule-name @ 462b5421），在真实编译发布的时候需要先 clone。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git clone -b dev http://gitlab.it.xxx.com/submodule-name.git"><pre class="notranslate">git clone -b dev http://gitlab.it.xxx.com/submodule-name.git</pre></div>\n<h2 id="main-heading-H2-11">git-创建一个空分支</h2>\n<ol dir="auto">\n<li>创建分支</li>\n</ol>\n<p dir="auto">使用 git checkout 的--orphan 参数，该命令会创建一个名为 doc 的分支，并且该分支下有前一个分支下的所有文件。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git checkout --orphan new-branchName"><pre class="notranslate">git checkout --orphan new-branchName</pre></div>\n<ol start="2" dir="auto">\n<li>删除所有内容我们不想提交任何内容，所以我们需要把当前内容全部删除，用 git 命令：</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git rm -rf ."><pre class="notranslate">git rm -rf <span class="pl-c1">.</span></pre></div>\n<ol start="3" dir="auto">\n<li>提交分支使用 commit 命令来提交分支</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git commit -am &quot;new branch for documentation&quot;"><pre class="notranslate">git commit -am <span class="pl-s"><span class="pl-pds">"</span>new branch for documentation<span class="pl-pds">"</span></span></pre></div>\n<p dir="auto">如果没有任何文件提交的话，分支是看不到的，可以创建一个新文件后再次提交则新创建的 branch 就会显示出来。</p>\n<ol start="4" dir="auto">\n<li>使用 branch 来查看分支是否创建成功</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git branch -a"><pre class="notranslate">git branch -a</pre></div>\n<h2 id="main-heading-H2-12">git stash</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 暂时将未提交的变化移除，方便做其他操作\ngit stash\n\n# 移入之前缓存的工作区修改\ngit stash pop\n\n# 查看缓存的 stash 列表\ngit stash list"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 暂时将未提交的变化移除，方便做其他操作</span>\ngit stash\n\n<span class="pl-c"><span class="pl-c">#</span> 移入之前缓存的工作区修改</span>\ngit stash pop\n\n<span class="pl-c"><span class="pl-c">#</span> 查看缓存的 stash 列表</span>\ngit stash list</pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="## git cherry-pick\n\n作用：将指定的提交应用于当前分支, 这会在当前分支生成对应的新提交；\n\n```shell\n# 转移到一次提交到当前分支\ngit cherry-pick &lt;commitID&gt;\n\n# 转移多次提交\ngit cherry-pick &lt;commitID_A&gt; &lt;commitID_B&gt;"><pre class="notranslate"><code class="notranslate">## git cherry-pick\n\n作用：将指定的提交应用于当前分支, 这会在当前分支生成对应的新提交；\n\n```shell\n# 转移到一次提交到当前分支\ngit cherry-pick &lt;commitID&gt;\n\n# 转移多次提交\ngit cherry-pick &lt;commitID_A&gt; &lt;commitID_B&gt;\n</code></pre></div>\n<p dir="auto">如果遇到冲突后，可以：</p>\n<p dir="auto">保存完成后，你有两个选择</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git cherry-pick --continue  #  确认 cherry-pick，继续执行\ngit cherry-pick --abort     # 取消 cherry-pick, 回到操作前的样子"><pre class="notranslate">git cherry-pick --continue  <span class="pl-c"><span class="pl-c">#</span>  确认 cherry-pick，继续执行</span>\ngit cherry-pick --abort     <span class="pl-c"><span class="pl-c">#</span> 取消 cherry-pick, 回到操作前的样子</span></pre></div>\n<h2 id="main-heading-H2-13">git revert 与 git reset 的区别</h2>\n<p dir="auto"><strong>git reset</strong> 可以回退 Git 的历史记录。例如当前分支有三个记录，并且 HEAD 指向 c 记录：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="c &lt;- HEAD\nb\na"><pre class="notranslate">c <span class="pl-k">&lt;</span>- HEAD\nb\na</pre></div>\n<p dir="auto">如果我们想回退到 b 记录，只要执行 <strong>git reset b</strong> 就可以了：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="b &lt;- HEAD\na"><pre class="notranslate"><code class="notranslate">b &lt;- HEAD\na\n</code></pre></div>\n<p dir="auto">接着使用 <strong>git push -f</strong> 将回退版本后的分支强制推送到远程仓库，这样本地分支和远程分支就同步了。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git push -f"><pre class="notranslate"><code class="notranslate">git push -f\n</code></pre></div>\n<p dir="auto"><strong>git revert</strong>  也可以撤销记录，只不过它撤销的记录不会消失，这一点和  <strong>git reset</strong>  不一样。<strong>git reset</strong>  撤销的记录就跟消失了一样。</p>\n<p dir="auto">现在我们用  <strong>git revert</strong>  来重新演示下刚才的操作：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="c\nb\na"><pre class="notranslate"><code class="notranslate">c\nb\na\n</code></pre></div>\n<p dir="auto">如果我们执行  <strong>git revert b</strong>，则会在当前分支上再生成一个新的 commit 记录，变成  <strong>a b c b\'</strong>，这个  <strong>b\'</strong>  的状态和记录  <strong>b</strong>  是一样的。</p>\n<p dir="auto">也就是说，执行  <strong>git reset b</strong>  后，当前的分支记录会变成  <strong>a b</strong>。执行  <strong>git revert b</strong>  后，当前的分支记录会变成   <strong>a b c b\'</strong>。</p>\n<p dir="auto">如果你想让别人知道你撤销过记录，就使用  <strong>git revert</strong>，因为它会留下撤销的记录，否则用  <strong>git reset</strong>。</p>\n<h2 id="main-heading-H2-14">git 合并另一个仓库</h2>\n<p dir="auto">基于一个 git 脚手架项目基础上开发了一个新项目，同时这个脚手架项目也会更新迭代，这时就需要把脚手架项目合并到新开发的项目中来，编译同步合并脚手架项目仓库的代码。</p>\n<ol dir="auto">\n<li>在新项目初始化好后添加需要合并的远程仓库。</li>\n</ol>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ git remote add target http://aa.com//0033.git"><pre class="notranslate"><code class="notranslate">$ git remote add target http://aa.com//0033.git\n</code></pre></div>\n<p dir="auto">把 target 作为远程仓库，添加到本地仓库 origin 中，设置别名 target。</p>\n<ol start="2" dir="auto">\n<li>把 target 远程仓库中的数据抓取到本仓库</li>\n</ol>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ git fetch target\n\n  remote: Enumerating objects: 576, done.\n  remote: Counting objects: 100% (576/576), done.\n  remote: Compressing objects: 100% (385/385), done.\n  remote: Total 576 (delta 284), reused 462 (delta 174), pack-reused 0\n  Receiving objects: 100% (576/576), 1.23 MiB | 7.75 MiB/s, done.\n  Resolving deltas: 100% (284/284), done.\n  From http://aa.com/0033\n  * [new branch]      dev        -&gt; target/dev\n  * [new branch]      master     -&gt; target/master"><pre class="notranslate"><code class="notranslate">$ git fetch target\n\n  remote: Enumerating objects: 576, done.\n  remote: Counting objects: 100% (576/576), done.\n  remote: Compressing objects: 100% (385/385), done.\n  remote: Total 576 (delta 284), reused 462 (delta 174), pack-reused 0\n  Receiving objects: 100% (576/576), 1.23 MiB | 7.75 MiB/s, done.\n  Resolving deltas: 100% (284/284), done.\n  From http://aa.com/0033\n  * [new branch]      dev        -&gt; target/dev\n  * [new branch]      master     -&gt; target/master\n</code></pre></div>\n<ol start="3" dir="auto">\n<li>基于想要取的 target 远程目标分支创建为新项目的一个分支</li>\n</ol>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ git checkout -b 0033 target/dev\n  Switched to a new branch \'0033\'\n  Branch \'0033\' set up to track remote branch \'dev\' from \'target\'."><pre class="notranslate"><code class="notranslate">$ git checkout -b 0033 target/dev\n  Switched to a new branch \'0033\'\n  Branch \'0033\' set up to track remote branch \'dev\' from \'target\'.\n</code></pre></div>\n<ol start="4" dir="auto">\n<li>合并</li>\n</ol>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git checkout dev\ngit merge 0033 --allow-unrelated-histories"><pre class="notranslate"><code class="notranslate">git checkout dev\ngit merge 0033 --allow-unrelated-histories\n</code></pre></div>\n<p dir="auto">在上面执行 merge 后追加 <strong>--allow-unrelated-histories</strong>，是为了避免因两个分支没有取得联系而报 <strong>fatal: refusing to merge unrelated histories</strong> 的错误信息。</p>\n<h2 id="main-heading-H2-15">github actions</h2>\n<p dir="auto"><a href="https://github.com/yanyue404/my-bookmarks">https://github.com/yanyue404/my-bookmarks</a></p>\n<blockquote>\n<p dir="auto"><a href="https://github.com/yanyue404/my-bookmarks/blob/master/.github/workflows/vuepress-deploy.yml">https://github.com/yanyue404/my-bookmarks/blob/master/.github/workflows/vuepress-deploy.yml</a></p>\n</blockquote>\n<ul dir="auto">\n<li><a href="https://github.com/mqyqingfeng/Blog/issues/237" data-hovercard-type="issue" data-hovercard-url="/mqyqingfeng/Blog/issues/237/hovercard">还不会用 GitHub Actions ？看看这篇</a></li>\n</ul>\n<h2 id="main-heading-H2-16">github.dev 写作</h2>\n<p dir="auto"><a href="https://github.dev/yanyue404/my-bookmarks" rel="nofollow">https://github.dev/yanyue404/my-bookmarks</a></p>\n<h2 id="main-heading-H2-17">git 修改 commit 作者和邮箱</h2>\n<p dir="auto"><strong>原因</strong></p>\n<p dir="auto">没有为项目做 git 上的配置，于是使用了全局的 git 配置。</p>\n<p dir="auto">我们可以通过以下命令来修改最近一次提交的用户信息：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git commit --amend --author=&quot;username &lt;abcdef@gmail.com&gt;&quot; --no-edit"><pre class="notranslate"><code class="notranslate">git commit --amend --author="username &lt;abcdef@gmail.com&gt;" --no-edit\n</code></pre></div>\n<p dir="auto"><code class="notranslate">username</code> 是用户名，用户邮箱旁边的 <code class="notranslate">&lt;&gt;</code> 符号不能去掉。修改后再执行 <code class="notranslate">git push -f</code> 推送到远程仓库</p>\n<p dir="auto">设置项目级：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git config user.name &quot;yanyue404&quot;\ngit config user.email &quot;xiaoyueyue165@gmail.com&quot;"><pre class="notranslate"><code class="notranslate">git config user.name "yanyue404"\ngit config user.email "xiaoyueyue165@gmail.com"\n</code></pre></div>\n<blockquote>\n<p dir="auto">在当前项目下面查看的配置是全局配置+当前项目的配置：git config --list</p>\n</blockquote>\n<p dir="auto">将所有错误的 name，email 修改为正确的配置。</p>\n<p dir="auto">下面通过<code class="notranslate">git rebase -i</code>  命令 重写历史</p>\n<p dir="auto">选择修改范围</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git rebase -i HEAD~n"><pre class="notranslate"><code class="notranslate">git rebase -i HEAD~n\n</code></pre></div>\n<p dir="auto">输出如下</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="pick 208d348 XXX\\\npick c99c75e CCC\\\npick 35c4d4c FFF\n\n# Rebase 02097a2..35c4d4c onto 02097a2 (3 commands)\\\n#\\\n# Commands:"><pre class="notranslate"><code class="notranslate">pick 208d348 XXX\\\npick c99c75e CCC\\\npick 35c4d4c FFF\n\n# Rebase 02097a2..35c4d4c onto 02097a2 (3 commands)\\\n#\\\n# Commands:\n</code></pre></div>\n<p dir="auto">将要修改的提交所在行 pick 改为 e 保存退出 （e 是 edit 的意思）</p>\n<p dir="auto">通过命令一条一条修改 (无法修改时先执行 rebase 的 continue 命令再修改 commit )</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git commit --amend --author &quot;username &lt;abcdef@gmail.com&gt;&quot;\ngit rebase --continue"><pre class="notranslate"><code class="notranslate">git commit --amend --author "username &lt;abcdef@gmail.com&gt;"\ngit rebase --continue\n</code></pre></div>\n<p dir="auto">直至</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git rebase --continue\\\nSuccessfully rebased and updated refs/heads/master."><pre class="notranslate"><code class="notranslate">git rebase --continue\\\nSuccessfully rebased and updated refs/heads/master.\n</code></pre></div>\n<p dir="auto">可以推送了</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="git push -f"><pre class="notranslate"><code class="notranslate">git push -f\n</code></pre></div>\n<p dir="auto"><strong>补充推荐：一个更快的方法</strong></p>\n<p dir="auto">修改仓库的配置文件（<code class="notranslate">.git/config</code>）</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="[core]\n\trepositoryformatversion = 0\n\tfilemode = false\n\tbare = false\n\tlogallrefupdates = true\n\tsymlinks = false\n\tignorecase = true\n[remote &quot;origin&quot;]\n\turl = https://github.com/yanyue404/fe-attitude.git\n\tfetch = +refs/heads/*:refs/remotes/origin/*\n[branch &quot;master&quot;]\n\tremote = origin\n\tmerge = refs/heads/master\n[user]\n\tname = yanyue404\n\temail = xiaoyueyue165@gmail.com\n[http]\n\tproxy = http://127.0.0.1:33210\n[https]\n\tproxy = http://127.0.0.1:33210"><pre class="notranslate">[core]\n\trepositoryformatversion = 0\n\tfilemode = <span class="pl-c1">false</span>\n\tbare = <span class="pl-c1">false</span>\n\tlogallrefupdates = <span class="pl-c1">true</span>\n\tsymlinks = <span class="pl-c1">false</span>\n\tignorecase = <span class="pl-c1">true</span>\n[remote <span class="pl-s"><span class="pl-pds">"</span>origin<span class="pl-pds">"</span></span>]\n\turl = https://github.com/yanyue404/fe-attitude.git\n\tfetch = +refs/heads/<span class="pl-k">*</span>:refs/remotes/origin/<span class="pl-k">*</span>\n[branch <span class="pl-s"><span class="pl-pds">"</span>master<span class="pl-pds">"</span></span>]\n\tremote = origin\n\tmerge = refs/heads/master\n[user]\n\tname = yanyue404\n\temail = xiaoyueyue165@gmail.com\n[http]\n\tproxy = http://127.0.0.1:33210\n[https]\n\tproxy = http://127.0.0.1:33210</pre></div>\n<h2 id="main-heading-H2-18">github 搜索</h2>\n<blockquote>\n<p dir="auto">参考 <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="735462963" data-permission-text="Title is private" data-url="https://github.com/biaochenxuying/blog/issues/75" data-hovercard-type="issue" data-hovercard-url="/biaochenxuying/blog/issues/75/hovercard" href="https://github.com/biaochenxuying/blog/issues/75">biaochenxuying/blog#75</a></p>\n</blockquote>\n<p dir="auto"><strong>按关注者数量搜索</strong></p>\n<p dir="auto">您可以使用 <code class="notranslate">followers</code> 限定符以及<a href="https://docs.github.com/cn/free-pro-team@latest/articles/understanding-the-search-syntax">大于、小于和范围限定符</a>基于仓库拥有的关注者数量过滤仓库。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>限定符</th>\n<th>示例</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code class="notranslate">followers:*n*</code></td>\n<td><a href="https://github.com/search?q=node+followers%3A%3E%3D10000"><strong>node followers:&gt;=10000</strong></a> 匹配有 10,000 或更多关注者提及文字 "node" 的仓库。</td>\n</tr>\n<tr>\n<td></td>\n<td><a href="https://github.com/search?q=styleguide+linter+followers%3A1..10&amp;type=Repositories"><strong>styleguide linter followers:1..10</strong></a> 匹配拥有 1 到 10 个关注者并且提及 "styleguide linter" 一词的的仓库。</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a href="https://camo.githubusercontent.com/fae6ca47c4ee19e91d8dc49f9dd7816cf3db1353d2fa5e66de20c19266540c3c/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d376261306465636439393164383836312e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/2c035a2402e368ee00e69f513b272aec4a09ef1dcde16a64ec1e850e56a42761/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d336463333439363630626236343766622e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><a href="https://camo.githubusercontent.com/2c035a2402e368ee00e69f513b272aec4a09ef1dcde16a64ec1e850e56a42761/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d336463333439363630626236343766622e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/86d9201f782a6e18bec66cdd40c526bbbea503ce591e1e4d5cd9bc2b981f73f8/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d663531373334623433323735313639632e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><strong>按复刻数量搜索</strong></p>\n<p dir="auto"><code class="notranslate">forks</code> 限定符使用<a href="https://docs.github.com/cn/free-pro-team@latest/articles/understanding-the-search-syntax">大于、小于和范围限定符</a>指定仓库应具有的复刻数量。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>限定符</th>\n<th>示例</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code class="notranslate">forks:*n*</code></td>\n<td><a href="https://github.com/search?q=forks%3A5&amp;type=Repositories"><strong>forks:5</strong></a> 匹配只有 5 个复刻的仓库。</td>\n</tr>\n<tr>\n<td></td>\n<td><a href="https://github.com/search?q=forks%3A%3E%3D205&amp;type=Repositories"><strong>forks:&gt;=205</strong></a> 匹配具有至少 205 个复刻的仓库。</td>\n</tr>\n<tr>\n<td></td>\n<td><a href="https://github.com/search?q=forks%3A%3C90&amp;type=Repositories"><strong>forks:&lt;90</strong></a> 匹配具有少于 90 个复刻的仓库。</td>\n</tr>\n<tr>\n<td></td>\n<td><a href="https://github.com/search?q=forks%3A10..20&amp;type=Repositories"><strong>forks:10..20</strong></a> 匹配具有 10 到 20 个复刻的仓库。</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a href="https://camo.githubusercontent.com/86d9201f782a6e18bec66cdd40c526bbbea503ce591e1e4d5cd9bc2b981f73f8/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d663531373334623433323735313639632e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/768a62cfac4c2a31582e1c043e84ffefb993fa7c3e07e9fe5866f3adac02daf8/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d663232633263663061623664646538352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><strong>按星号数量搜索</strong></p>\n<p dir="auto">您可以使用 <a href="https://docs.github.com/cn/free-pro-team@latest/articles/understanding-the-search-syntax">大于、小于和范围限定符</a> 基于仓库具有的 <a href="https://docs.github.com/cn/free-pro-team@latest/articles/saving-repositories-with-stars">星标</a> 数量搜索仓库</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>限定符</th>\n<th>示例</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code class="notranslate">stars:*n*</code></td>\n<td><a href="https://github.com/search?utf8=%E2%9C%93&amp;q=stars%3A500&amp;type=Repositories"><strong>stars:500</strong></a> 匹配恰好具有 500 个星号的仓库。</td>\n</tr>\n<tr>\n<td></td>\n<td><a href="https://github.com/search?q=stars%3A10..20+size%3A%3C1000&amp;type=Repositories"><strong>stars:10..20</strong></a> 匹配具有 10 到 20 个星号、小于 1000 KB 的仓库。</td>\n</tr>\n<tr>\n<td></td>\n<td><a href="https://github.com/search?q=stars%3A%3E%3D500+fork%3Atrue+language%3Avue&amp;type=Repositories"><strong>stars:&gt;=500 fork:true language:vue</strong></a> 匹配具有至少 500 个星号，包括复刻的星号（以 vue 编写）的仓库。</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a href="https://camo.githubusercontent.com/768a62cfac4c2a31582e1c043e84ffefb993fa7c3e07e9fe5866f3adac02daf8/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d663232633263663061623664646538352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/65ba89607a3f8622874e23035da350d41d9039226745ce8dec8ff2ec12fd5768/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d383163623363623731346565363931332e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><strong>按仓库创建或上次更新时间搜索</strong></p>\n<p dir="auto">你可以基于创建时间或上次更新时间过滤仓库。</p>\n<ul dir="auto">\n<li>对于仓库创建，您可以使用 <code class="notranslate">created</code> 限定符；</li>\n<li>要了解仓库上次更新的时间，您要使用 <code class="notranslate">pushed</code> 限定符。 <code class="notranslate">pushed</code> 限定符将返回仓库列表，按仓库中任意分支上最近进行的提交排序。</li>\n</ul>\n<p dir="auto">两者均采用日期作为参数。 日期格式必须遵循 ISO8601 标准，即 <code class="notranslate">YYYY-MM-DD</code>（年-月-日）。</p>\n<p dir="auto">也可以在日期后添加可选的时间信息 <code class="notranslate">THH:MM:SS+00:00</code>，以便按小时、分钟和秒进行搜索。 这是 <code class="notranslate">T</code>，随后是 <code class="notranslate">HH:MM:SS</code>（时-分-秒）和 UTC 偏移 (<code class="notranslate">+00:00</code>)。</p>\n<p dir="auto">日期支持 <code class="notranslate">大于、小于和范围限定符</code>。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>限定符</th>\n<th>示例</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code class="notranslate">created:*YYYY-MM-DD*</code></td>\n<td><a href="https://github.com/search?q=vue+created%3A%3C2020-01-01&amp;type=Repositories"><strong>vue created:&lt;2020-01-01</strong></a> 匹配具有 "vue" 字样、在 2020 年之前创建的仓库。</td>\n</tr>\n<tr>\n<td><code class="notranslate">pushed:*YYYY-MM-DD*</code></td>\n<td><a href="https://github.com/search?utf8=%E2%9C%93&amp;q=css+pushed%3A%3E2020-02-01&amp;type=Repositories"><strong>css pushed:&gt;2020-02-01</strong></a> 匹配具有 "css" 字样、在 2020 年 1 月之后收到推送的仓库。</td>\n</tr>\n<tr>\n<td></td>\n<td><a href="https://github.com/search?q=vue+pushed%3A%3E%3D2020-03-06+fork%3Aonly&amp;type=Repositories"><strong>vue pushed:&gt;=2020-03-06 fork:only</strong></a> 匹配具有 "vue" 字样、在 2020 年 3 月 6 日或之后收到推送并且作为复刻的仓库。</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><a href="https://camo.githubusercontent.com/65ba89607a3f8622874e23035da350d41d9039226745ce8dec8ff2ec12fd5768/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d383163623363623731346565363931332e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" rel="nofollow"><img src="https://camo.githubusercontent.com/22e901e49db3c0352f9caa3ce011806bd419769d8cdbba43d7d872ae3550507e/68747470733a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f31323839303831392d346238663765313365303761383539302e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><strong>按语言搜索</strong></p>\n<p dir="auto">您可以基于其编写采用的主要语言搜索仓库。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>限定符</th>\n<th>示例</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code class="notranslate">language:*LANGUAGE*</code></td>\n<td><a href="https://github.com/search?q=vue+language%3Ajavascript&amp;type=Repositories"><strong>vue language:javascript</strong></a> 匹配具有 "vue" 字样、以 JavaScript 编写的仓库。</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h2 id="main-heading-H2-19">github 大文件上传</h2>\n<ul dir="auto">\n<li><a href="https://git-lfs.com/" rel="nofollow">https://git-lfs.com/</a></li>\n</ul>\n<h2 id="main-heading-H2-20">git 克隆使用代理</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git clone https://github.com/yanyue404/King-of-glory.git --config http.proxy=http://127.0.0.1:33210"><pre class="notranslate">git clone https://github.com/yanyue404/King-of-glory.git --config http.proxy=http://127.0.0.1:33210</pre></div>\n<h2 id="main-heading-H2-21">参考链接</h2>\n<ul dir="auto">\n<li><a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html" rel="nofollow">Git 使用规范流程</a>，by 阮一峰</li>\n<li><a href="http://www.ruanyifeng.com/blog/2012/07/git.html" rel="nofollow">Git 分支管理策略</a>，by 阮一峰</li>\n<li><a href="http://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html" rel="nofollow">git cherry-pick 教程</a>，by 阮一峰</li>\n<li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" rel="nofollow">Git 远程操作详解</a>，by 阮一峰</li>\n<li><a href="https://www.liaoxuefeng.com/wiki/896043488029600/900005860592480" rel="nofollow">廖雪峰 - 分支管理策略</a></li>\n<li><a href="https://www.cnblogs.com/wish123/p/9785101.html" rel="nofollow">Git 在团队中的最佳实践--如何正确使用 Git Flow</a></li>\n<li><a href="https://guides.github.com/introduction/flow/">Understanding the GitHub flow</a></li>\n<li><a href="https://stackoverflow.com/questions/15232000/git-ignore-files-during-merge" rel="nofollow">https://stackoverflow.com/questions/15232000/git-ignore-files-during-merge</a></li>\n<li><a href="https://juejin.im/entry/6844903476498022414" rel="nofollow">GitHub 项目徽章的添加和设置</a></li>\n<li><a href="https://shields.io/" rel="nofollow">https://shields.io/</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/34592377" rel="nofollow">分支的整合：git rebase Or git merge</a></li>\n<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" rel="nofollow">Git 工具 - 子模块</a></li>\n<li><a href="https://segmentfault.com/a/1190000004931751" rel="nofollow">在 GIT 中创建一个空分支</a></li>\n<li><a href="https://juejin.cn/post/7022746201598459940?utm_source=gold_browser_extension" rel="nofollow">一些常用的 Git 进阶知识与技巧</a></li>\n<li><a href="https://www.jianshu.com/p/50493c59c376" rel="nofollow">Git 学习之路</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:a,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:p,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:a}],html_url:"https://github.com/yanyue404/blog/issues/117"},navList:[{text:"前言",id:"main-heading-H2-0",type:s,children:[]},{text:"目录",id:"main-heading-H2-1",type:s,children:[]},{text:"漂亮的徽章",id:"main-heading-H2-2",type:s,children:[]},{text:"commit 日志",id:"main-heading-H2-3",type:s,children:[]},{text:"更好的 pull",id:"main-heading-H2-4",type:s,children:[]},{text:"rebase-修改提交历史",id:"main-heading-H2-5",type:s,children:[]},{text:"merge 时忽略文件",id:"main-heading-H2-6",type:s,children:[]},{text:"git rebase vs git merge",id:"main-heading-H2-7",type:s,children:[]},{text:"分支管理策略",id:"main-heading-H2-8",type:s,children:[]},{text:"git 仓库迁移并保留 commit 历史",id:"main-heading-H2-9",type:s,children:[]},{text:"git 子模块",id:"main-heading-H2-10",type:s,children:[]},{text:"git-创建一个空分支",id:"main-heading-H2-11",type:s,children:[]},{text:"git stash",id:"main-heading-H2-12",type:s,children:[]},{text:"git revert 与 git reset 的区别",id:"main-heading-H2-13",type:s,children:[]},{text:"git 合并另一个仓库",id:"main-heading-H2-14",type:s,children:[]},{text:"github actions",id:"main-heading-H2-15",type:s,children:[]},{text:"github.dev 写作",id:"main-heading-H2-16",type:s,children:[]},{text:"git 修改 commit 作者和邮箱",id:"main-heading-H2-17",type:s,children:[]},{text:"github 搜索",id:"main-heading-H2-18",type:s,children:[]},{text:"github 大文件上传",id:"main-heading-H2-19",type:s,children:[]},{text:"git 克隆使用代理",id:"main-heading-H2-20",type:s,children:[]},{text:"参考链接",id:"main-heading-H2-21",type:s,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:a},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:a,avatar_url:a,name:a,html_url:a,bio:a,type:p}},serverRendered:!0}}("H2","","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

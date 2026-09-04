@@ -1,0 +1,860 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>让低代码开发更稳健：Vue 3 组件测试实战—Jest 与 @vue/test-utils 的结合 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="单元测试的重要性 在低代码项目中，公共模块的复用度通常较高，为了提高代码质量，实施单元测试显得尤为重要。在持续迭代低代码平台的过程中，单元测试有助于提升自测效率，使我们能够尽早发现和修复潜在的 bug，从而保证项目的稳定性和可靠性。 低代码环境 运行环境 Node.js: 16.16.0 包管理工具"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="让低代码开发更稳健：Vue 3 组件测试实战—Jest 与 @vue/test-utils 的结合"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="单元测试的重要性 在低代码项目中，公共模块的复用度通常较高，为了提高代码质量，实施单元测试显得尤为重要。在持续迭代低代码平台的过程中，单元测试有助于提升自测效率，使我们能够尽早发现和修复潜在的 bug，从而保证项目的稳定性和可靠性。 低代码环境 运行环境 Node.js: 16.16.0 包管理工具"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="让低代码开发更稳健：Vue 3 组件测试实战—Jest 与 @vue/test-utils 的结合"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="单元测试的重要性 在低代码项目中，公共模块的复用度通常较高，为了提高代码质量，实施单元测试显得尤为重要。在持续迭代低代码平台的过程中，单元测试有助于提升自测效率，使我们能够尽早发现和修复潜在的 bug，从而保证项目的稳定性和可靠性。 低代码环境 运行环境 Node.js: 16.16.0 包管理工具"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H2-0" title="单元测试的重要性" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              单元测试的重要性
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-1" title="低代码环境" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  低代码环境
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H2-2" title="初始化测试环境" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              初始化测试环境
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-3" title="技术方案" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  技术方案
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-4" title="安装依赖" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  安装依赖
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-5" title="配置文件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  配置文件
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H2-6" title="简单组件示例" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              简单组件示例
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-7" title="src\components\base\demo\demo.vue" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  src\components\base\demo\demo.vue
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-8" title="tests\components\demo.spec.js" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  tests\components\demo.spec.js
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-9" title="src\components\biz\auto-renewal-dialog\auto-renewal-dialog.vue" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  src\components\biz\auto-renewal-dialog\auto-renewal-dialog.vue
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-10" title="tests\components\auto-renewal-dialog.spec.js" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  tests\components\auto-renewal-dialog.spec.js
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H2-11" title="复杂模块示例" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              复杂模块示例
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-12" title="src\modules\other-info\other-info.vue" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  src\modules\other-info\other-info.vue
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-13" title="tests\modules\other-info.spec.js" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  tests\modules\other-info.spec.js
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H2-14" title="测试结果与覆盖率情况" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              测试结果与覆盖率情况
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/280#main-heading-H3-15" title="参考" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  参考
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>让低代码开发更稳健：Vue 3 组件测试实战—Jest 与 @vue/test-utils 的结合</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>让低代码开发更稳健：Vue 3 组件测试实战—Jest 与 @vue/test-utils 的结合</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2024-09-13</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 27 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">单元测试的重要性</h2>
+<p dir="auto">在低代码项目中，公共模块的复用度通常较高，为了提高代码质量，实施单元测试显得尤为重要。在持续迭代低代码平台的过程中，单元测试有助于提升自测效率，使我们能够尽早发现和修复潜在的 bug，从而保证项目的稳定性和可靠性。</p>
+<h3 id="main-heading-H3-1">低代码环境</h3>
+<p dir="auto"><strong>运行环境</strong></p>
+<ul dir="auto">
+<li>Node.js: 16.16.0</li>
+<li>包管理工具: pnpm@8.10</li>
+</ul>
+<p dir="auto"><strong>组件库相关配置</strong></p>
+<ul dir="auto">
+<li>Vue.js: 3.2.9</li>
+<li>Pinia: 2.0.36</li>
+<li>Vite: 2.9.17</li>
+<li>Babel: @babel/preset-env@7.12.17</li>
+</ul>
+<p dir="auto"><strong>Vite 插件</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">@vitejs/plugin-legacy@1.7.1</code></li>
+<li><code class="notranslate">@vitejs/plugin-vue@1.10.0</code></li>
+<li><code class="notranslate">@vitejs/plugin-vue-jsx@1.1.7</code></li>
+</ul>
+<h2 id="main-heading-H2-2">初始化测试环境</h2>
+<h3 id="main-heading-H3-3">技术方案</h3>
+<p dir="auto">我们选择使用 <strong>Jest</strong> 搭配 <strong>@vue/test-utils</strong> 进行单元测试。需要注意的是，由于 <strong>Vitest</strong> 需要 Vite 版本大于等于 5.0.0，Node 版本则需要大于等于 18.0.0，因此本项目并未采用该方案。</p>
+<h3 id="main-heading-H3-4">安装依赖</h3>
+<p dir="auto">以下命令将安装所需的依赖：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="pnpm add jest@27.1.0 @vue/test-utils@2.4.6  @vue/vue3-jest@27.0.0 babel-jest@27.0.0  ts-jest@27.1.0 -D"><pre class="notranslate">pnpm add jest@27.1.0 @vue/test-utils@2.4.6  @vue/vue3-jest@27.0.0 babel-jest@27.0.0  ts-jest@27.1.0 -D</pre></div>
+<p dir="auto">处理 Vite 环境的 import.env：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="pnpm add babel-preset-vite@1.1.3 -D"><pre class="notranslate">pnpm add babel-preset-vite@1.1.3 -D</pre></div>
+<p dir="auto">处理 scss 文件转换</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="pnpm add jest-scss-transform@1.0.4 -D"><pre class="notranslate">pnpm add jest-scss-transform@1.0.4 -D</pre></div>
+<h3 id="main-heading-H3-5">配置文件</h3>
+<ul dir="auto">
+<li>babel.config.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {
+  presets: [
+    ['@babel/preset-env', { targets: { node: 'current' } }],
+    [
+      'babel-preset-vite',
+      {
+        env: true,
+        glob: false
+      }
+    ]
+  ]
+}"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">presets</span>: <span class="pl-kos">[</span>
+    <span class="pl-kos">[</span><span class="pl-s">'@babel/preset-env'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">targets</span>: <span class="pl-kos">{</span> <span class="pl-c1">node</span>: <span class="pl-s">'current'</span> <span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-kos">[</span>
+      <span class="pl-s">'babel-preset-vite'</span><span class="pl-kos">,</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">env</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">glob</span>: <span class="pl-c1">false</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">]</span>
+<span class="pl-kos">}</span></pre></div>
+<ul dir="auto">
+<li>jest.config.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {
+  testEnvironment: 'jsdom',
+  transform: {
+    '^.+\\.vue$': '@vue/vue3-jest',
+    '^.+\\.js$': 'babel-jest',
+    '^.+\\.scss$': 'jest-scss-transform'
+  },
+  testMatch: ['**/tests/**/*.spec.js'],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^h5-render(.*)$': '<rootDir>/.ssg/index.js',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/tests/__mocks__/assetsTransformer.js',
+    '\\.(css|less)$': '<rootDir>/assetsTransformer.js'
+  },
+  collectCoverage: true,
+  collectCoverageFrom: ['src/components/**/*.vue', 'src/modules/**/*.vue']
+}"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">testEnvironment</span>: <span class="pl-s">'jsdom'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">transform</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">'^.+\\.vue$'</span>: <span class="pl-s">'@vue/vue3-jest'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'^.+\\.js$'</span>: <span class="pl-s">'babel-jest'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'^.+\\.scss$'</span>: <span class="pl-s">'jest-scss-transform'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">testMatch</span>: <span class="pl-kos">[</span><span class="pl-s">'**/tests/**/*.spec.js'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">moduleNameMapper</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">'^@/(.*)$'</span>: <span class="pl-s">'&lt;rootDir>/src/$1'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'^h5-render(.*)$'</span>: <span class="pl-s">'&lt;rootDir>/.ssg/index.js'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$'</span>:
+      <span class="pl-s">'&lt;rootDir>/tests/__mocks__/assetsTransformer.js'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'\\.(css|less)$'</span>: <span class="pl-s">'&lt;rootDir>/assetsTransformer.js'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">collectCoverage</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-c1">collectCoverageFrom</span>: <span class="pl-kos">[</span><span class="pl-s">'src/components/**/*.vue'</span><span class="pl-kos">,</span> <span class="pl-s">'src/modules/**/*.vue'</span><span class="pl-kos">]</span>
+<span class="pl-kos">}</span></pre></div>
+<ul dir="auto">
+<li>在 package.json 中新增 <code class="notranslate">test</code> 命令</li>
+</ul>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "scripts": {
+    "test": "jest"
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"test"</span>: <span class="pl-s"><span class="pl-pds">"</span>jest<span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+<h2 id="main-heading-H2-6">简单组件示例</h2>
+<h3 id="main-heading-H3-7">src\components\base\demo\demo.vue</h3>
+<div class="highlight highlight-text-html-vue notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<template>
+  <div class=&#34;c-demo&#34;>
+    <img @click=&#34;$emit('clickImg', imgurl)&#34; :src=&#34;imgurl&#34; alt=&#34;&#34; />
+    <span @click=&#34;$emit('clickText', text)&#34;>{{ text }}</span>
+  </div>
+</template>
+<script>
+export default {
+  props: {
+    imgurl: String,
+    text: String
+  },
+  created() {
+    // console.log(this.$shared) // ! 全局共享数据
+    // console.log('urlParams:', urlParams) // ! 全局链接参数
+
+    // * 注册全局共享数据
+    this.$shared.registerSharedData('demo', {
+      imgurl: this.imgurl,
+      text: this.text
+    })
+
+    // // * 注册全局共享方法
+    this.$shared.registerSharedFn('getDemoInfo', this.getDemoInfo)
+    this.$shared.registerSharedFn('previewImg', this.previewImg)
+  },
+  methods: {
+    getDemoInfo() {
+      console.log('getDemoInfo')
+    },
+    previewImg() {
+      console.log('previewImg')
+    }
+  }
+}
+</script>"><pre class="notranslate">&lt;<span class="pl-ent">template</span>>
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>c-demo<span class="pl-pds">"</span></span>>
+    &lt;<span class="pl-ent">img</span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>$emit('clickImg', imgurl)<span class="pl-pds">"</span></span> <span class="pl-e">:src</span>=<span class="pl-s"><span class="pl-pds">"</span>imgurl<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> />
+    &lt;<span class="pl-ent">span</span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>$emit('clickText', text)<span class="pl-pds">"</span></span>>{{ text }}&lt;/<span class="pl-ent">span</span>>
+  &lt;/<span class="pl-ent">div</span>>
+&lt;/<span class="pl-ent">template</span>>
+&lt;<span class="pl-ent">script</span>><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">export</span> <span class="pl-c1">default</span> {</span>
+<span class="pl-s1">  props<span class="pl-k">:</span> {</span>
+<span class="pl-s1">    imgurl<span class="pl-k">:</span> <span class="pl-c1">String</span>,</span>
+<span class="pl-s1">    text<span class="pl-k">:</span> <span class="pl-c1">String</span></span>
+<span class="pl-s1">  },</span>
+<span class="pl-s1">  <span class="pl-en">created</span>() {</span>
+<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> console.log(this.$shared) // ! 全局共享数据</span></span>
+<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> console.log('urlParams:', urlParams) // ! 全局链接参数</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> * 注册全局共享数据</span></span>
+<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-smi">$shared</span>.<span class="pl-en">registerSharedData</span>(<span class="pl-s"><span class="pl-pds">'</span>demo<span class="pl-pds">'</span></span>, {</span>
+<span class="pl-s1">      imgurl<span class="pl-k">:</span> <span class="pl-c1">this</span>.<span class="pl-smi">imgurl</span>,</span>
+<span class="pl-s1">      text<span class="pl-k">:</span> <span class="pl-c1">this</span>.<span class="pl-c1">text</span></span>
+<span class="pl-s1">    })</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> // * 注册全局共享方法</span></span>
+<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-smi">$shared</span>.<span class="pl-en">registerSharedFn</span>(<span class="pl-s"><span class="pl-pds">'</span>getDemoInfo<span class="pl-pds">'</span></span>, <span class="pl-c1">this</span>.<span class="pl-smi">getDemoInfo</span>)</span>
+<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-smi">$shared</span>.<span class="pl-en">registerSharedFn</span>(<span class="pl-s"><span class="pl-pds">'</span>previewImg<span class="pl-pds">'</span></span>, <span class="pl-c1">this</span>.<span class="pl-smi">previewImg</span>)</span>
+<span class="pl-s1">  },</span>
+<span class="pl-s1">  methods<span class="pl-k">:</span> {</span>
+<span class="pl-s1">    <span class="pl-en">getDemoInfo</span>() {</span>
+<span class="pl-s1">      <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>getDemoInfo<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">    },</span>
+<span class="pl-s1">    <span class="pl-en">previewImg</span>() {</span>
+<span class="pl-s1">      <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>previewImg<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">  }</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>&lt;/<span class="pl-ent">script</span>></pre></div>
+<h3 id="main-heading-H3-8">tests\components\demo.spec.js</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { mount } from '@vue/test-utils'
+import { createShared } from 'h5-render'
+import DemoComp from '@/components/base/demo/demo.vue'
+
+test('renders a demo comp', () => {
+  window.urlParams = { link: 'vue' }
+
+  const wrapper = mount(DemoComp, {
+    props: {
+      text: 'Learn Vue.js 3',
+      imgurl: 'https://test-utils.vuejs.org/logo.svg'
+    },
+    global: {
+      mocks: {
+        $shared: createShared()
+      }
+    }
+  })
+
+  expect(wrapper.find('span').text()).toBe('Learn Vue.js 3')
+
+  expect(wrapper.get('img').html()).toContain(
+    'https://test-utils.vuejs.org/logo.svg'
+  )
+})"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">mount</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@vue/test-utils'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createShared</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'h5-render'</span>
+<span class="pl-k">import</span> <span class="pl-v">DemoComp</span> <span class="pl-k">from</span> <span class="pl-s">'@/components/base/demo/demo.vue'</span>
+
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'renders a demo comp'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">urlParams</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">link</span>: <span class="pl-s">'vue'</span> <span class="pl-kos">}</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">DemoComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">text</span>: <span class="pl-s">'Learn Vue.js 3'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">imgurl</span>: <span class="pl-s">'https://test-utils.vuejs.org/logo.svg'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">global</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">mocks</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">$shared</span>: <span class="pl-en">createShared</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">'span'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">text</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">'Learn Vue.js 3'</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">'img'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">html</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span>
+    <span class="pl-s">'https://test-utils.vuejs.org/logo.svg'</span>
+  <span class="pl-kos">)</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>
+<h3 id="main-heading-H3-9">src\components\biz\auto-renewal-dialog\auto-renewal-dialog.vue</h3>
+<div class="highlight highlight-text-html-vue notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<template>
+  <van-popup
+    v-model:show="show"
+    id="renewal-verify-dialog"
+    position="center"
+    :lock-scroll="true"
+  >
+    <div id="dialog">
+      <i class="close-icon" @click="cancel"></i>
+      <img src="./img/bg.png" alt="" />
+      <div class="content">
+        <div class="renewal">
+          <p>说明文案</p>
+        </div>
+        <div class="link" @click="readAgreement">《自动服务协议》</div>
+        <div class="btns">
+          <div class="btn-open" @click="open">立即开启</div>
+          <div class="btn-close"><span @click="cancel">暂不开启</span></div>
+        </div>
+      </div>
+    </div>
+  </van-popup>
+</template>
+
+<script setup>
+import { ref } from &#39;vue&#39;
+import &#39;@/scss/default/overlay.scss&#39;
+import VanPopup from &#39;@/vant/popup&#39;
+import { drawer } from &#39;@/common/components/drawer/index&#39;
+
+// // 始终展示
+const show = ref(true)
+
+const props = defineProps({
+  // 点击事件
+  handleAction: Function
+})
+
+// 点击自动服务协议
+const readAgreement = () => {
+  drawer.open({
+    title: &#39;自动服务协议&#39;,
+    content: &#39;&#39;
+  })
+}
+
+// 关闭弹窗
+const close = () => {
+  show.value = false
+}
+
+// 点击取消
+const cancel = () => {
+  props.handleAction(&#39;cancel&#39;)
+  close()
+}
+
+const open = () => {
+  props.handleAction(&#39;confirm&#39;)
+  close()
+}
+</script>'><pre class="notranslate">&lt;<span class="pl-ent">template</span>>
+  &lt;<span class="pl-ent">van-popup</span>
+    <span class="pl-e">v-model:show</span>=<span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span>
+    <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>renewal-verify-dialog<span class="pl-pds">"</span></span>
+    <span class="pl-e">position</span>=<span class="pl-s"><span class="pl-pds">"</span>center<span class="pl-pds">"</span></span>
+    <span class="pl-e">:lock-scroll</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>
+  >
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>dialog<span class="pl-pds">"</span></span>>
+      &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>close-icon<span class="pl-pds">"</span></span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>cancel<span class="pl-pds">"</span></span>>&lt;/<span class="pl-ent">i</span>>
+      &lt;<span class="pl-ent">img</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>./img/bg.png<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> />
+      &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>content<span class="pl-pds">"</span></span>>
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>renewal<span class="pl-pds">"</span></span>>
+          &lt;<span class="pl-ent">p</span>>说明文案&lt;/<span class="pl-ent">p</span>>
+        &lt;/<span class="pl-ent">div</span>>
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>link<span class="pl-pds">"</span></span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>readAgreement<span class="pl-pds">"</span></span>>《自动服务协议》&lt;/<span class="pl-ent">div</span>>
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btns<span class="pl-pds">"</span></span>>
+          &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-open<span class="pl-pds">"</span></span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>open<span class="pl-pds">"</span></span>>立即开启&lt;/<span class="pl-ent">div</span>>
+          &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-close<span class="pl-pds">"</span></span>>&lt;<span class="pl-ent">span</span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>cancel<span class="pl-pds">"</span></span>>暂不开启&lt;/<span class="pl-ent">span</span>>&lt;/<span class="pl-ent">div</span>>
+        &lt;/<span class="pl-ent">div</span>>
+      &lt;/<span class="pl-ent">div</span>>
+    &lt;/<span class="pl-ent">div</span>>
+  &lt;/<span class="pl-ent">van-popup</span>>
+&lt;/<span class="pl-ent">template</span>>
+
+&lt;<span class="pl-ent">script</span> setup><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">import</span> { <span class="pl-smi">ref</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>vue<span class="pl-pds">'</span></span></span>
+<span class="pl-s1"><span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">'</span>@/scss/default/overlay.scss<span class="pl-pds">'</span></span></span>
+<span class="pl-s1"><span class="pl-k">import</span> <span class="pl-smi">VanPopup</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>@/vant/popup<span class="pl-pds">'</span></span></span>
+<span class="pl-s1"><span class="pl-k">import</span> { <span class="pl-smi">drawer</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>@/common/components/drawer/index<span class="pl-pds">'</span></span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c"><span class="pl-c">//</span> // 始终展示</span></span>
+<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">show</span> <span class="pl-k">=</span> <span class="pl-en">ref</span>(<span class="pl-c1">true</span>)</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">props</span> <span class="pl-k">=</span> <span class="pl-en">defineProps</span>({</span>
+<span class="pl-s1">  <span class="pl-c"><span class="pl-c">//</span> 点击事件</span></span>
+<span class="pl-s1">  handleAction<span class="pl-k">:</span> <span class="pl-c1">Function</span></span>
+<span class="pl-s1">})</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c"><span class="pl-c">//</span> 点击自动服务协议</span></span>
+<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">readAgreement</span> <span class="pl-k">=</span> () <span class="pl-k">=></span> {</span>
+<span class="pl-s1">  <span class="pl-smi">drawer</span>.<span class="pl-c1">open</span>({</span>
+<span class="pl-s1">    title<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>自动服务协议<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">    content<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span></span>
+<span class="pl-s1">  })</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c"><span class="pl-c">//</span> 关闭弹窗</span></span>
+<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">close</span> <span class="pl-k">=</span> () <span class="pl-k">=></span> {</span>
+<span class="pl-s1">  <span class="pl-smi">show</span>.<span class="pl-c1">value</span> <span class="pl-k">=</span> <span class="pl-c1">false</span></span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c"><span class="pl-c">//</span> 点击取消</span></span>
+<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">cancel</span> <span class="pl-k">=</span> () <span class="pl-k">=></span> {</span>
+<span class="pl-s1">  <span class="pl-smi">props</span>.<span class="pl-en">handleAction</span>(<span class="pl-s"><span class="pl-pds">'</span>cancel<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">  <span class="pl-en">close</span>()</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">open</span> <span class="pl-k">=</span> () <span class="pl-k">=></span> {</span>
+<span class="pl-s1">  <span class="pl-smi">props</span>.<span class="pl-en">handleAction</span>(<span class="pl-s"><span class="pl-pds">'</span>confirm<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">  <span class="pl-en">close</span>()</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>&lt;/<span class="pl-ent">script</span>></pre></div>
+<h3 id="main-heading-H3-10">tests\components\auto-renewal-dialog.spec.js</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { mount } from '@vue/test-utils'
+import { createApp, nextTick, flushPromises } from 'vue'
+import CusComp from '@/components/biz/auto-renewal-dialog/auto-renewal-dialog.vue'
+
+test('renders a auto-renewal-dialog comp, click confirm btn', async () => {
+  let retVal = ''
+  const wrapper = mount(CusComp, {
+    props: {
+      handleAction: (ret) => {
+        retVal = ret
+      }
+    }
+  })
+
+  await nextTick()
+
+  expect(wrapper.find('.btn-open').text()).toBe('立即开启')
+
+  // https://test-utils.vuejs.org/guide/essentials/event-handling.html
+
+  wrapper.find('.btn-open').trigger('click')
+
+  expect(retVal).toEqual('confirm')
+})
+
+test('renders a auto-renewal-dialog comp, click cancel btn', async () => {
+  let retVal = ''
+  const wrapper = mount(CusComp, {
+    props: {
+      handleAction: (ret) => {
+        retVal = ret
+      }
+    }
+  })
+
+  await nextTick()
+
+  expect(wrapper.find('.btn-close span').text()).toBe('暂不开启')
+
+  wrapper.find('.btn-close span').trigger('click')
+
+  expect(retVal).toEqual('cancel')
+})"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">mount</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@vue/test-utils'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createApp</span><span class="pl-kos">,</span> <span class="pl-s1">nextTick</span><span class="pl-kos">,</span> <span class="pl-s1">flushPromises</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'vue'</span>
+<span class="pl-k">import</span> <span class="pl-v">CusComp</span> <span class="pl-k">from</span> <span class="pl-s">'@/components/biz/auto-renewal-dialog/auto-renewal-dialog.vue'</span>
+
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'renders a auto-renewal-dialog comp, click confirm btn'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-k">let</span> <span class="pl-s1">retVal</span> <span class="pl-c1">=</span> <span class="pl-s">''</span>
+  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">CusComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+      <span class="pl-en">handleAction</span>: <span class="pl-kos">(</span><span class="pl-s1">ret</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-s1">retVal</span> <span class="pl-c1">=</span> <span class="pl-s1">ret</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-k">await</span> <span class="pl-en">nextTick</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">'.btn-open'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">text</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">'立即开启'</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// https://test-utils.vuejs.org/guide/essentials/event-handling.html</span>
+
+  <span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">'.btn-open'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">trigger</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">retVal</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toEqual</span><span class="pl-kos">(</span><span class="pl-s">'confirm'</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'renders a auto-renewal-dialog comp, click cancel btn'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-k">let</span> <span class="pl-s1">retVal</span> <span class="pl-c1">=</span> <span class="pl-s">''</span>
+  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">CusComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+      <span class="pl-en">handleAction</span>: <span class="pl-kos">(</span><span class="pl-s1">ret</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-s1">retVal</span> <span class="pl-c1">=</span> <span class="pl-s1">ret</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-k">await</span> <span class="pl-en">nextTick</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">'.btn-close span'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">text</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">'暂不开启'</span><span class="pl-kos">)</span>
+
+  <span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">'.btn-close span'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">trigger</span><span class="pl-kos">(</span><span class="pl-s">'click'</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">retVal</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toEqual</span><span class="pl-kos">(</span><span class="pl-s">'cancel'</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>
+<h2 id="main-heading-H2-11">复杂模块示例</h2>
+<h3 id="main-heading-H3-12">src\modules\other-info\other-info.vue</h3>
+<h4 dir="auto">模块功能概述</h4>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const schame = {
+  _name: 'other-info',
+  fillInfo: { title: '其他信息' },
+  paywayConfig: {
+    list: [
+      '使用链接参数<b>payMode</b>进行配置',
+      '无payMode参数: <em>不展示支付方式，默认微信</em>',
+      'payMode=0: <em>展示支付方式，仅展示微信（微信环境下，不展示支付方式）</em>',
+      'payMode=1: <em>展示两种支付方式：微信、支付宝，默认微信支付</em>',
+      'payMode=2: <em>展示两种支付方式：微信、支付宝，默认支付宝支付</em>',
+      'payMode=3: <em>展示支付方式，仅展示支付宝支付（支付宝环境下，不展示支付方式）</em>'
+    ]
+  },
+  paymentTypeConfig: {
+    list: [
+      '使用链接参数<b>ct</b>进行配置',
+      'ct=M: <em>显示缴费方式, 默认月缴</em>',
+      'ct=Y: <em>显示缴费方式, 默认年缴</em>',
+      'ct=N: <em>只展示一个年缴的缴费方式，默认年缴</em>',
+      '无ct参数: <em>显示缴费方式，默认月缴（同ct=M）</em>'
+    ],
+    badge: true
+  },
+  renewalTypeConfig: {
+    list: [
+      '使用链接参数<b>rt</b>进行配置',
+      'rt=O: <em>默认开</em>',
+      'rt=C: <em>默认关</em>',
+      '无rt参数: <em>展示续保方式，默认开</em>'
+    ],
+    show: true,
+    interceptor: true
+  }
+}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">schame</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">_name</span>: <span class="pl-s">'other-info'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">fillInfo</span>: <span class="pl-kos">{</span> <span class="pl-c1">title</span>: <span class="pl-s">'其他信息'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">paywayConfig</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">list</span>: <span class="pl-kos">[</span>
+      <span class="pl-s">'使用链接参数&lt;b>payMode&lt;/b>进行配置'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'无payMode参数: &lt;em>不展示支付方式，默认微信&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'payMode=0: &lt;em>展示支付方式，仅展示微信（微信环境下，不展示支付方式）&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'payMode=1: &lt;em>展示两种支付方式：微信、支付宝，默认微信支付&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'payMode=2: &lt;em>展示两种支付方式：微信、支付宝，默认支付宝支付&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'payMode=3: &lt;em>展示支付方式，仅展示支付宝支付（支付宝环境下，不展示支付方式）&lt;/em>'</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">paymentTypeConfig</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">list</span>: <span class="pl-kos">[</span>
+      <span class="pl-s">'使用链接参数&lt;b>ct&lt;/b>进行配置'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'ct=M: &lt;em>显示缴费方式, 默认月缴&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'ct=Y: &lt;em>显示缴费方式, 默认年缴&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'ct=N: &lt;em>只展示一个年缴的缴费方式，默认年缴&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'无ct参数: &lt;em>显示缴费方式，默认月缴（同ct=M）&lt;/em>'</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-c1">badge</span>: <span class="pl-c1">true</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">renewalTypeConfig</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">list</span>: <span class="pl-kos">[</span>
+      <span class="pl-s">'使用链接参数&lt;b>rt&lt;/b>进行配置'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'rt=O: &lt;em>默认开&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'rt=C: &lt;em>默认关&lt;/em>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'无rt参数: &lt;em>展示续保方式，默认开&lt;/em>'</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-c1">show</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-c1">interceptor</span>: <span class="pl-c1">true</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-13">tests\modules\other-info.spec.js</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { mount } from '@vue/test-utils'
+import { createApp, nextTick } from 'vue'
+import { createPinia } from 'pinia'
+import { globalShared } from 'h5-render'
+import ModuleComp from '@/modules/other-info/other-info.vue'
+import { ClientOnly } from '../__mocks__/ClientOnly'
+import { mockWeixin, mockZhifubao } from '../__mocks__/ua'
+import registerBaseSharedFn from '@/common/base-shared-fn.js'
+
+// 注册测试环境需要的共享方法
+registerBaseSharedFn(globalShared)
+
+test('renders other-info module: 链接参数 ct = N, 仅展示年缴, 默认年缴', async () => {
+  window.urlParams = { ct: 'N' }
+
+  const app = createApp(ModuleComp)
+  const pinia = createPinia()
+  app.use(pinia)
+
+  const wrapper = mount(ModuleComp, {
+    components: { ClientOnly },
+    props: {
+      fillInfo: { title: '其他信息' },
+      renewalTypeConfig: {},
+      paymentTypeConfig: {}
+    }
+  })
+
+  expect(wrapper.find('.title p').text()).toBe('其他信息')
+
+  // 等 dom 渲染一下
+  await nextTick()
+
+  expect(wrapper.getComponent(ModuleComp).vm.paymentType).toBe('4')
+
+  const html = wrapper.html()
+
+  expect(html).toContain('全额缴费')
+  expect(html).not.toContain('按月缴费')
+})
+
+test('renders other-info module: 链接参数 payMode = 3, 环境优先（在微信环境）, 不展示支付方式 + 默认微信', async () => {
+  window.urlParams = { payMode: '3' }
+
+  mockWeixin()
+
+  const app = createApp(ModuleComp)
+  const pinia = createPinia()
+  app.use(pinia)
+
+  const wrapper = mount(ModuleComp, {
+    components: { ClientOnly },
+    props: {
+      fillInfo: { title: '其他信息' },
+      renewalTypeConfig: {},
+      paymentTypeConfig: {}
+    }
+  })
+
+  // 等 dom 渲染一下
+  await nextTick()
+
+  // 不展示
+  expect(wrapper.getComponent(ModuleComp).vm.paywayConfig.show).toBe(false)
+
+  // 不展示两种支付方式, 默认微信
+
+  expect(wrapper.getComponent(ModuleComp).vm.payway).toBe('1')
+  const html = wrapper.html()
+  expect(html).not.toContain('微信')
+  expect(html).not.toContain('支付宝')
+})
+
+// ... 其他测试用例略"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">mount</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@vue/test-utils'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createApp</span><span class="pl-kos">,</span> <span class="pl-s1">nextTick</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'vue'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createPinia</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'pinia'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">globalShared</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'h5-render'</span>
+<span class="pl-k">import</span> <span class="pl-v">ModuleComp</span> <span class="pl-k">from</span> <span class="pl-s">'@/modules/other-info/other-info.vue'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">ClientOnly</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'../__mocks__/ClientOnly'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">mockWeixin</span><span class="pl-kos">,</span> <span class="pl-s1">mockZhifubao</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'../__mocks__/ua'</span>
+<span class="pl-k">import</span> <span class="pl-s1">registerBaseSharedFn</span> <span class="pl-k">from</span> <span class="pl-s">'@/common/base-shared-fn.js'</span>
+
+<span class="pl-c">// 注册测试环境需要的共享方法</span>
+<span class="pl-en">registerBaseSharedFn</span><span class="pl-kos">(</span><span class="pl-s1">globalShared</span><span class="pl-kos">)</span>
+
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'renders other-info module: 链接参数 ct = N, 仅展示年缴, 默认年缴'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">urlParams</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">ct</span>: <span class="pl-s">'N'</span> <span class="pl-kos">}</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-en">createApp</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span>
+  <span class="pl-k">const</span> <span class="pl-s1">pinia</span> <span class="pl-c1">=</span> <span class="pl-en">createPinia</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+  <span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-s1">pinia</span><span class="pl-kos">)</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">components</span>: <span class="pl-kos">{</span> ClientOnly <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">fillInfo</span>: <span class="pl-kos">{</span> <span class="pl-c1">title</span>: <span class="pl-s">'其他信息'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c1">renewalTypeConfig</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c1">paymentTypeConfig</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">'.title p'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">text</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">'其他信息'</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// 等 dom 渲染一下</span>
+  <span class="pl-k">await</span> <span class="pl-en">nextTick</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">getComponent</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">vm</span><span class="pl-kos">.</span><span class="pl-c1">paymentType</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">'4'</span><span class="pl-kos">)</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">html</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span><span class="pl-s">'全额缴费'</span><span class="pl-kos">)</span>
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">not</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span><span class="pl-s">'按月缴费'</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'renders other-info module: 链接参数 payMode = 3, 环境优先（在微信环境）, 不展示支付方式 + 默认微信'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">urlParams</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">payMode</span>: <span class="pl-s">'3'</span> <span class="pl-kos">}</span>
+
+  <span class="pl-en">mockWeixin</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-en">createApp</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span>
+  <span class="pl-k">const</span> <span class="pl-s1">pinia</span> <span class="pl-c1">=</span> <span class="pl-en">createPinia</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+  <span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-s1">pinia</span><span class="pl-kos">)</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">components</span>: <span class="pl-kos">{</span> ClientOnly <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">fillInfo</span>: <span class="pl-kos">{</span> <span class="pl-c1">title</span>: <span class="pl-s">'其他信息'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c1">renewalTypeConfig</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c1">paymentTypeConfig</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// 等 dom 渲染一下</span>
+  <span class="pl-k">await</span> <span class="pl-en">nextTick</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// 不展示</span>
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">getComponent</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">vm</span><span class="pl-kos">.</span><span class="pl-c1">paywayConfig</span><span class="pl-kos">.</span><span class="pl-c1">show</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// 不展示两种支付方式, 默认微信</span>
+
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">getComponent</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">vm</span><span class="pl-kos">.</span><span class="pl-c1">payway</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">'1'</span><span class="pl-kos">)</span>
+  <span class="pl-k">const</span> <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">html</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">not</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span><span class="pl-s">'微信'</span><span class="pl-kos">)</span>
+  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">not</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span><span class="pl-s">'支付宝'</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-c">// ... 其他测试用例略</span></pre></div>
+<ul dir="auto">
+<li>tests__mocks__\assetsTransformer.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require('path')
+
+module.exports = {
+  process(src, filename, config, options) {
+    return 'module.exports = ' + JSON.stringify(path.basename(filename)) + ';'
+  }
+}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'path'</span><span class="pl-kos">)</span>
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-en">process</span><span class="pl-kos">(</span><span class="pl-s1">src</span><span class="pl-kos">,</span> <span class="pl-s1">filename</span><span class="pl-kos">,</span> <span class="pl-s1">config</span><span class="pl-kos">,</span> <span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s">'module.exports = '</span> <span class="pl-c1">+</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">basename</span><span class="pl-kos">(</span><span class="pl-s1">filename</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-c1">+</span> <span class="pl-s">';'</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<ul dir="auto">
+<li>tests__mocks__\ClientOnly.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { defineComponent, useSlots, ref, onMounted } from 'vue'
+
+export const ClientOnly = defineComponent(function ClientOnly() {
+  const slots = useSlots()
+  const mount = ref(false)
+  onMounted(() => {
+    mount.value = true
+  })
+  return () => (mount.value ? slots.default() : null)
+})"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">defineComponent</span><span class="pl-kos">,</span> <span class="pl-s1">useSlots</span><span class="pl-kos">,</span> <span class="pl-s1">ref</span><span class="pl-kos">,</span> <span class="pl-s1">onMounted</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'vue'</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">ClientOnly</span> <span class="pl-c1">=</span> <span class="pl-en">defineComponent</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-v">ClientOnly</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-s1">slots</span> <span class="pl-c1">=</span> <span class="pl-en">useSlots</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+  <span class="pl-k">const</span> <span class="pl-s1">mount</span> <span class="pl-c1">=</span> <span class="pl-en">ref</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span>
+  <span class="pl-en">onMounted</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">mount</span><span class="pl-kos">.</span><span class="pl-c1">value</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">(</span><span class="pl-s1">mount</span><span class="pl-kos">.</span><span class="pl-c1">value</span> ? <span class="pl-s1">slots</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-kos">)</span> : <span class="pl-c1">null</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>
+<ul dir="auto">
+<li>tests__mocks__\ua.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 模拟 微信 userAgent
+
+export const mockWeixin = () => {
+  Object.defineProperty(window.navigator, 'userAgent', {
+    value:
+      'Mozilla/5.0 (Linux; Android 10; SM-G9730) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Mobile Safari/537.36 MicroMessenger/8.0.1.1950(0x2800013D)',
+    configurable: true // 允许后续修改
+  })
+}
+
+// 模拟 支付宝 userAgent
+
+export const mockZhifubao = () => {
+  Object.defineProperty(window.navigator, 'userAgent', {
+    value:
+      'Mozilla/5.0 (Linux; Android 10; SM-G9730) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0  AliApp(AlipayClient) 10.2.36.0512000 AWE/0.5.0.4 Mobile Safari/537.36',
+    configurable: true // 允许后续修改
+  })
+}"><pre class="notranslate"><span class="pl-c">// 模拟 微信 userAgent</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-en">mockWeixin</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">defineProperty</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">navigator</span><span class="pl-kos">,</span> <span class="pl-s">'userAgent'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">value</span>:
+      <span class="pl-s">'Mozilla/5.0 (Linux; Android 10; SM-G9730) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Mobile Safari/537.36 MicroMessenger/8.0.1.1950(0x2800013D)'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">configurable</span>: <span class="pl-c1">true</span> <span class="pl-c">// 允许后续修改</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// 模拟 支付宝 userAgent</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-en">mockZhifubao</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">defineProperty</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">navigator</span><span class="pl-kos">,</span> <span class="pl-s">'userAgent'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">value</span>:
+      <span class="pl-s">'Mozilla/5.0 (Linux; Android 10; SM-G9730) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0  AliApp(AlipayClient) 10.2.36.0512000 AWE/0.5.0.4 Mobile Safari/537.36'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">configurable</span>: <span class="pl-c1">true</span> <span class="pl-c">// 允许后续修改</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-14">测试结果与覆盖率情况</h2>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/vue3-test.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/vue3-test.png" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><strong>指标说明</strong></p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>指标</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%stmts（statement coverage）</td>
+<td>语句覆盖率：是不是每个语句都执行了？</td>
+</tr>
+<tr>
+<td>%Branch（branch coverage）</td>
+<td>分支覆盖率：是不是每个 if 代码块都执行了？</td>
+</tr>
+<tr>
+<td>%Funcs（function coverage）</td>
+<td>函数覆盖率：是不是每个函数都调用了？</td>
+</tr>
+<tr>
+<td>%Lines（line coverage）</td>
+<td>行覆盖率：是不是每一行都执行了？</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>开启单元测试校验时机</strong></p>
+<p dir="auto">不在提交代码时做校验，而在部署发布时。</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "scripts": {
+    "build": "npm run test && sh ./build.sh",
+    "test": "jest"
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"build"</span>: <span class="pl-s"><span class="pl-pds">"</span>npm run test && sh ./build.sh<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"test"</span>: <span class="pl-s"><span class="pl-pds">"</span>jest<span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+<p dir="auto"><strong>Node 内存溢出问题修复</strong></p>
+<p dir="auto">以进行全局设置：<br>
+【1】打开一个cmd窗口；<br>
+【2】跑setx NODE_OPTIONS --max_old_space_size=10240；<br>
+【3】关闭所有cmd代码编辑器；<br>
+【4】重新打开cmd并再次运行节点命令（npm等）；</p>
+<h3 id="main-heading-H3-15">参考</h3>
+<ul dir="auto">
+<li><a href="https://test-utils.vuejs.org/guide/" rel="nofollow">https://test-utils.vuejs.org/guide/</a></li>
+<li><a href="https://jestjs.io/docs/" rel="nofollow">https://jestjs.io/docs/</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l,c){return{layout:"default",data:[{post:{id:2523906522,number:280,title:"让低代码开发更稳健：Vue 3 组件测试实战—Jest 与 @vue/test-utils 的结合",created_at:"2024-09-13T05:29:08Z",updated_at:"2024-09-14T05:39:06Z",body_html:'<h2 id="main-heading-H2-0">单元测试的重要性</h2>\n<p dir="auto">在低代码项目中，公共模块的复用度通常较高，为了提高代码质量，实施单元测试显得尤为重要。在持续迭代低代码平台的过程中，单元测试有助于提升自测效率，使我们能够尽早发现和修复潜在的 bug，从而保证项目的稳定性和可靠性。</p>\n<h3 id="main-heading-H3-1">低代码环境</h3>\n<p dir="auto"><strong>运行环境</strong></p>\n<ul dir="auto">\n<li>Node.js: 16.16.0</li>\n<li>包管理工具: pnpm@8.10</li>\n</ul>\n<p dir="auto"><strong>组件库相关配置</strong></p>\n<ul dir="auto">\n<li>Vue.js: 3.2.9</li>\n<li>Pinia: 2.0.36</li>\n<li>Vite: 2.9.17</li>\n<li>Babel: @babel/preset-env@7.12.17</li>\n</ul>\n<p dir="auto"><strong>Vite 插件</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">@vitejs/plugin-legacy@1.7.1</code></li>\n<li><code class="notranslate">@vitejs/plugin-vue@1.10.0</code></li>\n<li><code class="notranslate">@vitejs/plugin-vue-jsx@1.1.7</code></li>\n</ul>\n<h2 id="main-heading-H2-2">初始化测试环境</h2>\n<h3 id="main-heading-H3-3">技术方案</h3>\n<p dir="auto">我们选择使用 <strong>Jest</strong> 搭配 <strong>@vue/test-utils</strong> 进行单元测试。需要注意的是，由于 <strong>Vitest</strong> 需要 Vite 版本大于等于 5.0.0，Node 版本则需要大于等于 18.0.0，因此本项目并未采用该方案。</p>\n<h3 id="main-heading-H3-4">安装依赖</h3>\n<p dir="auto">以下命令将安装所需的依赖：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="pnpm add jest@27.1.0 @vue/test-utils@2.4.6  @vue/vue3-jest@27.0.0 babel-jest@27.0.0  ts-jest@27.1.0 -D"><pre class="notranslate">pnpm add jest@27.1.0 @vue/test-utils@2.4.6  @vue/vue3-jest@27.0.0 babel-jest@27.0.0  ts-jest@27.1.0 -D</pre></div>\n<p dir="auto">处理 Vite 环境的 import.env：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="pnpm add babel-preset-vite@1.1.3 -D"><pre class="notranslate">pnpm add babel-preset-vite@1.1.3 -D</pre></div>\n<p dir="auto">处理 scss 文件转换</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="pnpm add jest-scss-transform@1.0.4 -D"><pre class="notranslate">pnpm add jest-scss-transform@1.0.4 -D</pre></div>\n<h3 id="main-heading-H3-5">配置文件</h3>\n<ul dir="auto">\n<li>babel.config.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {\n  presets: [\n    [\'@babel/preset-env\', { targets: { node: \'current\' } }],\n    [\n      \'babel-preset-vite\',\n      {\n        env: true,\n        glob: false\n      }\n    ]\n  ]\n}"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">presets</span>: <span class="pl-kos">[</span>\n    <span class="pl-kos">[</span><span class="pl-s">\'@babel/preset-env\'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">targets</span>: <span class="pl-kos">{</span> <span class="pl-c1">node</span>: <span class="pl-s">\'current\'</span> <span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-kos">[</span>\n      <span class="pl-s">\'babel-preset-vite\'</span><span class="pl-kos">,</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">env</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">glob</span>: <span class="pl-c1">false</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">]</span>\n<span class="pl-kos">}</span></pre></div>\n<ul dir="auto">\n<li>jest.config.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {\n  testEnvironment: \'jsdom\',\n  transform: {\n    \'^.+\\\\.vue$\': \'@vue/vue3-jest\',\n    \'^.+\\\\.js$\': \'babel-jest\',\n    \'^.+\\\\.scss$\': \'jest-scss-transform\'\n  },\n  testMatch: [\'**/tests/**/*.spec.js\'],\n  moduleNameMapper: {\n    \'^@/(.*)$\': \'&lt;rootDir&gt;/src/$1\',\n    \'^h5-render(.*)$\': \'&lt;rootDir&gt;/.ssg/index.js\',\n    \'\\\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$\':\n      \'&lt;rootDir&gt;/tests/__mocks__/assetsTransformer.js\',\n    \'\\\\.(css|less)$\': \'&lt;rootDir&gt;/assetsTransformer.js\'\n  },\n  collectCoverage: true,\n  collectCoverageFrom: [\'src/components/**/*.vue\', \'src/modules/**/*.vue\']\n}"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">testEnvironment</span>: <span class="pl-s">\'jsdom\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">transform</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">\'^.+\\\\.vue$\'</span>: <span class="pl-s">\'@vue/vue3-jest\'</span><span class="pl-kos">,</span>\n    <span class="pl-s">\'^.+\\\\.js$\'</span>: <span class="pl-s">\'babel-jest\'</span><span class="pl-kos">,</span>\n    <span class="pl-s">\'^.+\\\\.scss$\'</span>: <span class="pl-s">\'jest-scss-transform\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">testMatch</span>: <span class="pl-kos">[</span><span class="pl-s">\'**/tests/**/*.spec.js\'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">moduleNameMapper</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">\'^@/(.*)$\'</span>: <span class="pl-s">\'&lt;rootDir&gt;/src/$1\'</span><span class="pl-kos">,</span>\n    <span class="pl-s">\'^h5-render(.*)$\'</span>: <span class="pl-s">\'&lt;rootDir&gt;/.ssg/index.js\'</span><span class="pl-kos">,</span>\n    <span class="pl-s">\'\\\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$\'</span>:\n      <span class="pl-s">\'&lt;rootDir&gt;/tests/__mocks__/assetsTransformer.js\'</span><span class="pl-kos">,</span>\n    <span class="pl-s">\'\\\\.(css|less)$\'</span>: <span class="pl-s">\'&lt;rootDir&gt;/assetsTransformer.js\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">collectCoverage</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n  <span class="pl-c1">collectCoverageFrom</span>: <span class="pl-kos">[</span><span class="pl-s">\'src/components/**/*.vue\'</span><span class="pl-kos">,</span> <span class="pl-s">\'src/modules/**/*.vue\'</span><span class="pl-kos">]</span>\n<span class="pl-kos">}</span></pre></div>\n<ul dir="auto">\n<li>在 package.json 中新增 <code class="notranslate">test</code> 命令</li>\n</ul>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;scripts&quot;: {\n    &quot;test&quot;: &quot;jest&quot;\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"scripts"</span>: {\n    <span class="pl-ent">"test"</span>: <span class="pl-s"><span class="pl-pds">"</span>jest<span class="pl-pds">"</span></span>\n  }\n}</pre></div>\n<h2 id="main-heading-H2-6">简单组件示例</h2>\n<h3 id="main-heading-H3-7">src\\components\\base\\demo\\demo.vue</h3>\n<div class="highlight highlight-text-html-vue notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template&gt;\n  &lt;div class=&quot;c-demo&quot;&gt;\n    &lt;img @click=&quot;$emit(\'clickImg\', imgurl)&quot; :src=&quot;imgurl&quot; alt=&quot;&quot; /&gt;\n    &lt;span @click=&quot;$emit(\'clickText\', text)&quot;&gt;{{ text }}&lt;/span&gt;\n  &lt;/div&gt;\n&lt;/template&gt;\n&lt;script&gt;\nexport default {\n  props: {\n    imgurl: String,\n    text: String\n  },\n  created() {\n    // console.log(this.$shared) // ! 全局共享数据\n    // console.log(\'urlParams:\', urlParams) // ! 全局链接参数\n\n    // * 注册全局共享数据\n    this.$shared.registerSharedData(\'demo\', {\n      imgurl: this.imgurl,\n      text: this.text\n    })\n\n    // // * 注册全局共享方法\n    this.$shared.registerSharedFn(\'getDemoInfo\', this.getDemoInfo)\n    this.$shared.registerSharedFn(\'previewImg\', this.previewImg)\n  },\n  methods: {\n    getDemoInfo() {\n      console.log(\'getDemoInfo\')\n    },\n    previewImg() {\n      console.log(\'previewImg\')\n    }\n  }\n}\n&lt;/script&gt;"><pre class="notranslate">&lt;<span class="pl-ent">template</span>&gt;\n  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>c-demo<span class="pl-pds">"</span></span>&gt;\n    &lt;<span class="pl-ent">img</span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>$emit(\'clickImg\', imgurl)<span class="pl-pds">"</span></span> <span class="pl-e">:src</span>=<span class="pl-s"><span class="pl-pds">"</span>imgurl<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;\n    &lt;<span class="pl-ent">span</span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>$emit(\'clickText\', text)<span class="pl-pds">"</span></span>&gt;{{ text }}&lt;/<span class="pl-ent">span</span>&gt;\n  &lt;/<span class="pl-ent">div</span>&gt;\n&lt;/<span class="pl-ent">template</span>&gt;\n&lt;<span class="pl-ent">script</span>&gt;<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-k">export</span> <span class="pl-c1">default</span> {</span>\n<span class="pl-s1">  props<span class="pl-k">:</span> {</span>\n<span class="pl-s1">    imgurl<span class="pl-k">:</span> <span class="pl-c1">String</span>,</span>\n<span class="pl-s1">    text<span class="pl-k">:</span> <span class="pl-c1">String</span></span>\n<span class="pl-s1">  },</span>\n<span class="pl-s1">  <span class="pl-en">created</span>() {</span>\n<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> console.log(this.$shared) // ! 全局共享数据</span></span>\n<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> console.log(\'urlParams:\', urlParams) // ! 全局链接参数</span></span>\n<span class="pl-s1"></span>\n<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> * 注册全局共享数据</span></span>\n<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-smi">$shared</span>.<span class="pl-en">registerSharedData</span>(<span class="pl-s"><span class="pl-pds">\'</span>demo<span class="pl-pds">\'</span></span>, {</span>\n<span class="pl-s1">      imgurl<span class="pl-k">:</span> <span class="pl-c1">this</span>.<span class="pl-smi">imgurl</span>,</span>\n<span class="pl-s1">      text<span class="pl-k">:</span> <span class="pl-c1">this</span>.<span class="pl-c1">text</span></span>\n<span class="pl-s1">    })</span>\n<span class="pl-s1"></span>\n<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> // * 注册全局共享方法</span></span>\n<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-smi">$shared</span>.<span class="pl-en">registerSharedFn</span>(<span class="pl-s"><span class="pl-pds">\'</span>getDemoInfo<span class="pl-pds">\'</span></span>, <span class="pl-c1">this</span>.<span class="pl-smi">getDemoInfo</span>)</span>\n<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-smi">$shared</span>.<span class="pl-en">registerSharedFn</span>(<span class="pl-s"><span class="pl-pds">\'</span>previewImg<span class="pl-pds">\'</span></span>, <span class="pl-c1">this</span>.<span class="pl-smi">previewImg</span>)</span>\n<span class="pl-s1">  },</span>\n<span class="pl-s1">  methods<span class="pl-k">:</span> {</span>\n<span class="pl-s1">    <span class="pl-en">getDemoInfo</span>() {</span>\n<span class="pl-s1">      <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">\'</span>getDemoInfo<span class="pl-pds">\'</span></span>)</span>\n<span class="pl-s1">    },</span>\n<span class="pl-s1">    <span class="pl-en">previewImg</span>() {</span>\n<span class="pl-s1">      <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">\'</span>previewImg<span class="pl-pds">\'</span></span>)</span>\n<span class="pl-s1">    }</span>\n<span class="pl-s1">  }</span>\n<span class="pl-s1">}</span>\n<span class="pl-s1"></span>&lt;/<span class="pl-ent">script</span>&gt;</pre></div>\n<h3 id="main-heading-H3-8">tests\\components\\demo.spec.js</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { mount } from \'@vue/test-utils\'\nimport { createShared } from \'h5-render\'\nimport DemoComp from \'@/components/base/demo/demo.vue\'\n\ntest(\'renders a demo comp\', () =&gt; {\n  window.urlParams = { link: \'vue\' }\n\n  const wrapper = mount(DemoComp, {\n    props: {\n      text: \'Learn Vue.js 3\',\n      imgurl: \'https://test-utils.vuejs.org/logo.svg\'\n    },\n    global: {\n      mocks: {\n        $shared: createShared()\n      }\n    }\n  })\n\n  expect(wrapper.find(\'span\').text()).toBe(\'Learn Vue.js 3\')\n\n  expect(wrapper.get(\'img\').html()).toContain(\n    \'https://test-utils.vuejs.org/logo.svg\'\n  )\n})"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">mount</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'@vue/test-utils\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createShared</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'h5-render\'</span>\n<span class="pl-k">import</span> <span class="pl-v">DemoComp</span> <span class="pl-k">from</span> <span class="pl-s">\'@/components/base/demo/demo.vue\'</span>\n\n<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">\'renders a demo comp\'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">urlParams</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">link</span>: <span class="pl-s">\'vue\'</span> <span class="pl-kos">}</span>\n\n  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">DemoComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">text</span>: <span class="pl-s">\'Learn Vue.js 3\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">imgurl</span>: <span class="pl-s">\'https://test-utils.vuejs.org/logo.svg\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c1">global</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">mocks</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">$shared</span>: <span class="pl-en">createShared</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">\'span\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">text</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">\'Learn Vue.js 3\'</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">\'img\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">html</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span>\n    <span class="pl-s">\'https://test-utils.vuejs.org/logo.svg\'</span>\n  <span class="pl-kos">)</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>\n<h3 id="main-heading-H3-9">src\\components\\biz\\auto-renewal-dialog\\auto-renewal-dialog.vue</h3>\n<div class="highlight highlight-text-html-vue notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template&gt;\n  &lt;van-popup\n    v-model:show=&quot;show&quot;\n    id=&quot;renewal-verify-dialog&quot;\n    position=&quot;center&quot;\n    :lock-scroll=&quot;true&quot;\n  &gt;\n    &lt;div id=&quot;dialog&quot;&gt;\n      &lt;i class=&quot;close-icon&quot; @click=&quot;cancel&quot;&gt;&lt;/i&gt;\n      &lt;img src=&quot;./img/bg.png&quot; alt=&quot;&quot; /&gt;\n      &lt;div class=&quot;content&quot;&gt;\n        &lt;div class=&quot;renewal&quot;&gt;\n          &lt;p&gt;说明文案&lt;/p&gt;\n        &lt;/div&gt;\n        &lt;div class=&quot;link&quot; @click=&quot;readAgreement&quot;&gt;《自动服务协议》&lt;/div&gt;\n        &lt;div class=&quot;btns&quot;&gt;\n          &lt;div class=&quot;btn-open&quot; @click=&quot;open&quot;&gt;立即开启&lt;/div&gt;\n          &lt;div class=&quot;btn-close&quot;&gt;&lt;span @click=&quot;cancel&quot;&gt;暂不开启&lt;/span&gt;&lt;/div&gt;\n        &lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/van-popup&gt;\n&lt;/template&gt;\n\n&lt;script setup&gt;\nimport { ref } from \'vue\'\nimport \'@/scss/default/overlay.scss\'\nimport VanPopup from \'@/vant/popup\'\nimport { drawer } from \'@/common/components/drawer/index\'\n\n// // 始终展示\nconst show = ref(true)\n\nconst props = defineProps({\n  // 点击事件\n  handleAction: Function\n})\n\n// 点击自动服务协议\nconst readAgreement = () =&gt; {\n  drawer.open({\n    title: \'自动服务协议\',\n    content: \'\'\n  })\n}\n\n// 关闭弹窗\nconst close = () =&gt; {\n  show.value = false\n}\n\n// 点击取消\nconst cancel = () =&gt; {\n  props.handleAction(\'cancel\')\n  close()\n}\n\nconst open = () =&gt; {\n  props.handleAction(\'confirm\')\n  close()\n}\n&lt;/script&gt;"><pre class="notranslate">&lt;<span class="pl-ent">template</span>&gt;\n  &lt;<span class="pl-ent">van-popup</span>\n    <span class="pl-e">v-model:show</span>=<span class="pl-s"><span class="pl-pds">"</span>show<span class="pl-pds">"</span></span>\n    <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>renewal-verify-dialog<span class="pl-pds">"</span></span>\n    <span class="pl-e">position</span>=<span class="pl-s"><span class="pl-pds">"</span>center<span class="pl-pds">"</span></span>\n    <span class="pl-e">:lock-scroll</span>=<span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>\n  &gt;\n    &lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>dialog<span class="pl-pds">"</span></span>&gt;\n      &lt;<span class="pl-ent">i</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>close-icon<span class="pl-pds">"</span></span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>cancel<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;\n      &lt;<span class="pl-ent">img</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>./img/bg.png<span class="pl-pds">"</span></span> <span class="pl-e">alt</span>=<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span> /&gt;\n      &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>content<span class="pl-pds">"</span></span>&gt;\n        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>renewal<span class="pl-pds">"</span></span>&gt;\n          &lt;<span class="pl-ent">p</span>&gt;说明文案&lt;/<span class="pl-ent">p</span>&gt;\n        &lt;/<span class="pl-ent">div</span>&gt;\n        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>link<span class="pl-pds">"</span></span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>readAgreement<span class="pl-pds">"</span></span>&gt;《自动服务协议》&lt;/<span class="pl-ent">div</span>&gt;\n        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btns<span class="pl-pds">"</span></span>&gt;\n          &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-open<span class="pl-pds">"</span></span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>open<span class="pl-pds">"</span></span>&gt;立即开启&lt;/<span class="pl-ent">div</span>&gt;\n          &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>btn-close<span class="pl-pds">"</span></span>&gt;&lt;<span class="pl-ent">span</span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>cancel<span class="pl-pds">"</span></span>&gt;暂不开启&lt;/<span class="pl-ent">span</span>&gt;&lt;/<span class="pl-ent">div</span>&gt;\n        &lt;/<span class="pl-ent">div</span>&gt;\n      &lt;/<span class="pl-ent">div</span>&gt;\n    &lt;/<span class="pl-ent">div</span>&gt;\n  &lt;/<span class="pl-ent">van-popup</span>&gt;\n&lt;/<span class="pl-ent">template</span>&gt;\n\n&lt;<span class="pl-ent">script</span> setup&gt;<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-k">import</span> { <span class="pl-smi">ref</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">\'</span>vue<span class="pl-pds">\'</span></span></span>\n<span class="pl-s1"><span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">\'</span>@/scss/default/overlay.scss<span class="pl-pds">\'</span></span></span>\n<span class="pl-s1"><span class="pl-k">import</span> <span class="pl-smi">VanPopup</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">\'</span>@/vant/popup<span class="pl-pds">\'</span></span></span>\n<span class="pl-s1"><span class="pl-k">import</span> { <span class="pl-smi">drawer</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">\'</span>@/common/components/drawer/index<span class="pl-pds">\'</span></span></span>\n<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-c"><span class="pl-c">//</span> // 始终展示</span></span>\n<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">show</span> <span class="pl-k">=</span> <span class="pl-en">ref</span>(<span class="pl-c1">true</span>)</span>\n<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">props</span> <span class="pl-k">=</span> <span class="pl-en">defineProps</span>({</span>\n<span class="pl-s1">  <span class="pl-c"><span class="pl-c">//</span> 点击事件</span></span>\n<span class="pl-s1">  handleAction<span class="pl-k">:</span> <span class="pl-c1">Function</span></span>\n<span class="pl-s1">})</span>\n<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-c"><span class="pl-c">//</span> 点击自动服务协议</span></span>\n<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">readAgreement</span> <span class="pl-k">=</span> () <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s1">  <span class="pl-smi">drawer</span>.<span class="pl-c1">open</span>({</span>\n<span class="pl-s1">    title<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">\'</span>自动服务协议<span class="pl-pds">\'</span></span>,</span>\n<span class="pl-s1">    content<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">\'</span><span class="pl-pds">\'</span></span></span>\n<span class="pl-s1">  })</span>\n<span class="pl-s1">}</span>\n<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-c"><span class="pl-c">//</span> 关闭弹窗</span></span>\n<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">close</span> <span class="pl-k">=</span> () <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s1">  <span class="pl-smi">show</span>.<span class="pl-c1">value</span> <span class="pl-k">=</span> <span class="pl-c1">false</span></span>\n<span class="pl-s1">}</span>\n<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-c"><span class="pl-c">//</span> 点击取消</span></span>\n<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">cancel</span> <span class="pl-k">=</span> () <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s1">  <span class="pl-smi">props</span>.<span class="pl-en">handleAction</span>(<span class="pl-s"><span class="pl-pds">\'</span>cancel<span class="pl-pds">\'</span></span>)</span>\n<span class="pl-s1">  <span class="pl-en">close</span>()</span>\n<span class="pl-s1">}</span>\n<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-k">const</span> <span class="pl-c1">open</span> <span class="pl-k">=</span> () <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s1">  <span class="pl-smi">props</span>.<span class="pl-en">handleAction</span>(<span class="pl-s"><span class="pl-pds">\'</span>confirm<span class="pl-pds">\'</span></span>)</span>\n<span class="pl-s1">  <span class="pl-en">close</span>()</span>\n<span class="pl-s1">}</span>\n<span class="pl-s1"></span>&lt;/<span class="pl-ent">script</span>&gt;</pre></div>\n<h3 id="main-heading-H3-10">tests\\components\\auto-renewal-dialog.spec.js</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { mount } from \'@vue/test-utils\'\nimport { createApp, nextTick, flushPromises } from \'vue\'\nimport CusComp from \'@/components/biz/auto-renewal-dialog/auto-renewal-dialog.vue\'\n\ntest(\'renders a auto-renewal-dialog comp, click confirm btn\', async () =&gt; {\n  let retVal = \'\'\n  const wrapper = mount(CusComp, {\n    props: {\n      handleAction: (ret) =&gt; {\n        retVal = ret\n      }\n    }\n  })\n\n  await nextTick()\n\n  expect(wrapper.find(\'.btn-open\').text()).toBe(\'立即开启\')\n\n  // https://test-utils.vuejs.org/guide/essentials/event-handling.html\n\n  wrapper.find(\'.btn-open\').trigger(\'click\')\n\n  expect(retVal).toEqual(\'confirm\')\n})\n\ntest(\'renders a auto-renewal-dialog comp, click cancel btn\', async () =&gt; {\n  let retVal = \'\'\n  const wrapper = mount(CusComp, {\n    props: {\n      handleAction: (ret) =&gt; {\n        retVal = ret\n      }\n    }\n  })\n\n  await nextTick()\n\n  expect(wrapper.find(\'.btn-close span\').text()).toBe(\'暂不开启\')\n\n  wrapper.find(\'.btn-close span\').trigger(\'click\')\n\n  expect(retVal).toEqual(\'cancel\')\n})"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">mount</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'@vue/test-utils\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createApp</span><span class="pl-kos">,</span> <span class="pl-s1">nextTick</span><span class="pl-kos">,</span> <span class="pl-s1">flushPromises</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'vue\'</span>\n<span class="pl-k">import</span> <span class="pl-v">CusComp</span> <span class="pl-k">from</span> <span class="pl-s">\'@/components/biz/auto-renewal-dialog/auto-renewal-dialog.vue\'</span>\n\n<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">\'renders a auto-renewal-dialog comp, click confirm btn\'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-k">let</span> <span class="pl-s1">retVal</span> <span class="pl-c1">=</span> <span class="pl-s">\'\'</span>\n  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">CusComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n      <span class="pl-en">handleAction</span>: <span class="pl-kos">(</span><span class="pl-s1">ret</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">retVal</span> <span class="pl-c1">=</span> <span class="pl-s1">ret</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-k">await</span> <span class="pl-en">nextTick</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">\'.btn-open\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">text</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">\'立即开启\'</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// https://test-utils.vuejs.org/guide/essentials/event-handling.html</span>\n\n  <span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">\'.btn-open\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">trigger</span><span class="pl-kos">(</span><span class="pl-s">\'click\'</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">retVal</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toEqual</span><span class="pl-kos">(</span><span class="pl-s">\'confirm\'</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">\'renders a auto-renewal-dialog comp, click cancel btn\'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-k">let</span> <span class="pl-s1">retVal</span> <span class="pl-c1">=</span> <span class="pl-s">\'\'</span>\n  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">CusComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n      <span class="pl-en">handleAction</span>: <span class="pl-kos">(</span><span class="pl-s1">ret</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">retVal</span> <span class="pl-c1">=</span> <span class="pl-s1">ret</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-k">await</span> <span class="pl-en">nextTick</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">\'.btn-close span\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">text</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">\'暂不开启\'</span><span class="pl-kos">)</span>\n\n  <span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">\'.btn-close span\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">trigger</span><span class="pl-kos">(</span><span class="pl-s">\'click\'</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">retVal</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toEqual</span><span class="pl-kos">(</span><span class="pl-s">\'cancel\'</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>\n<h2 id="main-heading-H2-11">复杂模块示例</h2>\n<h3 id="main-heading-H3-12">src\\modules\\other-info\\other-info.vue</h3>\n<h4 dir="auto">模块功能概述</h4>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const schame = {\n  _name: \'other-info\',\n  fillInfo: { title: \'其他信息\' },\n  paywayConfig: {\n    list: [\n      \'使用链接参数&lt;b&gt;payMode&lt;/b&gt;进行配置\',\n      \'无payMode参数: &lt;em&gt;不展示支付方式，默认微信&lt;/em&gt;\',\n      \'payMode=0: &lt;em&gt;展示支付方式，仅展示微信（微信环境下，不展示支付方式）&lt;/em&gt;\',\n      \'payMode=1: &lt;em&gt;展示两种支付方式：微信、支付宝，默认微信支付&lt;/em&gt;\',\n      \'payMode=2: &lt;em&gt;展示两种支付方式：微信、支付宝，默认支付宝支付&lt;/em&gt;\',\n      \'payMode=3: &lt;em&gt;展示支付方式，仅展示支付宝支付（支付宝环境下，不展示支付方式）&lt;/em&gt;\'\n    ]\n  },\n  paymentTypeConfig: {\n    list: [\n      \'使用链接参数&lt;b&gt;ct&lt;/b&gt;进行配置\',\n      \'ct=M: &lt;em&gt;显示缴费方式, 默认月缴&lt;/em&gt;\',\n      \'ct=Y: &lt;em&gt;显示缴费方式, 默认年缴&lt;/em&gt;\',\n      \'ct=N: &lt;em&gt;只展示一个年缴的缴费方式，默认年缴&lt;/em&gt;\',\n      \'无ct参数: &lt;em&gt;显示缴费方式，默认月缴（同ct=M）&lt;/em&gt;\'\n    ],\n    badge: true\n  },\n  renewalTypeConfig: {\n    list: [\n      \'使用链接参数&lt;b&gt;rt&lt;/b&gt;进行配置\',\n      \'rt=O: &lt;em&gt;默认开&lt;/em&gt;\',\n      \'rt=C: &lt;em&gt;默认关&lt;/em&gt;\',\n      \'无rt参数: &lt;em&gt;展示续保方式，默认开&lt;/em&gt;\'\n    ],\n    show: true,\n    interceptor: true\n  }\n}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">schame</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">_name</span>: <span class="pl-s">\'other-info\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">fillInfo</span>: <span class="pl-kos">{</span> <span class="pl-c1">title</span>: <span class="pl-s">\'其他信息\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">paywayConfig</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">list</span>: <span class="pl-kos">[</span>\n      <span class="pl-s">\'使用链接参数&lt;b&gt;payMode&lt;/b&gt;进行配置\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'无payMode参数: &lt;em&gt;不展示支付方式，默认微信&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'payMode=0: &lt;em&gt;展示支付方式，仅展示微信（微信环境下，不展示支付方式）&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'payMode=1: &lt;em&gt;展示两种支付方式：微信、支付宝，默认微信支付&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'payMode=2: &lt;em&gt;展示两种支付方式：微信、支付宝，默认支付宝支付&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'payMode=3: &lt;em&gt;展示支付方式，仅展示支付宝支付（支付宝环境下，不展示支付方式）&lt;/em&gt;\'</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">paymentTypeConfig</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">list</span>: <span class="pl-kos">[</span>\n      <span class="pl-s">\'使用链接参数&lt;b&gt;ct&lt;/b&gt;进行配置\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'ct=M: &lt;em&gt;显示缴费方式, 默认月缴&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'ct=Y: &lt;em&gt;显示缴费方式, 默认年缴&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'ct=N: &lt;em&gt;只展示一个年缴的缴费方式，默认年缴&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'无ct参数: &lt;em&gt;显示缴费方式，默认月缴（同ct=M）&lt;/em&gt;\'</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-c1">badge</span>: <span class="pl-c1">true</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">renewalTypeConfig</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">list</span>: <span class="pl-kos">[</span>\n      <span class="pl-s">\'使用链接参数&lt;b&gt;rt&lt;/b&gt;进行配置\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'rt=O: &lt;em&gt;默认开&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'rt=C: &lt;em&gt;默认关&lt;/em&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'无rt参数: &lt;em&gt;展示续保方式，默认开&lt;/em&gt;\'</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-c1">show</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-c1">interceptor</span>: <span class="pl-c1">true</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-13">tests\\modules\\other-info.spec.js</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { mount } from \'@vue/test-utils\'\nimport { createApp, nextTick } from \'vue\'\nimport { createPinia } from \'pinia\'\nimport { globalShared } from \'h5-render\'\nimport ModuleComp from \'@/modules/other-info/other-info.vue\'\nimport { ClientOnly } from \'../__mocks__/ClientOnly\'\nimport { mockWeixin, mockZhifubao } from \'../__mocks__/ua\'\nimport registerBaseSharedFn from \'@/common/base-shared-fn.js\'\n\n// 注册测试环境需要的共享方法\nregisterBaseSharedFn(globalShared)\n\ntest(\'renders other-info module: 链接参数 ct = N, 仅展示年缴, 默认年缴\', async () =&gt; {\n  window.urlParams = { ct: \'N\' }\n\n  const app = createApp(ModuleComp)\n  const pinia = createPinia()\n  app.use(pinia)\n\n  const wrapper = mount(ModuleComp, {\n    components: { ClientOnly },\n    props: {\n      fillInfo: { title: \'其他信息\' },\n      renewalTypeConfig: {},\n      paymentTypeConfig: {}\n    }\n  })\n\n  expect(wrapper.find(\'.title p\').text()).toBe(\'其他信息\')\n\n  // 等 dom 渲染一下\n  await nextTick()\n\n  expect(wrapper.getComponent(ModuleComp).vm.paymentType).toBe(\'4\')\n\n  const html = wrapper.html()\n\n  expect(html).toContain(\'全额缴费\')\n  expect(html).not.toContain(\'按月缴费\')\n})\n\ntest(\'renders other-info module: 链接参数 payMode = 3, 环境优先（在微信环境）, 不展示支付方式 + 默认微信\', async () =&gt; {\n  window.urlParams = { payMode: \'3\' }\n\n  mockWeixin()\n\n  const app = createApp(ModuleComp)\n  const pinia = createPinia()\n  app.use(pinia)\n\n  const wrapper = mount(ModuleComp, {\n    components: { ClientOnly },\n    props: {\n      fillInfo: { title: \'其他信息\' },\n      renewalTypeConfig: {},\n      paymentTypeConfig: {}\n    }\n  })\n\n  // 等 dom 渲染一下\n  await nextTick()\n\n  // 不展示\n  expect(wrapper.getComponent(ModuleComp).vm.paywayConfig.show).toBe(false)\n\n  // 不展示两种支付方式, 默认微信\n\n  expect(wrapper.getComponent(ModuleComp).vm.payway).toBe(\'1\')\n  const html = wrapper.html()\n  expect(html).not.toContain(\'微信\')\n  expect(html).not.toContain(\'支付宝\')\n})\n\n// ... 其他测试用例略"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">mount</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'@vue/test-utils\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createApp</span><span class="pl-kos">,</span> <span class="pl-s1">nextTick</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'vue\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createPinia</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'pinia\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">globalShared</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'h5-render\'</span>\n<span class="pl-k">import</span> <span class="pl-v">ModuleComp</span> <span class="pl-k">from</span> <span class="pl-s">\'@/modules/other-info/other-info.vue\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">ClientOnly</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'../__mocks__/ClientOnly\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">mockWeixin</span><span class="pl-kos">,</span> <span class="pl-s1">mockZhifubao</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'../__mocks__/ua\'</span>\n<span class="pl-k">import</span> <span class="pl-s1">registerBaseSharedFn</span> <span class="pl-k">from</span> <span class="pl-s">\'@/common/base-shared-fn.js\'</span>\n\n<span class="pl-c">// 注册测试环境需要的共享方法</span>\n<span class="pl-en">registerBaseSharedFn</span><span class="pl-kos">(</span><span class="pl-s1">globalShared</span><span class="pl-kos">)</span>\n\n<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">\'renders other-info module: 链接参数 ct = N, 仅展示年缴, 默认年缴\'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">urlParams</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">ct</span>: <span class="pl-s">\'N\'</span> <span class="pl-kos">}</span>\n\n  <span class="pl-k">const</span> <span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-en">createApp</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span>\n  <span class="pl-k">const</span> <span class="pl-s1">pinia</span> <span class="pl-c1">=</span> <span class="pl-en">createPinia</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n  <span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-s1">pinia</span><span class="pl-kos">)</span>\n\n  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">components</span>: <span class="pl-kos">{</span> ClientOnly <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">fillInfo</span>: <span class="pl-kos">{</span> <span class="pl-c1">title</span>: <span class="pl-s">\'其他信息\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c1">renewalTypeConfig</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c1">paymentTypeConfig</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s">\'.title p\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">text</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">\'其他信息\'</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// 等 dom 渲染一下</span>\n  <span class="pl-k">await</span> <span class="pl-en">nextTick</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">getComponent</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">vm</span><span class="pl-kos">.</span><span class="pl-c1">paymentType</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">\'4\'</span><span class="pl-kos">)</span>\n\n  <span class="pl-k">const</span> <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">html</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span><span class="pl-s">\'全额缴费\'</span><span class="pl-kos">)</span>\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">not</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span><span class="pl-s">\'按月缴费\'</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">\'renders other-info module: 链接参数 payMode = 3, 环境优先（在微信环境）, 不展示支付方式 + 默认微信\'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">urlParams</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">payMode</span>: <span class="pl-s">\'3\'</span> <span class="pl-kos">}</span>\n\n  <span class="pl-en">mockWeixin</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n\n  <span class="pl-k">const</span> <span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-en">createApp</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span>\n  <span class="pl-k">const</span> <span class="pl-s1">pinia</span> <span class="pl-c1">=</span> <span class="pl-en">createPinia</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n  <span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-s1">pinia</span><span class="pl-kos">)</span>\n\n  <span class="pl-k">const</span> <span class="pl-s1">wrapper</span> <span class="pl-c1">=</span> <span class="pl-en">mount</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">components</span>: <span class="pl-kos">{</span> ClientOnly <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">fillInfo</span>: <span class="pl-kos">{</span> <span class="pl-c1">title</span>: <span class="pl-s">\'其他信息\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c1">renewalTypeConfig</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c1">paymentTypeConfig</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// 等 dom 渲染一下</span>\n  <span class="pl-k">await</span> <span class="pl-en">nextTick</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// 不展示</span>\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">getComponent</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">vm</span><span class="pl-kos">.</span><span class="pl-c1">paywayConfig</span><span class="pl-kos">.</span><span class="pl-c1">show</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// 不展示两种支付方式, 默认微信</span>\n\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">getComponent</span><span class="pl-kos">(</span><span class="pl-v">ModuleComp</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">vm</span><span class="pl-kos">.</span><span class="pl-c1">payway</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toBe</span><span class="pl-kos">(</span><span class="pl-s">\'1\'</span><span class="pl-kos">)</span>\n  <span class="pl-k">const</span> <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-s1">wrapper</span><span class="pl-kos">.</span><span class="pl-en">html</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">not</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span><span class="pl-s">\'微信\'</span><span class="pl-kos">)</span>\n  <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">not</span><span class="pl-kos">.</span><span class="pl-en">toContain</span><span class="pl-kos">(</span><span class="pl-s">\'支付宝\'</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n<span class="pl-c">// ... 其他测试用例略</span></pre></div>\n<ul dir="auto">\n<li>tests__mocks__\\assetsTransformer.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require(\'path\')\n\nmodule.exports = {\n  process(src, filename, config, options) {\n    return \'module.exports = \' + JSON.stringify(path.basename(filename)) + \';\'\n  }\n}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'path\'</span><span class="pl-kos">)</span>\n\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-en">process</span><span class="pl-kos">(</span><span class="pl-s1">src</span><span class="pl-kos">,</span> <span class="pl-s1">filename</span><span class="pl-kos">,</span> <span class="pl-s1">config</span><span class="pl-kos">,</span> <span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-s">\'module.exports = \'</span> <span class="pl-c1">+</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">basename</span><span class="pl-kos">(</span><span class="pl-s1">filename</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-c1">+</span> <span class="pl-s">\';\'</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<ul dir="auto">\n<li>tests__mocks__\\ClientOnly.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { defineComponent, useSlots, ref, onMounted } from \'vue\'\n\nexport const ClientOnly = defineComponent(function ClientOnly() {\n  const slots = useSlots()\n  const mount = ref(false)\n  onMounted(() =&gt; {\n    mount.value = true\n  })\n  return () =&gt; (mount.value ? slots.default() : null)\n})"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">defineComponent</span><span class="pl-kos">,</span> <span class="pl-s1">useSlots</span><span class="pl-kos">,</span> <span class="pl-s1">ref</span><span class="pl-kos">,</span> <span class="pl-s1">onMounted</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'vue\'</span>\n\n<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-v">ClientOnly</span> <span class="pl-c1">=</span> <span class="pl-en">defineComponent</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-v">ClientOnly</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-s1">slots</span> <span class="pl-c1">=</span> <span class="pl-en">useSlots</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n  <span class="pl-k">const</span> <span class="pl-s1">mount</span> <span class="pl-c1">=</span> <span class="pl-en">ref</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span>\n  <span class="pl-en">onMounted</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">mount</span><span class="pl-kos">.</span><span class="pl-c1">value</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n  <span class="pl-k">return</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">(</span><span class="pl-s1">mount</span><span class="pl-kos">.</span><span class="pl-c1">value</span> ? <span class="pl-s1">slots</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-kos">)</span> : <span class="pl-c1">null</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>\n<ul dir="auto">\n<li>tests__mocks__\\ua.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 模拟 微信 userAgent\n\nexport const mockWeixin = () =&gt; {\n  Object.defineProperty(window.navigator, \'userAgent\', {\n    value:\n      \'Mozilla/5.0 (Linux; Android 10; SM-G9730) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Mobile Safari/537.36 MicroMessenger/8.0.1.1950(0x2800013D)\',\n    configurable: true // 允许后续修改\n  })\n}\n\n// 模拟 支付宝 userAgent\n\nexport const mockZhifubao = () =&gt; {\n  Object.defineProperty(window.navigator, \'userAgent\', {\n    value:\n      \'Mozilla/5.0 (Linux; Android 10; SM-G9730) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0  AliApp(AlipayClient) 10.2.36.0512000 AWE/0.5.0.4 Mobile Safari/537.36\',\n    configurable: true // 允许后续修改\n  })\n}"><pre class="notranslate"><span class="pl-c">// 模拟 微信 userAgent</span>\n\n<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-en">mockWeixin</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">defineProperty</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">navigator</span><span class="pl-kos">,</span> <span class="pl-s">\'userAgent\'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">value</span>:\n      <span class="pl-s">\'Mozilla/5.0 (Linux; Android 10; SM-G9730) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Mobile Safari/537.36 MicroMessenger/8.0.1.1950(0x2800013D)\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">configurable</span>: <span class="pl-c1">true</span> <span class="pl-c">// 允许后续修改</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// 模拟 支付宝 userAgent</span>\n\n<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-en">mockZhifubao</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">defineProperty</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">navigator</span><span class="pl-kos">,</span> <span class="pl-s">\'userAgent\'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">value</span>:\n      <span class="pl-s">\'Mozilla/5.0 (Linux; Android 10; SM-G9730) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0  AliApp(AlipayClient) 10.2.36.0512000 AWE/0.5.0.4 Mobile Safari/537.36\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">configurable</span>: <span class="pl-c1">true</span> <span class="pl-c">// 允许后续修改</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-14">测试结果与覆盖率情况</h2>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/vue3-test.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/vue3-test.png" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><strong>指标说明</strong></p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>指标</th>\n<th>说明</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>%stmts（statement coverage）</td>\n<td>语句覆盖率：是不是每个语句都执行了？</td>\n</tr>\n<tr>\n<td>%Branch（branch coverage）</td>\n<td>分支覆盖率：是不是每个 if 代码块都执行了？</td>\n</tr>\n<tr>\n<td>%Funcs（function coverage）</td>\n<td>函数覆盖率：是不是每个函数都调用了？</td>\n</tr>\n<tr>\n<td>%Lines（line coverage）</td>\n<td>行覆盖率：是不是每一行都执行了？</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong>开启单元测试校验时机</strong></p>\n<p dir="auto">不在提交代码时做校验，而在部署发布时。</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;scripts&quot;: {\n    &quot;build&quot;: &quot;npm run test &amp;&amp; sh ./build.sh&quot;,\n    &quot;test&quot;: &quot;jest&quot;\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"scripts"</span>: {\n    <span class="pl-ent">"build"</span>: <span class="pl-s"><span class="pl-pds">"</span>npm run test &amp;&amp; sh ./build.sh<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"test"</span>: <span class="pl-s"><span class="pl-pds">"</span>jest<span class="pl-pds">"</span></span>\n  }\n}</pre></div>\n<p dir="auto"><strong>Node 内存溢出问题修复</strong></p>\n<p dir="auto">以进行全局设置：<br>\n【1】打开一个cmd窗口；<br>\n【2】跑setx NODE_OPTIONS --max_old_space_size=10240；<br>\n【3】关闭所有cmd代码编辑器；<br>\n【4】重新打开cmd并再次运行节点命令（npm等）；</p>\n<h3 id="main-heading-H3-15">参考</h3>\n<ul dir="auto">\n<li><a href="https://test-utils.vuejs.org/guide/" rel="nofollow">https://test-utils.vuejs.org/guide/</a></li>\n<li><a href="https://jestjs.io/docs/" rel="nofollow">https://jestjs.io/docs/</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:a,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:a}],html_url:"https://github.com/yanyue404/blog/issues/280"},navList:[{text:"单元测试的重要性",id:"main-heading-H2-0",type:p,children:[{text:"低代码环境",id:"main-heading-H3-1",type:s}]},{text:"初始化测试环境",id:"main-heading-H2-2",type:p,children:[{text:"技术方案",id:"main-heading-H3-3",type:s},{text:"安装依赖",id:"main-heading-H3-4",type:s},{text:"配置文件",id:"main-heading-H3-5",type:s}]},{text:"简单组件示例",id:"main-heading-H2-6",type:p,children:[{text:"src\\components\\base\\demo\\demo.vue",id:"main-heading-H3-7",type:s},{text:"tests\\components\\demo.spec.js",id:"main-heading-H3-8",type:s},{text:"src\\components\\biz\\auto-renewal-dialog\\auto-renewal-dialog.vue",id:"main-heading-H3-9",type:s},{text:"tests\\components\\auto-renewal-dialog.spec.js",id:"main-heading-H3-10",type:s}]},{text:"复杂模块示例",id:"main-heading-H2-11",type:p,children:[{text:"src\\modules\\other-info\\other-info.vue",id:"main-heading-H3-12",type:s},{text:"tests\\modules\\other-info.spec.js",id:"main-heading-H3-13",type:s}]},{text:"测试结果与覆盖率情况",id:"main-heading-H2-14",type:p,children:[{text:"参考",id:"main-heading-H3-15",type:s}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:a},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:a,avatar_url:a,name:a,html_url:a,bio:a,type:l}},serverRendered:!0}}("H3","","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

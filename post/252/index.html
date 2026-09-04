@@ -1,0 +1,337 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>渐进式学前端算法 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="专题式学习计划 两数之和 扁平数组与 tree 相互转换 Javascript 精度 diff 数据结构：链表、二叉树 1. 两数之和 Leetcode 第一题 https://leetcode.cn/problems/two-sum 给定一个整数数组 nums 和一个整数目标值 target，请你"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="渐进式学前端算法"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="专题式学习计划 两数之和 扁平数组与 tree 相互转换 Javascript 精度 diff 数据结构：链表、二叉树 1. 两数之和 Leetcode 第一题 https://leetcode.cn/problems/two-sum 给定一个整数数组 nums 和一个整数目标值 target，请你"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="渐进式学前端算法"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="专题式学习计划 两数之和 扁平数组与 tree 相互转换 Javascript 精度 diff 数据结构：链表、二叉树 1. 两数之和 Leetcode 第一题 https://leetcode.cn/problems/two-sum 给定一个整数数组 nums 和一个整数目标值 target，请你"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/252#main-heading-H2-0" title="专题式学习计划" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              专题式学习计划
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/252#main-heading-H2-1" title="1.  两数之和" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              1.  两数之和
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>渐进式学前端算法</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>渐进式学前端算法</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2023-04-22</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 9 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">专题式学习计划</h2>
+<ul dir="auto">
+<li>两数之和</li>
+<li>扁平数组与 tree 相互转换</li>
+<li>Javascript 精度</li>
+<li>diff</li>
+<li>数据结构：链表、二叉树</li>
+</ul>
+<h2 id="main-heading-H2-1">1.  两数之和</h2>
+<blockquote>
+<p dir="auto">Leetcode 第一题 <a href="https://leetcode.cn/problems/two-sum" rel="nofollow">https://leetcode.cn/problems/two-sum</a></p>
+</blockquote>
+<p dir="auto">给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那两个整数，并返回它们的数组下标。</p>
+<p dir="auto">你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
+<p dir="auto">你可以按任意顺序返回答案。</p>
+<p dir="auto">示例 1：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="输入：nums = [2, 3，7,11,15], target = 9
+输出：[0,1]
+解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+"><pre class="notranslate"><code class="notranslate">输入：nums = [2, 3，7,11,15], target = 9
+输出：[0,1]
+解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+
+</code></pre></div>
+<p dir="auto">示例 2：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="输入：nums = [3,2,4], target = 6
+输出：[1,2]
+"><pre class="notranslate"><code class="notranslate">输入：nums = [3,2,4], target = 6
+输出：[1,2]
+
+</code></pre></div>
+<p dir="auto">示例 3：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="输入：nums = [3,3], target = 6
+输出：[0,1]
+"><pre class="notranslate"><code class="notranslate">输入：nums = [3,3], target = 6
+输出：[0,1]
+
+</code></pre></div>
+<p dir="auto">提示：</p>
+<ul dir="auto">
+<li>2 &lt;= nums.length &lt;= 104</li>
+<li>-109 &lt;= nums[i] &lt;= 109</li>
+<li>-109 &lt;= target &lt;= 109</li>
+<li>只会存在一个有效答案</li>
+<li>进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？</li>
+</ul>
+<h5 dir="auto">解法 1：</h5>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 暴力双循环
+// 时间复杂度：O(n^2)
+// 空间复杂度：O(1)
+const twoSum = function (nums, target) {
+  for (let m = 0; m < nums.length; m++) {
+    for (let n = 0; n < nums.length; n++) {
+      if (nums[m] + nums[n] === target) {
+        return [m, n];
+      }
+    }
+  }
+};
+"><pre class="notranslate"><code class="notranslate">// 暴力双循环
+// 时间复杂度：O(n^2)
+// 空间复杂度：O(1)
+const twoSum = function (nums, target) {
+  for (let m = 0; m &lt; nums.length; m++) {
+    for (let n = 0; n &lt; nums.length; n++) {
+      if (nums[m] + nums[n] === target) {
+        return [m, n];
+      }
+    }
+  }
+};
+
+</code></pre></div>
+<h5 dir="auto">解法 2：</h5>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="
+// 一次循环 + indexOf
+// 时间复杂度：O(n^2)
+// 空间复杂度：O(1)
+var twoSum = function(nums, target) {
+  var _result
+  nums.some(function(item, index) {
+    var _index = nums.indexOf(target - item)
+    if (_index !== -1 && index !== _index) {
+      _result = [index, _index]
+      return true
+    }
+  })
+  return _result
+}
+"><pre class="notranslate"><code class="notranslate">
+// 一次循环 + indexOf
+// 时间复杂度：O(n^2)
+// 空间复杂度：O(1)
+var twoSum = function(nums, target) {
+  var _result
+  nums.some(function(item, index) {
+    var _index = nums.indexOf(target - item)
+    if (_index !== -1 && index !== _index) {
+      _result = [index, _index]
+      return true
+    }
+  })
+  return _result
+}
+
+</code></pre></div>
+<p dir="auto"><code class="notranslate">知识点：indexOf</code> 的时间复杂度？<a href="https://juejin.cn/post/7031833133938901022" rel="nofollow">https://juejin.cn/post/7031833133938901022</a></p>
+<h5 dir="auto">解法 3：</h5>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 一趟哈希表
+// 时间复杂度：O(n)
+// 空间复杂度：O(n)
+var twoSum = function(nums, target) {
+  const map = {}
+  for (let i = 0; i < nums.length; i++) {
+    const n = nums[i]
+    if (target - n in map) {
+      return [map[target - n], i]
+    } else {
+      map[n] = i
+    }
+  }
+}
+"><pre class="notranslate"><code class="notranslate">// 一趟哈希表
+// 时间复杂度：O(n)
+// 空间复杂度：O(n)
+var twoSum = function(nums, target) {
+  const map = {}
+  for (let i = 0; i &lt; nums.length; i++) {
+    const n = nums[i]
+    if (target - n in map) {
+      return [map[target - n], i]
+    } else {
+      map[n] = i
+    }
+  }
+}
+
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 使用 Map
+var twoSum = function (nums, target) {
+  const map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (map.has(complement)) {
+      return [map.get(complement), i];
+    }
+    map.set(nums[i], i);
+  }
+};
+"><pre class="notranslate"><code class="notranslate">// 使用 Map
+var twoSum = function (nums, target) {
+  const map = new Map();
+  for (let i = 0; i &lt; nums.length; i++) {
+    const complement = target - nums[i];
+    if (map.has(complement)) {
+      return [map.get(complement), i];
+    }
+    map.set(nums[i], i);
+  }
+};
+
+</code></pre></div>
+<h5 dir="auto">解法 4：</h5>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 排序 + 双指针
+// 时间复杂度：O(n^2)
+// 空间复杂度：O(n)
+var twoSum = function(nums, target) {
+  // Array.from 深拷贝一个新的排序后的数组
+  let arr = Array.from(nums).sort((a, b) => a - b)
+  let i = 0,
+    j = arr.length - 1
+    while (i < j) {
+    if (arr[i] + arr[j] === target) {
+      return [nums.indexOf(arr[i]), nums.lastIndexOf(arr[j])]
+    } else if (arr[i] + arr[j] > target) {
+      j--
+    } else {
+      i++
+    }
+  }
+}
+"><pre class="notranslate"><code class="notranslate">// 排序 + 双指针
+// 时间复杂度：O(n^2)
+// 空间复杂度：O(n)
+var twoSum = function(nums, target) {
+  // Array.from 深拷贝一个新的排序后的数组
+  let arr = Array.from(nums).sort((a, b) => a - b)
+  let i = 0,
+    j = arr.length - 1
+    while (i &lt; j) {
+    if (arr[i] + arr[j] === target) {
+      return [nums.indexOf(arr[i]), nums.lastIndexOf(arr[j])]
+    } else if (arr[i] + arr[j] > target) {
+      j--
+    } else {
+      i++
+    }
+  }
+}
+
+</code></pre></div>
+<p dir="auto">知识点：如何 copy 一个数组？</p>
+<p dir="auto">数组 item 为基础类型时以下方法为深拷贝：</p>
+<p dir="auto">[...arr]</p>
+<p dir="auto">Array.from(arr)</p>
+<p dir="auto">arr.slice()</p>
+<p dir="auto">arr.concat()</p>
+<p dir="auto">arr.map(v=>v)</p>
+<p dir="auto">arr.filter(v=> true)</p>
+<p dir="auto">Object.assign([], arr)</p>
+<h5 dir="auto">解法 5：</h5>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 二分法
+// 0-500 内的一个数：
+
+target : 365
+range: [0, 500]
+
+// 250 [251, 500]
+// 375 [251, 374]
+// 312 [313, 374]
+// 343 [344, 374]
+// 359 [360, 374]
+// 367 [360, 366]
+// 363 [364, 366]
+// 365  => 365
+"><pre class="notranslate"><code class="notranslate">// 二分法
+// 0-500 内的一个数：
+
+target : 365
+range: [0, 500]
+
+// 250 [251, 500]
+// 375 [251, 374]
+// 312 [313, 374]
+// 343 [344, 374]
+// 359 [360, 374]
+// 367 [360, 366]
+// 363 [364, 366]
+// 365  => 365
+
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 排序 + 二分法
+// 时间复杂度：O(n^2)
+// 空间复杂度：O(n)
+const twoSum = function (nums, target) {
+// Array.from 深拷贝一个新的排序后的数组
+    const arr = Array.from(nums).sort((a, b) => a - b);
+    let left = 0;
+    let right = arr.length - 1;
+    while (left < right) {
+      let mid = Math.floor((right + left) / 2);
+      if (arr[left] + arr[right] === target) {
+        break;
+        // 左半部分首尾和已经大于目标值，结果肯定在左半部分
+      } else if (arr[left] + arr[mid] > target) {
+        right = mid;
+        // 右半部分首尾和还是小于目标值，结果肯定在右半部分
+      } else if (arr[mid] + arr[right] < target) {
+        left = mid;
+      } else if (arr[left] + arr[right] < target) {
+        left++;
+      } else if (arr[left] + arr[right] > target) {
+        right--;
+      }
+    }
+    return [nums.indexOf(arr[left]), nums.lastIndexOf(arr[right])];
+};
+"><pre class="notranslate"><code class="notranslate">// 排序 + 二分法
+// 时间复杂度：O(n^2)
+// 空间复杂度：O(n)
+const twoSum = function (nums, target) {
+// Array.from 深拷贝一个新的排序后的数组
+    const arr = Array.from(nums).sort((a, b) => a - b);
+    let left = 0;
+    let right = arr.length - 1;
+    while (left &lt; right) {
+      let mid = Math.floor((right + left) / 2);
+      if (arr[left] + arr[right] === target) {
+        break;
+        // 左半部分首尾和已经大于目标值，结果肯定在左半部分
+      } else if (arr[left] + arr[mid] > target) {
+        right = mid;
+        // 右半部分首尾和还是小于目标值，结果肯定在右半部分
+      } else if (arr[mid] + arr[right] &lt; target) {
+        left = mid;
+      } else if (arr[left] + arr[right] &lt; target) {
+        left++;
+      } else if (arr[left] + arr[right] > target) {
+        right--;
+      }
+    }
+    return [nums.indexOf(arr[left]), nums.lastIndexOf(arr[right])];
+};
+
+</code></pre></div></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(n,t,e,r){return{layout:"default",data:[{post:{id:1679394576,number:252,title:"渐进式学前端算法",created_at:"2023-04-22T07:31:16Z",updated_at:"2025-11-23T16:00:17Z",body_html:'<h2 id="main-heading-H2-0">专题式学习计划</h2>\n<ul dir="auto">\n<li>两数之和</li>\n<li>扁平数组与 tree 相互转换</li>\n<li>Javascript 精度</li>\n<li>diff</li>\n<li>数据结构：链表、二叉树</li>\n</ul>\n<h2 id="main-heading-H2-1">1.  两数之和</h2>\n<blockquote>\n<p dir="auto">Leetcode 第一题 <a href="https://leetcode.cn/problems/two-sum" rel="nofollow">https://leetcode.cn/problems/two-sum</a></p>\n</blockquote>\n<p dir="auto">给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那两个整数，并返回它们的数组下标。</p>\n<p dir="auto">你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>\n<p dir="auto">你可以按任意顺序返回答案。</p>\n<p dir="auto">示例 1：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="输入：nums = [2, 3，7,11,15], target = 9\n输出：[0,1]\n解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。\n"><pre class="notranslate"><code class="notranslate">输入：nums = [2, 3，7,11,15], target = 9\n输出：[0,1]\n解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。\n\n</code></pre></div>\n<p dir="auto">示例 2：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="输入：nums = [3,2,4], target = 6\n输出：[1,2]\n"><pre class="notranslate"><code class="notranslate">输入：nums = [3,2,4], target = 6\n输出：[1,2]\n\n</code></pre></div>\n<p dir="auto">示例 3：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="输入：nums = [3,3], target = 6\n输出：[0,1]\n"><pre class="notranslate"><code class="notranslate">输入：nums = [3,3], target = 6\n输出：[0,1]\n\n</code></pre></div>\n<p dir="auto">提示：</p>\n<ul dir="auto">\n<li>2 &lt;= nums.length &lt;= 104</li>\n<li>-109 &lt;= nums[i] &lt;= 109</li>\n<li>-109 &lt;= target &lt;= 109</li>\n<li>只会存在一个有效答案</li>\n<li>进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？</li>\n</ul>\n<h5 dir="auto">解法 1：</h5>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 暴力双循环\n// 时间复杂度：O(n^2)\n// 空间复杂度：O(1)\nconst twoSum = function (nums, target) {\n  for (let m = 0; m &lt; nums.length; m++) {\n    for (let n = 0; n &lt; nums.length; n++) {\n      if (nums[m] + nums[n] === target) {\n        return [m, n];\n      }\n    }\n  }\n};\n"><pre class="notranslate"><code class="notranslate">// 暴力双循环\n// 时间复杂度：O(n^2)\n// 空间复杂度：O(1)\nconst twoSum = function (nums, target) {\n  for (let m = 0; m &lt; nums.length; m++) {\n    for (let n = 0; n &lt; nums.length; n++) {\n      if (nums[m] + nums[n] === target) {\n        return [m, n];\n      }\n    }\n  }\n};\n\n</code></pre></div>\n<h5 dir="auto">解法 2：</h5>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="\n// 一次循环 + indexOf\n// 时间复杂度：O(n^2)\n// 空间复杂度：O(1)\nvar twoSum = function(nums, target) {\n  var _result\n  nums.some(function(item, index) {\n    var _index = nums.indexOf(target - item)\n    if (_index !== -1 &amp;&amp; index !== _index) {\n      _result = [index, _index]\n      return true\n    }\n  })\n  return _result\n}\n"><pre class="notranslate"><code class="notranslate">\n// 一次循环 + indexOf\n// 时间复杂度：O(n^2)\n// 空间复杂度：O(1)\nvar twoSum = function(nums, target) {\n  var _result\n  nums.some(function(item, index) {\n    var _index = nums.indexOf(target - item)\n    if (_index !== -1 &amp;&amp; index !== _index) {\n      _result = [index, _index]\n      return true\n    }\n  })\n  return _result\n}\n\n</code></pre></div>\n<p dir="auto"><code class="notranslate">知识点：indexOf</code> 的时间复杂度？<a href="https://juejin.cn/post/7031833133938901022" rel="nofollow">https://juejin.cn/post/7031833133938901022</a></p>\n<h5 dir="auto">解法 3：</h5>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 一趟哈希表\n// 时间复杂度：O(n)\n// 空间复杂度：O(n)\nvar twoSum = function(nums, target) {\n  const map = {}\n  for (let i = 0; i &lt; nums.length; i++) {\n    const n = nums[i]\n    if (target - n in map) {\n      return [map[target - n], i]\n    } else {\n      map[n] = i\n    }\n  }\n}\n"><pre class="notranslate"><code class="notranslate">// 一趟哈希表\n// 时间复杂度：O(n)\n// 空间复杂度：O(n)\nvar twoSum = function(nums, target) {\n  const map = {}\n  for (let i = 0; i &lt; nums.length; i++) {\n    const n = nums[i]\n    if (target - n in map) {\n      return [map[target - n], i]\n    } else {\n      map[n] = i\n    }\n  }\n}\n\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 使用 Map\nvar twoSum = function (nums, target) {\n  const map = new Map();\n  for (let i = 0; i &lt; nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) {\n      return [map.get(complement), i];\n    }\n    map.set(nums[i], i);\n  }\n};\n"><pre class="notranslate"><code class="notranslate">// 使用 Map\nvar twoSum = function (nums, target) {\n  const map = new Map();\n  for (let i = 0; i &lt; nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) {\n      return [map.get(complement), i];\n    }\n    map.set(nums[i], i);\n  }\n};\n\n</code></pre></div>\n<h5 dir="auto">解法 4：</h5>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 排序 + 双指针\n// 时间复杂度：O(n^2)\n// 空间复杂度：O(n)\nvar twoSum = function(nums, target) {\n  // Array.from 深拷贝一个新的排序后的数组\n  let arr = Array.from(nums).sort((a, b) =&gt; a - b)\n  let i = 0,\n    j = arr.length - 1\n    while (i &lt; j) {\n    if (arr[i] + arr[j] === target) {\n      return [nums.indexOf(arr[i]), nums.lastIndexOf(arr[j])]\n    } else if (arr[i] + arr[j] &gt; target) {\n      j--\n    } else {\n      i++\n    }\n  }\n}\n"><pre class="notranslate"><code class="notranslate">// 排序 + 双指针\n// 时间复杂度：O(n^2)\n// 空间复杂度：O(n)\nvar twoSum = function(nums, target) {\n  // Array.from 深拷贝一个新的排序后的数组\n  let arr = Array.from(nums).sort((a, b) =&gt; a - b)\n  let i = 0,\n    j = arr.length - 1\n    while (i &lt; j) {\n    if (arr[i] + arr[j] === target) {\n      return [nums.indexOf(arr[i]), nums.lastIndexOf(arr[j])]\n    } else if (arr[i] + arr[j] &gt; target) {\n      j--\n    } else {\n      i++\n    }\n  }\n}\n\n</code></pre></div>\n<p dir="auto">知识点：如何 copy 一个数组？</p>\n<p dir="auto">数组 item 为基础类型时以下方法为深拷贝：</p>\n<p dir="auto">[...arr]</p>\n<p dir="auto">Array.from(arr)</p>\n<p dir="auto">arr.slice()</p>\n<p dir="auto">arr.concat()</p>\n<p dir="auto">arr.map(v=&gt;v)</p>\n<p dir="auto">arr.filter(v=&gt; true)</p>\n<p dir="auto">Object.assign([], arr)</p>\n<h5 dir="auto">解法 5：</h5>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 二分法\n// 0-500 内的一个数：\n\ntarget : 365\nrange: [0, 500]\n\n// 250 [251, 500]\n// 375 [251, 374]\n// 312 [313, 374]\n// 343 [344, 374]\n// 359 [360, 374]\n// 367 [360, 366]\n// 363 [364, 366]\n// 365  =&gt; 365\n"><pre class="notranslate"><code class="notranslate">// 二分法\n// 0-500 内的一个数：\n\ntarget : 365\nrange: [0, 500]\n\n// 250 [251, 500]\n// 375 [251, 374]\n// 312 [313, 374]\n// 343 [344, 374]\n// 359 [360, 374]\n// 367 [360, 366]\n// 363 [364, 366]\n// 365  =&gt; 365\n\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 排序 + 二分法\n// 时间复杂度：O(n^2)\n// 空间复杂度：O(n)\nconst twoSum = function (nums, target) {\n// Array.from 深拷贝一个新的排序后的数组\n    const arr = Array.from(nums).sort((a, b) =&gt; a - b);\n    let left = 0;\n    let right = arr.length - 1;\n    while (left &lt; right) {\n      let mid = Math.floor((right + left) / 2);\n      if (arr[left] + arr[right] === target) {\n        break;\n        // 左半部分首尾和已经大于目标值，结果肯定在左半部分\n      } else if (arr[left] + arr[mid] &gt; target) {\n        right = mid;\n        // 右半部分首尾和还是小于目标值，结果肯定在右半部分\n      } else if (arr[mid] + arr[right] &lt; target) {\n        left = mid;\n      } else if (arr[left] + arr[right] &lt; target) {\n        left++;\n      } else if (arr[left] + arr[right] &gt; target) {\n        right--;\n      }\n    }\n    return [nums.indexOf(arr[left]), nums.lastIndexOf(arr[right])];\n};\n"><pre class="notranslate"><code class="notranslate">// 排序 + 二分法\n// 时间复杂度：O(n^2)\n// 空间复杂度：O(n)\nconst twoSum = function (nums, target) {\n// Array.from 深拷贝一个新的排序后的数组\n    const arr = Array.from(nums).sort((a, b) =&gt; a - b);\n    let left = 0;\n    let right = arr.length - 1;\n    while (left &lt; right) {\n      let mid = Math.floor((right + left) / 2);\n      if (arr[left] + arr[right] === target) {\n        break;\n        // 左半部分首尾和已经大于目标值，结果肯定在左半部分\n      } else if (arr[left] + arr[mid] &gt; target) {\n        right = mid;\n        // 右半部分首尾和还是小于目标值，结果肯定在右半部分\n      } else if (arr[mid] + arr[right] &lt; target) {\n        left = mid;\n      } else if (arr[left] + arr[right] &lt; target) {\n        left++;\n      } else if (arr[left] + arr[right] &gt; target) {\n        right--;\n      }\n    }\n    return [nums.indexOf(arr[left]), nums.lastIndexOf(arr[right])];\n};\n\n</code></pre></div>',user:{login:t,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:e,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/252"},navList:[{text:"专题式学习计划",id:"main-heading-H2-0",type:"H2",children:[]},{text:"1.  两数之和",id:"main-heading-H2-1",type:"H2",children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:t,userEmail:"1656800216@qq.com",repository:"blog",blogName:r,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:r,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:e}},serverRendered:!0}}("","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,589 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Rollup 打包入门 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 官方文档 https://rollupjs.org/guide/en/ https://rollupjs.org/guide/zh/ rollup 对比 webpack 共同点： 通过插件生态的方式处理各种各样的资源依赖 不同点： webpack 致力于复杂 SPA 的模块化构建， rollu"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Rollup 打包入门"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 官方文档 https://rollupjs.org/guide/en/ https://rollupjs.org/guide/zh/ rollup 对比 webpack 共同点： 通过插件生态的方式处理各种各样的资源依赖 不同点： webpack 致力于复杂 SPA 的模块化构建， rollu"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Rollup 打包入门"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 官方文档 https://rollupjs.org/guide/en/ https://rollupjs.org/guide/zh/ rollup 对比 webpack 共同点： 通过插件生态的方式处理各种各样的资源依赖 不同点： webpack 致力于复杂 SPA 的模块化构建， rollu"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/232#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/232#main-heading-H2-1" title="rollup 对比 webpack" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              rollup 对比 webpack
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/232#main-heading-H2-2" title="快速入门" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              快速入门
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/232#main-heading-H2-3" title="核心配置" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              核心配置
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/232#main-heading-H2-4" title="完整配置项" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              完整配置项
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/232#main-heading-H2-5" title="参考链接" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考链接
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Rollup 打包入门</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Rollup 打包入门</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2022-06-24</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 17 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto">官方文档</p>
+<ul dir="auto">
+<li><a href="https://rollupjs.org/guide/en/" rel="nofollow">https://rollupjs.org/guide/en/</a></li>
+<li><a href="https://rollupjs.org/guide/zh/" rel="nofollow">https://rollupjs.org/guide/zh/</a></li>
+</ul>
+<h2 id="main-heading-H2-1">rollup 对比 webpack</h2>
+<p dir="auto">共同点：</p>
+<ol dir="auto">
+<li>通过插件生态的方式处理各种各样的资源依赖</li>
+</ol>
+<p dir="auto">不同点：</p>
+<ol dir="auto">
+<li>webpack 致力于复杂 SPA 的模块化构建， rollup 致力于打造性能出众的类库；</li>
+<li>rollup 打包后生成的 bundle 内容十分干净，没有什么多余的代码。相比 webpack(webpack 打包后会生成 webpack_require 等 runtime 代码)，rollup 拥有无可比拟的性能优势，这是由依赖处理方式决定的，编译时依赖处理（rollup）自然比运行时依赖处理（webpack）性能更好；</li>
+<li>对于 ES 模块依赖库，rollup 会静态分析代码中的 import，并将排除任何未实际使用的代码（tree-shaking）</li>
+<li>rollup 支持导出 es 模块文件（webpack 不支持导出 es 模块）</li>
+<li>webpack 支持提取公共模块</li>
+</ol>
+<h2 id="main-heading-H2-2">快速入门</h2>
+<ol dir="auto">
+<li>创建简单项目</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="mkdir -p my-rollup-project/src
+cd my-rollup-project"><pre class="notranslate">mkdir -p my-rollup-project/src
+<span class="pl-c1">cd</span> my-rollup-project</pre></div>
+<p dir="auto">首先，我们需要个 入口。将以下代码粘贴到新建的文件 src/main.js 中：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// src/main.js
+import foo from "./foo.js";
+export default function () {
+  console.log(foo);
+}'><pre class="notranslate"><span class="pl-c">// src/main.js</span>
+<span class="pl-k">import</span> <span class="pl-s1">foo</span> <span class="pl-k">from</span> <span class="pl-s">"./foo.js"</span><span class="pl-kos">;</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">foo</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">之后创建入口文件引用的 foo.js 模块：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// src/foo.js
+export default "hello world!";'><pre class="notranslate"><span class="pl-c">// src/foo.js</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s">"hello world!"</span><span class="pl-kos">;</span></pre></div>
+<ol start="2" dir="auto">
+<li>安装 rollup</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm init -y
+yarn add rollup -D"><pre class="notranslate">npm init -y
+yarn add rollup -D</pre></div>
+<ol start="3" dir="auto">
+<li>创建 rollup.config.js</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='export default {
+  input: "src/main.js", // 要打包的文件源路径
+  output: {
+    // 文件输出配置
+    file: "dist/bundle.js", // 打包后生产的文件位置及文件名
+    format: "iife", // 输出的文件类型 (amd, cjs, esm, iife, umd)
+    name: "bundleName", // 包的全局变量名称
+  },
+};'><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">input</span>: <span class="pl-s">"src/main.js"</span><span class="pl-kos">,</span> <span class="pl-c">// 要打包的文件源路径</span>
+  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>
+    <span class="pl-c">// 文件输出配置</span>
+    <span class="pl-c1">file</span>: <span class="pl-s">"dist/bundle.js"</span><span class="pl-kos">,</span> <span class="pl-c">// 打包后生产的文件位置及文件名</span>
+    <span class="pl-c1">format</span>: <span class="pl-s">"iife"</span><span class="pl-kos">,</span> <span class="pl-c">// 输出的文件类型 (amd, cjs, esm, iife, umd)</span>
+    <span class="pl-c1">name</span>: <span class="pl-s">"bundleName"</span><span class="pl-kos">,</span> <span class="pl-c">// 包的全局变量名称</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<ol start="4" dir="auto">
+<li>编写 package.json 中的打包命令</li>
+</ol>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "scripts": {
+    "build": "rollup --config rollup.config.js"
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"build"</span>: <span class="pl-s"><span class="pl-pds">"</span>rollup --config rollup.config.js<span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+<ol start="5" dir="auto">
+<li>执行<code class="notranslate">npm run build</code> 查看文件输出结果</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='var bundleName = (function () {
+  "use strict";
+
+  var foo = "hello world!";
+
+  function main() {
+    console.log(foo);
+  }
+
+  return main;
+})();'><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">bundleName</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s">"use strict"</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">var</span> <span class="pl-s1">foo</span> <span class="pl-c1">=</span> <span class="pl-s">"hello world!"</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">function</span> <span class="pl-en">main</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">foo</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">main</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-3">核心配置</h2>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// rollup.config.js
+import resolve from "rollup-plugin-node-resolve";
+import commonjs from "rollup-plugin-commonjs";
+import babel from "rollup-plugin-babel";
+export default {
+  input: "src/main.js", //填写打包的入口文件路径
+  output: {
+    file: "dist/bundle.js", // 打包后生产的文件位置及文件名
+    format: "iife", // 输出的文件类型 (amd, cjs, esm, iife, umd)
+    name: "bundleName", //当format为iife和umd时必须提供，将作为全局变量挂在window(浏览器环境)下：window.bundleName=...
+    globals: {
+      lodash: "_",
+    },
+  },
+  external: ["lodash"], //告诉rollup不要将此lodash打包，而作为外部依赖
+  plugins: [
+    resolve(),
+    commonjs(),
+    babel({
+      exclude: "node_modules/**",
+    }),
+  ],
+};'><pre class="notranslate"><span class="pl-c">// rollup.config.js</span>
+<span class="pl-k">import</span> <span class="pl-s1">resolve</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-node-resolve"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">commonjs</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-commonjs"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">babel</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-babel"</span><span class="pl-kos">;</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">input</span>: <span class="pl-s">"src/main.js"</span><span class="pl-kos">,</span> <span class="pl-c">//填写打包的入口文件路径</span>
+  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">file</span>: <span class="pl-s">"dist/bundle.js"</span><span class="pl-kos">,</span> <span class="pl-c">// 打包后生产的文件位置及文件名</span>
+    <span class="pl-c1">format</span>: <span class="pl-s">"iife"</span><span class="pl-kos">,</span> <span class="pl-c">// 输出的文件类型 (amd, cjs, esm, iife, umd)</span>
+    <span class="pl-c1">name</span>: <span class="pl-s">"bundleName"</span><span class="pl-kos">,</span> <span class="pl-c">//当format为iife和umd时必须提供，将作为全局变量挂在window(浏览器环境)下：window.bundleName=...</span>
+    <span class="pl-c1">globals</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">lodash</span>: <span class="pl-s">"_"</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">external</span>: <span class="pl-kos">[</span><span class="pl-s">"lodash"</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">//告诉rollup不要将此lodash打包，而作为外部依赖</span>
+  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>
+    <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">commonjs</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">babel</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">exclude</span>: <span class="pl-s">"node_modules/**"</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<ol dir="auto">
+<li>打包格式说明</li>
+</ol>
+<p dir="auto">生成包的格式。 下列之一:</p>
+<ul dir="auto">
+<li>amd – 异步模块定义，用于像 RequireJS 这样的模块加载器</li>
+<li>cjs – CommonJS，适用于 Node 和 Browserify/Webpack</li>
+<li>esm – 将软件包保存为 ES 模块文件，在现代浏览器中可以通过 <code class="notranslate">&lt;script type=module></code> 标签引入</li>
+<li>iife – 一个自动执行的功能，适合作为<code class="notranslate">&lt;script></code>标签。（如果要为应用程序创建一个捆绑包，您可能想要使用它，因为它会使文件大小变小。）</li>
+<li>umd – 通用模块定义，以 amd，cjs 和 iife 为一体</li>
+<li>system - SystemJS 加载器格式</li>
+</ul>
+<ol start="2" dir="auto">
+<li>external + output.globals</li>
+</ol>
+<p dir="auto">rollup 通过<code class="notranslate">external</code> + <code class="notranslate">output.globals</code>来标记外部依赖，以 <code class="notranslate">react-redux</code> 开源项目的 rollup 配置文件为例：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='import nodeResolve from "rollup-plugin-node-resolve"; // 帮助寻找node_modules里的包
+import babel from "rollup-plugin-babel"; // rollup 的 babel 插件，ES6转ES5
+import replace from "rollup-plugin-replace"; // 替换待打包文件里的一些变量，如process在浏览器端是不存在的，需要被替换
+import commonjs from "rollup-plugin-commonjs"; // 将非ES6语法的包转为ES6可用
+import uglify from "rollup-plugin-uglify"; // 压缩包
+
+const env = process.env.NODE_ENV;
+
+const config = {
+  input: "src/index.js",
+  external: ["react", "redux"], // 告诉rollup，不打包react,redux;将其视为外部依赖
+  output: {
+    format: "umd", // 输出 ＵＭＤ格式，各种模块规范通用
+    name: "ReactRedux", // 打包后的全局变量，如浏览器端 window.ReactRedux
+    globals: {
+      react: "React", // 这跟external 是配套使用的，指明global.React即是外部依赖react
+      redux: "Redux",
+    },
+  },
+  plugins: [
+    nodeResolve(),
+    babel({
+      exclude: "**/node_modules/**",
+    }),
+    replace({
+      "process.env.NODE_ENV": JSON.stringify(env),
+    }),
+    commonjs(),
+  ],
+};
+
+if (env === "production") {
+  config.plugins.push(
+    uglify({
+      compress: {
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        warnings: false,
+      },
+    })
+  );
+}
+
+export default config;'><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">nodeResolve</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-node-resolve"</span><span class="pl-kos">;</span> <span class="pl-c">// 帮助寻找node_modules里的包</span>
+<span class="pl-k">import</span> <span class="pl-s1">babel</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-babel"</span><span class="pl-kos">;</span> <span class="pl-c">// rollup 的 babel 插件，ES6转ES5</span>
+<span class="pl-k">import</span> <span class="pl-s1">replace</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-replace"</span><span class="pl-kos">;</span> <span class="pl-c">// 替换待打包文件里的一些变量，如process在浏览器端是不存在的，需要被替换</span>
+<span class="pl-k">import</span> <span class="pl-s1">commonjs</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-commonjs"</span><span class="pl-kos">;</span> <span class="pl-c">// 将非ES6语法的包转为ES6可用</span>
+<span class="pl-k">import</span> <span class="pl-s1">uglify</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-uglify"</span><span class="pl-kos">;</span> <span class="pl-c">// 压缩包</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">env</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">input</span>: <span class="pl-s">"src/index.js"</span><span class="pl-kos">,</span>
+  <span class="pl-c1">external</span>: <span class="pl-kos">[</span><span class="pl-s">"react"</span><span class="pl-kos">,</span> <span class="pl-s">"redux"</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 告诉rollup，不打包react,redux;将其视为外部依赖</span>
+  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">format</span>: <span class="pl-s">"umd"</span><span class="pl-kos">,</span> <span class="pl-c">// 输出 ＵＭＤ格式，各种模块规范通用</span>
+    <span class="pl-c1">name</span>: <span class="pl-s">"ReactRedux"</span><span class="pl-kos">,</span> <span class="pl-c">// 打包后的全局变量，如浏览器端 window.ReactRedux</span>
+    <span class="pl-c1">globals</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">react</span>: <span class="pl-s">"React"</span><span class="pl-kos">,</span> <span class="pl-c">// 这跟external 是配套使用的，指明global.React即是外部依赖react</span>
+      <span class="pl-c1">redux</span>: <span class="pl-s">"Redux"</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>
+    <span class="pl-en">nodeResolve</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">babel</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">exclude</span>: <span class="pl-s">"**/node_modules/**"</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-s">"process.env.NODE_ENV"</span>: <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">env</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">commonjs</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">env</span> <span class="pl-c1">===</span> <span class="pl-s">"production"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span>
+    <span class="pl-en">uglify</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">compress</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">pure_getters</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">unsafe</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">unsafe_comps</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">warnings</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span>
+  <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">config</span><span class="pl-kos">;</span></pre></div>
+<ol start="3" dir="auto">
+<li>常用插件</li>
+</ol>
+<ul dir="auto">
+<li>@rollup/plugin-node-resolve 解析 node_modules 中的模块</li>
+<li>@rollup/plugin-commonjs 转换 CJS -> ESM, 通常配合上面一个插件使用</li>
+<li>rollup-plugin-babel 打包过程中使用 Babel 进行转换, 需要安装和配置 Babel（<code class="notranslate">.babelrc</code>）</li>
+<li>@rollup/plugin-replace 类似于 webpack 的 DefinePlugin</li>
+<li>@rollup/plugin-alias 配置 module 的别名</li>
+<li>rollup-plugin-terser 适用于 ES6 +的 JavaScript 代码压缩</li>
+<li>文件导入
+<ul dir="auto">
+<li>rollup-plugin-json 编译 json</li>
+<li>rollup-plugin-postcss/postcss 编译 css
+<ul dir="auto">
+<li>rollup-plugin-scss</li>
+<li>autoprefixer</li>
+<li>postcss-pxtorem</li>
+<li>cssnano 压缩 css</li>
+</ul>
+</li>
+<li>@rollup/plugin-url</li>
+<li>rollup-plugin-vue</li>
+</ul>
+</li>
+<li>开发调试
+<ul dir="auto">
+<li>rollup-plugin-serve 开启本地服务器</li>
+<li>rollup-plugin-livereload 开启热更新</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">附插件配置案例：</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "scripts": {
+    "rollup:dev": "cross-env NODE_ENV=development rollup --config ./rollup/rollup.config.js -w",
+    "rollup:build": "cross-env NODE_ENV=production rollup --config ./rollup/rollup.config.js"
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"rollup:dev"</span>: <span class="pl-s"><span class="pl-pds">"</span>cross-env NODE_ENV=development rollup --config ./rollup/rollup.config.js -w<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"rollup:build"</span>: <span class="pl-s"><span class="pl-pds">"</span>cross-env NODE_ENV=production rollup --config ./rollup/rollup.config.js<span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='import babel from "rollup-plugin-babel";
+import node from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import replace from "@rollup/plugin-replace";
+import json from "rollup-plugin-json";
+import { terser } from "rollup-plugin-terser";
+import alias from "@rollup/plugin-alias";
+import postcss from "rollup-plugin-postcss";
+import serve from "rollup-plugin-serve";
+import livereload from "rollup-plugin-livereload";
+import { version } from "../package.json";
+
+const path = require("path");
+const resolve = (p) => path.resolve(__dirname, p);
+
+const env = process.env.NODE_ENV;
+
+const config = {
+  input: "./rollup/src/main.js",
+  output: {
+    file: "./dist/bundle.js",
+    format: "iife", //输出格式 amd es6 iife umd cjs
+    // window.MyBundle.exportFunctionName
+    name: "MyBundle", //当format为iife和umd时必须提供，将作为全局变量挂在window(浏览器环境)下：window.A=...
+    banner: "/* my-library version " + version + " */",
+    intro: &#39;var ENVIRONMENT = "production";&#39;,
+    sourcemap: true, // 生成 bundle.map.js文件，方便调试
+  },
+  plugins: [
+    node(),
+    babel({
+      exclude: "node_modules/**", // 只编译我们的源代码
+    }),
+    json(),
+    postcss(),
+    alias({
+      entries: {
+        "@": resolve("src"),
+        "~": resolve("../"),
+      },
+      customResolver: node({
+        extensions: [".vue", ".js", ".scss"],
+      }),
+    }),
+    replace({
+      "process.env.NODE_ENV": JSON.stringify(env),
+    }),
+    commonjs(),
+    // 热更新与开启本地服务器
+    livereload(),
+    serve({
+      open: true,
+      port: 8001,
+      contentBase: "dist",
+    }),
+  ],
+  global: {
+    lodash: "_", //告诉rollup全局变量
+  },
+  external: ["lodash"], // 不参与打包，使用外部引用
+};
+
+if (env !== "production") {
+  config.plugins.push(
+    terser({
+      compress: {
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        warnings: false,
+      },
+    })
+  );
+}
+
+export default config;'><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">babel</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-babel"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">node</span> <span class="pl-k">from</span> <span class="pl-s">"@rollup/plugin-node-resolve"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">commonjs</span> <span class="pl-k">from</span> <span class="pl-s">"@rollup/plugin-commonjs"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">replace</span> <span class="pl-k">from</span> <span class="pl-s">"@rollup/plugin-replace"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">json</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-json"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">terser</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-terser"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">alias</span> <span class="pl-k">from</span> <span class="pl-s">"@rollup/plugin-alias"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">postcss</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-postcss"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">serve</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-serve"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">livereload</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-livereload"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">version</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"../package.json"</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-en">resolve</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">p</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s1">p</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">env</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">input</span>: <span class="pl-s">"./rollup/src/main.js"</span><span class="pl-kos">,</span>
+  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">file</span>: <span class="pl-s">"./dist/bundle.js"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">format</span>: <span class="pl-s">"iife"</span><span class="pl-kos">,</span> <span class="pl-c">//输出格式 amd es6 iife umd cjs</span>
+    <span class="pl-c">// window.MyBundle.exportFunctionName</span>
+    <span class="pl-c1">name</span>: <span class="pl-s">"MyBundle"</span><span class="pl-kos">,</span> <span class="pl-c">//当format为iife和umd时必须提供，将作为全局变量挂在window(浏览器环境)下：window.A=...</span>
+    <span class="pl-c1">banner</span>: <span class="pl-s">"/* my-library version "</span> <span class="pl-c1">+</span> <span class="pl-s1">version</span> <span class="pl-c1">+</span> <span class="pl-s">" */"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">intro</span>: <span class="pl-s">'var ENVIRONMENT = "production";'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">sourcemap</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c">// 生成 bundle.map.js文件，方便调试</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>
+    <span class="pl-en">node</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">babel</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">exclude</span>: <span class="pl-s">"node_modules/**"</span><span class="pl-kos">,</span> <span class="pl-c">// 只编译我们的源代码</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">json</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">postcss</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">alias</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">entries</span>: <span class="pl-kos">{</span>
+        <span class="pl-s">"@"</span>: <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s">"src"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+        <span class="pl-s">"~"</span>: <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s">"../"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c1">customResolver</span>: <span class="pl-en">node</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">extensions</span>: <span class="pl-kos">[</span><span class="pl-s">".vue"</span><span class="pl-kos">,</span> <span class="pl-s">".js"</span><span class="pl-kos">,</span> <span class="pl-s">".scss"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-s">"process.env.NODE_ENV"</span>: <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">env</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">commonjs</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-c">// 热更新与开启本地服务器</span>
+    <span class="pl-en">livereload</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-en">serve</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c1">port</span>: <span class="pl-c1">8001</span><span class="pl-kos">,</span>
+      <span class="pl-c1">contentBase</span>: <span class="pl-s">"dist"</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">global</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">lodash</span>: <span class="pl-s">"_"</span><span class="pl-kos">,</span> <span class="pl-c">//告诉rollup全局变量</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">external</span>: <span class="pl-kos">[</span><span class="pl-s">"lodash"</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 不参与打包，使用外部引用</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">env</span> <span class="pl-c1">!==</span> <span class="pl-s">"production"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span>
+    <span class="pl-en">terser</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">compress</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">pure_getters</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">unsafe</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">unsafe_comps</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">warnings</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span>
+  <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">config</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-4">完整配置项</h2>
+<blockquote>
+<p dir="auto"><a href="https://rollupjs.org/guide/zh/#big-list-of-options" rel="nofollow">https://rollupjs.org/guide/zh/#big-list-of-options</a></p>
+</blockquote>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// rollup.config.js
+export default {
+  // 核心选项
+  input,     // 必须
+  external,
+  plugins,
+
+  // 额外选项
+  onwarn,
+
+  // danger zone
+  acorn,
+  context,
+  moduleContext,
+  legacy
+
+  output: {  // 必须 (如果要输出多个，可以是一个数组)
+    // 核心选项
+    file,    // 必须
+    format,  // 必须
+    name,
+    globals,
+
+    // 额外选项
+    paths,
+    banner,
+    footer,
+    intro,
+    outro,
+    sourcemap,
+    sourcemapFile,
+    interop,
+
+    // 高危选项
+    exports,
+    amd,
+    indent
+    strict
+  },
+};"><pre class="notranslate"><span class="pl-c">// rollup.config.js</span>
+<span class="pl-s1">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 核心选项</span>
+  input<span class="pl-kos">,</span>     <span class="pl-c">// 必须</span>
+  external<span class="pl-kos">,</span>
+  plugins<span class="pl-kos">,</span>
+
+  <span class="pl-c">// 额外选项</span>
+  onwarn<span class="pl-kos">,</span>
+
+  <span class="pl-c">// danger zone</span>
+  acorn<span class="pl-kos">,</span>
+  context<span class="pl-kos">,</span>
+  moduleContext<span class="pl-kos">,</span>
+  <span class="pl-s1">legacy</span>
+
+  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>  <span class="pl-c">// 必须 (如果要输出多个，可以是一个数组)</span>
+    <span class="pl-c">// 核心选项</span>
+    file<span class="pl-kos">,</span>    <span class="pl-c">// 必须</span>
+    format<span class="pl-kos">,</span>  <span class="pl-c">// 必须</span>
+    name<span class="pl-kos">,</span>
+    globals<span class="pl-kos">,</span>
+
+    <span class="pl-c">// 额外选项</span>
+    paths<span class="pl-kos">,</span>
+    banner<span class="pl-kos">,</span>
+    footer<span class="pl-kos">,</span>
+    intro<span class="pl-kos">,</span>
+    outro<span class="pl-kos">,</span>
+    sourcemap<span class="pl-kos">,</span>
+    sourcemapFile<span class="pl-kos">,</span>
+    interop<span class="pl-kos">,</span>
+
+    <span class="pl-c">// 高危选项</span>
+    exports<span class="pl-kos">,</span>
+    amd<span class="pl-kos">,</span>
+    indent
+    <span class="pl-s1">strict</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-5">参考链接</h2>
+<ul dir="auto">
+<li><a href="https://juejin.cn/post/6956501799327137828" rel="nofollow">rollup 详细使用教程</a></li>
+<li><a href="https://juejin.cn/post/6844904058394771470" rel="nofollow">Rollup 打包工具的使用（超详细，超基础，附代码截图超简单）</a></li>
+<li><a href="https://juejin.cn/post/6934698510436859912" rel="nofollow">rollup 从入门到打包一个按需加载的组件库</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/75717476" rel="nofollow">【第九期】Rollup：下一代 ES 模块打包工具</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2022/05/rollup.html" rel="nofollow">打包工具 rollup.js 入门教程</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l){return{layout:"default",data:[{post:{id:1283436609,number:232,title:"Rollup 打包入门",created_at:"2022-06-24T08:32:46Z",updated_at:"2025-11-23T15:52:57Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto">官方文档</p>\n<ul dir="auto">\n<li><a href="https://rollupjs.org/guide/en/" rel="nofollow">https://rollupjs.org/guide/en/</a></li>\n<li><a href="https://rollupjs.org/guide/zh/" rel="nofollow">https://rollupjs.org/guide/zh/</a></li>\n</ul>\n<h2 id="main-heading-H2-1">rollup 对比 webpack</h2>\n<p dir="auto">共同点：</p>\n<ol dir="auto">\n<li>通过插件生态的方式处理各种各样的资源依赖</li>\n</ol>\n<p dir="auto">不同点：</p>\n<ol dir="auto">\n<li>webpack 致力于复杂 SPA 的模块化构建， rollup 致力于打造性能出众的类库；</li>\n<li>rollup 打包后生成的 bundle 内容十分干净，没有什么多余的代码。相比 webpack(webpack 打包后会生成 webpack_require 等 runtime 代码)，rollup 拥有无可比拟的性能优势，这是由依赖处理方式决定的，编译时依赖处理（rollup）自然比运行时依赖处理（webpack）性能更好；</li>\n<li>对于 ES 模块依赖库，rollup 会静态分析代码中的 import，并将排除任何未实际使用的代码（tree-shaking）</li>\n<li>rollup 支持导出 es 模块文件（webpack 不支持导出 es 模块）</li>\n<li>webpack 支持提取公共模块</li>\n</ol>\n<h2 id="main-heading-H2-2">快速入门</h2>\n<ol dir="auto">\n<li>创建简单项目</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="mkdir -p my-rollup-project/src\ncd my-rollup-project"><pre class="notranslate">mkdir -p my-rollup-project/src\n<span class="pl-c1">cd</span> my-rollup-project</pre></div>\n<p dir="auto">首先，我们需要个 入口。将以下代码粘贴到新建的文件 src/main.js 中：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// src/main.js\nimport foo from &quot;./foo.js&quot;;\nexport default function () {\n  console.log(foo);\n}"><pre class="notranslate"><span class="pl-c">// src/main.js</span>\n<span class="pl-k">import</span> <span class="pl-s1">foo</span> <span class="pl-k">from</span> <span class="pl-s">"./foo.js"</span><span class="pl-kos">;</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">foo</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">之后创建入口文件引用的 foo.js 模块：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// src/foo.js\nexport default &quot;hello world!&quot;;"><pre class="notranslate"><span class="pl-c">// src/foo.js</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s">"hello world!"</span><span class="pl-kos">;</span></pre></div>\n<ol start="2" dir="auto">\n<li>安装 rollup</li>\n</ol>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm init -y\nyarn add rollup -D"><pre class="notranslate">npm init -y\nyarn add rollup -D</pre></div>\n<ol start="3" dir="auto">\n<li>创建 rollup.config.js</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  input: &quot;src/main.js&quot;, // 要打包的文件源路径\n  output: {\n    // 文件输出配置\n    file: &quot;dist/bundle.js&quot;, // 打包后生产的文件位置及文件名\n    format: &quot;iife&quot;, // 输出的文件类型 (amd, cjs, esm, iife, umd)\n    name: &quot;bundleName&quot;, // 包的全局变量名称\n  },\n};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">input</span>: <span class="pl-s">"src/main.js"</span><span class="pl-kos">,</span> <span class="pl-c">// 要打包的文件源路径</span>\n  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>\n    <span class="pl-c">// 文件输出配置</span>\n    <span class="pl-c1">file</span>: <span class="pl-s">"dist/bundle.js"</span><span class="pl-kos">,</span> <span class="pl-c">// 打包后生产的文件位置及文件名</span>\n    <span class="pl-c1">format</span>: <span class="pl-s">"iife"</span><span class="pl-kos">,</span> <span class="pl-c">// 输出的文件类型 (amd, cjs, esm, iife, umd)</span>\n    <span class="pl-c1">name</span>: <span class="pl-s">"bundleName"</span><span class="pl-kos">,</span> <span class="pl-c">// 包的全局变量名称</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<ol start="4" dir="auto">\n<li>编写 package.json 中的打包命令</li>\n</ol>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;scripts&quot;: {\n    &quot;build&quot;: &quot;rollup --config rollup.config.js&quot;\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"scripts"</span>: {\n    <span class="pl-ent">"build"</span>: <span class="pl-s"><span class="pl-pds">"</span>rollup --config rollup.config.js<span class="pl-pds">"</span></span>\n  }\n}</pre></div>\n<ol start="5" dir="auto">\n<li>执行<code class="notranslate">npm run build</code> 查看文件输出结果</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var bundleName = (function () {\n  &quot;use strict&quot;;\n\n  var foo = &quot;hello world!&quot;;\n\n  function main() {\n    console.log(foo);\n  }\n\n  return main;\n})();"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">bundleName</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s">"use strict"</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">var</span> <span class="pl-s1">foo</span> <span class="pl-c1">=</span> <span class="pl-s">"hello world!"</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">function</span> <span class="pl-en">main</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">foo</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">main</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-3">核心配置</h2>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// rollup.config.js\nimport resolve from &quot;rollup-plugin-node-resolve&quot;;\nimport commonjs from &quot;rollup-plugin-commonjs&quot;;\nimport babel from &quot;rollup-plugin-babel&quot;;\nexport default {\n  input: &quot;src/main.js&quot;, //填写打包的入口文件路径\n  output: {\n    file: &quot;dist/bundle.js&quot;, // 打包后生产的文件位置及文件名\n    format: &quot;iife&quot;, // 输出的文件类型 (amd, cjs, esm, iife, umd)\n    name: &quot;bundleName&quot;, //当format为iife和umd时必须提供，将作为全局变量挂在window(浏览器环境)下：window.bundleName=...\n    globals: {\n      lodash: &quot;_&quot;,\n    },\n  },\n  external: [&quot;lodash&quot;], //告诉rollup不要将此lodash打包，而作为外部依赖\n  plugins: [\n    resolve(),\n    commonjs(),\n    babel({\n      exclude: &quot;node_modules/**&quot;,\n    }),\n  ],\n};"><pre class="notranslate"><span class="pl-c">// rollup.config.js</span>\n<span class="pl-k">import</span> <span class="pl-s1">resolve</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-node-resolve"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">commonjs</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-commonjs"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">babel</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-babel"</span><span class="pl-kos">;</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">input</span>: <span class="pl-s">"src/main.js"</span><span class="pl-kos">,</span> <span class="pl-c">//填写打包的入口文件路径</span>\n  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">file</span>: <span class="pl-s">"dist/bundle.js"</span><span class="pl-kos">,</span> <span class="pl-c">// 打包后生产的文件位置及文件名</span>\n    <span class="pl-c1">format</span>: <span class="pl-s">"iife"</span><span class="pl-kos">,</span> <span class="pl-c">// 输出的文件类型 (amd, cjs, esm, iife, umd)</span>\n    <span class="pl-c1">name</span>: <span class="pl-s">"bundleName"</span><span class="pl-kos">,</span> <span class="pl-c">//当format为iife和umd时必须提供，将作为全局变量挂在window(浏览器环境)下：window.bundleName=...</span>\n    <span class="pl-c1">globals</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">lodash</span>: <span class="pl-s">"_"</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">external</span>: <span class="pl-kos">[</span><span class="pl-s">"lodash"</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">//告诉rollup不要将此lodash打包，而作为外部依赖</span>\n  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>\n    <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">commonjs</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">babel</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">exclude</span>: <span class="pl-s">"node_modules/**"</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<ol dir="auto">\n<li>打包格式说明</li>\n</ol>\n<p dir="auto">生成包的格式。 下列之一:</p>\n<ul dir="auto">\n<li>amd – 异步模块定义，用于像 RequireJS 这样的模块加载器</li>\n<li>cjs – CommonJS，适用于 Node 和 Browserify/Webpack</li>\n<li>esm – 将软件包保存为 ES 模块文件，在现代浏览器中可以通过 <code class="notranslate">&lt;script type=module&gt;</code> 标签引入</li>\n<li>iife – 一个自动执行的功能，适合作为<code class="notranslate">&lt;script&gt;</code>标签。（如果要为应用程序创建一个捆绑包，您可能想要使用它，因为它会使文件大小变小。）</li>\n<li>umd – 通用模块定义，以 amd，cjs 和 iife 为一体</li>\n<li>system - SystemJS 加载器格式</li>\n</ul>\n<ol start="2" dir="auto">\n<li>external + output.globals</li>\n</ol>\n<p dir="auto">rollup 通过<code class="notranslate">external</code> + <code class="notranslate">output.globals</code>来标记外部依赖，以 <code class="notranslate">react-redux</code> 开源项目的 rollup 配置文件为例：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import nodeResolve from &quot;rollup-plugin-node-resolve&quot;; // 帮助寻找node_modules里的包\nimport babel from &quot;rollup-plugin-babel&quot;; // rollup 的 babel 插件，ES6转ES5\nimport replace from &quot;rollup-plugin-replace&quot;; // 替换待打包文件里的一些变量，如process在浏览器端是不存在的，需要被替换\nimport commonjs from &quot;rollup-plugin-commonjs&quot;; // 将非ES6语法的包转为ES6可用\nimport uglify from &quot;rollup-plugin-uglify&quot;; // 压缩包\n\nconst env = process.env.NODE_ENV;\n\nconst config = {\n  input: &quot;src/index.js&quot;,\n  external: [&quot;react&quot;, &quot;redux&quot;], // 告诉rollup，不打包react,redux;将其视为外部依赖\n  output: {\n    format: &quot;umd&quot;, // 输出 ＵＭＤ格式，各种模块规范通用\n    name: &quot;ReactRedux&quot;, // 打包后的全局变量，如浏览器端 window.ReactRedux\n    globals: {\n      react: &quot;React&quot;, // 这跟external 是配套使用的，指明global.React即是外部依赖react\n      redux: &quot;Redux&quot;,\n    },\n  },\n  plugins: [\n    nodeResolve(),\n    babel({\n      exclude: &quot;**/node_modules/**&quot;,\n    }),\n    replace({\n      &quot;process.env.NODE_ENV&quot;: JSON.stringify(env),\n    }),\n    commonjs(),\n  ],\n};\n\nif (env === &quot;production&quot;) {\n  config.plugins.push(\n    uglify({\n      compress: {\n        pure_getters: true,\n        unsafe: true,\n        unsafe_comps: true,\n        warnings: false,\n      },\n    })\n  );\n}\n\nexport default config;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">nodeResolve</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-node-resolve"</span><span class="pl-kos">;</span> <span class="pl-c">// 帮助寻找node_modules里的包</span>\n<span class="pl-k">import</span> <span class="pl-s1">babel</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-babel"</span><span class="pl-kos">;</span> <span class="pl-c">// rollup 的 babel 插件，ES6转ES5</span>\n<span class="pl-k">import</span> <span class="pl-s1">replace</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-replace"</span><span class="pl-kos">;</span> <span class="pl-c">// 替换待打包文件里的一些变量，如process在浏览器端是不存在的，需要被替换</span>\n<span class="pl-k">import</span> <span class="pl-s1">commonjs</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-commonjs"</span><span class="pl-kos">;</span> <span class="pl-c">// 将非ES6语法的包转为ES6可用</span>\n<span class="pl-k">import</span> <span class="pl-s1">uglify</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-uglify"</span><span class="pl-kos">;</span> <span class="pl-c">// 压缩包</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">env</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span><span class="pl-kos">;</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">input</span>: <span class="pl-s">"src/index.js"</span><span class="pl-kos">,</span>\n  <span class="pl-c1">external</span>: <span class="pl-kos">[</span><span class="pl-s">"react"</span><span class="pl-kos">,</span> <span class="pl-s">"redux"</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 告诉rollup，不打包react,redux;将其视为外部依赖</span>\n  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">format</span>: <span class="pl-s">"umd"</span><span class="pl-kos">,</span> <span class="pl-c">// 输出 ＵＭＤ格式，各种模块规范通用</span>\n    <span class="pl-c1">name</span>: <span class="pl-s">"ReactRedux"</span><span class="pl-kos">,</span> <span class="pl-c">// 打包后的全局变量，如浏览器端 window.ReactRedux</span>\n    <span class="pl-c1">globals</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">react</span>: <span class="pl-s">"React"</span><span class="pl-kos">,</span> <span class="pl-c">// 这跟external 是配套使用的，指明global.React即是外部依赖react</span>\n      <span class="pl-c1">redux</span>: <span class="pl-s">"Redux"</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>\n    <span class="pl-en">nodeResolve</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">babel</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">exclude</span>: <span class="pl-s">"**/node_modules/**"</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-s">"process.env.NODE_ENV"</span>: <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">env</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">commonjs</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">env</span> <span class="pl-c1">===</span> <span class="pl-s">"production"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span>\n    <span class="pl-en">uglify</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">compress</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">pure_getters</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">unsafe</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">unsafe_comps</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">warnings</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span>\n  <span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">config</span><span class="pl-kos">;</span></pre></div>\n<ol start="3" dir="auto">\n<li>常用插件</li>\n</ol>\n<ul dir="auto">\n<li>@rollup/plugin-node-resolve 解析 node_modules 中的模块</li>\n<li>@rollup/plugin-commonjs 转换 CJS -&gt; ESM, 通常配合上面一个插件使用</li>\n<li>rollup-plugin-babel 打包过程中使用 Babel 进行转换, 需要安装和配置 Babel（<code class="notranslate">.babelrc</code>）</li>\n<li>@rollup/plugin-replace 类似于 webpack 的 DefinePlugin</li>\n<li>@rollup/plugin-alias 配置 module 的别名</li>\n<li>rollup-plugin-terser 适用于 ES6 +的 JavaScript 代码压缩</li>\n<li>文件导入\n<ul dir="auto">\n<li>rollup-plugin-json 编译 json</li>\n<li>rollup-plugin-postcss/postcss 编译 css\n<ul dir="auto">\n<li>rollup-plugin-scss</li>\n<li>autoprefixer</li>\n<li>postcss-pxtorem</li>\n<li>cssnano 压缩 css</li>\n</ul>\n</li>\n<li>@rollup/plugin-url</li>\n<li>rollup-plugin-vue</li>\n</ul>\n</li>\n<li>开发调试\n<ul dir="auto">\n<li>rollup-plugin-serve 开启本地服务器</li>\n<li>rollup-plugin-livereload 开启热更新</li>\n</ul>\n</li>\n</ul>\n<p dir="auto">附插件配置案例：</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;scripts&quot;: {\n    &quot;rollup:dev&quot;: &quot;cross-env NODE_ENV=development rollup --config ./rollup/rollup.config.js -w&quot;,\n    &quot;rollup:build&quot;: &quot;cross-env NODE_ENV=production rollup --config ./rollup/rollup.config.js&quot;\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"scripts"</span>: {\n    <span class="pl-ent">"rollup:dev"</span>: <span class="pl-s"><span class="pl-pds">"</span>cross-env NODE_ENV=development rollup --config ./rollup/rollup.config.js -w<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"rollup:build"</span>: <span class="pl-s"><span class="pl-pds">"</span>cross-env NODE_ENV=production rollup --config ./rollup/rollup.config.js<span class="pl-pds">"</span></span>\n  }\n}</pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import babel from &quot;rollup-plugin-babel&quot;;\nimport node from &quot;@rollup/plugin-node-resolve&quot;;\nimport commonjs from &quot;@rollup/plugin-commonjs&quot;;\nimport replace from &quot;@rollup/plugin-replace&quot;;\nimport json from &quot;rollup-plugin-json&quot;;\nimport { terser } from &quot;rollup-plugin-terser&quot;;\nimport alias from &quot;@rollup/plugin-alias&quot;;\nimport postcss from &quot;rollup-plugin-postcss&quot;;\nimport serve from &quot;rollup-plugin-serve&quot;;\nimport livereload from &quot;rollup-plugin-livereload&quot;;\nimport { version } from &quot;../package.json&quot;;\n\nconst path = require(&quot;path&quot;);\nconst resolve = (p) =&gt; path.resolve(__dirname, p);\n\nconst env = process.env.NODE_ENV;\n\nconst config = {\n  input: &quot;./rollup/src/main.js&quot;,\n  output: {\n    file: &quot;./dist/bundle.js&quot;,\n    format: &quot;iife&quot;, //输出格式 amd es6 iife umd cjs\n    // window.MyBundle.exportFunctionName\n    name: &quot;MyBundle&quot;, //当format为iife和umd时必须提供，将作为全局变量挂在window(浏览器环境)下：window.A=...\n    banner: &quot;/* my-library version &quot; + version + &quot; */&quot;,\n    intro: \'var ENVIRONMENT = &quot;production&quot;;\',\n    sourcemap: true, // 生成 bundle.map.js文件，方便调试\n  },\n  plugins: [\n    node(),\n    babel({\n      exclude: &quot;node_modules/**&quot;, // 只编译我们的源代码\n    }),\n    json(),\n    postcss(),\n    alias({\n      entries: {\n        &quot;@&quot;: resolve(&quot;src&quot;),\n        &quot;~&quot;: resolve(&quot;../&quot;),\n      },\n      customResolver: node({\n        extensions: [&quot;.vue&quot;, &quot;.js&quot;, &quot;.scss&quot;],\n      }),\n    }),\n    replace({\n      &quot;process.env.NODE_ENV&quot;: JSON.stringify(env),\n    }),\n    commonjs(),\n    // 热更新与开启本地服务器\n    livereload(),\n    serve({\n      open: true,\n      port: 8001,\n      contentBase: &quot;dist&quot;,\n    }),\n  ],\n  global: {\n    lodash: &quot;_&quot;, //告诉rollup全局变量\n  },\n  external: [&quot;lodash&quot;], // 不参与打包，使用外部引用\n};\n\nif (env !== &quot;production&quot;) {\n  config.plugins.push(\n    terser({\n      compress: {\n        pure_getters: true,\n        unsafe: true,\n        unsafe_comps: true,\n        warnings: false,\n      },\n    })\n  );\n}\n\nexport default config;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">babel</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-babel"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">node</span> <span class="pl-k">from</span> <span class="pl-s">"@rollup/plugin-node-resolve"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">commonjs</span> <span class="pl-k">from</span> <span class="pl-s">"@rollup/plugin-commonjs"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">replace</span> <span class="pl-k">from</span> <span class="pl-s">"@rollup/plugin-replace"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">json</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-json"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">terser</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-terser"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">alias</span> <span class="pl-k">from</span> <span class="pl-s">"@rollup/plugin-alias"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">postcss</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-postcss"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">serve</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-serve"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">livereload</span> <span class="pl-k">from</span> <span class="pl-s">"rollup-plugin-livereload"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">version</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"../package.json"</span><span class="pl-kos">;</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-k">const</span> <span class="pl-en">resolve</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">p</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s1">p</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">env</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span><span class="pl-kos">;</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">input</span>: <span class="pl-s">"./rollup/src/main.js"</span><span class="pl-kos">,</span>\n  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">file</span>: <span class="pl-s">"./dist/bundle.js"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">format</span>: <span class="pl-s">"iife"</span><span class="pl-kos">,</span> <span class="pl-c">//输出格式 amd es6 iife umd cjs</span>\n    <span class="pl-c">// window.MyBundle.exportFunctionName</span>\n    <span class="pl-c1">name</span>: <span class="pl-s">"MyBundle"</span><span class="pl-kos">,</span> <span class="pl-c">//当format为iife和umd时必须提供，将作为全局变量挂在window(浏览器环境)下：window.A=...</span>\n    <span class="pl-c1">banner</span>: <span class="pl-s">"/* my-library version "</span> <span class="pl-c1">+</span> <span class="pl-s1">version</span> <span class="pl-c1">+</span> <span class="pl-s">" */"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">intro</span>: <span class="pl-s">\'var ENVIRONMENT = "production";\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">sourcemap</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c">// 生成 bundle.map.js文件，方便调试</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>\n    <span class="pl-en">node</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">babel</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">exclude</span>: <span class="pl-s">"node_modules/**"</span><span class="pl-kos">,</span> <span class="pl-c">// 只编译我们的源代码</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">json</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">postcss</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">alias</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">entries</span>: <span class="pl-kos">{</span>\n        <span class="pl-s">"@"</span>: <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s">"src"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n        <span class="pl-s">"~"</span>: <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s">"../"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c1">customResolver</span>: <span class="pl-en">node</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">extensions</span>: <span class="pl-kos">[</span><span class="pl-s">".vue"</span><span class="pl-kos">,</span> <span class="pl-s">".js"</span><span class="pl-kos">,</span> <span class="pl-s">".scss"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-s">"process.env.NODE_ENV"</span>: <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-s1">env</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">commonjs</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-c">// 热更新与开启本地服务器</span>\n    <span class="pl-en">livereload</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-en">serve</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c1">port</span>: <span class="pl-c1">8001</span><span class="pl-kos">,</span>\n      <span class="pl-c1">contentBase</span>: <span class="pl-s">"dist"</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">global</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">lodash</span>: <span class="pl-s">"_"</span><span class="pl-kos">,</span> <span class="pl-c">//告诉rollup全局变量</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">external</span>: <span class="pl-kos">[</span><span class="pl-s">"lodash"</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 不参与打包，使用外部引用</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">env</span> <span class="pl-c1">!==</span> <span class="pl-s">"production"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span>\n    <span class="pl-en">terser</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">compress</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">pure_getters</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">unsafe</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">unsafe_comps</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">warnings</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span>\n  <span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-s1">config</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-4">完整配置项</h2>\n<blockquote>\n<p dir="auto"><a href="https://rollupjs.org/guide/zh/#big-list-of-options" rel="nofollow">https://rollupjs.org/guide/zh/#big-list-of-options</a></p>\n</blockquote>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// rollup.config.js\nexport default {\n  // 核心选项\n  input,     // 必须\n  external,\n  plugins,\n\n  // 额外选项\n  onwarn,\n\n  // danger zone\n  acorn,\n  context,\n  moduleContext,\n  legacy\n\n  output: {  // 必须 (如果要输出多个，可以是一个数组)\n    // 核心选项\n    file,    // 必须\n    format,  // 必须\n    name,\n    globals,\n\n    // 额外选项\n    paths,\n    banner,\n    footer,\n    intro,\n    outro,\n    sourcemap,\n    sourcemapFile,\n    interop,\n\n    // 高危选项\n    exports,\n    amd,\n    indent\n    strict\n  },\n};"><pre class="notranslate"><span class="pl-c">// rollup.config.js</span>\n<span class="pl-s1">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 核心选项</span>\n  input<span class="pl-kos">,</span>     <span class="pl-c">// 必须</span>\n  external<span class="pl-kos">,</span>\n  plugins<span class="pl-kos">,</span>\n\n  <span class="pl-c">// 额外选项</span>\n  onwarn<span class="pl-kos">,</span>\n\n  <span class="pl-c">// danger zone</span>\n  acorn<span class="pl-kos">,</span>\n  context<span class="pl-kos">,</span>\n  moduleContext<span class="pl-kos">,</span>\n  <span class="pl-s1">legacy</span>\n\n  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>  <span class="pl-c">// 必须 (如果要输出多个，可以是一个数组)</span>\n    <span class="pl-c">// 核心选项</span>\n    file<span class="pl-kos">,</span>    <span class="pl-c">// 必须</span>\n    format<span class="pl-kos">,</span>  <span class="pl-c">// 必须</span>\n    name<span class="pl-kos">,</span>\n    globals<span class="pl-kos">,</span>\n\n    <span class="pl-c">// 额外选项</span>\n    paths<span class="pl-kos">,</span>\n    banner<span class="pl-kos">,</span>\n    footer<span class="pl-kos">,</span>\n    intro<span class="pl-kos">,</span>\n    outro<span class="pl-kos">,</span>\n    sourcemap<span class="pl-kos">,</span>\n    sourcemapFile<span class="pl-kos">,</span>\n    interop<span class="pl-kos">,</span>\n\n    <span class="pl-c">// 高危选项</span>\n    exports<span class="pl-kos">,</span>\n    amd<span class="pl-kos">,</span>\n    indent\n    <span class="pl-s1">strict</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-5">参考链接</h2>\n<ul dir="auto">\n<li><a href="https://juejin.cn/post/6956501799327137828" rel="nofollow">rollup 详细使用教程</a></li>\n<li><a href="https://juejin.cn/post/6844904058394771470" rel="nofollow">Rollup 打包工具的使用（超详细，超基础，附代码截图超简单）</a></li>\n<li><a href="https://juejin.cn/post/6934698510436859912" rel="nofollow">rollup 从入门到打包一个按需加载的组件库</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/75717476" rel="nofollow">【第九期】Rollup：下一代 ES 模块打包工具</a></li>\n<li><a href="https://www.ruanyifeng.com/blog/2022/05/rollup.html" rel="nofollow">打包工具 rollup.js 入门教程</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:n,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/232"},navList:[{text:"前言",id:"main-heading-H2-0",type:a,children:[]},{text:"rollup 对比 webpack",id:"main-heading-H2-1",type:a,children:[]},{text:"快速入门",id:"main-heading-H2-2",type:a,children:[]},{text:"核心配置",id:"main-heading-H2-3",type:a,children:[]},{text:"完整配置项",id:"main-heading-H2-4",type:a,children:[]},{text:"参考链接",id:"main-heading-H2-5",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:n}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

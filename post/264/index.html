@@ -1,0 +1,350 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>编程范式简介（转载） | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content='编程范式简介 原文：Programming Paradigms -- Paradigm Examples for Beginners，作者：Germán Cocca 大家好！这篇文章将讲解不同的编程范式，编程范式是对一些流行的组织编程方式的"花哨"称呼。 我把话题拆分，并且每个范式补充一个例子。通过'><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="编程范式简介（转载）"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content='编程范式简介 原文：Programming Paradigms -- Paradigm Examples for Beginners，作者：Germán Cocca 大家好！这篇文章将讲解不同的编程范式，编程范式是对一些流行的组织编程方式的"花哨"称呼。 我把话题拆分，并且每个范式补充一个例子。通过'><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="编程范式简介（转载）"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content='编程范式简介 原文：Programming Paradigms -- Paradigm Examples for Beginners，作者：Germán Cocca 大家好！这篇文章将讲解不同的编程范式，编程范式是对一些流行的组织编程方式的"花哨"称呼。 我把话题拆分，并且每个范式补充一个例子。通过'><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/264#main-heading-H2-0" title="文章目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              文章目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/264#main-heading-H2-1" title="命令式编程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              命令式编程
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/264#main-heading-H2-2" title="过程式编程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              过程式编程
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/264#main-heading-H2-3" title="函数式编程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              函数式编程
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/264#main-heading-H2-4" title="声明式编程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              声明式编程
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/264#main-heading-H2-5" title="面向对象的编程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              面向对象的编程
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>编程范式简介（转载）</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>编程范式简介（转载）</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2023-09-04</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 14 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h1 dir="auto">编程范式简介</h1>
+<blockquote>
+<p dir="auto">原文：<a href="https://www.freecodecamp.org/news/an-introduction-to-programming-paradigms/" rel="nofollow">Programming Paradigms -- Paradigm Examples for Beginners</a>，作者：<a href="https://www.freecodecamp.org/news/author/gercocca/" rel="nofollow">Germán Cocca</a></p>
+</blockquote>
+<p dir="auto">大家好！这篇文章将讲解不同的编程范式，编程范式是对一些流行的组织编程方式的"花哨"称呼。</p>
+<p dir="auto">我把话题拆分，并且每个范式补充一个例子。通过这篇文章，你就可以了解当人们在说"面向对象"、"函数式"以及"声明式"时，他们在说什么。</p>
+<p dir="auto">虽然我会提供一些伪代码和代码示例，但是这篇文章的讨论仅停留在范式表层和理论层面。</p>
+<p dir="auto">我计划将在之后用JavaScript示例来深入讲解每一个范式，如果你感兴趣的话可以关注我（关注方式见文章结尾）。</p>
+<p dir="auto">让我们开始吧！</p>
+<h2 id="main-heading-H2-0">文章目录</h2>
+<ul dir="auto">
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#what-is-a-programming-paradigm" rel="nofollow">编程范式是什么</a></li>
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#what-a-programming-paradigm-is-not" rel="nofollow">编程范式不是什么</a></li>
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#why-should-i-care" rel="nofollow">我为什么了解编程范式？</a></li>
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#popular-programming-paradigms" rel="nofollow">常见的编程范式</a>
+<ul dir="auto">
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#imperative-programming" rel="nofollow">命令式编程</a></li>
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#procedural-programming" rel="nofollow">过程式编程</a></li>
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#functional-programming" rel="nofollow">函数式编程</a></li>
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#declarative-programming" rel="nofollow">声明式编程</a></li>
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#object-oriented-programming" rel="nofollow">面向对象的编程</a></li>
+</ul>
+</li>
+<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#roundup" rel="nofollow">总结</a></li>
+</ul>
+<h1 dir="auto">编程范式是什么</h1>
+<p dir="auto">编程范式指的是一种程序或者程序语言的组织风格、方式。每一种程序范式都包含了代码结构、特征以及处理常见编程问题的方式。</p>
+<p dir="auto">存在各种各样编程范式的原因和存在各种编程语言一样。特定范式适合解决特定问题，所以针对不同项目采取不同的编程范式。</p>
+<p dir="auto">随着时间的推移，不同的范式实践也层出不穷。归功于软件和硬件的发展，新的方式也不断涌现。</p>
+<p dir="auto">我认为是人类的创造力推动了范式的发展。我们热衷于创造新的东西，改善旧的东西，调整生产工具以符合现代需求，提高效率。</p>
+<p dir="auto">所以当现在我们想要写一个程序时，我们有非常多的选择来编写、构建这个程序。</p>
+<h1 dir="auto">编程范式不是什么</h1>
+<p dir="auto">编程范式不是语言或者工具，不能使用范式来"构建"任何东西。它们更像是一套约定俗成的理想和准则，开发者遵循并且扩展这套范式。</p>
+<p dir="auto">编程语言并不总是和一个特定范式相关联。有些语言在创建的时候就考虑到了某种范式，并且具有比其他语言更利于这种范式的特性。（<a href="https://www.haskell.org/" rel="nofollow">Haskel</a> 和函数式编程就是很好的例子）。</p>
+<p dir="auto">但也存在"多范式"语言，意味着你可以以这样或那样的范式来调整代码（JavaScript和Python就是非常好的例子）。</p>
+<p dir="auto">同时，编程和范式并不是相互排斥的，也就是说你可以在同一个项目中同时使用不同的范式。</p>
+<h1 dir="auto">我为什么要了解编程范式？</h1>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b43388c8c284b1245d173cdd1dc371f1a367460d39da7b456d1e4aad636c8a5b/68747470733a2f2f7777772e66726565636f646563616d702e6f72672f6e6577732f636f6e74656e742f696d616765732f323032322f30342f77686174657665722d796561682d312e676966"><img src="https://camo.githubusercontent.com/b43388c8c284b1245d173cdd1dc371f1a367460d39da7b456d1e4aad636c8a5b/68747470733a2f2f7777772e66726565636f646563616d702e6f72672f6e6577732f636f6e74656e742f696d616765732f323032322f30342f77686174657665722d796561682d312e676966" alt="whatever-yeah-1" data-animated-image="" data-canonical-src="https://www.freecodecamp.org/news/content/images/2022/04/whatever-yeah-1.gif" style="max-width:100%"></a></p>
+<p dir="auto">一句话回答：这是常识！</p>
+<p dir="auto">详细回答：我觉得了解不同的编程实践方式很有趣，探索相关话题可以帮助你打开思路，跳出既定框架和工具。</p>
+<p dir="auto">另外，这些术语在编程实践被广泛应用，所以对它们有一个基本概念，对你了解其他编程话题也有帮助。</p>
+<h1 dir="auto">常见的编程范式</h1>
+<p dir="auto">在介绍完编程范式是什么，不是之什么后，让我们来看看一些常见范式，它们的特征和它们之间的比较。</p>
+<p dir="auto">需要注意这篇文章的范式清单并不完整，还有其他一些流行的范式我并没有提到。这里我会提到最常见和使用最广泛的一些范式。</p>
+<h2 id="main-heading-H2-1">命令式编程</h2>
+<p dir="auto">命令式编程由一组详细的指令组成，让计算机以一定的顺序执行。之所以被称作"命令式"是因为开发者以非常具体的方式，准确地规定计算机必须做什么。</p>
+<p dir="auto">命令式编程强调描述程序<em>怎么样</em>一步一步地运行。</p>
+<p dir="auto">假如你想烤一个蛋糕，命令式编程的制作方式如下：（我不是专业烘焙师，别嫌弃我的步骤😒 ）</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1- Pour flour in a bowl //将面粉倒入碗中
+2- Pour a couple eggs in the same bowl //在碗中打入两个鸡蛋
+3- Pour some milk in the same bowl //倒入一些牛奶
+4- Mix the ingredients //将它们混合
+5- Pour the mix in a mold //将混合物倒入模具
+6- Cook for 35 minutes //烤35分钟
+7- Let chill //冷却
+"><pre class="notranslate"><code class="notranslate">1- Pour flour in a bowl //将面粉倒入碗中
+2- Pour a couple eggs in the same bowl //在碗中打入两个鸡蛋
+3- Pour some milk in the same bowl //倒入一些牛奶
+4- Mix the ingredients //将它们混合
+5- Pour the mix in a mold //将混合物倒入模具
+6- Cook for 35 minutes //烤35分钟
+7- Let chill //冷却
+
+</code></pre></div>
+<p dir="auto">若使用真实的代码，假设我们想要从一个数组中过滤出大于5的所有元素，命令式编程如下：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const nums = [1,4,3,6,7,8,9,2]
+const result = []
+
+for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > 5) result.push(nums[i])
+}
+
+console.log(result) // 输出: [ 6, 7, 8, 9 ]
+"><pre class="notranslate"><code class="notranslate">const nums = [1,4,3,6,7,8,9,2]
+const result = []
+
+for (let i = 0; i &lt; nums.length; i++) {
+    if (nums[i] > 5) result.push(nums[i])
+}
+
+console.log(result) // 输出: [ 6, 7, 8, 9 ]
+
+</code></pre></div>
+<p dir="auto">我们告诉程序要遍历整个数组的每一个元素，并且和5来比较，如果这个元素的值大于5，就将它推入另一个数组。</p>
+<p dir="auto">我们的指令非常的具体详尽，这就是命令式编程的特点。</p>
+<h2 id="main-heading-H2-2">过程式编程</h2>
+<p dir="auto">过程式编程是命令式编程的派生，在其基础上添加了函数特性（也被称作"过程" procedures 或者"子程序" subroutines）。</p>
+<p dir="auto">在过程式编程中，开发者被鼓励将程序的执行拆分成不同的函数，以此来提高程序的模块化和组织性。</p>
+<p dir="auto">改写刚才做蛋糕的例子：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="function pourIngredients() {
+    - Pour flour in a bowl
+    - Pour a couple eggs in the same bowl
+    - Pour some milk in the same bowl
+}
+
+function mixAndTransferToMold() {
+    - Mix the ingredients
+    - Pour the mix in a mold
+}
+
+function cookAndLetChill() {
+    - Cook for 35 minutes
+    - Let chill
+}
+
+pourIngredients()
+mixAndTransferToMold()
+cookAndLetChill()
+"><pre class="notranslate"><code class="notranslate">function pourIngredients() {
+    - Pour flour in a bowl
+    - Pour a couple eggs in the same bowl
+    - Pour some milk in the same bowl
+}
+
+function mixAndTransferToMold() {
+    - Mix the ingredients
+    - Pour the mix in a mold
+}
+
+function cookAndLetChill() {
+    - Cook for 35 minutes
+    - Let chill
+}
+
+pourIngredients()
+mixAndTransferToMold()
+cookAndLetChill()
+
+</code></pre></div>
+<p dir="auto">可以发现因为使用了函数，我们只需要阅读结尾三个函数的调用就知道这个程序到底要做什么。</p>
+<p dir="auto">这种简化和抽象化就是过程式编程的一个优势。但是在函数中，我们还是使用了原来命令式编程的模式。</p>
+<h2 id="main-heading-H2-3">函数式编程</h2>
+<p dir="auto">函数式编程将函数的概念往前再推进了一步。</p>
+<p dir="auto">在函数式编程中，函数被认为是一等公民，意味着可以将它们赋值给变量，作为参数传入其他函数，或者由函数返回。</p>
+<p dir="auto">另一个核心观点是纯函数。纯函数指的是输出仅取决于输入的函数。如果输入相同，输出的结果始终保持不变，另外纯函数没有副作用（对函数外部环境的改变）。</p>
+<p dir="auto">基于这些概念，函数式编程鼓励使用函数编程（惊不惊喜，意不意外😲 ）。同时，函数式编程也坚持将代码模块化、取消副作用，这样可以在代码库内更清晰的分离各个部分代码的责任。提高代码的可维护性。</p>
+<p dir="auto">回看之前过滤数组的例子，可以发现使用命令式范式需要在外部使用一个变量来存储函数结果，这就是一种副作用。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const nums = [1,4,3,6,7,8,9,2]
+const result = [] // 外部变量
+
+for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > 5) result.push(nums[i])
+}
+
+console.log(result) // 输出: [ 6, 7, 8, 9 ]
+"><pre class="notranslate"><code class="notranslate">const nums = [1,4,3,6,7,8,9,2]
+const result = [] // 外部变量
+
+for (let i = 0; i &lt; nums.length; i++) {
+    if (nums[i] > 5) result.push(nums[i])
+}
+
+console.log(result) // 输出: [ 6, 7, 8, 9 ]
+
+</code></pre></div>
+<p dir="auto">改写成函数式编程如下：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const nums = [1,4,3,6,7,8,9,2]
+
+function filterNums() {
+    const result = [] // 内部变量
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > 5) result.push(nums[i])
+    }
+
+    return result
+}
+
+console.log(filterNums()) // 输出: [ 6, 7, 8, 9 ]
+"><pre class="notranslate"><code class="notranslate">const nums = [1,4,3,6,7,8,9,2]
+
+function filterNums() {
+    const result = [] // 内部变量
+
+    for (let i = 0; i &lt; nums.length; i++) {
+        if (nums[i] > 5) result.push(nums[i])
+    }
+
+    return result
+}
+
+console.log(filterNums()) // 输出: [ 6, 7, 8, 9 ]
+
+</code></pre></div>
+<p dir="auto">用两种方式编写的代码几乎一样，但在这里我们将遍历和结果数组都打包在函数内部。这样我们就可以确保函数不会更改任何作用域以外的东西。我们只创造了一个处理自己信息的变量，一旦执行结束，变量也就被回收。</p>
+<h2 id="main-heading-H2-4">声明式编程</h2>
+<p dir="auto">声明式编程隐藏了复杂性，使编程语言更接近人类的语言和思维，这和命令式编程正好相反。命令式编程给指令告诉计算机 <em>怎么样</em> 执行任务，但是声明式编程告诉计算机需要 <em>什么</em> 样的结果。</p>
+<p dir="auto">使用例子理解会更清晰，同样的过滤数组改写成声明式：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const nums = [1,4,3,6,7,8,9,2]
+
+console.log(nums.filter(num => num > 5)) // 输出: [ 6, 7, 8, 9 ]
+"><pre class="notranslate"><code class="notranslate">const nums = [1,4,3,6,7,8,9,2]
+
+console.log(nums.filter(num => num > 5)) // 输出: [ 6, 7, 8, 9 ]
+
+</code></pre></div>
+<p dir="auto">使用过滤函数，我们不再告诉计算机具体的操作是需要遍历数组并且将结果存储到另一个数组中，我们只需要告诉计算机我们需要过滤（filter），过滤的条件是（num > 5）。</p>
+<p dir="auto">这样做的好处是代码更易读易理解，并且更简洁。JavaScript的<code class="notranslate">filter</code>、<code class="notranslate">map</code>、<code class="notranslate">reduce</code>和<code class="notranslate">sort</code> 函数都是声明式编程的例子。</p>
+<p dir="auto">另一个例子是JS框架/库------React，如下面的代码：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="<button onClick={() => console.log('You clicked me!')}>Click me</button>
+"><pre class="notranslate"><code class="notranslate">&lt;button onClick={() => console.log('You clicked me!')}>Click me&lt;/button>
+
+</code></pre></div>
+<p dir="auto">这里有一个按钮元素，绑定了一个事件监听器，一旦点击按钮就会触发console.log函数。</p>
+<p dir="auto">React使用的JSX语法结合了HTML和JS，这样编写应用就更加简单快捷。但是JSX并不是浏览器读取和执行代码的方式。React的代码之后会被编译成正常的HTML和JS代码，这才是浏览器实际执行的代码。</p>
+<p dir="auto">JSX就是声明式的，目的是为了使得开发者有一个更加友好、高效的工作接口。</p>
+<p dir="auto">需要注意即便我们书写的是声明式代码，但是计算机还是以命令式来执行信息。</p>
+<p dir="auto">在上述数组的例子里，计算机实际上还是循环遍历了整个数组，但是不需要开发人员直接写出这个指令。声明式编程实际上做的是在开发者面前隐藏代码的复杂性。</p>
+<p dir="auto">这里有一个<a href="https://www.youtube.com/watch?v=E7Fbf7R3x6I" rel="nofollow">比较命令式和声明式编程的视频</a>，推荐你阅读。</p>
+<h2 id="main-heading-H2-5">面向对象的编程</h2>
+<p dir="auto">最受欢迎的编程范式之一莫过于面向对象的编程（OOP）。</p>
+<p dir="auto">OOP的核心概念是将关注点分离成对象实体，每一个实体包含一组信息（属性）和行为（方法），可以由实体来执行。</p>
+<p dir="auto">OOP大量使用类（是由程序员设定的从蓝图或者模板创建新对象的方法），由类创建的对象叫做实例。</p>
+<p dir="auto">改写之前的伪代码烤蛋糕例子，假设我们蛋糕房有一个主厨（叫Frank），和一个厨师助理（叫Anthony），他俩分别有各自的烘培任务。如果使用OOP，代码如下：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 给每一个实体创建一个类
+class Cook {
+	constructor constructor (name) {
+        this.name = name
+    }
+
+    mixAndBake() {
+        - Mix the ingredients
+    	- Pour the mix in a mold
+        - Cook for 35 minutes
+    }
+}
+
+class AssistantCook {
+    constructor (name) {
+        this.name = name
+    }
+
+    pourIngredients() {
+        - Pour flour in a bowl
+        - Pour a couple eggs in the same bowl
+        - Pour some milk in the same bowl
+    }
+
+    chillTheCake() {
+    	- Let chill
+    }
+}
+
+// 将每一个类实例化
+const Frank = new Cook('Frank')
+const Anthony = new AssistantCook('Anthony')
+
+// 调用实例的方法
+Anthony.pourIngredients()
+Frank.mixAndBake()
+Anthony.chillTheCake()
+"><pre class="notranslate"><code class="notranslate">// 给每一个实体创建一个类
+class Cook {
+	constructor constructor (name) {
+        this.name = name
+    }
+
+    mixAndBake() {
+        - Mix the ingredients
+    	- Pour the mix in a mold
+        - Cook for 35 minutes
+    }
+}
+
+class AssistantCook {
+    constructor (name) {
+        this.name = name
+    }
+
+    pourIngredients() {
+        - Pour flour in a bowl
+        - Pour a couple eggs in the same bowl
+        - Pour some milk in the same bowl
+    }
+
+    chillTheCake() {
+    	- Let chill
+    }
+}
+
+// 将每一个类实例化
+const Frank = new Cook('Frank')
+const Anthony = new AssistantCook('Anthony')
+
+// 调用实例的方法
+Anthony.pourIngredients()
+Frank.mixAndBake()
+Anthony.chillTheCake()
+
+</code></pre></div>
+<p dir="auto">OOP的优势在于，通过清晰的关注点和责任分离，编程更加易于理解。</p>
+<p dir="auto">在这个例子中我只介绍了OOP的表面，如果你感兴趣的话，推荐观看下面两个视频：</p>
+<ul dir="auto">
+<li><a href="https://www.youtube.com/watch?v=cg1xvFy1JQQ" rel="nofollow">OOP 视频 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=pTB0EiLXUC8" rel="nofollow">OOP 视频 2</a></li>
+</ul>
+<p dir="auto">以及观看这个<a href="https://www.youtube.com/watch?v=08CWw_VD45w" rel="nofollow">对比命令式、函数式和面向对象编程的视频</a>。</p>
+<h1 dir="auto">总结</h1>
+<p dir="auto">如你所见，编程范式是不同的处理编程问题和组织代码的方法。</p>
+<p dir="auto">命令式、过程式、函数式、声明式以及面向对象的编程范式是目前最受欢迎，使用最广泛的范式。了解这些基础，有助于你更好地理解编程世界。</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(n,o,t,e,a){return{layout:"default",data:[{post:{id:1880448244,number:264,title:"编程范式简介（转载）",created_at:"2023-09-04T14:50:28Z",updated_at:"2025-11-23T16:09:58Z",body_html:'<h1 dir="auto">编程范式简介</h1>\n<blockquote>\n<p dir="auto">原文：<a href="https://www.freecodecamp.org/news/an-introduction-to-programming-paradigms/" rel="nofollow">Programming Paradigms -- Paradigm Examples for Beginners</a>，作者：<a href="https://www.freecodecamp.org/news/author/gercocca/" rel="nofollow">Germán Cocca</a></p>\n</blockquote>\n<p dir="auto">大家好！这篇文章将讲解不同的编程范式，编程范式是对一些流行的组织编程方式的"花哨"称呼。</p>\n<p dir="auto">我把话题拆分，并且每个范式补充一个例子。通过这篇文章，你就可以了解当人们在说"面向对象"、"函数式"以及"声明式"时，他们在说什么。</p>\n<p dir="auto">虽然我会提供一些伪代码和代码示例，但是这篇文章的讨论仅停留在范式表层和理论层面。</p>\n<p dir="auto">我计划将在之后用JavaScript示例来深入讲解每一个范式，如果你感兴趣的话可以关注我（关注方式见文章结尾）。</p>\n<p dir="auto">让我们开始吧！</p>\n<h2 id="main-heading-H2-0">文章目录</h2>\n<ul dir="auto">\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#what-is-a-programming-paradigm" rel="nofollow">编程范式是什么</a></li>\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#what-a-programming-paradigm-is-not" rel="nofollow">编程范式不是什么</a></li>\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#why-should-i-care" rel="nofollow">我为什么了解编程范式？</a></li>\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#popular-programming-paradigms" rel="nofollow">常见的编程范式</a>\n<ul dir="auto">\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#imperative-programming" rel="nofollow">命令式编程</a></li>\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#procedural-programming" rel="nofollow">过程式编程</a></li>\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#functional-programming" rel="nofollow">函数式编程</a></li>\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#declarative-programming" rel="nofollow">声明式编程</a></li>\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#object-oriented-programming" rel="nofollow">面向对象的编程</a></li>\n</ul>\n</li>\n<li><a href="https://www.freecodecamp.org/chinese/news/an-introduction-to-programming-paradigms/#roundup" rel="nofollow">总结</a></li>\n</ul>\n<h1 dir="auto">编程范式是什么</h1>\n<p dir="auto">编程范式指的是一种程序或者程序语言的组织风格、方式。每一种程序范式都包含了代码结构、特征以及处理常见编程问题的方式。</p>\n<p dir="auto">存在各种各样编程范式的原因和存在各种编程语言一样。特定范式适合解决特定问题，所以针对不同项目采取不同的编程范式。</p>\n<p dir="auto">随着时间的推移，不同的范式实践也层出不穷。归功于软件和硬件的发展，新的方式也不断涌现。</p>\n<p dir="auto">我认为是人类的创造力推动了范式的发展。我们热衷于创造新的东西，改善旧的东西，调整生产工具以符合现代需求，提高效率。</p>\n<p dir="auto">所以当现在我们想要写一个程序时，我们有非常多的选择来编写、构建这个程序。</p>\n<h1 dir="auto">编程范式不是什么</h1>\n<p dir="auto">编程范式不是语言或者工具，不能使用范式来"构建"任何东西。它们更像是一套约定俗成的理想和准则，开发者遵循并且扩展这套范式。</p>\n<p dir="auto">编程语言并不总是和一个特定范式相关联。有些语言在创建的时候就考虑到了某种范式，并且具有比其他语言更利于这种范式的特性。（<a href="https://www.haskell.org/" rel="nofollow">Haskel</a> 和函数式编程就是很好的例子）。</p>\n<p dir="auto">但也存在"多范式"语言，意味着你可以以这样或那样的范式来调整代码（JavaScript和Python就是非常好的例子）。</p>\n<p dir="auto">同时，编程和范式并不是相互排斥的，也就是说你可以在同一个项目中同时使用不同的范式。</p>\n<h1 dir="auto">我为什么要了解编程范式？</h1>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b43388c8c284b1245d173cdd1dc371f1a367460d39da7b456d1e4aad636c8a5b/68747470733a2f2f7777772e66726565636f646563616d702e6f72672f6e6577732f636f6e74656e742f696d616765732f323032322f30342f77686174657665722d796561682d312e676966"><img src="https://camo.githubusercontent.com/b43388c8c284b1245d173cdd1dc371f1a367460d39da7b456d1e4aad636c8a5b/68747470733a2f2f7777772e66726565636f646563616d702e6f72672f6e6577732f636f6e74656e742f696d616765732f323032322f30342f77686174657665722d796561682d312e676966" alt="whatever-yeah-1" data-animated-image="" data-canonical-src="https://www.freecodecamp.org/news/content/images/2022/04/whatever-yeah-1.gif" style="max-width: 100%;"></a></p>\n<p dir="auto">一句话回答：这是常识！</p>\n<p dir="auto">详细回答：我觉得了解不同的编程实践方式很有趣，探索相关话题可以帮助你打开思路，跳出既定框架和工具。</p>\n<p dir="auto">另外，这些术语在编程实践被广泛应用，所以对它们有一个基本概念，对你了解其他编程话题也有帮助。</p>\n<h1 dir="auto">常见的编程范式</h1>\n<p dir="auto">在介绍完编程范式是什么，不是之什么后，让我们来看看一些常见范式，它们的特征和它们之间的比较。</p>\n<p dir="auto">需要注意这篇文章的范式清单并不完整，还有其他一些流行的范式我并没有提到。这里我会提到最常见和使用最广泛的一些范式。</p>\n<h2 id="main-heading-H2-1">命令式编程</h2>\n<p dir="auto">命令式编程由一组详细的指令组成，让计算机以一定的顺序执行。之所以被称作"命令式"是因为开发者以非常具体的方式，准确地规定计算机必须做什么。</p>\n<p dir="auto">命令式编程强调描述程序<em>怎么样</em>一步一步地运行。</p>\n<p dir="auto">假如你想烤一个蛋糕，命令式编程的制作方式如下：（我不是专业烘焙师，别嫌弃我的步骤😒 ）</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1- Pour flour in a bowl //将面粉倒入碗中\n2- Pour a couple eggs in the same bowl //在碗中打入两个鸡蛋\n3- Pour some milk in the same bowl //倒入一些牛奶\n4- Mix the ingredients //将它们混合\n5- Pour the mix in a mold //将混合物倒入模具\n6- Cook for 35 minutes //烤35分钟\n7- Let chill //冷却\n"><pre class="notranslate"><code class="notranslate">1- Pour flour in a bowl //将面粉倒入碗中\n2- Pour a couple eggs in the same bowl //在碗中打入两个鸡蛋\n3- Pour some milk in the same bowl //倒入一些牛奶\n4- Mix the ingredients //将它们混合\n5- Pour the mix in a mold //将混合物倒入模具\n6- Cook for 35 minutes //烤35分钟\n7- Let chill //冷却\n\n</code></pre></div>\n<p dir="auto">若使用真实的代码，假设我们想要从一个数组中过滤出大于5的所有元素，命令式编程如下：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const nums = [1,4,3,6,7,8,9,2]\nconst result = []\n\nfor (let i = 0; i &lt; nums.length; i++) {\n    if (nums[i] &gt; 5) result.push(nums[i])\n}\n\nconsole.log(result) // 输出: [ 6, 7, 8, 9 ]\n"><pre class="notranslate"><code class="notranslate">const nums = [1,4,3,6,7,8,9,2]\nconst result = []\n\nfor (let i = 0; i &lt; nums.length; i++) {\n    if (nums[i] &gt; 5) result.push(nums[i])\n}\n\nconsole.log(result) // 输出: [ 6, 7, 8, 9 ]\n\n</code></pre></div>\n<p dir="auto">我们告诉程序要遍历整个数组的每一个元素，并且和5来比较，如果这个元素的值大于5，就将它推入另一个数组。</p>\n<p dir="auto">我们的指令非常的具体详尽，这就是命令式编程的特点。</p>\n<h2 id="main-heading-H2-2">过程式编程</h2>\n<p dir="auto">过程式编程是命令式编程的派生，在其基础上添加了函数特性（也被称作"过程" procedures 或者"子程序" subroutines）。</p>\n<p dir="auto">在过程式编程中，开发者被鼓励将程序的执行拆分成不同的函数，以此来提高程序的模块化和组织性。</p>\n<p dir="auto">改写刚才做蛋糕的例子：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="function pourIngredients() {\n    - Pour flour in a bowl\n    - Pour a couple eggs in the same bowl\n    - Pour some milk in the same bowl\n}\n\nfunction mixAndTransferToMold() {\n    - Mix the ingredients\n    - Pour the mix in a mold\n}\n\nfunction cookAndLetChill() {\n    - Cook for 35 minutes\n    - Let chill\n}\n\npourIngredients()\nmixAndTransferToMold()\ncookAndLetChill()\n"><pre class="notranslate"><code class="notranslate">function pourIngredients() {\n    - Pour flour in a bowl\n    - Pour a couple eggs in the same bowl\n    - Pour some milk in the same bowl\n}\n\nfunction mixAndTransferToMold() {\n    - Mix the ingredients\n    - Pour the mix in a mold\n}\n\nfunction cookAndLetChill() {\n    - Cook for 35 minutes\n    - Let chill\n}\n\npourIngredients()\nmixAndTransferToMold()\ncookAndLetChill()\n\n</code></pre></div>\n<p dir="auto">可以发现因为使用了函数，我们只需要阅读结尾三个函数的调用就知道这个程序到底要做什么。</p>\n<p dir="auto">这种简化和抽象化就是过程式编程的一个优势。但是在函数中，我们还是使用了原来命令式编程的模式。</p>\n<h2 id="main-heading-H2-3">函数式编程</h2>\n<p dir="auto">函数式编程将函数的概念往前再推进了一步。</p>\n<p dir="auto">在函数式编程中，函数被认为是一等公民，意味着可以将它们赋值给变量，作为参数传入其他函数，或者由函数返回。</p>\n<p dir="auto">另一个核心观点是纯函数。纯函数指的是输出仅取决于输入的函数。如果输入相同，输出的结果始终保持不变，另外纯函数没有副作用（对函数外部环境的改变）。</p>\n<p dir="auto">基于这些概念，函数式编程鼓励使用函数编程（惊不惊喜，意不意外😲 ）。同时，函数式编程也坚持将代码模块化、取消副作用，这样可以在代码库内更清晰的分离各个部分代码的责任。提高代码的可维护性。</p>\n<p dir="auto">回看之前过滤数组的例子，可以发现使用命令式范式需要在外部使用一个变量来存储函数结果，这就是一种副作用。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const nums = [1,4,3,6,7,8,9,2]\nconst result = [] // 外部变量\n\nfor (let i = 0; i &lt; nums.length; i++) {\n    if (nums[i] &gt; 5) result.push(nums[i])\n}\n\nconsole.log(result) // 输出: [ 6, 7, 8, 9 ]\n"><pre class="notranslate"><code class="notranslate">const nums = [1,4,3,6,7,8,9,2]\nconst result = [] // 外部变量\n\nfor (let i = 0; i &lt; nums.length; i++) {\n    if (nums[i] &gt; 5) result.push(nums[i])\n}\n\nconsole.log(result) // 输出: [ 6, 7, 8, 9 ]\n\n</code></pre></div>\n<p dir="auto">改写成函数式编程如下：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const nums = [1,4,3,6,7,8,9,2]\n\nfunction filterNums() {\n    const result = [] // 内部变量\n\n    for (let i = 0; i &lt; nums.length; i++) {\n        if (nums[i] &gt; 5) result.push(nums[i])\n    }\n\n    return result\n}\n\nconsole.log(filterNums()) // 输出: [ 6, 7, 8, 9 ]\n"><pre class="notranslate"><code class="notranslate">const nums = [1,4,3,6,7,8,9,2]\n\nfunction filterNums() {\n    const result = [] // 内部变量\n\n    for (let i = 0; i &lt; nums.length; i++) {\n        if (nums[i] &gt; 5) result.push(nums[i])\n    }\n\n    return result\n}\n\nconsole.log(filterNums()) // 输出: [ 6, 7, 8, 9 ]\n\n</code></pre></div>\n<p dir="auto">用两种方式编写的代码几乎一样，但在这里我们将遍历和结果数组都打包在函数内部。这样我们就可以确保函数不会更改任何作用域以外的东西。我们只创造了一个处理自己信息的变量，一旦执行结束，变量也就被回收。</p>\n<h2 id="main-heading-H2-4">声明式编程</h2>\n<p dir="auto">声明式编程隐藏了复杂性，使编程语言更接近人类的语言和思维，这和命令式编程正好相反。命令式编程给指令告诉计算机 <em>怎么样</em> 执行任务，但是声明式编程告诉计算机需要 <em>什么</em> 样的结果。</p>\n<p dir="auto">使用例子理解会更清晰，同样的过滤数组改写成声明式：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const nums = [1,4,3,6,7,8,9,2]\n\nconsole.log(nums.filter(num =&gt; num &gt; 5)) // 输出: [ 6, 7, 8, 9 ]\n"><pre class="notranslate"><code class="notranslate">const nums = [1,4,3,6,7,8,9,2]\n\nconsole.log(nums.filter(num =&gt; num &gt; 5)) // 输出: [ 6, 7, 8, 9 ]\n\n</code></pre></div>\n<p dir="auto">使用过滤函数，我们不再告诉计算机具体的操作是需要遍历数组并且将结果存储到另一个数组中，我们只需要告诉计算机我们需要过滤（filter），过滤的条件是（num &gt; 5）。</p>\n<p dir="auto">这样做的好处是代码更易读易理解，并且更简洁。JavaScript的<code class="notranslate">filter</code>、<code class="notranslate">map</code>、<code class="notranslate">reduce</code>和<code class="notranslate">sort</code> 函数都是声明式编程的例子。</p>\n<p dir="auto">另一个例子是JS框架/库------React，如下面的代码：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="&lt;button onClick={() =&gt; console.log(\'You clicked me!\')}&gt;Click me&lt;/button&gt;\n"><pre class="notranslate"><code class="notranslate">&lt;button onClick={() =&gt; console.log(\'You clicked me!\')}&gt;Click me&lt;/button&gt;\n\n</code></pre></div>\n<p dir="auto">这里有一个按钮元素，绑定了一个事件监听器，一旦点击按钮就会触发console.log函数。</p>\n<p dir="auto">React使用的JSX语法结合了HTML和JS，这样编写应用就更加简单快捷。但是JSX并不是浏览器读取和执行代码的方式。React的代码之后会被编译成正常的HTML和JS代码，这才是浏览器实际执行的代码。</p>\n<p dir="auto">JSX就是声明式的，目的是为了使得开发者有一个更加友好、高效的工作接口。</p>\n<p dir="auto">需要注意即便我们书写的是声明式代码，但是计算机还是以命令式来执行信息。</p>\n<p dir="auto">在上述数组的例子里，计算机实际上还是循环遍历了整个数组，但是不需要开发人员直接写出这个指令。声明式编程实际上做的是在开发者面前隐藏代码的复杂性。</p>\n<p dir="auto">这里有一个<a href="https://www.youtube.com/watch?v=E7Fbf7R3x6I" rel="nofollow">比较命令式和声明式编程的视频</a>，推荐你阅读。</p>\n<h2 id="main-heading-H2-5">面向对象的编程</h2>\n<p dir="auto">最受欢迎的编程范式之一莫过于面向对象的编程（OOP）。</p>\n<p dir="auto">OOP的核心概念是将关注点分离成对象实体，每一个实体包含一组信息（属性）和行为（方法），可以由实体来执行。</p>\n<p dir="auto">OOP大量使用类（是由程序员设定的从蓝图或者模板创建新对象的方法），由类创建的对象叫做实例。</p>\n<p dir="auto">改写之前的伪代码烤蛋糕例子，假设我们蛋糕房有一个主厨（叫Frank），和一个厨师助理（叫Anthony），他俩分别有各自的烘培任务。如果使用OOP，代码如下：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// 给每一个实体创建一个类\nclass Cook {\n\tconstructor constructor (name) {\n        this.name = name\n    }\n\n    mixAndBake() {\n        - Mix the ingredients\n    \t- Pour the mix in a mold\n        - Cook for 35 minutes\n    }\n}\n\nclass AssistantCook {\n    constructor (name) {\n        this.name = name\n    }\n\n    pourIngredients() {\n        - Pour flour in a bowl\n        - Pour a couple eggs in the same bowl\n        - Pour some milk in the same bowl\n    }\n\n    chillTheCake() {\n    \t- Let chill\n    }\n}\n\n// 将每一个类实例化\nconst Frank = new Cook(\'Frank\')\nconst Anthony = new AssistantCook(\'Anthony\')\n\n// 调用实例的方法\nAnthony.pourIngredients()\nFrank.mixAndBake()\nAnthony.chillTheCake()\n"><pre class="notranslate"><code class="notranslate">// 给每一个实体创建一个类\nclass Cook {\n\tconstructor constructor (name) {\n        this.name = name\n    }\n\n    mixAndBake() {\n        - Mix the ingredients\n    \t- Pour the mix in a mold\n        - Cook for 35 minutes\n    }\n}\n\nclass AssistantCook {\n    constructor (name) {\n        this.name = name\n    }\n\n    pourIngredients() {\n        - Pour flour in a bowl\n        - Pour a couple eggs in the same bowl\n        - Pour some milk in the same bowl\n    }\n\n    chillTheCake() {\n    \t- Let chill\n    }\n}\n\n// 将每一个类实例化\nconst Frank = new Cook(\'Frank\')\nconst Anthony = new AssistantCook(\'Anthony\')\n\n// 调用实例的方法\nAnthony.pourIngredients()\nFrank.mixAndBake()\nAnthony.chillTheCake()\n\n</code></pre></div>\n<p dir="auto">OOP的优势在于，通过清晰的关注点和责任分离，编程更加易于理解。</p>\n<p dir="auto">在这个例子中我只介绍了OOP的表面，如果你感兴趣的话，推荐观看下面两个视频：</p>\n<ul dir="auto">\n<li><a href="https://www.youtube.com/watch?v=cg1xvFy1JQQ" rel="nofollow">OOP 视频 1</a></li>\n<li><a href="https://www.youtube.com/watch?v=pTB0EiLXUC8" rel="nofollow">OOP 视频 2</a></li>\n</ul>\n<p dir="auto">以及观看这个<a href="https://www.youtube.com/watch?v=08CWw_VD45w" rel="nofollow">对比命令式、函数式和面向对象编程的视频</a>。</p>\n<h1 dir="auto">总结</h1>\n<p dir="auto">如你所见，编程范式是不同的处理编程问题和组织代码的方法。</p>\n<p dir="auto">命令式、过程式、函数式、声明式以及面向对象的编程范式是目前最受欢迎，使用最广泛的范式。了解这些基础，有助于你更好地理解编程世界。</p>',user:{login:t,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:e,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/264"},navList:[{text:"文章目录",id:"main-heading-H2-0",type:o,children:[]},{text:"命令式编程",id:"main-heading-H2-1",type:o,children:[]},{text:"过程式编程",id:"main-heading-H2-2",type:o,children:[]},{text:"函数式编程",id:"main-heading-H2-3",type:o,children:[]},{text:"声明式编程",id:"main-heading-H2-4",type:o,children:[]},{text:"面向对象的编程",id:"main-heading-H2-5",type:o,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:t,userEmail:"1656800216@qq.com",repository:"blog",blogName:a,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:a,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:e}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

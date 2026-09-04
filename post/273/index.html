@@ -1,0 +1,897 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>如何使用 LogicFlow 逻辑编排数据控制业务流 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content='文档相关 https://github.com/didi/LogicFlow 零代码新思路，基于LogicFlow的页面逻辑编排 LogicFlow Vue demo 按流程编排数据执行业务逻辑 !DOCTYPE html html lang="en" head meta charset="UTF-'><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="如何使用 LogicFlow 逻辑编排数据控制业务流"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content='文档相关 https://github.com/didi/LogicFlow 零代码新思路，基于LogicFlow的页面逻辑编排 LogicFlow Vue demo 按流程编排数据执行业务逻辑 !DOCTYPE html html lang="en" head meta charset="UTF-'><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="如何使用 LogicFlow 逻辑编排数据控制业务流"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content='文档相关 https://github.com/didi/LogicFlow 零代码新思路，基于LogicFlow的页面逻辑编排 LogicFlow Vue demo 按流程编排数据执行业务逻辑 !DOCTYPE html html lang="en" head meta charset="UTF-'><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/273#main-heading-H2-0" title="文档相关" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              文档相关
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/273#main-heading-H2-1" title="按流程编排数据执行业务逻辑" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              按流程编排数据执行业务逻辑
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>如何使用 LogicFlow 逻辑编排数据控制业务流</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>如何使用 LogicFlow 逻辑编排数据控制业务流</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2024-04-22</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 28 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">文档相关</h2>
+<ul dir="auto">
+<li><a href="https://github.com/didi/LogicFlow">https://github.com/didi/LogicFlow</a></li>
+<li><a href="https://juejin.cn/post/7268221660528279604?searchId=20240423095353DA500AB8CF5367979C16" rel="nofollow">零代码新思路，基于LogicFlow的页面逻辑编排</a></li>
+<li><a href="https://xinxin93.github.io/logicflow_vue_demo/#/" rel="nofollow">LogicFlow Vue demo</a></li>
+</ul>
+<h2 id="main-heading-H2-1">按流程编排数据执行业务逻辑</h2>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/lowcode/lf-vue-demo.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/lowcode/lf-vue-demo.png" alt="" style="max-width:100%"></a></p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<!DOCTYPE html>
+<html lang=&#34;en&#34;>
+  <head>
+    <meta charset=&#34;UTF-8&#34; />
+    <meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34; />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // https://xinxin93.github.io/logicflow_vue_demo/#/
+      const jsonData = {
+        nodes: [
+          {
+            id: '742356ea-762b-4899-b96a-bd567e3c4361',
+            type: 'start',
+            x: 220,
+            y: 170,
+            properties: {},
+            text: {
+              x: 220,
+              y: 205,
+              value: 'sdfasf'
+            }
+          },
+          {
+            id: 'dacda6b6-48d3-4dff-911d-287704eb23d8',
+            type: 'rect',
+            x: 350,
+            y: 170,
+            properties: {},
+            text: {
+              x: 350,
+              y: 170,
+              value: '基础节点'
+            }
+          },
+          {
+            id: '49106603-2b88-4b2c-b1e8-723c1f2210bd',
+            type: 'user',
+            x: 530,
+            y: 170,
+            properties: {},
+            text: {
+              x: 530,
+              y: 220,
+              value: '自定义节点'
+            }
+          },
+          {
+            id: '647fa2bc-98ee-40cf-99c5-4756c0bc130d',
+            type: 'push',
+            x: 690,
+            y: 170,
+            properties: {},
+            text: {
+              x: 690,
+              y: 220,
+              value: '自定义节点 可添加下一个节点/节点组'
+            }
+          },
+          {
+            id: '37e7bac3-8804-4237-abe9-7b6065c207e9',
+            type: 'download',
+            x: 690,
+            y: 320,
+            properties: {}
+          },
+          {
+            id: '6bb4396f-54c9-4b1c-b34c-87ef004f2e29',
+            type: 'user',
+            x: 840,
+            y: 320,
+            properties: {}
+          },
+          {
+            id: 'abf76937-63b8-493c-a978-a4a58bc4f6b8',
+            type: 'push',
+            x: 840,
+            y: 470,
+            properties: {}
+          },
+          {
+            id: 'b119f24f-2669-4a90-a837-afd853b2ffcc',
+            type: 'end',
+            x: 990,
+            y: 320,
+            properties: {}
+          },
+          {
+            id: '60326ad9-cae2-4a85-ae98-d340fb7bd67f',
+            type: 'end',
+            x: 990,
+            y: 470,
+            properties: {}
+          },
+          {
+            id: '414fe028-3609-4450-b0f4-e5aca7705e8c',
+            type: 'download',
+            x: 860,
+            y: 170,
+            properties: {},
+            text: {
+              x: 860,
+              y: 220,
+              value: '自定义节点-设置颜色'
+            }
+          }
+        ],
+        edges: [
+          {
+            id: '00f55245-513e-43a2-9cb0-adb61b01adc8',
+            type: 'polyline',
+            sourceNodeId: '742356ea-762b-4899-b96a-bd567e3c4361',
+            targetNodeId: 'dacda6b6-48d3-4dff-911d-287704eb23d8',
+            startPoint: {
+              x: 240,
+              y: 170
+            },
+            endPoint: {
+              x: 300,
+              y: 170
+            },
+            properties: {},
+            pointsList: [
+              {
+                x: 240,
+                y: 170
+              },
+              {
+                x: 300,
+                y: 170
+              }
+            ]
+          },
+          {
+            id: 'bbf9754f-603e-48e4-85fe-84ed44459a6a',
+            type: 'polyline',
+            sourceNodeId: 'dacda6b6-48d3-4dff-911d-287704eb23d8',
+            targetNodeId: '49106603-2b88-4b2c-b1e8-723c1f2210bd',
+            startPoint: {
+              x: 400,
+              y: 170
+            },
+            endPoint: {
+              x: 495,
+              y: 170
+            },
+            properties: {},
+            pointsList: [
+              {
+                x: 400,
+                y: 170
+              },
+              {
+                x: 495,
+                y: 170
+              }
+            ]
+          },
+          {
+            id: '12bb443b-4070-4a08-ad4d-2755ee856f0d',
+            type: 'polyline',
+            sourceNodeId: '49106603-2b88-4b2c-b1e8-723c1f2210bd',
+            targetNodeId: '647fa2bc-98ee-40cf-99c5-4756c0bc130d',
+            startPoint: {
+              x: 565,
+              y: 170
+            },
+            endPoint: {
+              x: 655,
+              y: 170
+            },
+            properties: {},
+            pointsList: [
+              {
+                x: 565,
+                y: 170
+              },
+              {
+                x: 655,
+                y: 170
+              }
+            ]
+          },
+          {
+            id: '33fa3c09-9c29-4cb7-8373-67d537b8b623',
+            type: 'polyline',
+            sourceNodeId: '647fa2bc-98ee-40cf-99c5-4756c0bc130d',
+            targetNodeId: '37e7bac3-8804-4237-abe9-7b6065c207e9',
+            startPoint: {
+              x: 690,
+              y: 205
+            },
+            endPoint: {
+              x: 690,
+              y: 295
+            },
+            properties: {},
+            pointsList: [
+              {
+                x: 690,
+                y: 205
+              },
+              {
+                x: 690,
+                y: 295
+              }
+            ]
+          },
+          {
+            id: '2b5a5e89-005e-4fda-9a44-dc795050534f',
+            type: 'polyline',
+            sourceNodeId: '37e7bac3-8804-4237-abe9-7b6065c207e9',
+            targetNodeId: '6bb4396f-54c9-4b1c-b34c-87ef004f2e29',
+            startPoint: {
+              x: 715,
+              y: 320
+            },
+            endPoint: {
+              x: 805,
+              y: 320
+            },
+            properties: {},
+            pointsList: [
+              {
+                x: 715,
+                y: 320
+              },
+              {
+                x: 805,
+                y: 320
+              }
+            ]
+          },
+          {
+            id: '62b54f8a-bcfd-494b-9144-5aeb09ca77a1',
+            type: 'polyline',
+            sourceNodeId: '6bb4396f-54c9-4b1c-b34c-87ef004f2e29',
+            targetNodeId: 'b119f24f-2669-4a90-a837-afd853b2ffcc',
+            startPoint: {
+              x: 875,
+              y: 320
+            },
+            endPoint: {
+              x: 970,
+              y: 320
+            },
+            properties: {},
+            text: {
+              x: 920,
+              y: 310,
+              value: 'Y'
+            },
+            pointsList: [
+              {
+                x: 875,
+                y: 320
+              },
+              {
+                x: 970,
+                y: 320
+              }
+            ]
+          },
+          {
+            id: 'ba816d4a-5785-4911-9f78-03933f1463a1',
+            type: 'polyline',
+            sourceNodeId: '6bb4396f-54c9-4b1c-b34c-87ef004f2e29',
+            targetNodeId: 'abf76937-63b8-493c-a978-a4a58bc4f6b8',
+            startPoint: {
+              x: 840,
+              y: 355
+            },
+            endPoint: {
+              x: 840,
+              y: 435
+            },
+            properties: {},
+            text: {
+              x: 850,
+              y: 400,
+              value: 'N'
+            },
+            pointsList: [
+              {
+                x: 840,
+                y: 355
+              },
+              {
+                x: 840,
+                y: 435
+              }
+            ]
+          },
+          {
+            id: '2b3007ed-7a13-4db7-a1ea-6691d7564c34',
+            type: 'polyline',
+            sourceNodeId: 'abf76937-63b8-493c-a978-a4a58bc4f6b8',
+            targetNodeId: '60326ad9-cae2-4a85-ae98-d340fb7bd67f',
+            startPoint: {
+              x: 875,
+              y: 470
+            },
+            endPoint: {
+              x: 970,
+              y: 470
+            },
+            properties: {},
+            pointsList: [
+              {
+                x: 875,
+                y: 470
+              },
+              {
+                x: 970,
+                y: 470
+              }
+            ]
+          },
+          {
+            id: '262e2263-6c8c-4a38-b223-97848e9b5767',
+            type: 'polyline',
+            sourceNodeId: '647fa2bc-98ee-40cf-99c5-4756c0bc130d',
+            targetNodeId: '414fe028-3609-4450-b0f4-e5aca7705e8c',
+            startPoint: {
+              x: 725,
+              y: 170
+            },
+            endPoint: {
+              x: 835,
+              y: 170
+            },
+            properties: {},
+            pointsList: [
+              {
+                x: 725,
+                y: 170
+              },
+              {
+                x: 835,
+                y: 170
+              }
+            ]
+          }
+        ]
+      }
+
+      // 解析节点信息
+      const nodesMap = {}
+      jsonData.nodes.forEach((node) => {
+        nodesMap[node.id] = {
+          type: node.type,
+          text: node.text ? node.text.value : undefined
+        }
+      })
+
+      // 解析连线信息
+      const edges = jsonData.edges.map((edge) => ({
+        id: edge.id,
+        type: edge.type,
+        text: edge.text ? edge.text.value : undefined,
+        source: edge.sourceNodeId,
+        target: edge.targetNodeId
+      }))
+
+      // 输出解析结果
+      console.log('节点信息：', nodesMap)
+      console.log('连线信息：', edges)
+
+      // 执行下一步：遍历连线，执行相关操作
+      edges.forEach((edge) => {
+        const sourceNode = nodesMap[edge.source]
+        const targetNode = nodesMap[edge.target]
+
+        // 根据连线类型执行不同的操作
+        switch (edge.type) {
+          case 'polyline':
+            console.log(
+              `从 ${sourceNode.text || sourceNode.type} 到 ${
+                targetNode.text || targetNode.type
+              }`
+            )
+            break
+          // 其他连线类型的操作
+          default:
+            break
+        }
+      })
+
+      // 查找 &#34;开始&#34; 节点的下一步
+      const startNodeId = jsonData.nodes.find(
+        (node) => node.type === 'start'
+      ).id
+
+      const nextStepEdge = edges.find((edge) => edge.source === startNodeId)
+
+      if (nextStepEdge) {
+        const nextStepNode = nodesMap[nextStepEdge.target]
+        console.log(`【开始】的下一步是：${nextStepNode.text}`)
+      } else {
+        console.log('没有找到下一步')
+      }
+
+      // 查找 &#34;自定义节点 可添加下一个节点/节点组&#34; 的下一步
+      const customNodeId = jsonData.nodes.find(
+        (node) =>
+          node.text && node.text.value === '自定义节点 可添加下一个节点/节点组'
+      ).id
+      const nextStepsEdges = edges.filter(
+        (edge) => edge.source === customNodeId
+      )
+
+      nextStepsEdges.forEach((edge) => {
+        const targetNode = nodesMap[edge.target]
+        console.log(
+          `【自定义节点 可添加下一个节点/节点组】的下一步(${
+            edge.text || edge.type
+          }) 是：${targetNode.text || targetNode.type}`
+        )
+      })
+    </script>
+  </body>
+</html>
+"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">></span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">></span>Document<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+      <span class="pl-c">// https://xinxin93.github.io/logicflow_vue_demo/#/</span>
+      <span class="pl-k">const</span> <span class="pl-s1">jsonData</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">nodes</span>: <span class="pl-kos">[</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'742356ea-762b-4899-b96a-bd567e3c4361'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'start'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">205</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'sdfasf'</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'dacda6b6-48d3-4dff-911d-287704eb23d8'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'rect'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">350</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">350</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'基础节点'</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'49106603-2b88-4b2c-b1e8-723c1f2210bd'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'user'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">530</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">530</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'自定义节点'</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'647fa2bc-98ee-40cf-99c5-4756c0bc130d'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'push'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'自定义节点 可添加下一个节点/节点组'</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'37e7bac3-8804-4237-abe9-7b6065c207e9'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'download'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">320</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'6bb4396f-54c9-4b1c-b34c-87ef004f2e29'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'user'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">320</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'abf76937-63b8-493c-a978-a4a58bc4f6b8'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'push'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">470</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'b119f24f-2669-4a90-a837-afd853b2ffcc'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'end'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">990</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">320</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'60326ad9-cae2-4a85-ae98-d340fb7bd67f'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'end'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">990</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">470</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'414fe028-3609-4450-b0f4-e5aca7705e8c'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'download'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">x</span>: <span class="pl-c1">860</span><span class="pl-kos">,</span>
+            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">860</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'自定义节点-设置颜色'</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">]</span><span class="pl-kos">,</span>
+        <span class="pl-c1">edges</span>: <span class="pl-kos">[</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'00f55245-513e-43a2-9cb0-adb61b01adc8'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'742356ea-762b-4899-b96a-bd567e3c4361'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'dacda6b6-48d3-4dff-911d-287704eb23d8'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">240</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">300</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">240</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">300</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'bbf9754f-603e-48e4-85fe-84ed44459a6a'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'dacda6b6-48d3-4dff-911d-287704eb23d8'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'49106603-2b88-4b2c-b1e8-723c1f2210bd'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">400</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">495</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">400</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">495</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'12bb443b-4070-4a08-ad4d-2755ee856f0d'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'49106603-2b88-4b2c-b1e8-723c1f2210bd'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'647fa2bc-98ee-40cf-99c5-4756c0bc130d'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">565</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">655</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">565</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">655</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'33fa3c09-9c29-4cb7-8373-67d537b8b623'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'647fa2bc-98ee-40cf-99c5-4756c0bc130d'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'37e7bac3-8804-4237-abe9-7b6065c207e9'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">205</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">295</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">205</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">295</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'2b5a5e89-005e-4fda-9a44-dc795050534f'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'37e7bac3-8804-4237-abe9-7b6065c207e9'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'6bb4396f-54c9-4b1c-b34c-87ef004f2e29'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">715</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">320</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">805</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">320</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">715</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">320</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">805</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">320</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'62b54f8a-bcfd-494b-9144-5aeb09ca77a1'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'6bb4396f-54c9-4b1c-b34c-87ef004f2e29'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'b119f24f-2669-4a90-a837-afd853b2ffcc'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">875</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">320</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">970</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">320</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">920</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">310</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'Y'</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">875</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">320</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">970</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">320</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'ba816d4a-5785-4911-9f78-03933f1463a1'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'6bb4396f-54c9-4b1c-b34c-87ef004f2e29'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'abf76937-63b8-493c-a978-a4a58bc4f6b8'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">355</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">435</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">850</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">400</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'N'</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">355</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">435</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'2b3007ed-7a13-4db7-a1ea-6691d7564c34'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'abf76937-63b8-493c-a978-a4a58bc4f6b8'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'60326ad9-cae2-4a85-ae98-d340fb7bd67f'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">875</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">470</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">970</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">470</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">875</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">470</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">970</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">470</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">id</span>: <span class="pl-s">'262e2263-6c8c-4a38-b223-97848e9b5767'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'polyline'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">'647fa2bc-98ee-40cf-99c5-4756c0bc130d'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">'414fe028-3609-4450-b0f4-e5aca7705e8c'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">725</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>
+              <span class="pl-c1">x</span>: <span class="pl-c1">835</span><span class="pl-kos">,</span>
+              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">725</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+              <span class="pl-kos">}</span><span class="pl-kos">,</span>
+              <span class="pl-kos">{</span>
+                <span class="pl-c1">x</span>: <span class="pl-c1">835</span><span class="pl-kos">,</span>
+                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>
+              <span class="pl-kos">}</span>
+            <span class="pl-kos">]</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">]</span>
+      <span class="pl-kos">}</span>
+
+      <span class="pl-c">// 解析节点信息</span>
+      <span class="pl-k">const</span> <span class="pl-s1">nodesMap</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>
+      <span class="pl-s1">jsonData</span><span class="pl-kos">.</span><span class="pl-c1">nodes</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">node</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">,</span>
+          <span class="pl-c1">text</span>: <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">text</span> ? <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">.</span><span class="pl-c1">value</span> : <span class="pl-c1">undefined</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+      <span class="pl-c">// 解析连线信息</span>
+      <span class="pl-k">const</span> <span class="pl-s1">edges</span> <span class="pl-c1">=</span> <span class="pl-s1">jsonData</span><span class="pl-kos">.</span><span class="pl-c1">edges</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">id</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span>
+        <span class="pl-c1">type</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">,</span>
+        <span class="pl-c1">text</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">text</span> ? <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">.</span><span class="pl-c1">value</span> : <span class="pl-c1">undefined</span><span class="pl-kos">,</span>
+        <span class="pl-c1">source</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">sourceNodeId</span><span class="pl-kos">,</span>
+        <span class="pl-c1">target</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">targetNodeId</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+
+      <span class="pl-c">// 输出解析结果</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'节点信息：'</span><span class="pl-kos">,</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">)</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'连线信息：'</span><span class="pl-kos">,</span> <span class="pl-s1">edges</span><span class="pl-kos">)</span>
+
+      <span class="pl-c">// 执行下一步：遍历连线，执行相关操作</span>
+      <span class="pl-s1">edges</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-k">const</span> <span class="pl-s1">sourceNode</span> <span class="pl-c1">=</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">source</span><span class="pl-kos">]</span>
+        <span class="pl-k">const</span> <span class="pl-s1">targetNode</span> <span class="pl-c1">=</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">]</span>
+
+        <span class="pl-c">// 根据连线类型执行不同的操作</span>
+        <span class="pl-k">switch</span> <span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-k">case</span> <span class="pl-s">'polyline'</span>:
+            <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span>
+              <span class="pl-s">`从 <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">sourceNode</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">||</span> <span class="pl-s1">sourceNode</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">}</span></span> 到 <span class="pl-s1"><span class="pl-kos">${</span></span></span>
+<span class="pl-s"><span class="pl-s1">                <span class="pl-s1">targetNode</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">||</span> <span class="pl-s1">targetNode</span><span class="pl-kos">.</span><span class="pl-c1">type</span></span></span>
+<span class="pl-s"><span class="pl-s1">              <span class="pl-kos">}</span></span>`</span>
+            <span class="pl-kos">)</span>
+            <span class="pl-k">break</span>
+          <span class="pl-c">// 其他连线类型的操作</span>
+          <span class="pl-k">default</span>:
+            <span class="pl-k">break</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+      <span class="pl-c">// 查找 "开始" 节点的下一步</span>
+      <span class="pl-k">const</span> <span class="pl-s1">startNodeId</span> <span class="pl-c1">=</span> <span class="pl-s1">jsonData</span><span class="pl-kos">.</span><span class="pl-c1">nodes</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span>
+        <span class="pl-kos">(</span><span class="pl-s1">node</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">===</span> <span class="pl-s">'start'</span>
+      <span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">id</span>
+
+      <span class="pl-k">const</span> <span class="pl-s1">nextStepEdge</span> <span class="pl-c1">=</span> <span class="pl-s1">edges</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">source</span> <span class="pl-c1">===</span> <span class="pl-s1">startNodeId</span><span class="pl-kos">)</span>
+
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">nextStepEdge</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">const</span> <span class="pl-s1">nextStepNode</span> <span class="pl-c1">=</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">nextStepEdge</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">]</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`【开始】的下一步是：<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">nextStepNode</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'没有找到下一步'</span><span class="pl-kos">)</span>
+      <span class="pl-kos">}</span>
+
+      <span class="pl-c">// 查找 "自定义节点 可添加下一个节点/节点组" 的下一步</span>
+      <span class="pl-k">const</span> <span class="pl-s1">customNodeId</span> <span class="pl-c1">=</span> <span class="pl-s1">jsonData</span><span class="pl-kos">.</span><span class="pl-c1">nodes</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span>
+        <span class="pl-kos">(</span><span class="pl-s1">node</span><span class="pl-kos">)</span> <span class="pl-c1">=></span>
+          <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">&&</span> <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">.</span><span class="pl-c1">value</span> <span class="pl-c1">===</span> <span class="pl-s">'自定义节点 可添加下一个节点/节点组'</span>
+      <span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">id</span>
+      <span class="pl-k">const</span> <span class="pl-s1">nextStepsEdges</span> <span class="pl-c1">=</span> <span class="pl-s1">edges</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span>
+        <span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">source</span> <span class="pl-c1">===</span> <span class="pl-s1">customNodeId</span>
+      <span class="pl-kos">)</span>
+
+      <span class="pl-s1">nextStepsEdges</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-k">const</span> <span class="pl-s1">targetNode</span> <span class="pl-c1">=</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">]</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span>
+          <span class="pl-s">`【自定义节点 可添加下一个节点/节点组】的下一步(<span class="pl-s1"><span class="pl-kos">${</span></span></span>
+<span class="pl-s"><span class="pl-s1">            <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">||</span> <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">type</span></span></span>
+<span class="pl-s"><span class="pl-s1">          <span class="pl-kos">}</span></span>) 是：<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">targetNode</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">||</span> <span class="pl-s1">targetNode</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">}</span></span>`</span>
+        <span class="pl-kos">)</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">></span></pre></div>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/lowcode/lf-demo-log.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/lowcode/lf-demo-log.png" alt="" style="max-width:100%"></a></p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n){return{layout:"default",data:[{post:{id:2256026763,number:273,title:"如何使用 LogicFlow 逻辑编排数据控制业务流",created_at:"2024-04-22T09:19:42Z",updated_at:"2025-11-23T16:20:52Z",body_html:'<h2 id="main-heading-H2-0">文档相关</h2>\n<ul dir="auto">\n<li><a href="https://github.com/didi/LogicFlow">https://github.com/didi/LogicFlow</a></li>\n<li><a href="https://juejin.cn/post/7268221660528279604?searchId=20240423095353DA500AB8CF5367979C16" rel="nofollow">零代码新思路，基于LogicFlow的页面逻辑编排</a></li>\n<li><a href="https://xinxin93.github.io/logicflow_vue_demo/#/" rel="nofollow">LogicFlow Vue demo</a></li>\n</ul>\n<h2 id="main-heading-H2-1">按流程编排数据执行业务逻辑</h2>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/lowcode/lf-vue-demo.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/lowcode/lf-vue-demo.png" alt="" style="max-width: 100%;"></a></p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;\n    &lt;title&gt;Document&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;script&gt;\n      // https://xinxin93.github.io/logicflow_vue_demo/#/\n      const jsonData = {\n        nodes: [\n          {\n            id: \'742356ea-762b-4899-b96a-bd567e3c4361\',\n            type: \'start\',\n            x: 220,\n            y: 170,\n            properties: {},\n            text: {\n              x: 220,\n              y: 205,\n              value: \'sdfasf\'\n            }\n          },\n          {\n            id: \'dacda6b6-48d3-4dff-911d-287704eb23d8\',\n            type: \'rect\',\n            x: 350,\n            y: 170,\n            properties: {},\n            text: {\n              x: 350,\n              y: 170,\n              value: \'基础节点\'\n            }\n          },\n          {\n            id: \'49106603-2b88-4b2c-b1e8-723c1f2210bd\',\n            type: \'user\',\n            x: 530,\n            y: 170,\n            properties: {},\n            text: {\n              x: 530,\n              y: 220,\n              value: \'自定义节点\'\n            }\n          },\n          {\n            id: \'647fa2bc-98ee-40cf-99c5-4756c0bc130d\',\n            type: \'push\',\n            x: 690,\n            y: 170,\n            properties: {},\n            text: {\n              x: 690,\n              y: 220,\n              value: \'自定义节点 可添加下一个节点/节点组\'\n            }\n          },\n          {\n            id: \'37e7bac3-8804-4237-abe9-7b6065c207e9\',\n            type: \'download\',\n            x: 690,\n            y: 320,\n            properties: {}\n          },\n          {\n            id: \'6bb4396f-54c9-4b1c-b34c-87ef004f2e29\',\n            type: \'user\',\n            x: 840,\n            y: 320,\n            properties: {}\n          },\n          {\n            id: \'abf76937-63b8-493c-a978-a4a58bc4f6b8\',\n            type: \'push\',\n            x: 840,\n            y: 470,\n            properties: {}\n          },\n          {\n            id: \'b119f24f-2669-4a90-a837-afd853b2ffcc\',\n            type: \'end\',\n            x: 990,\n            y: 320,\n            properties: {}\n          },\n          {\n            id: \'60326ad9-cae2-4a85-ae98-d340fb7bd67f\',\n            type: \'end\',\n            x: 990,\n            y: 470,\n            properties: {}\n          },\n          {\n            id: \'414fe028-3609-4450-b0f4-e5aca7705e8c\',\n            type: \'download\',\n            x: 860,\n            y: 170,\n            properties: {},\n            text: {\n              x: 860,\n              y: 220,\n              value: \'自定义节点-设置颜色\'\n            }\n          }\n        ],\n        edges: [\n          {\n            id: \'00f55245-513e-43a2-9cb0-adb61b01adc8\',\n            type: \'polyline\',\n            sourceNodeId: \'742356ea-762b-4899-b96a-bd567e3c4361\',\n            targetNodeId: \'dacda6b6-48d3-4dff-911d-287704eb23d8\',\n            startPoint: {\n              x: 240,\n              y: 170\n            },\n            endPoint: {\n              x: 300,\n              y: 170\n            },\n            properties: {},\n            pointsList: [\n              {\n                x: 240,\n                y: 170\n              },\n              {\n                x: 300,\n                y: 170\n              }\n            ]\n          },\n          {\n            id: \'bbf9754f-603e-48e4-85fe-84ed44459a6a\',\n            type: \'polyline\',\n            sourceNodeId: \'dacda6b6-48d3-4dff-911d-287704eb23d8\',\n            targetNodeId: \'49106603-2b88-4b2c-b1e8-723c1f2210bd\',\n            startPoint: {\n              x: 400,\n              y: 170\n            },\n            endPoint: {\n              x: 495,\n              y: 170\n            },\n            properties: {},\n            pointsList: [\n              {\n                x: 400,\n                y: 170\n              },\n              {\n                x: 495,\n                y: 170\n              }\n            ]\n          },\n          {\n            id: \'12bb443b-4070-4a08-ad4d-2755ee856f0d\',\n            type: \'polyline\',\n            sourceNodeId: \'49106603-2b88-4b2c-b1e8-723c1f2210bd\',\n            targetNodeId: \'647fa2bc-98ee-40cf-99c5-4756c0bc130d\',\n            startPoint: {\n              x: 565,\n              y: 170\n            },\n            endPoint: {\n              x: 655,\n              y: 170\n            },\n            properties: {},\n            pointsList: [\n              {\n                x: 565,\n                y: 170\n              },\n              {\n                x: 655,\n                y: 170\n              }\n            ]\n          },\n          {\n            id: \'33fa3c09-9c29-4cb7-8373-67d537b8b623\',\n            type: \'polyline\',\n            sourceNodeId: \'647fa2bc-98ee-40cf-99c5-4756c0bc130d\',\n            targetNodeId: \'37e7bac3-8804-4237-abe9-7b6065c207e9\',\n            startPoint: {\n              x: 690,\n              y: 205\n            },\n            endPoint: {\n              x: 690,\n              y: 295\n            },\n            properties: {},\n            pointsList: [\n              {\n                x: 690,\n                y: 205\n              },\n              {\n                x: 690,\n                y: 295\n              }\n            ]\n          },\n          {\n            id: \'2b5a5e89-005e-4fda-9a44-dc795050534f\',\n            type: \'polyline\',\n            sourceNodeId: \'37e7bac3-8804-4237-abe9-7b6065c207e9\',\n            targetNodeId: \'6bb4396f-54c9-4b1c-b34c-87ef004f2e29\',\n            startPoint: {\n              x: 715,\n              y: 320\n            },\n            endPoint: {\n              x: 805,\n              y: 320\n            },\n            properties: {},\n            pointsList: [\n              {\n                x: 715,\n                y: 320\n              },\n              {\n                x: 805,\n                y: 320\n              }\n            ]\n          },\n          {\n            id: \'62b54f8a-bcfd-494b-9144-5aeb09ca77a1\',\n            type: \'polyline\',\n            sourceNodeId: \'6bb4396f-54c9-4b1c-b34c-87ef004f2e29\',\n            targetNodeId: \'b119f24f-2669-4a90-a837-afd853b2ffcc\',\n            startPoint: {\n              x: 875,\n              y: 320\n            },\n            endPoint: {\n              x: 970,\n              y: 320\n            },\n            properties: {},\n            text: {\n              x: 920,\n              y: 310,\n              value: \'Y\'\n            },\n            pointsList: [\n              {\n                x: 875,\n                y: 320\n              },\n              {\n                x: 970,\n                y: 320\n              }\n            ]\n          },\n          {\n            id: \'ba816d4a-5785-4911-9f78-03933f1463a1\',\n            type: \'polyline\',\n            sourceNodeId: \'6bb4396f-54c9-4b1c-b34c-87ef004f2e29\',\n            targetNodeId: \'abf76937-63b8-493c-a978-a4a58bc4f6b8\',\n            startPoint: {\n              x: 840,\n              y: 355\n            },\n            endPoint: {\n              x: 840,\n              y: 435\n            },\n            properties: {},\n            text: {\n              x: 850,\n              y: 400,\n              value: \'N\'\n            },\n            pointsList: [\n              {\n                x: 840,\n                y: 355\n              },\n              {\n                x: 840,\n                y: 435\n              }\n            ]\n          },\n          {\n            id: \'2b3007ed-7a13-4db7-a1ea-6691d7564c34\',\n            type: \'polyline\',\n            sourceNodeId: \'abf76937-63b8-493c-a978-a4a58bc4f6b8\',\n            targetNodeId: \'60326ad9-cae2-4a85-ae98-d340fb7bd67f\',\n            startPoint: {\n              x: 875,\n              y: 470\n            },\n            endPoint: {\n              x: 970,\n              y: 470\n            },\n            properties: {},\n            pointsList: [\n              {\n                x: 875,\n                y: 470\n              },\n              {\n                x: 970,\n                y: 470\n              }\n            ]\n          },\n          {\n            id: \'262e2263-6c8c-4a38-b223-97848e9b5767\',\n            type: \'polyline\',\n            sourceNodeId: \'647fa2bc-98ee-40cf-99c5-4756c0bc130d\',\n            targetNodeId: \'414fe028-3609-4450-b0f4-e5aca7705e8c\',\n            startPoint: {\n              x: 725,\n              y: 170\n            },\n            endPoint: {\n              x: 835,\n              y: 170\n            },\n            properties: {},\n            pointsList: [\n              {\n                x: 725,\n                y: 170\n              },\n              {\n                x: 835,\n                y: 170\n              }\n            ]\n          }\n        ]\n      }\n\n      // 解析节点信息\n      const nodesMap = {}\n      jsonData.nodes.forEach((node) =&gt; {\n        nodesMap[node.id] = {\n          type: node.type,\n          text: node.text ? node.text.value : undefined\n        }\n      })\n\n      // 解析连线信息\n      const edges = jsonData.edges.map((edge) =&gt; ({\n        id: edge.id,\n        type: edge.type,\n        text: edge.text ? edge.text.value : undefined,\n        source: edge.sourceNodeId,\n        target: edge.targetNodeId\n      }))\n\n      // 输出解析结果\n      console.log(\'节点信息：\', nodesMap)\n      console.log(\'连线信息：\', edges)\n\n      // 执行下一步：遍历连线，执行相关操作\n      edges.forEach((edge) =&gt; {\n        const sourceNode = nodesMap[edge.source]\n        const targetNode = nodesMap[edge.target]\n\n        // 根据连线类型执行不同的操作\n        switch (edge.type) {\n          case \'polyline\':\n            console.log(\n              `从 ${sourceNode.text || sourceNode.type} 到 ${\n                targetNode.text || targetNode.type\n              }`\n            )\n            break\n          // 其他连线类型的操作\n          default:\n            break\n        }\n      })\n\n      // 查找 &quot;开始&quot; 节点的下一步\n      const startNodeId = jsonData.nodes.find(\n        (node) =&gt; node.type === \'start\'\n      ).id\n\n      const nextStepEdge = edges.find((edge) =&gt; edge.source === startNodeId)\n\n      if (nextStepEdge) {\n        const nextStepNode = nodesMap[nextStepEdge.target]\n        console.log(`【开始】的下一步是：${nextStepNode.text}`)\n      } else {\n        console.log(\'没有找到下一步\')\n      }\n\n      // 查找 &quot;自定义节点 可添加下一个节点/节点组&quot; 的下一步\n      const customNodeId = jsonData.nodes.find(\n        (node) =&gt;\n          node.text &amp;&amp; node.text.value === \'自定义节点 可添加下一个节点/节点组\'\n      ).id\n      const nextStepsEdges = edges.filter(\n        (edge) =&gt; edge.source === customNodeId\n      )\n\n      nextStepsEdges.forEach((edge) =&gt; {\n        const targetNode = nodesMap[edge.target]\n        console.log(\n          `【自定义节点 可添加下一个节点/节点组】的下一步(${\n            edge.text || edge.type\n          }) 是：${targetNode.text || targetNode.type}`\n        )\n      })\n    &lt;/script&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\n"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">name</span>="<span class="pl-s">viewport</span>" <span class="pl-c1">content</span>="<span class="pl-s">width=device-width, initial-scale=1.0</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>Document<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n      <span class="pl-c">// https://xinxin93.github.io/logicflow_vue_demo/#/</span>\n      <span class="pl-k">const</span> <span class="pl-s1">jsonData</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">nodes</span>: <span class="pl-kos">[</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'742356ea-762b-4899-b96a-bd567e3c4361\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'start\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">205</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'sdfasf\'</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'dacda6b6-48d3-4dff-911d-287704eb23d8\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'rect\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">350</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">350</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'基础节点\'</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'49106603-2b88-4b2c-b1e8-723c1f2210bd\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'user\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">530</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">530</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'自定义节点\'</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'647fa2bc-98ee-40cf-99c5-4756c0bc130d\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'push\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'自定义节点 可添加下一个节点/节点组\'</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'37e7bac3-8804-4237-abe9-7b6065c207e9\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'download\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">320</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'6bb4396f-54c9-4b1c-b34c-87ef004f2e29\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'user\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">320</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'abf76937-63b8-493c-a978-a4a58bc4f6b8\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'push\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">470</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'b119f24f-2669-4a90-a837-afd853b2ffcc\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'end\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">990</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">320</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'60326ad9-cae2-4a85-ae98-d340fb7bd67f\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'end\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">990</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">470</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'414fe028-3609-4450-b0f4-e5aca7705e8c\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'download\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">x</span>: <span class="pl-c1">860</span><span class="pl-kos">,</span>\n            <span class="pl-c1">y</span>: <span class="pl-c1">170</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">860</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">220</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'自定义节点-设置颜色\'</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">]</span><span class="pl-kos">,</span>\n        <span class="pl-c1">edges</span>: <span class="pl-kos">[</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'00f55245-513e-43a2-9cb0-adb61b01adc8\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'742356ea-762b-4899-b96a-bd567e3c4361\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'dacda6b6-48d3-4dff-911d-287704eb23d8\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">240</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">300</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">240</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">300</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'bbf9754f-603e-48e4-85fe-84ed44459a6a\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'dacda6b6-48d3-4dff-911d-287704eb23d8\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'49106603-2b88-4b2c-b1e8-723c1f2210bd\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">400</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">495</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">400</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">495</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'12bb443b-4070-4a08-ad4d-2755ee856f0d\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'49106603-2b88-4b2c-b1e8-723c1f2210bd\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'647fa2bc-98ee-40cf-99c5-4756c0bc130d\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">565</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">655</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">565</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">655</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'33fa3c09-9c29-4cb7-8373-67d537b8b623\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'647fa2bc-98ee-40cf-99c5-4756c0bc130d\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'37e7bac3-8804-4237-abe9-7b6065c207e9\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">205</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">295</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">205</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">690</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">295</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'2b5a5e89-005e-4fda-9a44-dc795050534f\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'37e7bac3-8804-4237-abe9-7b6065c207e9\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'6bb4396f-54c9-4b1c-b34c-87ef004f2e29\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">715</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">320</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">805</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">320</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">715</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">320</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">805</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">320</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'62b54f8a-bcfd-494b-9144-5aeb09ca77a1\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'6bb4396f-54c9-4b1c-b34c-87ef004f2e29\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'b119f24f-2669-4a90-a837-afd853b2ffcc\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">875</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">320</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">970</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">320</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">920</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">310</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'Y\'</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">875</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">320</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">970</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">320</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'ba816d4a-5785-4911-9f78-03933f1463a1\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'6bb4396f-54c9-4b1c-b34c-87ef004f2e29\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'abf76937-63b8-493c-a978-a4a58bc4f6b8\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">355</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">435</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">text</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">850</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">400</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'N\'</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">355</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">840</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">435</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'2b3007ed-7a13-4db7-a1ea-6691d7564c34\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'abf76937-63b8-493c-a978-a4a58bc4f6b8\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'60326ad9-cae2-4a85-ae98-d340fb7bd67f\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">875</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">470</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">970</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">470</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">875</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">470</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">970</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">470</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">id</span>: <span class="pl-s">\'262e2263-6c8c-4a38-b223-97848e9b5767\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'polyline\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">sourceNodeId</span>: <span class="pl-s">\'647fa2bc-98ee-40cf-99c5-4756c0bc130d\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">targetNodeId</span>: <span class="pl-s">\'414fe028-3609-4450-b0f4-e5aca7705e8c\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">startPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">725</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">endPoint</span>: <span class="pl-kos">{</span>\n              <span class="pl-c1">x</span>: <span class="pl-c1">835</span><span class="pl-kos">,</span>\n              <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">properties</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-c1">pointsList</span>: <span class="pl-kos">[</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">725</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n              <span class="pl-kos">}</span><span class="pl-kos">,</span>\n              <span class="pl-kos">{</span>\n                <span class="pl-c1">x</span>: <span class="pl-c1">835</span><span class="pl-kos">,</span>\n                <span class="pl-c1">y</span>: <span class="pl-c1">170</span>\n              <span class="pl-kos">}</span>\n            <span class="pl-kos">]</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">]</span>\n      <span class="pl-kos">}</span>\n\n      <span class="pl-c">// 解析节点信息</span>\n      <span class="pl-k">const</span> <span class="pl-s1">nodesMap</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>\n      <span class="pl-s1">jsonData</span><span class="pl-kos">.</span><span class="pl-c1">nodes</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">node</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">,</span>\n          <span class="pl-c1">text</span>: <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">text</span> ? <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">.</span><span class="pl-c1">value</span> : <span class="pl-c1">undefined</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n      <span class="pl-c">// 解析连线信息</span>\n      <span class="pl-k">const</span> <span class="pl-s1">edges</span> <span class="pl-c1">=</span> <span class="pl-s1">jsonData</span><span class="pl-kos">.</span><span class="pl-c1">edges</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">id</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span>\n        <span class="pl-c1">type</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">,</span>\n        <span class="pl-c1">text</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">text</span> ? <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">.</span><span class="pl-c1">value</span> : <span class="pl-c1">undefined</span><span class="pl-kos">,</span>\n        <span class="pl-c1">source</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">sourceNodeId</span><span class="pl-kos">,</span>\n        <span class="pl-c1">target</span>: <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">targetNodeId</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n\n      <span class="pl-c">// 输出解析结果</span>\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'节点信息：\'</span><span class="pl-kos">,</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">)</span>\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'连线信息：\'</span><span class="pl-kos">,</span> <span class="pl-s1">edges</span><span class="pl-kos">)</span>\n\n      <span class="pl-c">// 执行下一步：遍历连线，执行相关操作</span>\n      <span class="pl-s1">edges</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-k">const</span> <span class="pl-s1">sourceNode</span> <span class="pl-c1">=</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">source</span><span class="pl-kos">]</span>\n        <span class="pl-k">const</span> <span class="pl-s1">targetNode</span> <span class="pl-c1">=</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">]</span>\n\n        <span class="pl-c">// 根据连线类型执行不同的操作</span>\n        <span class="pl-k">switch</span> <span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-k">case</span> <span class="pl-s">\'polyline\'</span>:\n            <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span>\n              <span class="pl-s">`从 <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">sourceNode</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">||</span> <span class="pl-s1">sourceNode</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">}</span></span> 到 <span class="pl-s1"><span class="pl-kos">${</span></span></span>\n<span class="pl-s"><span class="pl-s1">                <span class="pl-s1">targetNode</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">||</span> <span class="pl-s1">targetNode</span><span class="pl-kos">.</span><span class="pl-c1">type</span></span></span>\n<span class="pl-s"><span class="pl-s1">              <span class="pl-kos">}</span></span>`</span>\n            <span class="pl-kos">)</span>\n            <span class="pl-k">break</span>\n          <span class="pl-c">// 其他连线类型的操作</span>\n          <span class="pl-k">default</span>:\n            <span class="pl-k">break</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n      <span class="pl-c">// 查找 "开始" 节点的下一步</span>\n      <span class="pl-k">const</span> <span class="pl-s1">startNodeId</span> <span class="pl-c1">=</span> <span class="pl-s1">jsonData</span><span class="pl-kos">.</span><span class="pl-c1">nodes</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span>\n        <span class="pl-kos">(</span><span class="pl-s1">node</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">===</span> <span class="pl-s">\'start\'</span>\n      <span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">id</span>\n\n      <span class="pl-k">const</span> <span class="pl-s1">nextStepEdge</span> <span class="pl-c1">=</span> <span class="pl-s1">edges</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">source</span> <span class="pl-c1">===</span> <span class="pl-s1">startNodeId</span><span class="pl-kos">)</span>\n\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">nextStepEdge</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-k">const</span> <span class="pl-s1">nextStepNode</span> <span class="pl-c1">=</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">nextStepEdge</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">]</span>\n        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`【开始】的下一步是：<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">nextStepNode</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>\n      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'没有找到下一步\'</span><span class="pl-kos">)</span>\n      <span class="pl-kos">}</span>\n\n      <span class="pl-c">// 查找 "自定义节点 可添加下一个节点/节点组" 的下一步</span>\n      <span class="pl-k">const</span> <span class="pl-s1">customNodeId</span> <span class="pl-c1">=</span> <span class="pl-s1">jsonData</span><span class="pl-kos">.</span><span class="pl-c1">nodes</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span>\n        <span class="pl-kos">(</span><span class="pl-s1">node</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span>\n          <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">node</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">.</span><span class="pl-c1">value</span> <span class="pl-c1">===</span> <span class="pl-s">\'自定义节点 可添加下一个节点/节点组\'</span>\n      <span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">id</span>\n      <span class="pl-k">const</span> <span class="pl-s1">nextStepsEdges</span> <span class="pl-c1">=</span> <span class="pl-s1">edges</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span>\n        <span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">source</span> <span class="pl-c1">===</span> <span class="pl-s1">customNodeId</span>\n      <span class="pl-kos">)</span>\n\n      <span class="pl-s1">nextStepsEdges</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">edge</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-k">const</span> <span class="pl-s1">targetNode</span> <span class="pl-c1">=</span> <span class="pl-s1">nodesMap</span><span class="pl-kos">[</span><span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">]</span>\n        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span>\n          <span class="pl-s">`【自定义节点 可添加下一个节点/节点组】的下一步(<span class="pl-s1"><span class="pl-kos">${</span></span></span>\n<span class="pl-s"><span class="pl-s1">            <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">||</span> <span class="pl-s1">edge</span><span class="pl-kos">.</span><span class="pl-c1">type</span></span></span>\n<span class="pl-s"><span class="pl-s1">          <span class="pl-kos">}</span></span>) 是：<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">targetNode</span><span class="pl-kos">.</span><span class="pl-c1">text</span> <span class="pl-c1">||</span> <span class="pl-s1">targetNode</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">}</span></span>`</span>\n        <span class="pl-kos">)</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/lowcode/lf-demo-log.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/lowcode/lf-demo-log.png" alt="" style="max-width: 100%;"></a></p>',user:{login:a,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:p,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/273"},navList:[{text:"文档相关",id:"main-heading-H2-0",type:"H2",children:[]},{text:"按流程编排数据执行业务逻辑",id:"main-heading-H2-1",type:"H2",children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:a,userEmail:"1656800216@qq.com",repository:"blog",blogName:n,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:n,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:p}},serverRendered:!0}}("","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

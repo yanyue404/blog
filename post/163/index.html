@@ -1,0 +1,543 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Sql 入门教程 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="目录 查询数据 条件查询 投影查询 排序查询 分页查询 聚合查询 多表查询 模糊查询 修改数据 INSERT UPDATE DELETE 查询数据 1. 条件查询 查询 cus_user 表 7 月 28 以后注册的用户 （use AND 与 OR） SELECT * FROM cus_user W"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Sql 入门教程"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="目录 查询数据 条件查询 投影查询 排序查询 分页查询 聚合查询 多表查询 模糊查询 修改数据 INSERT UPDATE DELETE 查询数据 1. 条件查询 查询 cus_user 表 7 月 28 以后注册的用户 （use AND 与 OR） SELECT * FROM cus_user W"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Sql 入门教程"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="目录 查询数据 条件查询 投影查询 排序查询 分页查询 聚合查询 多表查询 模糊查询 修改数据 INSERT UPDATE DELETE 查询数据 1. 条件查询 查询 cus_user 表 7 月 28 以后注册的用户 （use AND 与 OR） SELECT * FROM cus_user W"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H2-0" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H2-1" title="查询数据" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              查询数据
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-2" title="1. 条件查询" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. 条件查询
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-3" title="2.投影查询" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.投影查询
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-4" title="3.排序查询" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.排序查询
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-5" title="4.分页查询" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4.分页查询
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-6" title="5.聚合查询" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5.聚合查询
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-7" title="6. 多表" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  6. 多表
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-8" title="7.连接查询" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  7.连接查询
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-9" title="8. 模糊查询" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  8. 模糊查询
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H2-10" title="修改数据" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              修改数据
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-11" title="1. INSERT" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. INSERT
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-12" title="2. UPDATE" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. UPDATE
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H3-13" title="3.DELETE" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.DELETE
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/163#main-heading-H2-14" title="参考" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Sql 入门教程</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Sql 入门教程</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2020-08-04</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 15 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">目录</h2>
+<ul dir="auto">
+<li>查询数据
+<ul dir="auto">
+<li>条件查询</li>
+<li>投影查询</li>
+<li>排序查询</li>
+<li>分页查询</li>
+<li>聚合查询</li>
+<li>多表查询</li>
+<li>模糊查询</li>
+</ul>
+</li>
+<li>修改数据
+<ul dir="auto">
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ul>
+</li>
+</ul>
+<h2 id="main-heading-H2-1">查询数据</h2>
+<h3 id="main-heading-H3-2">1. 条件查询</h3>
+<ul dir="auto">
+<li>查询 cus_user 表 7 月 28 以后注册的用户 （use <code class="notranslate">AND</code> 与 <code class="notranslate">OR</code>）</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	*
+FROM
+	cus_user
+WHERE
+	create_time >= '2020-07-28 00:00:00'"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-k">*</span>
+<span class="pl-k">FROM</span>
+	cus_user
+<span class="pl-k">WHERE</span>
+	create_time <span class="pl-k">>=</span> <span class="pl-s"><span class="pl-pds">'</span>2020-07-28 00:00:00<span class="pl-pds">'</span></span></pre></div>
+<ul dir="auto">
+<li>查询 cus_user 表已知性别的用户(性别 0-未知 1-男性 2-女性),(use <code class="notranslate">IN</code>)</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	*
+FROM
+	cus_user
+WHERE
+	id BETWEEN 160
+	AND 170"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-k">*</span>
+<span class="pl-k">FROM</span>
+	cus_user
+<span class="pl-k">WHERE</span>
+	id BETWEEN <span class="pl-c1">160</span>
+	<span class="pl-k">AND</span> <span class="pl-c1">170</span></pre></div>
+<ul dir="auto">
+<li>查询 cus_user 表 id 为 160-170 的用户的部分信息（use <code class="notranslate">BETWEEN</code>）</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	*
+FROM
+	cus_user
+WHERE
+	id BETWEEN 160
+	AND 170"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-k">*</span>
+<span class="pl-k">FROM</span>
+	cus_user
+<span class="pl-k">WHERE</span>
+	id BETWEEN <span class="pl-c1">160</span>
+	<span class="pl-k">AND</span> <span class="pl-c1">170</span></pre></div>
+<blockquote>
+<p dir="auto">条件查询的关键字 <code class="notranslate">and</code>、<code class="notranslate">or</code>、<code class="notranslate">in</code>、<code class="notranslate">between</code>、<code class="notranslate">not</code>,多个条件查询，括号改变优先级</p>
+</blockquote>
+<h3 id="main-heading-H3-3">2.投影查询</h3>
+<p dir="auto">如果我们只希望返回某些列的数据，而不是所有列的数据，我们可以用 SELECT 列 1, 列 2, 列 3 FROM ...，让结果集仅包含指定列。这种操作称为投影查询。</p>
+<ul dir="auto">
+<li>投影查询，并将结果列名重命名</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	nick_name,
+	mobile phone,
+	gender,
+	avator avatar,
+	create_time
+FROM
+	cus_user
+WHERE
+	id BETWEEN 160
+	AND 170"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	nick_name,
+	mobile phone,
+	gender,
+	avator avatar,
+	create_time
+<span class="pl-k">FROM</span>
+	cus_user
+<span class="pl-k">WHERE</span>
+	id BETWEEN <span class="pl-c1">160</span>
+	<span class="pl-k">AND</span> <span class="pl-c1">170</span></pre></div>
+<h3 id="main-heading-H3-4">3.排序查询</h3>
+<ul dir="auto">
+<li>获取用户<code class="notranslate">yanyue404</code>的聊天记录信息并按 <code class="notranslate">create_time</code>降序排列 （use <code class="notranslate">ORDER BY</code>）</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	user_type,
+	to_user_type,
+	to_nick_name,
+	message,
+	create_time
+FROM
+	msg_user
+WHERE
+	nick_name = 'yanyue404'
+ORDER BY
+	create_time DESC"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	user_type,
+	to_user_type,
+	to_nick_name,
+	message,
+	create_time
+<span class="pl-k">FROM</span>
+	msg_user
+<span class="pl-k">WHERE</span>
+	nick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>yanyue404<span class="pl-pds">'</span></span>
+<span class="pl-k">ORDER BY</span>
+	create_time <span class="pl-k">DESC</span></pre></div>
+<blockquote>
+<p dir="auto">DESC 是<strong>递减</strong>的意思，与之对应的是 ASC 递增, ORDER BY create_time DESC 意思是 按照(BY)create_time 字段值递减(DESC)的顺序对查询结果排序</p>
+</blockquote>
+<h3 id="main-heading-H3-5">4.分页查询</h3>
+<ul dir="auto">
+<li>查询所有的结果并加入行数序号列 1，2，3...</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SET @rownum = 0;
+SELECT
+	@rownum := @rownum + 1 AS ROW,
+	user_type,
+	to_user_type,
+	to_nick_name,
+	message,
+	create_time
+FROM
+	msg_user
+WHERE
+	nick_name = 'yanyue404'
+ORDER BY
+	create_time DESC"><pre class="notranslate"><span class="pl-k">SET</span> @rownum <span class="pl-k">=</span> <span class="pl-c1">0</span>;
+<span class="pl-k">SELECT</span>
+	@rownum :<span class="pl-k">=</span> @rownum <span class="pl-k">+</span> <span class="pl-c1">1</span> <span class="pl-k">AS</span> ROW,
+	user_type,
+	to_user_type,
+	to_nick_name,
+	message,
+	create_time
+<span class="pl-k">FROM</span>
+	msg_user
+<span class="pl-k">WHERE</span>
+	nick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>yanyue404<span class="pl-pds">'</span></span>
+<span class="pl-k">ORDER BY</span>
+	create_time <span class="pl-k">DESC</span></pre></div>
+<ul dir="auto">
+<li>把结果页分页，每页 10 条记录，要获得第 1 页的记录,<code class="notranslate">LIMIT &lt;M> OFFSET &lt;N></code>，索引从 0 开始</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SET @rownum = 0;
+SELECT
+	@rownum := @rownum + 1 AS ROW,
+	user_type,
+	to_user_type,
+	to_nick_name,
+	message,
+	create_time
+FROM
+	msg_user
+WHERE
+	nick_name = 'yanyue404'
+ORDER BY
+	create_time DESC
+	LIMIT 10 OFFSET 0"><pre class="notranslate"><span class="pl-k">SET</span> @rownum <span class="pl-k">=</span> <span class="pl-c1">0</span>;
+<span class="pl-k">SELECT</span>
+	@rownum :<span class="pl-k">=</span> @rownum <span class="pl-k">+</span> <span class="pl-c1">1</span> <span class="pl-k">AS</span> ROW,
+	user_type,
+	to_user_type,
+	to_nick_name,
+	message,
+	create_time
+<span class="pl-k">FROM</span>
+	msg_user
+<span class="pl-k">WHERE</span>
+	nick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>yanyue404<span class="pl-pds">'</span></span>
+<span class="pl-k">ORDER BY</span>
+	create_time <span class="pl-k">DESC</span>
+	<span class="pl-k">LIMIT</span> <span class="pl-c1">10</span> OFFSET <span class="pl-c1">0</span></pre></div>
+<ul dir="auto">
+<li>查询第二页,跳过前 10 条记录，数据从 10 号开始采集，offset 设为 <code class="notranslate">20</code></li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="limit 10 OFFSET 10"><pre class="notranslate"><span class="pl-k">limit</span> <span class="pl-c1">10</span> OFFSET <span class="pl-c1">10</span></pre></div>
+<p dir="auto">分页查询的关键在于，首先要确定每页需要显示的结果数量 pageSize（这里是 10），然后根据当前页的索引 pageIndex（从 1 开始），确定 LIMIT 和 OFFSET 应该设定的值:</p>
+<p dir="auto">LIMIT 总是设定为 pageSize；<br>
+OFFSET 计算公式为 pageSize * (pageIndex - 1)。<br>
+......</p>
+<ul dir="auto">
+<li>查询第 5 页，offset 设为 40</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="limit 10 OFFSET 40"><pre class="notranslate"><span class="pl-k">limit</span> <span class="pl-c1">10</span> OFFSET <span class="pl-c1">40</span></pre></div>
+<blockquote>
+<p dir="auto">在 MySQL 中，LIMIT 10 OFFSET 20 还可以简写成 LIMIT 20, 10</p>
+</blockquote>
+<h3 id="main-heading-H3-6">5.聚合查询</h3>
+<ul dir="auto">
+<li>查询 msg_user 表有多少条 yanyue404 发送的聊天记录</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	COUNT(*)
+FROM
+	msg_user
+WHERE
+	nick_name = 'yanyue404'"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-c1">COUNT</span>(<span class="pl-k">*</span>)
+<span class="pl-k">FROM</span>
+	msg_user
+<span class="pl-k">WHERE</span>
+	nick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>yanyue404<span class="pl-pds">'</span></span></pre></div>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>COUNT(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>45</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<ul dir="auto">
+<li>count(<em>) 表示查询表所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是 COUNT(</em>)。通常，使用聚合查询时，我们应该给列名设置一个别名，便于处理结果：</li>
+</ul>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	COUNT(*) num
+FROM
+	msg_user
+WHERE
+	nick_name = 'yanyue404'"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-c1">COUNT</span>(<span class="pl-k">*</span>) num
+<span class="pl-k">FROM</span>
+	msg_user
+<span class="pl-k">WHERE</span>
+	nick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>yanyue404<span class="pl-pds">'</span></span></pre></div>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>num</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>45</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<ul dir="auto">
+<li>除 count 以外的聚合函数<br>
+函数 说明<br>
+SUM 计算某一列的合计值，该列必须为数值类型<br>
+AVG 计算某一列的平均值，该列必须为数值类型<br>
+MAX 计算某一列的最大值<br>
+MIN 计算某一列的最小值</li>
+</ul>
+<p dir="auto">注意，MAX()和 MIN()函数并不限于数值类型。如果是字符类型，MAX()和 MIN()会返回排序最后和排序最前的字符。</p>
+<h3 id="main-heading-H3-7">6. 多表</h3>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	c.id cid,
+	a.id aid,
+	a.nick_name aname,
+	c.nick_name cname
+FROM
+	cus_user c,
+	agt_user a"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-c1">c</span>.<span class="pl-c1">id</span> cid,
+	<span class="pl-c1">a</span>.<span class="pl-c1">id</span> aid,
+	<span class="pl-c1">a</span>.<span class="pl-c1">nick_name</span> aname,
+	<span class="pl-c1">c</span>.<span class="pl-c1">nick_name</span> cname
+<span class="pl-k">FROM</span>
+	cus_user c,
+	agt_user a</pre></div>
+<blockquote>
+<p dir="auto">多表查询又称笛卡尔查询，使用笛卡尔查询时要非常小心，由于结果集是目标表的行数乘积，对两个各自有 100 行记录的表进行笛卡尔查询将返回 1 万条记录，对两个各自有 1 万行记录的表进行笛卡尔查询将返回 1 亿条记录。</p>
+</blockquote>
+<p dir="auto">添加 WHERE 条件后结果集的数量大大减少了：</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	c.id cid,
+	a.id aid,
+	a.nick_name aname,
+	c.nick_name cname
+FROM
+	cus_user c,
+	agt_user a
+WHERE
+	c.account_id = a.account_id
+	AND a.account_id = '172'"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-c1">c</span>.<span class="pl-c1">id</span> cid,
+	<span class="pl-c1">a</span>.<span class="pl-c1">id</span> aid,
+	<span class="pl-c1">a</span>.<span class="pl-c1">nick_name</span> aname,
+	<span class="pl-c1">c</span>.<span class="pl-c1">nick_name</span> cname
+<span class="pl-k">FROM</span>
+	cus_user c,
+	agt_user a
+<span class="pl-k">WHERE</span>
+	<span class="pl-c1">c</span>.<span class="pl-c1">account_id</span> <span class="pl-k">=</span> <span class="pl-c1">a</span>.<span class="pl-c1">account_id</span>
+	<span class="pl-k">AND</span> <span class="pl-c1">a</span>.<span class="pl-c1">account_id</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>172<span class="pl-pds">'</span></span></pre></div>
+<h3 id="main-heading-H3-8">7.连接查询</h3>
+<p dir="auto">表的连接分成好几种类型。</p>
+<ul dir="auto">
+<li>内连接（inner join）</li>
+<li>外连接（outer join）
+<ul dir="auto">
+<li>左连接（left join）</li>
+<li>右连接（right join）</li>
+<li>全连接（full join）</li>
+</ul>
+</li>
+</ul>
+<p dir="auto"><strong>内连接 (INNER JOIN)</strong></p>
+<p dir="auto">选出 <code class="notranslate">cus_user</code>与 <code class="notranslate">agt_user</code> 两张表 <code class="notranslate">account_id</code> 一致（自己是代理人，自己又是客户）</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	c.id cid,
+	a.id aid,
+	a.nick_name,
+	a.agent_code agentCode
+FROM
+	cus_user c
+	INNER JOIN agt_user a ON c.account_id = a.account_id"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-c1">c</span>.<span class="pl-c1">id</span> cid,
+	<span class="pl-c1">a</span>.<span class="pl-c1">id</span> aid,
+	<span class="pl-c1">a</span>.<span class="pl-c1">nick_name</span>,
+	<span class="pl-c1">a</span>.<span class="pl-c1">agent_code</span> agentCode
+<span class="pl-k">FROM</span>
+	cus_user c
+	<span class="pl-k">INNER JOIN</span> agt_user a <span class="pl-k">ON</span> <span class="pl-c1">c</span>.<span class="pl-c1">account_id</span> <span class="pl-k">=</span> <span class="pl-c1">a</span>.<span class="pl-c1">account_id</span></pre></div>
+<p dir="auto">注意 INNER JOIN 查询的写法是：</p>
+<ol dir="auto">
+<li>先确定主表，仍然使用 FROM &lt;表 1>的语法；</li>
+<li>再确定需要连接的表，使用 INNER JOIN &lt;表 2>的语法；</li>
+<li>然后确定连接条件，使用 ON &lt;条件...>，这里的条件是 s.class_id = c.id，表示 students 表的 class_id 列与 classes 表的 id 列相同的行需要连接；</li>
+<li>可选：加上 WHERE 子句、ORDER BY 等子句。</li>
+</ol>
+<p dir="auto"><strong>右连接（RIGHT JOIN）</strong></p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT
+	c.id cid,
+	a.id aid,
+	a.nick_name,
+	a.agent_code agentCode
+FROM
+	cus_user c
+	RIGHT JOIN agt_user a ON c.account_id = a.account_id"><pre class="notranslate"><span class="pl-k">SELECT</span>
+	<span class="pl-c1">c</span>.<span class="pl-c1">id</span> cid,
+	<span class="pl-c1">a</span>.<span class="pl-c1">id</span> aid,
+	<span class="pl-c1">a</span>.<span class="pl-c1">nick_name</span>,
+	<span class="pl-c1">a</span>.<span class="pl-c1">agent_code</span> agentCode
+<span class="pl-k">FROM</span>
+	cus_user c
+	<span class="pl-k">RIGHT JOIN</span> agt_user a <span class="pl-k">ON</span> <span class="pl-c1">c</span>.<span class="pl-c1">account_id</span> <span class="pl-k">=</span> <span class="pl-c1">a</span>.<span class="pl-c1">account_id</span></pre></div>
+<p dir="auto">换成右连接比内连接多了一条数据，但是 cid 为 Null。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>cid</th>
+<th>aid</th>
+<th>nick_name</th>
+<th>agentCode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Null</td>
+<td>77777</td>
+<td>测试积分</td>
+<td>11340100063</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">因为根据 ON 条件 c.account_id = a.account_id，当 a 表 account_id 为 '77777'的时候，c 表没有与之相对应的数据，cid 字段就被 Null 填充。</p>
+<p dir="auto">有 RIGHT JOIN，就有 LEFT JOIN，以及 FULL JOIN。它们的区别是：</p>
+<ul dir="auto">
+<li>只返回两张表匹配的记录，这叫内连接（inner join）。</li>
+<li>返回匹配的记录，以及表 A 多余的记录，这叫左连接（left join）。</li>
+<li>返回匹配的记录，以及表 B 多余的记录，这叫右连接（right join）。</li>
+<li>返回匹配的记录，以及表 A 和表 B 各自的多余记录，这叫全连接（full join）。</li>
+</ul>
+<p dir="auto">下图就是四种连接的图示：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7f66096f1cc3901e4b9094b656118ed7c3784da0a762901f2fe3ccea1e3f423e/68747470733a2f2f7777772e77616e67626173652e636f6d2f626c6f67696d672f61737365742f3230313930312f6267323031393031313530362e6a7067"><img src="https://camo.githubusercontent.com/7f66096f1cc3901e4b9094b656118ed7c3784da0a762901f2fe3ccea1e3f423e/68747470733a2f2f7777772e77616e67626173652e636f6d2f626c6f67696d672f61737365742f3230313930312f6267323031393031313530362e6a7067" alt="" data-canonical-src="https://www.wangbase.com/blogimg/asset/201901/bg2019011506.jpg" style="max-width:100%"></a></p>
+<p dir="auto">上图中，表 A 的记录是 123，表 B 的记录是 ABC，颜色表示匹配关系。返回结果中，如果另一张表没有匹配的记录，则用 null 填充。</p>
+<p dir="auto">这四种连接，又可以分成两大类：内连接（inner join）表示只包含匹配的记录，外连接（outer join）表示还包含不匹配的记录。所以，左连接、右连接、全连接都属于外连接。</p>
+<blockquote>
+<p dir="auto">JOIN 查询仍然可以使用 WHERE 条件和 ORDER BY 排序。</p>
+</blockquote>
+<h3 id="main-heading-H3-9">8. 模糊查询</h3>
+<p dir="auto">搜索以 <code class="notranslate">资讯</code> 开头的所有字符串</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT * FROM `sys_menu`  WHERE NAME LIKE '资讯%'"><pre class="notranslate"><span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> <span class="pl-s"><span class="pl-pds">`</span>sys_menu<span class="pl-pds">`</span></span>  <span class="pl-k">WHERE</span> NAME <span class="pl-k">LIKE</span> <span class="pl-s"><span class="pl-pds">'</span>资讯%<span class="pl-pds">'</span></span></pre></div>
+<p dir="auto">搜索以 <code class="notranslate">资讯</code> 结尾的所有字符串</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT * FROM `sys_menu`  WHERE NAME LIKE '%资讯'"><pre class="notranslate"><span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> <span class="pl-s"><span class="pl-pds">`</span>sys_menu<span class="pl-pds">`</span></span>  <span class="pl-k">WHERE</span> NAME <span class="pl-k">LIKE</span> <span class="pl-s"><span class="pl-pds">'</span>%资讯<span class="pl-pds">'</span></span></pre></div>
+<p dir="auto">搜索含有 <code class="notranslate">资讯</code> 的所有字符串</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT * FROM `sys_menu`  WHERE NAME LIKE '%资讯%'"><pre class="notranslate"><span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> <span class="pl-s"><span class="pl-pds">`</span>sys_menu<span class="pl-pds">`</span></span>  <span class="pl-k">WHERE</span> NAME <span class="pl-k">LIKE</span> <span class="pl-s"><span class="pl-pds">'</span>%资讯%<span class="pl-pds">'</span></span></pre></div>
+<h2 id="main-heading-H2-10">修改数据</h2>
+<h3 id="main-heading-H3-11">1. INSERT</h3>
+<p dir="auto">当我们需要向数据库表中插入一条新记录时，就必须使用 INSERT 语句。</p>
+<p dir="auto">INSERT 语句的基本语法是：</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="INSERT INTO <表名> (字段1, 字段2, ...) VALUES (值1, 值2, ...);"><pre class="notranslate"><span class="pl-k">INSERT INTO</span> <span class="pl-k">&lt;</span>表名<span class="pl-k">></span> (字段<span class="pl-c1">1</span>, 字段<span class="pl-c1">2</span>, ...) <span class="pl-k">VALUES</span> (值<span class="pl-c1">1</span>, 值<span class="pl-c1">2</span>, ...);</pre></div>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="INSERT INTO `xfej-admin`.`cus_user` ( `account_id`, `user_code`, `nick_name`, `gender`, `avator`, `agt_flag`, `del_flag` )
+VALUES
+	( 233, '2a73d53333e64509b4bcced82bf1210e', '测试', '1', 'https://thirdwx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM6MrzD7a6kIs22ym8QAddMibVF7WLRFxN5O6R99RwUcTBk7SicPUjXLkPMq3Y49wE3ul5uINQKF1tRw/132', '0', '0' );"><pre class="notranslate"><span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>xfej-admin<span class="pl-pds">`</span></span>.<span class="pl-s"><span class="pl-pds">`</span>cus_user<span class="pl-pds">`</span></span> ( <span class="pl-s"><span class="pl-pds">`</span>account_id<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>user_code<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>nick_name<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>gender<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>avator<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>agt_flag<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>del_flag<span class="pl-pds">`</span></span> )
+<span class="pl-k">VALUES</span>
+	( <span class="pl-c1">233</span>, <span class="pl-s"><span class="pl-pds">'</span>2a73d53333e64509b4bcced82bf1210e<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>测试<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>https://thirdwx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM6MrzD7a6kIs22ym8QAddMibVF7WLRFxN5O6R99RwUcTBk7SicPUjXLkPMq3Y49wE3ul5uINQKF1tRw/132<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span> );</pre></div>
+<p dir="auto">还可以一次性添加多条记录，只需要在 VALUES 子句中指定多个记录值，每个记录是由()(...此处已省略详细的新增数据项)包含的一组值:</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="INSERT INTO `xfej-admin`.`cus_user` ( `account_id`, `user_code`, `nick_name`, `gender`, `avator`, `agt_flag`, `del_flag` )
+VALUES
+	(...), (...);"><pre class="notranslate"><span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>xfej-admin<span class="pl-pds">`</span></span>.<span class="pl-s"><span class="pl-pds">`</span>cus_user<span class="pl-pds">`</span></span> ( <span class="pl-s"><span class="pl-pds">`</span>account_id<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>user_code<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>nick_name<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>gender<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>avator<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>agt_flag<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>del_flag<span class="pl-pds">`</span></span> )
+<span class="pl-k">VALUES</span>
+	(...), (...);</pre></div>
+<h3 id="main-heading-H3-12">2. UPDATE</h3>
+<p dir="auto">如果要更新数据库表中的记录，我们就必须使用 UPDATE 语句。</p>
+<p dir="auto">UPDATE 语句的基本语法是：</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="UPDATE <表名> SET 字段1=值1, 字段2=值2, ... WHERE ...;"><pre class="notranslate"><span class="pl-k">UPDATE</span> <span class="pl-k">&lt;</span>表名<span class="pl-k">></span> <span class="pl-k">SET</span> 字段<span class="pl-c1">1</span><span class="pl-k">=</span>值<span class="pl-c1">1</span>, 字段<span class="pl-c1">2</span><span class="pl-k">=</span>值<span class="pl-c1">2</span>, ... <span class="pl-k">WHERE</span> ...;</pre></div>
+<p dir="auto">例如：我们修改刚才新建的 <code class="notranslate">nick_name</code>为"测试"的那条数据，查看发现，主键 id 已经新增为 <code class="notranslate">199</code>，让我们来更新它的 <code class="notranslate">mobile</code>与<code class="notranslate">gender</code>。</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="UPDATE cus_user
+SET gender = 2,
+mobile = '13112341234'
+WHERE
+	id = 199;"><pre class="notranslate"><span class="pl-k">UPDATE</span> cus_user
+<span class="pl-k">SET</span> gender <span class="pl-k">=</span> <span class="pl-c1">2</span>,
+mobile <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>13112341234<span class="pl-pds">'</span></span>
+<span class="pl-k">WHERE</span>
+	id <span class="pl-k">=</span> <span class="pl-c1">199</span>;</pre></div>
+<p dir="auto">更新成功 MySQL 会返回: <code class="notranslate">Affected rows: 1 时间: 0.008s</code>，可以看到一行受到了影响，此外还可以借助 WHERE 一次更新多条数据。</p>
+<p dir="auto">如果 WHERE UPDATE 语句不会报错，也不会有任何记录被更新</p>
+<p dir="auto">更新 id 为 200，201，202 的数据</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="UPDATE cus_user
+SET gender = 2,
+mobile = '13112341234'
+WHERE
+	id >= 200
+	AND id <= 202;"><pre class="notranslate"><span class="pl-k">UPDATE</span> cus_user
+<span class="pl-k">SET</span> gender <span class="pl-k">=</span> <span class="pl-c1">2</span>,
+mobile <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>13112341234<span class="pl-pds">'</span></span>
+<span class="pl-k">WHERE</span>
+	id <span class="pl-k">>=</span> <span class="pl-c1">200</span>
+	<span class="pl-k">AND</span> id <span class="pl-k">&lt;=</span> <span class="pl-c1">202</span>;</pre></div>
+<blockquote>
+<p dir="auto">警告： UPDATE 语句可以没有 WHERE 条件，当直接执行的时候整个表的所有记录都会被更新。所以，在执行 UPDATE 语句时要非常小心，最好先用 SELECT 语句来测试 WHERE 条件是否筛选出了期望的记录集，然后再用 UPDATE 更新。</p>
+</blockquote>
+<h3 id="main-heading-H3-13">3.DELETE</h3>
+<p dir="auto">如果要删除数据库表中的记录，我们可以使用 DELETE 语句。</p>
+<p dir="auto">DELETE 语句的基本语法是：</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="DELETE FROM <表名> WHERE ...;"><pre class="notranslate"><span class="pl-k">DELETE</span> <span class="pl-k">FROM</span> <span class="pl-k">&lt;</span>表名<span class="pl-k">></span> <span class="pl-k">WHERE</span> ...;</pre></div>
+<p dir="auto">例如：我们删除上面创建的 id 为 199 的数据：</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="DELETE
+FROM
+	cus_user
+WHERE
+	id = 199"><pre class="notranslate"><span class="pl-k">DELETE</span>
+<span class="pl-k">FROM</span>
+	cus_user
+<span class="pl-k">WHERE</span>
+	id <span class="pl-k">=</span> <span class="pl-c1">199</span></pre></div>
+<p dir="auto">与 UPDATE 的使用方法一样，借助 WHERE 我们就可以一次删除表中的一条或多条记录。</p>
+<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="select COUNT(*) from agt_main_user where agt_id = 121
+SELECT * from agt_user
+where nick_name like '胖头鱼%'"><pre class="notranslate"><span class="pl-k">select</span> <span class="pl-c1">COUNT</span>(<span class="pl-k">*</span>) <span class="pl-k">from</span> agt_main_user <span class="pl-k">where</span> agt_id <span class="pl-k">=</span> <span class="pl-c1">121</span>
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">from</span> agt_user
+<span class="pl-k">where</span> nick_name <span class="pl-k">like</span> <span class="pl-s"><span class="pl-pds">'</span>胖头鱼%<span class="pl-pds">'</span></span></pre></div>
+<h2 id="main-heading-H2-14">参考</h2>
+<ul dir="auto">
+<li><a href="https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000" rel="nofollow">廖雪峰 SQL 教程</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2019/01/table-join.html" rel="nofollow">数据库表连接的简单解释</a></li>
+<li><a href="https://www.sqlteaching.com/" rel="nofollow">SQL Teaching</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,t){return{layout:"default",data:[{post:{id:672556891,number:163,title:"Sql 入门教程",created_at:"2020-08-04T07:02:42Z",updated_at:"2020-09-09T03:16:01Z",body_html:'<h2 id="main-heading-H2-0">目录</h2>\n<ul dir="auto">\n<li>查询数据\n<ul dir="auto">\n<li>条件查询</li>\n<li>投影查询</li>\n<li>排序查询</li>\n<li>分页查询</li>\n<li>聚合查询</li>\n<li>多表查询</li>\n<li>模糊查询</li>\n</ul>\n</li>\n<li>修改数据\n<ul dir="auto">\n<li>INSERT</li>\n<li>UPDATE</li>\n<li>DELETE</li>\n</ul>\n</li>\n</ul>\n<h2 id="main-heading-H2-1">查询数据</h2>\n<h3 id="main-heading-H3-2">1. 条件查询</h3>\n<ul dir="auto">\n<li>查询 cus_user 表 7 月 28 以后注册的用户 （use <code class="notranslate">AND</code> 与 <code class="notranslate">OR</code>）</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\t*\nFROM\n\tcus_user\nWHERE\n\tcreate_time &gt;= \'2020-07-28 00:00:00\'"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-k">*</span>\n<span class="pl-k">FROM</span>\n\tcus_user\n<span class="pl-k">WHERE</span>\n\tcreate_time <span class="pl-k">&gt;=</span> <span class="pl-s"><span class="pl-pds">\'</span>2020-07-28 00:00:00<span class="pl-pds">\'</span></span></pre></div>\n<ul dir="auto">\n<li>查询 cus_user 表已知性别的用户(性别 0-未知 1-男性 2-女性),(use <code class="notranslate">IN</code>)</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\t*\nFROM\n\tcus_user\nWHERE\n\tid BETWEEN 160\n\tAND 170"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-k">*</span>\n<span class="pl-k">FROM</span>\n\tcus_user\n<span class="pl-k">WHERE</span>\n\tid BETWEEN <span class="pl-c1">160</span>\n\t<span class="pl-k">AND</span> <span class="pl-c1">170</span></pre></div>\n<ul dir="auto">\n<li>查询 cus_user 表 id 为 160-170 的用户的部分信息（use <code class="notranslate">BETWEEN</code>）</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\t*\nFROM\n\tcus_user\nWHERE\n\tid BETWEEN 160\n\tAND 170"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-k">*</span>\n<span class="pl-k">FROM</span>\n\tcus_user\n<span class="pl-k">WHERE</span>\n\tid BETWEEN <span class="pl-c1">160</span>\n\t<span class="pl-k">AND</span> <span class="pl-c1">170</span></pre></div>\n<blockquote>\n<p dir="auto">条件查询的关键字 <code class="notranslate">and</code>、<code class="notranslate">or</code>、<code class="notranslate">in</code>、<code class="notranslate">between</code>、<code class="notranslate">not</code>,多个条件查询，括号改变优先级</p>\n</blockquote>\n<h3 id="main-heading-H3-3">2.投影查询</h3>\n<p dir="auto">如果我们只希望返回某些列的数据，而不是所有列的数据，我们可以用 SELECT 列 1, 列 2, 列 3 FROM ...，让结果集仅包含指定列。这种操作称为投影查询。</p>\n<ul dir="auto">\n<li>投影查询，并将结果列名重命名</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\tnick_name,\n\tmobile phone,\n\tgender,\n\tavator avatar,\n\tcreate_time\nFROM\n\tcus_user\nWHERE\n\tid BETWEEN 160\n\tAND 170"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\tnick_name,\n\tmobile phone,\n\tgender,\n\tavator avatar,\n\tcreate_time\n<span class="pl-k">FROM</span>\n\tcus_user\n<span class="pl-k">WHERE</span>\n\tid BETWEEN <span class="pl-c1">160</span>\n\t<span class="pl-k">AND</span> <span class="pl-c1">170</span></pre></div>\n<h3 id="main-heading-H3-4">3.排序查询</h3>\n<ul dir="auto">\n<li>获取用户<code class="notranslate">yanyue404</code>的聊天记录信息并按 <code class="notranslate">create_time</code>降序排列 （use <code class="notranslate">ORDER BY</code>）</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\tuser_type,\n\tto_user_type,\n\tto_nick_name,\n\tmessage,\n\tcreate_time\nFROM\n\tmsg_user\nWHERE\n\tnick_name = \'yanyue404\'\nORDER BY\n\tcreate_time DESC"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\tuser_type,\n\tto_user_type,\n\tto_nick_name,\n\tmessage,\n\tcreate_time\n<span class="pl-k">FROM</span>\n\tmsg_user\n<span class="pl-k">WHERE</span>\n\tnick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">\'</span>yanyue404<span class="pl-pds">\'</span></span>\n<span class="pl-k">ORDER BY</span>\n\tcreate_time <span class="pl-k">DESC</span></pre></div>\n<blockquote>\n<p dir="auto">DESC 是<strong>递减</strong>的意思，与之对应的是 ASC 递增, ORDER BY create_time DESC 意思是 按照(BY)create_time 字段值递减(DESC)的顺序对查询结果排序</p>\n</blockquote>\n<h3 id="main-heading-H3-5">4.分页查询</h3>\n<ul dir="auto">\n<li>查询所有的结果并加入行数序号列 1，2，3...</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SET @rownum = 0;\nSELECT\n\t@rownum := @rownum + 1 AS ROW,\n\tuser_type,\n\tto_user_type,\n\tto_nick_name,\n\tmessage,\n\tcreate_time\nFROM\n\tmsg_user\nWHERE\n\tnick_name = \'yanyue404\'\nORDER BY\n\tcreate_time DESC"><pre class="notranslate"><span class="pl-k">SET</span> @rownum <span class="pl-k">=</span> <span class="pl-c1">0</span>;\n<span class="pl-k">SELECT</span>\n\t@rownum :<span class="pl-k">=</span> @rownum <span class="pl-k">+</span> <span class="pl-c1">1</span> <span class="pl-k">AS</span> ROW,\n\tuser_type,\n\tto_user_type,\n\tto_nick_name,\n\tmessage,\n\tcreate_time\n<span class="pl-k">FROM</span>\n\tmsg_user\n<span class="pl-k">WHERE</span>\n\tnick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">\'</span>yanyue404<span class="pl-pds">\'</span></span>\n<span class="pl-k">ORDER BY</span>\n\tcreate_time <span class="pl-k">DESC</span></pre></div>\n<ul dir="auto">\n<li>把结果页分页，每页 10 条记录，要获得第 1 页的记录,<code class="notranslate">LIMIT &lt;M&gt; OFFSET &lt;N&gt;</code>，索引从 0 开始</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SET @rownum = 0;\nSELECT\n\t@rownum := @rownum + 1 AS ROW,\n\tuser_type,\n\tto_user_type,\n\tto_nick_name,\n\tmessage,\n\tcreate_time\nFROM\n\tmsg_user\nWHERE\n\tnick_name = \'yanyue404\'\nORDER BY\n\tcreate_time DESC\n\tLIMIT 10 OFFSET 0"><pre class="notranslate"><span class="pl-k">SET</span> @rownum <span class="pl-k">=</span> <span class="pl-c1">0</span>;\n<span class="pl-k">SELECT</span>\n\t@rownum :<span class="pl-k">=</span> @rownum <span class="pl-k">+</span> <span class="pl-c1">1</span> <span class="pl-k">AS</span> ROW,\n\tuser_type,\n\tto_user_type,\n\tto_nick_name,\n\tmessage,\n\tcreate_time\n<span class="pl-k">FROM</span>\n\tmsg_user\n<span class="pl-k">WHERE</span>\n\tnick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">\'</span>yanyue404<span class="pl-pds">\'</span></span>\n<span class="pl-k">ORDER BY</span>\n\tcreate_time <span class="pl-k">DESC</span>\n\t<span class="pl-k">LIMIT</span> <span class="pl-c1">10</span> OFFSET <span class="pl-c1">0</span></pre></div>\n<ul dir="auto">\n<li>查询第二页,跳过前 10 条记录，数据从 10 号开始采集，offset 设为 <code class="notranslate">20</code></li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="limit 10 OFFSET 10"><pre class="notranslate"><span class="pl-k">limit</span> <span class="pl-c1">10</span> OFFSET <span class="pl-c1">10</span></pre></div>\n<p dir="auto">分页查询的关键在于，首先要确定每页需要显示的结果数量 pageSize（这里是 10），然后根据当前页的索引 pageIndex（从 1 开始），确定 LIMIT 和 OFFSET 应该设定的值:</p>\n<p dir="auto">LIMIT 总是设定为 pageSize；<br>\nOFFSET 计算公式为 pageSize * (pageIndex - 1)。<br>\n......</p>\n<ul dir="auto">\n<li>查询第 5 页，offset 设为 40</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="limit 10 OFFSET 40"><pre class="notranslate"><span class="pl-k">limit</span> <span class="pl-c1">10</span> OFFSET <span class="pl-c1">40</span></pre></div>\n<blockquote>\n<p dir="auto">在 MySQL 中，LIMIT 10 OFFSET 20 还可以简写成 LIMIT 20, 10</p>\n</blockquote>\n<h3 id="main-heading-H3-6">5.聚合查询</h3>\n<ul dir="auto">\n<li>查询 msg_user 表有多少条 yanyue404 发送的聊天记录</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\tCOUNT(*)\nFROM\n\tmsg_user\nWHERE\n\tnick_name = \'yanyue404\'"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-c1">COUNT</span>(<span class="pl-k">*</span>)\n<span class="pl-k">FROM</span>\n\tmsg_user\n<span class="pl-k">WHERE</span>\n\tnick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">\'</span>yanyue404<span class="pl-pds">\'</span></span></pre></div>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>COUNT(*)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>45</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<ul dir="auto">\n<li>count(<em>) 表示查询表所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是 COUNT(</em>)。通常，使用聚合查询时，我们应该给列名设置一个别名，便于处理结果：</li>\n</ul>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\tCOUNT(*) num\nFROM\n\tmsg_user\nWHERE\n\tnick_name = \'yanyue404\'"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-c1">COUNT</span>(<span class="pl-k">*</span>) num\n<span class="pl-k">FROM</span>\n\tmsg_user\n<span class="pl-k">WHERE</span>\n\tnick_name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">\'</span>yanyue404<span class="pl-pds">\'</span></span></pre></div>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>num</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>45</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<ul dir="auto">\n<li>除 count 以外的聚合函数<br>\n函数 说明<br>\nSUM 计算某一列的合计值，该列必须为数值类型<br>\nAVG 计算某一列的平均值，该列必须为数值类型<br>\nMAX 计算某一列的最大值<br>\nMIN 计算某一列的最小值</li>\n</ul>\n<p dir="auto">注意，MAX()和 MIN()函数并不限于数值类型。如果是字符类型，MAX()和 MIN()会返回排序最后和排序最前的字符。</p>\n<h3 id="main-heading-H3-7">6. 多表</h3>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\tc.id cid,\n\ta.id aid,\n\ta.nick_name aname,\n\tc.nick_name cname\nFROM\n\tcus_user c,\n\tagt_user a"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-c1">c</span>.<span class="pl-c1">id</span> cid,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">id</span> aid,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">nick_name</span> aname,\n\t<span class="pl-c1">c</span>.<span class="pl-c1">nick_name</span> cname\n<span class="pl-k">FROM</span>\n\tcus_user c,\n\tagt_user a</pre></div>\n<blockquote>\n<p dir="auto">多表查询又称笛卡尔查询，使用笛卡尔查询时要非常小心，由于结果集是目标表的行数乘积，对两个各自有 100 行记录的表进行笛卡尔查询将返回 1 万条记录，对两个各自有 1 万行记录的表进行笛卡尔查询将返回 1 亿条记录。</p>\n</blockquote>\n<p dir="auto">添加 WHERE 条件后结果集的数量大大减少了：</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\tc.id cid,\n\ta.id aid,\n\ta.nick_name aname,\n\tc.nick_name cname\nFROM\n\tcus_user c,\n\tagt_user a\nWHERE\n\tc.account_id = a.account_id\n\tAND a.account_id = \'172\'"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-c1">c</span>.<span class="pl-c1">id</span> cid,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">id</span> aid,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">nick_name</span> aname,\n\t<span class="pl-c1">c</span>.<span class="pl-c1">nick_name</span> cname\n<span class="pl-k">FROM</span>\n\tcus_user c,\n\tagt_user a\n<span class="pl-k">WHERE</span>\n\t<span class="pl-c1">c</span>.<span class="pl-c1">account_id</span> <span class="pl-k">=</span> <span class="pl-c1">a</span>.<span class="pl-c1">account_id</span>\n\t<span class="pl-k">AND</span> <span class="pl-c1">a</span>.<span class="pl-c1">account_id</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">\'</span>172<span class="pl-pds">\'</span></span></pre></div>\n<h3 id="main-heading-H3-8">7.连接查询</h3>\n<p dir="auto">表的连接分成好几种类型。</p>\n<ul dir="auto">\n<li>内连接（inner join）</li>\n<li>外连接（outer join）\n<ul dir="auto">\n<li>左连接（left join）</li>\n<li>右连接（right join）</li>\n<li>全连接（full join）</li>\n</ul>\n</li>\n</ul>\n<p dir="auto"><strong>内连接 (INNER JOIN)</strong></p>\n<p dir="auto">选出 <code class="notranslate">cus_user</code>与 <code class="notranslate">agt_user</code> 两张表 <code class="notranslate">account_id</code> 一致（自己是代理人，自己又是客户）</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\tc.id cid,\n\ta.id aid,\n\ta.nick_name,\n\ta.agent_code agentCode\nFROM\n\tcus_user c\n\tINNER JOIN agt_user a ON c.account_id = a.account_id"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-c1">c</span>.<span class="pl-c1">id</span> cid,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">id</span> aid,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">nick_name</span>,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">agent_code</span> agentCode\n<span class="pl-k">FROM</span>\n\tcus_user c\n\t<span class="pl-k">INNER JOIN</span> agt_user a <span class="pl-k">ON</span> <span class="pl-c1">c</span>.<span class="pl-c1">account_id</span> <span class="pl-k">=</span> <span class="pl-c1">a</span>.<span class="pl-c1">account_id</span></pre></div>\n<p dir="auto">注意 INNER JOIN 查询的写法是：</p>\n<ol dir="auto">\n<li>先确定主表，仍然使用 FROM &lt;表 1&gt;的语法；</li>\n<li>再确定需要连接的表，使用 INNER JOIN &lt;表 2&gt;的语法；</li>\n<li>然后确定连接条件，使用 ON &lt;条件...&gt;，这里的条件是 s.class_id = c.id，表示 students 表的 class_id 列与 classes 表的 id 列相同的行需要连接；</li>\n<li>可选：加上 WHERE 子句、ORDER BY 等子句。</li>\n</ol>\n<p dir="auto"><strong>右连接（RIGHT JOIN）</strong></p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT\n\tc.id cid,\n\ta.id aid,\n\ta.nick_name,\n\ta.agent_code agentCode\nFROM\n\tcus_user c\n\tRIGHT JOIN agt_user a ON c.account_id = a.account_id"><pre class="notranslate"><span class="pl-k">SELECT</span>\n\t<span class="pl-c1">c</span>.<span class="pl-c1">id</span> cid,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">id</span> aid,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">nick_name</span>,\n\t<span class="pl-c1">a</span>.<span class="pl-c1">agent_code</span> agentCode\n<span class="pl-k">FROM</span>\n\tcus_user c\n\t<span class="pl-k">RIGHT JOIN</span> agt_user a <span class="pl-k">ON</span> <span class="pl-c1">c</span>.<span class="pl-c1">account_id</span> <span class="pl-k">=</span> <span class="pl-c1">a</span>.<span class="pl-c1">account_id</span></pre></div>\n<p dir="auto">换成右连接比内连接多了一条数据，但是 cid 为 Null。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>cid</th>\n<th>aid</th>\n<th>nick_name</th>\n<th>agentCode</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Null</td>\n<td>77777</td>\n<td>测试积分</td>\n<td>11340100063</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto">因为根据 ON 条件 c.account_id = a.account_id，当 a 表 account_id 为 \'77777\'的时候，c 表没有与之相对应的数据，cid 字段就被 Null 填充。</p>\n<p dir="auto">有 RIGHT JOIN，就有 LEFT JOIN，以及 FULL JOIN。它们的区别是：</p>\n<ul dir="auto">\n<li>只返回两张表匹配的记录，这叫内连接（inner join）。</li>\n<li>返回匹配的记录，以及表 A 多余的记录，这叫左连接（left join）。</li>\n<li>返回匹配的记录，以及表 B 多余的记录，这叫右连接（right join）。</li>\n<li>返回匹配的记录，以及表 A 和表 B 各自的多余记录，这叫全连接（full join）。</li>\n</ul>\n<p dir="auto">下图就是四种连接的图示：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7f66096f1cc3901e4b9094b656118ed7c3784da0a762901f2fe3ccea1e3f423e/68747470733a2f2f7777772e77616e67626173652e636f6d2f626c6f67696d672f61737365742f3230313930312f6267323031393031313530362e6a7067"><img src="https://camo.githubusercontent.com/7f66096f1cc3901e4b9094b656118ed7c3784da0a762901f2fe3ccea1e3f423e/68747470733a2f2f7777772e77616e67626173652e636f6d2f626c6f67696d672f61737365742f3230313930312f6267323031393031313530362e6a7067" alt="" data-canonical-src="https://www.wangbase.com/blogimg/asset/201901/bg2019011506.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">上图中，表 A 的记录是 123，表 B 的记录是 ABC，颜色表示匹配关系。返回结果中，如果另一张表没有匹配的记录，则用 null 填充。</p>\n<p dir="auto">这四种连接，又可以分成两大类：内连接（inner join）表示只包含匹配的记录，外连接（outer join）表示还包含不匹配的记录。所以，左连接、右连接、全连接都属于外连接。</p>\n<blockquote>\n<p dir="auto">JOIN 查询仍然可以使用 WHERE 条件和 ORDER BY 排序。</p>\n</blockquote>\n<h3 id="main-heading-H3-9">8. 模糊查询</h3>\n<p dir="auto">搜索以 <code class="notranslate">资讯</code> 开头的所有字符串</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT * FROM `sys_menu`  WHERE NAME LIKE \'资讯%\'"><pre class="notranslate"><span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> <span class="pl-s"><span class="pl-pds">`</span>sys_menu<span class="pl-pds">`</span></span>  <span class="pl-k">WHERE</span> NAME <span class="pl-k">LIKE</span> <span class="pl-s"><span class="pl-pds">\'</span>资讯%<span class="pl-pds">\'</span></span></pre></div>\n<p dir="auto">搜索以 <code class="notranslate">资讯</code> 结尾的所有字符串</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT * FROM `sys_menu`  WHERE NAME LIKE \'%资讯\'"><pre class="notranslate"><span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> <span class="pl-s"><span class="pl-pds">`</span>sys_menu<span class="pl-pds">`</span></span>  <span class="pl-k">WHERE</span> NAME <span class="pl-k">LIKE</span> <span class="pl-s"><span class="pl-pds">\'</span>%资讯<span class="pl-pds">\'</span></span></pre></div>\n<p dir="auto">搜索含有 <code class="notranslate">资讯</code> 的所有字符串</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="SELECT * FROM `sys_menu`  WHERE NAME LIKE \'%资讯%\'"><pre class="notranslate"><span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> <span class="pl-s"><span class="pl-pds">`</span>sys_menu<span class="pl-pds">`</span></span>  <span class="pl-k">WHERE</span> NAME <span class="pl-k">LIKE</span> <span class="pl-s"><span class="pl-pds">\'</span>%资讯%<span class="pl-pds">\'</span></span></pre></div>\n<h2 id="main-heading-H2-10">修改数据</h2>\n<h3 id="main-heading-H3-11">1. INSERT</h3>\n<p dir="auto">当我们需要向数据库表中插入一条新记录时，就必须使用 INSERT 语句。</p>\n<p dir="auto">INSERT 语句的基本语法是：</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="INSERT INTO &lt;表名&gt; (字段1, 字段2, ...) VALUES (值1, 值2, ...);"><pre class="notranslate"><span class="pl-k">INSERT INTO</span> <span class="pl-k">&lt;</span>表名<span class="pl-k">&gt;</span> (字段<span class="pl-c1">1</span>, 字段<span class="pl-c1">2</span>, ...) <span class="pl-k">VALUES</span> (值<span class="pl-c1">1</span>, 值<span class="pl-c1">2</span>, ...);</pre></div>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="INSERT INTO `xfej-admin`.`cus_user` ( `account_id`, `user_code`, `nick_name`, `gender`, `avator`, `agt_flag`, `del_flag` )\nVALUES\n\t( 233, \'2a73d53333e64509b4bcced82bf1210e\', \'测试\', \'1\', \'https://thirdwx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM6MrzD7a6kIs22ym8QAddMibVF7WLRFxN5O6R99RwUcTBk7SicPUjXLkPMq3Y49wE3ul5uINQKF1tRw/132\', \'0\', \'0\' );"><pre class="notranslate"><span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>xfej-admin<span class="pl-pds">`</span></span>.<span class="pl-s"><span class="pl-pds">`</span>cus_user<span class="pl-pds">`</span></span> ( <span class="pl-s"><span class="pl-pds">`</span>account_id<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>user_code<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>nick_name<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>gender<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>avator<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>agt_flag<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>del_flag<span class="pl-pds">`</span></span> )\n<span class="pl-k">VALUES</span>\n\t( <span class="pl-c1">233</span>, <span class="pl-s"><span class="pl-pds">\'</span>2a73d53333e64509b4bcced82bf1210e<span class="pl-pds">\'</span></span>, <span class="pl-s"><span class="pl-pds">\'</span>测试<span class="pl-pds">\'</span></span>, <span class="pl-s"><span class="pl-pds">\'</span>1<span class="pl-pds">\'</span></span>, <span class="pl-s"><span class="pl-pds">\'</span>https://thirdwx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM6MrzD7a6kIs22ym8QAddMibVF7WLRFxN5O6R99RwUcTBk7SicPUjXLkPMq3Y49wE3ul5uINQKF1tRw/132<span class="pl-pds">\'</span></span>, <span class="pl-s"><span class="pl-pds">\'</span>0<span class="pl-pds">\'</span></span>, <span class="pl-s"><span class="pl-pds">\'</span>0<span class="pl-pds">\'</span></span> );</pre></div>\n<p dir="auto">还可以一次性添加多条记录，只需要在 VALUES 子句中指定多个记录值，每个记录是由()(...此处已省略详细的新增数据项)包含的一组值:</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="INSERT INTO `xfej-admin`.`cus_user` ( `account_id`, `user_code`, `nick_name`, `gender`, `avator`, `agt_flag`, `del_flag` )\nVALUES\n\t(...), (...);"><pre class="notranslate"><span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>xfej-admin<span class="pl-pds">`</span></span>.<span class="pl-s"><span class="pl-pds">`</span>cus_user<span class="pl-pds">`</span></span> ( <span class="pl-s"><span class="pl-pds">`</span>account_id<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>user_code<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>nick_name<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>gender<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>avator<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>agt_flag<span class="pl-pds">`</span></span>, <span class="pl-s"><span class="pl-pds">`</span>del_flag<span class="pl-pds">`</span></span> )\n<span class="pl-k">VALUES</span>\n\t(...), (...);</pre></div>\n<h3 id="main-heading-H3-12">2. UPDATE</h3>\n<p dir="auto">如果要更新数据库表中的记录，我们就必须使用 UPDATE 语句。</p>\n<p dir="auto">UPDATE 语句的基本语法是：</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="UPDATE &lt;表名&gt; SET 字段1=值1, 字段2=值2, ... WHERE ...;"><pre class="notranslate"><span class="pl-k">UPDATE</span> <span class="pl-k">&lt;</span>表名<span class="pl-k">&gt;</span> <span class="pl-k">SET</span> 字段<span class="pl-c1">1</span><span class="pl-k">=</span>值<span class="pl-c1">1</span>, 字段<span class="pl-c1">2</span><span class="pl-k">=</span>值<span class="pl-c1">2</span>, ... <span class="pl-k">WHERE</span> ...;</pre></div>\n<p dir="auto">例如：我们修改刚才新建的 <code class="notranslate">nick_name</code>为"测试"的那条数据，查看发现，主键 id 已经新增为 <code class="notranslate">199</code>，让我们来更新它的 <code class="notranslate">mobile</code>与<code class="notranslate">gender</code>。</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="UPDATE cus_user\nSET gender = 2,\nmobile = \'13112341234\'\nWHERE\n\tid = 199;"><pre class="notranslate"><span class="pl-k">UPDATE</span> cus_user\n<span class="pl-k">SET</span> gender <span class="pl-k">=</span> <span class="pl-c1">2</span>,\nmobile <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">\'</span>13112341234<span class="pl-pds">\'</span></span>\n<span class="pl-k">WHERE</span>\n\tid <span class="pl-k">=</span> <span class="pl-c1">199</span>;</pre></div>\n<p dir="auto">更新成功 MySQL 会返回: <code class="notranslate">Affected rows: 1 时间: 0.008s</code>，可以看到一行受到了影响，此外还可以借助 WHERE 一次更新多条数据。</p>\n<p dir="auto">如果 WHERE UPDATE 语句不会报错，也不会有任何记录被更新</p>\n<p dir="auto">更新 id 为 200，201，202 的数据</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="UPDATE cus_user\nSET gender = 2,\nmobile = \'13112341234\'\nWHERE\n\tid &gt;= 200\n\tAND id &lt;= 202;"><pre class="notranslate"><span class="pl-k">UPDATE</span> cus_user\n<span class="pl-k">SET</span> gender <span class="pl-k">=</span> <span class="pl-c1">2</span>,\nmobile <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">\'</span>13112341234<span class="pl-pds">\'</span></span>\n<span class="pl-k">WHERE</span>\n\tid <span class="pl-k">&gt;=</span> <span class="pl-c1">200</span>\n\t<span class="pl-k">AND</span> id <span class="pl-k">&lt;=</span> <span class="pl-c1">202</span>;</pre></div>\n<blockquote>\n<p dir="auto">警告： UPDATE 语句可以没有 WHERE 条件，当直接执行的时候整个表的所有记录都会被更新。所以，在执行 UPDATE 语句时要非常小心，最好先用 SELECT 语句来测试 WHERE 条件是否筛选出了期望的记录集，然后再用 UPDATE 更新。</p>\n</blockquote>\n<h3 id="main-heading-H3-13">3.DELETE</h3>\n<p dir="auto">如果要删除数据库表中的记录，我们可以使用 DELETE 语句。</p>\n<p dir="auto">DELETE 语句的基本语法是：</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="DELETE FROM &lt;表名&gt; WHERE ...;"><pre class="notranslate"><span class="pl-k">DELETE</span> <span class="pl-k">FROM</span> <span class="pl-k">&lt;</span>表名<span class="pl-k">&gt;</span> <span class="pl-k">WHERE</span> ...;</pre></div>\n<p dir="auto">例如：我们删除上面创建的 id 为 199 的数据：</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="DELETE\nFROM\n\tcus_user\nWHERE\n\tid = 199"><pre class="notranslate"><span class="pl-k">DELETE</span>\n<span class="pl-k">FROM</span>\n\tcus_user\n<span class="pl-k">WHERE</span>\n\tid <span class="pl-k">=</span> <span class="pl-c1">199</span></pre></div>\n<p dir="auto">与 UPDATE 的使用方法一样，借助 WHERE 我们就可以一次删除表中的一条或多条记录。</p>\n<div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="select COUNT(*) from agt_main_user where agt_id = 121\nSELECT * from agt_user\nwhere nick_name like \'胖头鱼%\'"><pre class="notranslate"><span class="pl-k">select</span> <span class="pl-c1">COUNT</span>(<span class="pl-k">*</span>) <span class="pl-k">from</span> agt_main_user <span class="pl-k">where</span> agt_id <span class="pl-k">=</span> <span class="pl-c1">121</span>\n<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">from</span> agt_user\n<span class="pl-k">where</span> nick_name <span class="pl-k">like</span> <span class="pl-s"><span class="pl-pds">\'</span>胖头鱼%<span class="pl-pds">\'</span></span></pre></div>\n<h2 id="main-heading-H2-14">参考</h2>\n<ul dir="auto">\n<li><a href="https://www.liaoxuefeng.com/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000" rel="nofollow">廖雪峰 SQL 教程</a></li>\n<li><a href="http://www.ruanyifeng.com/blog/2019/01/table-join.html" rel="nofollow">数据库表连接的简单解释</a></li>\n<li><a href="https://www.sqlteaching.com/" rel="nofollow">SQL Teaching</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:a,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:a}],html_url:"https://github.com/yanyue404/blog/issues/163"},navList:[{text:"目录",id:"main-heading-H2-0",type:n,children:[]},{text:"查询数据",id:"main-heading-H2-1",type:n,children:[{text:"1. 条件查询",id:"main-heading-H3-2",type:s},{text:"2.投影查询",id:"main-heading-H3-3",type:s},{text:"3.排序查询",id:"main-heading-H3-4",type:s},{text:"4.分页查询",id:"main-heading-H3-5",type:s},{text:"5.聚合查询",id:"main-heading-H3-6",type:s},{text:"6. 多表",id:"main-heading-H3-7",type:s},{text:"7.连接查询",id:"main-heading-H3-8",type:s},{text:"8. 模糊查询",id:"main-heading-H3-9",type:s}]},{text:"修改数据",id:"main-heading-H2-10",type:n,children:[{text:"1. INSERT",id:"main-heading-H3-11",type:s},{text:"2. UPDATE",id:"main-heading-H3-12",type:s},{text:"3.DELETE",id:"main-heading-H3-13",type:s}]},{text:"参考",id:"main-heading-H2-14",type:n,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:t,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:t,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:a},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:a,avatar_url:a,name:a,html_url:a,bio:a,type:l}},serverRendered:!0}}("H3","","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,720 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>jstraining - 全栈工程师培训材料（转载） | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 ruanyf/jstraining demos - 课堂练习的操作指导 目录 第一讲：前端开发的历史和趋势 前端开发的历史演变 前端 MVC 框架的兴起 前后端分离 全栈工程师 前端开发的未来 第二讲：React 技术栈 React 的基本用法 React 应用的架构 第三讲：Node 应用开"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="jstraining - 全栈工程师培训材料（转载）"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 ruanyf/jstraining demos - 课堂练习的操作指导 目录 第一讲：前端开发的历史和趋势 前端开发的历史演变 前端 MVC 框架的兴起 前后端分离 全栈工程师 前端开发的未来 第二讲：React 技术栈 React 的基本用法 React 应用的架构 第三讲：Node 应用开"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="jstraining - 全栈工程师培训材料（转载）"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 ruanyf/jstraining demos - 课堂练习的操作指导 目录 第一讲：前端开发的历史和趋势 前端开发的历史演变 前端 MVC 框架的兴起 前后端分离 全栈工程师 前端开发的未来 第二讲：React 技术栈 React 的基本用法 React 应用的架构 第三讲：Node 应用开"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H2-1" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H2-2" title="前端开发的历史和趋势" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前端开发的历史和趋势
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-3" title="前后端不分的时代" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  前后端不分的时代
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-4" title="前后端分离" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  前后端分离
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-5" title="MVVM 模式" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  MVVM 模式
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-6" title="SPA" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  SPA
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-7" title="Node" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Node
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-8" title="前端开发模式的根本改变" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  前端开发模式的根本改变
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-9" title="全栈工程师" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  全栈工程师
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-10" title="软件行业的发展动力" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  软件行业的发展动力
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-11" title="前端开发的未来" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  前端开发的未来
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H2-12" title="React 技术栈" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              React 技术栈
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-13" title="React 的基本用法" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  React 的基本用法
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-14" title="React 的核心思想" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  React 的核心思想
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-15" title="React 没有解决的问题" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  React 没有解决的问题
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-16" title="React 应用的架构" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  React 应用的架构
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H2-17" title="Node 开发" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Node 开发
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-18" title="Node 的基本用法" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Node 的基本用法
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-19" title="Restful API" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Restful API
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-20" title="Express 框架搭建 Web 应用" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Express 框架搭建 Web 应用
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H2-21" title="前端工程 - 流程篇" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前端工程 - 流程篇
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-22" title="持续集成" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  持续集成
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-23" title="流程" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  流程
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-24" title="静态代码检查工具" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  静态代码检查工具
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-25" title="单元测试" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  单元测试
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/102#main-heading-H3-26" title="持续集成服务平台" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  持续集成服务平台
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>jstraining - 全栈工程师培训材料（转载）</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>jstraining - 全栈工程师培训材料（转载）</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2019-11-16</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 21 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<ul dir="auto">
+<li><a href="https://github.com/ruanyf/jstraining">ruanyf/jstraining</a>
+<ul dir="auto">
+<li><a href="https://github.com/ruanyf/jstraining/tree/master/demos">demos - 课堂练习的操作指导</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="main-heading-H2-1">目录</h2>
+<p dir="auto"><strong>第一讲：前端开发的历史和趋势</strong></p>
+<ol dir="auto">
+<li>前端开发的历史演变</li>
+<li>前端 MVC 框架的兴起</li>
+<li>前后端分离</li>
+<li>全栈工程师</li>
+<li>前端开发的未来</li>
+</ol>
+<p dir="auto"><strong>第二讲：React 技术栈</strong></p>
+<ol dir="auto">
+<li>React 的基本用法</li>
+<li>React 应用的架构</li>
+</ol>
+<p dir="auto"><strong>第三讲：Node 应用开发</strong></p>
+<ol dir="auto">
+<li>Node 的基本用法</li>
+<li>Restful API</li>
+<li>Express 框架搭建 Web 应用</li>
+</ol>
+<p dir="auto"><strong>第四讲：前端工程简介</strong></p>
+<ol dir="auto">
+<li>持续集成</li>
+<li>静态代码检查</li>
+<li>单元测试</li>
+<li>功能测试</li>
+<li>持续集成服务 Travis CI</li>
+</ol>
+<h2 id="main-heading-H2-2">前端开发的历史和趋势</h2>
+<blockquote>
+<p dir="auto">前端是针对浏览器的开发，代码运行在浏览器</p>
+</blockquote>
+<h3 id="main-heading-H3-3">前后端不分的时代</h3>
+<p dir="auto">互联网发展的早期，前后端开发是一体的，前端代码是后端代码的一部分。</p>
+<p dir="auto">前端被称为页面仔，实际上是模板工程师，负责编写页面模板。</p>
+<p dir="auto">后端采用 MVC 方式开发，前端所控制的的不完全 View 层由后端读取，使用模板方式，动态渲染。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/laravel-mvc.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/laravel-mvc.png" alt="MVC" style="max-width:100%"></a></p>
+<h4 dir="auto"><a href="https://zh.wikipedia.org/zh-cn/AJAX" rel="nofollow">Ajax</a></h4>
+<p dir="auto">Ajax 技术诞生，改变了一切。</p>
+<p dir="auto">20世纪90年代，几乎所有的网站都由HTML页面实现，服务器处理每一个用户请求都需要重新加载网页。</p>
+<p dir="auto">Ajax 的最大优点，就是能在不更新整个页面的前提下异步维护数据。</p>
+<p dir="auto">许多事件使得Ajax被大众所接受：</p>
+<ul dir="auto">
+<li>2004年：Gmail</li>
+<li>2005年：Google 地图</li>
+</ul>
+<p dir="auto">前端不再是后端的模板，可以独立得到各种数据。</p>
+<h4 dir="auto"><a href="https://zh.wikipedia.org/zh-cn/Web_2.0" rel="nofollow">Web 2.0</a></h4>
+<p dir="auto">Ajax 技术促成了 Web 2.0 的诞生。</p>
+<ul dir="auto">
+<li>Web 1.0：静态网页，纯内容展示</li>
+<li>Web 2.0：动态网页，富交互，前端数据处理</li>
+</ul>
+<p dir="auto">从那时起，前端变得复杂了，对前端工程师的要求越来越高。</p>
+<p dir="auto">产品例子:</p>
+<ul dir="auto">
+<li>全球： 维基百科, Twitter, Facebook, YouTube</li>
+<li>中国： 豆瓣网，百度贴吧, 新浪微博,优酷网, QQ群</li>
+</ul>
+<h3 id="main-heading-H3-4">前后端分离</h3>
+<ul dir="auto">
+<li>Ajax -> 前端应用兴起</li>
+<li>智能手机 -> 多终端支持<br>
+这两个原因，导致前端开发方式发生根本的变化。</li>
+</ul>
+<p dir="auto">前端不再是后端 MVC 中的 V，而是单独的一层。</p>
+<p dir="auto"><strong>REST 接口</strong></p>
+<p dir="auto">前后端分离以后，它们之间通过接口通信。</p>
+<p dir="auto">后端暴露出接口，前端消费后端提供的数据。</p>
+<p dir="auto">后端接口一般是 REST 形式，前后端的通信协议一般是 HTTP。</p>
+<h4 dir="auto">前端 MVC 框架</h4>
+<p dir="auto">前端通过 Ajax 得到数据，因此也有了处理数据的需求。</p>
+<p dir="auto">前端代码变得也需要保存数据、处理数据、生成视图，这导致了前<br>
+端 MVC 框架的诞生</p>
+<p dir="auto"><strong>Backbone.js</strong></p>
+<blockquote>
+<p dir="auto">2010 年</p>
+</blockquote>
+<p dir="auto">Backbone 将前端代码分成两个基本部分。</p>
+<ul dir="auto">
+<li>Model：管理数据</li>
+<li>View：数据的展现</li>
+</ul>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/backbone-model-view.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/backbone-model-view.png" alt="img" style="max-width:100%"></a></p>
+<p dir="auto">Backbone  只有 M 和 V，没有 C。因为，前端 Controller 与后端不同。</p>
+<ul dir="auto">
+<li>不需要，也不应该处理业务逻辑</li>
+<li>只需要处理 UI 逻辑，响应用户的一举一动</li>
+</ul>
+<p dir="auto">所以，前端 Controller 相对比较简单。Backbone 没有 C，只用事件来处理 UI 逻辑。</p>
+<h3 id="main-heading-H3-5">MVVM 模式</h3>
+<p dir="auto">另一些框架提出 MVVM 模式，用 View Model 代替 Controller。</p>
+<ul dir="auto">
+<li>Model</li>
+<li>View</li>
+<li>View-Model：简化的 Controller，唯一作用就是为 View 提供处理好的数据，不含其他逻辑。</li>
+</ul>
+<p dir="auto">本质：view 绑定 view-model，视图与数据模型强耦合。数据的变化实时反映在 view 上，不需要手动处理。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/mvvm.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/mvvm.png" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><strong>Angular</strong></p>
+<p dir="auto">Google 公司推出的 Angular 是最流行的 MVVM 前端框架。</p>
+<p dir="auto">它的风格属于 HTML 语言的增强，核心概念是双向绑定。</p>
+<p dir="auto"><strong>Vue</strong></p>
+<p dir="auto">Vue.js 是现在很热门的一种前端 MVVM 框架。</p>
+<p dir="auto">它的基本思想与 Angular 类似，但是用法更简单，而且引入了响应式编程的概念。</p>
+<h3 id="main-heading-H3-6">SPA</h3>
+<blockquote>
+<p dir="auto">SPA = Single-page application</p>
+</blockquote>
+<p dir="auto">单页面应用，就是只有一张Web页面的应用，是加载单个HTML 页面并在用户与应用程序交互时动态更新该页面的Web应用程序。</p>
+<p dir="auto">2010年后，前端工程师从开发页面，变成了开发“前端应用”（跑在浏览器里面的应用程序）。</p>
+<h3 id="main-heading-H3-7">Node</h3>
+<p dir="auto">2009年，Node 项目诞生，它是服务器上的 JavaScript 运行环境。</p>
+<p dir="auto">Node = JavaScript + 操作系统 API</p>
+<p dir="auto"><strong>意义</strong></p>
+<ul dir="auto">
+<li>JavaScript 成为服务器脚本语言，与 Python 和 Ruby 一样</li>
+<li>JavaScript 成为唯一的浏览器和服务器都支持的语言</li>
+<li>前端工程师可以编写后端程序了</li>
+</ul>
+<h3 id="main-heading-H3-8">前端开发模式的根本改变</h3>
+<ul dir="auto">
+<li>Node 环境下开发</li>
+<li>大量使用服务器端工具</li>
+<li>引入持续集成等软件工程的标准流程</li>
+<li>开发完成后，编译成浏览器可以运行的脚本，放上 CDN</li>
+</ul>
+<h3 id="main-heading-H3-9">全栈工程师</h3>
+<p dir="auto">前端工程师正在转变为全栈工程师</p>
+<ul dir="auto">
+<li>一个人负责开发前端和后端</li>
+<li>从数据库到 UI 的所有开发</li>
+</ul>
+<p dir="auto"><strong>全栈技能</strong></p>
+<p dir="auto">怎样才能称为全栈工程师？</p>
+<ul dir="auto">
+<li>传统前端技能：HTML、JavaScript、CSS</li>
+<li>一门后端语言</li>
+<li>移动端开发：iOS / Android / HTML5</li>
+<li>其他技能：数据库、HTTP 等等</li>
+</ul>
+<h3 id="main-heading-H3-10">软件行业的发展动力</h3>
+<p dir="auto">历史演变：前后端不分 -> 前后端分离 -> 全栈工程师</p>
+<p dir="auto">动力：更加产业化、大规模地生产软件</p>
+<ul dir="auto">
+<li>效率更高</li>
+<li>成本更低</li>
+<li>通用性好、能够快速产出的技术最终会赢，单个程序员的生产力要求越来越高。</li>
+</ul>
+<p dir="auto"><strong>H5 就是一个最好的例子</strong></p>
+<p dir="auto">为什么 H5 技术会赢得移动端？</p>
+<ul dir="auto">
+<li>开发速度快：Native 需要重新编译才能看到结果，H5 是即时输出</li>
+<li>开发成本低：Native 需要两个开发团队，H5 只要一个</li>
+<li>快速发布：安卓 Native 新版本需要24小时，iOS 需要 3 ～ 4 天，H5 可以随时更新</li>
+</ul>
+<h3 id="main-heading-H3-11">前端开发的未来</h3>
+<p dir="auto"><strong>软件的特点</strong></p>
+<ul dir="auto">
+<li>联网</li>
+<li>高并发</li>
+<li>分布式</li>
+<li>跨终端</li>
+</ul>
+<p dir="auto">现在基于 Web 的前端技术，将演变为未来所有软件的通用的 GUI（图形使用界面） 解决方案。</p>
+<p dir="auto"><strong>只有两种软件工程师</strong></p>
+<ul dir="auto">
+<li>端工程师
+<ul dir="auto">
+<li>手机端</li>
+<li>PC 端</li>
+<li>TV 端</li>
+<li>VR 端</li>
+<li>……</li>
+</ul>
+</li>
+<li>云工程师</li>
+</ul>
+<h2 id="main-heading-H2-12">React 技术栈</h2>
+<p dir="auto">Facebook 公司2013年推出，现在最好的社区支持和生态圈，大量的第三方工具</p>
+<p dir="auto"><strong>React 的优点</strong></p>
+<ul dir="auto">
+<li>组件模式：代码复用和团队分工</li>
+<li>虚拟 DOM：性能优势</li>
+<li>移动端支持：跨终端</li>
+</ul>
+<h3 id="main-heading-H3-13">React 的基本用法</h3>
+<ul dir="auto">
+<li>JSX语法与Babel 转码器</li>
+<li>React 组件语法</li>
+<li>React 组件的参数（使用 Props 获取）</li>
+<li>React 组件的状态（使用<code class="notranslate">setState</code>更新受控组件的内部状态）</li>
+<li>React 组件实战（学写简单的 React 组件）</li>
+<li>React 组件的生命周期（Ajax使用）</li>
+<li>React 组件库（了解使用 <a href="https://react%C2%ADbootstrap.github.io/" rel="nofollow">React­Bootstrap</a>，<a href="http://recharts.org/" rel="nofollow">ReCharts</a>)）</li>
+</ul>
+<h3 id="main-heading-H3-14">React 的核心思想</h3>
+<p dir="auto">View 是 State 的输出。</p>
+<p dir="auto"><code class="notranslate">view = f(state)</code></p>
+<p dir="auto">上式中，f表示函数关系。只要 State 发生变化，View 也要随之变化。</p>
+<p dir="auto">React 的本质是将图形界面（GUI）函数化。</p>
+<h3 id="main-heading-H3-15">React 没有解决的问题</h3>
+<p dir="auto">React 本身只是一个 DOM 的抽象层，使用组件构建虚拟 DOM。</p>
+<p dir="auto">如果开发大应用，还需要解决两个问题。</p>
+<ul dir="auto">
+<li>架构：大型应用程序应该如何组织代码？</li>
+<li>通信：组件之间如何通信？</li>
+</ul>
+<h3 id="main-heading-H3-16">React 应用的架构</h3>
+<p dir="auto">React 架构的最重要作用：管理 Store 与 View 之间的关系。</p>
+<p dir="auto">Facebook 提出 Flux 架构的概念，被认为是 React 应用的标准架构。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/flow.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/flow.png" alt="" style="max-width:100%"></a></p>
+<p dir="auto">最大特点：数据单向流动。与 MVVM 的数据双向绑定，形成鲜明对比。</p>
+<p dir="auto">目前最流行的两个 React 架构</p>
+<ul dir="auto">
+<li>MobX：采用观察者模式，自动响应数据变化，state 是可变对象，适合中小型项目</li>
+<li>Redux：Flux 的函数式实现，state 是不可变对象，适合大型项目</li>
+</ul>
+<h4 dir="auto">MobX 架构</h4>
+<p dir="auto">MobX 的核心概念，就是组件是观察者，一旦  Store  有变化，会立<br>
+刻被组件观察到，从而引发重新渲染。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@observer
+class App extends React.Component {
+  render() {
+    // ...
+  }
+}"><pre class="notranslate">@<span class="pl-s1">observer</span>
+<span class="pl-k">class</span> <span class="pl-v">App</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// ...</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">UI 层是观察者，Store 是被观察者。</p>
+<p dir="auto">Store 所有的属性，分成两大类：直接被观察的属性和自动计算出来<br>
+的属性。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Store {
+  @observable name = 'Bartek';
+  @computed get decorated() {
+    return `${this.name} is awesome!`;
+  }
+}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Store</span> <span class="pl-kos">{</span>
+  @<span class="pl-s1">observable</span> <span class="pl-c1">name</span> <span class="pl-c1">=</span> <span class="pl-s">'Bartek'</span><span class="pl-s1">;</span>
+  @<span class="pl-s1">computed</span> <span class="pl-k">get</span> <span class="pl-en">decorated</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span></span> is awesome!`</span><span class="pl-s1">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">UI 会观察到 Store 的变化，自动重新渲染。</p>
+<h4 dir="auto">Redux 架构</h4>
+<p dir="auto">Redux 的核心概念</p>
+<ul dir="auto">
+<li>所有的状态存放在Store。组件每次重新渲染，都必须由状态变化引起。<br>
+用户在 UI 上发出action。</li>
+<li>reducer函数接收action，然后根据当前的state，计算出新的state。</li>
+</ul>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/redux-architecture.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/redux-architecture.png" alt="img" style="max-width:100%"></a></p>
+<h2 id="main-heading-H2-17">Node 开发</h2>
+<p dir="auto">Node 是服务器的 JavaScript 运行环境，提供 API 与操作系统互动。</p>
+<p dir="auto">主要用途：</p>
+<ul dir="auto">
+<li>开发前端应用</li>
+<li>快速搭建服务</li>
+<li>架设网站</li>
+</ul>
+<h3 id="main-heading-H3-18">Node 的基本用法</h3>
+<p dir="auto"><strong>npm</strong></p>
+<p dir="auto">安装 Node 的时候，会同时安装 npm。</p>
+<p dir="auto"><code class="notranslate">$ npm -v</code></p>
+<p dir="auto">它是 Node 的模块管理器，开发 Node 项目的必备工具。</p>
+<p dir="auto"><strong>Node 开发前端脚本的好处</strong></p>
+<p dir="auto">1. 模块机制</p>
+<p dir="auto">2. 版本管理</p>
+<p dir="auto">3. 对外发布</p>
+<p dir="auto">4. 持续集成的标准开发流程</p>
+<h3 id="main-heading-H3-19">Restful API</h3>
+<p dir="auto">REST 是浏览器与服务器通信方式的一种设计风格。</p>
+<p dir="auto">它的全称是“REpresentational State Transfer”，中文意为“表现层状态转换”。</p>
+<ul dir="auto">
+<li>Resource：资源</li>
+<li>Representation：表现层</li>
+<li>State：状态</li>
+<li>Transfer：转换</li>
+</ul>
+<p dir="auto"><strong>核心概念</strong></p>
+<ul dir="auto">
+<li>互联网上所有可以访问的内容，都是资源。</li>
+<li>服务器保存资源，客户端请求资源。</li>
+<li>同一个资源，有多种表现形式。</li>
+<li>协议本身不带有状态，通信时客户端必须通过参数，表示请求不同状态的资源。</li>
+<li>状态转换通过HTTP动词表示。</li>
+</ul>
+<p dir="auto"><strong>HTTP 动词</strong></p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>操作</th>
+<th>SQL方法</th>
+<th>HTTP动词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CREATE</td>
+<td>INSERT</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>READ</td>
+<td>SELECT</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>UPDATE</td>
+<td>PUT/PATCH</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>DELETE</td>
+<td>DELETE</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="POST /v1/stores
+GET /v1/stores/1234
+PUT /v1/stores/1234
+DELETE /v1/stores/1234"><pre class="notranslate">POST /v1/stores
+GET /v1/stores/1234
+PUT /v1/stores/1234
+DELETE /v1/stores/1234</pre></div>
+<h3 id="main-heading-H3-20">Express 框架搭建 Web 应用</h3>
+<p dir="auto"><strong>动态端口设定</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var express    = require('express');
+var app        = express();
+var port = process.env.PORT || 8080;
+
+var router = express.Router();
+
+router.get('/', function(req, res) {
+  res.send('<h1>Hello World</h1>');
+});
+
+app.use('/home', router);
+app.listen(port);
+console.log('Magic happens on port ' + port);"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">express</span>    <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'express'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">var</span> <span class="pl-s1">app</span>        <span class="pl-c1">=</span> <span class="pl-s1">express</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">var</span> <span class="pl-s1">port</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PORT</span> <span class="pl-c1">||</span> <span class="pl-c1">8080</span><span class="pl-kos">;</span>
+
+<span class="pl-k">var</span> <span class="pl-s1">router</span> <span class="pl-c1">=</span> <span class="pl-s1">express</span><span class="pl-kos">.</span><span class="pl-en">Router</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">'/'</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">send</span><span class="pl-kos">(</span><span class="pl-s">'&lt;h1>Hello World&lt;/h1>'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-s">'/home'</span><span class="pl-kos">,</span> <span class="pl-s1">router</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-s1">port</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Magic happens on port '</span> <span class="pl-c1">+</span> <span class="pl-s1">port</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">上面代码指定了外部访问的端口，如果环境变量没有指定，则端口默认为8080。最后两行是启动应用，并输出一行提示文字。</p>
+<p dir="auto">通过环境变量，自定义启动端口。</p>
+<p dir="auto">假定我们指定必须启动在7070端口，命令行可以这样操作。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Linux & Mac
+$ PORT=7070 node app1.js
+
+# windows cmd / (git cmd)
+$ set PORT=7070
+$ node app1.js
+
+# windows powershell
+$ $env:PORT=7070
+$ node app1.js"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Linux & Mac</span>
+$ PORT=7070 node app1.js
+
+<span class="pl-c"><span class="pl-c">#</span> windows cmd / (git cmd)</span>
+$ <span class="pl-c1">set</span> PORT=7070
+$ node app1.js
+
+<span class="pl-c"><span class="pl-c">#</span> windows powershell</span>
+$ <span class="pl-smi">$env</span>:PORT=7070
+$ node app1.js</pre></div>
+<p dir="auto"><strong>传递参数的方式</strong></p>
+<ol dir="auto">
+<li>路由路径传参，浏览器访问<code class="notranslate">localhost:8080/home/张三</code>，输出<code class="notranslate">Hello 张三</code>。</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='router.get("/:name", function(req, res) {
+  res.send("<h1>Hello " + req.params.name + "</h1>");
+});'><pre class="notranslate"><span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"/:name"</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">send</span><span class="pl-kos">(</span><span class="pl-s">"&lt;h1>Hello "</span> <span class="pl-c1">+</span> <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-c1">params</span><span class="pl-kos">.</span><span class="pl-c1">name</span> <span class="pl-c1">+</span> <span class="pl-s">"&lt;/h1>"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<ol start="2" dir="auto">
+<li>Http POST 方法传参</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='var bodyParser = require(&#39;body-parser&#39;);
+app.use(bodyParser.urlencoded({ extended: true }));
+
+router.post("/", function(req, res) {
+  var name = req.body.name;
+  res.json({ message: "Hello " + name });
+});'><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">bodyParser</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'body-parser'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-s1">bodyParser</span><span class="pl-kos">.</span><span class="pl-en">urlencoded</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">extended</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">post</span><span class="pl-kos">(</span><span class="pl-s">"/"</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">var</span> <span class="pl-s1">name</span> <span class="pl-c1">=</span> <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">;</span>
+  <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">json</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">message</span>: <span class="pl-s">"Hello "</span> <span class="pl-c1">+</span> <span class="pl-s1">name</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">使用 Postman  模拟发出 POST 请求：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="POST /home HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/x-www-form-urlencoded
+
+name=Alice"><pre class="notranslate">POST /home HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/x-www-form-urlencoded
+
+name=Alice</pre></div>
+<ol start="3" dir="auto">
+<li>浏览器地址添加 query 参数,访问 <code class="notranslate">http://localhost:8080/home?name=Rainbow</code>返回 <code class="notranslate">Hello Rainbow</code></li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='router.get("/", function(req, res) {
+  res.send("<h1>Hello " + req.query.name + "</h1>");
+});'><pre class="notranslate"><span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"/"</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">send</span><span class="pl-kos">(</span><span class="pl-s">"&lt;h1>Hello "</span> <span class="pl-c1">+</span> <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-c1">query</span><span class="pl-kos">.</span><span class="pl-c1">name</span> <span class="pl-c1">+</span> <span class="pl-s">"&lt;/h1>"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>中间件</strong></p>
+<p dir="auto">对 HTTP 请求进行加工。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="router.use(function(req, res, next) {
+  console.log('There is a requesting.');
+  next();
+});"><pre class="notranslate"><span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">,</span> <span class="pl-s1">next</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'There is a requesting.'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">next</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-21">前端工程 - 流程篇</h2>
+<h3 id="main-heading-H3-22">持续集成</h3>
+<p dir="auto"><strong>概念</strong></p>
+<p dir="auto">Continuous integration（简称 CI）</p>
+<p dir="auto">开发代码频繁地合并进主干，始终保持可发布状态的这个过程。</p>
+<p dir="auto">优点</p>
+<ul dir="auto">
+<li>快速发现错误</li>
+<li>防止分支大幅偏离主干</li>
+<li>让产品可以快速迭代，同时还能保持高质量</li>
+</ul>
+<h3 id="main-heading-H3-23">流程</h3>
+<p dir="auto">前端开发转移到后端环境，意味着可以适用标准的软件工程流程。</p>
+<p dir="auto">1. 本地开发（developing）</p>
+<p dir="auto">2. 静态代码检查（linting）</p>
+<p dir="auto">3. 单元测试（testing）</p>
+<p dir="auto">4. 合并进入主干（merging）</p>
+<p dir="auto">5. 自动构建（building）</p>
+<p dir="auto">6. 自动发布（publishing）</p>
+<h3 id="main-heading-H3-24">静态代码检查工具</h3>
+<p dir="auto">ESLint：</p>
+<ul dir="auto">
+<li>发现语法错误</li>
+<li>发现风格错误</li>
+<li>自动纠正错误</li>
+</ul>
+<p dir="auto">安装相关模块，设置代码检查的风格, 这里使用的是 Airbnb 公司的规则</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install eslint eslint-plugin-import eslint-config-airbnb-base --save-dev"><pre class="notranslate">npm install eslint eslint-plugin-import eslint-config-airbnb-base --save-dev</pre></div>
+<p dir="auto">项目更目录添加配置文件 <code class="notranslate">eslintrc.json</code>，指定检验规则</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "extends": "airbnb-base"
+}'><pre class="notranslate">{
+  <span class="pl-ent">"extends"</span>: <span class="pl-s"><span class="pl-pds">"</span>airbnb-base<span class="pl-pds">"</span></span>
+}</pre></div>
+<p dir="auto">项目的<code class="notranslate">package.json</code>文件</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  // ...
+  "scripts" : {
+    "lint": "eslint **/*.js",
+    "lint-html": "eslint **/*.js -f html -o ./reports/lint-results.html",
+    "lint-fix": "eslint --fix **/*.js"
+  },
+  // ...
+}'><pre class="notranslate">{
+  <span class="pl-ii">// ...</span>
+  <span class="pl-ent">"scripts"</span> : {
+    <span class="pl-ent">"lint"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint **/*.js<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"lint-html"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint **/*.js -f html -o ./reports/lint-results.html<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"lint-fix"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint --fix **/*.js<span class="pl-pds">"</span></span>
+  },
+  <span class="pl-ii">// ...</span>
+}</pre></div>
+<p dir="auto">上面代码新定义了三个脚本，运行方式 <code class="notranslate">npm run lint | yarn lint</code>, 它们的作用如下:</p>
+<ul dir="auto">
+<li><code class="notranslate">lint</code>：检查所有js文件的代码</li>
+<li><code class="notranslate">lint-html</code>：将检查结果写入一个网页文件./reports/lint-results.html</li>
+<li><code class="notranslate">lint-fix</code>：自动修正某些不规范的代码</li>
+</ul>
+<h3 id="main-heading-H3-25">单元测试</h3>
+<p dir="auto"><strong>为什么写测试？</strong></p>
+<p dir="auto">Web 应用越来越复杂，意味着更可能出错。测试是提高代码质量、降低错误的最好方法之一。</p>
+<ul dir="auto">
+<li>测试可以确保得到预期结果。</li>
+<li>加快开发速度。</li>
+<li>方便维护。</li>
+<li>提供用法的文档。</li>
+<li>对于长期维护的项目，测试可以减少投入时间，减轻维护难度。</li>
+</ul>
+<p dir="auto"><strong>测试的类型</strong></p>
+<ul dir="auto">
+<li>单元测试（unit testing）</li>
+<li>功能测试（feature testing）</li>
+<li>集成测试（integration testing）</li>
+<li>端对端测试 (End-to-End testing）</li>
+</ul>
+<p dir="auto"><strong>使用 Mocha 进行单元测试</strong></p>
+<blockquote>
+<p dir="auto">test:  1 + 1 = 2</p>
+</blockquote>
+<ul dir="auto">
+<li><a href="https://github.com/ruanyf/jstraining/tree/master/demos/mocha-demo">mocha-demo</a></li>
+</ul>
+<p dir="auto"><strong>使用 Nightmare 进行功能测试</strong></p>
+<blockquote>
+<p dir="auto">test: 首先打开网页，点击h1元素，然后等待 1 秒钟，判断获取h1元素的文本内容与期望值是否一致。</p>
+</blockquote>
+<ul dir="auto">
+<li><a href="https://github.com/ruanyf/jstraining/tree/master/demos/nightmare-demo">nightmare-demo</a></li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="it('点击后标题改变', function(done) {
+    var nightmare = Nightmare({ show: true });
+    nightmare
+      .goto('http://127.0.0.1:8080/index.html')
+      .click('h1')
+      .wait(1000)
+      .evaluate(function () {
+        return document.querySelector('h1').textContent;
+      })
+      .end()
+      .then(function(text) {
+        expect(text).to.equal('Hello Clicked');
+        done();
+      })
+  });"><pre class="notranslate"><span class="pl-en">it</span><span class="pl-kos">(</span><span class="pl-s">'点击后标题改变'</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">done</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">var</span> <span class="pl-s1">nightmare</span> <span class="pl-c1">=</span> <span class="pl-v">Nightmare</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">show</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">nightmare</span>
+      <span class="pl-kos">.</span><span class="pl-en">goto</span><span class="pl-kos">(</span><span class="pl-s">'http://127.0.0.1:8080/index.html'</span><span class="pl-kos">)</span>
+      <span class="pl-kos">.</span><span class="pl-en">click</span><span class="pl-kos">(</span><span class="pl-s">'h1'</span><span class="pl-kos">)</span>
+      <span class="pl-kos">.</span><span class="pl-en">wait</span><span class="pl-kos">(</span><span class="pl-c1">1000</span><span class="pl-kos">)</span>
+      <span class="pl-kos">.</span><span class="pl-en">evaluate</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">'h1'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+      <span class="pl-kos">.</span><span class="pl-en">end</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+      <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">to</span><span class="pl-kos">.</span><span class="pl-en">equal</span><span class="pl-kos">(</span><span class="pl-s">'Hello Clicked'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-s1">done</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-26">持续集成服务平台</h3>
+<p dir="auto">代码合并进主干以后，就可以进行自动构建和发布了。</p>
+<p dir="auto">Travis CI 提供持续集成服务。它可以根据你提供的脚本，自动完成构建和发布。</p>
+<p dir="auto">添加<code class="notranslate">.travis.yml</code>配置文件,构建时默认依次执行以下九个脚本。</p>
+<ul dir="auto">
+<li><code class="notranslate">before_install</code></li>
+<li><code class="notranslate">install</code></li>
+<li><code class="notranslate">before_script</code></li>
+<li><code class="notranslate">script</code></li>
+<li><code class="notranslate">after_success</code> 或者 <code class="notranslate">after_failure</code></li>
+<li><code class="notranslate">after_script</code></li>
+<li><code class="notranslate">before_deploy</code>（可选）</li>
+<li><code class="notranslate">deploy</code>（可选）</li>
+<li><code class="notranslate">after_deploy</code>（可选）</li>
+</ul>
+<p dir="auto">在 before_install、before_script之前，或者after_script之后，都可以运行自定义命令，详细资料可参考官方文档：Job Lifecycle</p>
+<p dir="auto">完整的配置文件</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='language: node_js
+node_js: stable
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - hexo g
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "your-git-name"
+  - git config user.email "your-email-address"
+  - git add .
+  - git commit -m "Update blog content by Travis CI"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+
+branches:
+  only:
+    - master'><pre class="notranslate">language: node_js
+node_js: stable
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - hexo g
+
+after_script:
+  - <span class="pl-c1">cd</span> ./public
+  - git init
+  - git config user.name <span class="pl-s"><span class="pl-pds">"</span>your-git-name<span class="pl-pds">"</span></span>
+  - git config user.email <span class="pl-s"><span class="pl-pds">"</span>your-email-address<span class="pl-pds">"</span></span>
+  - git add <span class="pl-c1">.</span>
+  - git commit -m <span class="pl-s"><span class="pl-pds">"</span>Update blog content by Travis CI<span class="pl-pds">"</span></span>
+  - git push --force --quiet <span class="pl-s"><span class="pl-pds">"</span>https://<span class="pl-smi">${GH_TOKEN}</span>@<span class="pl-smi">${GH_REF}</span><span class="pl-pds">"</span></span> master:master
+
+branches:
+  only:
+    - master</pre></div>
+<h4 dir="auto">拓展链接</h4>
+<ul dir="auto">
+<li><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" rel="nofollow">阮一峰 - 持续集成是什么？</a></li>
+<li><a href="https://github.com/fouber/blog/issues/10" data-hovercard-type="issue" data-hovercard-url="/fouber/blog/issues/10/hovercard">前端工程——基础篇 </a></li>
+<li><a href="https://xirikm.net/2019/826-2" rel="nofollow">使用 Travis CI 实现 Hexo 博客自动部署</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,t){return{layout:"default",data:[{post:{id:523788651,number:102,title:"jstraining - 全栈工程师培训材料（转载）",created_at:"2019-11-16T04:19:39Z",updated_at:"2022-03-30T23:20:44Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<ul dir="auto">\n<li><a href="https://github.com/ruanyf/jstraining">ruanyf/jstraining</a>\n<ul dir="auto">\n<li><a href="https://github.com/ruanyf/jstraining/tree/master/demos">demos - 课堂练习的操作指导</a></li>\n</ul>\n</li>\n</ul>\n<h2 id="main-heading-H2-1">目录</h2>\n<p dir="auto"><strong>第一讲：前端开发的历史和趋势</strong></p>\n<ol dir="auto">\n<li>前端开发的历史演变</li>\n<li>前端 MVC 框架的兴起</li>\n<li>前后端分离</li>\n<li>全栈工程师</li>\n<li>前端开发的未来</li>\n</ol>\n<p dir="auto"><strong>第二讲：React 技术栈</strong></p>\n<ol dir="auto">\n<li>React 的基本用法</li>\n<li>React 应用的架构</li>\n</ol>\n<p dir="auto"><strong>第三讲：Node 应用开发</strong></p>\n<ol dir="auto">\n<li>Node 的基本用法</li>\n<li>Restful API</li>\n<li>Express 框架搭建 Web 应用</li>\n</ol>\n<p dir="auto"><strong>第四讲：前端工程简介</strong></p>\n<ol dir="auto">\n<li>持续集成</li>\n<li>静态代码检查</li>\n<li>单元测试</li>\n<li>功能测试</li>\n<li>持续集成服务 Travis CI</li>\n</ol>\n<h2 id="main-heading-H2-2">前端开发的历史和趋势</h2>\n<blockquote>\n<p dir="auto">前端是针对浏览器的开发，代码运行在浏览器</p>\n</blockquote>\n<h3 id="main-heading-H3-3">前后端不分的时代</h3>\n<p dir="auto">互联网发展的早期，前后端开发是一体的，前端代码是后端代码的一部分。</p>\n<p dir="auto">前端被称为页面仔，实际上是模板工程师，负责编写页面模板。</p>\n<p dir="auto">后端采用 MVC 方式开发，前端所控制的的不完全 View 层由后端读取，使用模板方式，动态渲染。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/laravel-mvc.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/laravel-mvc.png" alt="MVC" style="max-width: 100%;"></a></p>\n<h4 dir="auto"><a href="https://zh.wikipedia.org/zh-cn/AJAX" rel="nofollow">Ajax</a></h4>\n<p dir="auto">Ajax 技术诞生，改变了一切。</p>\n<p dir="auto">20世纪90年代，几乎所有的网站都由HTML页面实现，服务器处理每一个用户请求都需要重新加载网页。</p>\n<p dir="auto">Ajax 的最大优点，就是能在不更新整个页面的前提下异步维护数据。</p>\n<p dir="auto">许多事件使得Ajax被大众所接受：</p>\n<ul dir="auto">\n<li>2004年：Gmail</li>\n<li>2005年：Google 地图</li>\n</ul>\n<p dir="auto">前端不再是后端的模板，可以独立得到各种数据。</p>\n<h4 dir="auto"><a href="https://zh.wikipedia.org/zh-cn/Web_2.0" rel="nofollow">Web 2.0</a></h4>\n<p dir="auto">Ajax 技术促成了 Web 2.0 的诞生。</p>\n<ul dir="auto">\n<li>Web 1.0：静态网页，纯内容展示</li>\n<li>Web 2.0：动态网页，富交互，前端数据处理</li>\n</ul>\n<p dir="auto">从那时起，前端变得复杂了，对前端工程师的要求越来越高。</p>\n<p dir="auto">产品例子:</p>\n<ul dir="auto">\n<li>全球： 维基百科, Twitter, Facebook, YouTube</li>\n<li>中国： 豆瓣网，百度贴吧, 新浪微博,优酷网, QQ群</li>\n</ul>\n<h3 id="main-heading-H3-4">前后端分离</h3>\n<ul dir="auto">\n<li>Ajax -&gt; 前端应用兴起</li>\n<li>智能手机 -&gt; 多终端支持<br>\n这两个原因，导致前端开发方式发生根本的变化。</li>\n</ul>\n<p dir="auto">前端不再是后端 MVC 中的 V，而是单独的一层。</p>\n<p dir="auto"><strong>REST 接口</strong></p>\n<p dir="auto">前后端分离以后，它们之间通过接口通信。</p>\n<p dir="auto">后端暴露出接口，前端消费后端提供的数据。</p>\n<p dir="auto">后端接口一般是 REST 形式，前后端的通信协议一般是 HTTP。</p>\n<h4 dir="auto">前端 MVC 框架</h4>\n<p dir="auto">前端通过 Ajax 得到数据，因此也有了处理数据的需求。</p>\n<p dir="auto">前端代码变得也需要保存数据、处理数据、生成视图，这导致了前<br>\n端 MVC 框架的诞生</p>\n<p dir="auto"><strong>Backbone.js</strong></p>\n<blockquote>\n<p dir="auto">2010 年</p>\n</blockquote>\n<p dir="auto">Backbone 将前端代码分成两个基本部分。</p>\n<ul dir="auto">\n<li>Model：管理数据</li>\n<li>View：数据的展现</li>\n</ul>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/backbone-model-view.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/backbone-model-view.png" alt="img" style="max-width: 100%;"></a></p>\n<p dir="auto">Backbone  只有 M 和 V，没有 C。因为，前端 Controller 与后端不同。</p>\n<ul dir="auto">\n<li>不需要，也不应该处理业务逻辑</li>\n<li>只需要处理 UI 逻辑，响应用户的一举一动</li>\n</ul>\n<p dir="auto">所以，前端 Controller 相对比较简单。Backbone 没有 C，只用事件来处理 UI 逻辑。</p>\n<h3 id="main-heading-H3-5">MVVM 模式</h3>\n<p dir="auto">另一些框架提出 MVVM 模式，用 View Model 代替 Controller。</p>\n<ul dir="auto">\n<li>Model</li>\n<li>View</li>\n<li>View-Model：简化的 Controller，唯一作用就是为 View 提供处理好的数据，不含其他逻辑。</li>\n</ul>\n<p dir="auto">本质：view 绑定 view-model，视图与数据模型强耦合。数据的变化实时反映在 view 上，不需要手动处理。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/mvvm.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/mvvm.png" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><strong>Angular</strong></p>\n<p dir="auto">Google 公司推出的 Angular 是最流行的 MVVM 前端框架。</p>\n<p dir="auto">它的风格属于 HTML 语言的增强，核心概念是双向绑定。</p>\n<p dir="auto"><strong>Vue</strong></p>\n<p dir="auto">Vue.js 是现在很热门的一种前端 MVVM 框架。</p>\n<p dir="auto">它的基本思想与 Angular 类似，但是用法更简单，而且引入了响应式编程的概念。</p>\n<h3 id="main-heading-H3-6">SPA</h3>\n<blockquote>\n<p dir="auto">SPA = Single-page application</p>\n</blockquote>\n<p dir="auto">单页面应用，就是只有一张Web页面的应用，是加载单个HTML 页面并在用户与应用程序交互时动态更新该页面的Web应用程序。</p>\n<p dir="auto">2010年后，前端工程师从开发页面，变成了开发“前端应用”（跑在浏览器里面的应用程序）。</p>\n<h3 id="main-heading-H3-7">Node</h3>\n<p dir="auto">2009年，Node 项目诞生，它是服务器上的 JavaScript 运行环境。</p>\n<p dir="auto">Node = JavaScript + 操作系统 API</p>\n<p dir="auto"><strong>意义</strong></p>\n<ul dir="auto">\n<li>JavaScript 成为服务器脚本语言，与 Python 和 Ruby 一样</li>\n<li>JavaScript 成为唯一的浏览器和服务器都支持的语言</li>\n<li>前端工程师可以编写后端程序了</li>\n</ul>\n<h3 id="main-heading-H3-8">前端开发模式的根本改变</h3>\n<ul dir="auto">\n<li>Node 环境下开发</li>\n<li>大量使用服务器端工具</li>\n<li>引入持续集成等软件工程的标准流程</li>\n<li>开发完成后，编译成浏览器可以运行的脚本，放上 CDN</li>\n</ul>\n<h3 id="main-heading-H3-9">全栈工程师</h3>\n<p dir="auto">前端工程师正在转变为全栈工程师</p>\n<ul dir="auto">\n<li>一个人负责开发前端和后端</li>\n<li>从数据库到 UI 的所有开发</li>\n</ul>\n<p dir="auto"><strong>全栈技能</strong></p>\n<p dir="auto">怎样才能称为全栈工程师？</p>\n<ul dir="auto">\n<li>传统前端技能：HTML、JavaScript、CSS</li>\n<li>一门后端语言</li>\n<li>移动端开发：iOS / Android / HTML5</li>\n<li>其他技能：数据库、HTTP 等等</li>\n</ul>\n<h3 id="main-heading-H3-10">软件行业的发展动力</h3>\n<p dir="auto">历史演变：前后端不分 -&gt; 前后端分离 -&gt; 全栈工程师</p>\n<p dir="auto">动力：更加产业化、大规模地生产软件</p>\n<ul dir="auto">\n<li>效率更高</li>\n<li>成本更低</li>\n<li>通用性好、能够快速产出的技术最终会赢，单个程序员的生产力要求越来越高。</li>\n</ul>\n<p dir="auto"><strong>H5 就是一个最好的例子</strong></p>\n<p dir="auto">为什么 H5 技术会赢得移动端？</p>\n<ul dir="auto">\n<li>开发速度快：Native 需要重新编译才能看到结果，H5 是即时输出</li>\n<li>开发成本低：Native 需要两个开发团队，H5 只要一个</li>\n<li>快速发布：安卓 Native 新版本需要24小时，iOS 需要 3 ～ 4 天，H5 可以随时更新</li>\n</ul>\n<h3 id="main-heading-H3-11">前端开发的未来</h3>\n<p dir="auto"><strong>软件的特点</strong></p>\n<ul dir="auto">\n<li>联网</li>\n<li>高并发</li>\n<li>分布式</li>\n<li>跨终端</li>\n</ul>\n<p dir="auto">现在基于 Web 的前端技术，将演变为未来所有软件的通用的 GUI（图形使用界面） 解决方案。</p>\n<p dir="auto"><strong>只有两种软件工程师</strong></p>\n<ul dir="auto">\n<li>端工程师\n<ul dir="auto">\n<li>手机端</li>\n<li>PC 端</li>\n<li>TV 端</li>\n<li>VR 端</li>\n<li>……</li>\n</ul>\n</li>\n<li>云工程师</li>\n</ul>\n<h2 id="main-heading-H2-12">React 技术栈</h2>\n<p dir="auto">Facebook 公司2013年推出，现在最好的社区支持和生态圈，大量的第三方工具</p>\n<p dir="auto"><strong>React 的优点</strong></p>\n<ul dir="auto">\n<li>组件模式：代码复用和团队分工</li>\n<li>虚拟 DOM：性能优势</li>\n<li>移动端支持：跨终端</li>\n</ul>\n<h3 id="main-heading-H3-13">React 的基本用法</h3>\n<ul dir="auto">\n<li>JSX语法与Babel 转码器</li>\n<li>React 组件语法</li>\n<li>React 组件的参数（使用 Props 获取）</li>\n<li>React 组件的状态（使用<code class="notranslate">setState</code>更新受控组件的内部状态）</li>\n<li>React 组件实战（学写简单的 React 组件）</li>\n<li>React 组件的生命周期（Ajax使用）</li>\n<li>React 组件库（了解使用 <a href="https://react%C2%ADbootstrap.github.io/" rel="nofollow">React­Bootstrap</a>，<a href="http://recharts.org/" rel="nofollow">ReCharts</a>)）</li>\n</ul>\n<h3 id="main-heading-H3-14">React 的核心思想</h3>\n<p dir="auto">View 是 State 的输出。</p>\n<p dir="auto"><code class="notranslate">view = f(state)</code></p>\n<p dir="auto">上式中，f表示函数关系。只要 State 发生变化，View 也要随之变化。</p>\n<p dir="auto">React 的本质是将图形界面（GUI）函数化。</p>\n<h3 id="main-heading-H3-15">React 没有解决的问题</h3>\n<p dir="auto">React 本身只是一个 DOM 的抽象层，使用组件构建虚拟 DOM。</p>\n<p dir="auto">如果开发大应用，还需要解决两个问题。</p>\n<ul dir="auto">\n<li>架构：大型应用程序应该如何组织代码？</li>\n<li>通信：组件之间如何通信？</li>\n</ul>\n<h3 id="main-heading-H3-16">React 应用的架构</h3>\n<p dir="auto">React 架构的最重要作用：管理 Store 与 View 之间的关系。</p>\n<p dir="auto">Facebook 提出 Flux 架构的概念，被认为是 React 应用的标准架构。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/flow.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/flow.png" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto">最大特点：数据单向流动。与 MVVM 的数据双向绑定，形成鲜明对比。</p>\n<p dir="auto">目前最流行的两个 React 架构</p>\n<ul dir="auto">\n<li>MobX：采用观察者模式，自动响应数据变化，state 是可变对象，适合中小型项目</li>\n<li>Redux：Flux 的函数式实现，state 是不可变对象，适合大型项目</li>\n</ul>\n<h4 dir="auto">MobX 架构</h4>\n<p dir="auto">MobX 的核心概念，就是组件是观察者，一旦  Store  有变化，会立<br>\n刻被组件观察到，从而引发重新渲染。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@observer\nclass App extends React.Component {\n  render() {\n    // ...\n  }\n}"><pre class="notranslate">@<span class="pl-s1">observer</span>\n<span class="pl-k">class</span> <span class="pl-v">App</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// ...</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">UI 层是观察者，Store 是被观察者。</p>\n<p dir="auto">Store 所有的属性，分成两大类：直接被观察的属性和自动计算出来<br>\n的属性。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Store {\n  @observable name = \'Bartek\';\n  @computed get decorated() {\n    return `${this.name} is awesome!`;\n  }\n}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Store</span> <span class="pl-kos">{</span>\n  @<span class="pl-s1">observable</span> <span class="pl-c1">name</span> <span class="pl-c1">=</span> <span class="pl-s">\'Bartek\'</span><span class="pl-s1">;</span>\n  @<span class="pl-s1">computed</span> <span class="pl-k">get</span> <span class="pl-en">decorated</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span></span> is awesome!`</span><span class="pl-s1">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">UI 会观察到 Store 的变化，自动重新渲染。</p>\n<h4 dir="auto">Redux 架构</h4>\n<p dir="auto">Redux 的核心概念</p>\n<ul dir="auto">\n<li>所有的状态存放在Store。组件每次重新渲染，都必须由状态变化引起。<br>\n用户在 UI 上发出action。</li>\n<li>reducer函数接收action，然后根据当前的state，计算出新的state。</li>\n</ul>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ruanyf/jstraining/raw/master/docs/images/redux-architecture.png"><img src="https://github.com/ruanyf/jstraining/raw/master/docs/images/redux-architecture.png" alt="img" style="max-width: 100%;"></a></p>\n<h2 id="main-heading-H2-17">Node 开发</h2>\n<p dir="auto">Node 是服务器的 JavaScript 运行环境，提供 API 与操作系统互动。</p>\n<p dir="auto">主要用途：</p>\n<ul dir="auto">\n<li>开发前端应用</li>\n<li>快速搭建服务</li>\n<li>架设网站</li>\n</ul>\n<h3 id="main-heading-H3-18">Node 的基本用法</h3>\n<p dir="auto"><strong>npm</strong></p>\n<p dir="auto">安装 Node 的时候，会同时安装 npm。</p>\n<p dir="auto"><code class="notranslate">$ npm -v</code></p>\n<p dir="auto">它是 Node 的模块管理器，开发 Node 项目的必备工具。</p>\n<p dir="auto"><strong>Node 开发前端脚本的好处</strong></p>\n<p dir="auto">1. 模块机制</p>\n<p dir="auto">2. 版本管理</p>\n<p dir="auto">3. 对外发布</p>\n<p dir="auto">4. 持续集成的标准开发流程</p>\n<h3 id="main-heading-H3-19">Restful API</h3>\n<p dir="auto">REST 是浏览器与服务器通信方式的一种设计风格。</p>\n<p dir="auto">它的全称是“REpresentational State Transfer”，中文意为“表现层状态转换”。</p>\n<ul dir="auto">\n<li>Resource：资源</li>\n<li>Representation：表现层</li>\n<li>State：状态</li>\n<li>Transfer：转换</li>\n</ul>\n<p dir="auto"><strong>核心概念</strong></p>\n<ul dir="auto">\n<li>互联网上所有可以访问的内容，都是资源。</li>\n<li>服务器保存资源，客户端请求资源。</li>\n<li>同一个资源，有多种表现形式。</li>\n<li>协议本身不带有状态，通信时客户端必须通过参数，表示请求不同状态的资源。</li>\n<li>状态转换通过HTTP动词表示。</li>\n</ul>\n<p dir="auto"><strong>HTTP 动词</strong></p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>操作</th>\n<th>SQL方法</th>\n<th>HTTP动词</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>CREATE</td>\n<td>INSERT</td>\n<td>POST</td>\n</tr>\n<tr>\n<td>READ</td>\n<td>SELECT</td>\n<td>GET</td>\n</tr>\n<tr>\n<td>UPDATE</td>\n<td>UPDATE</td>\n<td>PUT/PATCH</td>\n</tr>\n<tr>\n<td>DELETE</td>\n<td>DELETE</td>\n<td>DELETE</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="POST /v1/stores\nGET /v1/stores/1234\nPUT /v1/stores/1234\nDELETE /v1/stores/1234"><pre class="notranslate">POST /v1/stores\nGET /v1/stores/1234\nPUT /v1/stores/1234\nDELETE /v1/stores/1234</pre></div>\n<h3 id="main-heading-H3-20">Express 框架搭建 Web 应用</h3>\n<p dir="auto"><strong>动态端口设定</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var express    = require(\'express\');\nvar app        = express();\nvar port = process.env.PORT || 8080;\n\nvar router = express.Router();\n\nrouter.get(\'/\', function(req, res) {\n  res.send(\'&lt;h1&gt;Hello World&lt;/h1&gt;\');\n});\n\napp.use(\'/home\', router);\napp.listen(port);\nconsole.log(\'Magic happens on port \' + port);"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">express</span>    <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'express\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-k">var</span> <span class="pl-s1">app</span>        <span class="pl-c1">=</span> <span class="pl-s1">express</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-k">var</span> <span class="pl-s1">port</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PORT</span> <span class="pl-c1">||</span> <span class="pl-c1">8080</span><span class="pl-kos">;</span>\n\n<span class="pl-k">var</span> <span class="pl-s1">router</span> <span class="pl-c1">=</span> <span class="pl-s1">express</span><span class="pl-kos">.</span><span class="pl-en">Router</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">\'/\'</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">send</span><span class="pl-kos">(</span><span class="pl-s">\'&lt;h1&gt;Hello World&lt;/h1&gt;\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-s">\'/home\'</span><span class="pl-kos">,</span> <span class="pl-s1">router</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-s1">port</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'Magic happens on port \'</span> <span class="pl-c1">+</span> <span class="pl-s1">port</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">上面代码指定了外部访问的端口，如果环境变量没有指定，则端口默认为8080。最后两行是启动应用，并输出一行提示文字。</p>\n<p dir="auto">通过环境变量，自定义启动端口。</p>\n<p dir="auto">假定我们指定必须启动在7070端口，命令行可以这样操作。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Linux &amp; Mac\n$ PORT=7070 node app1.js\n\n# windows cmd / (git cmd)\n$ set PORT=7070\n$ node app1.js\n\n# windows powershell\n$ $env:PORT=7070\n$ node app1.js"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Linux &amp; Mac</span>\n$ PORT=7070 node app1.js\n\n<span class="pl-c"><span class="pl-c">#</span> windows cmd / (git cmd)</span>\n$ <span class="pl-c1">set</span> PORT=7070\n$ node app1.js\n\n<span class="pl-c"><span class="pl-c">#</span> windows powershell</span>\n$ <span class="pl-smi">$env</span>:PORT=7070\n$ node app1.js</pre></div>\n<p dir="auto"><strong>传递参数的方式</strong></p>\n<ol dir="auto">\n<li>路由路径传参，浏览器访问<code class="notranslate">localhost:8080/home/张三</code>，输出<code class="notranslate">Hello 张三</code>。</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="router.get(&quot;/:name&quot;, function(req, res) {\n  res.send(&quot;&lt;h1&gt;Hello &quot; + req.params.name + &quot;&lt;/h1&gt;&quot;);\n});"><pre class="notranslate"><span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"/:name"</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">send</span><span class="pl-kos">(</span><span class="pl-s">"&lt;h1&gt;Hello "</span> <span class="pl-c1">+</span> <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-c1">params</span><span class="pl-kos">.</span><span class="pl-c1">name</span> <span class="pl-c1">+</span> <span class="pl-s">"&lt;/h1&gt;"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<ol start="2" dir="auto">\n<li>Http POST 方法传参</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var bodyParser = require(\'body-parser\');\napp.use(bodyParser.urlencoded({ extended: true }));\n\nrouter.post(&quot;/&quot;, function(req, res) {\n  var name = req.body.name;\n  res.json({ message: &quot;Hello &quot; + name });\n});"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">bodyParser</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'body-parser\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-s1">app</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-s1">bodyParser</span><span class="pl-kos">.</span><span class="pl-en">urlencoded</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">extended</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">post</span><span class="pl-kos">(</span><span class="pl-s">"/"</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">var</span> <span class="pl-s1">name</span> <span class="pl-c1">=</span> <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">;</span>\n  <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">json</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">message</span>: <span class="pl-s">"Hello "</span> <span class="pl-c1">+</span> <span class="pl-s1">name</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">使用 Postman  模拟发出 POST 请求：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="POST /home HTTP/1.1\nHost: 127.0.0.1:8080\nContent-Type: application/x-www-form-urlencoded\n\nname=Alice"><pre class="notranslate">POST /home HTTP/1.1\nHost: 127.0.0.1:8080\nContent-Type: application/x-www-form-urlencoded\n\nname=Alice</pre></div>\n<ol start="3" dir="auto">\n<li>浏览器地址添加 query 参数,访问 <code class="notranslate">http://localhost:8080/home?name=Rainbow</code>返回 <code class="notranslate">Hello Rainbow</code></li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="router.get(&quot;/&quot;, function(req, res) {\n  res.send(&quot;&lt;h1&gt;Hello &quot; + req.query.name + &quot;&lt;/h1&gt;&quot;);\n});"><pre class="notranslate"><span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"/"</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">send</span><span class="pl-kos">(</span><span class="pl-s">"&lt;h1&gt;Hello "</span> <span class="pl-c1">+</span> <span class="pl-s1">req</span><span class="pl-kos">.</span><span class="pl-c1">query</span><span class="pl-kos">.</span><span class="pl-c1">name</span> <span class="pl-c1">+</span> <span class="pl-s">"&lt;/h1&gt;"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>中间件</strong></p>\n<p dir="auto">对 HTTP 请求进行加工。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="router.use(function(req, res, next) {\n  console.log(\'There is a requesting.\');\n  next();\n});"><pre class="notranslate"><span class="pl-s1">router</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">req</span><span class="pl-kos">,</span> <span class="pl-s1">res</span><span class="pl-kos">,</span> <span class="pl-s1">next</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'There is a requesting.\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-s1">next</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-21">前端工程 - 流程篇</h2>\n<h3 id="main-heading-H3-22">持续集成</h3>\n<p dir="auto"><strong>概念</strong></p>\n<p dir="auto">Continuous integration（简称 CI）</p>\n<p dir="auto">开发代码频繁地合并进主干，始终保持可发布状态的这个过程。</p>\n<p dir="auto">优点</p>\n<ul dir="auto">\n<li>快速发现错误</li>\n<li>防止分支大幅偏离主干</li>\n<li>让产品可以快速迭代，同时还能保持高质量</li>\n</ul>\n<h3 id="main-heading-H3-23">流程</h3>\n<p dir="auto">前端开发转移到后端环境，意味着可以适用标准的软件工程流程。</p>\n<p dir="auto">1. 本地开发（developing）</p>\n<p dir="auto">2. 静态代码检查（linting）</p>\n<p dir="auto">3. 单元测试（testing）</p>\n<p dir="auto">4. 合并进入主干（merging）</p>\n<p dir="auto">5. 自动构建（building）</p>\n<p dir="auto">6. 自动发布（publishing）</p>\n<h3 id="main-heading-H3-24">静态代码检查工具</h3>\n<p dir="auto">ESLint：</p>\n<ul dir="auto">\n<li>发现语法错误</li>\n<li>发现风格错误</li>\n<li>自动纠正错误</li>\n</ul>\n<p dir="auto">安装相关模块，设置代码检查的风格, 这里使用的是 Airbnb 公司的规则</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install eslint eslint-plugin-import eslint-config-airbnb-base --save-dev"><pre class="notranslate">npm install eslint eslint-plugin-import eslint-config-airbnb-base --save-dev</pre></div>\n<p dir="auto">项目更目录添加配置文件 <code class="notranslate">eslintrc.json</code>，指定检验规则</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;extends&quot;: &quot;airbnb-base&quot;\n}"><pre class="notranslate">{\n  <span class="pl-ent">"extends"</span>: <span class="pl-s"><span class="pl-pds">"</span>airbnb-base<span class="pl-pds">"</span></span>\n}</pre></div>\n<p dir="auto">项目的<code class="notranslate">package.json</code>文件</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  // ...\n  &quot;scripts&quot; : {\n    &quot;lint&quot;: &quot;eslint **/*.js&quot;,\n    &quot;lint-html&quot;: &quot;eslint **/*.js -f html -o ./reports/lint-results.html&quot;,\n    &quot;lint-fix&quot;: &quot;eslint --fix **/*.js&quot;\n  },\n  // ...\n}"><pre class="notranslate">{\n  <span class="pl-ii">// ...</span>\n  <span class="pl-ent">"scripts"</span> : {\n    <span class="pl-ent">"lint"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint **/*.js<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"lint-html"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint **/*.js -f html -o ./reports/lint-results.html<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"lint-fix"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint --fix **/*.js<span class="pl-pds">"</span></span>\n  },\n  <span class="pl-ii">// ...</span>\n}</pre></div>\n<p dir="auto">上面代码新定义了三个脚本，运行方式 <code class="notranslate">npm run lint | yarn lint</code>, 它们的作用如下:</p>\n<ul dir="auto">\n<li><code class="notranslate">lint</code>：检查所有js文件的代码</li>\n<li><code class="notranslate">lint-html</code>：将检查结果写入一个网页文件./reports/lint-results.html</li>\n<li><code class="notranslate">lint-fix</code>：自动修正某些不规范的代码</li>\n</ul>\n<h3 id="main-heading-H3-25">单元测试</h3>\n<p dir="auto"><strong>为什么写测试？</strong></p>\n<p dir="auto">Web 应用越来越复杂，意味着更可能出错。测试是提高代码质量、降低错误的最好方法之一。</p>\n<ul dir="auto">\n<li>测试可以确保得到预期结果。</li>\n<li>加快开发速度。</li>\n<li>方便维护。</li>\n<li>提供用法的文档。</li>\n<li>对于长期维护的项目，测试可以减少投入时间，减轻维护难度。</li>\n</ul>\n<p dir="auto"><strong>测试的类型</strong></p>\n<ul dir="auto">\n<li>单元测试（unit testing）</li>\n<li>功能测试（feature testing）</li>\n<li>集成测试（integration testing）</li>\n<li>端对端测试 (End-to-End testing）</li>\n</ul>\n<p dir="auto"><strong>使用 Mocha 进行单元测试</strong></p>\n<blockquote>\n<p dir="auto">test:  1 + 1 = 2</p>\n</blockquote>\n<ul dir="auto">\n<li><a href="https://github.com/ruanyf/jstraining/tree/master/demos/mocha-demo">mocha-demo</a></li>\n</ul>\n<p dir="auto"><strong>使用 Nightmare 进行功能测试</strong></p>\n<blockquote>\n<p dir="auto">test: 首先打开网页，点击h1元素，然后等待 1 秒钟，判断获取h1元素的文本内容与期望值是否一致。</p>\n</blockquote>\n<ul dir="auto">\n<li><a href="https://github.com/ruanyf/jstraining/tree/master/demos/nightmare-demo">nightmare-demo</a></li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="it(\'点击后标题改变\', function(done) {\n    var nightmare = Nightmare({ show: true });\n    nightmare\n      .goto(\'http://127.0.0.1:8080/index.html\')\n      .click(\'h1\')\n      .wait(1000)\n      .evaluate(function () {\n        return document.querySelector(\'h1\').textContent;\n      })\n      .end()\n      .then(function(text) {\n        expect(text).to.equal(\'Hello Clicked\');\n        done();\n      })\n  });"><pre class="notranslate"><span class="pl-en">it</span><span class="pl-kos">(</span><span class="pl-s">\'点击后标题改变\'</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">done</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">var</span> <span class="pl-s1">nightmare</span> <span class="pl-c1">=</span> <span class="pl-v">Nightmare</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">show</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-s1">nightmare</span>\n      <span class="pl-kos">.</span><span class="pl-en">goto</span><span class="pl-kos">(</span><span class="pl-s">\'http://127.0.0.1:8080/index.html\'</span><span class="pl-kos">)</span>\n      <span class="pl-kos">.</span><span class="pl-en">click</span><span class="pl-kos">(</span><span class="pl-s">\'h1\'</span><span class="pl-kos">)</span>\n      <span class="pl-kos">.</span><span class="pl-en">wait</span><span class="pl-kos">(</span><span class="pl-c1">1000</span><span class="pl-kos">)</span>\n      <span class="pl-kos">.</span><span class="pl-en">evaluate</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-k">return</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelector</span><span class="pl-kos">(</span><span class="pl-s">\'h1\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">textContent</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n      <span class="pl-kos">.</span><span class="pl-en">end</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n      <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-en">expect</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">to</span><span class="pl-kos">.</span><span class="pl-en">equal</span><span class="pl-kos">(</span><span class="pl-s">\'Hello Clicked\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-s1">done</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-26">持续集成服务平台</h3>\n<p dir="auto">代码合并进主干以后，就可以进行自动构建和发布了。</p>\n<p dir="auto">Travis CI 提供持续集成服务。它可以根据你提供的脚本，自动完成构建和发布。</p>\n<p dir="auto">添加<code class="notranslate">.travis.yml</code>配置文件,构建时默认依次执行以下九个脚本。</p>\n<ul dir="auto">\n<li><code class="notranslate">before_install</code></li>\n<li><code class="notranslate">install</code></li>\n<li><code class="notranslate">before_script</code></li>\n<li><code class="notranslate">script</code></li>\n<li><code class="notranslate">after_success</code> 或者 <code class="notranslate">after_failure</code></li>\n<li><code class="notranslate">after_script</code></li>\n<li><code class="notranslate">before_deploy</code>（可选）</li>\n<li><code class="notranslate">deploy</code>（可选）</li>\n<li><code class="notranslate">after_deploy</code>（可选）</li>\n</ul>\n<p dir="auto">在 before_install、before_script之前，或者after_script之后，都可以运行自定义命令，详细资料可参考官方文档：Job Lifecycle</p>\n<p dir="auto">完整的配置文件</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="language: node_js\nnode_js: stable\n\ncache:\n  directories:\n    - node_modules\n\ninstall:\n  - npm install\n\nscript:\n  - hexo g\n\nafter_script:\n  - cd ./public\n  - git init\n  - git config user.name &quot;your-git-name&quot;\n  - git config user.email &quot;your-email-address&quot;\n  - git add .\n  - git commit -m &quot;Update blog content by Travis CI&quot;\n  - git push --force --quiet &quot;https://${GH_TOKEN}@${GH_REF}&quot; master:master\n\nbranches:\n  only:\n    - master"><pre class="notranslate">language: node_js\nnode_js: stable\n\ncache:\n  directories:\n    - node_modules\n\ninstall:\n  - npm install\n\nscript:\n  - hexo g\n\nafter_script:\n  - <span class="pl-c1">cd</span> ./public\n  - git init\n  - git config user.name <span class="pl-s"><span class="pl-pds">"</span>your-git-name<span class="pl-pds">"</span></span>\n  - git config user.email <span class="pl-s"><span class="pl-pds">"</span>your-email-address<span class="pl-pds">"</span></span>\n  - git add <span class="pl-c1">.</span>\n  - git commit -m <span class="pl-s"><span class="pl-pds">"</span>Update blog content by Travis CI<span class="pl-pds">"</span></span>\n  - git push --force --quiet <span class="pl-s"><span class="pl-pds">"</span>https://<span class="pl-smi">${GH_TOKEN}</span>@<span class="pl-smi">${GH_REF}</span><span class="pl-pds">"</span></span> master:master\n\nbranches:\n  only:\n    - master</pre></div>\n<h4 dir="auto">拓展链接</h4>\n<ul dir="auto">\n<li><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" rel="nofollow">阮一峰 - 持续集成是什么？</a></li>\n<li><a href="https://github.com/fouber/blog/issues/10" data-hovercard-type="issue" data-hovercard-url="/fouber/blog/issues/10/hovercard">前端工程——基础篇 </a></li>\n<li><a href="https://xirikm.net/2019/826-2" rel="nofollow">使用 Travis CI 实现 Hexo 博客自动部署</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:a,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:a}],html_url:"https://github.com/yanyue404/blog/issues/102"},navList:[{text:"前言",id:"main-heading-H2-0",type:n,children:[]},{text:"目录",id:"main-heading-H2-1",type:n,children:[]},{text:"前端开发的历史和趋势",id:"main-heading-H2-2",type:n,children:[{text:"前后端不分的时代",id:"main-heading-H3-3",type:s},{text:"前后端分离",id:"main-heading-H3-4",type:s},{text:"MVVM 模式",id:"main-heading-H3-5",type:s},{text:"SPA",id:"main-heading-H3-6",type:s},{text:"Node",id:"main-heading-H3-7",type:s},{text:"前端开发模式的根本改变",id:"main-heading-H3-8",type:s},{text:"全栈工程师",id:"main-heading-H3-9",type:s},{text:"软件行业的发展动力",id:"main-heading-H3-10",type:s},{text:"前端开发的未来",id:"main-heading-H3-11",type:s}]},{text:"React 技术栈",id:"main-heading-H2-12",type:n,children:[{text:"React 的基本用法",id:"main-heading-H3-13",type:s},{text:"React 的核心思想",id:"main-heading-H3-14",type:s},{text:"React 没有解决的问题",id:"main-heading-H3-15",type:s},{text:"React 应用的架构",id:"main-heading-H3-16",type:s}]},{text:"Node 开发",id:"main-heading-H2-17",type:n,children:[{text:"Node 的基本用法",id:"main-heading-H3-18",type:s},{text:"Restful API",id:"main-heading-H3-19",type:s},{text:"Express 框架搭建 Web 应用",id:"main-heading-H3-20",type:s}]},{text:"前端工程 - 流程篇",id:"main-heading-H2-21",type:n,children:[{text:"持续集成",id:"main-heading-H3-22",type:s},{text:"流程",id:"main-heading-H3-23",type:s},{text:"静态代码检查工具",id:"main-heading-H3-24",type:s},{text:"单元测试",id:"main-heading-H3-25",type:s},{text:"持续集成服务平台",id:"main-heading-H3-26",type:s}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:t,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:t,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:a},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:a,avatar_url:a,name:a,html_url:a,bio:a,type:l}},serverRendered:!0}}("H3","","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

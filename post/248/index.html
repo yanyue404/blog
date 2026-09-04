@@ -1,0 +1,717 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>前端常见需求的解决方案 —— 玩转异步 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="1. 玩转异步 1.1 异步重试 异步任务多次重试尝试获取正确信息，可以分为按时间和按次数两个方向。 按时间重试 const p = () = new Promise((resolve) = setTimeout(() = { let a = Math.random(); let flag = a "><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="前端常见需求的解决方案 —— 玩转异步"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="1. 玩转异步 1.1 异步重试 异步任务多次重试尝试获取正确信息，可以分为按时间和按次数两个方向。 按时间重试 const p = () = new Promise((resolve) = setTimeout(() = { let a = Math.random(); let flag = a "><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="前端常见需求的解决方案 —— 玩转异步"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="1. 玩转异步 1.1 异步重试 异步任务多次重试尝试获取正确信息，可以分为按时间和按次数两个方向。 按时间重试 const p = () = new Promise((resolve) = setTimeout(() = { let a = Math.random(); let flag = a "><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/248#main-heading-H2-0" title="1.  玩转异步" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              1.  玩转异步
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/248#main-heading-H3-1" title="1.1 异步重试" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.1 异步重试
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/248#main-heading-H3-2" title="1.2 任务中断" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.2 任务中断
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/248#main-heading-H3-3" title="1.3 异步竞态" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.3 异步竞态
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>前端常见需求的解决方案 —— 玩转异步</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>前端常见需求的解决方案 —— 玩转异步</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2023-03-21</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 22 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">1.  玩转异步</h2>
+<h3 id="main-heading-H3-1">1.1 异步重试</h3>
+<p dir="auto">异步任务多次重试尝试获取正确信息，可以分为按时间和按次数两个方向。</p>
+<h4 dir="auto"><strong>按时间重试</strong></h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content=' const p = () =>
+    new Promise((resolve) =>
+      setTimeout(() => {
+        let a = Math.random();
+        let flag = a > 0.1 ? 0 : 1; // 90% 的可能性返回 0，10% 可能性返回 1
+        console.log("本次尝试得到：", flag);
+        resolve(flag);
+      }, 1000)
+    );
+/**
+ * 按时间异步重试
+ *
+ * @param {number} [all=3000] 总尝试时间
+ * @param {number} [delay=500] 间隔重试时间
+ * @param {function} [asyncFn=undefined]  异步方法
+ * @param {function} [expectFn=function () {}] 期待的正例
+ * @return {promise} 尝试结束回调
+ */
+function promiseReTry(
+  all = 3000,
+  delay = 500,
+  asyncFn = function () {},
+  expectFn = function () {}
+) {
+  let cur_retry_num = 0; // 重试次数
+  return new Promise((resolve) => {
+    (async function main() {
+      // 异步反应
+      const task = asyncFn();
+      const res = await task;
+      if (expectFn(res) || ++cur_retry_num >= all / delay) {
+        resolve();
+      } else {
+        setTimeout(main, delay);
+      }
+    })();
+  });
+}
+  // 3000 ms 时间内，每 500ms 重试一次
+  promiseReTry(3000, 500, p, (res) => res === 1).then(() => {
+    console.log("结束~");
+  });
+  // 正例：
+  // 本次尝试得到： 0 【5 次打印】
+  // 本次尝试得到： 1
+  // 结束~
+
+  //  反例：
+  // 本次尝试得到： 0 【6 次打印】
+  // 结束~
+'><pre class="notranslate"><code class="notranslate"> const p = () =>
+    new Promise((resolve) =>
+      setTimeout(() => {
+        let a = Math.random();
+        let flag = a > 0.1 ? 0 : 1; // 90% 的可能性返回 0，10% 可能性返回 1
+        console.log("本次尝试得到：", flag);
+        resolve(flag);
+      }, 1000)
+    );
+/**
+ * 按时间异步重试
+ *
+ * @param {number} [all=3000] 总尝试时间
+ * @param {number} [delay=500] 间隔重试时间
+ * @param {function} [asyncFn=undefined]  异步方法
+ * @param {function} [expectFn=function () {}] 期待的正例
+ * @return {promise} 尝试结束回调
+ */
+function promiseReTry(
+  all = 3000,
+  delay = 500,
+  asyncFn = function () {},
+  expectFn = function () {}
+) {
+  let cur_retry_num = 0; // 重试次数
+  return new Promise((resolve) => {
+    (async function main() {
+      // 异步反应
+      const task = asyncFn();
+      const res = await task;
+      if (expectFn(res) || ++cur_retry_num >= all / delay) {
+        resolve();
+      } else {
+        setTimeout(main, delay);
+      }
+    })();
+  });
+}
+  // 3000 ms 时间内，每 500ms 重试一次
+  promiseReTry(3000, 500, p, (res) => res === 1).then(() => {
+    console.log("结束~");
+  });
+  // 正例：
+  // 本次尝试得到： 0 【5 次打印】
+  // 本次尝试得到： 1
+  // 结束~
+
+  //  反例：
+  // 本次尝试得到： 0 【6 次打印】
+  // 结束~
+
+</code></pre></div>
+<h4 dir="auto"><strong>按次数重试</strong></h4>
+<p dir="auto">实现 <code class="notranslate">Promie.retry</code> ,成功后 resolve 结果，失败后重试，尝试超过一定次数才真正 reject</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='const p = () =>
+  new Promise((resolve, reject) =>
+    setTimeout(() => {
+      let a = Math.random();
+      let flag = a > 0.1 ? 0 : 1;
+      console.log(flag);
+      flag === 1 ? resolve(flag) : reject(flag);
+    }, 1000)
+  );
+
+// 大同小异的实现方式
+
+/*   Promise.retry = function (promiseFn, times = 3) {
+        return new Promise(async (resolve, reject) => {
+          while (times--) {
+            try {
+              let ret = await promiseFn();
+              resolve(ret);
+              break;
+            } catch (error) {
+              if (!times) reject(error);
+            }
+          }
+        });
+      }; */
+
+/*  Promise.retry = function (promiseFn, times = 3) {
+        return new Promise((resolve, reject) => {
+          let count = 0;
+          let action = function () {
+            promiseFn()
+              .then(resolve)
+              .catch((err) => {
+                count++;
+                if (count >= times) {
+                  reject(err);
+                } else {
+                  action();
+                }
+              });
+          };
+          action();
+        });
+      }; */
+
+Promise.retry = function (asyncFn, times = 3) {
+  let count = 0;
+  function executeFn() {
+    return new Promise((resolve, reject) => {
+      resolve(asyncFn());
+    })
+      .then((res) => {
+        return Promise.resolve(res);
+      })
+      .catch((err) => {
+        count++;
+        if (count >= times) {
+          return Promise.reject(err);
+        } else {
+          return executeFn();
+        }
+      });
+  }
+  return executeFn();
+};
+
+Promise.retry(p, 3).then(() => {
+  console.log("okkk");
+});
+'><pre class="notranslate"><code class="notranslate">const p = () =>
+  new Promise((resolve, reject) =>
+    setTimeout(() => {
+      let a = Math.random();
+      let flag = a > 0.1 ? 0 : 1;
+      console.log(flag);
+      flag === 1 ? resolve(flag) : reject(flag);
+    }, 1000)
+  );
+
+// 大同小异的实现方式
+
+/*   Promise.retry = function (promiseFn, times = 3) {
+        return new Promise(async (resolve, reject) => {
+          while (times--) {
+            try {
+              let ret = await promiseFn();
+              resolve(ret);
+              break;
+            } catch (error) {
+              if (!times) reject(error);
+            }
+          }
+        });
+      }; */
+
+/*  Promise.retry = function (promiseFn, times = 3) {
+        return new Promise((resolve, reject) => {
+          let count = 0;
+          let action = function () {
+            promiseFn()
+              .then(resolve)
+              .catch((err) => {
+                count++;
+                if (count >= times) {
+                  reject(err);
+                } else {
+                  action();
+                }
+              });
+          };
+          action();
+        });
+      }; */
+
+Promise.retry = function (asyncFn, times = 3) {
+  let count = 0;
+  function executeFn() {
+    return new Promise((resolve, reject) => {
+      resolve(asyncFn());
+    })
+      .then((res) => {
+        return Promise.resolve(res);
+      })
+      .catch((err) => {
+        count++;
+        if (count >= times) {
+          return Promise.reject(err);
+        } else {
+          return executeFn();
+        }
+      });
+  }
+  return executeFn();
+};
+
+Promise.retry(p, 3).then(() => {
+  console.log("okkk");
+});
+
+</code></pre></div>
+<h3 id="main-heading-H3-2">1.2 任务中断</h3>
+<p dir="auto">批量执行异步任务，有任务返回 false 就中断执行并返回结果。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='let asyncFn = (val) => {
+  return new Promise((resolve) => {
+    setInterval(() => {
+      resolve(val);
+    }, 1000);
+  });
+};
+
+let tasks = [true, false, false].map((v) => () => asyncFn(v));
+// 基础 for 循环
+/*       async function run() {
+           for (let i = 0; i < tasks.length; i++) {
+             const task = tasks[i];
+             let res = await task();
+             if (!res) {
+               return false;
+             }
+           }
+           return true;
+         } */
+// for of
+async function run() {
+  for (const task of tasks) {
+    let res = await task();
+    if (!res) {
+      return false;
+    }
+  }
+  return true;
+}
+
+async function main() {
+  let result = await run();
+  console.log("result", result);
+}
+main(); // result false
+'><pre class="notranslate"><code class="notranslate">let asyncFn = (val) => {
+  return new Promise((resolve) => {
+    setInterval(() => {
+      resolve(val);
+    }, 1000);
+  });
+};
+
+let tasks = [true, false, false].map((v) => () => asyncFn(v));
+// 基础 for 循环
+/*       async function run() {
+           for (let i = 0; i &lt; tasks.length; i++) {
+             const task = tasks[i];
+             let res = await task();
+             if (!res) {
+               return false;
+             }
+           }
+           return true;
+         } */
+// for of
+async function run() {
+  for (const task of tasks) {
+    let res = await task();
+    if (!res) {
+      return false;
+    }
+  }
+  return true;
+}
+
+async function main() {
+  let result = await run();
+  console.log("result", result);
+}
+main(); // result false
+
+</code></pre></div>
+<h3 id="main-heading-H3-3">1.3 异步竞态</h3>
+<blockquote>
+<p dir="auto">参考 如何解决前端常见的竞态问题 <a href="https://juejin.cn/post/7127953386514677790" rel="nofollow">https://juejin.cn/post/7127953386514677790</a></p>
+</blockquote>
+<h4 dir="auto">认识竞态问题</h4>
+<p dir="auto">竞态问题的出现的原因是无法保证异步操作的完成会按照他们开始时的顺序进行返回。下面的代码例子：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='  const fetch = (duration, data) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(data);
+      }, duration);
+    });
+  };
+
+  setTimeout(() => {
+    fetch(1000, "结果是=>第一个请求").then((res) => console.log(res));
+  }, 5);
+  setTimeout(() => {
+    fetch(5000, "结果是=>第二个请求").then((res) => console.log(res));
+  }, 10);
+  setTimeout(() => {
+    fetch(2000, "结果是=>第三个请求").then((res) => console.log(res));
+  }, 20);
+  // 结果是=>第一个请求
+  // 结果是=>第三个请求
+  // 结果是=>第二个请求
+'><pre class="notranslate"><code class="notranslate">  const fetch = (duration, data) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(data);
+      }, duration);
+    });
+  };
+
+  setTimeout(() => {
+    fetch(1000, "结果是=>第一个请求").then((res) => console.log(res));
+  }, 5);
+  setTimeout(() => {
+    fetch(5000, "结果是=>第二个请求").then((res) => console.log(res));
+  }, 10);
+  setTimeout(() => {
+    fetch(2000, "结果是=>第三个请求").then((res) => console.log(res));
+  }, 20);
+  // 结果是=>第一个请求
+  // 结果是=>第三个请求
+  // 结果是=>第二个请求
+
+</code></pre></div>
+<ul dir="auto">
+<li>有一个分页列表，快速的切换到第二页，第三页；</li>
+<li>先后顺序发起三个请求，fetch1、fetch2、fetch3，分页器当前在第三页，并且进入 loading 加载状态；</li>
+<li>但是由于网络的不确定性，先发出的请求不一定先响应，所以有可能 fetch3 比 fetch2 先返回；</li>
+<li>在 fetch2 最终返回后，分页器显示当前在第三页位置，但是展示的数据却是第二页的返回结果。</li>
+</ul>
+<p dir="auto">这就是一个常见的异步竞态的例子，在我们的投保流程中，测算在极端的情况下会碰到这种情况。</p>
+<h4 dir="auto">使用唯一 id 标识每次请求</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='  const fetch = (duration, data) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(data);
+      }, duration);
+    });
+  };
+
+  function onlyResolvesLast(fn) {
+    // 利用闭包保存最新的请求 id
+    let id = 0;
+    const wrappedFn = (...args) => {
+      // 发起请求前，生成新的 id 并保存
+      id++;
+      const fetchId = id;
+      // 执行请求
+      const result = fn.apply(this, args);
+      return new Promise((resolve, reject) => {
+        // result 可能不是 promise，需要包装成 promise
+        Promise.resolve(result).then(
+          (value) => {
+            // 只处理最新一次请求
+            if (fetchId === id) {
+              resolve(value);
+            }
+          },
+          (error) => {
+            // 只处理最新一次请求
+            if (fetchId === id) {
+              reject(error);
+            }
+          }
+        );
+      });
+    };
+    return wrappedFn;
+  }
+
+  const wrappedFn = onlyResolvesLast(fetch);
+  //   注意：请求顺序按先后顺序进入，响应顺序不一致
+  setTimeout(() => {
+    wrappedFn(1000, "结果是=>第一个请求").then((res) => console.log(res));
+  }, 5);
+  setTimeout(() => {
+    wrappedFn(5000, "结果是=>第二个请求").then((res) => console.log(res));
+  }, 10);
+  setTimeout(() => {
+    wrappedFn(3000, "结果是=>第三个请求").then((res) => console.log(res));
+  }, 20);
+
+  // 结果是=>第三个请求
+'><pre class="notranslate"><code class="notranslate">  const fetch = (duration, data) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(data);
+      }, duration);
+    });
+  };
+
+  function onlyResolvesLast(fn) {
+    // 利用闭包保存最新的请求 id
+    let id = 0;
+    const wrappedFn = (...args) => {
+      // 发起请求前，生成新的 id 并保存
+      id++;
+      const fetchId = id;
+      // 执行请求
+      const result = fn.apply(this, args);
+      return new Promise((resolve, reject) => {
+        // result 可能不是 promise，需要包装成 promise
+        Promise.resolve(result).then(
+          (value) => {
+            // 只处理最新一次请求
+            if (fetchId === id) {
+              resolve(value);
+            }
+          },
+          (error) => {
+            // 只处理最新一次请求
+            if (fetchId === id) {
+              reject(error);
+            }
+          }
+        );
+      });
+    };
+    return wrappedFn;
+  }
+
+  const wrappedFn = onlyResolvesLast(fetch);
+  //   注意：请求顺序按先后顺序进入，响应顺序不一致
+  setTimeout(() => {
+    wrappedFn(1000, "结果是=>第一个请求").then((res) => console.log(res));
+  }, 5);
+  setTimeout(() => {
+    wrappedFn(5000, "结果是=>第二个请求").then((res) => console.log(res));
+  }, 10);
+  setTimeout(() => {
+    wrappedFn(3000, "结果是=>第三个请求").then((res) => console.log(res));
+  }, 20);
+
+  // 结果是=>第三个请求
+
+</code></pre></div>
+<h4 dir="auto">封装指令式 promise</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='  const fetch = (duration, data) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(data);
+      }, duration);
+    });
+  };
+  // 封装指令式 promise https://github.com/slorber/awesome-imperative-promise/blob/master/src/index.ts
+  const createImperativePromise = (promiseArg) => {
+    let resolve, reject;
+
+    const wrappedPromise = new Promise((_resolve, _reject) => {
+      resolve = _resolve;
+      reject = _reject;
+    });
+    // 绑定真实的 promise 回调
+    promiseArg &&
+      promiseArg.then(
+        (val) => {
+          resolve && resolve(val);
+        },
+        (error) => {
+          reject && reject(error);
+        }
+      );
+
+    return {
+      promise: wrappedPromise,
+      resolve: (value) => {
+        resolve && resolve(value);
+      },
+      reject: (reason) => {
+        reject && reject(reason);
+      },
+      //  将 resolve，reject 设为 null，让 promise 永远不会 resolve/reject。
+      cancel: () => {
+        resolve = null;
+        reject = null;
+      },
+    };
+  };
+
+  const wrappedPromise = new Promise((resolve, reject) => {});
+
+  // Wrap an existing promise and expose some additional imperative methods
+  // The existingPromise paramter is optional and the returned promise with resolve/reject when the existing promise do
+  const { promise, resolve, reject, cancel } = createImperativePromise(
+    wrappedPromise
+  );
+
+  cancel(); // 阻止 promise resolved，关闭后下面的 res 就会有结果了
+
+  resolve("some value");
+
+  promise.then((res) => {
+    console.log(res);
+  });
+'><pre class="notranslate"><code class="notranslate">  const fetch = (duration, data) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(data);
+      }, duration);
+    });
+  };
+  // 封装指令式 promise https://github.com/slorber/awesome-imperative-promise/blob/master/src/index.ts
+  const createImperativePromise = (promiseArg) => {
+    let resolve, reject;
+
+    const wrappedPromise = new Promise((_resolve, _reject) => {
+      resolve = _resolve;
+      reject = _reject;
+    });
+    // 绑定真实的 promise 回调
+    promiseArg &&
+      promiseArg.then(
+        (val) => {
+          resolve && resolve(val);
+        },
+        (error) => {
+          reject && reject(error);
+        }
+      );
+
+    return {
+      promise: wrappedPromise,
+      resolve: (value) => {
+        resolve && resolve(value);
+      },
+      reject: (reason) => {
+        reject && reject(reason);
+      },
+      //  将 resolve，reject 设为 null，让 promise 永远不会 resolve/reject。
+      cancel: () => {
+        resolve = null;
+        reject = null;
+      },
+    };
+  };
+
+  const wrappedPromise = new Promise((resolve, reject) => {});
+
+  // Wrap an existing promise and expose some additional imperative methods
+  // The existingPromise paramter is optional and the returned promise with resolve/reject when the existing promise do
+  const { promise, resolve, reject, cancel } = createImperativePromise(
+    wrappedPromise
+  );
+
+  cancel(); // 阻止 promise resolved，关闭后下面的 res 就会有结果了
+
+  resolve("some value");
+
+  promise.then((res) => {
+    console.log(res);
+  });
+
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content=' // 包装一个异步函数，并确保只有最后一次调用才会解析/拒绝 https://github.com/slorber/awesome-only-resolves-last-promise/blob/master/src/index.ts
+  function onlyResolvesLast(fn) {
+    // 保存上一个请求的 cancel 方法
+    let cancelPrevious = null;
+
+    const wrappedFn = (...args) => {
+      // 当前请求执行前，先 cancel 上一个请求
+      cancelPrevious && cancelPrevious();
+      // 执行当前请求
+      const result = fn.apply(this, args);
+
+      // 创建指令式的 promise，暴露 cancel 方法并保存
+      const { promise, cancel } = createImperativePromise(result);
+      cancelPrevious = cancel;
+
+      return promise;
+    };
+
+    return wrappedFn;
+  }
+
+  const wrappedFn = onlyResolvesLast(fetch);
+  //   注意：请求顺序按先后顺序进入，响应顺序不一致
+  setTimeout(() => {
+    wrappedFn(1000, "结果是=>第一个请求").then((res) => console.log(res));
+  }, 5);
+  setTimeout(() => {
+    wrappedFn(5000, "结果是=>第二个请求").then((res) => console.log(res));
+  }, 10);
+  setTimeout(() => {
+    wrappedFn(3000, "结果是=>第三个请求").then((res) => console.log(res));
+  }, 20);
+
+  // 结果是=>第三个请求
+'><pre class="notranslate"><code class="notranslate"> // 包装一个异步函数，并确保只有最后一次调用才会解析/拒绝 https://github.com/slorber/awesome-only-resolves-last-promise/blob/master/src/index.ts
+  function onlyResolvesLast(fn) {
+    // 保存上一个请求的 cancel 方法
+    let cancelPrevious = null;
+
+    const wrappedFn = (...args) => {
+      // 当前请求执行前，先 cancel 上一个请求
+      cancelPrevious && cancelPrevious();
+      // 执行当前请求
+      const result = fn.apply(this, args);
+
+      // 创建指令式的 promise，暴露 cancel 方法并保存
+      const { promise, cancel } = createImperativePromise(result);
+      cancelPrevious = cancel;
+
+      return promise;
+    };
+
+    return wrappedFn;
+  }
+
+  const wrappedFn = onlyResolvesLast(fetch);
+  //   注意：请求顺序按先后顺序进入，响应顺序不一致
+  setTimeout(() => {
+    wrappedFn(1000, "结果是=>第一个请求").then((res) => console.log(res));
+  }, 5);
+  setTimeout(() => {
+    wrappedFn(5000, "结果是=>第二个请求").then((res) => console.log(res));
+  }, 10);
+  setTimeout(() => {
+    wrappedFn(3000, "结果是=>第三个请求").then((res) => console.log(res));
+  }, 20);
+
+  // 结果是=>第三个请求
+
+</code></pre></div></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(n,e,t,r,o){return{layout:"default",data:[{post:{id:1633661372,number:248,title:"前端常见需求的解决方案 —— 玩转异步",created_at:"2023-03-21T10:58:37Z",updated_at:"2025-11-23T16:05:40Z",body_html:'<h2 id="main-heading-H2-0">1.  玩转异步</h2>\n<h3 id="main-heading-H3-1">1.1 异步重试</h3>\n<p dir="auto">异步任务多次重试尝试获取正确信息，可以分为按时间和按次数两个方向。</p>\n<h4 dir="auto"><strong>按时间重试</strong></h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content=" const p = () =&gt;\n    new Promise((resolve) =&gt;\n      setTimeout(() =&gt; {\n        let a = Math.random();\n        let flag = a &gt; 0.1 ? 0 : 1; // 90% 的可能性返回 0，10% 可能性返回 1\n        console.log(&quot;本次尝试得到：&quot;, flag);\n        resolve(flag);\n      }, 1000)\n    );\n/**\n * 按时间异步重试\n *\n * @param {number} [all=3000] 总尝试时间\n * @param {number} [delay=500] 间隔重试时间\n * @param {function} [asyncFn=undefined]  异步方法\n * @param {function} [expectFn=function () {}] 期待的正例\n * @return {promise} 尝试结束回调\n */\nfunction promiseReTry(\n  all = 3000,\n  delay = 500,\n  asyncFn = function () {},\n  expectFn = function () {}\n) {\n  let cur_retry_num = 0; // 重试次数\n  return new Promise((resolve) =&gt; {\n    (async function main() {\n      // 异步反应\n      const task = asyncFn();\n      const res = await task;\n      if (expectFn(res) || ++cur_retry_num &gt;= all / delay) {\n        resolve();\n      } else {\n        setTimeout(main, delay);\n      }\n    })();\n  });\n}\n  // 3000 ms 时间内，每 500ms 重试一次\n  promiseReTry(3000, 500, p, (res) =&gt; res === 1).then(() =&gt; {\n    console.log(&quot;结束~&quot;);\n  });\n  // 正例：\n  // 本次尝试得到： 0 【5 次打印】\n  // 本次尝试得到： 1\n  // 结束~\n\n  //  反例：\n  // 本次尝试得到： 0 【6 次打印】\n  // 结束~\n"><pre class="notranslate"><code class="notranslate"> const p = () =&gt;\n    new Promise((resolve) =&gt;\n      setTimeout(() =&gt; {\n        let a = Math.random();\n        let flag = a &gt; 0.1 ? 0 : 1; // 90% 的可能性返回 0，10% 可能性返回 1\n        console.log("本次尝试得到：", flag);\n        resolve(flag);\n      }, 1000)\n    );\n/**\n * 按时间异步重试\n *\n * @param {number} [all=3000] 总尝试时间\n * @param {number} [delay=500] 间隔重试时间\n * @param {function} [asyncFn=undefined]  异步方法\n * @param {function} [expectFn=function () {}] 期待的正例\n * @return {promise} 尝试结束回调\n */\nfunction promiseReTry(\n  all = 3000,\n  delay = 500,\n  asyncFn = function () {},\n  expectFn = function () {}\n) {\n  let cur_retry_num = 0; // 重试次数\n  return new Promise((resolve) =&gt; {\n    (async function main() {\n      // 异步反应\n      const task = asyncFn();\n      const res = await task;\n      if (expectFn(res) || ++cur_retry_num &gt;= all / delay) {\n        resolve();\n      } else {\n        setTimeout(main, delay);\n      }\n    })();\n  });\n}\n  // 3000 ms 时间内，每 500ms 重试一次\n  promiseReTry(3000, 500, p, (res) =&gt; res === 1).then(() =&gt; {\n    console.log("结束~");\n  });\n  // 正例：\n  // 本次尝试得到： 0 【5 次打印】\n  // 本次尝试得到： 1\n  // 结束~\n\n  //  反例：\n  // 本次尝试得到： 0 【6 次打印】\n  // 结束~\n\n</code></pre></div>\n<h4 dir="auto"><strong>按次数重试</strong></h4>\n<p dir="auto">实现 <code class="notranslate">Promie.retry</code> ,成功后 resolve 结果，失败后重试，尝试超过一定次数才真正 reject</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const p = () =&gt;\n  new Promise((resolve, reject) =&gt;\n    setTimeout(() =&gt; {\n      let a = Math.random();\n      let flag = a &gt; 0.1 ? 0 : 1;\n      console.log(flag);\n      flag === 1 ? resolve(flag) : reject(flag);\n    }, 1000)\n  );\n\n// 大同小异的实现方式\n\n/*   Promise.retry = function (promiseFn, times = 3) {\n        return new Promise(async (resolve, reject) =&gt; {\n          while (times--) {\n            try {\n              let ret = await promiseFn();\n              resolve(ret);\n              break;\n            } catch (error) {\n              if (!times) reject(error);\n            }\n          }\n        });\n      }; */\n\n/*  Promise.retry = function (promiseFn, times = 3) {\n        return new Promise((resolve, reject) =&gt; {\n          let count = 0;\n          let action = function () {\n            promiseFn()\n              .then(resolve)\n              .catch((err) =&gt; {\n                count++;\n                if (count &gt;= times) {\n                  reject(err);\n                } else {\n                  action();\n                }\n              });\n          };\n          action();\n        });\n      }; */\n\nPromise.retry = function (asyncFn, times = 3) {\n  let count = 0;\n  function executeFn() {\n    return new Promise((resolve, reject) =&gt; {\n      resolve(asyncFn());\n    })\n      .then((res) =&gt; {\n        return Promise.resolve(res);\n      })\n      .catch((err) =&gt; {\n        count++;\n        if (count &gt;= times) {\n          return Promise.reject(err);\n        } else {\n          return executeFn();\n        }\n      });\n  }\n  return executeFn();\n};\n\nPromise.retry(p, 3).then(() =&gt; {\n  console.log(&quot;okkk&quot;);\n});\n"><pre class="notranslate"><code class="notranslate">const p = () =&gt;\n  new Promise((resolve, reject) =&gt;\n    setTimeout(() =&gt; {\n      let a = Math.random();\n      let flag = a &gt; 0.1 ? 0 : 1;\n      console.log(flag);\n      flag === 1 ? resolve(flag) : reject(flag);\n    }, 1000)\n  );\n\n// 大同小异的实现方式\n\n/*   Promise.retry = function (promiseFn, times = 3) {\n        return new Promise(async (resolve, reject) =&gt; {\n          while (times--) {\n            try {\n              let ret = await promiseFn();\n              resolve(ret);\n              break;\n            } catch (error) {\n              if (!times) reject(error);\n            }\n          }\n        });\n      }; */\n\n/*  Promise.retry = function (promiseFn, times = 3) {\n        return new Promise((resolve, reject) =&gt; {\n          let count = 0;\n          let action = function () {\n            promiseFn()\n              .then(resolve)\n              .catch((err) =&gt; {\n                count++;\n                if (count &gt;= times) {\n                  reject(err);\n                } else {\n                  action();\n                }\n              });\n          };\n          action();\n        });\n      }; */\n\nPromise.retry = function (asyncFn, times = 3) {\n  let count = 0;\n  function executeFn() {\n    return new Promise((resolve, reject) =&gt; {\n      resolve(asyncFn());\n    })\n      .then((res) =&gt; {\n        return Promise.resolve(res);\n      })\n      .catch((err) =&gt; {\n        count++;\n        if (count &gt;= times) {\n          return Promise.reject(err);\n        } else {\n          return executeFn();\n        }\n      });\n  }\n  return executeFn();\n};\n\nPromise.retry(p, 3).then(() =&gt; {\n  console.log("okkk");\n});\n\n</code></pre></div>\n<h3 id="main-heading-H3-2">1.2 任务中断</h3>\n<p dir="auto">批量执行异步任务，有任务返回 false 就中断执行并返回结果。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="let asyncFn = (val) =&gt; {\n  return new Promise((resolve) =&gt; {\n    setInterval(() =&gt; {\n      resolve(val);\n    }, 1000);\n  });\n};\n\nlet tasks = [true, false, false].map((v) =&gt; () =&gt; asyncFn(v));\n// 基础 for 循环\n/*       async function run() {\n           for (let i = 0; i &lt; tasks.length; i++) {\n             const task = tasks[i];\n             let res = await task();\n             if (!res) {\n               return false;\n             }\n           }\n           return true;\n         } */\n// for of\nasync function run() {\n  for (const task of tasks) {\n    let res = await task();\n    if (!res) {\n      return false;\n    }\n  }\n  return true;\n}\n\nasync function main() {\n  let result = await run();\n  console.log(&quot;result&quot;, result);\n}\nmain(); // result false\n"><pre class="notranslate"><code class="notranslate">let asyncFn = (val) =&gt; {\n  return new Promise((resolve) =&gt; {\n    setInterval(() =&gt; {\n      resolve(val);\n    }, 1000);\n  });\n};\n\nlet tasks = [true, false, false].map((v) =&gt; () =&gt; asyncFn(v));\n// 基础 for 循环\n/*       async function run() {\n           for (let i = 0; i &lt; tasks.length; i++) {\n             const task = tasks[i];\n             let res = await task();\n             if (!res) {\n               return false;\n             }\n           }\n           return true;\n         } */\n// for of\nasync function run() {\n  for (const task of tasks) {\n    let res = await task();\n    if (!res) {\n      return false;\n    }\n  }\n  return true;\n}\n\nasync function main() {\n  let result = await run();\n  console.log("result", result);\n}\nmain(); // result false\n\n</code></pre></div>\n<h3 id="main-heading-H3-3">1.3 异步竞态</h3>\n<blockquote>\n<p dir="auto">参考 如何解决前端常见的竞态问题 <a href="https://juejin.cn/post/7127953386514677790" rel="nofollow">https://juejin.cn/post/7127953386514677790</a></p>\n</blockquote>\n<h4 dir="auto">认识竞态问题</h4>\n<p dir="auto">竞态问题的出现的原因是无法保证异步操作的完成会按照他们开始时的顺序进行返回。下面的代码例子：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="  const fetch = (duration, data) =&gt; {\n    return new Promise((resolve) =&gt; {\n      setTimeout(() =&gt; {\n        resolve(data);\n      }, duration);\n    });\n  };\n\n  setTimeout(() =&gt; {\n    fetch(1000, &quot;结果是=&gt;第一个请求&quot;).then((res) =&gt; console.log(res));\n  }, 5);\n  setTimeout(() =&gt; {\n    fetch(5000, &quot;结果是=&gt;第二个请求&quot;).then((res) =&gt; console.log(res));\n  }, 10);\n  setTimeout(() =&gt; {\n    fetch(2000, &quot;结果是=&gt;第三个请求&quot;).then((res) =&gt; console.log(res));\n  }, 20);\n  // 结果是=&gt;第一个请求\n  // 结果是=&gt;第三个请求\n  // 结果是=&gt;第二个请求\n"><pre class="notranslate"><code class="notranslate">  const fetch = (duration, data) =&gt; {\n    return new Promise((resolve) =&gt; {\n      setTimeout(() =&gt; {\n        resolve(data);\n      }, duration);\n    });\n  };\n\n  setTimeout(() =&gt; {\n    fetch(1000, "结果是=&gt;第一个请求").then((res) =&gt; console.log(res));\n  }, 5);\n  setTimeout(() =&gt; {\n    fetch(5000, "结果是=&gt;第二个请求").then((res) =&gt; console.log(res));\n  }, 10);\n  setTimeout(() =&gt; {\n    fetch(2000, "结果是=&gt;第三个请求").then((res) =&gt; console.log(res));\n  }, 20);\n  // 结果是=&gt;第一个请求\n  // 结果是=&gt;第三个请求\n  // 结果是=&gt;第二个请求\n\n</code></pre></div>\n<ul dir="auto">\n<li>有一个分页列表，快速的切换到第二页，第三页；</li>\n<li>先后顺序发起三个请求，fetch1、fetch2、fetch3，分页器当前在第三页，并且进入 loading 加载状态；</li>\n<li>但是由于网络的不确定性，先发出的请求不一定先响应，所以有可能 fetch3 比 fetch2 先返回；</li>\n<li>在 fetch2 最终返回后，分页器显示当前在第三页位置，但是展示的数据却是第二页的返回结果。</li>\n</ul>\n<p dir="auto">这就是一个常见的异步竞态的例子，在我们的投保流程中，测算在极端的情况下会碰到这种情况。</p>\n<h4 dir="auto">使用唯一 id 标识每次请求</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="  const fetch = (duration, data) =&gt; {\n    return new Promise((resolve) =&gt; {\n      setTimeout(() =&gt; {\n        resolve(data);\n      }, duration);\n    });\n  };\n\n  function onlyResolvesLast(fn) {\n    // 利用闭包保存最新的请求 id\n    let id = 0;\n    const wrappedFn = (...args) =&gt; {\n      // 发起请求前，生成新的 id 并保存\n      id++;\n      const fetchId = id;\n      // 执行请求\n      const result = fn.apply(this, args);\n      return new Promise((resolve, reject) =&gt; {\n        // result 可能不是 promise，需要包装成 promise\n        Promise.resolve(result).then(\n          (value) =&gt; {\n            // 只处理最新一次请求\n            if (fetchId === id) {\n              resolve(value);\n            }\n          },\n          (error) =&gt; {\n            // 只处理最新一次请求\n            if (fetchId === id) {\n              reject(error);\n            }\n          }\n        );\n      });\n    };\n    return wrappedFn;\n  }\n\n  const wrappedFn = onlyResolvesLast(fetch);\n  //   注意：请求顺序按先后顺序进入，响应顺序不一致\n  setTimeout(() =&gt; {\n    wrappedFn(1000, &quot;结果是=&gt;第一个请求&quot;).then((res) =&gt; console.log(res));\n  }, 5);\n  setTimeout(() =&gt; {\n    wrappedFn(5000, &quot;结果是=&gt;第二个请求&quot;).then((res) =&gt; console.log(res));\n  }, 10);\n  setTimeout(() =&gt; {\n    wrappedFn(3000, &quot;结果是=&gt;第三个请求&quot;).then((res) =&gt; console.log(res));\n  }, 20);\n\n  // 结果是=&gt;第三个请求\n"><pre class="notranslate"><code class="notranslate">  const fetch = (duration, data) =&gt; {\n    return new Promise((resolve) =&gt; {\n      setTimeout(() =&gt; {\n        resolve(data);\n      }, duration);\n    });\n  };\n\n  function onlyResolvesLast(fn) {\n    // 利用闭包保存最新的请求 id\n    let id = 0;\n    const wrappedFn = (...args) =&gt; {\n      // 发起请求前，生成新的 id 并保存\n      id++;\n      const fetchId = id;\n      // 执行请求\n      const result = fn.apply(this, args);\n      return new Promise((resolve, reject) =&gt; {\n        // result 可能不是 promise，需要包装成 promise\n        Promise.resolve(result).then(\n          (value) =&gt; {\n            // 只处理最新一次请求\n            if (fetchId === id) {\n              resolve(value);\n            }\n          },\n          (error) =&gt; {\n            // 只处理最新一次请求\n            if (fetchId === id) {\n              reject(error);\n            }\n          }\n        );\n      });\n    };\n    return wrappedFn;\n  }\n\n  const wrappedFn = onlyResolvesLast(fetch);\n  //   注意：请求顺序按先后顺序进入，响应顺序不一致\n  setTimeout(() =&gt; {\n    wrappedFn(1000, "结果是=&gt;第一个请求").then((res) =&gt; console.log(res));\n  }, 5);\n  setTimeout(() =&gt; {\n    wrappedFn(5000, "结果是=&gt;第二个请求").then((res) =&gt; console.log(res));\n  }, 10);\n  setTimeout(() =&gt; {\n    wrappedFn(3000, "结果是=&gt;第三个请求").then((res) =&gt; console.log(res));\n  }, 20);\n\n  // 结果是=&gt;第三个请求\n\n</code></pre></div>\n<h4 dir="auto">封装指令式 promise</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="  const fetch = (duration, data) =&gt; {\n    return new Promise((resolve) =&gt; {\n      setTimeout(() =&gt; {\n        resolve(data);\n      }, duration);\n    });\n  };\n  // 封装指令式 promise https://github.com/slorber/awesome-imperative-promise/blob/master/src/index.ts\n  const createImperativePromise = (promiseArg) =&gt; {\n    let resolve, reject;\n\n    const wrappedPromise = new Promise((_resolve, _reject) =&gt; {\n      resolve = _resolve;\n      reject = _reject;\n    });\n    // 绑定真实的 promise 回调\n    promiseArg &amp;&amp;\n      promiseArg.then(\n        (val) =&gt; {\n          resolve &amp;&amp; resolve(val);\n        },\n        (error) =&gt; {\n          reject &amp;&amp; reject(error);\n        }\n      );\n\n    return {\n      promise: wrappedPromise,\n      resolve: (value) =&gt; {\n        resolve &amp;&amp; resolve(value);\n      },\n      reject: (reason) =&gt; {\n        reject &amp;&amp; reject(reason);\n      },\n      //  将 resolve，reject 设为 null，让 promise 永远不会 resolve/reject。\n      cancel: () =&gt; {\n        resolve = null;\n        reject = null;\n      },\n    };\n  };\n\n  const wrappedPromise = new Promise((resolve, reject) =&gt; {});\n\n  // Wrap an existing promise and expose some additional imperative methods\n  // The existingPromise paramter is optional and the returned promise with resolve/reject when the existing promise do\n  const { promise, resolve, reject, cancel } = createImperativePromise(\n    wrappedPromise\n  );\n\n  cancel(); // 阻止 promise resolved，关闭后下面的 res 就会有结果了\n\n  resolve(&quot;some value&quot;);\n\n  promise.then((res) =&gt; {\n    console.log(res);\n  });\n"><pre class="notranslate"><code class="notranslate">  const fetch = (duration, data) =&gt; {\n    return new Promise((resolve) =&gt; {\n      setTimeout(() =&gt; {\n        resolve(data);\n      }, duration);\n    });\n  };\n  // 封装指令式 promise https://github.com/slorber/awesome-imperative-promise/blob/master/src/index.ts\n  const createImperativePromise = (promiseArg) =&gt; {\n    let resolve, reject;\n\n    const wrappedPromise = new Promise((_resolve, _reject) =&gt; {\n      resolve = _resolve;\n      reject = _reject;\n    });\n    // 绑定真实的 promise 回调\n    promiseArg &amp;&amp;\n      promiseArg.then(\n        (val) =&gt; {\n          resolve &amp;&amp; resolve(val);\n        },\n        (error) =&gt; {\n          reject &amp;&amp; reject(error);\n        }\n      );\n\n    return {\n      promise: wrappedPromise,\n      resolve: (value) =&gt; {\n        resolve &amp;&amp; resolve(value);\n      },\n      reject: (reason) =&gt; {\n        reject &amp;&amp; reject(reason);\n      },\n      //  将 resolve，reject 设为 null，让 promise 永远不会 resolve/reject。\n      cancel: () =&gt; {\n        resolve = null;\n        reject = null;\n      },\n    };\n  };\n\n  const wrappedPromise = new Promise((resolve, reject) =&gt; {});\n\n  // Wrap an existing promise and expose some additional imperative methods\n  // The existingPromise paramter is optional and the returned promise with resolve/reject when the existing promise do\n  const { promise, resolve, reject, cancel } = createImperativePromise(\n    wrappedPromise\n  );\n\n  cancel(); // 阻止 promise resolved，关闭后下面的 res 就会有结果了\n\n  resolve("some value");\n\n  promise.then((res) =&gt; {\n    console.log(res);\n  });\n\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content=" // 包装一个异步函数，并确保只有最后一次调用才会解析/拒绝 https://github.com/slorber/awesome-only-resolves-last-promise/blob/master/src/index.ts\n  function onlyResolvesLast(fn) {\n    // 保存上一个请求的 cancel 方法\n    let cancelPrevious = null;\n\n    const wrappedFn = (...args) =&gt; {\n      // 当前请求执行前，先 cancel 上一个请求\n      cancelPrevious &amp;&amp; cancelPrevious();\n      // 执行当前请求\n      const result = fn.apply(this, args);\n\n      // 创建指令式的 promise，暴露 cancel 方法并保存\n      const { promise, cancel } = createImperativePromise(result);\n      cancelPrevious = cancel;\n\n      return promise;\n    };\n\n    return wrappedFn;\n  }\n\n  const wrappedFn = onlyResolvesLast(fetch);\n  //   注意：请求顺序按先后顺序进入，响应顺序不一致\n  setTimeout(() =&gt; {\n    wrappedFn(1000, &quot;结果是=&gt;第一个请求&quot;).then((res) =&gt; console.log(res));\n  }, 5);\n  setTimeout(() =&gt; {\n    wrappedFn(5000, &quot;结果是=&gt;第二个请求&quot;).then((res) =&gt; console.log(res));\n  }, 10);\n  setTimeout(() =&gt; {\n    wrappedFn(3000, &quot;结果是=&gt;第三个请求&quot;).then((res) =&gt; console.log(res));\n  }, 20);\n\n  // 结果是=&gt;第三个请求\n"><pre class="notranslate"><code class="notranslate"> // 包装一个异步函数，并确保只有最后一次调用才会解析/拒绝 https://github.com/slorber/awesome-only-resolves-last-promise/blob/master/src/index.ts\n  function onlyResolvesLast(fn) {\n    // 保存上一个请求的 cancel 方法\n    let cancelPrevious = null;\n\n    const wrappedFn = (...args) =&gt; {\n      // 当前请求执行前，先 cancel 上一个请求\n      cancelPrevious &amp;&amp; cancelPrevious();\n      // 执行当前请求\n      const result = fn.apply(this, args);\n\n      // 创建指令式的 promise，暴露 cancel 方法并保存\n      const { promise, cancel } = createImperativePromise(result);\n      cancelPrevious = cancel;\n\n      return promise;\n    };\n\n    return wrappedFn;\n  }\n\n  const wrappedFn = onlyResolvesLast(fetch);\n  //   注意：请求顺序按先后顺序进入，响应顺序不一致\n  setTimeout(() =&gt; {\n    wrappedFn(1000, "结果是=&gt;第一个请求").then((res) =&gt; console.log(res));\n  }, 5);\n  setTimeout(() =&gt; {\n    wrappedFn(5000, "结果是=&gt;第二个请求").then((res) =&gt; console.log(res));\n  }, 10);\n  setTimeout(() =&gt; {\n    wrappedFn(3000, "结果是=&gt;第三个请求").then((res) =&gt; console.log(res));\n  }, 20);\n\n  // 结果是=&gt;第三个请求\n\n</code></pre></div>',user:{login:t,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:r,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/248"},navList:[{text:"1.  玩转异步",id:"main-heading-H2-0",type:"H2",children:[{text:"1.1 异步重试",id:"main-heading-H3-1",type:e},{text:"1.2 任务中断",id:"main-heading-H3-2",type:e},{text:"1.3 异步竞态",id:"main-heading-H3-3",type:e}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:t,userEmail:"1656800216@qq.com",repository:"blog",blogName:o,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:o,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:r}},serverRendered:!0}}("","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,804 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>vue-blog@csdoker 前后端源码 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 透过读源码快速回顾 Vue 技术栈的实践，感谢作者 csdoker 开源 ~ vue-blog vue-blog-server hexo-theme-yilia vue-blog 先行启动后端服务 cd vue-blog-server yarn start yarn run v1.12.3 $"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="vue-blog@csdoker 前后端源码"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 透过读源码快速回顾 Vue 技术栈的实践，感谢作者 csdoker 开源 ~ vue-blog vue-blog-server hexo-theme-yilia vue-blog 先行启动后端服务 cd vue-blog-server yarn start yarn run v1.12.3 $"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="vue-blog@csdoker 前后端源码"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 透过读源码快速回顾 Vue 技术栈的实践，感谢作者 csdoker 开源 ~ vue-blog vue-blog-server hexo-theme-yilia vue-blog 先行启动后端服务 cd vue-blog-server yarn start yarn run v1.12.3 $"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/95#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/95#main-heading-H2-1" title="vue-blog" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              vue-blog
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/95#main-heading-H3-2" title="项目简介" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  项目简介
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/95#main-heading-H3-3" title="动画效果" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  动画效果
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/95#main-heading-H3-4" title="ArticleDirectory" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  ArticleDirectory
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/95#main-heading-H2-5" title="vue-blog-server" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              vue-blog-server
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>vue-blog@csdoker 前后端源码</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>vue-blog@csdoker 前后端源码</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2019-11-05</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 26 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto">透过读源码快速回顾 Vue 技术栈的实践，感谢作者 <a href="https://github.com/csdoker">csdoker</a> 开源 ~</p>
+<ul dir="auto">
+<li><a href="https://github.com/csdoker/vue-blog">vue-blog</a></li>
+<li><a href="https://github.com/csdoker/vue-blog-server">vue-blog-server</a></li>
+<li><a href="https://github.com/litten/hexo-theme-yilia">hexo-theme-yilia</a></li>
+</ul>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ca66cfc6ffb333f71e6fcf60f68440f3728b16c03e4e48acbf1226881517b941/687474703a2f2f7777312e73696e61696d672e636e2f6d773639302f64663535316561356c793167386e6c316e35316638673231683030726d316c302e676966"><img src="https://camo.githubusercontent.com/ca66cfc6ffb333f71e6fcf60f68440f3728b16c03e4e48acbf1226881517b941/687474703a2f2f7777312e73696e61696d672e636e2f6d773639302f64663535316561356c793167386e6c316e35316638673231683030726d316c302e676966" alt="123.gif" data-animated-image="" data-canonical-src="http://ww1.sinaimg.cn/mw690/df551ea5ly1g8nl1n51f8g21h00rm1l0.gif" style="max-width:100%"></a></p>
+<h2 id="main-heading-H2-1">vue-blog</h2>
+<p dir="auto">先行启动后端服务</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="cd vue-blog-server
+yarn start
+yarn run v1.12.3
+$ node ./bin/www"><pre class="notranslate"><span class="pl-c1">cd</span> vue-blog-server
+yarn start
+yarn run v1.12.3
+$ node ./bin/www</pre></div>
+<h3 id="main-heading-H3-2">项目简介</h3>
+<ul dir="auto">
+<li>路由</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 主页
+
+/  Home
+/page/:page  Home     # 分页
+/detail/:id  Detail   # 详情
+
+
+/archive  Archive            # 归档
+/archive/page/:page Archive  # 分页
+
+/album Album        # 相册
+/reading Reading    # 读书
+
+/about About    # 关于
+
+/test Test      # 测试
+"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 主页</span>
+
+/  Home
+/page/:page  Home     <span class="pl-c"><span class="pl-c">#</span> 分页</span>
+/detail/:id  Detail   <span class="pl-c"><span class="pl-c">#</span> 详情</span>
+
+
+/archive  Archive            <span class="pl-c"><span class="pl-c">#</span> 归档</span>
+/archive/page/:page Archive  <span class="pl-c"><span class="pl-c">#</span> 分页</span>
+
+/album Album        <span class="pl-c"><span class="pl-c">#</span> 相册</span>
+/reading Reading    <span class="pl-c"><span class="pl-c">#</span> 读书</span>
+
+/about About    <span class="pl-c"><span class="pl-c">#</span> 关于</span>
+
+/test Test      <span class="pl-c"><span class="pl-c">#</span> 测试</span>
+</pre></div>
+<p dir="auto">路由组件暴露位置 <code class="notranslate">router-view</code>,统一入口</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<App>
+  <AppCanvas></AppCanvas>
+  <AppSidebar></AppSidebar>
+  <AppToolbar></AppToolbar>
+  <AppMain>
+    <router-view />
+  </AppMain>
+  <AppScroll></AppScroll>
+</App>"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">App</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">AppCanvas</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">AppCanvas</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">AppSidebar</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">AppSidebar</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">AppToolbar</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">AppToolbar</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">AppMain</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">router-view</span> <span class="pl-kos">/></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">AppMain</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">AppScroll</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">AppScroll</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">App</span><span class="pl-kos">></span></pre></div>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<MainMobileNav></MainMobileNav> <!-- 移动端响应式使用 -->
+<slot></slot>  <!-- 暴露路由插槽 -->
+<MainFooter></MainFooter>"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">MainMobileNav</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">MainMobileNav</span><span class="pl-kos">></span> <span class="pl-c">&lt;!-- 移动端响应式使用 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">slot</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">slot</span><span class="pl-kos">></span>  <span class="pl-c">&lt;!-- 暴露路由插槽 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">MainFooter</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">MainFooter</span><span class="pl-kos">></span></pre></div>
+<ul dir="auto">
+<li>数据流</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# state
+
+export default {
+  toolbarKeyword: '',   // 工具栏搜索关键字
+  isShowToolbar: false, // 显示工具栏(默认不显示)
+  isShowToolbarSection: [false, false] // 工具栏展示类型
+}
+
+# mutations
+
+export default {
+  openToolBar (state, menuIndex) {
+    state.isShowToolbar = true
+    state.isShowToolbarSection.forEach((item, index) => {
+      if (index === menuIndex) {
+        state.isShowToolbarSection.splice(index, 1, true)
+      } else {
+        state.isShowToolbarSection.splice(index, 1, false)
+      }
+    })
+  },
+  closeToolBar (state) {
+    state.isShowToolbar = false
+  },
+  setToolbarKeyword (state, keyword) {
+    state.toolbarKeyword = keyword
+  }
+}
+"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> state</span>
+
+<span class="pl-k">export</span> default {
+  toolbarKeyword: <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,   // 工具栏搜索关键字
+  isShowToolbar: false, // 显示工具栏(默认不显示)
+  isShowToolbarSection: [false, false] // 工具栏展示类型
+}
+
+<span class="pl-c"><span class="pl-c">#</span> mutations</span>
+
+<span class="pl-k">export</span> default {
+  openToolBar (state, menuIndex) {
+    state.isShowToolbar = <span class="pl-c1">true</span>
+    state.isShowToolbarSection.forEach<span class="pl-s"><span class="pl-pds">((</span>item<span class="pl-k">,</span> index) <span class="pl-k">=></span> {</span>
+<span class="pl-s">      if (index === menuIndex) {</span>
+<span class="pl-s">        state.isShowToolbarSection.splice(index, <span class="pl-c1">1</span>, true)</span>
+<span class="pl-s">      } else {</span>
+<span class="pl-s">        state.isShowToolbarSection.splice(index, <span class="pl-c1">1</span>, false)</span>
+<span class="pl-s">      }</span>
+<span class="pl-s">    })</span>
+<span class="pl-s">  },</span>
+<span class="pl-s">  closeToolBar (state) {</span>
+<span class="pl-s">    state.isShowToolbar = false</span>
+<span class="pl-s">  },</span>
+<span class="pl-s">  setToolbarKeyword (state, keyword) {</span>
+<span class="pl-s">    state.toolbarKeyword = keyword</span>
+<span class="pl-s">  }</span>
+<span class="pl-s">}</span>
+<span class="pl-s"></span></pre></div>
+<p dir="auto"><code class="notranslate">isShowToolbar</code>默认情况 为 false 时:</p>
+<ol dir="auto">
+<li> 组件隐藏</li>
+<li> 组件添加 hide 类名,增加 <code class="notranslate">leftOut</code> 动画效果</li>
+<li> 组件添加 hide 类名，增加 <code class="notranslate">smallleftOut</code> 动画效果</li>
+<li> 组件无 show 类名</li>
+<li>  组件为白色背景色 <code class="notranslate">#fff</code></li>
+</ol>
+<p dir="auto"><code class="notranslate">isShowToolbar</code>默认情况 为 true 时:</p>
+<ol dir="auto">
+<li> 组件显示，气泡 cavas 动效</li>
+<li> 组件添加 show 类名 背景颜色随之切换 background: linear-gradient(200deg, #a0cfe4, #e8c37e)，增加 <code class="notranslate">smallLeftIn</code> 动画效果</li>
+<li> 组件添加 show 类名，增加 <code class="notranslate">smallleftOut</code> 动画效果</li>
+<li> 组件添加 show 类名，阴影边框</li>
+<li>  组件为 白色加透明 <code class="notranslate">rgba(255,255,255,0.3)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color:rgba(255,255,255,.3);height:8px;width:8px"></span></code></li>
+</ol>
+<ul dir="auto">
+<li>项目依赖
+<ul dir="auto">
+<li>fastclick</li>
+<li>vue-loading-template</li>
+<li>vue-preview</li>
+<li>vue-markdown</li>
+<li>vue-prism md 语法高亮</li>
+<li>vue-wheels 自制分页组件</li>
+</ul>
+</li>
+</ul>
+<h3 id="main-heading-H3-3">动画效果</h3>
+<p dir="auto">待研究...</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".hide {
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
+  -webkit-animation-name: leftOut;
+  animation-name: leftOut;
+}
+
+@keyframes leftOut {
+  0%,
+  60%,
+  75%,
+  90%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    -webkit-transform: translate3d(330px, 0, 0);
+    transform: translate3d(330px, 0, 0);
+  }
+  60% {
+    -webkit-transform: translate3d(-25px, 0, 0);
+    transform: translate3d(-25px, 0, 0);
+  }
+  75% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+  90% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
+  }
+  to {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}"><pre class="notranslate">.<span class="pl-c1">hide</span> {
+  <span class="pl-c1">-webkit-animation-duration</span><span class="pl-kos">:</span> <span class="pl-c1">0.8<span class="pl-smi">s</span></span>;
+  <span class="pl-c1">animation-duration</span><span class="pl-kos">:</span> <span class="pl-c1">0.8<span class="pl-smi">s</span></span>;
+  <span class="pl-c1">-webkit-animation-name</span><span class="pl-kos">:</span> leftOut;
+  <span class="pl-c1">animation-name</span><span class="pl-kos">:</span> leftOut;
+}
+
+<span class="pl-k">@keyframes</span> leftOut {
+  <span class="pl-c1">0<span class="pl-smi">%</span></span><span class="pl-kos">,</span>
+  <span class="pl-c1">60<span class="pl-smi">%</span></span><span class="pl-kos">,</span>
+  <span class="pl-c1">75<span class="pl-smi">%</span></span><span class="pl-kos">,</span>
+  <span class="pl-c1">90<span class="pl-smi">%</span></span><span class="pl-kos">,</span>
+  <span class="pl-k">to</span> {
+    <span class="pl-c1">-webkit-animation-timing-function</span><span class="pl-kos">:</span> <span class="pl-en">cubic-bezier</span>(<span class="pl-c1">0.215</span><span class="pl-kos">,</span> <span class="pl-c1">0.61</span><span class="pl-kos">,</span> <span class="pl-c1">0.355</span><span class="pl-kos">,</span> <span class="pl-c1">1</span>);
+    <span class="pl-c1">animation-timing-function</span><span class="pl-kos">:</span> <span class="pl-en">cubic-bezier</span>(<span class="pl-c1">0.215</span><span class="pl-kos">,</span> <span class="pl-c1">0.61</span><span class="pl-kos">,</span> <span class="pl-c1">0.355</span><span class="pl-kos">,</span> <span class="pl-c1">1</span>);
+  }
+  <span class="pl-c1">0<span class="pl-smi">%</span></span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">330<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">330<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+  }
+  <span class="pl-c1">60<span class="pl-smi">%</span></span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">-25<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">-25<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+  }
+  <span class="pl-c1">75<span class="pl-smi">%</span></span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">10<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">10<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+  }
+  <span class="pl-c1">90<span class="pl-smi">%</span></span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">-5<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">-5<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+  }
+  <span class="pl-k">to</span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translateZ</span>(<span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translateZ</span>(<span class="pl-c1">0</span>);
+  }
+}</pre></div>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".show {
+     background: none
+      opacity: .9
+      -webkit-animation-duration: .8s;
+      animation-duration: .8s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation-name: leftIn;
+      animation-name: leftIn
+}
+
+      @keyframes leftIn {
+  0%, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+    animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+  }
+  0% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+  }
+  60% {
+    -webkit-transform: translate3d(358px, 0, 0);
+    transform: translate3d(358px, 0, 0)
+  }
+  75% {
+    -webkit-transform: translate3d(323px, 0, 0);
+    transform: translate3d(323px, 0, 0)
+  }
+  90% {
+    -webkit-transform: translate3d(338px, 0, 0);
+    transform: translate3d(338px, 0, 0)
+  }
+  to {
+    -webkit-transform: translate3d(330px, 0, 0);
+    transform: translate3d(330px, 0, 0)
+  }
+}
+"><pre class="notranslate">.<span class="pl-c1">show</span> {
+     <span class="pl-c1">background</span><span class="pl-kos">:</span> none
+      opacity: <span class="pl-c1">.9</span>
+      -webkit-animation-duration: <span class="pl-c1">.8<span class="pl-smi">s</span></span>;
+      <span class="pl-c1">animation-duration</span><span class="pl-kos">:</span> <span class="pl-c1">.8<span class="pl-smi">s</span></span>;
+      <span class="pl-c1">-webkit-animation-fill-mode</span><span class="pl-kos">:</span> both;
+      <span class="pl-c1">animation-fill-mode</span><span class="pl-kos">:</span> both;
+      <span class="pl-c1">-webkit-animation-name</span><span class="pl-kos">:</span> leftIn;
+      <span class="pl-c1">animation-name</span><span class="pl-kos">:</span> leftIn
+}
+
+      <span class="pl-k">@keyframes</span> leftIn {
+  <span class="pl-c1">0<span class="pl-smi">%</span></span><span class="pl-kos">,</span> <span class="pl-c1">60<span class="pl-smi">%</span></span><span class="pl-kos">,</span> <span class="pl-c1">75<span class="pl-smi">%</span></span><span class="pl-kos">,</span> <span class="pl-c1">90<span class="pl-smi">%</span></span><span class="pl-kos">,</span> <span class="pl-k">to</span> {
+    <span class="pl-c1">-webkit-animation-timing-function</span><span class="pl-kos">:</span> <span class="pl-en">cubic-bezier</span>(<span class="pl-c1">.215</span><span class="pl-kos">,</span> <span class="pl-c1">.61</span><span class="pl-kos">,</span> <span class="pl-c1">.355</span><span class="pl-kos">,</span> <span class="pl-c1">1</span>);
+    <span class="pl-c1">animation-timing-function</span><span class="pl-kos">:</span> <span class="pl-en">cubic-bezier</span>(<span class="pl-c1">.215</span><span class="pl-kos">,</span> <span class="pl-c1">.61</span><span class="pl-kos">,</span> <span class="pl-c1">.355</span><span class="pl-kos">,</span> <span class="pl-c1">1</span>)
+  }
+  <span class="pl-c1">0<span class="pl-smi">%</span></span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translateZ</span>(<span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translateZ</span>(<span class="pl-c1">0</span>)
+  }
+  <span class="pl-c1">60<span class="pl-smi">%</span></span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">358<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">358<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>)
+  }
+  <span class="pl-c1">75<span class="pl-smi">%</span></span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">323<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">323<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>)
+  }
+  <span class="pl-c1">90<span class="pl-smi">%</span></span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">338<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">338<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>)
+  }
+  <span class="pl-k">to</span> {
+    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">330<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);
+    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">330<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>)
+  }
+}</pre></div>
+<h3 id="main-heading-H3-4">ArticleDirectory</h3>
+<p dir="auto"><code class="notranslate">ArticleDirectory </code> 为 详情页 markdown 文档目录组件</p>
+<div class="highlight highlight-text-html-vue notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<template lang=&#34;html&#34;>
+  <div class=&#34;article-directory&#34; v-if=&#34;isShowDirectory&#34;>
+    <div class=&#34;directory-head&#34;>目录</div>
+    <div class=&#34;directory-body&#34;>
+      <article-directory-body @setDirectory=&#34;setDirectory&#34; :directories=&#34;directories&#34;></article-directory-body>
+    </div>
+  </div>
+</template>
+
+<script>
+import ArticleDirectoryBody from './ArticleDirectoryBody'
+
+export default {
+  name: 'ArticleDirectory',
+  components: {
+    ArticleDirectoryBody
+  },
+  data () {
+    return {
+      isShowDirectory: false,
+      directories: [],
+      lastDirectoryIndex: 0,
+      clickDirectoryIndex: 0,
+      appElem: document.querySelector('#app')
+    }
+  },
+  methods: {
+    // 获取文件标题目录
+    getDirectories () {
+      let directoryElems = document.querySelector('.article-data').querySelectorAll('h1,h2,h3,h4,h5,h6')
+      if (directoryElems.length !== 0) {
+        this.isShowDirectory = true
+      } else {
+        this.isShowDirectory = false
+        return
+      }
+      directoryElems.forEach((element, elemIndex) => {
+        element.id = `articleHeader${elemIndex}`
+        this.directories.push({
+          index: elemIndex,
+          title: element.innerText || element.textContent,
+          offsetTop: element.offsetTop,
+          isActive: false,
+          tagName: element.tagName,
+          children: []
+        })
+      })
+    },
+    // 格式化标题目录结构
+    formatDirectories (arr, i, parent) {
+      if (i >= arr.length) {
+        return i
+      }
+      let current = arr[i]
+      // 外层插入
+      if (current.tagName > parent.tagName) {
+        parent.children.push(current)
+      } else {
+        return i
+      }
+      i++
+      let next = arr[i]
+      if (!next) {
+        return i
+      }
+       // 内层继续插入
+      if (next.tagName > current.tagName) {
+        current.children = []
+        i = this.formatDirectories(arr, i, current)
+      }
+      // 递归
+      return this.formatDirectories(arr, i, parent)
+    },
+    // 重置 取消所有高亮标记
+    resetDirectories (node) {
+      node.forEach(item => {
+        if (item.isActive) {
+          item.isActive = false
+          return true
+        }
+        item.children && this.resetDirectories(item.children)
+      })
+    },
+    // 选中高亮标记 isActive
+    findDirectories (node) {
+      if (this.clickDirectoryIndex !== this.lastDirectoryIndex) {
+        node.forEach((item, index) => {
+          if (this.appElem.scrollTop >= document.querySelector(`#articleHeader${item.index}`).offsetTop) {
+            // 清除所有高亮单独添加
+            this.resetDirectories(this.directories)
+            item.isActive = true
+          } else {
+            item.isActive = false
+          }
+          // 有子数据的先遍历子数据
+          item.children && this.findDirectories(item.children)
+        })
+      } else {
+        this.clickDirectoryIndex = 0
+      }
+    },
+    setDirectory (item) {
+      this.clickDirectoryIndex = item.index
+      if (item.index === this.lastDirectoryIndex) {
+        this.resetDirectories(this.directories)
+        item.isActive = true
+      }
+    },
+    handleScroll (e) {
+      this.findDirectories(this.directories)
+    }
+  },
+  mounted () {
+    let root = {
+      index: -1,
+      title: '',
+      offsetTop: 0,
+      isActive: false,
+      tagName: 'H0',
+      children: []
+    }
+    this.$nextTick(() => {
+      this.getDirectories()
+      console.log(this.directories)
+      this.lastDirectoryIndex = this.directories[this.directories.length - 1].index
+      this.formatDirectories(this.directories, 0, root)
+      this.directories = root.children
+      this.appElem.addEventListener('scroll', this.handleScroll)
+    })
+  },
+  destroyed () {
+    this.appElem.removeEventListener('scroll', this.handleScroll)
+  }
+}
+</script>"><pre class="notranslate">&lt;<span class="pl-ent">template</span> lang="html">
+  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>article-directory<span class="pl-pds">"</span></span> <span class="pl-e">v-if</span>=<span class="pl-s"><span class="pl-pds">"</span>isShowDirectory<span class="pl-pds">"</span></span>>
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>directory-head<span class="pl-pds">"</span></span>>目录&lt;/<span class="pl-ent">div</span>>
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>directory-body<span class="pl-pds">"</span></span>>
+      &lt;<span class="pl-ent">article-directory-body</span> <span class="pl-e">@setDirectory</span>=<span class="pl-s"><span class="pl-pds">"</span>setDirectory<span class="pl-pds">"</span></span> <span class="pl-e">:directories</span>=<span class="pl-s"><span class="pl-pds">"</span>directories<span class="pl-pds">"</span></span>>&lt;/<span class="pl-ent">article-directory-body</span>>
+    &lt;/<span class="pl-ent">div</span>>
+  &lt;/<span class="pl-ent">div</span>>
+&lt;/<span class="pl-ent">template</span>>
+
+&lt;<span class="pl-ent">script</span>><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">import</span> <span class="pl-smi">ArticleDirectoryBody</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>./ArticleDirectoryBody<span class="pl-pds">'</span></span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">export</span> <span class="pl-c1">default</span> {</span>
+<span class="pl-s1">  name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>ArticleDirectory<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">  components<span class="pl-k">:</span> {</span>
+<span class="pl-s1">    ArticleDirectoryBody</span>
+<span class="pl-s1">  },</span>
+<span class="pl-s1">  <span class="pl-en">data</span> () {</span>
+<span class="pl-s1">    <span class="pl-k">return</span> {</span>
+<span class="pl-s1">      isShowDirectory<span class="pl-k">:</span> <span class="pl-c1">false</span>,</span>
+<span class="pl-s1">      directories<span class="pl-k">:</span> [],</span>
+<span class="pl-s1">      lastDirectoryIndex<span class="pl-k">:</span> <span class="pl-c1">0</span>,</span>
+<span class="pl-s1">      clickDirectoryIndex<span class="pl-k">:</span> <span class="pl-c1">0</span>,</span>
+<span class="pl-s1">      appElem<span class="pl-k">:</span> <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">'</span>#app<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">  },</span>
+<span class="pl-s1">  methods<span class="pl-k">:</span> {</span>
+<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> 获取文件标题目录</span></span>
+<span class="pl-s1">    <span class="pl-en">getDirectories</span> () {</span>
+<span class="pl-s1">      <span class="pl-k">let</span> directoryElems <span class="pl-k">=</span> <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">'</span>.article-data<span class="pl-pds">'</span></span>).<span class="pl-c1">querySelectorAll</span>(<span class="pl-s"><span class="pl-pds">'</span>h1,h2,h3,h4,h5,h6<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-smi">directoryElems</span>.<span class="pl-c1">length</span> <span class="pl-k">!==</span> <span class="pl-c1">0</span>) {</span>
+<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-smi">isShowDirectory</span> <span class="pl-k">=</span> <span class="pl-c1">true</span></span>
+<span class="pl-s1">      } <span class="pl-k">else</span> {</span>
+<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-smi">isShowDirectory</span> <span class="pl-k">=</span> <span class="pl-c1">false</span></span>
+<span class="pl-s1">        <span class="pl-k">return</span></span>
+<span class="pl-s1">      }</span>
+<span class="pl-s1">      <span class="pl-smi">directoryElems</span>.<span class="pl-c1">forEach</span>((<span class="pl-smi">element</span>, <span class="pl-smi">elemIndex</span>) <span class="pl-k">=></span> {</span>
+<span class="pl-s1">        <span class="pl-smi">element</span>.<span class="pl-c1">id</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">`</span>articleHeader<span class="pl-s1"><span class="pl-pse">${</span>elemIndex<span class="pl-pse">}</span></span><span class="pl-pds">`</span></span></span>
+<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-c1">directories</span>.<span class="pl-c1">push</span>({</span>
+<span class="pl-s1">          index<span class="pl-k">:</span> elemIndex,</span>
+<span class="pl-s1">          title<span class="pl-k">:</span> <span class="pl-smi">element</span>.<span class="pl-smi">innerText</span> <span class="pl-k">||</span> <span class="pl-smi">element</span>.<span class="pl-smi">textContent</span>,</span>
+<span class="pl-s1">          offsetTop<span class="pl-k">:</span> <span class="pl-smi">element</span>.<span class="pl-smi">offsetTop</span>,</span>
+<span class="pl-s1">          isActive<span class="pl-k">:</span> <span class="pl-c1">false</span>,</span>
+<span class="pl-s1">          tagName<span class="pl-k">:</span> <span class="pl-smi">element</span>.<span class="pl-c1">tagName</span>,</span>
+<span class="pl-s1">          children<span class="pl-k">:</span> []</span>
+<span class="pl-s1">        })</span>
+<span class="pl-s1">      })</span>
+<span class="pl-s1">    },</span>
+<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> 格式化标题目录结构</span></span>
+<span class="pl-s1">    <span class="pl-en">formatDirectories</span> (<span class="pl-smi">arr</span>, <span class="pl-smi">i</span>, <span class="pl-smi">parent</span>) {</span>
+<span class="pl-s1">      <span class="pl-k">if</span> (i <span class="pl-k">>=</span> <span class="pl-smi">arr</span>.<span class="pl-c1">length</span>) {</span>
+<span class="pl-s1">        <span class="pl-k">return</span> i</span>
+<span class="pl-s1">      }</span>
+<span class="pl-s1">      <span class="pl-k">let</span> current <span class="pl-k">=</span> arr[i]</span>
+<span class="pl-s1">      <span class="pl-c"><span class="pl-c">//</span> 外层插入</span></span>
+<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-smi">current</span>.<span class="pl-c1">tagName</span> <span class="pl-k">></span> <span class="pl-smi">parent</span>.<span class="pl-c1">tagName</span>) {</span>
+<span class="pl-s1">        <span class="pl-smi">parent</span>.<span class="pl-smi">children</span>.<span class="pl-c1">push</span>(current)</span>
+<span class="pl-s1">      } <span class="pl-k">else</span> {</span>
+<span class="pl-s1">        <span class="pl-k">return</span> i</span>
+<span class="pl-s1">      }</span>
+<span class="pl-s1">      i<span class="pl-k">++</span></span>
+<span class="pl-s1">      <span class="pl-k">let</span> next <span class="pl-k">=</span> arr[i]</span>
+<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-k">!</span>next) {</span>
+<span class="pl-s1">        <span class="pl-k">return</span> i</span>
+<span class="pl-s1">      }</span>
+<span class="pl-s1">       <span class="pl-c"><span class="pl-c">//</span> 内层继续插入</span></span>
+<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-smi">next</span>.<span class="pl-c1">tagName</span> <span class="pl-k">></span> <span class="pl-smi">current</span>.<span class="pl-c1">tagName</span>) {</span>
+<span class="pl-s1">        <span class="pl-smi">current</span>.<span class="pl-smi">children</span> <span class="pl-k">=</span> []</span>
+<span class="pl-s1">        i <span class="pl-k">=</span> <span class="pl-c1">this</span>.<span class="pl-en">formatDirectories</span>(arr, i, current)</span>
+<span class="pl-s1">      }</span>
+<span class="pl-s1">      <span class="pl-c"><span class="pl-c">//</span> 递归</span></span>
+<span class="pl-s1">      <span class="pl-k">return</span> <span class="pl-c1">this</span>.<span class="pl-en">formatDirectories</span>(arr, i, parent)</span>
+<span class="pl-s1">    },</span>
+<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> 重置 取消所有高亮标记</span></span>
+<span class="pl-s1">    <span class="pl-en">resetDirectories</span> (<span class="pl-smi">node</span>) {</span>
+<span class="pl-s1">      <span class="pl-smi">node</span>.<span class="pl-c1">forEach</span>(<span class="pl-smi">item</span> <span class="pl-k">=></span> {</span>
+<span class="pl-s1">        <span class="pl-k">if</span> (<span class="pl-smi">item</span>.<span class="pl-smi">isActive</span>) {</span>
+<span class="pl-s1">          <span class="pl-smi">item</span>.<span class="pl-smi">isActive</span> <span class="pl-k">=</span> <span class="pl-c1">false</span></span>
+<span class="pl-s1">          <span class="pl-k">return</span> <span class="pl-c1">true</span></span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">        <span class="pl-smi">item</span>.<span class="pl-smi">children</span> <span class="pl-k">&&</span> <span class="pl-c1">this</span>.<span class="pl-en">resetDirectories</span>(<span class="pl-smi">item</span>.<span class="pl-smi">children</span>)</span>
+<span class="pl-s1">      })</span>
+<span class="pl-s1">    },</span>
+<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> 选中高亮标记 isActive</span></span>
+<span class="pl-s1">    <span class="pl-en">findDirectories</span> (<span class="pl-smi">node</span>) {</span>
+<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-c1">this</span>.<span class="pl-smi">clickDirectoryIndex</span> <span class="pl-k">!==</span> <span class="pl-c1">this</span>.<span class="pl-smi">lastDirectoryIndex</span>) {</span>
+<span class="pl-s1">        <span class="pl-smi">node</span>.<span class="pl-c1">forEach</span>((<span class="pl-smi">item</span>, <span class="pl-smi">index</span>) <span class="pl-k">=></span> {</span>
+<span class="pl-s1">          <span class="pl-k">if</span> (<span class="pl-c1">this</span>.<span class="pl-smi">appElem</span>.<span class="pl-smi">scrollTop</span> <span class="pl-k">>=</span> <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">`</span>#articleHeader<span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">item</span>.<span class="pl-c1">index</span><span class="pl-pse">}</span></span><span class="pl-pds">`</span></span>).<span class="pl-smi">offsetTop</span>) {</span>
+<span class="pl-s1">            <span class="pl-c"><span class="pl-c">//</span> 清除所有高亮单独添加</span></span>
+<span class="pl-s1">            <span class="pl-c1">this</span>.<span class="pl-en">resetDirectories</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>)</span>
+<span class="pl-s1">            <span class="pl-smi">item</span>.<span class="pl-smi">isActive</span> <span class="pl-k">=</span> <span class="pl-c1">true</span></span>
+<span class="pl-s1">          } <span class="pl-k">else</span> {</span>
+<span class="pl-s1">            <span class="pl-smi">item</span>.<span class="pl-smi">isActive</span> <span class="pl-k">=</span> <span class="pl-c1">false</span></span>
+<span class="pl-s1">          }</span>
+<span class="pl-s1">          <span class="pl-c"><span class="pl-c">//</span> 有子数据的先遍历子数据</span></span>
+<span class="pl-s1">          <span class="pl-smi">item</span>.<span class="pl-smi">children</span> <span class="pl-k">&&</span> <span class="pl-c1">this</span>.<span class="pl-en">findDirectories</span>(<span class="pl-smi">item</span>.<span class="pl-smi">children</span>)</span>
+<span class="pl-s1">        })</span>
+<span class="pl-s1">      } <span class="pl-k">else</span> {</span>
+<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-smi">clickDirectoryIndex</span> <span class="pl-k">=</span> <span class="pl-c1">0</span></span>
+<span class="pl-s1">      }</span>
+<span class="pl-s1">    },</span>
+<span class="pl-s1">    <span class="pl-en">setDirectory</span> (<span class="pl-smi">item</span>) {</span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-smi">clickDirectoryIndex</span> <span class="pl-k">=</span> <span class="pl-smi">item</span>.<span class="pl-c1">index</span></span>
+<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-smi">item</span>.<span class="pl-c1">index</span> <span class="pl-k">===</span> <span class="pl-c1">this</span>.<span class="pl-smi">lastDirectoryIndex</span>) {</span>
+<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-en">resetDirectories</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>)</span>
+<span class="pl-s1">        <span class="pl-smi">item</span>.<span class="pl-smi">isActive</span> <span class="pl-k">=</span> <span class="pl-c1">true</span></span>
+<span class="pl-s1">      }</span>
+<span class="pl-s1">    },</span>
+<span class="pl-s1">    <span class="pl-en">handleScroll</span> (<span class="pl-smi">e</span>) {</span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">findDirectories</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>)</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">  },</span>
+<span class="pl-s1">  <span class="pl-en">mounted</span> () {</span>
+<span class="pl-s1">    <span class="pl-k">let</span> root <span class="pl-k">=</span> {</span>
+<span class="pl-s1">      index<span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">1</span>,</span>
+<span class="pl-s1">      title<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">      offsetTop<span class="pl-k">:</span> <span class="pl-c1">0</span>,</span>
+<span class="pl-s1">      isActive<span class="pl-k">:</span> <span class="pl-c1">false</span>,</span>
+<span class="pl-s1">      tagName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>H0<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">      children<span class="pl-k">:</span> []</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-en">$nextTick</span>(() <span class="pl-k">=></span> {</span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">getDirectories</span>()</span>
+<span class="pl-s1">      <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>)</span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-smi">lastDirectoryIndex</span> <span class="pl-k">=</span> <span class="pl-c1">this</span>.<span class="pl-c1">directories</span>[<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>.<span class="pl-c1">length</span> <span class="pl-k">-</span> <span class="pl-c1">1</span>].<span class="pl-c1">index</span></span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">formatDirectories</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>, <span class="pl-c1">0</span>, root)</span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-c1">directories</span> <span class="pl-k">=</span> <span class="pl-smi">root</span>.<span class="pl-smi">children</span></span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-smi">appElem</span>.<span class="pl-c1">addEventListener</span>(<span class="pl-s"><span class="pl-pds">'</span>scroll<span class="pl-pds">'</span></span>, <span class="pl-c1">this</span>.<span class="pl-smi">handleScroll</span>)</span>
+<span class="pl-s1">    })</span>
+<span class="pl-s1">  },</span>
+<span class="pl-s1">  <span class="pl-en">destroyed</span> () {</span>
+<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-smi">appElem</span>.<span class="pl-c1">removeEventListener</span>(<span class="pl-s"><span class="pl-pds">'</span>scroll<span class="pl-pds">'</span></span>, <span class="pl-c1">this</span>.<span class="pl-smi">handleScroll</span>)</span>
+<span class="pl-s1">  }</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>&lt;/<span class="pl-ent">script</span>></pre></div>
+<div class="highlight highlight-text-html-vue notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<template lang="html">
+  <ul>
+    <li :class="{&#39;active&#39;: item.isActive, &#39;normal&#39;: !item.isActive}" v-for="(item, index) of directories" :key="index">
+      <a href="javascript:;" @click="goAnchor(item)">{{item.title}}</a>
+      <article-directory-body @setDirectory="setDirectory" v-if="item.children" :directories="item.children"></article-directory-body>
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  name: &#39;ArticleDirectoryBody&#39;,
+  props: {
+    directories: Array
+  },
+  data () {
+    return {}
+  },
+  methods: {
+    goAnchor (item) {
+      this.$emit(&#39;setDirectory&#39;, item)
+      document.querySelector(&#39;#app&#39;).scrollTop = document.querySelector(`#articleHeader${item.index}`).offsetTop
+    },
+    setDirectory (item) {
+      this.$emit(&#39;setDirectory&#39;, item)
+    }
+  }
+}
+</script>'><pre class="notranslate">&lt;<span class="pl-ent">template</span> lang="html">
+  &lt;<span class="pl-ent">ul</span>>
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">:class</span>=<span class="pl-s"><span class="pl-pds">"</span>{'active': item.isActive, 'normal': !item.isActive}<span class="pl-pds">"</span></span> <span class="pl-e">v-for</span>=<span class="pl-s"><span class="pl-pds">"</span>(item, index) of directories<span class="pl-pds">"</span></span> <span class="pl-e">:key</span>=<span class="pl-s"><span class="pl-pds">"</span>index<span class="pl-pds">"</span></span>>
+      &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript:;<span class="pl-pds">"</span></span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>goAnchor(item)<span class="pl-pds">"</span></span>>{{item.title}}&lt;/<span class="pl-ent">a</span>>
+      &lt;<span class="pl-ent">article-directory-body</span> <span class="pl-e">@setDirectory</span>=<span class="pl-s"><span class="pl-pds">"</span>setDirectory<span class="pl-pds">"</span></span> <span class="pl-e">v-if</span>=<span class="pl-s"><span class="pl-pds">"</span>item.children<span class="pl-pds">"</span></span> <span class="pl-e">:directories</span>=<span class="pl-s"><span class="pl-pds">"</span>item.children<span class="pl-pds">"</span></span>>&lt;/<span class="pl-ent">article-directory-body</span>>
+    &lt;/<span class="pl-ent">li</span>>
+  &lt;/<span class="pl-ent">ul</span>>
+&lt;/<span class="pl-ent">template</span>>
+
+&lt;<span class="pl-ent">script</span>><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">export</span> <span class="pl-c1">default</span> {</span>
+<span class="pl-s1">  name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>ArticleDirectoryBody<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">  props<span class="pl-k">:</span> {</span>
+<span class="pl-s1">    directories<span class="pl-k">:</span> <span class="pl-c1">Array</span></span>
+<span class="pl-s1">  },</span>
+<span class="pl-s1">  <span class="pl-en">data</span> () {</span>
+<span class="pl-s1">    <span class="pl-k">return</span> {}</span>
+<span class="pl-s1">  },</span>
+<span class="pl-s1">  methods<span class="pl-k">:</span> {</span>
+<span class="pl-s1">    <span class="pl-en">goAnchor</span> (<span class="pl-smi">item</span>) {</span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">$emit</span>(<span class="pl-s"><span class="pl-pds">'</span>setDirectory<span class="pl-pds">'</span></span>, item)</span>
+<span class="pl-s1">      <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">'</span>#app<span class="pl-pds">'</span></span>).<span class="pl-smi">scrollTop</span> <span class="pl-k">=</span> <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">`</span>#articleHeader<span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">item</span>.<span class="pl-c1">index</span><span class="pl-pse">}</span></span><span class="pl-pds">`</span></span>).<span class="pl-smi">offsetTop</span></span>
+<span class="pl-s1">    },</span>
+<span class="pl-s1">    <span class="pl-en">setDirectory</span> (<span class="pl-smi">item</span>) {</span>
+<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">$emit</span>(<span class="pl-s"><span class="pl-pds">'</span>setDirectory<span class="pl-pds">'</span></span>, item)</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">  }</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>&lt;/<span class="pl-ent">script</span>></pre></div>
+<h2 id="main-heading-H2-5">vue-blog-server</h2>
+<p dir="auto"><strong>路由信息</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="app.get('/articlelist', api.articlelist);
+app.get('/article', api.article);
+app.get('/archivelist', api.archivelist);
+app.get('/about', api.about);
+app.get('/searchlist', api.searchlist);
+app.get('/articletag', api.articletag);
+app.get('/postcategory', api.postcategory);
+app.get('/booklist', api.booklist);
+app.get('/album', api.album);"><pre class="notranslate">app.get(<span class="pl-s"><span class="pl-pds">'</span>/articlelist<span class="pl-pds">'</span></span>, api.articlelist)<span class="pl-k">;</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/article<span class="pl-pds">'</span></span>, api.article)<span class="pl-k">;</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/archivelist<span class="pl-pds">'</span></span>, api.archivelist)<span class="pl-k">;</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/about<span class="pl-pds">'</span></span>, api.about)<span class="pl-k">;</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/searchlist<span class="pl-pds">'</span></span>, api.searchlist)<span class="pl-k">;</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/articletag<span class="pl-pds">'</span></span>, api.articletag)<span class="pl-k">;</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/postcategory<span class="pl-pds">'</span></span>, api.postcategory)<span class="pl-k">;</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/booklist<span class="pl-pds">'</span></span>, api.booklist)<span class="pl-k">;</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/album<span class="pl-pds">'</span></span>, api.album)<span class="pl-k">;</span></pre></div>
+<p dir="auto"><strong>调试设置</strong></p>
+<p dir="auto"><code class="notranslate">.vscode</code> 文件夹及 <code class="notranslate">launch.json</code></p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "vue-blog-server",
+      "program": "${workspaceFolder}\\bin\\www",
+      // skipFiles 就是忽略我们不关心的文件 <node_internals> 用来忽略 Node.js 核心模块
+      // 这样在单步调试时就不会进入到 node_modules和node核心模块里
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js"
+      ]
+    }
+  ]
+}
+'><pre class="notranslate">{
+  <span class="pl-ii">// 使用 IntelliSense 了解相关属性。</span>
+  <span class="pl-ii">// 悬停以查看现有属性的描述。</span>
+  <span class="pl-ii">// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span>
+  <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>0.2.0<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"configurations"</span>: [
+    {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>node<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"request"</span>: <span class="pl-s"><span class="pl-pds">"</span>launch<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>vue-blog-server<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"program"</span>: <span class="pl-s"><span class="pl-pds">"</span>${workspaceFolder}<span class="pl-cce">\\</span>bin<span class="pl-cce">\\</span>www<span class="pl-pds">"</span></span>,
+      <span class="pl-ii">// skipFiles 就是忽略我们不关心的文件 &lt;node_internals> 用来忽略 Node.js 核心模块</span>
+      <span class="pl-ii">// 这样在单步调试时就不会进入到 node_modules和node核心模块里</span>
+      <span class="pl-ent">"skipFiles"</span>: [
+        <span class="pl-s"><span class="pl-pds">"</span>${workspaceFolder}/node_modules/**/*.js<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>&lt;node_internals>/**/*.js<span class="pl-pds">"</span></span>
+      ]
+    }
+  ]
+}
+</pre></div>
+<blockquote>
+<p dir="auto">参考 <a href="https://github.com/nswbmw/node-in-debugging/blob/master/4.3%20Visual%20Studio%20Code.md">node-in-debugging</a></p>
+</blockquote>
+<p dir="auto"><strong>主页</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">/articlelist?page=1</code> 文章列表</li>
+</ul>
+<p dir="auto">根据页码参数 <code class="notranslate">page</code>与 <code class="notranslate">data/articles.json</code>（含有 "articleId"，"articleTitle"，"articleDate"，articleTags","articleCategories" 等关键文章信息） 确定分页展示条数<code class="notranslate">id</code>，再与 <code class="notranslate">articles</code> 文件夹里的 <code class="notranslate">md</code>文档 组合（新增 articleContent 参数）返回文章分页数据。</p>
+<ul dir="auto">
+<li><code class="notranslate">/article?id=24</code> 文章详情</li>
+</ul>
+<p dir="auto">根据传入的 <code class="notranslate">id</code>参数与 读取 <code class="notranslate">articles</code>文件夹下的相应 <code class="notranslate">md</code>数据，再与 <code class="notranslate">data/articles.json</code> 同 <code class="notranslate">文章 id</code>的原有数据合并，返回单个文章详情。</p>
+<ul dir="auto">
+<li><code class="notranslate">searchlist?keyword=1</code> 搜索列表</li>
+</ul>
+<p dir="auto">根据传入的搜索参数，在 <code class="notranslate">data/articles.json</code>中进行匹配，支持 <code class="notranslate">articleTitle</code> 标题与 <code class="notranslate">articleTags</code> 标签匹配。</p>
+<ul dir="auto">
+<li><code class="notranslate">/articletag</code> 文章标签列表</li>
+</ul>
+<p dir="auto">根据 <code class="notranslate">data/articles.json</code> 文章数据中 <code class="notranslate">articleTags</code>数组参数合并而来。</p>
+<p dir="auto"><strong>归档列表页</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">/archivelist?page=1</code></li>
+</ul>
+<p dir="auto">根据传入的分页参数，以及 <code class="notranslate">data/articles.json</code> 文章 数据中的时间参数 <code class="notranslate">articleDate</code>，将每页展示的 10 个数据进行构建为新的按时间年限分布的数据：</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "count": 29,
+  "data": [
+    { "archiveArticles": [], "archiveDate": 2018 },
+    { "archiveArticles": [], "archiveDate": 2017 }
+  ],
+  "ret": true
+}'><pre class="notranslate">{
+  <span class="pl-ent">"count"</span>: <span class="pl-c1">29</span>,
+  <span class="pl-ent">"data"</span>: [
+    { <span class="pl-ent">"archiveArticles"</span>: [], <span class="pl-ent">"archiveDate"</span>: <span class="pl-c1">2018</span> },
+    { <span class="pl-ent">"archiveArticles"</span>: [], <span class="pl-ent">"archiveDate"</span>: <span class="pl-c1">2017</span> }
+  ],
+  <span class="pl-ent">"ret"</span>: <span class="pl-c1">true</span>
+}</pre></div>
+<p dir="auto"><strong>读书与相册页</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">/booklist</code> & <code class="notranslate">/album</code></li>
+</ul>
+<p dir="auto">分别使用 <code class="notranslate">data/books.json</code>与<code class="notranslate">data/album.json</code>做为源数据返回。</p>
+<p dir="auto"><strong>关于页</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">/about</code> 关于页</li>
+</ul>
+<p dir="auto">关于页读取 <code class="notranslate">about/about.md</code> 文档的使用 json 格式返回。</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,c){return{layout:"default",data:[{post:{id:517666079,number:95,title:"vue-blog@csdoker 前后端源码",created_at:"2019-11-05T09:56:50Z",updated_at:"2025-11-23T15:56:16Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto">透过读源码快速回顾 Vue 技术栈的实践，感谢作者 <a href="https://github.com/csdoker">csdoker</a> 开源 ~</p>\n<ul dir="auto">\n<li><a href="https://github.com/csdoker/vue-blog">vue-blog</a></li>\n<li><a href="https://github.com/csdoker/vue-blog-server">vue-blog-server</a></li>\n<li><a href="https://github.com/litten/hexo-theme-yilia">hexo-theme-yilia</a></li>\n</ul>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ca66cfc6ffb333f71e6fcf60f68440f3728b16c03e4e48acbf1226881517b941/687474703a2f2f7777312e73696e61696d672e636e2f6d773639302f64663535316561356c793167386e6c316e35316638673231683030726d316c302e676966"><img src="https://camo.githubusercontent.com/ca66cfc6ffb333f71e6fcf60f68440f3728b16c03e4e48acbf1226881517b941/687474703a2f2f7777312e73696e61696d672e636e2f6d773639302f64663535316561356c793167386e6c316e35316638673231683030726d316c302e676966" alt="123.gif" data-animated-image="" data-canonical-src="http://ww1.sinaimg.cn/mw690/df551ea5ly1g8nl1n51f8g21h00rm1l0.gif" style="max-width: 100%;"></a></p>\n<h2 id="main-heading-H2-1">vue-blog</h2>\n<p dir="auto">先行启动后端服务</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="cd vue-blog-server\nyarn start\nyarn run v1.12.3\n$ node ./bin/www"><pre class="notranslate"><span class="pl-c1">cd</span> vue-blog-server\nyarn start\nyarn run v1.12.3\n$ node ./bin/www</pre></div>\n<h3 id="main-heading-H3-2">项目简介</h3>\n<ul dir="auto">\n<li>路由</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 主页\n\n/  Home\n/page/:page  Home     # 分页\n/detail/:id  Detail   # 详情\n\n\n/archive  Archive            # 归档\n/archive/page/:page Archive  # 分页\n\n/album Album        # 相册\n/reading Reading    # 读书\n\n/about About    # 关于\n\n/test Test      # 测试\n"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 主页</span>\n\n/  Home\n/page/:page  Home     <span class="pl-c"><span class="pl-c">#</span> 分页</span>\n/detail/:id  Detail   <span class="pl-c"><span class="pl-c">#</span> 详情</span>\n\n\n/archive  Archive            <span class="pl-c"><span class="pl-c">#</span> 归档</span>\n/archive/page/:page Archive  <span class="pl-c"><span class="pl-c">#</span> 分页</span>\n\n/album Album        <span class="pl-c"><span class="pl-c">#</span> 相册</span>\n/reading Reading    <span class="pl-c"><span class="pl-c">#</span> 读书</span>\n\n/about About    <span class="pl-c"><span class="pl-c">#</span> 关于</span>\n\n/test Test      <span class="pl-c"><span class="pl-c">#</span> 测试</span>\n</pre></div>\n<p dir="auto">路由组件暴露位置 <code class="notranslate">router-view</code>,统一入口</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;App&gt;\n  &lt;AppCanvas&gt;&lt;/AppCanvas&gt;\n  &lt;AppSidebar&gt;&lt;/AppSidebar&gt;\n  &lt;AppToolbar&gt;&lt;/AppToolbar&gt;\n  &lt;AppMain&gt;\n    &lt;router-view /&gt;\n  &lt;/AppMain&gt;\n  &lt;AppScroll&gt;&lt;/AppScroll&gt;\n&lt;/App&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">App</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">AppCanvas</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">AppCanvas</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">AppSidebar</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">AppSidebar</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">AppToolbar</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">AppToolbar</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">AppMain</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">router-view</span> <span class="pl-kos">/&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">AppMain</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">AppScroll</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">AppScroll</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">App</span><span class="pl-kos">&gt;</span></pre></div>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;MainMobileNav&gt;&lt;/MainMobileNav&gt; &lt;!-- 移动端响应式使用 --&gt;\n&lt;slot&gt;&lt;/slot&gt;  &lt;!-- 暴露路由插槽 --&gt;\n&lt;MainFooter&gt;&lt;/MainFooter&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">MainMobileNav</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">MainMobileNav</span><span class="pl-kos">&gt;</span> <span class="pl-c">&lt;!-- 移动端响应式使用 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">slot</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">slot</span><span class="pl-kos">&gt;</span>  <span class="pl-c">&lt;!-- 暴露路由插槽 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">MainFooter</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">MainFooter</span><span class="pl-kos">&gt;</span></pre></div>\n<ul dir="auto">\n<li>数据流</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# state\n\nexport default {\n  toolbarKeyword: \'\',   // 工具栏搜索关键字\n  isShowToolbar: false, // 显示工具栏(默认不显示)\n  isShowToolbarSection: [false, false] // 工具栏展示类型\n}\n\n# mutations\n\nexport default {\n  openToolBar (state, menuIndex) {\n    state.isShowToolbar = true\n    state.isShowToolbarSection.forEach((item, index) =&gt; {\n      if (index === menuIndex) {\n        state.isShowToolbarSection.splice(index, 1, true)\n      } else {\n        state.isShowToolbarSection.splice(index, 1, false)\n      }\n    })\n  },\n  closeToolBar (state) {\n    state.isShowToolbar = false\n  },\n  setToolbarKeyword (state, keyword) {\n    state.toolbarKeyword = keyword\n  }\n}\n"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> state</span>\n\n<span class="pl-k">export</span> default {\n  toolbarKeyword: <span class="pl-s"><span class="pl-pds">\'</span><span class="pl-pds">\'</span></span>,   // 工具栏搜索关键字\n  isShowToolbar: false, // 显示工具栏(默认不显示)\n  isShowToolbarSection: [false, false] // 工具栏展示类型\n}\n\n<span class="pl-c"><span class="pl-c">#</span> mutations</span>\n\n<span class="pl-k">export</span> default {\n  openToolBar (state, menuIndex) {\n    state.isShowToolbar = <span class="pl-c1">true</span>\n    state.isShowToolbarSection.forEach<span class="pl-s"><span class="pl-pds">((</span>item<span class="pl-k">,</span> index) <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s">      if (index === menuIndex) {</span>\n<span class="pl-s">        state.isShowToolbarSection.splice(index, <span class="pl-c1">1</span>, true)</span>\n<span class="pl-s">      } else {</span>\n<span class="pl-s">        state.isShowToolbarSection.splice(index, <span class="pl-c1">1</span>, false)</span>\n<span class="pl-s">      }</span>\n<span class="pl-s">    })</span>\n<span class="pl-s">  },</span>\n<span class="pl-s">  closeToolBar (state) {</span>\n<span class="pl-s">    state.isShowToolbar = false</span>\n<span class="pl-s">  },</span>\n<span class="pl-s">  setToolbarKeyword (state, keyword) {</span>\n<span class="pl-s">    state.toolbarKeyword = keyword</span>\n<span class="pl-s">  }</span>\n<span class="pl-s">}</span>\n<span class="pl-s"></span></pre></div>\n<p dir="auto"><code class="notranslate">isShowToolbar</code>默认情况 为 false 时:</p>\n<ol dir="auto">\n<li> 组件隐藏</li>\n<li> 组件添加 hide 类名,增加 <code class="notranslate">leftOut</code> 动画效果</li>\n<li> 组件添加 hide 类名，增加 <code class="notranslate">smallleftOut</code> 动画效果</li>\n<li> 组件无 show 类名</li>\n<li>  组件为白色背景色 <code class="notranslate">#fff</code></li>\n</ol>\n<p dir="auto"><code class="notranslate">isShowToolbar</code>默认情况 为 true 时:</p>\n<ol dir="auto">\n<li> 组件显示，气泡 cavas 动效</li>\n<li> 组件添加 show 类名 背景颜色随之切换 background: linear-gradient(200deg, #a0cfe4, #e8c37e)，增加 <code class="notranslate">smallLeftIn</code> 动画效果</li>\n<li> 组件添加 show 类名，增加 <code class="notranslate">smallleftOut</code> 动画效果</li>\n<li> 组件添加 show 类名，阴影边框</li>\n<li>  组件为 白色加透明 <code class="notranslate">rgba(255,255,255,0.3)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: rgba(255,255,255,0.3); height: 8px; width: 8px;"></span></code></li>\n</ol>\n<ul dir="auto">\n<li>项目依赖\n<ul dir="auto">\n<li>fastclick</li>\n<li>vue-loading-template</li>\n<li>vue-preview</li>\n<li>vue-markdown</li>\n<li>vue-prism md 语法高亮</li>\n<li>vue-wheels 自制分页组件</li>\n</ul>\n</li>\n</ul>\n<h3 id="main-heading-H3-3">动画效果</h3>\n<p dir="auto">待研究...</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".hide {\n  -webkit-animation-duration: 0.8s;\n  animation-duration: 0.8s;\n  -webkit-animation-name: leftOut;\n  animation-name: leftOut;\n}\n\n@keyframes leftOut {\n  0%,\n  60%,\n  75%,\n  90%,\n  to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(330px, 0, 0);\n    transform: translate3d(330px, 0, 0);\n  }\n  60% {\n    -webkit-transform: translate3d(-25px, 0, 0);\n    transform: translate3d(-25px, 0, 0);\n  }\n  75% {\n    -webkit-transform: translate3d(10px, 0, 0);\n    transform: translate3d(10px, 0, 0);\n  }\n  90% {\n    -webkit-transform: translate3d(-5px, 0, 0);\n    transform: translate3d(-5px, 0, 0);\n  }\n  to {\n    -webkit-transform: translateZ(0);\n    transform: translateZ(0);\n  }\n}"><pre class="notranslate">.<span class="pl-c1">hide</span> {\n  <span class="pl-c1">-webkit-animation-duration</span><span class="pl-kos">:</span> <span class="pl-c1">0.8<span class="pl-smi">s</span></span>;\n  <span class="pl-c1">animation-duration</span><span class="pl-kos">:</span> <span class="pl-c1">0.8<span class="pl-smi">s</span></span>;\n  <span class="pl-c1">-webkit-animation-name</span><span class="pl-kos">:</span> leftOut;\n  <span class="pl-c1">animation-name</span><span class="pl-kos">:</span> leftOut;\n}\n\n<span class="pl-k">@keyframes</span> leftOut {\n  <span class="pl-c1">0<span class="pl-smi">%</span></span><span class="pl-kos">,</span>\n  <span class="pl-c1">60<span class="pl-smi">%</span></span><span class="pl-kos">,</span>\n  <span class="pl-c1">75<span class="pl-smi">%</span></span><span class="pl-kos">,</span>\n  <span class="pl-c1">90<span class="pl-smi">%</span></span><span class="pl-kos">,</span>\n  <span class="pl-k">to</span> {\n    <span class="pl-c1">-webkit-animation-timing-function</span><span class="pl-kos">:</span> <span class="pl-en">cubic-bezier</span>(<span class="pl-c1">0.215</span><span class="pl-kos">,</span> <span class="pl-c1">0.61</span><span class="pl-kos">,</span> <span class="pl-c1">0.355</span><span class="pl-kos">,</span> <span class="pl-c1">1</span>);\n    <span class="pl-c1">animation-timing-function</span><span class="pl-kos">:</span> <span class="pl-en">cubic-bezier</span>(<span class="pl-c1">0.215</span><span class="pl-kos">,</span> <span class="pl-c1">0.61</span><span class="pl-kos">,</span> <span class="pl-c1">0.355</span><span class="pl-kos">,</span> <span class="pl-c1">1</span>);\n  }\n  <span class="pl-c1">0<span class="pl-smi">%</span></span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">330<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">330<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n  }\n  <span class="pl-c1">60<span class="pl-smi">%</span></span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">-25<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">-25<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n  }\n  <span class="pl-c1">75<span class="pl-smi">%</span></span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">10<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">10<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n  }\n  <span class="pl-c1">90<span class="pl-smi">%</span></span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">-5<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">-5<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n  }\n  <span class="pl-k">to</span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translateZ</span>(<span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translateZ</span>(<span class="pl-c1">0</span>);\n  }\n}</pre></div>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".show {\n     background: none\n      opacity: .9\n      -webkit-animation-duration: .8s;\n      animation-duration: .8s;\n      -webkit-animation-fill-mode: both;\n      animation-fill-mode: both;\n      -webkit-animation-name: leftIn;\n      animation-name: leftIn\n}\n\n      @keyframes leftIn {\n  0%, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);\n    animation-timing-function: cubic-bezier(.215, .61, .355, 1)\n  }\n  0% {\n    -webkit-transform: translateZ(0);\n    transform: translateZ(0)\n  }\n  60% {\n    -webkit-transform: translate3d(358px, 0, 0);\n    transform: translate3d(358px, 0, 0)\n  }\n  75% {\n    -webkit-transform: translate3d(323px, 0, 0);\n    transform: translate3d(323px, 0, 0)\n  }\n  90% {\n    -webkit-transform: translate3d(338px, 0, 0);\n    transform: translate3d(338px, 0, 0)\n  }\n  to {\n    -webkit-transform: translate3d(330px, 0, 0);\n    transform: translate3d(330px, 0, 0)\n  }\n}\n"><pre class="notranslate">.<span class="pl-c1">show</span> {\n     <span class="pl-c1">background</span><span class="pl-kos">:</span> none\n      opacity: <span class="pl-c1">.9</span>\n      -webkit-animation-duration: <span class="pl-c1">.8<span class="pl-smi">s</span></span>;\n      <span class="pl-c1">animation-duration</span><span class="pl-kos">:</span> <span class="pl-c1">.8<span class="pl-smi">s</span></span>;\n      <span class="pl-c1">-webkit-animation-fill-mode</span><span class="pl-kos">:</span> both;\n      <span class="pl-c1">animation-fill-mode</span><span class="pl-kos">:</span> both;\n      <span class="pl-c1">-webkit-animation-name</span><span class="pl-kos">:</span> leftIn;\n      <span class="pl-c1">animation-name</span><span class="pl-kos">:</span> leftIn\n}\n\n      <span class="pl-k">@keyframes</span> leftIn {\n  <span class="pl-c1">0<span class="pl-smi">%</span></span><span class="pl-kos">,</span> <span class="pl-c1">60<span class="pl-smi">%</span></span><span class="pl-kos">,</span> <span class="pl-c1">75<span class="pl-smi">%</span></span><span class="pl-kos">,</span> <span class="pl-c1">90<span class="pl-smi">%</span></span><span class="pl-kos">,</span> <span class="pl-k">to</span> {\n    <span class="pl-c1">-webkit-animation-timing-function</span><span class="pl-kos">:</span> <span class="pl-en">cubic-bezier</span>(<span class="pl-c1">.215</span><span class="pl-kos">,</span> <span class="pl-c1">.61</span><span class="pl-kos">,</span> <span class="pl-c1">.355</span><span class="pl-kos">,</span> <span class="pl-c1">1</span>);\n    <span class="pl-c1">animation-timing-function</span><span class="pl-kos">:</span> <span class="pl-en">cubic-bezier</span>(<span class="pl-c1">.215</span><span class="pl-kos">,</span> <span class="pl-c1">.61</span><span class="pl-kos">,</span> <span class="pl-c1">.355</span><span class="pl-kos">,</span> <span class="pl-c1">1</span>)\n  }\n  <span class="pl-c1">0<span class="pl-smi">%</span></span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translateZ</span>(<span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translateZ</span>(<span class="pl-c1">0</span>)\n  }\n  <span class="pl-c1">60<span class="pl-smi">%</span></span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">358<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">358<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>)\n  }\n  <span class="pl-c1">75<span class="pl-smi">%</span></span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">323<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">323<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>)\n  }\n  <span class="pl-c1">90<span class="pl-smi">%</span></span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">338<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">338<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>)\n  }\n  <span class="pl-k">to</span> {\n    <span class="pl-c1">-webkit-transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">330<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>);\n    <span class="pl-c1">transform</span><span class="pl-kos">:</span> <span class="pl-en">translate3d</span>(<span class="pl-c1">330<span class="pl-smi">px</span></span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span>)\n  }\n}</pre></div>\n<h3 id="main-heading-H3-4">ArticleDirectory</h3>\n<p dir="auto"><code class="notranslate">ArticleDirectory </code> 为 详情页 markdown 文档目录组件</p>\n<div class="highlight highlight-text-html-vue notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template lang=&quot;html&quot;&gt;\n  &lt;div class=&quot;article-directory&quot; v-if=&quot;isShowDirectory&quot;&gt;\n    &lt;div class=&quot;directory-head&quot;&gt;目录&lt;/div&gt;\n    &lt;div class=&quot;directory-body&quot;&gt;\n      &lt;article-directory-body @setDirectory=&quot;setDirectory&quot; :directories=&quot;directories&quot;&gt;&lt;/article-directory-body&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/template&gt;\n\n&lt;script&gt;\nimport ArticleDirectoryBody from \'./ArticleDirectoryBody\'\n\nexport default {\n  name: \'ArticleDirectory\',\n  components: {\n    ArticleDirectoryBody\n  },\n  data () {\n    return {\n      isShowDirectory: false,\n      directories: [],\n      lastDirectoryIndex: 0,\n      clickDirectoryIndex: 0,\n      appElem: document.querySelector(\'#app\')\n    }\n  },\n  methods: {\n    // 获取文件标题目录\n    getDirectories () {\n      let directoryElems = document.querySelector(\'.article-data\').querySelectorAll(\'h1,h2,h3,h4,h5,h6\')\n      if (directoryElems.length !== 0) {\n        this.isShowDirectory = true\n      } else {\n        this.isShowDirectory = false\n        return\n      }\n      directoryElems.forEach((element, elemIndex) =&gt; {\n        element.id = `articleHeader${elemIndex}`\n        this.directories.push({\n          index: elemIndex,\n          title: element.innerText || element.textContent,\n          offsetTop: element.offsetTop,\n          isActive: false,\n          tagName: element.tagName,\n          children: []\n        })\n      })\n    },\n    // 格式化标题目录结构\n    formatDirectories (arr, i, parent) {\n      if (i &gt;= arr.length) {\n        return i\n      }\n      let current = arr[i]\n      // 外层插入\n      if (current.tagName &gt; parent.tagName) {\n        parent.children.push(current)\n      } else {\n        return i\n      }\n      i++\n      let next = arr[i]\n      if (!next) {\n        return i\n      }\n       // 内层继续插入\n      if (next.tagName &gt; current.tagName) {\n        current.children = []\n        i = this.formatDirectories(arr, i, current)\n      }\n      // 递归\n      return this.formatDirectories(arr, i, parent)\n    },\n    // 重置 取消所有高亮标记\n    resetDirectories (node) {\n      node.forEach(item =&gt; {\n        if (item.isActive) {\n          item.isActive = false\n          return true\n        }\n        item.children &amp;&amp; this.resetDirectories(item.children)\n      })\n    },\n    // 选中高亮标记 isActive\n    findDirectories (node) {\n      if (this.clickDirectoryIndex !== this.lastDirectoryIndex) {\n        node.forEach((item, index) =&gt; {\n          if (this.appElem.scrollTop &gt;= document.querySelector(`#articleHeader${item.index}`).offsetTop) {\n            // 清除所有高亮单独添加\n            this.resetDirectories(this.directories)\n            item.isActive = true\n          } else {\n            item.isActive = false\n          }\n          // 有子数据的先遍历子数据\n          item.children &amp;&amp; this.findDirectories(item.children)\n        })\n      } else {\n        this.clickDirectoryIndex = 0\n      }\n    },\n    setDirectory (item) {\n      this.clickDirectoryIndex = item.index\n      if (item.index === this.lastDirectoryIndex) {\n        this.resetDirectories(this.directories)\n        item.isActive = true\n      }\n    },\n    handleScroll (e) {\n      this.findDirectories(this.directories)\n    }\n  },\n  mounted () {\n    let root = {\n      index: -1,\n      title: \'\',\n      offsetTop: 0,\n      isActive: false,\n      tagName: \'H0\',\n      children: []\n    }\n    this.$nextTick(() =&gt; {\n      this.getDirectories()\n      console.log(this.directories)\n      this.lastDirectoryIndex = this.directories[this.directories.length - 1].index\n      this.formatDirectories(this.directories, 0, root)\n      this.directories = root.children\n      this.appElem.addEventListener(\'scroll\', this.handleScroll)\n    })\n  },\n  destroyed () {\n    this.appElem.removeEventListener(\'scroll\', this.handleScroll)\n  }\n}\n&lt;/script&gt;"><pre class="notranslate">&lt;<span class="pl-ent">template</span> lang="html"&gt;\n  &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>article-directory<span class="pl-pds">"</span></span> <span class="pl-e">v-if</span>=<span class="pl-s"><span class="pl-pds">"</span>isShowDirectory<span class="pl-pds">"</span></span>&gt;\n    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>directory-head<span class="pl-pds">"</span></span>&gt;目录&lt;/<span class="pl-ent">div</span>&gt;\n    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>directory-body<span class="pl-pds">"</span></span>&gt;\n      &lt;<span class="pl-ent">article-directory-body</span> <span class="pl-e">@setDirectory</span>=<span class="pl-s"><span class="pl-pds">"</span>setDirectory<span class="pl-pds">"</span></span> <span class="pl-e">:directories</span>=<span class="pl-s"><span class="pl-pds">"</span>directories<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">article-directory-body</span>&gt;\n    &lt;/<span class="pl-ent">div</span>&gt;\n  &lt;/<span class="pl-ent">div</span>&gt;\n&lt;/<span class="pl-ent">template</span>&gt;\n\n&lt;<span class="pl-ent">script</span>&gt;<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-k">import</span> <span class="pl-smi">ArticleDirectoryBody</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">\'</span>./ArticleDirectoryBody<span class="pl-pds">\'</span></span></span>\n<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-k">export</span> <span class="pl-c1">default</span> {</span>\n<span class="pl-s1">  name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">\'</span>ArticleDirectory<span class="pl-pds">\'</span></span>,</span>\n<span class="pl-s1">  components<span class="pl-k">:</span> {</span>\n<span class="pl-s1">    ArticleDirectoryBody</span>\n<span class="pl-s1">  },</span>\n<span class="pl-s1">  <span class="pl-en">data</span> () {</span>\n<span class="pl-s1">    <span class="pl-k">return</span> {</span>\n<span class="pl-s1">      isShowDirectory<span class="pl-k">:</span> <span class="pl-c1">false</span>,</span>\n<span class="pl-s1">      directories<span class="pl-k">:</span> [],</span>\n<span class="pl-s1">      lastDirectoryIndex<span class="pl-k">:</span> <span class="pl-c1">0</span>,</span>\n<span class="pl-s1">      clickDirectoryIndex<span class="pl-k">:</span> <span class="pl-c1">0</span>,</span>\n<span class="pl-s1">      appElem<span class="pl-k">:</span> <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">\'</span>#app<span class="pl-pds">\'</span></span>)</span>\n<span class="pl-s1">    }</span>\n<span class="pl-s1">  },</span>\n<span class="pl-s1">  methods<span class="pl-k">:</span> {</span>\n<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> 获取文件标题目录</span></span>\n<span class="pl-s1">    <span class="pl-en">getDirectories</span> () {</span>\n<span class="pl-s1">      <span class="pl-k">let</span> directoryElems <span class="pl-k">=</span> <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">\'</span>.article-data<span class="pl-pds">\'</span></span>).<span class="pl-c1">querySelectorAll</span>(<span class="pl-s"><span class="pl-pds">\'</span>h1,h2,h3,h4,h5,h6<span class="pl-pds">\'</span></span>)</span>\n<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-smi">directoryElems</span>.<span class="pl-c1">length</span> <span class="pl-k">!==</span> <span class="pl-c1">0</span>) {</span>\n<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-smi">isShowDirectory</span> <span class="pl-k">=</span> <span class="pl-c1">true</span></span>\n<span class="pl-s1">      } <span class="pl-k">else</span> {</span>\n<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-smi">isShowDirectory</span> <span class="pl-k">=</span> <span class="pl-c1">false</span></span>\n<span class="pl-s1">        <span class="pl-k">return</span></span>\n<span class="pl-s1">      }</span>\n<span class="pl-s1">      <span class="pl-smi">directoryElems</span>.<span class="pl-c1">forEach</span>((<span class="pl-smi">element</span>, <span class="pl-smi">elemIndex</span>) <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s1">        <span class="pl-smi">element</span>.<span class="pl-c1">id</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">`</span>articleHeader<span class="pl-s1"><span class="pl-pse">${</span>elemIndex<span class="pl-pse">}</span></span><span class="pl-pds">`</span></span></span>\n<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-c1">directories</span>.<span class="pl-c1">push</span>({</span>\n<span class="pl-s1">          index<span class="pl-k">:</span> elemIndex,</span>\n<span class="pl-s1">          title<span class="pl-k">:</span> <span class="pl-smi">element</span>.<span class="pl-smi">innerText</span> <span class="pl-k">||</span> <span class="pl-smi">element</span>.<span class="pl-smi">textContent</span>,</span>\n<span class="pl-s1">          offsetTop<span class="pl-k">:</span> <span class="pl-smi">element</span>.<span class="pl-smi">offsetTop</span>,</span>\n<span class="pl-s1">          isActive<span class="pl-k">:</span> <span class="pl-c1">false</span>,</span>\n<span class="pl-s1">          tagName<span class="pl-k">:</span> <span class="pl-smi">element</span>.<span class="pl-c1">tagName</span>,</span>\n<span class="pl-s1">          children<span class="pl-k">:</span> []</span>\n<span class="pl-s1">        })</span>\n<span class="pl-s1">      })</span>\n<span class="pl-s1">    },</span>\n<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> 格式化标题目录结构</span></span>\n<span class="pl-s1">    <span class="pl-en">formatDirectories</span> (<span class="pl-smi">arr</span>, <span class="pl-smi">i</span>, <span class="pl-smi">parent</span>) {</span>\n<span class="pl-s1">      <span class="pl-k">if</span> (i <span class="pl-k">&gt;=</span> <span class="pl-smi">arr</span>.<span class="pl-c1">length</span>) {</span>\n<span class="pl-s1">        <span class="pl-k">return</span> i</span>\n<span class="pl-s1">      }</span>\n<span class="pl-s1">      <span class="pl-k">let</span> current <span class="pl-k">=</span> arr[i]</span>\n<span class="pl-s1">      <span class="pl-c"><span class="pl-c">//</span> 外层插入</span></span>\n<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-smi">current</span>.<span class="pl-c1">tagName</span> <span class="pl-k">&gt;</span> <span class="pl-smi">parent</span>.<span class="pl-c1">tagName</span>) {</span>\n<span class="pl-s1">        <span class="pl-smi">parent</span>.<span class="pl-smi">children</span>.<span class="pl-c1">push</span>(current)</span>\n<span class="pl-s1">      } <span class="pl-k">else</span> {</span>\n<span class="pl-s1">        <span class="pl-k">return</span> i</span>\n<span class="pl-s1">      }</span>\n<span class="pl-s1">      i<span class="pl-k">++</span></span>\n<span class="pl-s1">      <span class="pl-k">let</span> next <span class="pl-k">=</span> arr[i]</span>\n<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-k">!</span>next) {</span>\n<span class="pl-s1">        <span class="pl-k">return</span> i</span>\n<span class="pl-s1">      }</span>\n<span class="pl-s1">       <span class="pl-c"><span class="pl-c">//</span> 内层继续插入</span></span>\n<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-smi">next</span>.<span class="pl-c1">tagName</span> <span class="pl-k">&gt;</span> <span class="pl-smi">current</span>.<span class="pl-c1">tagName</span>) {</span>\n<span class="pl-s1">        <span class="pl-smi">current</span>.<span class="pl-smi">children</span> <span class="pl-k">=</span> []</span>\n<span class="pl-s1">        i <span class="pl-k">=</span> <span class="pl-c1">this</span>.<span class="pl-en">formatDirectories</span>(arr, i, current)</span>\n<span class="pl-s1">      }</span>\n<span class="pl-s1">      <span class="pl-c"><span class="pl-c">//</span> 递归</span></span>\n<span class="pl-s1">      <span class="pl-k">return</span> <span class="pl-c1">this</span>.<span class="pl-en">formatDirectories</span>(arr, i, parent)</span>\n<span class="pl-s1">    },</span>\n<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> 重置 取消所有高亮标记</span></span>\n<span class="pl-s1">    <span class="pl-en">resetDirectories</span> (<span class="pl-smi">node</span>) {</span>\n<span class="pl-s1">      <span class="pl-smi">node</span>.<span class="pl-c1">forEach</span>(<span class="pl-smi">item</span> <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s1">        <span class="pl-k">if</span> (<span class="pl-smi">item</span>.<span class="pl-smi">isActive</span>) {</span>\n<span class="pl-s1">          <span class="pl-smi">item</span>.<span class="pl-smi">isActive</span> <span class="pl-k">=</span> <span class="pl-c1">false</span></span>\n<span class="pl-s1">          <span class="pl-k">return</span> <span class="pl-c1">true</span></span>\n<span class="pl-s1">        }</span>\n<span class="pl-s1">        <span class="pl-smi">item</span>.<span class="pl-smi">children</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">this</span>.<span class="pl-en">resetDirectories</span>(<span class="pl-smi">item</span>.<span class="pl-smi">children</span>)</span>\n<span class="pl-s1">      })</span>\n<span class="pl-s1">    },</span>\n<span class="pl-s1">    <span class="pl-c"><span class="pl-c">//</span> 选中高亮标记 isActive</span></span>\n<span class="pl-s1">    <span class="pl-en">findDirectories</span> (<span class="pl-smi">node</span>) {</span>\n<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-c1">this</span>.<span class="pl-smi">clickDirectoryIndex</span> <span class="pl-k">!==</span> <span class="pl-c1">this</span>.<span class="pl-smi">lastDirectoryIndex</span>) {</span>\n<span class="pl-s1">        <span class="pl-smi">node</span>.<span class="pl-c1">forEach</span>((<span class="pl-smi">item</span>, <span class="pl-smi">index</span>) <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s1">          <span class="pl-k">if</span> (<span class="pl-c1">this</span>.<span class="pl-smi">appElem</span>.<span class="pl-smi">scrollTop</span> <span class="pl-k">&gt;=</span> <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">`</span>#articleHeader<span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">item</span>.<span class="pl-c1">index</span><span class="pl-pse">}</span></span><span class="pl-pds">`</span></span>).<span class="pl-smi">offsetTop</span>) {</span>\n<span class="pl-s1">            <span class="pl-c"><span class="pl-c">//</span> 清除所有高亮单独添加</span></span>\n<span class="pl-s1">            <span class="pl-c1">this</span>.<span class="pl-en">resetDirectories</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>)</span>\n<span class="pl-s1">            <span class="pl-smi">item</span>.<span class="pl-smi">isActive</span> <span class="pl-k">=</span> <span class="pl-c1">true</span></span>\n<span class="pl-s1">          } <span class="pl-k">else</span> {</span>\n<span class="pl-s1">            <span class="pl-smi">item</span>.<span class="pl-smi">isActive</span> <span class="pl-k">=</span> <span class="pl-c1">false</span></span>\n<span class="pl-s1">          }</span>\n<span class="pl-s1">          <span class="pl-c"><span class="pl-c">//</span> 有子数据的先遍历子数据</span></span>\n<span class="pl-s1">          <span class="pl-smi">item</span>.<span class="pl-smi">children</span> <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">this</span>.<span class="pl-en">findDirectories</span>(<span class="pl-smi">item</span>.<span class="pl-smi">children</span>)</span>\n<span class="pl-s1">        })</span>\n<span class="pl-s1">      } <span class="pl-k">else</span> {</span>\n<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-smi">clickDirectoryIndex</span> <span class="pl-k">=</span> <span class="pl-c1">0</span></span>\n<span class="pl-s1">      }</span>\n<span class="pl-s1">    },</span>\n<span class="pl-s1">    <span class="pl-en">setDirectory</span> (<span class="pl-smi">item</span>) {</span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-smi">clickDirectoryIndex</span> <span class="pl-k">=</span> <span class="pl-smi">item</span>.<span class="pl-c1">index</span></span>\n<span class="pl-s1">      <span class="pl-k">if</span> (<span class="pl-smi">item</span>.<span class="pl-c1">index</span> <span class="pl-k">===</span> <span class="pl-c1">this</span>.<span class="pl-smi">lastDirectoryIndex</span>) {</span>\n<span class="pl-s1">        <span class="pl-c1">this</span>.<span class="pl-en">resetDirectories</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>)</span>\n<span class="pl-s1">        <span class="pl-smi">item</span>.<span class="pl-smi">isActive</span> <span class="pl-k">=</span> <span class="pl-c1">true</span></span>\n<span class="pl-s1">      }</span>\n<span class="pl-s1">    },</span>\n<span class="pl-s1">    <span class="pl-en">handleScroll</span> (<span class="pl-smi">e</span>) {</span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">findDirectories</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>)</span>\n<span class="pl-s1">    }</span>\n<span class="pl-s1">  },</span>\n<span class="pl-s1">  <span class="pl-en">mounted</span> () {</span>\n<span class="pl-s1">    <span class="pl-k">let</span> root <span class="pl-k">=</span> {</span>\n<span class="pl-s1">      index<span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">1</span>,</span>\n<span class="pl-s1">      title<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">\'</span><span class="pl-pds">\'</span></span>,</span>\n<span class="pl-s1">      offsetTop<span class="pl-k">:</span> <span class="pl-c1">0</span>,</span>\n<span class="pl-s1">      isActive<span class="pl-k">:</span> <span class="pl-c1">false</span>,</span>\n<span class="pl-s1">      tagName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">\'</span>H0<span class="pl-pds">\'</span></span>,</span>\n<span class="pl-s1">      children<span class="pl-k">:</span> []</span>\n<span class="pl-s1">    }</span>\n<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-en">$nextTick</span>(() <span class="pl-k">=&gt;</span> {</span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">getDirectories</span>()</span>\n<span class="pl-s1">      <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>)</span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-smi">lastDirectoryIndex</span> <span class="pl-k">=</span> <span class="pl-c1">this</span>.<span class="pl-c1">directories</span>[<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>.<span class="pl-c1">length</span> <span class="pl-k">-</span> <span class="pl-c1">1</span>].<span class="pl-c1">index</span></span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">formatDirectories</span>(<span class="pl-c1">this</span>.<span class="pl-c1">directories</span>, <span class="pl-c1">0</span>, root)</span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-c1">directories</span> <span class="pl-k">=</span> <span class="pl-smi">root</span>.<span class="pl-smi">children</span></span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-smi">appElem</span>.<span class="pl-c1">addEventListener</span>(<span class="pl-s"><span class="pl-pds">\'</span>scroll<span class="pl-pds">\'</span></span>, <span class="pl-c1">this</span>.<span class="pl-smi">handleScroll</span>)</span>\n<span class="pl-s1">    })</span>\n<span class="pl-s1">  },</span>\n<span class="pl-s1">  <span class="pl-en">destroyed</span> () {</span>\n<span class="pl-s1">    <span class="pl-c1">this</span>.<span class="pl-smi">appElem</span>.<span class="pl-c1">removeEventListener</span>(<span class="pl-s"><span class="pl-pds">\'</span>scroll<span class="pl-pds">\'</span></span>, <span class="pl-c1">this</span>.<span class="pl-smi">handleScroll</span>)</span>\n<span class="pl-s1">  }</span>\n<span class="pl-s1">}</span>\n<span class="pl-s1"></span>&lt;/<span class="pl-ent">script</span>&gt;</pre></div>\n<div class="highlight highlight-text-html-vue notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template lang=&quot;html&quot;&gt;\n  &lt;ul&gt;\n    &lt;li :class=&quot;{\'active\': item.isActive, \'normal\': !item.isActive}&quot; v-for=&quot;(item, index) of directories&quot; :key=&quot;index&quot;&gt;\n      &lt;a href=&quot;javascript:;&quot; @click=&quot;goAnchor(item)&quot;&gt;{{item.title}}&lt;/a&gt;\n      &lt;article-directory-body @setDirectory=&quot;setDirectory&quot; v-if=&quot;item.children&quot; :directories=&quot;item.children&quot;&gt;&lt;/article-directory-body&gt;\n    &lt;/li&gt;\n  &lt;/ul&gt;\n&lt;/template&gt;\n\n&lt;script&gt;\nexport default {\n  name: \'ArticleDirectoryBody\',\n  props: {\n    directories: Array\n  },\n  data () {\n    return {}\n  },\n  methods: {\n    goAnchor (item) {\n      this.$emit(\'setDirectory\', item)\n      document.querySelector(\'#app\').scrollTop = document.querySelector(`#articleHeader${item.index}`).offsetTop\n    },\n    setDirectory (item) {\n      this.$emit(\'setDirectory\', item)\n    }\n  }\n}\n&lt;/script&gt;"><pre class="notranslate">&lt;<span class="pl-ent">template</span> lang="html"&gt;\n  &lt;<span class="pl-ent">ul</span>&gt;\n    &lt;<span class="pl-ent">li</span> <span class="pl-e">:class</span>=<span class="pl-s"><span class="pl-pds">"</span>{\'active\': item.isActive, \'normal\': !item.isActive}<span class="pl-pds">"</span></span> <span class="pl-e">v-for</span>=<span class="pl-s"><span class="pl-pds">"</span>(item, index) of directories<span class="pl-pds">"</span></span> <span class="pl-e">:key</span>=<span class="pl-s"><span class="pl-pds">"</span>index<span class="pl-pds">"</span></span>&gt;\n      &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>javascript:;<span class="pl-pds">"</span></span> <span class="pl-e">@click</span>=<span class="pl-s"><span class="pl-pds">"</span>goAnchor(item)<span class="pl-pds">"</span></span>&gt;{{item.title}}&lt;/<span class="pl-ent">a</span>&gt;\n      &lt;<span class="pl-ent">article-directory-body</span> <span class="pl-e">@setDirectory</span>=<span class="pl-s"><span class="pl-pds">"</span>setDirectory<span class="pl-pds">"</span></span> <span class="pl-e">v-if</span>=<span class="pl-s"><span class="pl-pds">"</span>item.children<span class="pl-pds">"</span></span> <span class="pl-e">:directories</span>=<span class="pl-s"><span class="pl-pds">"</span>item.children<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">article-directory-body</span>&gt;\n    &lt;/<span class="pl-ent">li</span>&gt;\n  &lt;/<span class="pl-ent">ul</span>&gt;\n&lt;/<span class="pl-ent">template</span>&gt;\n\n&lt;<span class="pl-ent">script</span>&gt;<span class="pl-s1"></span>\n<span class="pl-s1"><span class="pl-k">export</span> <span class="pl-c1">default</span> {</span>\n<span class="pl-s1">  name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">\'</span>ArticleDirectoryBody<span class="pl-pds">\'</span></span>,</span>\n<span class="pl-s1">  props<span class="pl-k">:</span> {</span>\n<span class="pl-s1">    directories<span class="pl-k">:</span> <span class="pl-c1">Array</span></span>\n<span class="pl-s1">  },</span>\n<span class="pl-s1">  <span class="pl-en">data</span> () {</span>\n<span class="pl-s1">    <span class="pl-k">return</span> {}</span>\n<span class="pl-s1">  },</span>\n<span class="pl-s1">  methods<span class="pl-k">:</span> {</span>\n<span class="pl-s1">    <span class="pl-en">goAnchor</span> (<span class="pl-smi">item</span>) {</span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">$emit</span>(<span class="pl-s"><span class="pl-pds">\'</span>setDirectory<span class="pl-pds">\'</span></span>, item)</span>\n<span class="pl-s1">      <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">\'</span>#app<span class="pl-pds">\'</span></span>).<span class="pl-smi">scrollTop</span> <span class="pl-k">=</span> <span class="pl-c1">document</span>.<span class="pl-c1">querySelector</span>(<span class="pl-s"><span class="pl-pds">`</span>#articleHeader<span class="pl-s1"><span class="pl-pse">${</span><span class="pl-smi">item</span>.<span class="pl-c1">index</span><span class="pl-pse">}</span></span><span class="pl-pds">`</span></span>).<span class="pl-smi">offsetTop</span></span>\n<span class="pl-s1">    },</span>\n<span class="pl-s1">    <span class="pl-en">setDirectory</span> (<span class="pl-smi">item</span>) {</span>\n<span class="pl-s1">      <span class="pl-c1">this</span>.<span class="pl-en">$emit</span>(<span class="pl-s"><span class="pl-pds">\'</span>setDirectory<span class="pl-pds">\'</span></span>, item)</span>\n<span class="pl-s1">    }</span>\n<span class="pl-s1">  }</span>\n<span class="pl-s1">}</span>\n<span class="pl-s1"></span>&lt;/<span class="pl-ent">script</span>&gt;</pre></div>\n<h2 id="main-heading-H2-5">vue-blog-server</h2>\n<p dir="auto"><strong>路由信息</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="app.get(\'/articlelist\', api.articlelist);\napp.get(\'/article\', api.article);\napp.get(\'/archivelist\', api.archivelist);\napp.get(\'/about\', api.about);\napp.get(\'/searchlist\', api.searchlist);\napp.get(\'/articletag\', api.articletag);\napp.get(\'/postcategory\', api.postcategory);\napp.get(\'/booklist\', api.booklist);\napp.get(\'/album\', api.album);"><pre class="notranslate">app.get(<span class="pl-s"><span class="pl-pds">\'</span>/articlelist<span class="pl-pds">\'</span></span>, api.articlelist)<span class="pl-k">;</span>\napp.get(<span class="pl-s"><span class="pl-pds">\'</span>/article<span class="pl-pds">\'</span></span>, api.article)<span class="pl-k">;</span>\napp.get(<span class="pl-s"><span class="pl-pds">\'</span>/archivelist<span class="pl-pds">\'</span></span>, api.archivelist)<span class="pl-k">;</span>\napp.get(<span class="pl-s"><span class="pl-pds">\'</span>/about<span class="pl-pds">\'</span></span>, api.about)<span class="pl-k">;</span>\napp.get(<span class="pl-s"><span class="pl-pds">\'</span>/searchlist<span class="pl-pds">\'</span></span>, api.searchlist)<span class="pl-k">;</span>\napp.get(<span class="pl-s"><span class="pl-pds">\'</span>/articletag<span class="pl-pds">\'</span></span>, api.articletag)<span class="pl-k">;</span>\napp.get(<span class="pl-s"><span class="pl-pds">\'</span>/postcategory<span class="pl-pds">\'</span></span>, api.postcategory)<span class="pl-k">;</span>\napp.get(<span class="pl-s"><span class="pl-pds">\'</span>/booklist<span class="pl-pds">\'</span></span>, api.booklist)<span class="pl-k">;</span>\napp.get(<span class="pl-s"><span class="pl-pds">\'</span>/album<span class="pl-pds">\'</span></span>, api.album)<span class="pl-k">;</span></pre></div>\n<p dir="auto"><strong>调试设置</strong></p>\n<p dir="auto"><code class="notranslate">.vscode</code> 文件夹及 <code class="notranslate">launch.json</code></p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  // 使用 IntelliSense 了解相关属性。\n  // 悬停以查看现有属性的描述。\n  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387\n  &quot;version&quot;: &quot;0.2.0&quot;,\n  &quot;configurations&quot;: [\n    {\n      &quot;type&quot;: &quot;node&quot;,\n      &quot;request&quot;: &quot;launch&quot;,\n      &quot;name&quot;: &quot;vue-blog-server&quot;,\n      &quot;program&quot;: &quot;${workspaceFolder}\\\\bin\\\\www&quot;,\n      // skipFiles 就是忽略我们不关心的文件 &lt;node_internals&gt; 用来忽略 Node.js 核心模块\n      // 这样在单步调试时就不会进入到 node_modules和node核心模块里\n      &quot;skipFiles&quot;: [\n        &quot;${workspaceFolder}/node_modules/**/*.js&quot;,\n        &quot;&lt;node_internals&gt;/**/*.js&quot;\n      ]\n    }\n  ]\n}\n"><pre class="notranslate">{\n  <span class="pl-ii">// 使用 IntelliSense 了解相关属性。</span>\n  <span class="pl-ii">// 悬停以查看现有属性的描述。</span>\n  <span class="pl-ii">// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span>\n  <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>0.2.0<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"configurations"</span>: [\n    {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>node<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"request"</span>: <span class="pl-s"><span class="pl-pds">"</span>launch<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>vue-blog-server<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"program"</span>: <span class="pl-s"><span class="pl-pds">"</span>${workspaceFolder}<span class="pl-cce">\\\\</span>bin<span class="pl-cce">\\\\</span>www<span class="pl-pds">"</span></span>,\n      <span class="pl-ii">// skipFiles 就是忽略我们不关心的文件 &lt;node_internals&gt; 用来忽略 Node.js 核心模块</span>\n      <span class="pl-ii">// 这样在单步调试时就不会进入到 node_modules和node核心模块里</span>\n      <span class="pl-ent">"skipFiles"</span>: [\n        <span class="pl-s"><span class="pl-pds">"</span>${workspaceFolder}/node_modules/**/*.js<span class="pl-pds">"</span></span>,\n        <span class="pl-s"><span class="pl-pds">"</span>&lt;node_internals&gt;/**/*.js<span class="pl-pds">"</span></span>\n      ]\n    }\n  ]\n}\n</pre></div>\n<blockquote>\n<p dir="auto">参考 <a href="https://github.com/nswbmw/node-in-debugging/blob/master/4.3%20Visual%20Studio%20Code.md">node-in-debugging</a></p>\n</blockquote>\n<p dir="auto"><strong>主页</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">/articlelist?page=1</code> 文章列表</li>\n</ul>\n<p dir="auto">根据页码参数 <code class="notranslate">page</code>与 <code class="notranslate">data/articles.json</code>（含有 "articleId"，"articleTitle"，"articleDate"，articleTags","articleCategories" 等关键文章信息） 确定分页展示条数<code class="notranslate">id</code>，再与 <code class="notranslate">articles</code> 文件夹里的 <code class="notranslate">md</code>文档 组合（新增 articleContent 参数）返回文章分页数据。</p>\n<ul dir="auto">\n<li><code class="notranslate">/article?id=24</code> 文章详情</li>\n</ul>\n<p dir="auto">根据传入的 <code class="notranslate">id</code>参数与 读取 <code class="notranslate">articles</code>文件夹下的相应 <code class="notranslate">md</code>数据，再与 <code class="notranslate">data/articles.json</code> 同 <code class="notranslate">文章 id</code>的原有数据合并，返回单个文章详情。</p>\n<ul dir="auto">\n<li><code class="notranslate">searchlist?keyword=1</code> 搜索列表</li>\n</ul>\n<p dir="auto">根据传入的搜索参数，在 <code class="notranslate">data/articles.json</code>中进行匹配，支持 <code class="notranslate">articleTitle</code> 标题与 <code class="notranslate">articleTags</code> 标签匹配。</p>\n<ul dir="auto">\n<li><code class="notranslate">/articletag</code> 文章标签列表</li>\n</ul>\n<p dir="auto">根据 <code class="notranslate">data/articles.json</code> 文章数据中 <code class="notranslate">articleTags</code>数组参数合并而来。</p>\n<p dir="auto"><strong>归档列表页</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">/archivelist?page=1</code></li>\n</ul>\n<p dir="auto">根据传入的分页参数，以及 <code class="notranslate">data/articles.json</code> 文章 数据中的时间参数 <code class="notranslate">articleDate</code>，将每页展示的 10 个数据进行构建为新的按时间年限分布的数据：</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;count&quot;: 29,\n  &quot;data&quot;: [\n    { &quot;archiveArticles&quot;: [], &quot;archiveDate&quot;: 2018 },\n    { &quot;archiveArticles&quot;: [], &quot;archiveDate&quot;: 2017 }\n  ],\n  &quot;ret&quot;: true\n}"><pre class="notranslate">{\n  <span class="pl-ent">"count"</span>: <span class="pl-c1">29</span>,\n  <span class="pl-ent">"data"</span>: [\n    { <span class="pl-ent">"archiveArticles"</span>: [], <span class="pl-ent">"archiveDate"</span>: <span class="pl-c1">2018</span> },\n    { <span class="pl-ent">"archiveArticles"</span>: [], <span class="pl-ent">"archiveDate"</span>: <span class="pl-c1">2017</span> }\n  ],\n  <span class="pl-ent">"ret"</span>: <span class="pl-c1">true</span>\n}</pre></div>\n<p dir="auto"><strong>读书与相册页</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">/booklist</code> &amp; <code class="notranslate">/album</code></li>\n</ul>\n<p dir="auto">分别使用 <code class="notranslate">data/books.json</code>与<code class="notranslate">data/album.json</code>做为源数据返回。</p>\n<p dir="auto"><strong>关于页</strong></p>\n<ul dir="auto">\n<li><code class="notranslate">/about</code> 关于页</li>\n</ul>\n<p dir="auto">关于页读取 <code class="notranslate">about/about.md</code> 文档的使用 json 格式返回。</p>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/95"},navList:[{text:"前言",id:"main-heading-H2-0",type:a,children:[]},{text:"vue-blog",id:"main-heading-H2-1",type:a,children:[{text:"项目简介",id:"main-heading-H3-2",type:n},{text:"动画效果",id:"main-heading-H3-3",type:n},{text:"ArticleDirectory",id:"main-heading-H3-4",type:n}]},{text:"vue-blog-server",id:"main-heading-H2-5",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H2","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

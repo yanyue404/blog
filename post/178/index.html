@@ -1,0 +1,566 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>原生微信小程序开发简明教程 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="目录 1.生命周期 2.路由 3.重要组件 4.数据交互 5.授权登录与用户信息 6.调试 7.周边 8.参考链接 生命周期 App // app.js App({ onLaunch(options) { // 小程序初始化启动时先做一些事情，如：扩展 wx 对象 }, onShow(options"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="原生微信小程序开发简明教程"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="目录 1.生命周期 2.路由 3.重要组件 4.数据交互 5.授权登录与用户信息 6.调试 7.周边 8.参考链接 生命周期 App // app.js App({ onLaunch(options) { // 小程序初始化启动时先做一些事情，如：扩展 wx 对象 }, onShow(options"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="原生微信小程序开发简明教程"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="目录 1.生命周期 2.路由 3.重要组件 4.数据交互 5.授权登录与用户信息 6.调试 7.周边 8.参考链接 生命周期 App // app.js App({ onLaunch(options) { // 小程序初始化启动时先做一些事情，如：扩展 wx 对象 }, onShow(options"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-0" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-1" title="生命周期" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              生命周期
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-2" title="路由" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              路由
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-3" title="重要组件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              重要组件
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-4" title="布局元素" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  布局元素
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-5" title="开放能力" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  开放能力
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-6" title="数据交互" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              数据交互
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-7" title="模板" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  模板
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-8" title="setData" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  setData
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-9" title="跨页面传值" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  跨页面传值
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-10" title="授权登录与用户信息" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              授权登录与用户信息
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-11" title="获取用户信息（昵称、头像等）" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  获取用户信息（昵称、头像等）
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-12" title="登录凭证" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  登录凭证
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-13" title="获取手机号" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  获取手机号
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-14" title="调试" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              调试
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-15" title="开发者工具" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  开发者工具
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H3-16" title="真机" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  真机
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-17" title="周边" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              周边
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/178#main-heading-H2-18" title="参考资料" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考资料
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>原生微信小程序开发简明教程</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>原生微信小程序开发简明教程</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2020-08-28</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 17 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">目录</h2>
+<ul dir="auto">
+<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">1.生命周期</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1">2.路由</a></li>
+<li><a href="#%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6">3.重要组件</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92">4.数据交互</a></li>
+<li><a href="#%E6%8E%88%E6%9D%83%E7%99%BB%E5%BD%95%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF">5.授权登录与用户信息</a></li>
+<li><a href="#%E8%B0%83%E8%AF%95">6.调试</a></li>
+<li><a href="#%E5%91%A8%E8%BE%B9">7.周边</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">8.参考链接</a></li>
+</ul>
+<h2 id="main-heading-H2-1">生命周期</h2>
+<p dir="auto"><strong>App</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// app.js
+App({
+  onLaunch(options) {
+    // 小程序初始化启动时先做一些事情，如：扩展 wx 对象
+  },
+  onShow(options) {
+    // 小程序启动，或从后台进入前台显示时触发
+  },
+  onHide() {
+    // 小程序从前台进入后台时触发
+  },
+  onError(msg) {
+    // 小程序发生脚本错误或 API 调用报错时触发
+  },
+  globalData: 'I am global data',
+});"><pre class="notranslate"><span class="pl-c">// app.js</span>
+<span class="pl-v">App</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">onLaunch</span><span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 小程序初始化启动时先做一些事情，如：扩展 wx 对象</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onShow</span><span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 小程序启动，或从后台进入前台显示时触发</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onHide</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 小程序从前台进入后台时触发</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onError</span><span class="pl-kos">(</span><span class="pl-s1">msg</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 小程序发生脚本错误或 API 调用报错时触发</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">globalData</span>: <span class="pl-s">'I am global data'</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>Page</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({
+  data: {
+    text: 'This is page data.',
+  },
+  onLoad: function (options) {
+    // 页面创建时执行，一个页面只会调用一次，可以在 onLoad 的参数中获取打开当前页面路径中的参数
+  },
+  onShow: function () {
+    // 页面显示/切入前台时触发
+  },
+  onReady: function () {
+    // 页面首次渲染完毕时执行，一个页面只会调用一次，代表页面已经准备妥当（可以操作 Dom）
+   // ! 如果需要获取 ajax 动态渲染的 dom 元素，可以在获取数据后设置 setData 时的回调中获取
+  },
+  onHide: function () {
+    // 页面从前台变为后台时执行
+  },
+  onUnload: function () {
+    // 页面销毁时执行
+  },
+  onPullDownRefresh: function () {
+    // 触发下拉刷新时执行
+  },
+  onReachBottom: function () {
+    // 页面触底时执行
+  },
+  onShareAppMessage: function () {
+    // 页面被用户分享时执行
+  },
+  onPageScroll: function () {
+    // 页面滚动时执行
+  },
+});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">text</span>: <span class="pl-s">'This is page data.'</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onLoad</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面创建时执行，一个页面只会调用一次，可以在 onLoad 的参数中获取打开当前页面路径中的参数</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onShow</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面显示/切入前台时触发</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onReady</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面首次渲染完毕时执行，一个页面只会调用一次，代表页面已经准备妥当（可以操作 Dom）</span>
+   <span class="pl-c">// ! 如果需要获取 ajax 动态渲染的 dom 元素，可以在获取数据后设置 setData 时的回调中获取</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onHide</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面从前台变为后台时执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onUnload</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面销毁时执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onPullDownRefresh</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 触发下拉刷新时执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onReachBottom</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面触底时执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onShareAppMessage</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面被用户分享时执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onPageScroll</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面滚动时执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>Component</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Component({
+  // 在组件中是否使用全局 css 样式
+  options: {
+    addGlobalClass: true,
+  },
+  // 组件的属性列表（从父接收）
+  properties: {
+    paramA: Number,
+    paramB: String,
+  },
+  data: {
+    text: 'This is page data.',
+  },
+  created() {
+    // 在组件实例刚刚被创建时执行，注意此时不能调用 setData
+  },
+  attached() {
+    //  在组件实例进入页面节点树时执行
+  },
+  ready() {
+    // 在组件布局完成后执行
+  },
+  detached() {
+    // 在组件实例被从页面节点树移除时执行
+  },
+  methods: {
+    // 事件响应函数
+    viewTap: function () {
+      // ...
+    },
+  },
+});"><pre class="notranslate"><span class="pl-v">Component</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c">// 在组件中是否使用全局 css 样式</span>
+  <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">addGlobalClass</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 组件的属性列表（从父接收）</span>
+  <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">paramA</span>: <span class="pl-v">Number</span><span class="pl-kos">,</span>
+    <span class="pl-c1">paramB</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">text</span>: <span class="pl-s">'This is page data.'</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">created</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 在组件实例刚刚被创建时执行，注意此时不能调用 setData</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">attached</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">//  在组件实例进入页面节点树时执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">ready</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 在组件布局完成后执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">detached</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 在组件实例被从页面节点树移除时执行</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>
+    <span class="pl-c">// 事件响应函数</span>
+    <span class="pl-en">viewTap</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">// ...</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-2">路由</h2>
+<p dir="auto"><strong>跳转到其他页面</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 跳转至非 tabbar 页面（ 保留当前页面，可以返回到本页面）
+wx.navigateTo({
+  url: '../articleDetail/articleDetail?id=7',
+});
+
+// 关闭当前的页面再跳转，不可返回
+wx.navigateTo({
+  url: `../mediaCoverage_detail/mediaCoverage_detail?id=${data.id}`,
+});
+
+// 关闭所有页面，打开到应用内的某个页面(支持所有页面)
+wx.reLaunch({
+  url: '../sort/sort',
+});
+
+//跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+wx.switchTab({
+  url: '../whereCanSearch/whereCanSearch',
+});"><pre class="notranslate"><span class="pl-c">// 跳转至非 tabbar 页面（ 保留当前页面，可以返回到本页面）</span>
+<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">url</span>: <span class="pl-s">'../articleDetail/articleDetail?id=7'</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 关闭当前的页面再跳转，不可返回</span>
+<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">url</span>: <span class="pl-s">`../mediaCoverage_detail/mediaCoverage_detail?id=<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 关闭所有页面，打开到应用内的某个页面(支持所有页面)</span>
+<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">reLaunch</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">url</span>: <span class="pl-s">'../sort/sort'</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">//跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面</span>
+<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">switchTab</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">url</span>: <span class="pl-s">'../whereCanSearch/whereCanSearch'</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>返回页面</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 返回上一页
+wx.navigateBack({ delta: 1 });"><pre class="notranslate"><span class="pl-c">// 返回上一页</span>
+<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateBack</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">delta</span>: <span class="pl-c1">1</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>页面栈</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="getCurrentPages();"><pre class="notranslate"><span class="pl-en">getCurrentPages</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({
+  click_address() {
+    let pages = getCurrentPages(); // 获取页面栈
+    let current = pages[pages.length - 1]; // 当前页面
+    let url = current.route; //当前页面url
+    let options = current.options; //如果要获取url中所带的参数可以查看options
+    let prevpage = pages[pages.length - 2]; // 上一个页面
+    let data = prevpage.data; // 获取上一页data里的数据
+    if (prevPage) {
+      //存在上一页
+      prevPage.changeDataPageA('load'); // 调用上一页的函数
+      prevPage.setData({ address_id: id }); // 修改上一页的数据
+      wx.navigateBack(); // 返回上一页
+    }
+  },
+});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">click_address</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">pages</span> <span class="pl-c1">=</span> <span class="pl-en">getCurrentPages</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 获取页面栈</span>
+    <span class="pl-k">let</span> <span class="pl-s1">current</span> <span class="pl-c1">=</span> <span class="pl-s1">pages</span><span class="pl-kos">[</span><span class="pl-s1">pages</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">;</span> <span class="pl-c">// 当前页面</span>
+    <span class="pl-k">let</span> <span class="pl-s1">url</span> <span class="pl-c1">=</span> <span class="pl-s1">current</span><span class="pl-kos">.</span><span class="pl-c1">route</span><span class="pl-kos">;</span> <span class="pl-c">//当前页面url</span>
+    <span class="pl-k">let</span> <span class="pl-s1">options</span> <span class="pl-c1">=</span> <span class="pl-s1">current</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">;</span> <span class="pl-c">//如果要获取url中所带的参数可以查看options</span>
+    <span class="pl-k">let</span> <span class="pl-s1">prevpage</span> <span class="pl-c1">=</span> <span class="pl-s1">pages</span><span class="pl-kos">[</span><span class="pl-s1">pages</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">;</span> <span class="pl-c">// 上一个页面</span>
+    <span class="pl-k">let</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-s1">prevpage</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">;</span> <span class="pl-c">// 获取上一页data里的数据</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">prevPage</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">//存在上一页</span>
+      <span class="pl-s1">prevPage</span><span class="pl-kos">.</span><span class="pl-en">changeDataPageA</span><span class="pl-kos">(</span><span class="pl-s">'load'</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 调用上一页的函数</span>
+      <span class="pl-s1">prevPage</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">address_id</span>: <span class="pl-s1">id</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 修改上一页的数据</span>
+      <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateBack</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 返回上一页</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-3">重要组件</h2>
+<h3 id="main-heading-H3-4">布局元素</h3>
+<ul dir="auto">
+<li>image</li>
+<li>view，text</li>
+<li>picker</li>
+<li>video</li>
+</ul>
+<h3 id="main-heading-H3-5">开放能力</h3>
+<p dir="auto"><strong>web-view</strong></p>
+<p dir="auto">承载网页的容器。会自动铺满整个小程序页面。</p>
+<p dir="auto">配置：src 属性 为webview 指向网页的链接。可打开关联的公众号的文章，其它网页需登录小程序管理后台配置业务域名。<br>
+调试：微信开发者工具最新版本， 在web-view页面点击鼠标右键可出现调试按钮。<br>
+其他接口：</p>
+<ul dir="auto">
+<li>web-view网页中可使用JSSDK 1.3.2提供的接口返回小程序页面，支持大部分路由接口。</li>
+<li>web-view网页中仅支持部分JSSDK接口。</li>
+<li>用户分享时可获取当前web-view的URL，即在onShareAppMessage回调中返回webViewUrl参数。</li>
+<li></li>
+</ul>
+<h2 id="main-heading-H2-6">数据交互</h2>
+<h3 id="main-heading-H3-7">模板</h3>
+<p dir="auto">（1）动态 class</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<view
+  wx:for="{{mediaData}}"
+  class="coverageBox {{(index < mediaData.length -1) ? &#39;border_bottom&#39;:&#39;&#39; }}"
+  data-index="{{index}}"
+></view>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span>
+  <span class="pl-c1">wx:for</span>="<span class="pl-s">{{mediaData}}</span>"
+  <span class="pl-c1">class</span>="<span class="pl-s">coverageBox {{(index &lt; mediaData.length -1) ? 'border_bottom':'' }}</span>"
+  <span class="pl-c1">data-index</span>="<span class="pl-s">{{index}}</span>"
+<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">（2）列表渲染</p>
+<p dir="auto"><code class="notranslate">wx:for</code> 控制属性绑定一个数组，默认数组的当前项的下标变量名默认为 index，数组当前项的变量名默认为 item。使用 wx:for-item 可以指定数组当前元素的变量名，使用 wx:for-index 可以指定数组当前下标的变量名：</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<view wx:for="{{array}}" wx:for-index="idx" wx:for-item="itemName" wx:key="id">
+  {{idx}}: {{itemName.message}}
+</view>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:for</span>="<span class="pl-s">{{array}}</span>" <span class="pl-c1">wx:for-index</span>="<span class="pl-s">idx</span>" <span class="pl-c1">wx:for-item</span>="<span class="pl-s">itemName</span>" <span class="pl-c1">wx:key</span>="<span class="pl-s">id</span>"<span class="pl-kos">></span>
+  {{idx}}: {{itemName.message}}
+<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">（3）条件渲染</p>
+<p dir="auto"><code class="notranslate">wx:if</code>，来判断是否需要渲染该代码块：</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<view wx:if="{{condition}}">True</view>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:if</span>="<span class="pl-s">{{condition}}</span>"<span class="pl-kos">></span>True<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">也可以用 <code class="notranslate">wx:elif</code> 和 <code class="notranslate">wx:else</code> 来添加一个 else 块：</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<view wx:if="{{length > 5}}">1</view>
+<view wx:elif="{{length > 2}}">2</view>
+<view wx:else>3</view>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:if</span>="<span class="pl-s">{{length > 5}}</span>"<span class="pl-kos">></span>1<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:elif</span>="<span class="pl-s">{{length > 2}}</span>"<span class="pl-kos">></span>2<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:else</span><span class="pl-kos">></span>3<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span></pre></div>
+<p dir="auto"><code class="notranslate">block wx:if</code></p>
+<p dir="auto">是一个包装元素，并不会展示。如果要一次性判断多个组件标签，可以使用 标签将多个组件包装起来，并在上边使用 wx:if 控制属性。</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<block wx:if="{{true}}">
+  <view>view1</view>
+  <view>view2</view>
+</block>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">block</span> <span class="pl-c1">wx:if</span>="<span class="pl-s">{{true}}</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">view</span><span class="pl-kos">></span>view1<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">view</span><span class="pl-kos">></span>view2<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">block</span><span class="pl-kos">></span></pre></div>
+<p dir="auto"><code class="notranslate">wx:if vs hidden</code></p>
+<p dir="auto">频繁切换：用 hidden，逻辑切换：用 wx:if，类似于 v-if 与 v-show。</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<view hidden="{{true}}">show</view>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">hidden</span>="<span class="pl-s">{{true}}</span>"<span class="pl-kos">></span>show<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span></pre></div>
+<h3 id="main-heading-H3-8">setData</h3>
+<p dir="auto"><code class="notranslate">setData</code> 函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的 this.data 的值（同步）。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="this.setData(
+  {
+    text: 'changed data',
+  },
+  function () {
+    // setData引起的界面更新渲染完毕后的回调函数
+  },
+);"><pre class="notranslate"><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>
+  <span class="pl-kos">{</span>
+    <span class="pl-c1">text</span>: <span class="pl-s">'changed data'</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// setData引起的界面更新渲染完毕后的回调函数</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" changeItemInArray() {
+    // 对于对象或数组字段，可以直接修改一个其下的子字段，这样做通常比修改整个对象或数组更好
+    this.setData({
+      'array[0].text': 'changed data'
+    })
+  },
+  changeItemInObject() {
+    this.setData({
+      'object.text': 'changed data'
+    })
+  },"><pre class="notranslate"> <span class="pl-en">changeItemInArray</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 对于对象或数组字段，可以直接修改一个其下的子字段，这样做通常比修改整个对象或数组更好</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-s">'array[0].text'</span>: <span class="pl-s">'changed data'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">changeItemInObject</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-s">'object.text'</span>: <span class="pl-s">'changed data'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>
+<h3 id="main-heading-H3-9">跨页面传值</h3>
+<ul dir="auto">
+<li>onLoad 的参数中获取打开当前页面路径中的参数。</li>
+<li>app.globalData</li>
+<li>wx.Storage</li>
+<li>组件 triggerEvent(eventName, detail)</li>
+</ul>
+<h2 id="main-heading-H2-10">授权登录与用户信息</h2>
+<h3 id="main-heading-H3-11">获取用户信息（昵称、头像等）</h3>
+<p dir="auto">获取用户信息有两种方式。一种是通过 wx.getUserInfo() ，静默获取用户信息，但是需要用户之前授过权，否则拿不到信息。另一种方式是通过微信开放能力，通过 <code class="notranslate">&lt;button class="agree-btn" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">微信授权登录&lt;/button></code> 的方式由用户主动触发，一定能拿到用户信息（昵称、头像、性别、地区..）。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href=""><img src="" alt="" style="max-width:100%"></a></p>
+<h3 id="main-heading-H3-12">登录凭证</h3>
+<p dir="auto">前端开发者调用 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html" rel="nofollow">wx.login()</a> 获取 临时登录凭证code ，并回传到开发者服务器。开发者服务器接收到 code，结合 appid、appsecret，通过后台服务调用 <a href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/login/auth.code2Session.html" rel="nofollow">auth.code2Session</a> 接口，换取 用户唯一标识 OpenID 和 会话密钥 session_key，如果用户已满足 UnionID 下发条件的情况下会返回开放平台唯一标识 unionId。（<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html" rel="nofollow">UnionID 机制说明</a>）</p>
+<p dir="auto">之后开发者服务器可以根据用户标识来生成自定义登录态，用于后续业务逻辑中前后端交互时识别用户身份。</p>
+<p dir="auto">注意：</p>
+<ul dir="auto">
+<li>会话密钥 session_key 是对用户数据进行 加密签名 的密钥。为了应用自身的数据安全，开发者服务器不应该把会话密钥下发到小程序，也不应该对外提供这个密钥。</li>
+<li>临时登录凭证 code 只能使用一次</li>
+</ul>
+<h3 id="main-heading-H3-13">获取手机号</h3>
+<p dir="auto">通过微信开放能力 <code class="notranslate">&lt;button class="agree-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权绑定手机号&lt;/button></code> 获取到加密数据 encryptedData 和初始向量 iv，后端结合 session_key 可 解密出手机号。</p>
+<p dir="auto">注意：</p>
+<p dir="auto">在回调中调用 wx.login 登录，可能会刷新登录态。此时服务器使用 code 换取的 sessionKey 不是加密时使用的 sessionKey，导致解密失败。建议开发者提前进行 login；或者在回调中先使用 checkSession 进行登录态检查，避免 login 刷新登录态。</p>
+<h2 id="main-heading-H2-14">调试</h2>
+<h3 id="main-heading-H3-15">开发者工具</h3>
+<p dir="auto">（1）断点调试</p>
+<p dir="auto">打开调试器工具，按下快捷键 <code class="notranslate">contrl+p</code>，输入搜索的文件名，例如：<code class="notranslate">home.js</code>，而后打断点进行调试。</p>
+<p dir="auto">（2）<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/remote-debug.html" rel="nofollow">真机调试</a></p>
+<p dir="auto">（3）<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/debug.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BC%96%E8%AF%91" rel="nofollow">自定义编译</a></p>
+<p dir="auto"><code class="notranslate">scene</code> 扫码的参数可以使用 escape 加密， unescape 解析。</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "file": "project.config.json",
+  "miniprogram": {
+    "current": -1,
+    "list": [
+      {
+        "id": -1,
+        "name": "首页分享给代理人 yanyue404",
+        "pathName": "pages/auth_login/auth_login",
+        "query": "homePage=true&accountId=172",
+        "scene": null
+      },
+      {
+        "id": -1,
+        "name": "点亮星星扫码进入代理人",
+        "pathName": "pages/auth_login/auth_login",
+        "query": "scene=a%3D172%26t%3Dhome_foreign",
+        "scene": ""
+      }
+    ]
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"file"</span>: <span class="pl-s"><span class="pl-pds">"</span>project.config.json<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"miniprogram"</span>: {
+    <span class="pl-ent">"current"</span>: <span class="pl-c1">-1</span>,
+    <span class="pl-ent">"list"</span>: [
+      {
+        <span class="pl-ent">"id"</span>: <span class="pl-c1">-1</span>,
+        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>首页分享给代理人 yanyue404<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"pathName"</span>: <span class="pl-s"><span class="pl-pds">"</span>pages/auth_login/auth_login<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"query"</span>: <span class="pl-s"><span class="pl-pds">"</span>homePage=true&accountId=172<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"scene"</span>: <span class="pl-c1">null</span>
+      },
+      {
+        <span class="pl-ent">"id"</span>: <span class="pl-c1">-1</span>,
+        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>点亮星星扫码进入代理人<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"pathName"</span>: <span class="pl-s"><span class="pl-pds">"</span>pages/auth_login/auth_login<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"query"</span>: <span class="pl-s"><span class="pl-pds">"</span>scene=a%3D172%26t%3Dhome_foreign<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"scene"</span>: <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>
+      }
+    ]
+  }
+}</pre></div>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>query 解密 （escape）</th>
+<th>query 加密（unescape）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"query": "scene=a=172&t=personalCard"</td>
+<td>"query": "scene=a%3D172%26t%3DpersonalCard"</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">（4）弱网调试</p>
+<p dir="auto">借助调试器 Network 选项，可选择<code class="notranslate">Fast 3G</code>网络进行调试。</p>
+<h3 id="main-heading-H3-16">真机</h3>
+<p dir="auto">以下的方法都借助 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/usability/debug.html" rel="nofollow">vConsole</a>:</p>
+<p dir="auto">（1）体验版调试</p>
+<p dir="auto">点击右上角<code class="notranslate">...</code>图标，开启调试模式，查看 <code class="notranslate">vConsole</code> 输出面板。</p>
+<p dir="auto">建议将所有的请求都进行打印：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 成功日志输出
+console.log('Request Successful', {
+  url,
+  params,
+  result,
+});
+
+// 失败日志输出
+console.log('Request Error', {
+  url,
+  params,
+  result,
+});"><pre class="notranslate"><span class="pl-c">// 成功日志输出</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Request Successful'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+  url<span class="pl-kos">,</span>
+  params<span class="pl-kos">,</span>
+  result<span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 失败日志输出</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Request Error'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+  url<span class="pl-kos">,</span>
+  params<span class="pl-kos">,</span>
+  result<span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">（2）线上版本调试</p>
+<p dir="auto">先在体验版或开发版打开调试，再切到正式版就能看到 <code class="notranslate">vConsole</code>。</p>
+<h2 id="main-heading-H2-17">周边</h2>
+<ul dir="auto">
+<li><a href="https://github.com/NervJS/taro">taro</a> - 多端开发框架</li>
+<li><a href="https://github.com/weilanwl/ColorUI">ColorUI</a> - 鲜亮的高饱和色彩，专注视觉的小程序组件库</li>
+<li><a href="https://github.com/icindy/wxParse">wxParse</a> - 微信小程序富文本解析自定义组件，支持 HTML 及 markdown 解析</li>
+<li><a href="https://github.com/TooBug/wemark">wemark</a> - 小程序中的 Markdown 渲染仓库</li>
+<li><a href="https://github.com/youzan/vant-weapp">vant-weapp</a> - 轻量、可靠的小程序 UI 组件库</li>
+<li><a href="https://github.com/gxt19940130/demos/tree/master/weChatApp">demos-weChatApp</a> - 微信小程序版知乎</li>
+<li><a href="https://github.com/hx-dl/qjbike_wxapp">qjbike_wxapp</a> - 🛴 仿改青桔单车小程序</li>
+<li><a href="https://github.com/kezhenxu94/mini-github">mini-github</a> - GitHub WeChat Mini Program</li>
+<li><a href="https://github.com/wechat-miniprogram/miniprogram-demo">miniprogram-demo</a> - 微信小程序组件 / API / 云开发示例</li>
+<li><a href="https://github.com/opendigg/awesome-github-wechat-weapp">awesome-github-wechat-weapp</a> - 微信小程序开源项目库汇总</li>
+</ul>
+<h2 id="main-heading-H2-18">参考资料</h2>
+<ul dir="auto">
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/" rel="nofollow">微信官方文档 · 小程序</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html" rel="nofollow">开放能力-用户信息-小程序登录</a></li>
+<li><a href="https://juejin.im/post/5a61b6a1518825732739af03" rel="nofollow">从零开始一个微信小程序版知乎</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/nightly.html" rel="nofollow">开发版 Nightly Build 微信开发者工具</a><br>
+The text was updated successfully, but these errors were encountered:</li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,t){return{layout:"default",data:[{post:{id:687968385,number:178,title:"原生微信小程序开发简明教程",created_at:"2020-08-28T10:14:25Z",updated_at:"2025-11-23T15:57:33Z",body_html:'<h2 id="main-heading-H2-0">目录</h2>\n<ul dir="auto">\n<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">1.生命周期</a></li>\n<li><a href="#%E8%B7%AF%E7%94%B1">2.路由</a></li>\n<li><a href="#%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6">3.重要组件</a></li>\n<li><a href="#%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92">4.数据交互</a></li>\n<li><a href="#%E6%8E%88%E6%9D%83%E7%99%BB%E5%BD%95%E4%B8%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF">5.授权登录与用户信息</a></li>\n<li><a href="#%E8%B0%83%E8%AF%95">6.调试</a></li>\n<li><a href="#%E5%91%A8%E8%BE%B9">7.周边</a></li>\n<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">8.参考链接</a></li>\n</ul>\n<h2 id="main-heading-H2-1">生命周期</h2>\n<p dir="auto"><strong>App</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// app.js\nApp({\n  onLaunch(options) {\n    // 小程序初始化启动时先做一些事情，如：扩展 wx 对象\n  },\n  onShow(options) {\n    // 小程序启动，或从后台进入前台显示时触发\n  },\n  onHide() {\n    // 小程序从前台进入后台时触发\n  },\n  onError(msg) {\n    // 小程序发生脚本错误或 API 调用报错时触发\n  },\n  globalData: \'I am global data\',\n});"><pre class="notranslate"><span class="pl-c">// app.js</span>\n<span class="pl-v">App</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">onLaunch</span><span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 小程序初始化启动时先做一些事情，如：扩展 wx 对象</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onShow</span><span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 小程序启动，或从后台进入前台显示时触发</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onHide</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 小程序从前台进入后台时触发</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onError</span><span class="pl-kos">(</span><span class="pl-s1">msg</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 小程序发生脚本错误或 API 调用报错时触发</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">globalData</span>: <span class="pl-s">\'I am global data\'</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>Page</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  data: {\n    text: \'This is page data.\',\n  },\n  onLoad: function (options) {\n    // 页面创建时执行，一个页面只会调用一次，可以在 onLoad 的参数中获取打开当前页面路径中的参数\n  },\n  onShow: function () {\n    // 页面显示/切入前台时触发\n  },\n  onReady: function () {\n    // 页面首次渲染完毕时执行，一个页面只会调用一次，代表页面已经准备妥当（可以操作 Dom）\n   // ! 如果需要获取 ajax 动态渲染的 dom 元素，可以在获取数据后设置 setData 时的回调中获取\n  },\n  onHide: function () {\n    // 页面从前台变为后台时执行\n  },\n  onUnload: function () {\n    // 页面销毁时执行\n  },\n  onPullDownRefresh: function () {\n    // 触发下拉刷新时执行\n  },\n  onReachBottom: function () {\n    // 页面触底时执行\n  },\n  onShareAppMessage: function () {\n    // 页面被用户分享时执行\n  },\n  onPageScroll: function () {\n    // 页面滚动时执行\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">text</span>: <span class="pl-s">\'This is page data.\'</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onLoad</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面创建时执行，一个页面只会调用一次，可以在 onLoad 的参数中获取打开当前页面路径中的参数</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onShow</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面显示/切入前台时触发</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onReady</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面首次渲染完毕时执行，一个页面只会调用一次，代表页面已经准备妥当（可以操作 Dom）</span>\n   <span class="pl-c">// ! 如果需要获取 ajax 动态渲染的 dom 元素，可以在获取数据后设置 setData 时的回调中获取</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onHide</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面从前台变为后台时执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onUnload</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面销毁时执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onPullDownRefresh</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 触发下拉刷新时执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onReachBottom</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面触底时执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onShareAppMessage</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面被用户分享时执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onPageScroll</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面滚动时执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>Component</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Component({\n  // 在组件中是否使用全局 css 样式\n  options: {\n    addGlobalClass: true,\n  },\n  // 组件的属性列表（从父接收）\n  properties: {\n    paramA: Number,\n    paramB: String,\n  },\n  data: {\n    text: \'This is page data.\',\n  },\n  created() {\n    // 在组件实例刚刚被创建时执行，注意此时不能调用 setData\n  },\n  attached() {\n    //  在组件实例进入页面节点树时执行\n  },\n  ready() {\n    // 在组件布局完成后执行\n  },\n  detached() {\n    // 在组件实例被从页面节点树移除时执行\n  },\n  methods: {\n    // 事件响应函数\n    viewTap: function () {\n      // ...\n    },\n  },\n});"><pre class="notranslate"><span class="pl-v">Component</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c">// 在组件中是否使用全局 css 样式</span>\n  <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">addGlobalClass</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 组件的属性列表（从父接收）</span>\n  <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">paramA</span>: <span class="pl-v">Number</span><span class="pl-kos">,</span>\n    <span class="pl-c1">paramB</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">text</span>: <span class="pl-s">\'This is page data.\'</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">created</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 在组件实例刚刚被创建时执行，注意此时不能调用 setData</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">attached</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">//  在组件实例进入页面节点树时执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">ready</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 在组件布局完成后执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">detached</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 在组件实例被从页面节点树移除时执行</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>\n    <span class="pl-c">// 事件响应函数</span>\n    <span class="pl-en">viewTap</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// ...</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-2">路由</h2>\n<p dir="auto"><strong>跳转到其他页面</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 跳转至非 tabbar 页面（ 保留当前页面，可以返回到本页面）\nwx.navigateTo({\n  url: \'../articleDetail/articleDetail?id=7\',\n});\n\n// 关闭当前的页面再跳转，不可返回\nwx.navigateTo({\n  url: `../mediaCoverage_detail/mediaCoverage_detail?id=${data.id}`,\n});\n\n// 关闭所有页面，打开到应用内的某个页面(支持所有页面)\nwx.reLaunch({\n  url: \'../sort/sort\',\n});\n\n//跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面\nwx.switchTab({\n  url: \'../whereCanSearch/whereCanSearch\',\n});"><pre class="notranslate"><span class="pl-c">// 跳转至非 tabbar 页面（ 保留当前页面，可以返回到本页面）</span>\n<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">url</span>: <span class="pl-s">\'../articleDetail/articleDetail?id=7\'</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 关闭当前的页面再跳转，不可返回</span>\n<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">url</span>: <span class="pl-s">`../mediaCoverage_detail/mediaCoverage_detail?id=<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 关闭所有页面，打开到应用内的某个页面(支持所有页面)</span>\n<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">reLaunch</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">url</span>: <span class="pl-s">\'../sort/sort\'</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-c">//跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面</span>\n<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">switchTab</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">url</span>: <span class="pl-s">\'../whereCanSearch/whereCanSearch\'</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>返回页面</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 返回上一页\nwx.navigateBack({ delta: 1 });"><pre class="notranslate"><span class="pl-c">// 返回上一页</span>\n<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateBack</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">delta</span>: <span class="pl-c1">1</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>页面栈</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="getCurrentPages();"><pre class="notranslate"><span class="pl-en">getCurrentPages</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  click_address() {\n    let pages = getCurrentPages(); // 获取页面栈\n    let current = pages[pages.length - 1]; // 当前页面\n    let url = current.route; //当前页面url\n    let options = current.options; //如果要获取url中所带的参数可以查看options\n    let prevpage = pages[pages.length - 2]; // 上一个页面\n    let data = prevpage.data; // 获取上一页data里的数据\n    if (prevPage) {\n      //存在上一页\n      prevPage.changeDataPageA(\'load\'); // 调用上一页的函数\n      prevPage.setData({ address_id: id }); // 修改上一页的数据\n      wx.navigateBack(); // 返回上一页\n    }\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">click_address</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">let</span> <span class="pl-s1">pages</span> <span class="pl-c1">=</span> <span class="pl-en">getCurrentPages</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 获取页面栈</span>\n    <span class="pl-k">let</span> <span class="pl-s1">current</span> <span class="pl-c1">=</span> <span class="pl-s1">pages</span><span class="pl-kos">[</span><span class="pl-s1">pages</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">;</span> <span class="pl-c">// 当前页面</span>\n    <span class="pl-k">let</span> <span class="pl-s1">url</span> <span class="pl-c1">=</span> <span class="pl-s1">current</span><span class="pl-kos">.</span><span class="pl-c1">route</span><span class="pl-kos">;</span> <span class="pl-c">//当前页面url</span>\n    <span class="pl-k">let</span> <span class="pl-s1">options</span> <span class="pl-c1">=</span> <span class="pl-s1">current</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">;</span> <span class="pl-c">//如果要获取url中所带的参数可以查看options</span>\n    <span class="pl-k">let</span> <span class="pl-s1">prevpage</span> <span class="pl-c1">=</span> <span class="pl-s1">pages</span><span class="pl-kos">[</span><span class="pl-s1">pages</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">2</span><span class="pl-kos">]</span><span class="pl-kos">;</span> <span class="pl-c">// 上一个页面</span>\n    <span class="pl-k">let</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-s1">prevpage</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">;</span> <span class="pl-c">// 获取上一页data里的数据</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">prevPage</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">//存在上一页</span>\n      <span class="pl-s1">prevPage</span><span class="pl-kos">.</span><span class="pl-en">changeDataPageA</span><span class="pl-kos">(</span><span class="pl-s">\'load\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 调用上一页的函数</span>\n      <span class="pl-s1">prevPage</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">address_id</span>: <span class="pl-s1">id</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 修改上一页的数据</span>\n      <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateBack</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 返回上一页</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-3">重要组件</h2>\n<h3 id="main-heading-H3-4">布局元素</h3>\n<ul dir="auto">\n<li>image</li>\n<li>view，text</li>\n<li>picker</li>\n<li>video</li>\n</ul>\n<h3 id="main-heading-H3-5">开放能力</h3>\n<p dir="auto"><strong>web-view</strong></p>\n<p dir="auto">承载网页的容器。会自动铺满整个小程序页面。</p>\n<p dir="auto">配置：src 属性 为webview 指向网页的链接。可打开关联的公众号的文章，其它网页需登录小程序管理后台配置业务域名。<br>\n调试：微信开发者工具最新版本， 在web-view页面点击鼠标右键可出现调试按钮。<br>\n其他接口：</p>\n<ul dir="auto">\n<li>web-view网页中可使用JSSDK 1.3.2提供的接口返回小程序页面，支持大部分路由接口。</li>\n<li>web-view网页中仅支持部分JSSDK接口。</li>\n<li>用户分享时可获取当前web-view的URL，即在onShareAppMessage回调中返回webViewUrl参数。</li>\n<li></li>\n</ul>\n<h2 id="main-heading-H2-6">数据交互</h2>\n<h3 id="main-heading-H3-7">模板</h3>\n<p dir="auto">（1）动态 class</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;view\n  wx:for=&quot;{{mediaData}}&quot;\n  class=&quot;coverageBox {{(index &lt; mediaData.length -1) ? \'border_bottom\':\'\' }}&quot;\n  data-index=&quot;{{index}}&quot;\n&gt;&lt;/view&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span>\n  <span class="pl-c1">wx:for</span>="<span class="pl-s">{{mediaData}}</span>"\n  <span class="pl-c1">class</span>="<span class="pl-s">coverageBox {{(index &lt; mediaData.length -1) ? \'border_bottom\':\'\' }}</span>"\n  <span class="pl-c1">data-index</span>="<span class="pl-s">{{index}}</span>"\n<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">（2）列表渲染</p>\n<p dir="auto"><code class="notranslate">wx:for</code> 控制属性绑定一个数组，默认数组的当前项的下标变量名默认为 index，数组当前项的变量名默认为 item。使用 wx:for-item 可以指定数组当前元素的变量名，使用 wx:for-index 可以指定数组当前下标的变量名：</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;view wx:for=&quot;{{array}}&quot; wx:for-index=&quot;idx&quot; wx:for-item=&quot;itemName&quot; wx:key=&quot;id&quot;&gt;\n  {{idx}}: {{itemName.message}}\n&lt;/view&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:for</span>="<span class="pl-s">{{array}}</span>" <span class="pl-c1">wx:for-index</span>="<span class="pl-s">idx</span>" <span class="pl-c1">wx:for-item</span>="<span class="pl-s">itemName</span>" <span class="pl-c1">wx:key</span>="<span class="pl-s">id</span>"<span class="pl-kos">&gt;</span>\n  {{idx}}: {{itemName.message}}\n<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">（3）条件渲染</p>\n<p dir="auto"><code class="notranslate">wx:if</code>，来判断是否需要渲染该代码块：</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;view wx:if=&quot;{{condition}}&quot;&gt;True&lt;/view&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:if</span>="<span class="pl-s">{{condition}}</span>"<span class="pl-kos">&gt;</span>True<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">也可以用 <code class="notranslate">wx:elif</code> 和 <code class="notranslate">wx:else</code> 来添加一个 else 块：</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;view wx:if=&quot;{{length &gt; 5}}&quot;&gt;1&lt;/view&gt;\n&lt;view wx:elif=&quot;{{length &gt; 2}}&quot;&gt;2&lt;/view&gt;\n&lt;view wx:else&gt;3&lt;/view&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:if</span>="<span class="pl-s">{{length &gt; 5}}</span>"<span class="pl-kos">&gt;</span>1<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:elif</span>="<span class="pl-s">{{length &gt; 2}}</span>"<span class="pl-kos">&gt;</span>2<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">wx:else</span><span class="pl-kos">&gt;</span>3<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto"><code class="notranslate">block wx:if</code></p>\n<p dir="auto">是一个包装元素，并不会展示。如果要一次性判断多个组件标签，可以使用 标签将多个组件包装起来，并在上边使用 wx:if 控制属性。</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;block wx:if=&quot;{{true}}&quot;&gt;\n  &lt;view&gt;view1&lt;/view&gt;\n  &lt;view&gt;view2&lt;/view&gt;\n&lt;/block&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">block</span> <span class="pl-c1">wx:if</span>="<span class="pl-s">{{true}}</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>view1<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>view2<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">block</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto"><code class="notranslate">wx:if vs hidden</code></p>\n<p dir="auto">频繁切换：用 hidden，逻辑切换：用 wx:if，类似于 v-if 与 v-show。</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;view hidden=&quot;{{true}}&quot;&gt;show&lt;/view&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">hidden</span>="<span class="pl-s">{{true}}</span>"<span class="pl-kos">&gt;</span>show<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span></pre></div>\n<h3 id="main-heading-H3-8">setData</h3>\n<p dir="auto"><code class="notranslate">setData</code> 函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的 this.data 的值（同步）。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="this.setData(\n  {\n    text: \'changed data\',\n  },\n  function () {\n    // setData引起的界面更新渲染完毕后的回调函数\n  },\n);"><pre class="notranslate"><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>\n  <span class="pl-kos">{</span>\n    <span class="pl-c1">text</span>: <span class="pl-s">\'changed data\'</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// setData引起的界面更新渲染完毕后的回调函数</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" changeItemInArray() {\n    // 对于对象或数组字段，可以直接修改一个其下的子字段，这样做通常比修改整个对象或数组更好\n    this.setData({\n      \'array[0].text\': \'changed data\'\n    })\n  },\n  changeItemInObject() {\n    this.setData({\n      \'object.text\': \'changed data\'\n    })\n  },"><pre class="notranslate"> <span class="pl-en">changeItemInArray</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 对于对象或数组字段，可以直接修改一个其下的子字段，这样做通常比修改整个对象或数组更好</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-s">\'array[0].text\'</span>: <span class="pl-s">\'changed data\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">changeItemInObject</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-s">\'object.text\'</span>: <span class="pl-s">\'changed data\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>\n<h3 id="main-heading-H3-9">跨页面传值</h3>\n<ul dir="auto">\n<li>onLoad 的参数中获取打开当前页面路径中的参数。</li>\n<li>app.globalData</li>\n<li>wx.Storage</li>\n<li>组件 triggerEvent(eventName, detail)</li>\n</ul>\n<h2 id="main-heading-H2-10">授权登录与用户信息</h2>\n<h3 id="main-heading-H3-11">获取用户信息（昵称、头像等）</h3>\n<p dir="auto">获取用户信息有两种方式。一种是通过 wx.getUserInfo() ，静默获取用户信息，但是需要用户之前授过权，否则拿不到信息。另一种方式是通过微信开放能力，通过 <code class="notranslate">&lt;button class="agree-btn" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo"&gt;微信授权登录&lt;/button&gt;</code> 的方式由用户主动触发，一定能拿到用户信息（昵称、头像、性别、地区..）。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href=""><img src="" alt="" style="max-width: 100%;"></a></p>\n<h3 id="main-heading-H3-12">登录凭证</h3>\n<p dir="auto">前端开发者调用 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html" rel="nofollow">wx.login()</a> 获取 临时登录凭证code ，并回传到开发者服务器。开发者服务器接收到 code，结合 appid、appsecret，通过后台服务调用 <a href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/login/auth.code2Session.html" rel="nofollow">auth.code2Session</a> 接口，换取 用户唯一标识 OpenID 和 会话密钥 session_key，如果用户已满足 UnionID 下发条件的情况下会返回开放平台唯一标识 unionId。（<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html" rel="nofollow">UnionID 机制说明</a>）</p>\n<p dir="auto">之后开发者服务器可以根据用户标识来生成自定义登录态，用于后续业务逻辑中前后端交互时识别用户身份。</p>\n<p dir="auto">注意：</p>\n<ul dir="auto">\n<li>会话密钥 session_key 是对用户数据进行 加密签名 的密钥。为了应用自身的数据安全，开发者服务器不应该把会话密钥下发到小程序，也不应该对外提供这个密钥。</li>\n<li>临时登录凭证 code 只能使用一次</li>\n</ul>\n<h3 id="main-heading-H3-13">获取手机号</h3>\n<p dir="auto">通过微信开放能力 <code class="notranslate">&lt;button class="agree-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"&gt;授权绑定手机号&lt;/button&gt;</code> 获取到加密数据 encryptedData 和初始向量 iv，后端结合 session_key 可 解密出手机号。</p>\n<p dir="auto">注意：</p>\n<p dir="auto">在回调中调用 wx.login 登录，可能会刷新登录态。此时服务器使用 code 换取的 sessionKey 不是加密时使用的 sessionKey，导致解密失败。建议开发者提前进行 login；或者在回调中先使用 checkSession 进行登录态检查，避免 login 刷新登录态。</p>\n<h2 id="main-heading-H2-14">调试</h2>\n<h3 id="main-heading-H3-15">开发者工具</h3>\n<p dir="auto">（1）断点调试</p>\n<p dir="auto">打开调试器工具，按下快捷键 <code class="notranslate">contrl+p</code>，输入搜索的文件名，例如：<code class="notranslate">home.js</code>，而后打断点进行调试。</p>\n<p dir="auto">（2）<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/remote-debug.html" rel="nofollow">真机调试</a></p>\n<p dir="auto">（3）<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/debug.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BC%96%E8%AF%91" rel="nofollow">自定义编译</a></p>\n<p dir="auto"><code class="notranslate">scene</code> 扫码的参数可以使用 escape 加密， unescape 解析。</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;file&quot;: &quot;project.config.json&quot;,\n  &quot;miniprogram&quot;: {\n    &quot;current&quot;: -1,\n    &quot;list&quot;: [\n      {\n        &quot;id&quot;: -1,\n        &quot;name&quot;: &quot;首页分享给代理人 yanyue404&quot;,\n        &quot;pathName&quot;: &quot;pages/auth_login/auth_login&quot;,\n        &quot;query&quot;: &quot;homePage=true&amp;accountId=172&quot;,\n        &quot;scene&quot;: null\n      },\n      {\n        &quot;id&quot;: -1,\n        &quot;name&quot;: &quot;点亮星星扫码进入代理人&quot;,\n        &quot;pathName&quot;: &quot;pages/auth_login/auth_login&quot;,\n        &quot;query&quot;: &quot;scene=a%3D172%26t%3Dhome_foreign&quot;,\n        &quot;scene&quot;: &quot;&quot;\n      }\n    ]\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"file"</span>: <span class="pl-s"><span class="pl-pds">"</span>project.config.json<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"miniprogram"</span>: {\n    <span class="pl-ent">"current"</span>: <span class="pl-c1">-1</span>,\n    <span class="pl-ent">"list"</span>: [\n      {\n        <span class="pl-ent">"id"</span>: <span class="pl-c1">-1</span>,\n        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>首页分享给代理人 yanyue404<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"pathName"</span>: <span class="pl-s"><span class="pl-pds">"</span>pages/auth_login/auth_login<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"query"</span>: <span class="pl-s"><span class="pl-pds">"</span>homePage=true&amp;accountId=172<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"scene"</span>: <span class="pl-c1">null</span>\n      },\n      {\n        <span class="pl-ent">"id"</span>: <span class="pl-c1">-1</span>,\n        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>点亮星星扫码进入代理人<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"pathName"</span>: <span class="pl-s"><span class="pl-pds">"</span>pages/auth_login/auth_login<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"query"</span>: <span class="pl-s"><span class="pl-pds">"</span>scene=a%3D172%26t%3Dhome_foreign<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"scene"</span>: <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>\n      }\n    ]\n  }\n}</pre></div>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>query 解密 （escape）</th>\n<th>query 加密（unescape）</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>"query": "scene=a=172&amp;t=personalCard"</td>\n<td>"query": "scene=a%3D172%26t%3DpersonalCard"</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto">（4）弱网调试</p>\n<p dir="auto">借助调试器 Network 选项，可选择<code class="notranslate">Fast 3G</code>网络进行调试。</p>\n<h3 id="main-heading-H3-16">真机</h3>\n<p dir="auto">以下的方法都借助 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/usability/debug.html" rel="nofollow">vConsole</a>:</p>\n<p dir="auto">（1）体验版调试</p>\n<p dir="auto">点击右上角<code class="notranslate">...</code>图标，开启调试模式，查看 <code class="notranslate">vConsole</code> 输出面板。</p>\n<p dir="auto">建议将所有的请求都进行打印：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 成功日志输出\nconsole.log(\'Request Successful\', {\n  url,\n  params,\n  result,\n});\n\n// 失败日志输出\nconsole.log(\'Request Error\', {\n  url,\n  params,\n  result,\n});"><pre class="notranslate"><span class="pl-c">// 成功日志输出</span>\n<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'Request Successful\'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n  url<span class="pl-kos">,</span>\n  params<span class="pl-kos">,</span>\n  result<span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 失败日志输出</span>\n<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'Request Error\'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n  url<span class="pl-kos">,</span>\n  params<span class="pl-kos">,</span>\n  result<span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">（2）线上版本调试</p>\n<p dir="auto">先在体验版或开发版打开调试，再切到正式版就能看到 <code class="notranslate">vConsole</code>。</p>\n<h2 id="main-heading-H2-17">周边</h2>\n<ul dir="auto">\n<li><a href="https://github.com/NervJS/taro">taro</a> - 多端开发框架</li>\n<li><a href="https://github.com/weilanwl/ColorUI">ColorUI</a> - 鲜亮的高饱和色彩，专注视觉的小程序组件库</li>\n<li><a href="https://github.com/icindy/wxParse">wxParse</a> - 微信小程序富文本解析自定义组件，支持 HTML 及 markdown 解析</li>\n<li><a href="https://github.com/TooBug/wemark">wemark</a> - 小程序中的 Markdown 渲染仓库</li>\n<li><a href="https://github.com/youzan/vant-weapp">vant-weapp</a> - 轻量、可靠的小程序 UI 组件库</li>\n<li><a href="https://github.com/gxt19940130/demos/tree/master/weChatApp">demos-weChatApp</a> - 微信小程序版知乎</li>\n<li><a href="https://github.com/hx-dl/qjbike_wxapp">qjbike_wxapp</a> - 🛴 仿改青桔单车小程序</li>\n<li><a href="https://github.com/kezhenxu94/mini-github">mini-github</a> - GitHub WeChat Mini Program</li>\n<li><a href="https://github.com/wechat-miniprogram/miniprogram-demo">miniprogram-demo</a> - 微信小程序组件 / API / 云开发示例</li>\n<li><a href="https://github.com/opendigg/awesome-github-wechat-weapp">awesome-github-wechat-weapp</a> - 微信小程序开源项目库汇总</li>\n</ul>\n<h2 id="main-heading-H2-18">参考资料</h2>\n<ul dir="auto">\n<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/" rel="nofollow">微信官方文档 · 小程序</a></li>\n<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html" rel="nofollow">开放能力-用户信息-小程序登录</a></li>\n<li><a href="https://juejin.im/post/5a61b6a1518825732739af03" rel="nofollow">从零开始一个微信小程序版知乎</a></li>\n<li><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/nightly.html" rel="nofollow">开发版 Nightly Build 微信开发者工具</a><br>\nThe text was updated successfully, but these errors were encountered:</li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/178"},navList:[{text:"目录",id:"main-heading-H2-0",type:a,children:[]},{text:"生命周期",id:"main-heading-H2-1",type:a,children:[]},{text:"路由",id:"main-heading-H2-2",type:a,children:[]},{text:"重要组件",id:"main-heading-H2-3",type:a,children:[{text:"布局元素",id:"main-heading-H3-4",type:s},{text:"开放能力",id:"main-heading-H3-5",type:s}]},{text:"数据交互",id:"main-heading-H2-6",type:a,children:[{text:"模板",id:"main-heading-H3-7",type:s},{text:"setData",id:"main-heading-H3-8",type:s},{text:"跨页面传值",id:"main-heading-H3-9",type:s}]},{text:"授权登录与用户信息",id:"main-heading-H2-10",type:a,children:[{text:"获取用户信息（昵称、头像等）",id:"main-heading-H3-11",type:s},{text:"登录凭证",id:"main-heading-H3-12",type:s},{text:"获取手机号",id:"main-heading-H3-13",type:s}]},{text:"调试",id:"main-heading-H2-14",type:a,children:[{text:"开发者工具",id:"main-heading-H3-15",type:s},{text:"真机",id:"main-heading-H3-16",type:s}]},{text:"周边",id:"main-heading-H2-17",type:a,children:[]},{text:"参考资料",id:"main-heading-H2-18",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:t,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:t,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:l}},serverRendered:!0}}("H3","H2","","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

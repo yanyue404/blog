@@ -1,0 +1,482 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>从输入URL到页面加载的过程（下） | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="大纲 从浏览器接收 url 到开启网络请求线程 多进程的浏览器 多线程的浏览器内核 网络请求都是单独的线程 开启网络线程到发出一个完整的 http 请求 DNS 查询得到 IP tcp/ip 请求 五层因特网协议栈 从服务器接收到请求到对应后台接收到请求 负载均衡 后台的处理 后台和前台的 http"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="从输入URL到页面加载的过程（下）"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="大纲 从浏览器接收 url 到开启网络请求线程 多进程的浏览器 多线程的浏览器内核 网络请求都是单独的线程 开启网络线程到发出一个完整的 http 请求 DNS 查询得到 IP tcp/ip 请求 五层因特网协议栈 从服务器接收到请求到对应后台接收到请求 负载均衡 后台的处理 后台和前台的 http"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="从输入URL到页面加载的过程（下）"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="大纲 从浏览器接收 url 到开启网络请求线程 多进程的浏览器 多线程的浏览器内核 网络请求都是单独的线程 开启网络线程到发出一个完整的 http 请求 DNS 查询得到 IP tcp/ip 请求 五层因特网协议栈 从服务器接收到请求到对应后台接收到请求 负载均衡 后台的处理 后台和前台的 http"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H2-0" title="大纲" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              大纲
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H2-1" title="解析页面流程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              解析页面流程
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-2" title="流程简述" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  流程简述
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-3" title="HTML 解析，构建 DOM" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  HTML 解析，构建 DOM
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-4" title="生成 CSS 规则" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  生成 CSS 规则
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-5" title="构建渲染树" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  构建渲染树
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-6" title="渲染" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  渲染
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-7" title="Chrome 中的调试" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Chrome 中的调试
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-8" title="资源外链的下载" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  资源外链的下载
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-9" title="loaded 和 domcontentloaded" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  loaded 和 domcontentloaded
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H2-10" title="JS 引擎解析过程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              JS 引擎解析过程
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-11" title="执行上下文" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  执行上下文
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-12" title="作用域链" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  作用域链
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/227#main-heading-H3-13" title="事件循环机制" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  事件循环机制
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>从输入URL到页面加载的过程（下）</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>从输入URL到页面加载的过程（下）</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2022-04-02</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 19 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">大纲</h2>
+<ul dir="auto">
+<li>从浏览器接收 url 到开启网络请求线程
+<ul dir="auto">
+<li>多进程的浏览器</li>
+<li>多线程的浏览器内核</li>
+<li>网络请求都是单独的线程</li>
+</ul>
+</li>
+<li>开启网络线程到发出一个完整的 http 请求
+<ul dir="auto">
+<li>DNS 查询得到 IP</li>
+<li>tcp/ip 请求</li>
+<li>五层因特网协议栈</li>
+</ul>
+</li>
+<li>从服务器接收到请求到对应后台接收到请求
+<ul dir="auto">
+<li>负载均衡</li>
+<li>后台的处理</li>
+</ul>
+</li>
+<li>后台和前台的 http 交互
+<ul dir="auto">
+<li>http 报文结构</li>
+<li>cookie 交互</li>
+<li>gzip 压缩</li>
+<li>长连接与短连接</li>
+<li>http 2.0</li>
+<li>https</li>
+<li>http 的缓存</li>
+</ul>
+</li>
+<li>解析页面流程
+<ul dir="auto">
+<li>流程简述</li>
+<li>HTML 解析，构建 DOM</li>
+<li>生成 CSS 规则</li>
+<li>构建渲染树</li>
+<li>渲染</li>
+<li>Chrome 中的调试</li>
+<li>资源外链的下载</li>
+<li>loaded 和 domcontentloaded</li>
+</ul>
+</li>
+<li>JS 引擎解析过程
+<ul dir="auto">
+<li>执行上下文</li>
+<li>作用域链</li>
+<li>事件循环机制</li>
+</ul>
+</li>
+</ul>
+<h2 id="main-heading-H2-1">解析页面流程</h2>
+<p dir="auto">前面有提到 http 交互，那么接下来就是浏览器获取到 html，然后解析，渲染</p>
+<p dir="auto"><strong>这部分很多都参考了网上资源，特别是图片，参考了来源中的文章</strong></p>
+<h3 id="main-heading-H3-2">流程简述</h3>
+<p dir="auto">浏览器内核拿到内容后，渲染步骤大致可以分为以下几步：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1. 解析HTML，构建DOM树
+
+2. 解析CSS，生成CSS规则树
+
+3. 合并DOM树和CSS规则，生成render树
+
+4. 布局render树（Layout/reflow），负责各元素尺寸、位置的计算
+
+5. 绘制render树（paint），绘制页面像素信息
+
+6. 浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上"><pre class="notranslate"><code class="notranslate">1. 解析HTML，构建DOM树
+
+2. 解析CSS，生成CSS规则树
+
+3. 合并DOM树和CSS规则，生成render树
+
+4. 布局render树（Layout/reflow），负责各元素尺寸、位置的计算
+
+5. 绘制render树（paint），绘制页面像素信息
+
+6. 浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上
+</code></pre></div>
+<p dir="auto">如下图：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/31afd80d9fbd601695fed29f04c895b0a6f7a9e0df807d11f713daf436531105/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f72656e64696e672e706e67"><img src="https://camo.githubusercontent.com/31afd80d9fbd601695fed29f04c895b0a6f7a9e0df807d11f713daf436531105/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f72656e64696e672e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rending.png" style="max-width:100%"></a></p>
+<h3 id="main-heading-H3-3">HTML 解析，构建 DOM</h3>
+<p dir="auto">整个渲染步骤中，HTML 解析是第一步。</p>
+<p dir="auto">简单的理解，这一步的流程是这样的：<strong>浏览器解析 HTML，构建 DOM 树。</strong></p>
+<p dir="auto">但实际上，在分析整体构建时，却不能一笔带过，得稍微展开。</p>
+<p dir="auto">解析 HTML 到构建出 DOM 当然过程可以简述如下：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Bytes → characters → tokens → nodes → DOM"><pre class="notranslate"><code class="notranslate">Bytes → characters → tokens → nodes → DOM
+</code></pre></div>
+<p dir="auto">譬如假设有这样一个 HTML 页面：（以下部分的内容出自参考来源，修改了下格式）</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    <title>Critical Path</title>
+  </head>
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <div><img src="awesome-photo.jpg"></div>
+  </body>
+</html>'><pre class="notranslate"><code class="notranslate">&lt;html>
+  &lt;head>
+    &lt;meta name="viewport" content="width=device-width,initial-scale=1">
+    &lt;link href="style.css" rel="stylesheet">
+    &lt;title>Critical Path&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;p>Hello &lt;span>web performance&lt;/span> students!&lt;/p>
+    &lt;div>&lt;img src="awesome-photo.jpg">&lt;/div>
+  &lt;/body>
+&lt;/html>
+</code></pre></div>
+<p dir="auto">浏览器的处理如下：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/657736d93ec1eed32c203f9f13c0005d8bbc4f5cc0cd393cfc356d06cfbd6af0/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f68746d6c2e706e67"><img src="https://camo.githubusercontent.com/657736d93ec1eed32c203f9f13c0005d8bbc4f5cc0cd393cfc356d06cfbd6af0/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f68746d6c2e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_html.png" style="max-width:100%"></a></p>
+<p dir="auto">列举其中的一些重点过程：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1. Conversion转换：浏览器将获得的HTML内容（Bytes）基于他的编码转换为单个字符
+
+2. Tokenizing分词：浏览器按照HTML规范标准将这些字符转换为不同的标记token。每个token都有自己独特的含义以及规则集
+
+3. Lexing词法分析：分词的结果是得到一堆的token，此时把他们转换为对象，这些对象分别定义他们的属性和规则
+
+4. DOM构建：因为HTML标记定义的就是不同标签之间的关系，这个关系就像是一个树形结构一样
+例如：body对象的父节点就是HTML对象，然后段略p对象的父节点就是body对象"><pre class="notranslate"><code class="notranslate">1. Conversion转换：浏览器将获得的HTML内容（Bytes）基于他的编码转换为单个字符
+
+2. Tokenizing分词：浏览器按照HTML规范标准将这些字符转换为不同的标记token。每个token都有自己独特的含义以及规则集
+
+3. Lexing词法分析：分词的结果是得到一堆的token，此时把他们转换为对象，这些对象分别定义他们的属性和规则
+
+4. DOM构建：因为HTML标记定义的就是不同标签之间的关系，这个关系就像是一个树形结构一样
+例如：body对象的父节点就是HTML对象，然后段略p对象的父节点就是body对象
+</code></pre></div>
+<p dir="auto">最后的 DOM 树如下：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/de6513678f2e7dc6bec705c00397ccbd7e17cebf590eb4b10e315691c0998f0f/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f646f6d2e706e67"><img src="https://camo.githubusercontent.com/de6513678f2e7dc6bec705c00397ccbd7e17cebf590eb4b10e315691c0998f0f/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f646f6d2e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_dom.png" style="max-width:100%"></a></p>
+<h3 id="main-heading-H3-4">生成 CSS 规则</h3>
+<p dir="auto">同理，CSS 规则树的生成也是类似。简述为：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Bytes → characters → tokens → nodes → CSSOM"><pre class="notranslate"><code class="notranslate">Bytes → characters → tokens → nodes → CSSOM
+</code></pre></div>
+<p dir="auto">譬如<code class="notranslate">style.css</code>内容如下：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="body { font-size: 16px }
+p { font-weight: bold }
+span { color: red }
+p span { display: none }
+img { float: right }"><pre class="notranslate"><code class="notranslate">body { font-size: 16px }
+p { font-weight: bold }
+span { color: red }
+p span { display: none }
+img { float: right }
+</code></pre></div>
+<p dir="auto">那么最终的 CSSOM 树就是：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/bf9a1f68a716cc9fadcb268e8993552330548bb375077e506653f6f4ac5a5c6e/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f6373736f6d2e706e67"><img src="https://camo.githubusercontent.com/bf9a1f68a716cc9fadcb268e8993552330548bb375077e506653f6f4ac5a5c6e/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f6373736f6d2e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_cssom.png" style="max-width:100%"></a></p>
+<h3 id="main-heading-H3-5">构建渲染树</h3>
+<p dir="auto">当 DOM 树和 CSSOM 都有了后，就要开始构建渲染树了</p>
+<p dir="auto">一般来说，渲染树和 DOM 树相对应的，但不是严格意义上的一一对应</p>
+<p dir="auto">因为有一些不可见的 DOM 元素不会插入到渲染树中，如 head 这种不可见的标签或者<code class="notranslate">display: none</code>等</p>
+<p dir="auto">整体来说可以看图：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f07bcf090769c4f9fe6ca3cca82066d87ef4dacade724dc9d36506168bcffa4c/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f72656e646572747265652e706e67"><img src="https://camo.githubusercontent.com/f07bcf090769c4f9fe6ca3cca82066d87ef4dacade724dc9d36506168bcffa4c/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f72656e646572747265652e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_rendertree.png" style="max-width:100%"></a></p>
+<h3 id="main-heading-H3-6">渲染</h3>
+<p dir="auto">有了 render 树，接下来就是开始渲染，基本流程如下：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5e9ee001c6b31913427f948ee9e43ee30bad07fadcdb4fa7756c003fe099d1ac/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f72656e64696e6770726f636573732e6a7067"><img src="https://camo.githubusercontent.com/5e9ee001c6b31913427f948ee9e43ee30bad07fadcdb4fa7756c003fe099d1ac/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f72656e64696e6770726f636573732e6a7067" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rendingprocess.jpg" style="max-width:100%"></a></p>
+<p dir="auto">图中重要的四个步骤就是：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1. 计算CSS样式
+
+2. 构建渲染树
+
+3. 布局，主要定位坐标和大小，是否换行，各种position overflow z-index属性
+
+4. 绘制，将图像绘制出来"><pre class="notranslate"><code class="notranslate">1. 计算CSS样式
+
+2. 构建渲染树
+
+3. 布局，主要定位坐标和大小，是否换行，各种position overflow z-index属性
+
+4. 绘制，将图像绘制出来
+</code></pre></div>
+<p dir="auto">然后，图中的线与箭头代表通过 js 动态修改了 DOM 或 CSS，导致了重新布局（Layout）或渲染（Repaint）</p>
+<p dir="auto">这里 Layout 和 Repaint 的概念是有区别的：</p>
+<ul dir="auto">
+<li>Layout，也称为 Reflow，即回流（又叫重排）。一般意味着元素的内容、结构、位置或尺寸发生了变化，浏览器需要重新计算样式和渲染树</li>
+<li>Repaint，即重绘。意味着元素发生的改变只是影响了元素的一些外观之类的时候（例如，背景色，边框颜色，文字颜色等），此时只需要应用新样式绘制这个元素就可以了</li>
+</ul>
+<p dir="auto">回流的成本开销要高于重绘，而且一个节点的回流往往回导致子节点以及同级节点的回流， 所以优化方案中一般都包括，尽量避免回流。</p>
+<p dir="auto"><strong>什么会引起回流？</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1.页面渲染初始化
+
+2.DOM结构改变，比如删除了某个节点
+
+3.render树变化，比如减少了padding
+
+4.窗口resize
+
+5.最复杂的一种：获取某些属性，引发回流，
+很多浏览器会对回流做优化，会等到数量足够时做一次批处理回流，
+但是除了render树的直接变化，当获取一些属性时，浏览器为了获得正确的值也会触发回流，这样使得浏览器优化无效，包括
+    （1）offset(Top/Left/Width/Height)
+     (2) scroll(Top/Left/Width/Height)
+     (3) cilent(Top/Left/Width/Height)
+     (4) width,height
+     (5) 调用了getComputedStyle()或者IE的currentStyle"><pre class="notranslate"><code class="notranslate">1.页面渲染初始化
+
+2.DOM结构改变，比如删除了某个节点
+
+3.render树变化，比如减少了padding
+
+4.窗口resize
+
+5.最复杂的一种：获取某些属性，引发回流，
+很多浏览器会对回流做优化，会等到数量足够时做一次批处理回流，
+但是除了render树的直接变化，当获取一些属性时，浏览器为了获得正确的值也会触发回流，这样使得浏览器优化无效，包括
+    （1）offset(Top/Left/Width/Height)
+     (2) scroll(Top/Left/Width/Height)
+     (3) cilent(Top/Left/Width/Height)
+     (4) width,height
+     (5) 调用了getComputedStyle()或者IE的currentStyle
+</code></pre></div>
+<p dir="auto">回流一定伴随着重绘，重绘却可以单独出现</p>
+<p dir="auto">所以一般会有一些优化方案，如：</p>
+<ul dir="auto">
+<li><strong>最小改动原则</strong>，减少逐项更改样式，最好一次性更改 style（先设置元素隐藏后再展示），或者将样式定义为 class 并一次性更新</li>
+<li><strong>批量操作 DOM</strong>，避免循环操作 dom，创建一个 <code class="notranslate">documentFragment</code> 或 div，在它上面应用所有 DOM 操作，最后再把它添加到 window.document，避免多次读取 offset 等属性。无法避免则将它们缓存到变量</li>
+<li><strong>将复杂的元素采用绝对定位或固定定位</strong>，使得它脱离文档流，否则回流代价会很高</li>
+<li><strong>开启 GPU 加速</strong>，利用 css 属性 <code class="notranslate">transform</code> 、<code class="notranslate">will-change</code> 等，比如改变元素位置，我们使用 <code class="notranslate">translate</code> 会比使用绝对定位改变其 left 、top 等来的高效，因为它不会触发重排或重绘，<code class="notranslate">transform</code> 使浏览器为元素创建⼀个 GPU 图层，这使得动画元素在一个独立的层中进行渲染。当元素的内容没有发生改变，就没有必要进行重绘。</li>
+</ul>
+<p dir="auto">再来看一个示例：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='var s = document.body.style;
+
+s.padding = "2px"; // 回流+重绘
+s.border = "1px solid red"; // 再一次 回流+重绘
+s.color = "blue"; // 再一次重绘
+s.backgroundColor = "#ccc"; // 再一次 重绘
+s.fontSize = "14px"; // 再一次 回流+重绘
+// 添加node，再一次 回流+重绘
+document.body.appendChild(document.createTextNode(&#39;abc!&#39;));'><pre class="notranslate"><code class="notranslate">var s = document.body.style;
+
+s.padding = "2px"; // 回流+重绘
+s.border = "1px solid red"; // 再一次 回流+重绘
+s.color = "blue"; // 再一次重绘
+s.backgroundColor = "#ccc"; // 再一次 重绘
+s.fontSize = "14px"; // 再一次 回流+重绘
+// 添加node，再一次 回流+重绘
+document.body.appendChild(document.createTextNode('abc!'));
+</code></pre></div>
+<p dir="auto"><strong>CSS 的标签与 JS 的&lt;script>标签在 html 中放置位置</strong></p>
+<p dir="auto">最好把 CSS 的<code class="notranslate">&lt;link></code>标签放在<code class="notranslate">&lt;head>&lt;/head></code>之间，最好把 JS 的<code class="notranslate">&lt;script></code>标签恰好放在<code class="notranslate">&lt;/body></code>之前。</p>
+<p dir="auto">把<code class="notranslate">&lt;link></code>放在<code class="notranslate">&lt;head></code>中</p>
+<p dir="auto">这种做法可以让页面逐步呈现，提高了用户体验。将样式表放在文档底部附近，会使许多浏览器（包括 Internet Explorer）不能逐步呈现页面。一些浏览器会阻止渲染，以避免在页面样式发生变化时，重新绘制页面中的元素。这种做法可以防止呈现给用户空白的页面或没有样式的内容。</p>
+<p dir="auto">把<code class="notranslate">&lt;script></code>标签恰好放在<code class="notranslate">&lt;/body></code>之前</p>
+<p dir="auto">脚本在下载和执行期间会阻止 HTML 解析。把<code class="notranslate">&lt;script></code>标签放在底部，保证 HTML 首先完成解析，将页面尽早呈现给用户。</p>
+<p dir="auto">如果一定要放在 <code class="notranslate">&lt;head></code> 中，可以让 <code class="notranslate">&lt;script></code> 标签使用 defer 属性。</p>
+<h3 id="main-heading-H3-7">Chrome 中的调试</h3>
+<p dir="auto">Chrome 的开发者工具中，Performance 中可以看到详细的渲染过程：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ec320e35d72a6d1d810a91ef143a4744c0ba57dd2b21dc4d855b302beaa6ac59/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f6368726f6d655f64656275675f312e706e67"><img src="https://camo.githubusercontent.com/ec320e35d72a6d1d810a91ef143a4744c0ba57dd2b21dc4d855b302beaa6ac59/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f6368726f6d655f64656275675f312e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_chrome_debug_1.png" style="max-width:100%"></a> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7cbd1a4bf91b736e3a54c0d420b653952d4f9c2e0457d217409c0a270fae6cd4/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f6368726f6d655f64656275675f322e706e67"><img src="https://camo.githubusercontent.com/7cbd1a4bf91b736e3a54c0d420b653952d4f9c2e0457d217409c0a270fae6cd4/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f6368726f6d655f64656275675f322e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_chrome_debug_2.png" style="max-width:100%"></a></p>
+<h3 id="main-heading-H3-8">资源外链的下载</h3>
+<p dir="auto">上面介绍了 html 解析，渲染流程。但实际上，在解析 html 时，会遇到一些资源连接，此时就需要进行单独处理了</p>
+<p dir="auto">简单起见，这里将遇到的静态资源分为一下几大类（未列举所有）：</p>
+<ul dir="auto">
+<li>CSS 样式资源</li>
+<li>JS 脚本资源</li>
+<li>img 图片类资源</li>
+</ul>
+<p dir="auto"><strong>遇到外链时的处理</strong></p>
+<p dir="auto">当遇到上述的外链时，会单独开启一个下载线程去下载资源（http1.1 中是每一个资源的下载都要开启一个 http 请求，对应一个 tcp/ip 链接）</p>
+<p dir="auto"><strong>遇到 CSS 样式资源</strong></p>
+<p dir="auto">CSS 资源的处理有几个特点：</p>
+<ul dir="auto">
+<li>CSS 下载时异步，不会阻塞浏览器构建 DOM 树</li>
+<li>但是会阻塞渲染，也就是在构建 render 时，会等到 css 下载解析完毕后才进行（这点与浏览器优化有关，防止 css 规则不断改变，避免了重复的构建）</li>
+<li>有例外，<code class="notranslate">media query</code>声明的 CSS 是不会阻塞渲染的</li>
+</ul>
+<p dir="auto"><strong>遇到 JS 脚本资源</strong></p>
+<p dir="auto">JS 脚本资源的处理有几个特点：</p>
+<ul dir="auto">
+<li>阻塞浏览器的解析，也就是说发现一个外链脚本时，需等待脚本下载完成并执行后才会继续解析 HTML</li>
+<li>浏览器的优化，一般现代浏览器有优化，在脚本阻塞时，也会继续下载其它资源（当然有并发上限），但是虽然脚本可以并行下载，解析过程仍然是阻塞的，也就是说必须这个脚本执行完毕后才会接下来的解析，并行下载只是一种优化而已</li>
+<li>defer 与 async，普通的脚本是会阻塞浏览器解析的，但是可以加上 defer 或 async 属性，这样脚本就变成异步了，可以等到解析完毕后再执行</li>
+</ul>
+<p dir="auto">注意，defer 和 async 是有区别的： <strong>defer 是延迟执行，而 async 是异步执行。</strong></p>
+<p dir="auto">简单的说：</p>
+<ul dir="auto">
+<li><code class="notranslate">async</code>是异步执行，异步下载完毕后就会执行，不确保执行顺序，一定在<code class="notranslate">onload</code>前，但不确定在<code class="notranslate">DOMContentLoaded</code>事件的前或后</li>
+<li><code class="notranslate">defer</code>是延迟执行，在浏览器看起来的效果像是将脚本放在了<code class="notranslate">body</code>后面一样（虽然按规范应该是在<code class="notranslate">DOMContentLoaded</code>事件前，但实际上不同浏览器的优化效果不一样，也有可能在它后面）</li>
+</ul>
+<p dir="auto"><strong>遇到 img 图片类资源</strong></p>
+<p dir="auto">遇到图片等资源时，直接就是异步下载，不会阻塞解析，下载完毕后直接用图片替换原有 src 的地方</p>
+<h3 id="main-heading-H3-9">loaded 和 domcontentloaded</h3>
+<p dir="auto">简单的对比：</p>
+<ul dir="auto">
+<li>DOMContentLoaded 事件触发时，仅当 DOM 加载完成，不包括样式表，图片(譬如如果有 async 加载的脚本就不一定完成)</li>
+<li>load 事件触发时，页面上所有的 DOM，样式表，脚本，图片都已经加载完成了</li>
+</ul>
+<h2 id="main-heading-H2-10">JS 引擎解析过程</h2>
+<p dir="auto">展开是执行上下文，作用域链，事件循环等。</p>
+<h3 id="main-heading-H3-11">执行上下文</h3>
+<p dir="auto">执行上下文可以简单理解为一个对象:</p>
+<p dir="auto">每一个执行上下文，都有三个重要属性:</p>
+<ul dir="auto">
+<li>变量对象(Variable object，VO)</li>
+<li>作用域链(词法作用域)</li>
+<li>this 指向</li>
+</ul>
+<p dir="auto">它的类型:</p>
+<ul dir="auto">
+<li>全局执行上下文</li>
+<li>函数执行上下文</li>
+<li>eval 执行上下文</li>
+</ul>
+<p dir="auto">代码执行过程:</p>
+<ul dir="auto">
+<li>浏览器首次载入脚本，创建 全局上下文 (global EC)</li>
+<li>全局执行上下文 (caller) 逐行 自上而下 执行。遇到函数时，函数执行上下文 (callee) 被 push 到执行栈顶层</li>
+<li>函数执行上下文被激活，成为 active EC, 开始执行函数中的代码，caller 被挂起</li>
+<li>函数执行完后，callee 被 pop 移除出执行栈，控制权交还全局上下文 (caller)，继续执行</li>
+</ul>
+<p dir="auto"><strong>VO 与 AO</strong></p>
+<p dir="auto">VO 是执行上下文的属性（抽象概念），但是只有全局上下文的变量对象允许通过 VO 的属性名称来间接访问（因为在全局上下文里，全局对象自身就是变量对象）</p>
+<p dir="auto">AO（activation object)，当函数被调用者激活，AO 就被创建了 （变量对象是与执行上下文相关的数据作用域，存储了在上下文中定义的变量和函数声明。）</p>
+<p dir="auto">可以理解为：</p>
+<ul dir="auto">
+<li>
+<p dir="auto">在函数上下文中：VO === AO</p>
+</li>
+<li>
+<p dir="auto">在全局上下文中：VO === this === global</p>
+</li>
+</ul>
+<p dir="auto">总的来说，VO 中会存放一些变量信息（如声明的变量，函数，arguments 参数等等）</p>
+<h3 id="main-heading-H3-12">作用域链</h3>
+<p dir="auto">我们知道，我们可以在执行上下文中访问到<strong>父级甚至全局的变量</strong>，这便是作用域链的功劳。作用域链可以理解为一组对象列表，包含 父级和自身的变量对象，因此我们便能通过作用域链访问到父级里声明的变量或者函数，原理和原型链很相似。</p>
+<p dir="auto">由两部分组成:</p>
+<ul dir="auto">
+<li>[[scope]]属性: 指向父级变量对象和作用域链，也就是包含了父级的[[scope]]和 AO</li>
+<li>AO: 自身活动对象（当函数被调用者激活，AO 就被创建了）</li>
+</ul>
+<p dir="auto">如此 <code class="notranslate">[[scope]]</code>包含<code class="notranslate">[[scope]]</code>，便自上而下形成一条链式作用域。</p>
+<p dir="auto">参考链接</p>
+<ul dir="auto">
+<li><a href="https://juejin.cn/post/6844903473683628046" rel="nofollow">冴羽 - JavaScript 深入之作用域链</a></li>
+<li><a href="https://juejin.cn/post/6844903474027560968" rel="nofollow">冴羽 - JavaScript 深入之执行上下文</a></li>
+</ul>
+<h3 id="main-heading-H3-13">事件循环机制</h3>
+<p dir="auto">JS 中存在一个叫做执行栈的东西。JS 的所有同步代码都在这里执行，当执行一个函数调用时，会创建一个新的执行环境并压到栈中开始执行函数中的代码，当函数中的代码执行完毕后将执行环境从栈中弹出，当栈空了，也就代表执行完毕。</p>
+<p dir="auto">所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入"任务队列"（task queue）的任务，只有"任务队列"通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。</p>
+<p dir="auto">具体来说，异步执行的运行机制如下。（同步执行也是如此，因为它可以被视为没有异步任务的异步执行。）</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。
+
+（2）主线程之外，还存在一个"任务队列"（task queue）。只要异步任务有了运行结果，就在"任务队列"之中放置一个事件。
+
+（3）一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。
+
+（4）主线程不断重复上面的第三步。'><pre class="notranslate"><code class="notranslate">（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。
+
+（2）主线程之外，还存在一个"任务队列"（task queue）。只要异步任务有了运行结果，就在"任务队列"之中放置一个事件。
+
+（3）一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。
+
+（4）主线程不断重复上面的第三步。
+</code></pre></div>
+<p dir="auto">下图就是主线程和任务队列的示意图。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a9af6fdefa3ee162eda7748e6df83875490a96abd9b107a0562bb312be5d53b2/68747470733a2f2f7777772e7275616e796966656e672e636f6d2f626c6f67696d672f61737365742f323031342f6267323031343130303830312e6a7067"><img src="https://camo.githubusercontent.com/a9af6fdefa3ee162eda7748e6df83875490a96abd9b107a0562bb312be5d53b2/68747470733a2f2f7777772e7275616e796966656e672e636f6d2f626c6f67696d672f61737365742f323031342f6267323031343130303830312e6a7067" alt="" data-canonical-src="https://www.ruanyifeng.com/blogimg/asset/2014/bg2014100801.jpg" style="max-width:100%"></a></p>
+<p dir="auto">只要主线程空了，就会去读取"任务队列"，这就是 JavaScript 的运行机制。这个过程会不断重复。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c477bb0db9cdc411bafbae00a8b53927c0edd082a1c54c3406ff8474627a7fe8/68747470733a2f2f7777772e7275616e796966656e672e636f6d2f626c6f67696d672f61737365742f323031342f6267323031343130303830322e706e67"><img src="https://camo.githubusercontent.com/c477bb0db9cdc411bafbae00a8b53927c0edd082a1c54c3406ff8474627a7fe8/68747470733a2f2f7777772e7275616e796966656e672e636f6d2f626c6f67696d672f61737365742f323031342f6267323031343130303830322e706e67" alt="" data-canonical-src="https://www.ruanyifeng.com/blogimg/asset/2014/bg2014100802.png" style="max-width:100%"></a></p>
+<p dir="auto">上图中，主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部 API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。</p>
+<p dir="auto">执行栈中的代码（同步任务），总是在读取"任务队列"（异步任务）之前执行。</p>
+<p dir="auto">主线程从"任务队列"中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为 Event Loop（事件循环）。</p>
+<p dir="auto">当一个异步任务执行完毕后会将任务添加到任务队列中。例如：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="setTimeout((_) => {}, 1000);"><pre class="notranslate"><span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">_</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1000</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">代码中 setTimeout 会在一秒后将回调函数添加到任务队列中。事实上异步队列也分两种类型：微任务、宏任务。</p>
+<p dir="auto">微任务和宏任务的区别是，当执行栈空了，会检查微任务队列中是否有任务，将微任务队列中的任务依次拿出来执行一遍。当微任务队列空了，从宏任务队列中拿出来一个任务去执行，执行完毕后检查微任务队列，微任务队列空了之后再从宏任务队列中拿出来一个任务执行。</p>
+<p dir="auto">属于微任务（microtask）的事件有以下几种：</p>
+<ul dir="auto">
+<li>Promise.then</li>
+<li>await 之后的所有代码（等同于在 Promise.then 中的回调）</li>
+<li>MutationObserver (监视对 DOM 树所做更改)</li>
+<li>process.nextTick（Node 环境）</li>
+<li>setImmediate （Node 环境）</li>
+</ul>
+<p dir="auto">属于宏任务（macrotask）的事件有以下几种：</p>
+<ul dir="auto">
+<li>script 代码块</li>
+<li>setTimeout</li>
+<li>setInterval</li>
+<li>MessageChannel</li>
+<li>requestAnimationFrame</li>
+<li>I/O</li>
+<li>UI 交互事件</li>
+</ul>
+<p dir="auto">浏览器架构</p>
+<ul dir="auto">
+<li>用户界面</li>
+<li>主进程</li>
+<li>内核
+<ul dir="auto">
+<li>渲染引擎</li>
+<li>JS 引擎
+<ul dir="auto">
+<li>执行栈</li>
+</ul>
+</li>
+<li>事件触发线程
+<ul dir="auto">
+<li>消息队列
+<ul dir="auto">
+<li>微任务</li>
+<li>宏任务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>网络异步线程</li>
+<li>定时器线程</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">参考链接</p>
+<ul dir="auto">
+<li><a href="https://www.ruanyifeng.com/blog/2014/10/event-loop.html" rel="nofollow">阮一峰 - JavaScript 运行机制详解：再谈 Event Loop</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(e,t,n,a,o,i){return{layout:"default",data:[{post:{id:1190656605,number:227,title:"从输入URL到页面加载的过程（下）",created_at:"2022-04-02T15:00:27Z",updated_at:"2025-11-23T16:06:10Z",body_html:'<h2 id="main-heading-H2-0">大纲</h2>\n<ul dir="auto">\n<li>从浏览器接收 url 到开启网络请求线程\n<ul dir="auto">\n<li>多进程的浏览器</li>\n<li>多线程的浏览器内核</li>\n<li>网络请求都是单独的线程</li>\n</ul>\n</li>\n<li>开启网络线程到发出一个完整的 http 请求\n<ul dir="auto">\n<li>DNS 查询得到 IP</li>\n<li>tcp/ip 请求</li>\n<li>五层因特网协议栈</li>\n</ul>\n</li>\n<li>从服务器接收到请求到对应后台接收到请求\n<ul dir="auto">\n<li>负载均衡</li>\n<li>后台的处理</li>\n</ul>\n</li>\n<li>后台和前台的 http 交互\n<ul dir="auto">\n<li>http 报文结构</li>\n<li>cookie 交互</li>\n<li>gzip 压缩</li>\n<li>长连接与短连接</li>\n<li>http 2.0</li>\n<li>https</li>\n<li>http 的缓存</li>\n</ul>\n</li>\n<li>解析页面流程\n<ul dir="auto">\n<li>流程简述</li>\n<li>HTML 解析，构建 DOM</li>\n<li>生成 CSS 规则</li>\n<li>构建渲染树</li>\n<li>渲染</li>\n<li>Chrome 中的调试</li>\n<li>资源外链的下载</li>\n<li>loaded 和 domcontentloaded</li>\n</ul>\n</li>\n<li>JS 引擎解析过程\n<ul dir="auto">\n<li>执行上下文</li>\n<li>作用域链</li>\n<li>事件循环机制</li>\n</ul>\n</li>\n</ul>\n<h2 id="main-heading-H2-1">解析页面流程</h2>\n<p dir="auto">前面有提到 http 交互，那么接下来就是浏览器获取到 html，然后解析，渲染</p>\n<p dir="auto"><strong>这部分很多都参考了网上资源，特别是图片，参考了来源中的文章</strong></p>\n<h3 id="main-heading-H3-2">流程简述</h3>\n<p dir="auto">浏览器内核拿到内容后，渲染步骤大致可以分为以下几步：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1. 解析HTML，构建DOM树\n\n2. 解析CSS，生成CSS规则树\n\n3. 合并DOM树和CSS规则，生成render树\n\n4. 布局render树（Layout/reflow），负责各元素尺寸、位置的计算\n\n5. 绘制render树（paint），绘制页面像素信息\n\n6. 浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上"><pre class="notranslate"><code class="notranslate">1. 解析HTML，构建DOM树\n\n2. 解析CSS，生成CSS规则树\n\n3. 合并DOM树和CSS规则，生成render树\n\n4. 布局render树（Layout/reflow），负责各元素尺寸、位置的计算\n\n5. 绘制render树（paint），绘制页面像素信息\n\n6. 浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上\n</code></pre></div>\n<p dir="auto">如下图：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/31afd80d9fbd601695fed29f04c895b0a6f7a9e0df807d11f713daf436531105/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f72656e64696e672e706e67"><img src="https://camo.githubusercontent.com/31afd80d9fbd601695fed29f04c895b0a6f7a9e0df807d11f713daf436531105/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f72656e64696e672e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rending.png" style="max-width: 100%;"></a></p>\n<h3 id="main-heading-H3-3">HTML 解析，构建 DOM</h3>\n<p dir="auto">整个渲染步骤中，HTML 解析是第一步。</p>\n<p dir="auto">简单的理解，这一步的流程是这样的：<strong>浏览器解析 HTML，构建 DOM 树。</strong></p>\n<p dir="auto">但实际上，在分析整体构建时，却不能一笔带过，得稍微展开。</p>\n<p dir="auto">解析 HTML 到构建出 DOM 当然过程可以简述如下：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Bytes → characters → tokens → nodes → DOM"><pre class="notranslate"><code class="notranslate">Bytes → characters → tokens → nodes → DOM\n</code></pre></div>\n<p dir="auto">譬如假设有这样一个 HTML 页面：（以下部分的内容出自参考来源，修改了下格式）</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="&lt;html&gt;\n  &lt;head&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;\n    &lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot;&gt;\n    &lt;title&gt;Critical Path&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;\n    &lt;div&gt;&lt;img src=&quot;awesome-photo.jpg&quot;&gt;&lt;/div&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"><pre class="notranslate"><code class="notranslate">&lt;html&gt;\n  &lt;head&gt;\n    &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;\n    &lt;link href="style.css" rel="stylesheet"&gt;\n    &lt;title&gt;Critical Path&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;\n    &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\n</code></pre></div>\n<p dir="auto">浏览器的处理如下：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/657736d93ec1eed32c203f9f13c0005d8bbc4f5cc0cd393cfc356d06cfbd6af0/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f68746d6c2e706e67"><img src="https://camo.githubusercontent.com/657736d93ec1eed32c203f9f13c0005d8bbc4f5cc0cd393cfc356d06cfbd6af0/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f68746d6c2e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_html.png" style="max-width: 100%;"></a></p>\n<p dir="auto">列举其中的一些重点过程：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1. Conversion转换：浏览器将获得的HTML内容（Bytes）基于他的编码转换为单个字符\n\n2. Tokenizing分词：浏览器按照HTML规范标准将这些字符转换为不同的标记token。每个token都有自己独特的含义以及规则集\n\n3. Lexing词法分析：分词的结果是得到一堆的token，此时把他们转换为对象，这些对象分别定义他们的属性和规则\n\n4. DOM构建：因为HTML标记定义的就是不同标签之间的关系，这个关系就像是一个树形结构一样\n例如：body对象的父节点就是HTML对象，然后段略p对象的父节点就是body对象"><pre class="notranslate"><code class="notranslate">1. Conversion转换：浏览器将获得的HTML内容（Bytes）基于他的编码转换为单个字符\n\n2. Tokenizing分词：浏览器按照HTML规范标准将这些字符转换为不同的标记token。每个token都有自己独特的含义以及规则集\n\n3. Lexing词法分析：分词的结果是得到一堆的token，此时把他们转换为对象，这些对象分别定义他们的属性和规则\n\n4. DOM构建：因为HTML标记定义的就是不同标签之间的关系，这个关系就像是一个树形结构一样\n例如：body对象的父节点就是HTML对象，然后段略p对象的父节点就是body对象\n</code></pre></div>\n<p dir="auto">最后的 DOM 树如下：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/de6513678f2e7dc6bec705c00397ccbd7e17cebf590eb4b10e315691c0998f0f/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f646f6d2e706e67"><img src="https://camo.githubusercontent.com/de6513678f2e7dc6bec705c00397ccbd7e17cebf590eb4b10e315691c0998f0f/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f646f6d2e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_dom.png" style="max-width: 100%;"></a></p>\n<h3 id="main-heading-H3-4">生成 CSS 规则</h3>\n<p dir="auto">同理，CSS 规则树的生成也是类似。简述为：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Bytes → characters → tokens → nodes → CSSOM"><pre class="notranslate"><code class="notranslate">Bytes → characters → tokens → nodes → CSSOM\n</code></pre></div>\n<p dir="auto">譬如<code class="notranslate">style.css</code>内容如下：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="body { font-size: 16px }\np { font-weight: bold }\nspan { color: red }\np span { display: none }\nimg { float: right }"><pre class="notranslate"><code class="notranslate">body { font-size: 16px }\np { font-weight: bold }\nspan { color: red }\np span { display: none }\nimg { float: right }\n</code></pre></div>\n<p dir="auto">那么最终的 CSSOM 树就是：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/bf9a1f68a716cc9fadcb268e8993552330548bb375077e506653f6f4ac5a5c6e/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f6373736f6d2e706e67"><img src="https://camo.githubusercontent.com/bf9a1f68a716cc9fadcb268e8993552330548bb375077e506653f6f4ac5a5c6e/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f6373736f6d2e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_cssom.png" style="max-width: 100%;"></a></p>\n<h3 id="main-heading-H3-5">构建渲染树</h3>\n<p dir="auto">当 DOM 树和 CSSOM 都有了后，就要开始构建渲染树了</p>\n<p dir="auto">一般来说，渲染树和 DOM 树相对应的，但不是严格意义上的一一对应</p>\n<p dir="auto">因为有一些不可见的 DOM 元素不会插入到渲染树中，如 head 这种不可见的标签或者<code class="notranslate">display: none</code>等</p>\n<p dir="auto">整体来说可以看图：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f07bcf090769c4f9fe6ca3cca82066d87ef4dacade724dc9d36506168bcffa4c/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f72656e646572747265652e706e67"><img src="https://camo.githubusercontent.com/f07bcf090769c4f9fe6ca3cca82066d87ef4dacade724dc9d36506168bcffa4c/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f70617273655f72656e646572747265652e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_parse_rendertree.png" style="max-width: 100%;"></a></p>\n<h3 id="main-heading-H3-6">渲染</h3>\n<p dir="auto">有了 render 树，接下来就是开始渲染，基本流程如下：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5e9ee001c6b31913427f948ee9e43ee30bad07fadcdb4fa7756c003fe099d1ac/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f72656e64696e6770726f636573732e6a7067"><img src="https://camo.githubusercontent.com/5e9ee001c6b31913427f948ee9e43ee30bad07fadcdb4fa7756c003fe099d1ac/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f72656e64696e6770726f636573732e6a7067" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_rendingprocess.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">图中重要的四个步骤就是：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1. 计算CSS样式\n\n2. 构建渲染树\n\n3. 布局，主要定位坐标和大小，是否换行，各种position overflow z-index属性\n\n4. 绘制，将图像绘制出来"><pre class="notranslate"><code class="notranslate">1. 计算CSS样式\n\n2. 构建渲染树\n\n3. 布局，主要定位坐标和大小，是否换行，各种position overflow z-index属性\n\n4. 绘制，将图像绘制出来\n</code></pre></div>\n<p dir="auto">然后，图中的线与箭头代表通过 js 动态修改了 DOM 或 CSS，导致了重新布局（Layout）或渲染（Repaint）</p>\n<p dir="auto">这里 Layout 和 Repaint 的概念是有区别的：</p>\n<ul dir="auto">\n<li>Layout，也称为 Reflow，即回流（又叫重排）。一般意味着元素的内容、结构、位置或尺寸发生了变化，浏览器需要重新计算样式和渲染树</li>\n<li>Repaint，即重绘。意味着元素发生的改变只是影响了元素的一些外观之类的时候（例如，背景色，边框颜色，文字颜色等），此时只需要应用新样式绘制这个元素就可以了</li>\n</ul>\n<p dir="auto">回流的成本开销要高于重绘，而且一个节点的回流往往回导致子节点以及同级节点的回流， 所以优化方案中一般都包括，尽量避免回流。</p>\n<p dir="auto"><strong>什么会引起回流？</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="1.页面渲染初始化\n\n2.DOM结构改变，比如删除了某个节点\n\n3.render树变化，比如减少了padding\n\n4.窗口resize\n\n5.最复杂的一种：获取某些属性，引发回流，\n很多浏览器会对回流做优化，会等到数量足够时做一次批处理回流，\n但是除了render树的直接变化，当获取一些属性时，浏览器为了获得正确的值也会触发回流，这样使得浏览器优化无效，包括\n    （1）offset(Top/Left/Width/Height)\n     (2) scroll(Top/Left/Width/Height)\n     (3) cilent(Top/Left/Width/Height)\n     (4) width,height\n     (5) 调用了getComputedStyle()或者IE的currentStyle"><pre class="notranslate"><code class="notranslate">1.页面渲染初始化\n\n2.DOM结构改变，比如删除了某个节点\n\n3.render树变化，比如减少了padding\n\n4.窗口resize\n\n5.最复杂的一种：获取某些属性，引发回流，\n很多浏览器会对回流做优化，会等到数量足够时做一次批处理回流，\n但是除了render树的直接变化，当获取一些属性时，浏览器为了获得正确的值也会触发回流，这样使得浏览器优化无效，包括\n    （1）offset(Top/Left/Width/Height)\n     (2) scroll(Top/Left/Width/Height)\n     (3) cilent(Top/Left/Width/Height)\n     (4) width,height\n     (5) 调用了getComputedStyle()或者IE的currentStyle\n</code></pre></div>\n<p dir="auto">回流一定伴随着重绘，重绘却可以单独出现</p>\n<p dir="auto">所以一般会有一些优化方案，如：</p>\n<ul dir="auto">\n<li><strong>最小改动原则</strong>，减少逐项更改样式，最好一次性更改 style（先设置元素隐藏后再展示），或者将样式定义为 class 并一次性更新</li>\n<li><strong>批量操作 DOM</strong>，避免循环操作 dom，创建一个 <code class="notranslate">documentFragment</code> 或 div，在它上面应用所有 DOM 操作，最后再把它添加到 window.document，避免多次读取 offset 等属性。无法避免则将它们缓存到变量</li>\n<li><strong>将复杂的元素采用绝对定位或固定定位</strong>，使得它脱离文档流，否则回流代价会很高</li>\n<li><strong>开启 GPU 加速</strong>，利用 css 属性 <code class="notranslate">transform</code> 、<code class="notranslate">will-change</code> 等，比如改变元素位置，我们使用 <code class="notranslate">translate</code> 会比使用绝对定位改变其 left 、top 等来的高效，因为它不会触发重排或重绘，<code class="notranslate">transform</code> 使浏览器为元素创建⼀个 GPU 图层，这使得动画元素在一个独立的层中进行渲染。当元素的内容没有发生改变，就没有必要进行重绘。</li>\n</ul>\n<p dir="auto">再来看一个示例：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="var s = document.body.style;\n\ns.padding = &quot;2px&quot;; // 回流+重绘\ns.border = &quot;1px solid red&quot;; // 再一次 回流+重绘\ns.color = &quot;blue&quot;; // 再一次重绘\ns.backgroundColor = &quot;#ccc&quot;; // 再一次 重绘\ns.fontSize = &quot;14px&quot;; // 再一次 回流+重绘\n// 添加node，再一次 回流+重绘\ndocument.body.appendChild(document.createTextNode(\'abc!\'));"><pre class="notranslate"><code class="notranslate">var s = document.body.style;\n\ns.padding = "2px"; // 回流+重绘\ns.border = "1px solid red"; // 再一次 回流+重绘\ns.color = "blue"; // 再一次重绘\ns.backgroundColor = "#ccc"; // 再一次 重绘\ns.fontSize = "14px"; // 再一次 回流+重绘\n// 添加node，再一次 回流+重绘\ndocument.body.appendChild(document.createTextNode(\'abc!\'));\n</code></pre></div>\n<p dir="auto"><strong>CSS 的标签与 JS 的&lt;script&gt;标签在 html 中放置位置</strong></p>\n<p dir="auto">最好把 CSS 的<code class="notranslate">&lt;link&gt;</code>标签放在<code class="notranslate">&lt;head&gt;&lt;/head&gt;</code>之间，最好把 JS 的<code class="notranslate">&lt;script&gt;</code>标签恰好放在<code class="notranslate">&lt;/body&gt;</code>之前。</p>\n<p dir="auto">把<code class="notranslate">&lt;link&gt;</code>放在<code class="notranslate">&lt;head&gt;</code>中</p>\n<p dir="auto">这种做法可以让页面逐步呈现，提高了用户体验。将样式表放在文档底部附近，会使许多浏览器（包括 Internet Explorer）不能逐步呈现页面。一些浏览器会阻止渲染，以避免在页面样式发生变化时，重新绘制页面中的元素。这种做法可以防止呈现给用户空白的页面或没有样式的内容。</p>\n<p dir="auto">把<code class="notranslate">&lt;script&gt;</code>标签恰好放在<code class="notranslate">&lt;/body&gt;</code>之前</p>\n<p dir="auto">脚本在下载和执行期间会阻止 HTML 解析。把<code class="notranslate">&lt;script&gt;</code>标签放在底部，保证 HTML 首先完成解析，将页面尽早呈现给用户。</p>\n<p dir="auto">如果一定要放在 <code class="notranslate">&lt;head&gt;</code> 中，可以让 <code class="notranslate">&lt;script&gt;</code> 标签使用 defer 属性。</p>\n<h3 id="main-heading-H3-7">Chrome 中的调试</h3>\n<p dir="auto">Chrome 的开发者工具中，Performance 中可以看到详细的渲染过程：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ec320e35d72a6d1d810a91ef143a4744c0ba57dd2b21dc4d855b302beaa6ac59/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f6368726f6d655f64656275675f312e706e67"><img src="https://camo.githubusercontent.com/ec320e35d72a6d1d810a91ef143a4744c0ba57dd2b21dc4d855b302beaa6ac59/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f6368726f6d655f64656275675f312e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_chrome_debug_1.png" style="max-width: 100%;"></a> <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7cbd1a4bf91b736e3a54c0d420b653952d4f9c2e0457d217409c0a270fae6cd4/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f6368726f6d655f64656275675f322e706e67"><img src="https://camo.githubusercontent.com/7cbd1a4bf91b736e3a54c0d420b653952d4f9c2e0457d217409c0a270fae6cd4/68747470733a2f2f6461696c632e6769746875622e696f2f7374617469635265736f757263652f626c6f672f62617369634b6e6f776c656467652f7768656e796f75656e7465726175726c2f62726f777365725f6368726f6d655f64656275675f322e706e67" alt="" data-canonical-src="https://dailc.github.io/staticResource/blog/basicKnowledge/whenyouenteraurl/browser_chrome_debug_2.png" style="max-width: 100%;"></a></p>\n<h3 id="main-heading-H3-8">资源外链的下载</h3>\n<p dir="auto">上面介绍了 html 解析，渲染流程。但实际上，在解析 html 时，会遇到一些资源连接，此时就需要进行单独处理了</p>\n<p dir="auto">简单起见，这里将遇到的静态资源分为一下几大类（未列举所有）：</p>\n<ul dir="auto">\n<li>CSS 样式资源</li>\n<li>JS 脚本资源</li>\n<li>img 图片类资源</li>\n</ul>\n<p dir="auto"><strong>遇到外链时的处理</strong></p>\n<p dir="auto">当遇到上述的外链时，会单独开启一个下载线程去下载资源（http1.1 中是每一个资源的下载都要开启一个 http 请求，对应一个 tcp/ip 链接）</p>\n<p dir="auto"><strong>遇到 CSS 样式资源</strong></p>\n<p dir="auto">CSS 资源的处理有几个特点：</p>\n<ul dir="auto">\n<li>CSS 下载时异步，不会阻塞浏览器构建 DOM 树</li>\n<li>但是会阻塞渲染，也就是在构建 render 时，会等到 css 下载解析完毕后才进行（这点与浏览器优化有关，防止 css 规则不断改变，避免了重复的构建）</li>\n<li>有例外，<code class="notranslate">media query</code>声明的 CSS 是不会阻塞渲染的</li>\n</ul>\n<p dir="auto"><strong>遇到 JS 脚本资源</strong></p>\n<p dir="auto">JS 脚本资源的处理有几个特点：</p>\n<ul dir="auto">\n<li>阻塞浏览器的解析，也就是说发现一个外链脚本时，需等待脚本下载完成并执行后才会继续解析 HTML</li>\n<li>浏览器的优化，一般现代浏览器有优化，在脚本阻塞时，也会继续下载其它资源（当然有并发上限），但是虽然脚本可以并行下载，解析过程仍然是阻塞的，也就是说必须这个脚本执行完毕后才会接下来的解析，并行下载只是一种优化而已</li>\n<li>defer 与 async，普通的脚本是会阻塞浏览器解析的，但是可以加上 defer 或 async 属性，这样脚本就变成异步了，可以等到解析完毕后再执行</li>\n</ul>\n<p dir="auto">注意，defer 和 async 是有区别的： <strong>defer 是延迟执行，而 async 是异步执行。</strong></p>\n<p dir="auto">简单的说：</p>\n<ul dir="auto">\n<li><code class="notranslate">async</code>是异步执行，异步下载完毕后就会执行，不确保执行顺序，一定在<code class="notranslate">onload</code>前，但不确定在<code class="notranslate">DOMContentLoaded</code>事件的前或后</li>\n<li><code class="notranslate">defer</code>是延迟执行，在浏览器看起来的效果像是将脚本放在了<code class="notranslate">body</code>后面一样（虽然按规范应该是在<code class="notranslate">DOMContentLoaded</code>事件前，但实际上不同浏览器的优化效果不一样，也有可能在它后面）</li>\n</ul>\n<p dir="auto"><strong>遇到 img 图片类资源</strong></p>\n<p dir="auto">遇到图片等资源时，直接就是异步下载，不会阻塞解析，下载完毕后直接用图片替换原有 src 的地方</p>\n<h3 id="main-heading-H3-9">loaded 和 domcontentloaded</h3>\n<p dir="auto">简单的对比：</p>\n<ul dir="auto">\n<li>DOMContentLoaded 事件触发时，仅当 DOM 加载完成，不包括样式表，图片(譬如如果有 async 加载的脚本就不一定完成)</li>\n<li>load 事件触发时，页面上所有的 DOM，样式表，脚本，图片都已经加载完成了</li>\n</ul>\n<h2 id="main-heading-H2-10">JS 引擎解析过程</h2>\n<p dir="auto">展开是执行上下文，作用域链，事件循环等。</p>\n<h3 id="main-heading-H3-11">执行上下文</h3>\n<p dir="auto">执行上下文可以简单理解为一个对象:</p>\n<p dir="auto">每一个执行上下文，都有三个重要属性:</p>\n<ul dir="auto">\n<li>变量对象(Variable object，VO)</li>\n<li>作用域链(词法作用域)</li>\n<li>this 指向</li>\n</ul>\n<p dir="auto">它的类型:</p>\n<ul dir="auto">\n<li>全局执行上下文</li>\n<li>函数执行上下文</li>\n<li>eval 执行上下文</li>\n</ul>\n<p dir="auto">代码执行过程:</p>\n<ul dir="auto">\n<li>浏览器首次载入脚本，创建 全局上下文 (global EC)</li>\n<li>全局执行上下文 (caller) 逐行 自上而下 执行。遇到函数时，函数执行上下文 (callee) 被 push 到执行栈顶层</li>\n<li>函数执行上下文被激活，成为 active EC, 开始执行函数中的代码，caller 被挂起</li>\n<li>函数执行完后，callee 被 pop 移除出执行栈，控制权交还全局上下文 (caller)，继续执行</li>\n</ul>\n<p dir="auto"><strong>VO 与 AO</strong></p>\n<p dir="auto">VO 是执行上下文的属性（抽象概念），但是只有全局上下文的变量对象允许通过 VO 的属性名称来间接访问（因为在全局上下文里，全局对象自身就是变量对象）</p>\n<p dir="auto">AO（activation object)，当函数被调用者激活，AO 就被创建了 （变量对象是与执行上下文相关的数据作用域，存储了在上下文中定义的变量和函数声明。）</p>\n<p dir="auto">可以理解为：</p>\n<ul dir="auto">\n<li>\n<p dir="auto">在函数上下文中：VO === AO</p>\n</li>\n<li>\n<p dir="auto">在全局上下文中：VO === this === global</p>\n</li>\n</ul>\n<p dir="auto">总的来说，VO 中会存放一些变量信息（如声明的变量，函数，arguments 参数等等）</p>\n<h3 id="main-heading-H3-12">作用域链</h3>\n<p dir="auto">我们知道，我们可以在执行上下文中访问到<strong>父级甚至全局的变量</strong>，这便是作用域链的功劳。作用域链可以理解为一组对象列表，包含 父级和自身的变量对象，因此我们便能通过作用域链访问到父级里声明的变量或者函数，原理和原型链很相似。</p>\n<p dir="auto">由两部分组成:</p>\n<ul dir="auto">\n<li>[[scope]]属性: 指向父级变量对象和作用域链，也就是包含了父级的[[scope]]和 AO</li>\n<li>AO: 自身活动对象（当函数被调用者激活，AO 就被创建了）</li>\n</ul>\n<p dir="auto">如此 <code class="notranslate">[[scope]]</code>包含<code class="notranslate">[[scope]]</code>，便自上而下形成一条链式作用域。</p>\n<p dir="auto">参考链接</p>\n<ul dir="auto">\n<li><a href="https://juejin.cn/post/6844903473683628046" rel="nofollow">冴羽 - JavaScript 深入之作用域链</a></li>\n<li><a href="https://juejin.cn/post/6844903474027560968" rel="nofollow">冴羽 - JavaScript 深入之执行上下文</a></li>\n</ul>\n<h3 id="main-heading-H3-13">事件循环机制</h3>\n<p dir="auto">JS 中存在一个叫做执行栈的东西。JS 的所有同步代码都在这里执行，当执行一个函数调用时，会创建一个新的执行环境并压到栈中开始执行函数中的代码，当函数中的代码执行完毕后将执行环境从栈中弹出，当栈空了，也就代表执行完毕。</p>\n<p dir="auto">所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入"任务队列"（task queue）的任务，只有"任务队列"通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。</p>\n<p dir="auto">具体来说，异步执行的运行机制如下。（同步执行也是如此，因为它可以被视为没有异步任务的异步执行。）</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。\n\n（2）主线程之外，还存在一个&quot;任务队列&quot;（task queue）。只要异步任务有了运行结果，就在&quot;任务队列&quot;之中放置一个事件。\n\n（3）一旦&quot;执行栈&quot;中的所有同步任务执行完毕，系统就会读取&quot;任务队列&quot;，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。\n\n（4）主线程不断重复上面的第三步。"><pre class="notranslate"><code class="notranslate">（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。\n\n（2）主线程之外，还存在一个"任务队列"（task queue）。只要异步任务有了运行结果，就在"任务队列"之中放置一个事件。\n\n（3）一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。\n\n（4）主线程不断重复上面的第三步。\n</code></pre></div>\n<p dir="auto">下图就是主线程和任务队列的示意图。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a9af6fdefa3ee162eda7748e6df83875490a96abd9b107a0562bb312be5d53b2/68747470733a2f2f7777772e7275616e796966656e672e636f6d2f626c6f67696d672f61737365742f323031342f6267323031343130303830312e6a7067"><img src="https://camo.githubusercontent.com/a9af6fdefa3ee162eda7748e6df83875490a96abd9b107a0562bb312be5d53b2/68747470733a2f2f7777772e7275616e796966656e672e636f6d2f626c6f67696d672f61737365742f323031342f6267323031343130303830312e6a7067" alt="" data-canonical-src="https://www.ruanyifeng.com/blogimg/asset/2014/bg2014100801.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">只要主线程空了，就会去读取"任务队列"，这就是 JavaScript 的运行机制。这个过程会不断重复。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c477bb0db9cdc411bafbae00a8b53927c0edd082a1c54c3406ff8474627a7fe8/68747470733a2f2f7777772e7275616e796966656e672e636f6d2f626c6f67696d672f61737365742f323031342f6267323031343130303830322e706e67"><img src="https://camo.githubusercontent.com/c477bb0db9cdc411bafbae00a8b53927c0edd082a1c54c3406ff8474627a7fe8/68747470733a2f2f7777772e7275616e796966656e672e636f6d2f626c6f67696d672f61737365742f323031342f6267323031343130303830322e706e67" alt="" data-canonical-src="https://www.ruanyifeng.com/blogimg/asset/2014/bg2014100802.png" style="max-width: 100%;"></a></p>\n<p dir="auto">上图中，主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部 API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。</p>\n<p dir="auto">执行栈中的代码（同步任务），总是在读取"任务队列"（异步任务）之前执行。</p>\n<p dir="auto">主线程从"任务队列"中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为 Event Loop（事件循环）。</p>\n<p dir="auto">当一个异步任务执行完毕后会将任务添加到任务队列中。例如：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="setTimeout((_) =&gt; {}, 1000);"><pre class="notranslate"><span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">_</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1000</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">代码中 setTimeout 会在一秒后将回调函数添加到任务队列中。事实上异步队列也分两种类型：微任务、宏任务。</p>\n<p dir="auto">微任务和宏任务的区别是，当执行栈空了，会检查微任务队列中是否有任务，将微任务队列中的任务依次拿出来执行一遍。当微任务队列空了，从宏任务队列中拿出来一个任务去执行，执行完毕后检查微任务队列，微任务队列空了之后再从宏任务队列中拿出来一个任务执行。</p>\n<p dir="auto">属于微任务（microtask）的事件有以下几种：</p>\n<ul dir="auto">\n<li>Promise.then</li>\n<li>await 之后的所有代码（等同于在 Promise.then 中的回调）</li>\n<li>MutationObserver (监视对 DOM 树所做更改)</li>\n<li>process.nextTick（Node 环境）</li>\n<li>setImmediate （Node 环境）</li>\n</ul>\n<p dir="auto">属于宏任务（macrotask）的事件有以下几种：</p>\n<ul dir="auto">\n<li>script 代码块</li>\n<li>setTimeout</li>\n<li>setInterval</li>\n<li>MessageChannel</li>\n<li>requestAnimationFrame</li>\n<li>I/O</li>\n<li>UI 交互事件</li>\n</ul>\n<p dir="auto">浏览器架构</p>\n<ul dir="auto">\n<li>用户界面</li>\n<li>主进程</li>\n<li>内核\n<ul dir="auto">\n<li>渲染引擎</li>\n<li>JS 引擎\n<ul dir="auto">\n<li>执行栈</li>\n</ul>\n</li>\n<li>事件触发线程\n<ul dir="auto">\n<li>消息队列\n<ul dir="auto">\n<li>微任务</li>\n<li>宏任务</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>网络异步线程</li>\n<li>定时器线程</li>\n</ul>\n</li>\n</ul>\n<p dir="auto">参考链接</p>\n<ul dir="auto">\n<li><a href="https://www.ruanyifeng.com/blog/2014/10/event-loop.html" rel="nofollow">阮一峰 - JavaScript 运行机制详解：再谈 Event Loop</a></li>\n</ul>',user:{login:a,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:t,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:o,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:t}],html_url:"https://github.com/yanyue404/blog/issues/227"},navList:[{text:"大纲",id:"main-heading-H2-0",type:n,children:[]},{text:"解析页面流程",id:"main-heading-H2-1",type:n,children:[{text:"流程简述",id:"main-heading-H3-2",type:e},{text:"HTML 解析，构建 DOM",id:"main-heading-H3-3",type:e},{text:"生成 CSS 规则",id:"main-heading-H3-4",type:e},{text:"构建渲染树",id:"main-heading-H3-5",type:e},{text:"渲染",id:"main-heading-H3-6",type:e},{text:"Chrome 中的调试",id:"main-heading-H3-7",type:e},{text:"资源外链的下载",id:"main-heading-H3-8",type:e},{text:"loaded 和 domcontentloaded",id:"main-heading-H3-9",type:e}]},{text:"JS 引擎解析过程",id:"main-heading-H2-10",type:n,children:[{text:"执行上下文",id:"main-heading-H3-11",type:e},{text:"作用域链",id:"main-heading-H3-12",type:e},{text:"事件循环机制",id:"main-heading-H3-13",type:e}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:a,userEmail:"1656800216@qq.com",repository:"blog",blogName:i,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:i,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:t},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:t,avatar_url:t,name:t,html_url:t,bio:t,type:o}},serverRendered:!0}}("H3","","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

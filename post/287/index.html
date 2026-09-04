@@ -1,0 +1,254 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>关于前端基建的思考（转载） | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="https://kongwutw.github.io/blog/tech/base.html 如果说写代码是低头走路，那么学习不同团队的基建思路就是仰望星空，让我们在高速发展的前端的道路上不至于迷失方向。 一、基建工作都有哪些内容 基建的内容这个话题其实可大可小，不同的团队规模有不同理解，不同的公司"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="关于前端基建的思考（转载）"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="https://kongwutw.github.io/blog/tech/base.html 如果说写代码是低头走路，那么学习不同团队的基建思路就是仰望星空，让我们在高速发展的前端的道路上不至于迷失方向。 一、基建工作都有哪些内容 基建的内容这个话题其实可大可小，不同的团队规模有不同理解，不同的公司"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="关于前端基建的思考（转载）"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="https://kongwutw.github.io/blog/tech/base.html 如果说写代码是低头走路，那么学习不同团队的基建思路就是仰望星空，让我们在高速发展的前端的道路上不至于迷失方向。 一、基建工作都有哪些内容 基建的内容这个话题其实可大可小，不同的团队规模有不同理解，不同的公司"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H2-0" title="一、基建工作都有哪些内容" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              一、基建工作都有哪些内容
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-1" title="代码层面" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  代码层面
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-2" title="发版规范" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  发版规范
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-3" title="开发规范" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  开发规范
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-4" title="工程化和组件化" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  工程化和组件化
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-5" title="统计监控" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  统计监控
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-6" title="安全防控" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  安全防控
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-7" title="文档沉淀" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  文档沉淀
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-8" title="可视化搭建" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  可视化搭建
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H2-9" title="二、基建的意义何在---为了解决什么问题" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              二、基建的意义何在---为了解决什么问题
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-10" title="解决业务问题（也是最核心最基础的问题）" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  解决业务问题（也是最核心最基础的问题）
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-11" title="实现团队练兵" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  实现团队练兵
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-12" title="梯队建设" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  梯队建设
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-13" title="影响力建设" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  影响力建设
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H2-14" title="三、不同团队的发展阶段以及基建的侧重点分析" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              三、不同团队的发展阶段以及基建的侧重点分析
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-15" title="上古时代" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  上古时代
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-16" title="工具时代" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  工具时代
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-17" title="工程时代" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  工程时代
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-18" title="智能时代" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  智能时代
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H2-19" title="四、如何建设基建团队" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              四、如何建设基建团队
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-20" title="需要做什么样的事" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  需要做什么样的事
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-21" title="需要什么样的人" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  需要什么样的人
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-22" title="什么性格的人" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  什么性格的人
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H3-23" title="技术上的支持" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  技术上的支持
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/287#main-heading-H2-24" title="五、基建工作如何落地" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              五、基建工作如何落地
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>关于前端基建的思考（转载）</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>关于前端基建的思考（转载）</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2024-10-23</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 13 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><blockquote>
+<p dir="auto"><a href="https://kongwutw.github.io/blog/tech/base.html" rel="nofollow">https://kongwutw.github.io/blog/tech/base.html</a></p>
+</blockquote>
+<p dir="auto">如果说写代码是低头走路，那么学习不同团队的基建思路就是仰望星空，让我们在高速发展的前端的道路上不至于迷失方向。</p>
+<h2 id="main-heading-H2-0">一、基建工作都有哪些内容</h2>
+<p dir="auto">基建的内容这个话题其实可大可小，不同的团队规模有不同理解，不同的公司规模也会有不同的要求。</p>
+<h3 id="main-heading-H3-1">代码层面</h3>
+<ul dir="auto">
+<li>文件、文件夹、变量命名规范，大驼峰、小驼峰、下划线命名发、首位不能出现数字等等</li>
+<li>文件拆分的基本要求，比如一个代码文件超过 400 行，必须要拆分成不同的包，抽离不同的类</li>
+<li>项目中禁止出现冗余代码，禁止出现无效的变量和无意义的命名</li>
+<li>禁止同样功能的包在一个项目中共存，如 axios 和 jquery 的 ajax 共存</li>
+<li>超过 4k 的图片必须用外链形式引入</li>
+<li>eslint、tslint、prettier 对代码规范的约束</li>
+<li>单元测试、UI 测试、全链路压测......</li>
+<li>新技术调研和分析</li>
+<li>代码规范其实是一个很大的话题，不同团队也有不同要求只要大家都能接受的就是适合自己团队的</li>
+</ul>
+<h3 id="main-heading-H3-2">发版规范</h3>
+<ul dir="auto">
+<li>git flow 的相关规范，commit 的规则</li>
+<li>分支管理和命名规则</li>
+<li>发版的整个流程设计，流程是否合规，是否能帮助大家规避一些长犯的错误</li>
+<li>发版前是否要做自动化测试</li>
+<li>测试环境、预生产环境、生产环境的发版和回归测试要求，比如：任何一次发版结束都要去对应的环境看页面是否能打开，接口是否能跑通。</li>
+</ul>
+<h3 id="main-heading-H3-3">开发规范</h3>
+<ul dir="auto">
+<li>新建开发项目的项目仓库模板/基础开发框架/技术找是否统一，是否具备可视化搭建的必要</li>
+<li>整个项目新建和发布流程是否完整顺滑</li>
+<li>相应的调试工具是否高效</li>
+<li>如果有自研或者第三方组件库，组件库是否有统一，有什么样的要求</li>
+<li>编辑器插件是否统一，大家标准是否一致</li>
+</ul>
+<h3 id="main-heading-H3-4">工程化和组件化</h3>
+<ul dir="auto">
+<li>工程代码规范，仓库、代码、发布、文档、测试、开源方面的规范</li>
+<li>工程构建规范、针对不同技术栈和不同框架的 jenkins 打包发版一条龙构建、或者自研可视化的工程发布规范、gitlab CI/CD</li>
+<li>内部自研的针对各个平台的打包脚本和部署脚本，实现自动化部署</li>
+<li>适用于各个平台的组件化，PC/Mobile/RN/Flutter/小程序等等</li>
+<li>不同技术栈/React/RN/Vue/小程序的前端基础框架，小团队尽量选单一的，大团队可以百花齐放</li>
+<li>业务组件和 UI 组件结合使用，实现快速开发</li>
+<li>可视化的组件拖拽实现页面快速开发，让非技术人员也具备基本的开发能力</li>
+<li>组件和框架发布流程和管理流程</li>
+<li>node 端的 web 框架</li>
+<li>全栈路由监控</li>
+</ul>
+<h3 id="main-heading-H3-5">统计监控</h3>
+<ul dir="auto">
+<li>部署过程监控</li>
+<li>端行为数据监控</li>
+<li>数据采集、埋点设计</li>
+<li>前后端错误日志的抓取应用</li>
+<li>性能分析,要匹配相应的性能分析工具</li>
+<li>监控 SDK</li>
+</ul>
+<h3 id="main-heading-H3-6">安全防控</h3>
+<ul dir="auto">
+<li>代码安全监测</li>
+<li>行为安全监测</li>
+<li>端异常回溯指派</li>
+<li>第三方安装包安全监测</li>
+<li>XSS/CSRF 安全攻击</li>
+</ul>
+<h3 id="main-heading-H3-7">文档沉淀</h3>
+<ul dir="auto">
+<li>编码规范、命名规范、Git 规范、流程规范、性能规范、数据规范、埋点规范、安全规范</li>
+<li>组件规范、工程规范、开源规范、文档规范、</li>
+<li>业务文档、技术文档、分享沉淀文档、新人文档</li>
+</ul>
+<h3 id="main-heading-H3-8">可视化搭建</h3>
+<p dir="auto">以上所有的功能有些做出来就是可视化的，有些用脚本就可以跑，当团队规模足够大的时候，是需要做可视化工具的，让大家可以更直观的使用所有的功能。</p>
+<h2 id="main-heading-H2-9">二、基建的意义何在---为了解决什么问题</h2>
+<p dir="auto">不同的团队规模、不同的团队水平和不同的业务体量决定了基建在这个团队中的意义，脱离以上三点实际情况谈基建是没有任何意义的析。</p>
+<h3 id="main-heading-H3-10">解决业务问题（也是最核心最基础的问题）</h3>
+<ul dir="auto">
+<li>把握当下，解决当下的业务问题，是业务的支撑</li>
+<li>提高效率，基建可以提高单个人的工作产出和工作效率，可以从代码层面解决一些普遍性和常用性的业务问题</li>
+<li>提高质量，基建可以提高整个团队的代码质量</li>
+<li>合理架构，架构的抽象性和合理性是影响产出比的重要因素</li>
+<li>流程制度，优异的流程制度必将带来正面的、积极的、有实效的业务支撑</li>
+<li>活在未来，应对未来业务爆发的可能性</li>
+</ul>
+<h3 id="main-heading-H3-11">实现团队练兵</h3>
+<ul dir="auto">
+<li>技术方案选型和调研能快速提高团队成员的技术水平扩宽技术视野</li>
+<li>项目管理可以让小伙伴们有强烈的自我驱动意识，发挥主观能动性，提高团队活力</li>
+<li>培养产品化思维，一个基建的点可能就是一个完整的项目，负责人从开始到落地整个过程都是自己主导，可以培养产品思维，对整个行业的链条会有更加深刻的认知能力</li>
+</ul>
+<h3 id="main-heading-H3-12">梯队建设</h3>
+<ul dir="auto">
+<li>千人一面写业务代码，大家的水平最终会趋同，团队没有技术梯队</li>
+<li>有人是业务的核心开发者，有人是组件的核心开发者，有人是工程化搭建的核心开发者，分门别类，大家技术栈不同，技术侧重点不同。从生物学角度来说，多样化也是生命力的表现，一个生态，多样化越明显，生命力越顽强</li>
+</ul>
+<h3 id="main-heading-H3-13">影响力建设</h3>
+<ul dir="auto">
+<li>技术沉淀，技术沉底也是一个团队的技术底蕴，是实力的象征</li>
+<li>技术分享，包括团队内部的分享和团队外部的分享</li>
+<li>产品体验，沉淀一些优秀的交互，一些优秀的 UI 视觉，产品体验更友好</li>
+<li>开源体验，让更多人人了解团队，使用你的技术，增加公司的影响力</li>
+</ul>
+<h2 id="main-heading-H2-14">三、不同团队的发展阶段以及基建的侧重点分析</h2>
+<p dir="auto">前面说过脱离实际情况谈基建是没有任何意义的。基建需要从问题出发做事情，跟随团队一起成长。</p>
+<h3 id="main-heading-H3-15">上古时代</h3>
+<p dir="auto">这个时期的团队规模一般都在 1-3 人左右，，具体数字完全靠自己估计，不要深究合理性。可能公司也是发展的早期，整个技术部或许也就 20 人以内。业务量来说，可能有一款核心的产品，两个粗糙的运营工具，三四个辅助的项目支撑业务。我通常会认为这个阶段是不需要一步到位做基建的。</p>
+<p dir="auto">首先要做的是代码层面的规范，能初步确保代码质量过硬就好了，需要 leader 经常抽出时间做代码 review，帮助小伙伴们提高代码的质量，严把质量关。其次可以做一些简单的代码规范文档，项目中融入一些业务说明文档，没有能力构建可视化发版工具的可以考虑用脚本发版，毕竟脚本发版并不见得有多低级。可视化和工程化构建不也是建立在脚本之上么，这个无可厚非。</p>
+<p dir="auto">反过来说，你花了大量的人力资源，协调了多个部门终于做了可视化建设和工程建设，但是公司迟迟不做新项目，业务量迟迟不增加，其实有点大材小用了，对业务的提效并不明显，得不偿失。不过，对个人来说这个阶段做基建是提升个人能力的关键时期，个人能力必将会有大幅度提高，为以后应对公司腾飞打下坚实的基础。</p>
+<h3 id="main-heading-H3-16">工具时代</h3>
+<p dir="auto">这个时期的团队一般会在 4-8 人左右吧，具体数字完全靠自己估计，不要深究合理性。公司业务也会以亿为规模计算，公司人数在 100-500 左右。涉及到的各种 toB 项目和 toC 项目会有几十个。这个阶段的团队应该已经在早期沉淀了一些东西，也算是有家底的团队了。</p>
+<p dir="auto">这个时候的团队为了支撑不算海量的业务，会去有意识的尝试使用不同的工具，助力业务开发。同时，大家也会发现不同技术栈带来的理解成本和开发成本剧增，是时候要进行技术栈的统一了，团队里应该会有一些大牛，积极推进工程化建设，组件建设初具规模，抽象出来的工具库初步具备体系，开始考虑搭建私有的 npm 仓库，开始考虑完善相关的的技术文档，甚至开始考虑做一个专门的网站承载一些文档，帮助团队成员开发速查，帮助新人尽快了解团队整体技术水平。</p>
+<p dir="auto">同时，开始用 gitlab/CL/CD 或者 jenkins 来做自动化建设，解放人力。项目越来越多，线上代码异常难以定位，总是花费大量人力维护老项目也力不从心，这时候你会想着去做一些监控的事情，帮助团队发现代码中的问题，提高代码的健壮性。leader 会有意识的推动各种组件和工具的 npm 化，方便后期维护，同事也可以极大提高开发效率，保障代码质量。</p>
+<p dir="auto">罗马不是一天建成的，这个时期对团队转型来说，对喜欢的人来说充满了刺激，对不喜欢的人来说可能就是噩梦，在打破惯性思维的道路上，必定会遇到阻力，推进工具时代的发展必定会耗费大量的心力，但是收益也是巨大的。</p>
+<h3 id="main-heading-H3-17">工程时代</h3>
+<p dir="auto">这个时期的团队一般会在 10-30 人左右，具体数字全靠自己估计，不要深究合理性。公司业务会以十亿规模计算，公司人数可能在 500 人-1000 人左右。涉及的应用应该在上百个左右。当然也不乏提前布局的 leader，在业务量没达到这个规模的时候就做了工程化的建设。</p>
+<p dir="auto">这个时候的团队应该会有一些资深大牛，他们对业务有深入的了解，能够左右业务的决策，能够把控项目的进度，同时避免一些雷区。团队的技术生态应该是百花齐放的，同时内部以小组为单位实现技术栈的统一。对于一些普适性和高频的业务逻辑应该可以实现 api 化，通过调相应的业务组件或者相应的功能性文件包实现快速开发。作为一线的程序员只需要去关注具体的业务逻辑，不需要去关注具体的技术细节。</p>
+<p dir="auto">在海量技术文档的帮助下，即使是新来的员工，也能快速完成开发。运营通过可视化的开发平台，可以实现组件的拼装，从而完成功能开发，通过一键发版，进行测试和上线，程序员在这里起到辅助的作用。这个时候的基础架构应该已经有很多的积累，大多数项目都可以实现拿来即用的程度。箱子里的工具多了，做什么都比较顺手。前端从造工具进入用工具的阶段。</p>
+<h3 id="main-heading-H3-18">智能时代</h3>
+<p dir="auto">这个时期的前端团队规模应该在 50 人以上，具体数字全靠自己估计，不要深究合理性。公司业务会以千亿规模计算，公司人说会在 1000-100000 之间。涉及的应用可能没有一个人真正的去统计过，因为实在太多了。</p>
+<p dir="auto">这个阶段的一些 leader 或者资深技术可能需要进入深度的商业发现或者商业决策。基础设置除了上面的拿来即用，更多的是实现智能化，设计的东西能通过智能化迅速转化为代码。运营不需要再盯着前端写代码，因为他们通过可视化界面已经可以自己完成功能的开发和上线。</p>
+<p dir="auto">这个阶段的团队不仅有大量的工具，还有大量的物料，通过智能化的方法实现无感开发。这些技术实现不仅影响到公司的技术发展，而且影响到整个行业的生态。我们期待这个时代的到来。</p>
+<h2 id="main-heading-H2-19">四、如何建设基建团队</h2>
+<p dir="auto">有的公司有专门做基建的团队，比如架构组，运维组之类的部门；有些公司的程序员是一边做基建一边开发业务代码。这是两种不同的组织形式，没有好坏之分，只有是否适合的区别，当然其中也会涉及到一些行政干预的力量。</p>
+<p dir="auto">不同的公司可以根据不同的情况进行设计。以上两种组织形式，归根到底都是为了解决一个问题：怎样找到合适的人去做合适的事？</p>
+<h3 id="main-heading-H3-20">需要做什么样的事</h3>
+<ul dir="auto">
+<li>具体要做哪些事第一部分已有说明，此处不再展开论述</li>
+<li>切记要综合评估人和事是否匹配</li>
+<li>作为 leader 最重要的是实现资源和合理配置，发挥出最大作用</li>
+<li>让合适的人做适合的事</li>
+<li>leader 要借人成事，同事也要借事成人，实现整体的发展提高</li>
+</ul>
+<h3 id="main-heading-H3-21">需要什么样的人</h3>
+<ul dir="auto">
+<li>所做之事和当前程序员的技术实力是匹配的，或者说踮起脚尖可以够得着的</li>
+<li>能写出扩展性比较好的代码 sdk</li>
+<li>业务开发中善于总结和分享，看的代码多，知道哪些代码是好代码，</li>
+<li>有一定抽象和归纳总结的能力</li>
+<li>喜欢折腾，保持折腾的心态。（工作经验 3 年以上的，保持这种心态的人会越来越少）</li>
+<li>能去了解痛点，深入了解业务，知道业务需要什么样的东西</li>
+<li>沟通能力强，能把自己做的东西推广出去</li>
+</ul>
+<h3 id="main-heading-H3-22">什么性格的人</h3>
+<ul dir="auto">
+<li>沟通能力强(沟通能力强不能用内向或者外向来判断)</li>
+<li>技术上稍微激进一点，喜欢用新代码，喜欢研究新技术</li>
+<li>有同理心，可以换位思考，能站在使用者的角度思考功能的合理性和便捷性，同时要思考如何让各个团队实现双赢</li>
+<li>可以积极主动 push 一件事情推进</li>
+<li>事必躬亲，既要乐于主动了解业务，又能分析出业务中的痛点，通过做事发现问题，杜绝闭门造车</li>
+<li>奉献精神，要乐于奉献自己的时间和精力去做这些难啃的硬骨头</li>
+</ul>
+<h3 id="main-heading-H3-23">技术上的支持</h3>
+<ul dir="auto">
+<li>node 的相关技能</li>
+<li>sh 脚本的相关技能</li>
+<li>可以熟练使用各种命令行和工具</li>
+<li>python、c++、go 等等的技能</li>
+<li>webpack gulp 的技能</li>
+<li>ios 或者安卓的技能</li>
+<li>docker 技能</li>
+</ul>
+<p dir="auto">以上根据基建的点选择不同技术栈的同学来做。</p>
+<h2 id="main-heading-H2-24">五、基建工作如何落地</h2>
+<p dir="auto">基建工作的落地实施除了需要技术的热情，同样离不开公司 CTO 甚至是大 Boss 的支持，要多学会用数据说话，通过数据和收益来证明一件事情的必要性和可行性。这是前提，缺乏这个前提你做的事情可能并不会得到各方面的支持。</p>
+<p dir="auto">同时，基建工作的落地和选的人有密不可分的关系。如果在一开始做的时候就没选好人，那么基建的效果可能会大打折扣，甚至做出来的东西根本没人用，以至于后期没人维护没人管。</p>
+<p dir="auto">另外要做好数据统计工作，做出的东西在交付使用之前尽量做好使用量统计工作。比如，可以统计一个组件库在整个前端团队的引用次数有多少，一个工具的打开率有多高，节省了多少的人力成本，节省了多少的时间。</p>
+<p dir="auto">这些东西如果能有可视化的界面做支撑，下次再做基建立项的时候，被领导信任的概率就会大大增加。</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(i,n,l,e,t,a){return{layout:"default",data:[{post:{id:2607552864,number:287,title:"关于前端基建的思考（转载）",created_at:"2024-10-23T07:21:44Z",updated_at:"2024-10-23T07:21:45Z",body_html:'<blockquote>\n<p dir="auto"><a href="https://kongwutw.github.io/blog/tech/base.html" rel="nofollow">https://kongwutw.github.io/blog/tech/base.html</a></p>\n</blockquote>\n<p dir="auto">如果说写代码是低头走路，那么学习不同团队的基建思路就是仰望星空，让我们在高速发展的前端的道路上不至于迷失方向。</p>\n<h2 id="main-heading-H2-0">一、基建工作都有哪些内容</h2>\n<p dir="auto">基建的内容这个话题其实可大可小，不同的团队规模有不同理解，不同的公司规模也会有不同的要求。</p>\n<h3 id="main-heading-H3-1">代码层面</h3>\n<ul dir="auto">\n<li>文件、文件夹、变量命名规范，大驼峰、小驼峰、下划线命名发、首位不能出现数字等等</li>\n<li>文件拆分的基本要求，比如一个代码文件超过 400 行，必须要拆分成不同的包，抽离不同的类</li>\n<li>项目中禁止出现冗余代码，禁止出现无效的变量和无意义的命名</li>\n<li>禁止同样功能的包在一个项目中共存，如 axios 和 jquery 的 ajax 共存</li>\n<li>超过 4k 的图片必须用外链形式引入</li>\n<li>eslint、tslint、prettier 对代码规范的约束</li>\n<li>单元测试、UI 测试、全链路压测......</li>\n<li>新技术调研和分析</li>\n<li>代码规范其实是一个很大的话题，不同团队也有不同要求只要大家都能接受的就是适合自己团队的</li>\n</ul>\n<h3 id="main-heading-H3-2">发版规范</h3>\n<ul dir="auto">\n<li>git flow 的相关规范，commit 的规则</li>\n<li>分支管理和命名规则</li>\n<li>发版的整个流程设计，流程是否合规，是否能帮助大家规避一些长犯的错误</li>\n<li>发版前是否要做自动化测试</li>\n<li>测试环境、预生产环境、生产环境的发版和回归测试要求，比如：任何一次发版结束都要去对应的环境看页面是否能打开，接口是否能跑通。</li>\n</ul>\n<h3 id="main-heading-H3-3">开发规范</h3>\n<ul dir="auto">\n<li>新建开发项目的项目仓库模板/基础开发框架/技术找是否统一，是否具备可视化搭建的必要</li>\n<li>整个项目新建和发布流程是否完整顺滑</li>\n<li>相应的调试工具是否高效</li>\n<li>如果有自研或者第三方组件库，组件库是否有统一，有什么样的要求</li>\n<li>编辑器插件是否统一，大家标准是否一致</li>\n</ul>\n<h3 id="main-heading-H3-4">工程化和组件化</h3>\n<ul dir="auto">\n<li>工程代码规范，仓库、代码、发布、文档、测试、开源方面的规范</li>\n<li>工程构建规范、针对不同技术栈和不同框架的 jenkins 打包发版一条龙构建、或者自研可视化的工程发布规范、gitlab CI/CD</li>\n<li>内部自研的针对各个平台的打包脚本和部署脚本，实现自动化部署</li>\n<li>适用于各个平台的组件化，PC/Mobile/RN/Flutter/小程序等等</li>\n<li>不同技术栈/React/RN/Vue/小程序的前端基础框架，小团队尽量选单一的，大团队可以百花齐放</li>\n<li>业务组件和 UI 组件结合使用，实现快速开发</li>\n<li>可视化的组件拖拽实现页面快速开发，让非技术人员也具备基本的开发能力</li>\n<li>组件和框架发布流程和管理流程</li>\n<li>node 端的 web 框架</li>\n<li>全栈路由监控</li>\n</ul>\n<h3 id="main-heading-H3-5">统计监控</h3>\n<ul dir="auto">\n<li>部署过程监控</li>\n<li>端行为数据监控</li>\n<li>数据采集、埋点设计</li>\n<li>前后端错误日志的抓取应用</li>\n<li>性能分析,要匹配相应的性能分析工具</li>\n<li>监控 SDK</li>\n</ul>\n<h3 id="main-heading-H3-6">安全防控</h3>\n<ul dir="auto">\n<li>代码安全监测</li>\n<li>行为安全监测</li>\n<li>端异常回溯指派</li>\n<li>第三方安装包安全监测</li>\n<li>XSS/CSRF 安全攻击</li>\n</ul>\n<h3 id="main-heading-H3-7">文档沉淀</h3>\n<ul dir="auto">\n<li>编码规范、命名规范、Git 规范、流程规范、性能规范、数据规范、埋点规范、安全规范</li>\n<li>组件规范、工程规范、开源规范、文档规范、</li>\n<li>业务文档、技术文档、分享沉淀文档、新人文档</li>\n</ul>\n<h3 id="main-heading-H3-8">可视化搭建</h3>\n<p dir="auto">以上所有的功能有些做出来就是可视化的，有些用脚本就可以跑，当团队规模足够大的时候，是需要做可视化工具的，让大家可以更直观的使用所有的功能。</p>\n<h2 id="main-heading-H2-9">二、基建的意义何在---为了解决什么问题</h2>\n<p dir="auto">不同的团队规模、不同的团队水平和不同的业务体量决定了基建在这个团队中的意义，脱离以上三点实际情况谈基建是没有任何意义的析。</p>\n<h3 id="main-heading-H3-10">解决业务问题（也是最核心最基础的问题）</h3>\n<ul dir="auto">\n<li>把握当下，解决当下的业务问题，是业务的支撑</li>\n<li>提高效率，基建可以提高单个人的工作产出和工作效率，可以从代码层面解决一些普遍性和常用性的业务问题</li>\n<li>提高质量，基建可以提高整个团队的代码质量</li>\n<li>合理架构，架构的抽象性和合理性是影响产出比的重要因素</li>\n<li>流程制度，优异的流程制度必将带来正面的、积极的、有实效的业务支撑</li>\n<li>活在未来，应对未来业务爆发的可能性</li>\n</ul>\n<h3 id="main-heading-H3-11">实现团队练兵</h3>\n<ul dir="auto">\n<li>技术方案选型和调研能快速提高团队成员的技术水平扩宽技术视野</li>\n<li>项目管理可以让小伙伴们有强烈的自我驱动意识，发挥主观能动性，提高团队活力</li>\n<li>培养产品化思维，一个基建的点可能就是一个完整的项目，负责人从开始到落地整个过程都是自己主导，可以培养产品思维，对整个行业的链条会有更加深刻的认知能力</li>\n</ul>\n<h3 id="main-heading-H3-12">梯队建设</h3>\n<ul dir="auto">\n<li>千人一面写业务代码，大家的水平最终会趋同，团队没有技术梯队</li>\n<li>有人是业务的核心开发者，有人是组件的核心开发者，有人是工程化搭建的核心开发者，分门别类，大家技术栈不同，技术侧重点不同。从生物学角度来说，多样化也是生命力的表现，一个生态，多样化越明显，生命力越顽强</li>\n</ul>\n<h3 id="main-heading-H3-13">影响力建设</h3>\n<ul dir="auto">\n<li>技术沉淀，技术沉底也是一个团队的技术底蕴，是实力的象征</li>\n<li>技术分享，包括团队内部的分享和团队外部的分享</li>\n<li>产品体验，沉淀一些优秀的交互，一些优秀的 UI 视觉，产品体验更友好</li>\n<li>开源体验，让更多人人了解团队，使用你的技术，增加公司的影响力</li>\n</ul>\n<h2 id="main-heading-H2-14">三、不同团队的发展阶段以及基建的侧重点分析</h2>\n<p dir="auto">前面说过脱离实际情况谈基建是没有任何意义的。基建需要从问题出发做事情，跟随团队一起成长。</p>\n<h3 id="main-heading-H3-15">上古时代</h3>\n<p dir="auto">这个时期的团队规模一般都在 1-3 人左右，，具体数字完全靠自己估计，不要深究合理性。可能公司也是发展的早期，整个技术部或许也就 20 人以内。业务量来说，可能有一款核心的产品，两个粗糙的运营工具，三四个辅助的项目支撑业务。我通常会认为这个阶段是不需要一步到位做基建的。</p>\n<p dir="auto">首先要做的是代码层面的规范，能初步确保代码质量过硬就好了，需要 leader 经常抽出时间做代码 review，帮助小伙伴们提高代码的质量，严把质量关。其次可以做一些简单的代码规范文档，项目中融入一些业务说明文档，没有能力构建可视化发版工具的可以考虑用脚本发版，毕竟脚本发版并不见得有多低级。可视化和工程化构建不也是建立在脚本之上么，这个无可厚非。</p>\n<p dir="auto">反过来说，你花了大量的人力资源，协调了多个部门终于做了可视化建设和工程建设，但是公司迟迟不做新项目，业务量迟迟不增加，其实有点大材小用了，对业务的提效并不明显，得不偿失。不过，对个人来说这个阶段做基建是提升个人能力的关键时期，个人能力必将会有大幅度提高，为以后应对公司腾飞打下坚实的基础。</p>\n<h3 id="main-heading-H3-16">工具时代</h3>\n<p dir="auto">这个时期的团队一般会在 4-8 人左右吧，具体数字完全靠自己估计，不要深究合理性。公司业务也会以亿为规模计算，公司人数在 100-500 左右。涉及到的各种 toB 项目和 toC 项目会有几十个。这个阶段的团队应该已经在早期沉淀了一些东西，也算是有家底的团队了。</p>\n<p dir="auto">这个时候的团队为了支撑不算海量的业务，会去有意识的尝试使用不同的工具，助力业务开发。同时，大家也会发现不同技术栈带来的理解成本和开发成本剧增，是时候要进行技术栈的统一了，团队里应该会有一些大牛，积极推进工程化建设，组件建设初具规模，抽象出来的工具库初步具备体系，开始考虑搭建私有的 npm 仓库，开始考虑完善相关的的技术文档，甚至开始考虑做一个专门的网站承载一些文档，帮助团队成员开发速查，帮助新人尽快了解团队整体技术水平。</p>\n<p dir="auto">同时，开始用 gitlab/CL/CD 或者 jenkins 来做自动化建设，解放人力。项目越来越多，线上代码异常难以定位，总是花费大量人力维护老项目也力不从心，这时候你会想着去做一些监控的事情，帮助团队发现代码中的问题，提高代码的健壮性。leader 会有意识的推动各种组件和工具的 npm 化，方便后期维护，同事也可以极大提高开发效率，保障代码质量。</p>\n<p dir="auto">罗马不是一天建成的，这个时期对团队转型来说，对喜欢的人来说充满了刺激，对不喜欢的人来说可能就是噩梦，在打破惯性思维的道路上，必定会遇到阻力，推进工具时代的发展必定会耗费大量的心力，但是收益也是巨大的。</p>\n<h3 id="main-heading-H3-17">工程时代</h3>\n<p dir="auto">这个时期的团队一般会在 10-30 人左右，具体数字全靠自己估计，不要深究合理性。公司业务会以十亿规模计算，公司人数可能在 500 人-1000 人左右。涉及的应用应该在上百个左右。当然也不乏提前布局的 leader，在业务量没达到这个规模的时候就做了工程化的建设。</p>\n<p dir="auto">这个时候的团队应该会有一些资深大牛，他们对业务有深入的了解，能够左右业务的决策，能够把控项目的进度，同时避免一些雷区。团队的技术生态应该是百花齐放的，同时内部以小组为单位实现技术栈的统一。对于一些普适性和高频的业务逻辑应该可以实现 api 化，通过调相应的业务组件或者相应的功能性文件包实现快速开发。作为一线的程序员只需要去关注具体的业务逻辑，不需要去关注具体的技术细节。</p>\n<p dir="auto">在海量技术文档的帮助下，即使是新来的员工，也能快速完成开发。运营通过可视化的开发平台，可以实现组件的拼装，从而完成功能开发，通过一键发版，进行测试和上线，程序员在这里起到辅助的作用。这个时候的基础架构应该已经有很多的积累，大多数项目都可以实现拿来即用的程度。箱子里的工具多了，做什么都比较顺手。前端从造工具进入用工具的阶段。</p>\n<h3 id="main-heading-H3-18">智能时代</h3>\n<p dir="auto">这个时期的前端团队规模应该在 50 人以上，具体数字全靠自己估计，不要深究合理性。公司业务会以千亿规模计算，公司人说会在 1000-100000 之间。涉及的应用可能没有一个人真正的去统计过，因为实在太多了。</p>\n<p dir="auto">这个阶段的一些 leader 或者资深技术可能需要进入深度的商业发现或者商业决策。基础设置除了上面的拿来即用，更多的是实现智能化，设计的东西能通过智能化迅速转化为代码。运营不需要再盯着前端写代码，因为他们通过可视化界面已经可以自己完成功能的开发和上线。</p>\n<p dir="auto">这个阶段的团队不仅有大量的工具，还有大量的物料，通过智能化的方法实现无感开发。这些技术实现不仅影响到公司的技术发展，而且影响到整个行业的生态。我们期待这个时代的到来。</p>\n<h2 id="main-heading-H2-19">四、如何建设基建团队</h2>\n<p dir="auto">有的公司有专门做基建的团队，比如架构组，运维组之类的部门；有些公司的程序员是一边做基建一边开发业务代码。这是两种不同的组织形式，没有好坏之分，只有是否适合的区别，当然其中也会涉及到一些行政干预的力量。</p>\n<p dir="auto">不同的公司可以根据不同的情况进行设计。以上两种组织形式，归根到底都是为了解决一个问题：怎样找到合适的人去做合适的事？</p>\n<h3 id="main-heading-H3-20">需要做什么样的事</h3>\n<ul dir="auto">\n<li>具体要做哪些事第一部分已有说明，此处不再展开论述</li>\n<li>切记要综合评估人和事是否匹配</li>\n<li>作为 leader 最重要的是实现资源和合理配置，发挥出最大作用</li>\n<li>让合适的人做适合的事</li>\n<li>leader 要借人成事，同事也要借事成人，实现整体的发展提高</li>\n</ul>\n<h3 id="main-heading-H3-21">需要什么样的人</h3>\n<ul dir="auto">\n<li>所做之事和当前程序员的技术实力是匹配的，或者说踮起脚尖可以够得着的</li>\n<li>能写出扩展性比较好的代码 sdk</li>\n<li>业务开发中善于总结和分享，看的代码多，知道哪些代码是好代码，</li>\n<li>有一定抽象和归纳总结的能力</li>\n<li>喜欢折腾，保持折腾的心态。（工作经验 3 年以上的，保持这种心态的人会越来越少）</li>\n<li>能去了解痛点，深入了解业务，知道业务需要什么样的东西</li>\n<li>沟通能力强，能把自己做的东西推广出去</li>\n</ul>\n<h3 id="main-heading-H3-22">什么性格的人</h3>\n<ul dir="auto">\n<li>沟通能力强(沟通能力强不能用内向或者外向来判断)</li>\n<li>技术上稍微激进一点，喜欢用新代码，喜欢研究新技术</li>\n<li>有同理心，可以换位思考，能站在使用者的角度思考功能的合理性和便捷性，同时要思考如何让各个团队实现双赢</li>\n<li>可以积极主动 push 一件事情推进</li>\n<li>事必躬亲，既要乐于主动了解业务，又能分析出业务中的痛点，通过做事发现问题，杜绝闭门造车</li>\n<li>奉献精神，要乐于奉献自己的时间和精力去做这些难啃的硬骨头</li>\n</ul>\n<h3 id="main-heading-H3-23">技术上的支持</h3>\n<ul dir="auto">\n<li>node 的相关技能</li>\n<li>sh 脚本的相关技能</li>\n<li>可以熟练使用各种命令行和工具</li>\n<li>python、c++、go 等等的技能</li>\n<li>webpack gulp 的技能</li>\n<li>ios 或者安卓的技能</li>\n<li>docker 技能</li>\n</ul>\n<p dir="auto">以上根据基建的点选择不同技术栈的同学来做。</p>\n<h2 id="main-heading-H2-24">五、基建工作如何落地</h2>\n<p dir="auto">基建工作的落地实施除了需要技术的热情，同样离不开公司 CTO 甚至是大 Boss 的支持，要多学会用数据说话，通过数据和收益来证明一件事情的必要性和可行性。这是前提，缺乏这个前提你做的事情可能并不会得到各方面的支持。</p>\n<p dir="auto">同时，基建工作的落地和选的人有密不可分的关系。如果在一开始做的时候就没选好人，那么基建的效果可能会大打折扣，甚至做出来的东西根本没人用，以至于后期没人维护没人管。</p>\n<p dir="auto">另外要做好数据统计工作，做出的东西在交付使用之前尽量做好使用量统计工作。比如，可以统计一个组件库在整个前端团队的引用次数有多少，一个工具的打开率有多高，节省了多少的人力成本，节省了多少的时间。</p>\n<p dir="auto">这些东西如果能有可视化的界面做支撑，下次再做基建立项的时候，被领导信任的概率就会大大增加。</p>',user:{login:e,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:t,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/287"},navList:[{text:"一、基建工作都有哪些内容",id:"main-heading-H2-0",type:l,children:[{text:"代码层面",id:"main-heading-H3-1",type:i},{text:"发版规范",id:"main-heading-H3-2",type:i},{text:"开发规范",id:"main-heading-H3-3",type:i},{text:"工程化和组件化",id:"main-heading-H3-4",type:i},{text:"统计监控",id:"main-heading-H3-5",type:i},{text:"安全防控",id:"main-heading-H3-6",type:i},{text:"文档沉淀",id:"main-heading-H3-7",type:i},{text:"可视化搭建",id:"main-heading-H3-8",type:i}]},{text:"二、基建的意义何在---为了解决什么问题",id:"main-heading-H2-9",type:l,children:[{text:"解决业务问题（也是最核心最基础的问题）",id:"main-heading-H3-10",type:i},{text:"实现团队练兵",id:"main-heading-H3-11",type:i},{text:"梯队建设",id:"main-heading-H3-12",type:i},{text:"影响力建设",id:"main-heading-H3-13",type:i}]},{text:"三、不同团队的发展阶段以及基建的侧重点分析",id:"main-heading-H2-14",type:l,children:[{text:"上古时代",id:"main-heading-H3-15",type:i},{text:"工具时代",id:"main-heading-H3-16",type:i},{text:"工程时代",id:"main-heading-H3-17",type:i},{text:"智能时代",id:"main-heading-H3-18",type:i}]},{text:"四、如何建设基建团队",id:"main-heading-H2-19",type:l,children:[{text:"需要做什么样的事",id:"main-heading-H3-20",type:i},{text:"需要什么样的人",id:"main-heading-H3-21",type:i},{text:"什么性格的人",id:"main-heading-H3-22",type:i},{text:"技术上的支持",id:"main-heading-H3-23",type:i}]},{text:"五、基建工作如何落地",id:"main-heading-H2-24",type:l,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:e,userEmail:"1656800216@qq.com",repository:"blog",blogName:a,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:a,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:t}},serverRendered:!0}}("H3","","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,489 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>从前端工程的角度进行性能优化 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="举例以一个 Vue 全家桶 项目为例~ 构建体积相关 + 首屏性能优化 0. 优化前使用 LightHouse（灯塔）评测各项性能指标 各项指标说明：https://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA== mid=2247496148 idx=1 sn=e"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="从前端工程的角度进行性能优化"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="举例以一个 Vue 全家桶 项目为例~ 构建体积相关 + 首屏性能优化 0. 优化前使用 LightHouse（灯塔）评测各项性能指标 各项指标说明：https://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA== mid=2247496148 idx=1 sn=e"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="从前端工程的角度进行性能优化"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="举例以一个 Vue 全家桶 项目为例~ 构建体积相关 + 首屏性能优化 0. 优化前使用 LightHouse（灯塔）评测各项性能指标 各项指标说明：https://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA== mid=2247496148 idx=1 sn=e"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H2-0" title="构建体积相关 + 首屏性能优化" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              构建体积相关 + 首屏性能优化
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-1" title="0. 优化前使用 LightHouse（灯塔）评测各项性能指标" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  0. 优化前使用 LightHouse（灯塔）评测各项性能指标
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-2" title="1. 使用 webpack-bundle-analyzer 查看冗余代码" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. 使用 webpack-bundle-analyzer 查看冗余代码
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-3" title="2. 使用 splitChunks 插件拆分公共代码" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. 使用 splitChunks 插件拆分公共代码
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-4" title="3. 关闭 prefetch、preload" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3. 关闭 prefetch、preload
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-5" title='4. 前端开启 gzip（双端开启指南：<a href="https://cloud.tencent.com/developer/article/1507153%EF%BC%89" rel="nofollow">https://cloud.tencent.com/developer/article/1507153）</a>' class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4. 前端开启 gzip（双端开启指南：https://cloud.tencent.com/developer/article/1507153）
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-6" title="5. 图片资源优化" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5. 图片资源优化
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-7" title="6. 资源加载" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  6. 资源加载
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-8" title="7. 生产环境" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  7. 生产环境
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H2-9" title="构建速度相关" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              构建速度相关
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-10" title="1. 查看构建时间" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. 查看构建时间
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-11" title="2. vue-cli-plugin-dll" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. vue-cli-plugin-dll
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-12" title="3. thread-loader 多进程打包" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3. thread-loader 多进程打包
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-13" title="4. import 优化" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4. import 优化
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-14" title="5. 利用缓存提升二次构建速度" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5. 利用缓存提升二次构建速度
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/241#main-heading-H3-15" title="参考" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  参考
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>从前端工程的角度进行性能优化</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>从前端工程的角度进行性能优化</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2022-10-01</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 18 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><p dir="auto">举例以一个 Vue 全家桶 项目为例~</p>
+<h2 id="main-heading-H2-0">构建体积相关 + 首屏性能优化</h2>
+<h3 id="main-heading-H3-1">0. 优化前使用 LightHouse（灯塔）评测各项性能指标</h3>
+<p dir="auto">各项指标说明：<a href="https://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&mid=2247496148&idx=1&sn=e7afda57d67a1d87ee0a42a907c6ef52&source=41#wechat_redirect" rel="nofollow">https://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&mid=2247496148&idx=1&sn=e7afda57d67a1d87ee0a42a907c6ef52&source=41#wechat_redirect</a></p>
+<h3 id="main-heading-H3-2">1. 使用 webpack-bundle-analyzer 查看冗余代码</h3>
+<ul dir="auto">
+<li>配置 external 不参与打包使用外部环境依赖 （『Webpack 系列』—— externals 用法详解 ： <a href="https://juejin.cn/post/6844904190083350542%EF%BC%89" rel="nofollow">https://juejin.cn/post/6844904190083350542）</a>
+<ul dir="auto">
+<li>如 vue、vue-router、vuex 相关资源变动频率低，可以放到 cdn（建议三个资源合成一个 <code class="notranslate">vue.all.runtime.js</code> 减少请求数量）</li>
+</ul>
+</li>
+<li>UI 组件库及其 Css 文件 配置按需引入</li>
+<li>工具库 如 lodash 配置按需引入或按需导入</li>
+<li>使用 unused-files-webpack-plugin 查找无用文件</li>
+</ul>
+<h3 id="main-heading-H3-3">2. 使用 splitChunks 插件拆分公共代码</h3>
+<p dir="auto">『Webpack 系列』—— SplitChunks 插件用法详解 ：<a href="https://juejin.cn/post/6844904198023168013" rel="nofollow">https://juejin.cn/post/6844904198023168013</a></p>
+<p dir="auto">用 SplitChunks 插件来控制 Webpack 打包生成的 js 文件的内容的精髓就在于，防止模块被重复打包，拆分过大的 js 文件，合并零散的 js 文件。最终的目的就是减少请求资源的大小和请求次数。因这两者是互相矛盾的，故要以项目实际的情况去使用 SplitChunks 插件，需切记中庸之道。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  optimization: {
+  splitChunks: {
+    cacheGroups: {
+      vendors: {
+        name: 'chunk-vendors',
+        test: /[\\/]node_modules[\\/]/,
+        priority: -10,
+        chunks: 'initial'
+      },
+      common: {
+        name: 'chunk-common',
+        minChunks: 2,
+        priority: -20,
+        chunks: 'initial',
+        reuseExistingChunk: true
+      }
+    }
+  }
+}"><pre class="notranslate"><span class="pl-kos">{</span>
+  optimization: <span class="pl-kos">{</span>
+  splitChunks: <span class="pl-kos">{</span>
+    <span class="pl-c1">cacheGroups</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">vendors</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-s">'chunk-vendors'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-kos">[</span><span class="pl-cce">\\</span><span class="pl-c1">/</span><span class="pl-kos">]</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-kos">[</span><span class="pl-cce">\\</span><span class="pl-c1">/</span><span class="pl-kos">]</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">priority</span>: <span class="pl-c1">-</span><span class="pl-c1">10</span><span class="pl-kos">,</span>
+        <span class="pl-c1">chunks</span>: <span class="pl-s">'initial'</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c1">common</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-s">'chunk-common'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">minChunks</span>: <span class="pl-c1">2</span><span class="pl-kos">,</span>
+        <span class="pl-c1">priority</span>: <span class="pl-c1">-</span><span class="pl-c1">20</span><span class="pl-kos">,</span>
+        <span class="pl-c1">chunks</span>: <span class="pl-s">'initial'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">reuseExistingChunk</span>: <span class="pl-c1">true</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos"></span></pre></div>
+<h3 id="main-heading-H3-4">3. 关闭 prefetch、preload</h3>
+<p dir="auto">prefetch：用来告诉浏览器在页面加载完成后，利用空闲时间提前获取用户未来可能会访问的内容<br>
+preload：用来指定页面加载后很快会被用到的资源，所以在页面加载的过程中，我们希望在浏览器开始主体渲染之前尽早 preload</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// 移除 preload(预载) 插件
+config.plugins.delete("preload");
+// 移除 prefetch(预取) 插件
+config.plugins.delete("prefetch");'><pre class="notranslate"><span class="pl-c">// 移除 preload(预载) 插件</span>
+<span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">delete</span><span class="pl-kos">(</span><span class="pl-s">"preload"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// 移除 prefetch(预取) 插件</span>
+<span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">delete</span><span class="pl-kos">(</span><span class="pl-s">"prefetch"</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-5">4. 前端开启 gzip（双端开启指南：<a href="https://cloud.tencent.com/developer/article/1507153%EF%BC%89" rel="nofollow">https://cloud.tencent.com/developer/article/1507153）</a></h3>
+<p dir="auto">打包产物新增 gzip 资源，页面加载优先使用（network 请求多出 gzip 资源）</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const CompressionPlugin = require("compression-webpack-plugin");
+new CompressionPlugin({
+  algorithm: "gzip",
+  test: /\.js$|\.html$|\.css$/, // 匹配文件名
+  minRatio: 1, // 压缩率小于1才会压缩
+  threshold: 10240, // 对超过10k的数据压缩
+  deleteOriginalAssets: false,
+});'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">CompressionPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"compression-webpack-plugin"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">new</span> <span class="pl-v">CompressionPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">algorithm</span>: <span class="pl-s">"gzip"</span><span class="pl-kos">,</span>
+  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">|</span><span class="pl-cce">\.</span><span class="pl-s">h</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">l</span><span class="pl-cce">$</span><span class="pl-c1">|</span><span class="pl-cce">\.</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span> <span class="pl-c">// 匹配文件名</span>
+  <span class="pl-c1">minRatio</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c">// 压缩率小于1才会压缩</span>
+  <span class="pl-c1">threshold</span>: <span class="pl-c1">10240</span><span class="pl-kos">,</span> <span class="pl-c">// 对超过10k的数据压缩</span>
+  <span class="pl-c1">deleteOriginalAssets</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-6">5. 图片资源优化</h3>
+<ul dir="auto">
+<li>图片有损压缩</li>
+<li>使用 CDN 图片</li>
+<li>图片懒加载</li>
+<li>雪碧图资源， 在 webpack 中，webpack-spritesmith 插件提供了自动合并雪碧图的功能并且可以自动生成对应的样式文件</li>
+</ul>
+<h3 id="main-heading-H3-7">6. 资源加载</h3>
+<ul dir="auto">
+<li>尽量提前获取首屏需用数据 （可选 SSG 模式）</li>
+<li>路由按需加载</li>
+<li>组件懒加载</li>
+<li>css 优选加载，js 延迟加载</li>
+<li>服务异步加载（弹窗类 <code class="notranslate">.vue</code>文件异步加载）</li>
+</ul>
+<h3 id="main-heading-H3-8">7. 生产环境</h3>
+<ul dir="auto">
+<li>过滤 console、debugger 代码</li>
+<li>extract 样式分离、productionSourceMap 和 sourceMap 可以关联环境，生产环境关闭，其他情况打开</li>
+</ul>
+<blockquote>
+<p dir="auto">建议 js、css、图片 单个文件资源大小不超过 100k</p>
+</blockquote>
+<h2 id="main-heading-H2-9">构建速度相关</h2>
+<h3 id="main-heading-H3-10">1. 查看构建时间</h3>
+<p dir="auto">说明：<a href="https://www.npmjs.com/package/speed-measure-webpack-plugin" rel="nofollow">https://www.npmjs.com/package/speed-measure-webpack-plugin</a></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+module.exports = {
+  configureWebpack: (config) => {
+    config.plugins.push(new SpeedMeasurePlugin());
+  },
+};'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">SpeedMeasurePlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"speed-measure-webpack-plugin"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-en">configureWebpack</span>: <span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-k">new</span> <span class="pl-v">SpeedMeasurePlugin</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-11">2. vue-cli-plugin-dll</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev vue-cli-plugin-dll"><pre class="notranslate">npm install --save-dev vue-cli-plugin-dll</pre></div>
+<p dir="auto">接下来就是 dll 的相关配置，将我们项目中的依赖使用 dll 插件进行动态链接，这样依赖就不会进行编译，从而极大地提高编译速度，因为这些插件没有编译，在 vue.config.js 中进行配置，也很简单</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const path = require("path");
+module.exports = {
+  pluginOptions: {
+    dll: {
+      //这里放的是你的依赖插件，就是你项目安装的其他的插件，将这些插件的名字依次加在后面,我建议将所有项目依赖插件全部放在后面
+      //注意这里不能放webpack，gulp等需要node环境的插件，我尝试将babel等放到这里报错提示没有V8环境
+      entry: ["vue", "vue-router", "view-design"],
+      //dll 编译后的链接库的地址
+      cacheFilePath: path.resolve(__dirname, "./public"),
+      // 是否开启 DllReferencePlugin,
+      open: true,
+      // 在执行 `dev` , `build` 等其他指令时，程序会自动将 `dll` 指令生成的 `*.dll.js` 等文件自动注入到 index.html 中。
+      inject: true,
+    },
+  },
+};'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">pluginOptions</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">dll</span>: <span class="pl-kos">{</span>
+      <span class="pl-c">//这里放的是你的依赖插件，就是你项目安装的其他的插件，将这些插件的名字依次加在后面,我建议将所有项目依赖插件全部放在后面</span>
+      <span class="pl-c">//注意这里不能放webpack，gulp等需要node环境的插件，我尝试将babel等放到这里报错提示没有V8环境</span>
+      <span class="pl-c1">entry</span>: <span class="pl-kos">[</span><span class="pl-s">"vue"</span><span class="pl-kos">,</span> <span class="pl-s">"vue-router"</span><span class="pl-kos">,</span> <span class="pl-s">"view-design"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+      <span class="pl-c">//dll 编译后的链接库的地址</span>
+      <span class="pl-c1">cacheFilePath</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">"./public"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 是否开启 DllReferencePlugin,</span>
+      <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 在执行 `dev` , `build` 等其他指令时，程序会自动将 `dll` 指令生成的 `*.dll.js` 等文件自动注入到 index.html 中。</span>
+      <span class="pl-c1">inject</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">多入口</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const path = require("path");
+module.exports = {
+  pluginOptions: {
+    dll: {
+      // 入口配置
+      entry: {
+        vue: ["vue", "vue-router", "vuex"],
+        ui: ["view-design"],
+      },
+      // 输出目录
+      output: {
+        path: path.join(__dirname, "public/dll"),
+        filename: "[name].dll.js",
+        // vendor.dll.js中暴露出的全局变量名
+        // 保持与 webpack.DllPlugin 中名称一致
+        library: "[name]_[hash]",
+      },
+      // 是否开启 DllReferencePlugin,
+      open: true,
+
+      // 在执行 `dev` , `build` 等其他指令时，程序会自动将 `dll` 指令生成的 `*.dll.js` 等文件自动注入到 index.html 中。
+      inject: true,
+    },
+  },
+};'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">pluginOptions</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">dll</span>: <span class="pl-kos">{</span>
+      <span class="pl-c">// 入口配置</span>
+      <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">vue</span>: <span class="pl-kos">[</span><span class="pl-s">"vue"</span><span class="pl-kos">,</span> <span class="pl-s">"vue-router"</span><span class="pl-kos">,</span> <span class="pl-s">"vuex"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+        <span class="pl-c1">ui</span>: <span class="pl-kos">[</span><span class="pl-s">"view-design"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 输出目录</span>
+      <span class="pl-c1">output</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">path</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">"public/dll"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+        <span class="pl-c1">filename</span>: <span class="pl-s">"[name].dll.js"</span><span class="pl-kos">,</span>
+        <span class="pl-c">// vendor.dll.js中暴露出的全局变量名</span>
+        <span class="pl-c">// 保持与 webpack.DllPlugin 中名称一致</span>
+        <span class="pl-c1">library</span>: <span class="pl-s">"[name]_[hash]"</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 是否开启 DllReferencePlugin,</span>
+      <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+
+      <span class="pl-c">// 在执行 `dev` , `build` 等其他指令时，程序会自动将 `dll` 指令生成的 `*.dll.js` 等文件自动注入到 index.html 中。</span>
+      <span class="pl-c1">inject</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">配置好之后然后运行,进行你上面配置插件动态链接库的编译</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npx vue-cli-service dll"><pre class="notranslate">npx vue-cli-service dll</pre></div>
+<p dir="auto">dll 编译完成后会在上面配置的目录下生成 dll 文件夹，就可以开始跑项目了，因为这些插件都不需要编译，跑起来很流畅，修改后的热更新速度更是显著提升。我以前修改一行代码热更新编译在 30 秒以上，使用这个以后基本十秒以内搞定。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run serve"><pre class="notranslate">npm run serve</pre></div>
+<h3 id="main-heading-H3-12">3. thread-loader 多进程打包</h3>
+<p dir="auto"><strong>Vue-Cli</strong></p>
+<p dir="auto">Vue-Cli 已经内置，开启</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = { parallel: true };"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">parallel</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">parallel</p>
+<ul dir="auto">
+<li>Type: boolean</li>
+<li>Default: require('os').cpus().length > 1</li>
+</ul>
+<p dir="auto">是否为 Babel 或 TypeScript 使用 thread-loader。<br>
+该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。</p>
+<p dir="auto"><strong>Webpack</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev thread-loader"><pre class="notranslate">npm install --save-dev thread-loader</pre></div>
+<p dir="auto">配置</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const path = require("path");
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: path.resolve("src"),
+        use: [
+          "thread-loader",
+          // 耗时的 loader （例如 babel-loader）
+        ],
+      },
+    ],
+  },
+};'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">module</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">include</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s">"src"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+        <span class="pl-c1">use</span>: <span class="pl-kos">[</span>
+          <span class="pl-s">"thread-loader"</span><span class="pl-kos">,</span>
+          <span class="pl-c">// 耗时的 loader （例如 babel-loader）</span>
+        <span class="pl-kos">]</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-13">4. import 优化</h3>
+<p dir="auto">运用这个插件能在代码使用了 import 语法的情况下，大大提高代码的编译速度。</p>
+<p dir="auto">安装 babel-plugin-dynamic-import-node</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev babel-plugin-dynamic-import-node"><pre class="notranslate">npm install --save-dev babel-plugin-dynamic-import-node</pre></div>
+<p dir="auto"><strong>vue-cli3</strong></p>
+<p dir="auto">修改 babel.config.js 文件</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='module.exports = {
+  presets: ["@vue/cli-plugin-babel/preset"],
+  env: { development: { plugins: ["dynamic-import-node"] } },
+};'><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">presets</span>: <span class="pl-kos">[</span><span class="pl-s">"@vue/cli-plugin-babel/preset"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">env</span>: <span class="pl-kos">{</span> <span class="pl-c1">development</span>: <span class="pl-kos">{</span> <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span><span class="pl-s">"dynamic-import-node"</span><span class="pl-kos">]</span> <span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-14">5. 利用缓存提升二次构建速度</h3>
+<p dir="auto">Webpack 中几种缓存方式：</p>
+<ul dir="auto">
+<li>cache-loader</li>
+<li>hard-source-webpack-plugin</li>
+</ul>
+<p dir="auto">以上这些缓存方式都有首次启动时的开销，即它们会让 “冷启动” 时间会更长，但是二次启动能够节省很多时间.</p>
+<p dir="auto">Vue-Cli 已经内置了 <code class="notranslate">cache-loader</code> 进行以下两个的缓存，未添加 <code class="notranslate">hard-source-webpack-plugin</code></p>
+<ul dir="auto">
+<li>babel-loader 的 cacheDirectory 标志</li>
+<li>vue-loader 的 cacheDirectory 标志</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='[
+  {
+    test: /\.vue$/,
+    use: [
+      {
+        loader: "project_path\\node_modules\\cache-loader\\dist\\cjs.js",
+        options: {
+          cacheDirectory: "project_path\\node_modules\\.cache\\vue-loader",
+          cacheIdentifier: "036da057",
+        },
+      },
+      {
+        loader: "project_path\\node_modules\\vue-loader\\lib\\index.js",
+        options: {
+          compilerOptions: {
+            whitespace: "condense",
+          },
+          cacheDirectory: "project_path\\node_modules\\.cache\\vue-loader",
+          cacheIdentifier: "036da057",
+        },
+      },
+    ],
+  },
+  {
+    test: /\.m?jsx?$/,
+    include: ["/packages"],
+    exclude: [
+      function () {
+        /* omitted long function */
+      },
+    ],
+    use: [
+      {
+        loader: "project_path\\node_modules\\cache-loader\\dist\\cjs.js",
+        options: {
+          cacheDirectory: "project_path\\node_modules\\.cache\\babel-loader",
+          cacheIdentifier: "5217b3ec",
+        },
+      },
+      {
+        loader: "project_path\\node_modules\\babel-loader\\lib\\index.js",
+      },
+      {
+        loader: "babel-loader",
+      },
+    ],
+  },
+];'><pre class="notranslate"><span class="pl-kos">[</span>
+  <span class="pl-kos">{</span>
+    <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">v</span><span class="pl-s">u</span><span class="pl-s">e</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+    <span class="pl-c1">use</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">loader</span>: <span class="pl-s">"project_path\\node_modules\\cache-loader\\dist\\cjs.js"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">cacheDirectory</span>: <span class="pl-s">"project_path\\node_modules\\.cache\\vue-loader"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">cacheIdentifier</span>: <span class="pl-s">"036da057"</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">loader</span>: <span class="pl-s">"project_path\\node_modules\\vue-loader\\lib\\index.js"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">compilerOptions</span>: <span class="pl-kos">{</span>
+            <span class="pl-c1">whitespace</span>: <span class="pl-s">"condense"</span><span class="pl-kos">,</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-c1">cacheDirectory</span>: <span class="pl-s">"project_path\\node_modules\\.cache\\vue-loader"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">cacheIdentifier</span>: <span class="pl-s">"036da057"</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">{</span>
+    <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">m</span><span class="pl-c1">?</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-s">x</span><span class="pl-c1">?</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+    <span class="pl-c1">include</span>: <span class="pl-kos">[</span><span class="pl-s">"/packages"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-c1">exclude</span>: <span class="pl-kos">[</span>
+      <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-c">/* omitted long function */</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-c1">use</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">loader</span>: <span class="pl-s">"project_path\\node_modules\\cache-loader\\dist\\cjs.js"</span><span class="pl-kos">,</span>
+        <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">cacheDirectory</span>: <span class="pl-s">"project_path\\node_modules\\.cache\\babel-loader"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">cacheIdentifier</span>: <span class="pl-s">"5217b3ec"</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">loader</span>: <span class="pl-s">"project_path\\node_modules\\babel-loader\\lib\\index.js"</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">loader</span>: <span class="pl-s">"babel-loader"</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>
+<blockquote>
+<p dir="auto">提示：Vue-Cli 自带的 cache-loader 会默认为 Vue/Babel/TypeScript 编译开启。文件会缓存在 node_modules/.cache 中。如果你遇到了编译方面的问题，记得先清缓存目录之后再试试看。</p>
+</blockquote>
+<p dir="auto"><strong>HardSourceWebpackPlugin</strong></p>
+<p dir="auto">详细说明 :<a href="https://www.npmjs.com/package/hard-source-webpack-plugin" rel="nofollow">https://www.npmjs.com/package/hard-source-webpack-plugin</a></p>
+<p dir="auto">在启动项目时会针对项目生成缓存，若是项目无 package 或其他变化，下次就不用花费时间重新构建，直接复用缓存。</p>
+<p dir="auto">安装</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev hard-source-webpack-plugin"><pre class="notranslate">npm install --save-dev hard-source-webpack-plugin</pre></div>
+<p dir="auto">配置 vue.config.js</p>
+<p dir="auto">为模块提供中间缓存，缓存路径是：<code class="notranslate">node_modules/.cache/hard-source</code></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+module.exports = {
+  configureWebpack: (config) => {
+    config.plugin.push(
+      new HardSourceWebpackPlugin({
+        root: process.cwd(),
+        directories: [],
+        environmentHash: {
+          root: process.cwd(),
+          directories: [],
+          // 配置了files的主要原因是解决配置更新，cache不生效了的问题，配置后有包的变化，plugin会重新构建一部分cache
+          files: ["package.json", "yarn.lock"],
+        },
+      })
+    );
+  },
+};'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">HardSourceWebpackPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"hard-source-webpack-plugin"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-en">configureWebpack</span>: <span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugin</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span>
+      <span class="pl-k">new</span> <span class="pl-v">HardSourceWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">root</span>: <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">cwd</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+        <span class="pl-c1">directories</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+        <span class="pl-c1">environmentHash</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">root</span>: <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">cwd</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+          <span class="pl-c1">directories</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+          <span class="pl-c">// 配置了files的主要原因是解决配置更新，cache不生效了的问题，配置后有包的变化，plugin会重新构建一部分cache</span>
+          <span class="pl-c1">files</span>: <span class="pl-kos">[</span><span class="pl-s">"package.json"</span><span class="pl-kos">,</span> <span class="pl-s">"yarn.lock"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-15">参考</h3>
+<ul dir="auto">
+<li><a href="https://cloud.tencent.com/developer/article/2125535" rel="nofollow">https://cloud.tencent.com/developer/article/2125535</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l){return{layout:"default",data:[{post:{id:1393232945,number:241,title:"从前端工程的角度进行性能优化",created_at:"2022-10-01T04:30:07Z",updated_at:"2022-10-01T05:05:47Z",body_html:'<p dir="auto">举例以一个 Vue 全家桶 项目为例~</p>\n<h2 id="main-heading-H2-0">构建体积相关 + 首屏性能优化</h2>\n<h3 id="main-heading-H3-1">0. 优化前使用 LightHouse（灯塔）评测各项性能指标</h3>\n<p dir="auto">各项指标说明：<a href="https://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&amp;mid=2247496148&amp;idx=1&amp;sn=e7afda57d67a1d87ee0a42a907c6ef52&amp;source=41#wechat_redirect" rel="nofollow">https://mp.weixin.qq.com/s?__biz=Mzg5MDY1MjIxMA==&amp;mid=2247496148&amp;idx=1&amp;sn=e7afda57d67a1d87ee0a42a907c6ef52&amp;source=41#wechat_redirect</a></p>\n<h3 id="main-heading-H3-2">1. 使用 webpack-bundle-analyzer 查看冗余代码</h3>\n<ul dir="auto">\n<li>配置 external 不参与打包使用外部环境依赖 （『Webpack 系列』—— externals 用法详解 ： <a href="https://juejin.cn/post/6844904190083350542%EF%BC%89" rel="nofollow">https://juejin.cn/post/6844904190083350542）</a>\n<ul dir="auto">\n<li>如 vue、vue-router、vuex 相关资源变动频率低，可以放到 cdn（建议三个资源合成一个 <code class="notranslate">vue.all.runtime.js</code> 减少请求数量）</li>\n</ul>\n</li>\n<li>UI 组件库及其 Css 文件 配置按需引入</li>\n<li>工具库 如 lodash 配置按需引入或按需导入</li>\n<li>使用 unused-files-webpack-plugin 查找无用文件</li>\n</ul>\n<h3 id="main-heading-H3-3">2. 使用 splitChunks 插件拆分公共代码</h3>\n<p dir="auto">『Webpack 系列』—— SplitChunks 插件用法详解 ：<a href="https://juejin.cn/post/6844904198023168013" rel="nofollow">https://juejin.cn/post/6844904198023168013</a></p>\n<p dir="auto">用 SplitChunks 插件来控制 Webpack 打包生成的 js 文件的内容的精髓就在于，防止模块被重复打包，拆分过大的 js 文件，合并零散的 js 文件。最终的目的就是减少请求资源的大小和请求次数。因这两者是互相矛盾的，故要以项目实际的情况去使用 SplitChunks 插件，需切记中庸之道。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  optimization: {\n  splitChunks: {\n    cacheGroups: {\n      vendors: {\n        name: \'chunk-vendors\',\n        test: /[\\\\/]node_modules[\\\\/]/,\n        priority: -10,\n        chunks: \'initial\'\n      },\n      common: {\n        name: \'chunk-common\',\n        minChunks: 2,\n        priority: -20,\n        chunks: \'initial\',\n        reuseExistingChunk: true\n      }\n    }\n  }\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  optimization: <span class="pl-kos">{</span>\n  splitChunks: <span class="pl-kos">{</span>\n    <span class="pl-c1">cacheGroups</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">vendors</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">name</span>: <span class="pl-s">\'chunk-vendors\'</span><span class="pl-kos">,</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-kos">[</span><span class="pl-cce">\\\\</span><span class="pl-c1">/</span><span class="pl-kos">]</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-kos">[</span><span class="pl-cce">\\\\</span><span class="pl-c1">/</span><span class="pl-kos">]</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">priority</span>: <span class="pl-c1">-</span><span class="pl-c1">10</span><span class="pl-kos">,</span>\n        <span class="pl-c1">chunks</span>: <span class="pl-s">\'initial\'</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c1">common</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">name</span>: <span class="pl-s">\'chunk-common\'</span><span class="pl-kos">,</span>\n        <span class="pl-c1">minChunks</span>: <span class="pl-c1">2</span><span class="pl-kos">,</span>\n        <span class="pl-c1">priority</span>: <span class="pl-c1">-</span><span class="pl-c1">20</span><span class="pl-kos">,</span>\n        <span class="pl-c1">chunks</span>: <span class="pl-s">\'initial\'</span><span class="pl-kos">,</span>\n        <span class="pl-c1">reuseExistingChunk</span>: <span class="pl-c1">true</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos"></span></pre></div>\n<h3 id="main-heading-H3-4">3. 关闭 prefetch、preload</h3>\n<p dir="auto">prefetch：用来告诉浏览器在页面加载完成后，利用空闲时间提前获取用户未来可能会访问的内容<br>\npreload：用来指定页面加载后很快会被用到的资源，所以在页面加载的过程中，我们希望在浏览器开始主体渲染之前尽早 preload</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 移除 preload(预载) 插件\nconfig.plugins.delete(&quot;preload&quot;);\n// 移除 prefetch(预取) 插件\nconfig.plugins.delete(&quot;prefetch&quot;);"><pre class="notranslate"><span class="pl-c">// 移除 preload(预载) 插件</span>\n<span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">delete</span><span class="pl-kos">(</span><span class="pl-s">"preload"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-c">// 移除 prefetch(预取) 插件</span>\n<span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">delete</span><span class="pl-kos">(</span><span class="pl-s">"prefetch"</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-5">4. 前端开启 gzip（双端开启指南：<a href="https://cloud.tencent.com/developer/article/1507153%EF%BC%89" rel="nofollow">https://cloud.tencent.com/developer/article/1507153）</a></h3>\n<p dir="auto">打包产物新增 gzip 资源，页面加载优先使用（network 请求多出 gzip 资源）</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const CompressionPlugin = require(&quot;compression-webpack-plugin&quot;);\nnew CompressionPlugin({\n  algorithm: &quot;gzip&quot;,\n  test: /\\.js$|\\.html$|\\.css$/, // 匹配文件名\n  minRatio: 1, // 压缩率小于1才会压缩\n  threshold: 10240, // 对超过10k的数据压缩\n  deleteOriginalAssets: false,\n});"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">CompressionPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"compression-webpack-plugin"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-k">new</span> <span class="pl-v">CompressionPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">algorithm</span>: <span class="pl-s">"gzip"</span><span class="pl-kos">,</span>\n  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">|</span><span class="pl-cce">\\.</span><span class="pl-s">h</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">l</span><span class="pl-cce">$</span><span class="pl-c1">|</span><span class="pl-cce">\\.</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span> <span class="pl-c">// 匹配文件名</span>\n  <span class="pl-c1">minRatio</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c">// 压缩率小于1才会压缩</span>\n  <span class="pl-c1">threshold</span>: <span class="pl-c1">10240</span><span class="pl-kos">,</span> <span class="pl-c">// 对超过10k的数据压缩</span>\n  <span class="pl-c1">deleteOriginalAssets</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-6">5. 图片资源优化</h3>\n<ul dir="auto">\n<li>图片有损压缩</li>\n<li>使用 CDN 图片</li>\n<li>图片懒加载</li>\n<li>雪碧图资源， 在 webpack 中，webpack-spritesmith 插件提供了自动合并雪碧图的功能并且可以自动生成对应的样式文件</li>\n</ul>\n<h3 id="main-heading-H3-7">6. 资源加载</h3>\n<ul dir="auto">\n<li>尽量提前获取首屏需用数据 （可选 SSG 模式）</li>\n<li>路由按需加载</li>\n<li>组件懒加载</li>\n<li>css 优选加载，js 延迟加载</li>\n<li>服务异步加载（弹窗类 <code class="notranslate">.vue</code>文件异步加载）</li>\n</ul>\n<h3 id="main-heading-H3-8">7. 生产环境</h3>\n<ul dir="auto">\n<li>过滤 console、debugger 代码</li>\n<li>extract 样式分离、productionSourceMap 和 sourceMap 可以关联环境，生产环境关闭，其他情况打开</li>\n</ul>\n<blockquote>\n<p dir="auto">建议 js、css、图片 单个文件资源大小不超过 100k</p>\n</blockquote>\n<h2 id="main-heading-H2-9">构建速度相关</h2>\n<h3 id="main-heading-H3-10">1. 查看构建时间</h3>\n<p dir="auto">说明：<a href="https://www.npmjs.com/package/speed-measure-webpack-plugin" rel="nofollow">https://www.npmjs.com/package/speed-measure-webpack-plugin</a></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const SpeedMeasurePlugin = require(&quot;speed-measure-webpack-plugin&quot;);\nmodule.exports = {\n  configureWebpack: (config) =&gt; {\n    config.plugins.push(new SpeedMeasurePlugin());\n  },\n};"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">SpeedMeasurePlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"speed-measure-webpack-plugin"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-en">configureWebpack</span>: <span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-k">new</span> <span class="pl-v">SpeedMeasurePlugin</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-11">2. vue-cli-plugin-dll</h3>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev vue-cli-plugin-dll"><pre class="notranslate">npm install --save-dev vue-cli-plugin-dll</pre></div>\n<p dir="auto">接下来就是 dll 的相关配置，将我们项目中的依赖使用 dll 插件进行动态链接，这样依赖就不会进行编译，从而极大地提高编译速度，因为这些插件没有编译，在 vue.config.js 中进行配置，也很简单</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require(&quot;path&quot;);\nmodule.exports = {\n  pluginOptions: {\n    dll: {\n      //这里放的是你的依赖插件，就是你项目安装的其他的插件，将这些插件的名字依次加在后面,我建议将所有项目依赖插件全部放在后面\n      //注意这里不能放webpack，gulp等需要node环境的插件，我尝试将babel等放到这里报错提示没有V8环境\n      entry: [&quot;vue&quot;, &quot;vue-router&quot;, &quot;view-design&quot;],\n      //dll 编译后的链接库的地址\n      cacheFilePath: path.resolve(__dirname, &quot;./public&quot;),\n      // 是否开启 DllReferencePlugin,\n      open: true,\n      // 在执行 `dev` , `build` 等其他指令时，程序会自动将 `dll` 指令生成的 `*.dll.js` 等文件自动注入到 index.html 中。\n      inject: true,\n    },\n  },\n};"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">pluginOptions</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">dll</span>: <span class="pl-kos">{</span>\n      <span class="pl-c">//这里放的是你的依赖插件，就是你项目安装的其他的插件，将这些插件的名字依次加在后面,我建议将所有项目依赖插件全部放在后面</span>\n      <span class="pl-c">//注意这里不能放webpack，gulp等需要node环境的插件，我尝试将babel等放到这里报错提示没有V8环境</span>\n      <span class="pl-c1">entry</span>: <span class="pl-kos">[</span><span class="pl-s">"vue"</span><span class="pl-kos">,</span> <span class="pl-s">"vue-router"</span><span class="pl-kos">,</span> <span class="pl-s">"view-design"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n      <span class="pl-c">//dll 编译后的链接库的地址</span>\n      <span class="pl-c1">cacheFilePath</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">"./public"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 是否开启 DllReferencePlugin,</span>\n      <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 在执行 `dev` , `build` 等其他指令时，程序会自动将 `dll` 指令生成的 `*.dll.js` 等文件自动注入到 index.html 中。</span>\n      <span class="pl-c1">inject</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">多入口</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require(&quot;path&quot;);\nmodule.exports = {\n  pluginOptions: {\n    dll: {\n      // 入口配置\n      entry: {\n        vue: [&quot;vue&quot;, &quot;vue-router&quot;, &quot;vuex&quot;],\n        ui: [&quot;view-design&quot;],\n      },\n      // 输出目录\n      output: {\n        path: path.join(__dirname, &quot;public/dll&quot;),\n        filename: &quot;[name].dll.js&quot;,\n        // vendor.dll.js中暴露出的全局变量名\n        // 保持与 webpack.DllPlugin 中名称一致\n        library: &quot;[name]_[hash]&quot;,\n      },\n      // 是否开启 DllReferencePlugin,\n      open: true,\n\n      // 在执行 `dev` , `build` 等其他指令时，程序会自动将 `dll` 指令生成的 `*.dll.js` 等文件自动注入到 index.html 中。\n      inject: true,\n    },\n  },\n};"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">pluginOptions</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">dll</span>: <span class="pl-kos">{</span>\n      <span class="pl-c">// 入口配置</span>\n      <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">vue</span>: <span class="pl-kos">[</span><span class="pl-s">"vue"</span><span class="pl-kos">,</span> <span class="pl-s">"vue-router"</span><span class="pl-kos">,</span> <span class="pl-s">"vuex"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n        <span class="pl-c1">ui</span>: <span class="pl-kos">[</span><span class="pl-s">"view-design"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 输出目录</span>\n      <span class="pl-c1">output</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">path</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">"public/dll"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n        <span class="pl-c1">filename</span>: <span class="pl-s">"[name].dll.js"</span><span class="pl-kos">,</span>\n        <span class="pl-c">// vendor.dll.js中暴露出的全局变量名</span>\n        <span class="pl-c">// 保持与 webpack.DllPlugin 中名称一致</span>\n        <span class="pl-c1">library</span>: <span class="pl-s">"[name]_[hash]"</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 是否开启 DllReferencePlugin,</span>\n      <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n\n      <span class="pl-c">// 在执行 `dev` , `build` 等其他指令时，程序会自动将 `dll` 指令生成的 `*.dll.js` 等文件自动注入到 index.html 中。</span>\n      <span class="pl-c1">inject</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">配置好之后然后运行,进行你上面配置插件动态链接库的编译</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npx vue-cli-service dll"><pre class="notranslate">npx vue-cli-service dll</pre></div>\n<p dir="auto">dll 编译完成后会在上面配置的目录下生成 dll 文件夹，就可以开始跑项目了，因为这些插件都不需要编译，跑起来很流畅，修改后的热更新速度更是显著提升。我以前修改一行代码热更新编译在 30 秒以上，使用这个以后基本十秒以内搞定。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run serve"><pre class="notranslate">npm run serve</pre></div>\n<h3 id="main-heading-H3-12">3. thread-loader 多进程打包</h3>\n<p dir="auto"><strong>Vue-Cli</strong></p>\n<p dir="auto">Vue-Cli 已经内置，开启</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = { parallel: true };"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">parallel</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">parallel</p>\n<ul dir="auto">\n<li>Type: boolean</li>\n<li>Default: require(\'os\').cpus().length &gt; 1</li>\n</ul>\n<p dir="auto">是否为 Babel 或 TypeScript 使用 thread-loader。<br>\n该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。</p>\n<p dir="auto"><strong>Webpack</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev thread-loader"><pre class="notranslate">npm install --save-dev thread-loader</pre></div>\n<p dir="auto">配置</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require(&quot;path&quot;);\nmodule.exports = {\n  module: {\n    rules: [\n      {\n        test: /\\.js$/,\n        include: path.resolve(&quot;src&quot;),\n        use: [\n          &quot;thread-loader&quot;,\n          // 耗时的 loader （例如 babel-loader）\n        ],\n      },\n    ],\n  },\n};"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">module</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">include</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s">"src"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n        <span class="pl-c1">use</span>: <span class="pl-kos">[</span>\n          <span class="pl-s">"thread-loader"</span><span class="pl-kos">,</span>\n          <span class="pl-c">// 耗时的 loader （例如 babel-loader）</span>\n        <span class="pl-kos">]</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-13">4. import 优化</h3>\n<p dir="auto">运用这个插件能在代码使用了 import 语法的情况下，大大提高代码的编译速度。</p>\n<p dir="auto">安装 babel-plugin-dynamic-import-node</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev babel-plugin-dynamic-import-node"><pre class="notranslate">npm install --save-dev babel-plugin-dynamic-import-node</pre></div>\n<p dir="auto"><strong>vue-cli3</strong></p>\n<p dir="auto">修改 babel.config.js 文件</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {\n  presets: [&quot;@vue/cli-plugin-babel/preset&quot;],\n  env: { development: { plugins: [&quot;dynamic-import-node&quot;] } },\n};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">presets</span>: <span class="pl-kos">[</span><span class="pl-s">"@vue/cli-plugin-babel/preset"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">env</span>: <span class="pl-kos">{</span> <span class="pl-c1">development</span>: <span class="pl-kos">{</span> <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span><span class="pl-s">"dynamic-import-node"</span><span class="pl-kos">]</span> <span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-14">5. 利用缓存提升二次构建速度</h3>\n<p dir="auto">Webpack 中几种缓存方式：</p>\n<ul dir="auto">\n<li>cache-loader</li>\n<li>hard-source-webpack-plugin</li>\n</ul>\n<p dir="auto">以上这些缓存方式都有首次启动时的开销，即它们会让 “冷启动” 时间会更长，但是二次启动能够节省很多时间.</p>\n<p dir="auto">Vue-Cli 已经内置了 <code class="notranslate">cache-loader</code> 进行以下两个的缓存，未添加 <code class="notranslate">hard-source-webpack-plugin</code></p>\n<ul dir="auto">\n<li>babel-loader 的 cacheDirectory 标志</li>\n<li>vue-loader 的 cacheDirectory 标志</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="[\n  {\n    test: /\\.vue$/,\n    use: [\n      {\n        loader: &quot;project_path\\\\node_modules\\\\cache-loader\\\\dist\\\\cjs.js&quot;,\n        options: {\n          cacheDirectory: &quot;project_path\\\\node_modules\\\\.cache\\\\vue-loader&quot;,\n          cacheIdentifier: &quot;036da057&quot;,\n        },\n      },\n      {\n        loader: &quot;project_path\\\\node_modules\\\\vue-loader\\\\lib\\\\index.js&quot;,\n        options: {\n          compilerOptions: {\n            whitespace: &quot;condense&quot;,\n          },\n          cacheDirectory: &quot;project_path\\\\node_modules\\\\.cache\\\\vue-loader&quot;,\n          cacheIdentifier: &quot;036da057&quot;,\n        },\n      },\n    ],\n  },\n  {\n    test: /\\.m?jsx?$/,\n    include: [&quot;/packages&quot;],\n    exclude: [\n      function () {\n        /* omitted long function */\n      },\n    ],\n    use: [\n      {\n        loader: &quot;project_path\\\\node_modules\\\\cache-loader\\\\dist\\\\cjs.js&quot;,\n        options: {\n          cacheDirectory: &quot;project_path\\\\node_modules\\\\.cache\\\\babel-loader&quot;,\n          cacheIdentifier: &quot;5217b3ec&quot;,\n        },\n      },\n      {\n        loader: &quot;project_path\\\\node_modules\\\\babel-loader\\\\lib\\\\index.js&quot;,\n      },\n      {\n        loader: &quot;babel-loader&quot;,\n      },\n    ],\n  },\n];"><pre class="notranslate"><span class="pl-kos">[</span>\n  <span class="pl-kos">{</span>\n    <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">v</span><span class="pl-s">u</span><span class="pl-s">e</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n    <span class="pl-c1">use</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">loader</span>: <span class="pl-s">"project_path\\\\node_modules\\\\cache-loader\\\\dist\\\\cjs.js"</span><span class="pl-kos">,</span>\n        <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">cacheDirectory</span>: <span class="pl-s">"project_path\\\\node_modules\\\\.cache\\\\vue-loader"</span><span class="pl-kos">,</span>\n          <span class="pl-c1">cacheIdentifier</span>: <span class="pl-s">"036da057"</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">loader</span>: <span class="pl-s">"project_path\\\\node_modules\\\\vue-loader\\\\lib\\\\index.js"</span><span class="pl-kos">,</span>\n        <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">compilerOptions</span>: <span class="pl-kos">{</span>\n            <span class="pl-c1">whitespace</span>: <span class="pl-s">"condense"</span><span class="pl-kos">,</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-c1">cacheDirectory</span>: <span class="pl-s">"project_path\\\\node_modules\\\\.cache\\\\vue-loader"</span><span class="pl-kos">,</span>\n          <span class="pl-c1">cacheIdentifier</span>: <span class="pl-s">"036da057"</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">{</span>\n    <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">m</span><span class="pl-c1">?</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-s">x</span><span class="pl-c1">?</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n    <span class="pl-c1">include</span>: <span class="pl-kos">[</span><span class="pl-s">"/packages"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-c1">exclude</span>: <span class="pl-kos">[</span>\n      <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-c">/* omitted long function */</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-c1">use</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">loader</span>: <span class="pl-s">"project_path\\\\node_modules\\\\cache-loader\\\\dist\\\\cjs.js"</span><span class="pl-kos">,</span>\n        <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">cacheDirectory</span>: <span class="pl-s">"project_path\\\\node_modules\\\\.cache\\\\babel-loader"</span><span class="pl-kos">,</span>\n          <span class="pl-c1">cacheIdentifier</span>: <span class="pl-s">"5217b3ec"</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">loader</span>: <span class="pl-s">"project_path\\\\node_modules\\\\babel-loader\\\\lib\\\\index.js"</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">loader</span>: <span class="pl-s">"babel-loader"</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">]</span><span class="pl-kos">;</span></pre></div>\n<blockquote>\n<p dir="auto">提示：Vue-Cli 自带的 cache-loader 会默认为 Vue/Babel/TypeScript 编译开启。文件会缓存在 node_modules/.cache 中。如果你遇到了编译方面的问题，记得先清缓存目录之后再试试看。</p>\n</blockquote>\n<p dir="auto"><strong>HardSourceWebpackPlugin</strong></p>\n<p dir="auto">详细说明 :<a href="https://www.npmjs.com/package/hard-source-webpack-plugin" rel="nofollow">https://www.npmjs.com/package/hard-source-webpack-plugin</a></p>\n<p dir="auto">在启动项目时会针对项目生成缓存，若是项目无 package 或其他变化，下次就不用花费时间重新构建，直接复用缓存。</p>\n<p dir="auto">安装</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev hard-source-webpack-plugin"><pre class="notranslate">npm install --save-dev hard-source-webpack-plugin</pre></div>\n<p dir="auto">配置 vue.config.js</p>\n<p dir="auto">为模块提供中间缓存，缓存路径是：<code class="notranslate">node_modules/.cache/hard-source</code></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const HardSourceWebpackPlugin = require(&quot;hard-source-webpack-plugin&quot;);\nmodule.exports = {\n  configureWebpack: (config) =&gt; {\n    config.plugin.push(\n      new HardSourceWebpackPlugin({\n        root: process.cwd(),\n        directories: [],\n        environmentHash: {\n          root: process.cwd(),\n          directories: [],\n          // 配置了files的主要原因是解决配置更新，cache不生效了的问题，配置后有包的变化，plugin会重新构建一部分cache\n          files: [&quot;package.json&quot;, &quot;yarn.lock&quot;],\n        },\n      })\n    );\n  },\n};"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">HardSourceWebpackPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"hard-source-webpack-plugin"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-en">configureWebpack</span>: <span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">plugin</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span>\n      <span class="pl-k">new</span> <span class="pl-v">HardSourceWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">root</span>: <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">cwd</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n        <span class="pl-c1">directories</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n        <span class="pl-c1">environmentHash</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">root</span>: <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">cwd</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n          <span class="pl-c1">directories</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n          <span class="pl-c">// 配置了files的主要原因是解决配置更新，cache不生效了的问题，配置后有包的变化，plugin会重新构建一部分cache</span>\n          <span class="pl-c1">files</span>: <span class="pl-kos">[</span><span class="pl-s">"package.json"</span><span class="pl-kos">,</span> <span class="pl-s">"yarn.lock"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-15">参考</h3>\n<ul dir="auto">\n<li><a href="https://cloud.tencent.com/developer/article/2125535" rel="nofollow">https://cloud.tencent.com/developer/article/2125535</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:a,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:n,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:a}],html_url:"https://github.com/yanyue404/blog/issues/241"},navList:[{text:"构建体积相关 + 首屏性能优化",id:"main-heading-H2-0",type:"H2",children:[{text:"0. 优化前使用 LightHouse（灯塔）评测各项性能指标",id:"main-heading-H3-1",type:s},{text:"1. 使用 webpack-bundle-analyzer 查看冗余代码",id:"main-heading-H3-2",type:s},{text:"2. 使用 splitChunks 插件拆分公共代码",id:"main-heading-H3-3",type:s},{text:"3. 关闭 prefetch、preload",id:"main-heading-H3-4",type:s},{text:'4. 前端开启 gzip（双端开启指南：<a href="https://cloud.tencent.com/developer/article/1507153%EF%BC%89" rel="nofollow">https://cloud.tencent.com/developer/article/1507153）</a>',id:"main-heading-H3-5",type:s},{text:"5. 图片资源优化",id:"main-heading-H3-6",type:s},{text:"6. 资源加载",id:"main-heading-H3-7",type:s},{text:"7. 生产环境",id:"main-heading-H3-8",type:s}]},{text:"构建速度相关",id:"main-heading-H2-9",type:"H2",children:[{text:"1. 查看构建时间",id:"main-heading-H3-10",type:s},{text:"2. vue-cli-plugin-dll",id:"main-heading-H3-11",type:s},{text:"3. thread-loader 多进程打包",id:"main-heading-H3-12",type:s},{text:"4. import 优化",id:"main-heading-H3-13",type:s},{text:"5. 利用缓存提升二次构建速度",id:"main-heading-H3-14",type:s},{text:"参考",id:"main-heading-H3-15",type:s}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:a},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:a,avatar_url:a,name:a,html_url:a,bio:a,type:n}},serverRendered:!0}}("H3","","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

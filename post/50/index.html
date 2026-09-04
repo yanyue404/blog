@@ -1,0 +1,577 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>从 React 渲染原理看性能优化@黄琼（转载） | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="学而不思则惘，思而不学则怠 前言 Video - 从 React 渲染原理看性能优化@黄琼 Article：首次渲染 | 更新渲染 PPT：从 React 渲染原理看性能优化 相信很多人都用过 React ，那么大家是否遇到过海量 DOM render 卡顿的问题？ React 16 对渲染机制做了"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="从 React 渲染原理看性能优化@黄琼（转载）"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="学而不思则惘，思而不学则怠 前言 Video - 从 React 渲染原理看性能优化@黄琼 Article：首次渲染 | 更新渲染 PPT：从 React 渲染原理看性能优化 相信很多人都用过 React ，那么大家是否遇到过海量 DOM render 卡顿的问题？ React 16 对渲染机制做了"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="从 React 渲染原理看性能优化@黄琼（转载）"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="学而不思则惘，思而不学则怠 前言 Video - 从 React 渲染原理看性能优化@黄琼 Article：首次渲染 | 更新渲染 PPT：从 React 渲染原理看性能优化 相信很多人都用过 React ，那么大家是否遇到过海量 DOM render 卡顿的问题？ React 16 对渲染机制做了"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H2-1" title="JSX 如何生成 element" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              JSX 如何生成 element
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H2-2" title="二、element 如何生成真实节点" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              二、element 如何生成真实节点
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H3-3" title="ReactDOMComponent" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  ReactDOMComponent
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H3-4" title="ReactCompositeComponentWrapper" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  ReactCompositeComponentWrapper
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H2-5" title="首次渲染" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              首次渲染
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H2-6" title="渲染更新" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              渲染更新
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H3-7" title="shouldComponentUpdate" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  shouldComponentUpdate
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H3-8" title="Diff 算法" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Diff 算法
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H2-9" title="性能优化" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              性能优化
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/50#main-heading-H2-10" title="React 16 异步渲染方案" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              React 16 异步渲染方案
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>从 React 渲染原理看性能优化@黄琼（转载）</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>从 React 渲染原理看性能优化@黄琼（转载）</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2019-08-13</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 22 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><blockquote>
+<p dir="auto">学而不思则惘，思而不学则怠</p>
+</blockquote>
+<h2 id="main-heading-H2-0">前言</h2>
+<ul dir="auto">
+<li><a href="https://node.fequan.com/playvideo/701606bc91d477799dbecd98cbae0ecf_7" rel="nofollow">Video - 从 React 渲染原理看性能优化@黄琼</a></li>
+<li>Article：<a href="https://zhuanlan.zhihu.com/p/43145754" rel="nofollow">首次渲染</a> | <a href="https://zhuanlan.zhihu.com/p/43566956" rel="nofollow"> 更新渲染</a></li>
+<li>PPT：<a href="https://img.w3ctech.com/%E4%BB%8E%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E5%88%B0%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%BF%AE%E6%94%B9%E7%89%88.pptx" rel="nofollow">从 React 渲染原理看性能优化</a></li>
+</ul>
+<p dir="auto">相信很多人都用过 React ，那么大家是否遇到过海量 DOM render 卡顿的问题？ React 16 对渲染机制做了大改动，很大的提升了交互体验，背后的原理又是什么？ 实践出真知，本次分享深入挖掘 React 的渲染机制，同时结合实例来解决实践中遇到的性能问题，从而写出高性能的 React 应用。</p>
+<h2 id="main-heading-H2-1">JSX 如何生成 element</h2>
+<blockquote>
+<p dir="auto">当我们写下一段 JSX 代码的时候，react 是如何根据我们的 JSX 代码来生成虚拟 DOM 的组成元素 element 的。</p>
+</blockquote>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='return (
+  <div className="cn">
+    <Header> Hello, This is React </Header>
+    <div>Start to learn right now!</div>
+    Right Reserve.
+  </div>
+);'><pre class="notranslate"><span class="pl-k">return</span> <span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"cn"</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-v">Header</span><span class="pl-c1">></span> Hello, This is React <span class="pl-kos">&lt;/</span><span class="pl-v">Header</span><span class="pl-c1">></span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>Start to learn right now!<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    Right Reserve.
+  <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">中间过程经过 babel 编译, createElement 的参数有三个，其一： type -> 标签类型，其二 ：attributes -> 标签属性，没有的话，可以为 null，其三： children -> 标签的子节点</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="return React.createElement(
+  'div',
+  { className: 'cn' },
+  React.createElement(Header, null, 'Hello, This is React'),
+  React.createElement('div', null, 'Start to learn right now!'),
+  'Right Reserve'
+);"><pre class="notranslate"><span class="pl-k">return</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span>
+  <span class="pl-s">'div'</span><span class="pl-kos">,</span>
+  <span class="pl-kos">{</span> <span class="pl-c1">className</span>: <span class="pl-s">'cn'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-v">Header</span><span class="pl-kos">,</span> <span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-s">'Hello, This is React'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+  <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'div'</span><span class="pl-kos">,</span> <span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-s">'Start to learn right now!'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+  <span class="pl-s">'Right Reserve'</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">简化版本的 dom 树</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "div": {
+    "attributes": [{ "name": "classname", "value": "cn" }],
+    "childNodes": [
+      { "nodeName": "#text", "nodeType": 3, "nodeValue": "↵" },
+      {
+        "nodeName": "HEADER",
+        "nodeType": 1,
+        "nodeValue": null,
+        "innerText": "Hello, This is React"
+      },
+      {
+        "nodeName": "#text",
+        "nodeType": 3,
+        "nodeValue": "↵"
+      },
+      {
+        "nodeName": "DIV",
+        "nodeType": 1,
+        "nodeValue": null,
+        "innerText": "Start to learn right now!"
+      }
+    ],
+    "children": [
+      { "tagName": "HEADER", "textContent": " Hello, This is React " },
+      { "tagName": "DIV", "textContent": "Start to learn right now!" }
+    ],
+    "tagName": "DIV",
+    "innerHTML": "↵      <header> Hello, This is React </header>↵      <div>Start to learn right now!</div>↵      Right Reserve.↵    "
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"div"</span>: {
+    <span class="pl-ent">"attributes"</span>: [{ <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>classname<span class="pl-pds">"</span></span>, <span class="pl-ent">"value"</span>: <span class="pl-s"><span class="pl-pds">"</span>cn<span class="pl-pds">"</span></span> }],
+    <span class="pl-ent">"childNodes"</span>: [
+      { <span class="pl-ent">"nodeName"</span>: <span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>, <span class="pl-ent">"nodeType"</span>: <span class="pl-c1">3</span>, <span class="pl-ent">"nodeValue"</span>: <span class="pl-s"><span class="pl-pds">"</span>↵<span class="pl-pds">"</span></span> },
+      {
+        <span class="pl-ent">"nodeName"</span>: <span class="pl-s"><span class="pl-pds">"</span>HEADER<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"nodeType"</span>: <span class="pl-c1">1</span>,
+        <span class="pl-ent">"nodeValue"</span>: <span class="pl-c1">null</span>,
+        <span class="pl-ent">"innerText"</span>: <span class="pl-s"><span class="pl-pds">"</span>Hello, This is React<span class="pl-pds">"</span></span>
+      },
+      {
+        <span class="pl-ent">"nodeName"</span>: <span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"nodeType"</span>: <span class="pl-c1">3</span>,
+        <span class="pl-ent">"nodeValue"</span>: <span class="pl-s"><span class="pl-pds">"</span>↵<span class="pl-pds">"</span></span>
+      },
+      {
+        <span class="pl-ent">"nodeName"</span>: <span class="pl-s"><span class="pl-pds">"</span>DIV<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"nodeType"</span>: <span class="pl-c1">1</span>,
+        <span class="pl-ent">"nodeValue"</span>: <span class="pl-c1">null</span>,
+        <span class="pl-ent">"innerText"</span>: <span class="pl-s"><span class="pl-pds">"</span>Start to learn right now!<span class="pl-pds">"</span></span>
+      }
+    ],
+    <span class="pl-ent">"children"</span>: [
+      { <span class="pl-ent">"tagName"</span>: <span class="pl-s"><span class="pl-pds">"</span>HEADER<span class="pl-pds">"</span></span>, <span class="pl-ent">"textContent"</span>: <span class="pl-s"><span class="pl-pds">"</span> Hello, This is React <span class="pl-pds">"</span></span> },
+      { <span class="pl-ent">"tagName"</span>: <span class="pl-s"><span class="pl-pds">"</span>DIV<span class="pl-pds">"</span></span>, <span class="pl-ent">"textContent"</span>: <span class="pl-s"><span class="pl-pds">"</span>Start to learn right now!<span class="pl-pds">"</span></span> }
+    ],
+    <span class="pl-ent">"tagName"</span>: <span class="pl-s"><span class="pl-pds">"</span>DIV<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"innerHTML"</span>: <span class="pl-s"><span class="pl-pds">"</span>↵      &lt;header> Hello, This is React &lt;/header>↵      &lt;div>Start to learn right now!&lt;/div>↵      Right Reserve.↵    <span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+<p dir="auto">对比 render 函数被调用的时候，会返回的 element 对象</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  type: 'div',
+    props: {
+      className: 'cn',
+        children: [
+          {
+            type: function Header,
+            props: {
+                children: 'Hello, This is React'
+            }
+          },
+          {
+            type: 'div',
+            props: {
+                children: 'start to learn right now！'
+            }
+          },
+          'Right Reserve'
+      ]
+  }
+}"><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-c1">type</span>: <span class="pl-s">'div'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">className</span>: <span class="pl-s">'cn'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">children</span>: <span class="pl-kos">[</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">type</span>: <span class="pl-k">function</span> <span class="pl-v">Header</span><span class="pl-kos">,</span>
+            <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+                <span class="pl-c1">children</span>: <span class="pl-s">'Hello, This is React'</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">type</span>: <span class="pl-s">'div'</span><span class="pl-kos">,</span>
+            <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+                <span class="pl-c1">children</span>: <span class="pl-s">'start to learn right now！'</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-s">'Right Reserve'</span>
+      <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">我们来观察一下这个对象的 children，现在有三种类型：</p>
+<p dir="auto">1、string</p>
+<p dir="auto">2、原生 DOM 节点</p>
+<p dir="auto">3、React Component - 自定义组件</p>
+<p dir="auto">除了这三种，还有两种类型：</p>
+<p dir="auto">4、false ,null, undefined, number</p>
+<p dir="auto">5、数组 - 使用 map 方法的时候</p>
+<p dir="auto">这里需要记住一个点：element 不一定是 Object 类型。</p>
+<h2 id="main-heading-H2-2">二、element 如何生成真实节点</h2>
+<blockquote>
+<p dir="auto">在生成 elment 之后，react 又如何将其转成浏览器的真实节点。首次渲染以及更新渲染的流程是怎样的 ？</p>
+</blockquote>
+<p dir="auto">转化的规则如下：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8d9ab4272b84ef4af407e74e815161952804a801892f17dbde245c9fe4b2f8eb/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357961666a303268776a3231397130666977686c2e6a7067"><img src="https://camo.githubusercontent.com/8d9ab4272b84ef4af407e74e815161952804a801892f17dbde245c9fe4b2f8eb/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357961666a303268776a3231397130666977686c2e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5yafj02hwj219q0fiwhl.jpg" style="max-width:100%"></a></p>
+<p dir="auto">ReactDOMComponent, ReactCompositeComponentWrapper 是 React 自己使用私有类，不会暴露给用户,常用方法：mountComponent, updateComponent 等是私有类的方法由于涉及创建，更新操作生命周期方法被暴露给用户使用</p>
+<h3 id="main-heading-H3-3">ReactDOMComponent</h3>
+<p dir="auto">核心关键是 ReactMComponent 的 mountComponent 方法（直接操作浏览器 DOM 元素），作用是 将 element 转成真实 DOM 节点，并且插入到相应的 container 里 ，然后返回 markup（realDOM),最后暴露生命周期钩子给用户</p>
+<h3 id="main-heading-H3-4">ReactCompositeComponentWrapper</h3>
+<p dir="auto">mountComponent: 实例化自定义组件，不直接生成 DOM 节点，最后是通过递归调用到 <strong>ReactDOMComponent</strong> 的 mountComponent 方法来得到真实 DOM</p>
+<p dir="auto">假设我们有一个 Example 的组件，它返回</p><div dir="auto">hello world</div> 这样一个标签。<p dir="auto"></p>
+<h2 id="main-heading-H2-5">首次渲染</h2>
+<p dir="auto">过程如下：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3177c85c24e158b0c443528976e4c61834b6858695e9c3b4e890477a927bfaba/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c79316735797a6234316968776a32313379306e7a7137362e6a7067"><img src="https://camo.githubusercontent.com/3177c85c24e158b0c443528976e4c61834b6858695e9c3b4e890477a927bfaba/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c79316735797a6234316968776a32313379306e7a7137362e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5yzb41ihwj213y0nzq76.jpg" style="max-width:100%"></a></p>
+<p dir="auto">首先从 React.render 开始， render 函数被调用的时候会返回一个 element</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  type: function Example,
+  props: {
+    children: null
+  }
+}"><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-c1">type</span>: <span class="pl-k">function</span> <span class="pl-v">Example</span><span class="pl-kos">,</span>
+  <span class="pl-s1">props</span>: <span class="pl-kos">{</span>
+    <span class="pl-s1">children</span>: <span class="pl-c1">null</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">由于这个 type 是一个自定义组件类，此时要初始化的类是 ReactCompositeComponentWrapper,接着调用它的 mountComponent 方法。这里面会做四件事情，详情可以看上图。其中，第二步的 render 的得到的 element 为</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  type: 'div',
+    props: {
+    children: 'Hello World'
+  }
+}"><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-c1">type</span>: <span class="pl-s">'div'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">children</span>: <span class="pl-s">'Hello World'</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">由图可知，在第一步得到 instance 对象之后，就会去看 instance.componentWillMount 是否有被定义，有的话调用，而在整个渲染过程结束之后调用 componentDidMount。</p>
+<p dir="auto">以上，就是渲染原理的部分，让我们来总结以下：</p>
+<ol dir="auto">
+<li>JSX 代码经过 babel 编译之后变成 React.createElement 的表达式，这个表达式在 render 函数被调用的时候执行生成一个 element。</li>
+<li>在首次渲染的时候，先去按照规则初始化 element，接着 ReactCompositeComponentWrapper 通过递归，最终调用 ReactDOMComponent 的 mountComponent 方法来帮助生成真实 DOM 节点。</li>
+</ol>
+<p dir="auto">React v15</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f5b9258817947abbbf9f5b042bbdf713368ca99175afc290c2be7889f868086e/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a36687a307971796a32316a6b30706f3079362e6a7067"><img src="https://camo.githubusercontent.com/f5b9258817947abbbf9f5b042bbdf713368ca99175afc290c2be7889f868086e/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a36687a307971796a32316a6b30706f3079362e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5z6hz0yqyj21jk0po0y6.jpg" style="max-width:100%"></a></p>
+<h2 id="main-heading-H2-6">渲染更新</h2>
+<p dir="auto">触发组件的更新有两种更新方式：props 以及 state 改变带来的更新。本次主要解析 state 改变带来的更新。整个过程流程图如下</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/27e4d6a878f9fdc3721239de3b2e78089db46d1fbd168c38121064690ff42e0a/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a36756d723569316a323163633072306165352e6a7067"><img src="https://camo.githubusercontent.com/27e4d6a878f9fdc3721239de3b2e78089db46d1fbd168c38121064690ff42e0a/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a36756d723569316a323163633072306165352e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5z6umr5i1j21cc0r0ae5.jpg" style="max-width:100%"></a></p>
+<p dir="auto">1、一般改变 state，都是从 setState 开始，这个函数被调用之后，会将我们传入的 state 放进 pendingState 的数组里存起来，然后判断当前流程是否处于批量更新，如果是，则将当前组件的 instance 放进 dirtyComponent 里，当这个更新流程中所有需要更新的组件收集完毕之后（这里面涉及到事务的概念，感兴趣的可以自己去了解一下）就会遍历 dirtyComponent 这个数组，调用他们的 uptateComponent 对组件进行更新。当然，如果当前不处于批量更新的状态，会直接去遍历 dirtyComponent 进行更新。</p>
+<p dir="auto">2、在我们这个例子中，由于 Example 是自定义组件，所以调用的是 ReactCompositeComponentWrapper 这个类的 updateComponent 方法，这个方法做三件事。</p>
+<p dir="auto">计算出 nextState<br>
+render()得到 nextRenderElement<br>
+与 prevElement 进行 Diff 比较（这个过程后面会介绍）,更新节点<br>
+最后这个需要去更新节点的时候，跟首次渲染一样，也需要调用 ReactDOMComponent 的 updateComponent 来更新。其中第二步 render 得到的也是自定义组件的话， 会形成递归调用。</p>
+<h3 id="main-heading-H3-7">shouldComponentUpdate</h3>
+<p dir="auto">由图可知，shouldComponentUpdate 在第一步调用得到 nextState 之后调用，因为 nextState 也是它的其中一个参数嘛~这个函数很重要，它是我们性能优化的一个很关键的点：<strong>由图可以看到，当 shouldComponentUpdate 返回 false 的时候，下面的一大块都不会被去执行，包括已经被优化的 diff 算法</strong>。</p>
+<p dir="auto">当 shouldComponentUpdate 返回 true 的时候，会先调用 componentWillUpdate，在整个更新过程结束之后调用 componentDidUpdate。</p>
+<p dir="auto">以上就是更新渲染的过程。</p>
+<h3 id="main-heading-H3-8">Diff 算法</h3>
+<p dir="auto">React 基于两个假设：</p>
+<ol dir="auto">
+<li>两个相同的组件产生类似的 DOM 结构，不同组件产生不同 DOM 结构</li>
+<li>对于同一层次的一组子节点，它们可以通过唯一的 id 区分</li>
+</ol>
+<p dir="auto">发明了一种叫 Diff 的算法来比较两棵 DOM tree，它极大的优化了这个比较的过程，将算法复杂度从 O(n^3)降低到 O(n)。</p>
+<p dir="auto">同时，基于第一点假设，我们可以推论出，Diff 算法只会对同层的节点进行比较。如图，它只会对颜色相同的节点进行比较</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0bb2548ab9cac14585fd238b166f532e74da6860e56f989af0824765e01e29ff/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a39326532376a736a3230657930386d676e332e6a7067"><img src="https://camo.githubusercontent.com/0bb2548ab9cac14585fd238b166f532e74da6860e56f989af0824765e01e29ff/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a39326532376a736a3230657930386d676e332e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5z92e27jsj20ey08mgn3.jpg" style="max-width:100%"></a></p>
+<p dir="auto">也就是说如果父节点不同，React 将不会在去对比子节点。因为不同的组件 DOM 结构会不相同，所以就没有必要在去对比子节点了。这也提高了对比的效率。</p>
+<p dir="auto">下面，我们具体看下 Diff 算法是怎么做的，这里分为三种情况考虑</p>
+<ul dir="auto">
+<li>节点类型不同</li>
+<li>节点类型相同</li>
+<li>子节点比较</li>
+</ul>
+<h4 dir="auto">不同节点类型</h4>
+<p dir="auto">对于不同的节点类型，react 会基于第一条假设，直接删去旧的节点，新建一个新的节点。</p>
+<p dir="auto">比如：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<A>
+  <C/>
+</A>
+// 由shape1到shape2
+<B>
+  <C/>
+</B>"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-v">A</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">C</span><span class="pl-kos">/></span>
+<span class="pl-kos">&lt;/</span><span class="pl-v">A</span><span class="pl-c1">></span>
+<span class="pl-c">// 由shape1到shape2</span>
+<span class="pl-c1">&lt;</span><span class="pl-v">B</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">C</span><span class="pl-kos">/></span>
+<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">B</span><span class="pl-s">></span></pre></div>
+<p dir="auto">生命周期打印结果：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Shape1 :
+A is created
+A render
+C is created
+C render
+C componentDidMount
+A componentDidMount
+
+Shape2 :
+A componentWillUnmount
+C componentWillUnmount
+B is created
+B render
+C is created
+C render
+C componentDidMount
+B componentDidMount
+
+Shape2 - 2019/08/14:
+B is created
+B render
+is created
+C render
+A componentWillUnmount
+C componentWillUnmount
+C componentDidMount
+B componentDidMount"><pre class="notranslate">Shape1 :
+<span class="pl-v">A</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+
+Shape2 :
+<span class="pl-v">A</span> <span class="pl-s1">componentWillUnmount</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>
+<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+
+<span class="pl-v">Shape2</span> <span class="pl-c1">-</span> <span class="pl-c1">2019</span><span class="pl-c1">/</span><span class="pl-c1">08</span><span class="pl-c1">/</span><span class="pl-c1">14</span>:
+<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-s1">is</span><span class="pl-kos"></span> <span class="pl-s1">created</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span></pre></div>
+<p dir="auto">由此可以看出，A 与其子节点 C 会被删除，然后重新建一个 B，C 插入。这样就给我们的性能优化提供了一个思路，就是我们要<strong>保持 DOM 标签的稳定性</strong>。</p>
+<p dir="auto">打个比方，如果写了一个 <code class="notranslate">&lt;div>&lt;List />&lt;/div></code>（List 是一个有几千个节点的组件），切换的时候变成了<code class="notranslate">&lt;section>&lt;List />&lt;/section></code>，此时即使 List 的内容不变，它也会先被卸载在创建，其实是很浪费的。</p>
+<h4 dir="auto">相同节点类型</h4>
+<p dir="auto">当对比相同的节点类型比较简单，这里分为两种情况，一种是 DOM 元素类型，对应 html 直接支持的元素类型：div，span 和 p，还有一种是自定义组件。</p>
+<ul dir="auto">
+<li>DOM 元素类型</li>
+</ul>
+<p dir="auto">react 会对比它们的属性，只改变需要改变的属性</p>
+<ul dir="auto">
+<li>自定义组件类型</li>
+</ul>
+<p dir="auto">由于 React 此时并不知道如何去更新 DOM 树，因为这些逻辑都在 React 组件里面，所以它能做的就是根据新节点的 props 去更新原来根节点的组件实例，触发一个更新的过程，最后在对所有的 child 节点在进行 diff 的递归比较更新。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="-shouldComponentUpdate -
+  componentWillReceiveProps -
+  componentWillUpdate -
+  render -
+  componentDidUpdate;"><pre class="notranslate"><span class="pl-c1">-</span><span class="pl-s1">shouldComponentUpdate</span> <span class="pl-c1">-</span>
+  <span class="pl-s1">componentWillReceiveProps</span> <span class="pl-c1">-</span>
+  <span class="pl-s1">componentWillUpdate</span> <span class="pl-c1">-</span>
+  <span class="pl-s1">render</span> <span class="pl-c1">-</span>
+  <span class="pl-s1">componentDidUpdate</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">子节点比较</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="div>
+  <A />
+  <B />
+</div>
+// 列表一到列表二
+<div>
+  <A />
+  <C />
+  <B />
+</div>"><pre class="notranslate"><span class="pl-s1">div</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">A</span> <span class="pl-kos">/></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">B</span> <span class="pl-c1">/</span><span class="pl-c1">></span>
+&lt;/<span class="pl-s1">div</span><span class="pl-c1">></span>
+<span class="pl-c">// 列表一到列表二</span>
+<span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">A</span> <span class="pl-kos">/></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">C</span> <span class="pl-kos">/></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">B</span> <span class="pl-kos">/></span>
+<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span></pre></div>
+<p dir="auto">因为 React 在没有 key 的情况下对比节点的时候，是一个一个按着顺序对比的。从列表一到列表二，只是在中间插入了一个 C，但是如果没有 key 的时候，react 会把 B 删去，新建一个 C 放在 B 的位置，然后重新建一个节点 B 放在尾部。</p>
+<p dir="auto">生命周期打印结果：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="列表一：
+A is created
+A render
+B is created
+B render
+A componentDidMount
+B componentDidMount
+
+列表二：
+A render
+B componentWillUnmount
+C is created
+C render
+B is created
+B render
+A componentDidUpdate
+C componentDidMount
+B componentDidMount
+
+列表二 - 2019/08/14:
+A render
+C is created
+C render
+B is created
+B render
+B componentWillUnmount
+A componentDidUpdate
+C componentDidMount
+B componentDidMount"><pre class="notranslate"><span class="pl-s1">列表一：</span>
+<span class="pl-v">A</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+
+<span class="pl-s1">列表二：</span>
+<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>
+<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentDidUpdate</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+
+<span class="pl-s1">列表二</span> <span class="pl-c1">-</span> <span class="pl-c1">2019</span><span class="pl-c1">/</span><span class="pl-c1">08</span><span class="pl-c1">/</span><span class="pl-c1">14</span>:
+<span class="pl-v">A</span> <span class="pl-s1">render</span>
+<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>
+<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentDidUpdate</span>
+<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>
+<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span></pre></div>
+<p dir="auto">当节点很多的时候，这样做是非常低效的。有两种方法可以解决这个问题：</p>
+<p dir="auto">1、<strong>保持 DOM 结构的稳定性</strong>，我们来看这个变化，由两个子节点变成了三个，其实是一个不稳定的 DOM 结构，我们可以通过通过加一个 null，保持 DOM 结构的稳定。这样按照顺序对比的时候，B 就不会被卸载又重建回来。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<div>
+  <A />
+  {null}
+  <B />
+</div>
+
+// 列表一到列表二
+<div>
+  <A />
+  <C />
+  <B />
+</div>"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">A</span> <span class="pl-kos">/></span>
+  <span class="pl-kos">{</span><span class="pl-c1">null</span><span class="pl-kos">}</span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">B</span> <span class="pl-kos">/></span>
+<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+
+<span class="pl-c">// 列表一到列表二</span>
+<span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">A</span> <span class="pl-kos">/></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">C</span> <span class="pl-c1">/</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">B</span> <span class="pl-kos">/></span>
+<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">i</span><span class="pl-s">v</span><span class="pl-s">></span></pre></div>
+<p dir="auto">更新时的打印结果：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="B is created
+C is created
+A componentWillUnmount
+C componentWillUnmount
+C componentDidMount
+B componentDidMount"><pre class="notranslate"><span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">A</span> <span class="pl-s1">componentWillUnmount</span>
+<span class="pl-v">C</span> <span class="pl-s1">componentWillUnmount</span>
+<span class="pl-v">C</span> <span class="pl-s1">componentDidMount</span>
+<span class="pl-v">B</span> <span class="pl-s1">componentDidMount</span></pre></div>
+<p dir="auto">2、<strong>key</strong></p>
+<p dir="auto">通过给节点配置 key，让 React 可以识别节点是否存在。</p>
+<p dir="auto">配上 key 之后，再跑一遍的打印结果。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="A render
+C is created
+C render
+B render
+A componentDidUpdate
+C componentDidMount
+B componentDidUpdate"><pre class="notranslate"><span class="pl-v">A</span> <span class="pl-s1">render</span>
+<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>
+<span class="pl-v">C</span> <span class="pl-s1">render</span>
+<span class="pl-v">B</span> <span class="pl-s1">render</span>
+<span class="pl-v">A</span> <span class="pl-s1">componentDidUpdate</span>
+<span class="pl-v">C</span> <span class="pl-s1">componentDidMount</span>
+<span class="pl-v">B</span> <span class="pl-s1">componentDidUpdate</span></pre></div>
+<p dir="auto">果然，配上 key 之后，列表二的生命周期就如我所愿，只在指定的位置创建 C 节点插入。</p>
+<p dir="auto">这里要注意的一点是，key 值必须是稳定（所以我们不能用 Math.random()去创建 key），可预测，并且唯一的。</p>
+<p dir="auto">这里给我们性能优化也提供了两个非常重要的依据：</p>
+<ul dir="auto">
+<li><strong>保持 DOM 结构的稳定性</strong></li>
+<li><strong>map 的时候，加 key</strong></li>
+</ul>
+<h2 id="main-heading-H2-9">性能优化</h2>
+<blockquote>
+<p dir="auto">结合渲染原理，通过实际例子，看看如何优化组件。</p>
+</blockquote>
+<p dir="auto">1、Mount/Unmount</p>
+<ul dir="auto">
+<li>Key</li>
+<li>稳定性
+<ul dir="auto">
+<li>保持标签的稳定 <code class="notranslate">&lt;div> -> &lt;section></code></li>
+<li>保持 DOM 结构的稳定</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">2、避免重复渲染</p>
+<ul dir="auto">
+<li>shouldComponentUpdate</li>
+<li>PureComponent(immutable.js)</li>
+<li>分离组件，只传入关心的值</li>
+</ul>
+<p dir="auto">3、使用 Pure Functional Component <a href="https://github.com/acdlite/recompose">recompose</a></p>
+<p dir="auto">目前 react 性能优化的点主要集中在<strong>防止重复渲染，DOM 稳定性</strong>的方面：</p>
+<p dir="auto">但是大家看一个<a href="https://codesandbox.io/s/mpx8wzl2x" rel="nofollow">问题</a>,如例子中所展示，点击改变计数按钮后，开始有大量组件重新渲染，但比较阶段不可被打断，input 输入框不可使用。</p>
+<p dir="auto"><strong>更新机制</strong>：一边对比一边更新，操作 dom 结构同步，从上到下是不间断的，主线程用于大批量更新时会被卡住，导致其他的用户操作无法响应，体验很差</p>
+<p dir="auto">现在 React 16 将异步渲染方案分为了两个阶段，第一阶段专注比较，第二阶段专注更新</p>
+<h4 dir="auto">工具</h4>
+<ul dir="auto">
+<li><a href="https://github.com/maicki/why-did-you-update">why-did-you-update</a></li>
+<li><a href="https://www.npmjs.com/package/react-addons-perf" rel="nofollow">react-addons-perf</a></li>
+</ul>
+<h2 id="main-heading-H2-10">React 16 异步渲染方案</h2>
+<blockquote>
+<p dir="auto">到目前为止，这些优化组件的方法还不能解决什么问题，所以我们需要引入异步渲染，以及异步渲染的原理是什么。</p>
+</blockquote>
+<p dir="auto"><strong>React 16 改动</strong></p>
+<p dir="auto">1、比较阶段 – 可被打断</p>
+<p dir="auto">2、commit 阶段 – 不可被打断</p>
+<p dir="auto">主线程不间断使用(同步比较 + 同步更新) =》 自由释放主线程（可打断的比较 + 异步更新）</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ccb8abc09b0559245999bbd05c641fc81463608e7ae0cf2dc96bbdcd15041608/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a656833393076306a32307a7a306a7737376c2e6a7067"><img src="https://camo.githubusercontent.com/ccb8abc09b0559245999bbd05c641fc81463608e7ae0cf2dc96bbdcd15041608/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a656833393076306a32307a7a306a7737376c2e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5zeh390v0j20zz0jw77l.jpg" style="max-width:100%"></a></p>
+<p dir="auto">由于 React 16 异步方案的引入，异步 render 函数之前的函数可能被打断，调用多次，所以 render 之前的函数变得不安全，从而新增了 <code class="notranslate">getDerivedStateFromProps</code> API 代替 componentWillMount<br>
+，componentWillReceiveProps，componentWillUpdate，在此静态方法里面专门做 state 的更新初始化操作</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3684620cbf3a962d9c3b47c76642e4221efed2170adf502b84520526cfe88435/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a65687863766c6a6a32307a77306b3974617a2e6a7067"><img src="https://camo.githubusercontent.com/3684620cbf3a962d9c3b47c76642e4221efed2170adf502b84520526cfe88435/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a65687863766c6a6a32307a77306b3974617a2e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5zehxcvljj20zw0k9taz.jpg" style="max-width:100%"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b4fc3cc9b4ac0e76d5904fbd7058c82d1cabea8bfdc25fed0ed04d2ded82f937/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a66616a347730346a3230796b306c687134652e6a7067"><img src="https://camo.githubusercontent.com/b4fc3cc9b4ac0e76d5904fbd7058c82d1cabea8bfdc25fed0ed04d2ded82f937/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a66616a347730346a3230796b306c687134652e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5zfaj4w04j20yk0lhq4e.jpg" style="max-width:100%"></a></p>
+<h4 dir="auto">参考链接</h4>
+<ul dir="auto">
+<li><a href="https://facebook.github.io/react/docs/reconciliation.htm" rel="nofollow">https://facebook.github.io/react/docs/reconciliation.htm</a></li>
+<li><a href="https://codesandbox.io/s/lyop4w9x9m" rel="nofollow">渲染更新 - Diff Codesandbox Demo</a></li>
+<li><a href="https://codesandbox.io/s/mpx8wzl2x" rel="nofollow">为什么需要 React 16 异步渲染 - Codesandbox Demo</a></li>
+</ul>
+<h4 dir="auto">拓展阅读</h4>
+<ul dir="auto">
+<li>function component
+<ul dir="auto">
+<li><a href="https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc" rel="nofollow">九个推荐使用 functional component 的原因</a></li>
+<li><a href="https://www.freecodecamp.org/news/7-reasons-to-outlaw-reacts-functional-components-ff5b5ae09b7c/" rel="nofollow">七个不使用 functional component 的 原因</a></li>
+</ul>
+</li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,t){return{layout:"default",data:[{post:{id:479940751,number:50,title:"从 React 渲染原理看性能优化@黄琼（转载）",created_at:"2019-08-13T03:23:14Z",updated_at:"2025-11-23T15:50:25Z",body_html:'<blockquote>\n<p dir="auto">学而不思则惘，思而不学则怠</p>\n</blockquote>\n<h2 id="main-heading-H2-0">前言</h2>\n<ul dir="auto">\n<li><a href="https://node.fequan.com/playvideo/701606bc91d477799dbecd98cbae0ecf_7" rel="nofollow">Video - 从 React 渲染原理看性能优化@黄琼</a></li>\n<li>Article：<a href="https://zhuanlan.zhihu.com/p/43145754" rel="nofollow">首次渲染</a> | <a href="https://zhuanlan.zhihu.com/p/43566956" rel="nofollow"> 更新渲染</a></li>\n<li>PPT：<a href="https://img.w3ctech.com/%E4%BB%8E%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E5%88%B0%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%BF%AE%E6%94%B9%E7%89%88.pptx" rel="nofollow">从 React 渲染原理看性能优化</a></li>\n</ul>\n<p dir="auto">相信很多人都用过 React ，那么大家是否遇到过海量 DOM render 卡顿的问题？ React 16 对渲染机制做了大改动，很大的提升了交互体验，背后的原理又是什么？ 实践出真知，本次分享深入挖掘 React 的渲染机制，同时结合实例来解决实践中遇到的性能问题，从而写出高性能的 React 应用。</p>\n<h2 id="main-heading-H2-1">JSX 如何生成 element</h2>\n<blockquote>\n<p dir="auto">当我们写下一段 JSX 代码的时候，react 是如何根据我们的 JSX 代码来生成虚拟 DOM 的组成元素 element 的。</p>\n</blockquote>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="return (\n  &lt;div className=&quot;cn&quot;&gt;\n    &lt;Header&gt; Hello, This is React &lt;/Header&gt;\n    &lt;div&gt;Start to learn right now!&lt;/div&gt;\n    Right Reserve.\n  &lt;/div&gt;\n);"><pre class="notranslate"><span class="pl-k">return</span> <span class="pl-kos">(</span>\n  <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"cn"</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-v">Header</span><span class="pl-c1">&gt;</span> Hello, This is React <span class="pl-kos">&lt;/</span><span class="pl-v">Header</span><span class="pl-c1">&gt;</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>Start to learn right now!<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    Right Reserve.\n  <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">中间过程经过 babel 编译, createElement 的参数有三个，其一： type -&gt; 标签类型，其二 ：attributes -&gt; 标签属性，没有的话，可以为 null，其三： children -&gt; 标签的子节点</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="return React.createElement(\n  \'div\',\n  { className: \'cn\' },\n  React.createElement(Header, null, \'Hello, This is React\'),\n  React.createElement(\'div\', null, \'Start to learn right now!\'),\n  \'Right Reserve\'\n);"><pre class="notranslate"><span class="pl-k">return</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span>\n  <span class="pl-s">\'div\'</span><span class="pl-kos">,</span>\n  <span class="pl-kos">{</span> <span class="pl-c1">className</span>: <span class="pl-s">\'cn\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-v">Header</span><span class="pl-kos">,</span> <span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-s">\'Hello, This is React\'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n  <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">\'div\'</span><span class="pl-kos">,</span> <span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-s">\'Start to learn right now!\'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n  <span class="pl-s">\'Right Reserve\'</span>\n<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">简化版本的 dom 树</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;div&quot;: {\n    &quot;attributes&quot;: [{ &quot;name&quot;: &quot;classname&quot;, &quot;value&quot;: &quot;cn&quot; }],\n    &quot;childNodes&quot;: [\n      { &quot;nodeName&quot;: &quot;#text&quot;, &quot;nodeType&quot;: 3, &quot;nodeValue&quot;: &quot;↵&quot; },\n      {\n        &quot;nodeName&quot;: &quot;HEADER&quot;,\n        &quot;nodeType&quot;: 1,\n        &quot;nodeValue&quot;: null,\n        &quot;innerText&quot;: &quot;Hello, This is React&quot;\n      },\n      {\n        &quot;nodeName&quot;: &quot;#text&quot;,\n        &quot;nodeType&quot;: 3,\n        &quot;nodeValue&quot;: &quot;↵&quot;\n      },\n      {\n        &quot;nodeName&quot;: &quot;DIV&quot;,\n        &quot;nodeType&quot;: 1,\n        &quot;nodeValue&quot;: null,\n        &quot;innerText&quot;: &quot;Start to learn right now!&quot;\n      }\n    ],\n    &quot;children&quot;: [\n      { &quot;tagName&quot;: &quot;HEADER&quot;, &quot;textContent&quot;: &quot; Hello, This is React &quot; },\n      { &quot;tagName&quot;: &quot;DIV&quot;, &quot;textContent&quot;: &quot;Start to learn right now!&quot; }\n    ],\n    &quot;tagName&quot;: &quot;DIV&quot;,\n    &quot;innerHTML&quot;: &quot;↵      &lt;header&gt; Hello, This is React &lt;/header&gt;↵      &lt;div&gt;Start to learn right now!&lt;/div&gt;↵      Right Reserve.↵    &quot;\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"div"</span>: {\n    <span class="pl-ent">"attributes"</span>: [{ <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>classname<span class="pl-pds">"</span></span>, <span class="pl-ent">"value"</span>: <span class="pl-s"><span class="pl-pds">"</span>cn<span class="pl-pds">"</span></span> }],\n    <span class="pl-ent">"childNodes"</span>: [\n      { <span class="pl-ent">"nodeName"</span>: <span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>, <span class="pl-ent">"nodeType"</span>: <span class="pl-c1">3</span>, <span class="pl-ent">"nodeValue"</span>: <span class="pl-s"><span class="pl-pds">"</span>↵<span class="pl-pds">"</span></span> },\n      {\n        <span class="pl-ent">"nodeName"</span>: <span class="pl-s"><span class="pl-pds">"</span>HEADER<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"nodeType"</span>: <span class="pl-c1">1</span>,\n        <span class="pl-ent">"nodeValue"</span>: <span class="pl-c1">null</span>,\n        <span class="pl-ent">"innerText"</span>: <span class="pl-s"><span class="pl-pds">"</span>Hello, This is React<span class="pl-pds">"</span></span>\n      },\n      {\n        <span class="pl-ent">"nodeName"</span>: <span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"nodeType"</span>: <span class="pl-c1">3</span>,\n        <span class="pl-ent">"nodeValue"</span>: <span class="pl-s"><span class="pl-pds">"</span>↵<span class="pl-pds">"</span></span>\n      },\n      {\n        <span class="pl-ent">"nodeName"</span>: <span class="pl-s"><span class="pl-pds">"</span>DIV<span class="pl-pds">"</span></span>,\n        <span class="pl-ent">"nodeType"</span>: <span class="pl-c1">1</span>,\n        <span class="pl-ent">"nodeValue"</span>: <span class="pl-c1">null</span>,\n        <span class="pl-ent">"innerText"</span>: <span class="pl-s"><span class="pl-pds">"</span>Start to learn right now!<span class="pl-pds">"</span></span>\n      }\n    ],\n    <span class="pl-ent">"children"</span>: [\n      { <span class="pl-ent">"tagName"</span>: <span class="pl-s"><span class="pl-pds">"</span>HEADER<span class="pl-pds">"</span></span>, <span class="pl-ent">"textContent"</span>: <span class="pl-s"><span class="pl-pds">"</span> Hello, This is React <span class="pl-pds">"</span></span> },\n      { <span class="pl-ent">"tagName"</span>: <span class="pl-s"><span class="pl-pds">"</span>DIV<span class="pl-pds">"</span></span>, <span class="pl-ent">"textContent"</span>: <span class="pl-s"><span class="pl-pds">"</span>Start to learn right now!<span class="pl-pds">"</span></span> }\n    ],\n    <span class="pl-ent">"tagName"</span>: <span class="pl-s"><span class="pl-pds">"</span>DIV<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"innerHTML"</span>: <span class="pl-s"><span class="pl-pds">"</span>↵      &lt;header&gt; Hello, This is React &lt;/header&gt;↵      &lt;div&gt;Start to learn right now!&lt;/div&gt;↵      Right Reserve.↵    <span class="pl-pds">"</span></span>\n  }\n}</pre></div>\n<p dir="auto">对比 render 函数被调用的时候，会返回的 element 对象</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  type: \'div\',\n    props: {\n      className: \'cn\',\n        children: [\n          {\n            type: function Header,\n            props: {\n                children: \'Hello, This is React\'\n            }\n          },\n          {\n            type: \'div\',\n            props: {\n                children: \'start to learn right now！\'\n            }\n          },\n          \'Right Reserve\'\n      ]\n  }\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-c1">type</span>: <span class="pl-s">\'div\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">className</span>: <span class="pl-s">\'cn\'</span><span class="pl-kos">,</span>\n        <span class="pl-c1">children</span>: <span class="pl-kos">[</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">type</span>: <span class="pl-k">function</span> <span class="pl-v">Header</span><span class="pl-kos">,</span>\n            <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n                <span class="pl-c1">children</span>: <span class="pl-s">\'Hello, This is React\'</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">type</span>: <span class="pl-s">\'div\'</span><span class="pl-kos">,</span>\n            <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n                <span class="pl-c1">children</span>: <span class="pl-s">\'start to learn right now！\'</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-s">\'Right Reserve\'</span>\n      <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">我们来观察一下这个对象的 children，现在有三种类型：</p>\n<p dir="auto">1、string</p>\n<p dir="auto">2、原生 DOM 节点</p>\n<p dir="auto">3、React Component - 自定义组件</p>\n<p dir="auto">除了这三种，还有两种类型：</p>\n<p dir="auto">4、false ,null, undefined, number</p>\n<p dir="auto">5、数组 - 使用 map 方法的时候</p>\n<p dir="auto">这里需要记住一个点：element 不一定是 Object 类型。</p>\n<h2 id="main-heading-H2-2">二、element 如何生成真实节点</h2>\n<blockquote>\n<p dir="auto">在生成 elment 之后，react 又如何将其转成浏览器的真实节点。首次渲染以及更新渲染的流程是怎样的 ？</p>\n</blockquote>\n<p dir="auto">转化的规则如下：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8d9ab4272b84ef4af407e74e815161952804a801892f17dbde245c9fe4b2f8eb/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357961666a303268776a3231397130666977686c2e6a7067"><img src="https://camo.githubusercontent.com/8d9ab4272b84ef4af407e74e815161952804a801892f17dbde245c9fe4b2f8eb/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357961666a303268776a3231397130666977686c2e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5yafj02hwj219q0fiwhl.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">ReactDOMComponent, ReactCompositeComponentWrapper 是 React 自己使用私有类，不会暴露给用户,常用方法：mountComponent, updateComponent 等是私有类的方法由于涉及创建，更新操作生命周期方法被暴露给用户使用</p>\n<h3 id="main-heading-H3-3">ReactDOMComponent</h3>\n<p dir="auto">核心关键是 ReactMComponent 的 mountComponent 方法（直接操作浏览器 DOM 元素），作用是 将 element 转成真实 DOM 节点，并且插入到相应的 container 里 ，然后返回 markup（realDOM),最后暴露生命周期钩子给用户</p>\n<h3 id="main-heading-H3-4">ReactCompositeComponentWrapper</h3>\n<p dir="auto">mountComponent: 实例化自定义组件，不直接生成 DOM 节点，最后是通过递归调用到 <strong>ReactDOMComponent</strong> 的 mountComponent 方法来得到真实 DOM</p>\n<p dir="auto">假设我们有一个 Example 的组件，它返回</p><div dir="auto">hello world</div> 这样一个标签。<p dir="auto"></p>\n<h2 id="main-heading-H2-5">首次渲染</h2>\n<p dir="auto">过程如下：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3177c85c24e158b0c443528976e4c61834b6858695e9c3b4e890477a927bfaba/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c79316735797a6234316968776a32313379306e7a7137362e6a7067"><img src="https://camo.githubusercontent.com/3177c85c24e158b0c443528976e4c61834b6858695e9c3b4e890477a927bfaba/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c79316735797a6234316968776a32313379306e7a7137362e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5yzb41ihwj213y0nzq76.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">首先从 React.render 开始， render 函数被调用的时候会返回一个 element</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  type: function Example,\n  props: {\n    children: null\n  }\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-c1">type</span>: <span class="pl-k">function</span> <span class="pl-v">Example</span><span class="pl-kos">,</span>\n  <span class="pl-s1">props</span>: <span class="pl-kos">{</span>\n    <span class="pl-s1">children</span>: <span class="pl-c1">null</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">由于这个 type 是一个自定义组件类，此时要初始化的类是 ReactCompositeComponentWrapper,接着调用它的 mountComponent 方法。这里面会做四件事情，详情可以看上图。其中，第二步的 render 的得到的 element 为</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  type: \'div\',\n    props: {\n    children: \'Hello World\'\n  }\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-c1">type</span>: <span class="pl-s">\'div\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">props</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">children</span>: <span class="pl-s">\'Hello World\'</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">由图可知，在第一步得到 instance 对象之后，就会去看 instance.componentWillMount 是否有被定义，有的话调用，而在整个渲染过程结束之后调用 componentDidMount。</p>\n<p dir="auto">以上，就是渲染原理的部分，让我们来总结以下：</p>\n<ol dir="auto">\n<li>JSX 代码经过 babel 编译之后变成 React.createElement 的表达式，这个表达式在 render 函数被调用的时候执行生成一个 element。</li>\n<li>在首次渲染的时候，先去按照规则初始化 element，接着 ReactCompositeComponentWrapper 通过递归，最终调用 ReactDOMComponent 的 mountComponent 方法来帮助生成真实 DOM 节点。</li>\n</ol>\n<p dir="auto">React v15</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f5b9258817947abbbf9f5b042bbdf713368ca99175afc290c2be7889f868086e/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a36687a307971796a32316a6b30706f3079362e6a7067"><img src="https://camo.githubusercontent.com/f5b9258817947abbbf9f5b042bbdf713368ca99175afc290c2be7889f868086e/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a36687a307971796a32316a6b30706f3079362e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5z6hz0yqyj21jk0po0y6.jpg" style="max-width: 100%;"></a></p>\n<h2 id="main-heading-H2-6">渲染更新</h2>\n<p dir="auto">触发组件的更新有两种更新方式：props 以及 state 改变带来的更新。本次主要解析 state 改变带来的更新。整个过程流程图如下</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/27e4d6a878f9fdc3721239de3b2e78089db46d1fbd168c38121064690ff42e0a/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a36756d723569316a323163633072306165352e6a7067"><img src="https://camo.githubusercontent.com/27e4d6a878f9fdc3721239de3b2e78089db46d1fbd168c38121064690ff42e0a/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a36756d723569316a323163633072306165352e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5z6umr5i1j21cc0r0ae5.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">1、一般改变 state，都是从 setState 开始，这个函数被调用之后，会将我们传入的 state 放进 pendingState 的数组里存起来，然后判断当前流程是否处于批量更新，如果是，则将当前组件的 instance 放进 dirtyComponent 里，当这个更新流程中所有需要更新的组件收集完毕之后（这里面涉及到事务的概念，感兴趣的可以自己去了解一下）就会遍历 dirtyComponent 这个数组，调用他们的 uptateComponent 对组件进行更新。当然，如果当前不处于批量更新的状态，会直接去遍历 dirtyComponent 进行更新。</p>\n<p dir="auto">2、在我们这个例子中，由于 Example 是自定义组件，所以调用的是 ReactCompositeComponentWrapper 这个类的 updateComponent 方法，这个方法做三件事。</p>\n<p dir="auto">计算出 nextState<br>\nrender()得到 nextRenderElement<br>\n与 prevElement 进行 Diff 比较（这个过程后面会介绍）,更新节点<br>\n最后这个需要去更新节点的时候，跟首次渲染一样，也需要调用 ReactDOMComponent 的 updateComponent 来更新。其中第二步 render 得到的也是自定义组件的话， 会形成递归调用。</p>\n<h3 id="main-heading-H3-7">shouldComponentUpdate</h3>\n<p dir="auto">由图可知，shouldComponentUpdate 在第一步调用得到 nextState 之后调用，因为 nextState 也是它的其中一个参数嘛~这个函数很重要，它是我们性能优化的一个很关键的点：<strong>由图可以看到，当 shouldComponentUpdate 返回 false 的时候，下面的一大块都不会被去执行，包括已经被优化的 diff 算法</strong>。</p>\n<p dir="auto">当 shouldComponentUpdate 返回 true 的时候，会先调用 componentWillUpdate，在整个更新过程结束之后调用 componentDidUpdate。</p>\n<p dir="auto">以上就是更新渲染的过程。</p>\n<h3 id="main-heading-H3-8">Diff 算法</h3>\n<p dir="auto">React 基于两个假设：</p>\n<ol dir="auto">\n<li>两个相同的组件产生类似的 DOM 结构，不同组件产生不同 DOM 结构</li>\n<li>对于同一层次的一组子节点，它们可以通过唯一的 id 区分</li>\n</ol>\n<p dir="auto">发明了一种叫 Diff 的算法来比较两棵 DOM tree，它极大的优化了这个比较的过程，将算法复杂度从 O(n^3)降低到 O(n)。</p>\n<p dir="auto">同时，基于第一点假设，我们可以推论出，Diff 算法只会对同层的节点进行比较。如图，它只会对颜色相同的节点进行比较</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0bb2548ab9cac14585fd238b166f532e74da6860e56f989af0824765e01e29ff/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a39326532376a736a3230657930386d676e332e6a7067"><img src="https://camo.githubusercontent.com/0bb2548ab9cac14585fd238b166f532e74da6860e56f989af0824765e01e29ff/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a39326532376a736a3230657930386d676e332e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5z92e27jsj20ey08mgn3.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">也就是说如果父节点不同，React 将不会在去对比子节点。因为不同的组件 DOM 结构会不相同，所以就没有必要在去对比子节点了。这也提高了对比的效率。</p>\n<p dir="auto">下面，我们具体看下 Diff 算法是怎么做的，这里分为三种情况考虑</p>\n<ul dir="auto">\n<li>节点类型不同</li>\n<li>节点类型相同</li>\n<li>子节点比较</li>\n</ul>\n<h4 dir="auto">不同节点类型</h4>\n<p dir="auto">对于不同的节点类型，react 会基于第一条假设，直接删去旧的节点，新建一个新的节点。</p>\n<p dir="auto">比如：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;A&gt;\n  &lt;C/&gt;\n&lt;/A&gt;\n// 由shape1到shape2\n&lt;B&gt;\n  &lt;C/&gt;\n&lt;/B&gt;"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-v">A</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">C</span><span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-v">A</span><span class="pl-c1">&gt;</span>\n<span class="pl-c">// 由shape1到shape2</span>\n<span class="pl-c1">&lt;</span><span class="pl-v">B</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">C</span><span class="pl-kos">/&gt;</span>\n<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">B</span><span class="pl-s">&gt;</span></pre></div>\n<p dir="auto">生命周期打印结果：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Shape1 :\nA is created\nA render\nC is created\nC render\nC componentDidMount\nA componentDidMount\n\nShape2 :\nA componentWillUnmount\nC componentWillUnmount\nB is created\nB render\nC is created\nC render\nC componentDidMount\nB componentDidMount\n\nShape2 - 2019/08/14:\nB is created\nB render\nis created\nC render\nA componentWillUnmount\nC componentWillUnmount\nC componentDidMount\nB componentDidMount"><pre class="notranslate">Shape1 :\n<span class="pl-v">A</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n\nShape2 :\n<span class="pl-v">A</span> <span class="pl-s1">componentWillUnmount</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>\n<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n\n<span class="pl-v">Shape2</span> <span class="pl-c1">-</span> <span class="pl-c1">2019</span><span class="pl-c1">/</span><span class="pl-c1">08</span><span class="pl-c1">/</span><span class="pl-c1">14</span>:\n<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-s1">is</span><span class="pl-kos"></span> <span class="pl-s1">created</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span></pre></div>\n<p dir="auto">由此可以看出，A 与其子节点 C 会被删除，然后重新建一个 B，C 插入。这样就给我们的性能优化提供了一个思路，就是我们要<strong>保持 DOM 标签的稳定性</strong>。</p>\n<p dir="auto">打个比方，如果写了一个 <code class="notranslate">&lt;div&gt;&lt;List /&gt;&lt;/div&gt;</code>（List 是一个有几千个节点的组件），切换的时候变成了<code class="notranslate">&lt;section&gt;&lt;List /&gt;&lt;/section&gt;</code>，此时即使 List 的内容不变，它也会先被卸载在创建，其实是很浪费的。</p>\n<h4 dir="auto">相同节点类型</h4>\n<p dir="auto">当对比相同的节点类型比较简单，这里分为两种情况，一种是 DOM 元素类型，对应 html 直接支持的元素类型：div，span 和 p，还有一种是自定义组件。</p>\n<ul dir="auto">\n<li>DOM 元素类型</li>\n</ul>\n<p dir="auto">react 会对比它们的属性，只改变需要改变的属性</p>\n<ul dir="auto">\n<li>自定义组件类型</li>\n</ul>\n<p dir="auto">由于 React 此时并不知道如何去更新 DOM 树，因为这些逻辑都在 React 组件里面，所以它能做的就是根据新节点的 props 去更新原来根节点的组件实例，触发一个更新的过程，最后在对所有的 child 节点在进行 diff 的递归比较更新。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="-shouldComponentUpdate -\n  componentWillReceiveProps -\n  componentWillUpdate -\n  render -\n  componentDidUpdate;"><pre class="notranslate"><span class="pl-c1">-</span><span class="pl-s1">shouldComponentUpdate</span> <span class="pl-c1">-</span>\n  <span class="pl-s1">componentWillReceiveProps</span> <span class="pl-c1">-</span>\n  <span class="pl-s1">componentWillUpdate</span> <span class="pl-c1">-</span>\n  <span class="pl-s1">render</span> <span class="pl-c1">-</span>\n  <span class="pl-s1">componentDidUpdate</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">子节点比较</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="div&gt;\n  &lt;A /&gt;\n  &lt;B /&gt;\n&lt;/div&gt;\n// 列表一到列表二\n&lt;div&gt;\n  &lt;A /&gt;\n  &lt;C /&gt;\n  &lt;B /&gt;\n&lt;/div&gt;"><pre class="notranslate"><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">A</span> <span class="pl-kos">/&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">B</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>\n&lt;/<span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n<span class="pl-c">// 列表一到列表二</span>\n<span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">A</span> <span class="pl-kos">/&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">C</span> <span class="pl-kos">/&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">B</span> <span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span></pre></div>\n<p dir="auto">因为 React 在没有 key 的情况下对比节点的时候，是一个一个按着顺序对比的。从列表一到列表二，只是在中间插入了一个 C，但是如果没有 key 的时候，react 会把 B 删去，新建一个 C 放在 B 的位置，然后重新建一个节点 B 放在尾部。</p>\n<p dir="auto">生命周期打印结果：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="列表一：\nA is created\nA render\nB is created\nB render\nA componentDidMount\nB componentDidMount\n\n列表二：\nA render\nB componentWillUnmount\nC is created\nC render\nB is created\nB render\nA componentDidUpdate\nC componentDidMount\nB componentDidMount\n\n列表二 - 2019/08/14:\nA render\nC is created\nC render\nB is created\nB render\nB componentWillUnmount\nA componentDidUpdate\nC componentDidMount\nB componentDidMount"><pre class="notranslate"><span class="pl-s1">列表一：</span>\n<span class="pl-v">A</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n\n<span class="pl-s1">列表二：</span>\n<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>\n<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentDidUpdate</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n\n<span class="pl-s1">列表二</span> <span class="pl-c1">-</span> <span class="pl-c1">2019</span><span class="pl-c1">/</span><span class="pl-c1">08</span><span class="pl-c1">/</span><span class="pl-c1">14</span>:\n<span class="pl-v">A</span> <span class="pl-s1">render</span>\n<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">render</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentWillUnmount</span>\n<span class="pl-v">A</span><span class="pl-kos"></span> <span class="pl-s1">componentDidUpdate</span>\n<span class="pl-v">C</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span>\n<span class="pl-v">B</span><span class="pl-kos"></span> <span class="pl-s1">componentDidMount</span></pre></div>\n<p dir="auto">当节点很多的时候，这样做是非常低效的。有两种方法可以解决这个问题：</p>\n<p dir="auto">1、<strong>保持 DOM 结构的稳定性</strong>，我们来看这个变化，由两个子节点变成了三个，其实是一个不稳定的 DOM 结构，我们可以通过通过加一个 null，保持 DOM 结构的稳定。这样按照顺序对比的时候，B 就不会被卸载又重建回来。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;div&gt;\n  &lt;A /&gt;\n  {null}\n  &lt;B /&gt;\n&lt;/div&gt;\n\n// 列表一到列表二\n&lt;div&gt;\n  &lt;A /&gt;\n  &lt;C /&gt;\n  &lt;B /&gt;\n&lt;/div&gt;"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">A</span> <span class="pl-kos">/&gt;</span>\n  <span class="pl-kos">{</span><span class="pl-c1">null</span><span class="pl-kos">}</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">B</span> <span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n\n<span class="pl-c">// 列表一到列表二</span>\n<span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">A</span> <span class="pl-kos">/&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">C</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">B</span> <span class="pl-kos">/&gt;</span>\n<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">i</span><span class="pl-s">v</span><span class="pl-s">&gt;</span></pre></div>\n<p dir="auto">更新时的打印结果：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="B is created\nC is created\nA componentWillUnmount\nC componentWillUnmount\nC componentDidMount\nB componentDidMount"><pre class="notranslate"><span class="pl-v">B</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">A</span> <span class="pl-s1">componentWillUnmount</span>\n<span class="pl-v">C</span> <span class="pl-s1">componentWillUnmount</span>\n<span class="pl-v">C</span> <span class="pl-s1">componentDidMount</span>\n<span class="pl-v">B</span> <span class="pl-s1">componentDidMount</span></pre></div>\n<p dir="auto">2、<strong>key</strong></p>\n<p dir="auto">通过给节点配置 key，让 React 可以识别节点是否存在。</p>\n<p dir="auto">配上 key 之后，再跑一遍的打印结果。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="A render\nC is created\nC render\nB render\nA componentDidUpdate\nC componentDidMount\nB componentDidUpdate"><pre class="notranslate"><span class="pl-v">A</span> <span class="pl-s1">render</span>\n<span class="pl-v">C</span> <span class="pl-s1">is</span> <span class="pl-s1">created</span>\n<span class="pl-v">C</span> <span class="pl-s1">render</span>\n<span class="pl-v">B</span> <span class="pl-s1">render</span>\n<span class="pl-v">A</span> <span class="pl-s1">componentDidUpdate</span>\n<span class="pl-v">C</span> <span class="pl-s1">componentDidMount</span>\n<span class="pl-v">B</span> <span class="pl-s1">componentDidUpdate</span></pre></div>\n<p dir="auto">果然，配上 key 之后，列表二的生命周期就如我所愿，只在指定的位置创建 C 节点插入。</p>\n<p dir="auto">这里要注意的一点是，key 值必须是稳定（所以我们不能用 Math.random()去创建 key），可预测，并且唯一的。</p>\n<p dir="auto">这里给我们性能优化也提供了两个非常重要的依据：</p>\n<ul dir="auto">\n<li><strong>保持 DOM 结构的稳定性</strong></li>\n<li><strong>map 的时候，加 key</strong></li>\n</ul>\n<h2 id="main-heading-H2-9">性能优化</h2>\n<blockquote>\n<p dir="auto">结合渲染原理，通过实际例子，看看如何优化组件。</p>\n</blockquote>\n<p dir="auto">1、Mount/Unmount</p>\n<ul dir="auto">\n<li>Key</li>\n<li>稳定性\n<ul dir="auto">\n<li>保持标签的稳定 <code class="notranslate">&lt;div&gt; -&gt; &lt;section&gt;</code></li>\n<li>保持 DOM 结构的稳定</li>\n</ul>\n</li>\n</ul>\n<p dir="auto">2、避免重复渲染</p>\n<ul dir="auto">\n<li>shouldComponentUpdate</li>\n<li>PureComponent(immutable.js)</li>\n<li>分离组件，只传入关心的值</li>\n</ul>\n<p dir="auto">3、使用 Pure Functional Component <a href="https://github.com/acdlite/recompose">recompose</a></p>\n<p dir="auto">目前 react 性能优化的点主要集中在<strong>防止重复渲染，DOM 稳定性</strong>的方面：</p>\n<p dir="auto">但是大家看一个<a href="https://codesandbox.io/s/mpx8wzl2x" rel="nofollow">问题</a>,如例子中所展示，点击改变计数按钮后，开始有大量组件重新渲染，但比较阶段不可被打断，input 输入框不可使用。</p>\n<p dir="auto"><strong>更新机制</strong>：一边对比一边更新，操作 dom 结构同步，从上到下是不间断的，主线程用于大批量更新时会被卡住，导致其他的用户操作无法响应，体验很差</p>\n<p dir="auto">现在 React 16 将异步渲染方案分为了两个阶段，第一阶段专注比较，第二阶段专注更新</p>\n<h4 dir="auto">工具</h4>\n<ul dir="auto">\n<li><a href="https://github.com/maicki/why-did-you-update">why-did-you-update</a></li>\n<li><a href="https://www.npmjs.com/package/react-addons-perf" rel="nofollow">react-addons-perf</a></li>\n</ul>\n<h2 id="main-heading-H2-10">React 16 异步渲染方案</h2>\n<blockquote>\n<p dir="auto">到目前为止，这些优化组件的方法还不能解决什么问题，所以我们需要引入异步渲染，以及异步渲染的原理是什么。</p>\n</blockquote>\n<p dir="auto"><strong>React 16 改动</strong></p>\n<p dir="auto">1、比较阶段 – 可被打断</p>\n<p dir="auto">2、commit 阶段 – 不可被打断</p>\n<p dir="auto">主线程不间断使用(同步比较 + 同步更新) =》 自由释放主线程（可打断的比较 + 异步更新）</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ccb8abc09b0559245999bbd05c641fc81463608e7ae0cf2dc96bbdcd15041608/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a656833393076306a32307a7a306a7737376c2e6a7067"><img src="https://camo.githubusercontent.com/ccb8abc09b0559245999bbd05c641fc81463608e7ae0cf2dc96bbdcd15041608/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a656833393076306a32307a7a306a7737376c2e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5zeh390v0j20zz0jw77l.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto">由于 React 16 异步方案的引入，异步 render 函数之前的函数可能被打断，调用多次，所以 render 之前的函数变得不安全，从而新增了 <code class="notranslate">getDerivedStateFromProps</code> API 代替 componentWillMount<br>\n，componentWillReceiveProps，componentWillUpdate，在此静态方法里面专门做 state 的更新初始化操作</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3684620cbf3a962d9c3b47c76642e4221efed2170adf502b84520526cfe88435/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a65687863766c6a6a32307a77306b3974617a2e6a7067"><img src="https://camo.githubusercontent.com/3684620cbf3a962d9c3b47c76642e4221efed2170adf502b84520526cfe88435/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a65687863766c6a6a32307a77306b3974617a2e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5zehxcvljj20zw0k9taz.jpg" style="max-width: 100%;"></a></p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b4fc3cc9b4ac0e76d5904fbd7058c82d1cabea8bfdc25fed0ed04d2ded82f937/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a66616a347730346a3230796b306c687134652e6a7067"><img src="https://camo.githubusercontent.com/b4fc3cc9b4ac0e76d5904fbd7058c82d1cabea8bfdc25fed0ed04d2ded82f937/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f64663535316561356c793167357a66616a347730346a3230796b306c687134652e6a7067" alt="" data-canonical-src="http://ww1.sinaimg.cn/large/df551ea5ly1g5zfaj4w04j20yk0lhq4e.jpg" style="max-width: 100%;"></a></p>\n<h4 dir="auto">参考链接</h4>\n<ul dir="auto">\n<li><a href="https://facebook.github.io/react/docs/reconciliation.htm" rel="nofollow">https://facebook.github.io/react/docs/reconciliation.htm</a></li>\n<li><a href="https://codesandbox.io/s/lyop4w9x9m" rel="nofollow">渲染更新 - Diff Codesandbox Demo</a></li>\n<li><a href="https://codesandbox.io/s/mpx8wzl2x" rel="nofollow">为什么需要 React 16 异步渲染 - Codesandbox Demo</a></li>\n</ul>\n<h4 dir="auto">拓展阅读</h4>\n<ul dir="auto">\n<li>function component\n<ul dir="auto">\n<li><a href="https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc" rel="nofollow">九个推荐使用 functional component 的原因</a></li>\n<li><a href="https://www.freecodecamp.org/news/7-reasons-to-outlaw-reacts-functional-components-ff5b5ae09b7c/" rel="nofollow">七个不使用 functional component 的 原因</a></li>\n</ul>\n</li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/50"},navList:[{text:"前言",id:"main-heading-H2-0",type:a,children:[]},{text:"JSX 如何生成 element",id:"main-heading-H2-1",type:a,children:[]},{text:"二、element 如何生成真实节点",id:"main-heading-H2-2",type:a,children:[{text:"ReactDOMComponent",id:"main-heading-H3-3",type:n},{text:"ReactCompositeComponentWrapper",id:"main-heading-H3-4",type:n}]},{text:"首次渲染",id:"main-heading-H2-5",type:a,children:[]},{text:"渲染更新",id:"main-heading-H2-6",type:a,children:[{text:"shouldComponentUpdate",id:"main-heading-H3-7",type:n},{text:"Diff 算法",id:"main-heading-H3-8",type:n}]},{text:"性能优化",id:"main-heading-H2-9",type:a,children:[]},{text:"React 16 异步渲染方案",id:"main-heading-H2-10",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:t,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:t,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H2","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

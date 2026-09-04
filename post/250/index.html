@@ -1,0 +1,923 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>vant2 popup 源码学习 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="选取 vant@v2.12.54 https://github.com/yanyue404/vant/tree/t_2.12.54/src/popup 在线文档：https://vant-contrib.gitee.io/vant/v2/mobile.html#/zh-CN/popup popup "><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="vant2 popup 源码学习"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="选取 vant@v2.12.54 https://github.com/yanyue404/vant/tree/t_2.12.54/src/popup 在线文档：https://vant-contrib.gitee.io/vant/v2/mobile.html#/zh-CN/popup popup "><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="vant2 popup 源码学习"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="选取 vant@v2.12.54 https://github.com/yanyue404/vant/tree/t_2.12.54/src/popup 在线文档：https://vant-contrib.gitee.io/vant/v2/mobile.html#/zh-CN/popup popup "><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H2-0" title="popup 组件的用法" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              popup 组件的用法
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H3-1" title="基础用法" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  基础用法
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H3-2" title="弹出位置" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  弹出位置
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H3-3" title="常用 api" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  常用 api
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H2-4" title="进入组件源码" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              进入组件源码
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H3-5" title="1. source-map 调试" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. source-map 调试
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H3-6" title="2. 组件声明" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. 组件声明
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H2-7" title="动画交互" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              动画交互
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H2-8" title="层级展示" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              层级展示
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H3-9" title="1. zIndex 控制层级" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. zIndex 控制层级
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H3-10" title="2. 层叠上下文" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. 层叠上下文
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H3-11" title="3. 一个完整的打开关闭的代码流程" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3. 一个完整的打开关闭的代码流程
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H2-12" title="滑动穿透" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              滑动穿透
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/250#main-heading-H2-13" title="参考连接" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考连接
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>vant2 popup 源码学习</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>vant2 popup 源码学习</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2023-03-21</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 30 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><blockquote>
+<p dir="auto">选取 vant@v2.12.54  <a href="https://github.com/yanyue404/vant/tree/t_2.12.54/src/popup">https://github.com/yanyue404/vant/tree/t_2.12.54/src/popup</a></p>
+<p dir="auto">在线文档：<a href="https://vant-contrib.gitee.io/vant/v2/mobile.html#/zh-CN/popup" rel="nofollow">https://vant-contrib.gitee.io/vant/v2/mobile.html#/zh-CN/popup</a></p>
+</blockquote>
+<h2 id="main-heading-H2-0">popup 组件的用法</h2>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup.gif"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup.gif" width="60%" data-animated-image="" style="max-width:100%"></a></p>
+<h3 id="main-heading-H3-1">基础用法</h3>
+<p dir="auto">通过 <code class="notranslate">v-model</code> 控制弹出层是否展示。</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<van-cell is-link @click="showPopup">展示弹出层</van-cell>
+<van-popup v-model="show">内容</van-popup>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">van-cell</span> <span class="pl-c1">is-link</span> <span class="pl-c1">@click</span>="<span class="pl-s">showPopup</span>"<span class="pl-kos">></span>展示弹出层<span class="pl-kos">&lt;/</span><span class="pl-ent">van-cell</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">van-popup</span> <span class="pl-c1">v-model</span>="<span class="pl-s">show</span>"<span class="pl-kos">></span>内容<span class="pl-kos">&lt;/</span><span class="pl-ent">van-popup</span><span class="pl-kos">></span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {
+  data() {
+    return {
+      show: false,
+    };
+  },
+
+  methods: {
+    showPopup() {
+      this.show = true;
+    },
+  },
+};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">show</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+  <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>
+    <span class="pl-en">showPopup</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">show</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-2">弹出位置</h3>
+<p dir="auto">通过 <code class="notranslate">position</code> 属性设置弹出位置，默认居中弹出，可以设置为 <code class="notranslate">top</code>、<code class="notranslate">bottom</code>、<code class="notranslate">left</code>、<code class="notranslate">right</code>。</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<van-popup v-model="show" position="top" :style="{ height: &#39;30%&#39; }" />'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">van-popup</span> <span class="pl-c1">v-model</span>="<span class="pl-s">show</span>" <span class="pl-c1">position</span>="<span class="pl-s">top</span>" <span class="pl-c1">:style</span>="<span class="pl-s">{ height: '30%' }</span>" <span class="pl-kos">/></span></pre></div>
+<h3 id="main-heading-H3-3">常用 api</h3>
+<p dir="auto">官方文档（<a href="https://vant-contrib.gitee.io/vant/v2/#/zh-CN/popup%EF%BC%89" rel="nofollow">https://vant-contrib.gitee.io/vant/v2/#/zh-CN/popup）</a></p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>v-model (value)</strong></td>
+<td>是否显示弹出层</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">false</code></td>
+</tr>
+<tr>
+<td><strong>overlay</strong></td>
+<td>是否显示遮罩层</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">true</code></td>
+</tr>
+<tr>
+<td><strong>zIndex(我的补充)</strong></td>
+<td>自定义层级</td>
+<td><em>number</em></td>
+<td>2000</td>
+</tr>
+<tr>
+<td><strong>position</strong></td>
+<td>弹出位置，可选值为 <code class="notranslate">top</code> <code class="notranslate">bottom</code> <code class="notranslate">right</code> <code class="notranslate">left</code></td>
+<td><em>string</em></td>
+<td><code class="notranslate">center</code></td>
+</tr>
+<tr>
+<td>overlay-class</td>
+<td>自定义遮罩层类名</td>
+<td><em>string</em></td>
+<td>-</td>
+</tr>
+<tr>
+<td>overlay-style</td>
+<td>自定义遮罩层样式</td>
+<td><em>object</em></td>
+<td>-</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>动画时长，单位秒</td>
+<td><em>number | string</em></td>
+<td><code class="notranslate">0.3</code></td>
+</tr>
+<tr>
+<td><strong>round</strong></td>
+<td>是否显示圆角</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">false</code></td>
+</tr>
+<tr>
+<td><strong>lock-scroll</strong></td>
+<td>是否锁定背景滚动</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">true</code></td>
+</tr>
+<tr>
+<td>lazy-render</td>
+<td>是否在显示弹层时才渲染节点</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">true</code></td>
+</tr>
+<tr>
+<td>close-on-popstate</td>
+<td>是否在页面回退时自动关闭</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">false</code></td>
+</tr>
+<tr>
+<td><strong>close-on-click-overlay</strong></td>
+<td>是否在点击遮罩层后关闭</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">true</code></td>
+</tr>
+<tr>
+<td>closeable</td>
+<td>是否显示关闭图标</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">false</code></td>
+</tr>
+<tr>
+<td>close-icon</td>
+<td>关闭图标名称或图片链接</td>
+<td><em>string</em></td>
+<td><code class="notranslate">cross</code></td>
+</tr>
+<tr>
+<td>close-icon-position</td>
+<td>关闭图标位置，可选值为<code class="notranslate">top-left</code><br><code class="notranslate">bottom-left</code> <code class="notranslate">bottom-right</code></td>
+<td><em>string</em></td>
+<td><code class="notranslate">top-right</code></td>
+</tr>
+<tr>
+<td>transition</td>
+<td>动画类名，等价于 <a href="https://cn.vuejs.org/v2/api/index.html#transition" rel="nofollow">transition</a> 的<code class="notranslate">name</code>属性</td>
+<td><em>string</em></td>
+<td>-</td>
+</tr>
+<tr>
+<td>transition-appear <code class="notranslate">v2.10.14</code></td>
+<td>是否在初始渲染时启用过渡动画</td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">false</code></td>
+</tr>
+<tr>
+<td>get-container</td>
+<td>指定挂载的节点</td>
+<td><em>string | () => Element</em></td>
+<td>-</td>
+</tr>
+<tr>
+<td>safe-area-inset-bottom</td>
+<td>是否开启<a href="#/zh-CN/advanced-usage#di-bu-an-quan-qu-gua-pei">底部安全区适配</a></td>
+<td><em>boolean</em></td>
+<td><code class="notranslate">false</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 id="main-heading-H2-4">进入组件源码</h2>
+<h3 id="main-heading-H3-5">1. source-map 调试</h3>
+<p dir="auto">vant@2.12.54 是最后一个大的 vue2 语法的版本，vant 项目采用 git 多包管理项目。</p>
+<p dir="auto">vant 本地开发和打包使用的是 <a href="https://github.com/youzan/vant/blob/main/packages/vant-cli/README.zh-CN.md">vant/packages/vant-cli</a>, 据 <a href="https://github.com/youzan/vant/blob/main/packages/vant-cli/README.zh-CN.md">changelog</a> 可以看到 @vant-cli@v2.5.4 版本开始支持在 <code class="notranslate">webpack.config.js</code> 中修改内部 Webpack 配置, 这样方便我们修改 source-map 配置而不用改源码。</p>
+<p dir="auto">在 vant 根目录已有的 <code class="notranslate">webpack.config.js</code> 文件添加 devtool 开启调试模式。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = function () {
+  if (process.env.BUILD_TARGET === 'package') {
+    return {};
+  }
+
+  return {
+    devtool: 'source-map',
+    entry: {
+      'site-mobile': ['./docs/site/entry'],
+      'site-desktop': ['./docs/site/entry'],
+    },
+  };
+};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-en">exports</span> <span class="pl-c1">=</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">BUILD_TARGET</span> <span class="pl-c1">===</span> <span class="pl-s">'package'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">return</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">devtool</span>: <span class="pl-s">'source-map'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>
+      <span class="pl-s">'site-mobile'</span>: <span class="pl-kos">[</span><span class="pl-s">'./docs/site/entry'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+      <span class="pl-s">'site-desktop'</span>: <span class="pl-kos">[</span><span class="pl-s">'./docs/site/entry'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/vant2-source-map.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/vant2-source-map.jpg" alt="" style="max-width:100%"></a></p>
+<h3 id="main-heading-H3-6">2. 组件声明</h3>
+<p dir="auto">组件采用对象式 options 的方式构成，<code class="notranslate">render</code> 函数代替 template 语法, 可以更精细化的控制组件的逻辑渲染。</p>
+<ol dir="auto">
+<li>createNamespace 创建组件命名空间</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export function createNamespace(name: string): CreateNamespaceReturn {
+  name = 'van-' + name;
+  return [createComponent(name), createBEM(name), createI18N(name)];
+}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">function</span> <span class="pl-en">createNamespace</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-s1">string</span><span class="pl-kos">)</span>: <span class="pl-v">CreateNamespaceReturn</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">name</span> <span class="pl-c1">=</span> <span class="pl-s">'van-'</span> <span class="pl-c1">+</span> <span class="pl-s1">name</span><span class="pl-kos">;</span>
+  <span class="pl-k">return</span> <span class="pl-kos">[</span><span class="pl-en">createComponent</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-en">createBEM</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-en">createI18N</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<ol start="2" dir="auto">
+<li>createComponent</li>
+</ol>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export function createComponent(name: string) {
+  return function <Props = DefaultProps, Events = {}, Slots = {}>(
+    sfc: VantComponentOptions | FunctionComponent
+  ): TsxComponent<Props, Events, Slots> {
+    // 函数式组件
+    if (isFunction(sfc)) {
+      sfc = transformFunctionComponent(sfc);
+    }
+
+    // 普通对象式的
+    if (!sfc.functional) {
+      sfc.mixins = sfc.mixins || [];
+      sfc.mixins.push(SlotsMixin); // 混入了 slot 的 mixin
+    }
+
+    sfc.name = name;
+    sfc.install = install;
+
+    return sfc as TsxComponent<Props, Events, Slots>;
+  };
+
+  function install(this: ComponentOptions<Vue>, Vue: VueConstructor) {
+    const { name } = this;
+    Vue.component(name as string, this);
+    Vue.component(camelize(`-${name}`), this);
+  }
+}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">function</span> <span class="pl-en">createComponent</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-smi">string</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-k">function</span> <span class="pl-c1">&lt;</span><span class="pl-smi">Props</span> <span class="pl-c1">=</span> <span class="pl-smi">DefaultProps</span><span class="pl-kos">,</span> <span class="pl-smi">Events</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-smi">Slots</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-c1">></span><span class="pl-kos">(</span>
+    <span class="pl-s1">sfc</span>: <span class="pl-smi">VantComponentOptions</span> <span class="pl-c1">|</span> <span class="pl-smi">FunctionComponent</span>
+  <span class="pl-kos">)</span>: <span class="pl-smi">TsxComponent</span><span class="pl-c1">&lt;</span><span class="pl-smi">Props</span><span class="pl-kos">,</span> <span class="pl-smi">Events</span><span class="pl-kos">,</span> <span class="pl-smi">Slots</span><span class="pl-c1">></span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 函数式组件</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-en">isFunction</span><span class="pl-kos">(</span><span class="pl-s1">sfc</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">sfc</span> <span class="pl-c1">=</span> <span class="pl-en">transformFunctionComponent</span><span class="pl-kos">(</span><span class="pl-s1">sfc</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-c">// 普通对象式的</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">functional</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">mixins</span> <span class="pl-c1">=</span> <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">mixins</span> <span class="pl-c1">||</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+      <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">mixins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-v">SlotsMixin</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 混入了 slot 的 mixin</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">name</span> <span class="pl-c1">=</span> <span class="pl-s1">name</span><span class="pl-kos">;</span>
+    <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">install</span> <span class="pl-c1">=</span> <span class="pl-s1">install</span><span class="pl-kos">;</span>
+
+    <span class="pl-k">return</span> <span class="pl-s1">sfc</span> <span class="pl-k">as</span> <span class="pl-smi">TsxComponent</span><span class="pl-c1">&lt;</span><span class="pl-smi">Props</span><span class="pl-kos">,</span> <span class="pl-smi">Events</span><span class="pl-kos">,</span> <span class="pl-smi">Slots</span><span class="pl-c1">></span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">function</span> <span class="pl-en">install</span><span class="pl-kos">(</span><span class="pl-smi">this</span>: <span class="pl-smi">ComponentOptions</span><span class="pl-c1">&lt;</span><span class="pl-smi">Vue</span><span class="pl-c1">></span><span class="pl-kos">,</span> <span class="pl-v">Vue</span>: <span class="pl-smi">VueConstructor</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-kos">{</span> name <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">;</span>
+    <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-s1">name</span> <span class="pl-k">as</span> <span class="pl-smi">string</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-en">camelize</span><span class="pl-kos">(</span><span class="pl-s">`-<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<ol start="3" dir="auto">
+<li>createBEM</li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/**
+ * bem helper
+ * b() // 'button'
+ * b('text') // 'button__text'
+ * b({ disabled }) // 'button button--disabled'
+ * b('text', { disabled }) // 'button__text button__text--disabled'
+ * b(['disabled', 'primary']) // 'button button--disabled button--primary'
+ */
+
+function gen(name: string, mods?: Mods): string {
+  if (!mods) {
+    return '';
+  }
+
+  if (typeof mods === 'string') {
+    return ` ${name}--${mods}`; // 装饰类
+  }
+
+  if (Array.isArray(mods)) {
+    return mods.reduce < string > ((ret, item) => ret + gen(name, item), '');
+  }
+
+  return Object.keys(mods).reduce(
+    (ret, key) => ret + (mods[key] ? gen(name, key) : ''),
+    ''
+  );
+}
+
+export function createBEM(name: string) {
+  return function (el?: Mods, mods?: Mods): Mods {
+    // createNamespace 绑定了 'button'
+    if (el && typeof el !== 'string') {
+      mods = el;
+      el = '';
+    }
+
+    el = el ? `${name}__${el}` : name;
+
+    return `${el}${gen(el, mods)}`;
+  };
+}"><pre class="notranslate"><span class="pl-c">/**</span>
+<span class="pl-c"> * bem helper</span>
+<span class="pl-c"> * b() // 'button'</span>
+<span class="pl-c"> * b('text') // 'button__text'</span>
+<span class="pl-c"> * b({ disabled }) // 'button button--disabled'</span>
+<span class="pl-c"> * b('text', { disabled }) // 'button__text button__text--disabled'</span>
+<span class="pl-c"> * b(['disabled', 'primary']) // 'button button--disabled button--primary'</span>
+<span class="pl-c"> */</span>
+
+<span class="pl-k">function</span> <span class="pl-s1">gen</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-s1">string</span><span class="pl-kos">,</span> <span class="pl-s1">mods</span>?: <span class="pl-v">Mods</span><span class="pl-kos">)</span>: <span class="pl-s1">string</span> <span class="pl-kos">{</span>
+  <span class="pl-en">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">mods</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s">''</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-s1">if</span> <span class="pl-kos">(</span><span class="pl-k">typeof</span> <span class="pl-s1">mods</span> <span class="pl-c1">===</span> <span class="pl-s">'string'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">return</span> <span class="pl-s">` <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>--<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">mods</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span> <span class="pl-c">// 装饰类</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-en">isArray</span><span class="pl-kos">(</span><span class="pl-s1">mods</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">return</span> <span class="pl-s1">mods</span><span class="pl-kos">.</span><span class="pl-s1">reduce</span> <span class="pl-c1">&lt;</span> <span class="pl-s1">string</span> <span class="pl-c1">></span> ((ret, item) =<span class="pl-c1">></span> <span class="pl-s1">ret</span> <span class="pl-c1">+</span> <span class="pl-en">gen</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">,</span> <span class="pl-s1">item</span><span class="pl-kos">)</span><span class="pl-kos">,</span> '');
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">return</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">mods</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span>
+    <span class="pl-kos">(</span><span class="pl-s1">ret</span><span class="pl-kos">,</span> <span class="pl-s1">key</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">ret</span> <span class="pl-c1">+</span> <span class="pl-kos">(</span><span class="pl-s1">mods</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> ? <span class="pl-en">gen</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">,</span> <span class="pl-s1">key</span><span class="pl-kos">)</span> : <span class="pl-s">''</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-s">''</span>
+  <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">function</span> <span class="pl-s1">createBEM</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-s1">string</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">el</span>?: <span class="pl-v">Mods</span><span class="pl-kos">,</span> <span class="pl-s1">mods</span>?: <span class="pl-v">Mods</span><span class="pl-kos">)</span>: <span class="pl-v">Mods</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// createNamespace 绑定了 'button'</span>
+    <span class="pl-en">if</span> <span class="pl-kos">(</span><span class="pl-s1">el</span> <span class="pl-c1">&&</span> <span class="pl-k">typeof</span> <span class="pl-s1">el</span> <span class="pl-c1">!==</span> <span class="pl-s">'string'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">mods</span> <span class="pl-c1">=</span> <span class="pl-s1">el</span><span class="pl-kos">;</span>
+      <span class="pl-s1">el</span> <span class="pl-c1">=</span> <span class="pl-s">''</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+
+    el <span class="pl-c1">=</span> <span class="pl-s1">el</span> ? <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>__<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">el</span><span class="pl-kos">}</span></span>`</span> : <span class="pl-s1">name</span><span class="pl-kos">;</span>
+
+    <span class="pl-k">return</span> <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">el</span><span class="pl-kos">}</span></span><span class="pl-s1"><span class="pl-kos">${</span><span class="pl-en">gen</span><span class="pl-kos">(</span><span class="pl-s1">el</span><span class="pl-kos">,</span> <span class="pl-s1">mods</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-7">动画交互</h2>
+<p dir="auto">popup 组件的打开关闭蒙层和抽屉式打开效果采用 vue 的 <code class="notranslate">transition</code> [内置过渡组件]（<a href="https://v2.cn.vuejs.org/v2/api/#transition%EF%BC%89%E5%AE%8C%E6%88%90%E3%80%82" rel="nofollow">https://v2.cn.vuejs.org/v2/api/#transition）完成。</a></p>
+<p dir="auto">Vue 提供了 transition 的封装组件，在下列情形中，可以给任何元素和组件添加进入/离开过渡：</p>
+<ul dir="auto">
+<li>条件渲染 (使用 v-if)</li>
+<li>条件展示 (使用 v-show)</li>
+<li>动态组件</li>
+<li>组件根节点</li>
+</ul>
+<p dir="auto">当插入或删除包含在 transition 组件中的元素时，Vue 将会做以下处理：</p>
+<ol dir="auto">
+<li>
+<p dir="auto">自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名。</p>
+</li>
+<li>
+<p dir="auto">如果过渡组件提供了 JavaScript 钩子函数，这些钩子函数将在恰当的时机被调用。</p>
+</li>
+<li>
+<p dir="auto">如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作 (插入/删除) 在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，和 Vue 的 nextTick 概念不同)</p>
+</li>
+</ol>
+<p dir="auto">过渡的类名：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/transition%20-class.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/transition%20-class.jpg" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2d2c9a74502ee7b7f497e44136ef8ecf9273595a99f298a5077007effee99467/68747470733a2f2f76322e636e2e7675656a732e6f72672f696d616765732f7472616e736974696f6e2e706e67"><img src="https://camo.githubusercontent.com/2d2c9a74502ee7b7f497e44136ef8ecf9273595a99f298a5077007effee99467/68747470733a2f2f76322e636e2e7675656a732e6f72672f696d616765732f7472616e736974696f6e2e706e67" alt="" data-canonical-src="https://v2.cn.vuejs.org/images/transition.png" style="max-width:100%"></a></p>
+<p dir="auto">popup 组件用到的过渡 transition</p>
+<ul dir="auto">
+<li><strong>蒙层</strong>
+<ul dir="auto">
+<li>默认居中： van-fade</li>
+</ul>
+</li>
+<li><strong>弹出层</strong>
+<ul dir="auto">
+<li>底部弹出 ， van-popup-slide-bottom</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">蒙层 CSS 过渡类名（animation.less） ：</p>
+<ul dir="auto">
+<li>van-fade-enter（进入过渡开始）, <strong>van-fade-enter-active</strong>（进入过渡生效），van-fede-enter-to (进入过渡结束)</li>
+<li>Van-fade-leave（离开过渡开始）, <strong>van-fade-leave-active</strong>（离开过渡生效）, van-fade-leave-to (离开过渡结束)</li>
+</ul>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@keyframes van-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes van-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}"><pre class="notranslate"><span class="pl-k">@keyframes</span> <span class="pl-en">van-fade-in</span> {
+  <span class="pl-e">from</span> {
+    <span class="pl-c1"><span class="pl-c1">opacity</span></span>: <span class="pl-c1">0</span>;
+  }
+
+  <span class="pl-e">to</span> {
+    <span class="pl-c1"><span class="pl-c1">opacity</span></span>: <span class="pl-c1">1</span>;
+  }
+}
+
+<span class="pl-k">@keyframes</span> <span class="pl-en">van-fade-out</span> {
+  <span class="pl-e">from</span> {
+    <span class="pl-c1"><span class="pl-c1">opacity</span></span>: <span class="pl-c1">1</span>;
+  }
+
+  <span class="pl-e">to</span> {
+    <span class="pl-c1"><span class="pl-c1">opacity</span></span>: <span class="pl-c1">0</span>;
+  }
+}</pre></div>
+<p dir="auto">弹出过渡类名</p>
+<ul dir="auto">
+<li><strong>van-popup-slide-bottom-enter,</strong> van-popup-slide-bottom-enter-active，van-popup-slide-bottom-enter-to</li>
+<li>van-popup-slide-bottom-leave, <strong>van-popup-slide-bottom-leave-active</strong>, van-popup-slide-bottom-leave-to</li>
+</ul>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@import '../style/var';
+
+.van {
+  &-overflow-hidden {
+    overflow: hidden !important;
+  }
+
+  &-popup {
+    position: fixed;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: @popup-background-color;
+    transition: @popup-transition;
+    -webkit-overflow-scrolling: touch;
+
+    &--center {
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+
+      &.van-popup--round {
+        border-radius: @popup-round-border-radius;
+      }
+    }
+
+    &--bottom {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      &.van-popup--round {
+        border-radius: @popup-round-border-radius @popup-round-border-radius 0 0;
+      }
+    }
+
+    &-slide-bottom-enter-active {
+      transition-timing-function: ease-out;
+    }
+    &-slide-bottom-enter,
+    &-slide-bottom-leave-active {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+}"><pre class="notranslate"><span class="pl-k">@import</span> <span class="pl-s"><span class="pl-pds">'</span>../style/var<span class="pl-pds">'</span></span>;
+
+<span class="pl-e">.van</span> {
+  <span class="pl-ent">&</span><span class="pl-e">-overflow-hidden</span> {
+    <span class="pl-c1"><span class="pl-c1">overflow</span></span>: <span class="pl-c1">hidden</span> <span class="pl-k">!important</span>;
+  }
+
+  <span class="pl-ent">&</span><span class="pl-e">-popup</span> {
+    <span class="pl-c1"><span class="pl-c1">position</span></span>: <span class="pl-c1">fixed</span>;
+    <span class="pl-c1"><span class="pl-c1">max-height</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;
+    <span class="pl-c1"><span class="pl-c1">overflow-y</span></span>: <span class="pl-c1">auto</span>;
+    <span class="pl-c1"><span class="pl-c1">background-color</span></span>: @popup<span class="pl-c1">-</span>background<span class="pl-c1">-</span>color;
+    <span class="pl-c1"><span class="pl-c1">transition</span></span>: @popup<span class="pl-c1">-</span>transition;
+    <span class="pl-c1"><span class="pl-c1">-webkit-overflow-scrolling</span></span>: <span class="pl-c1">touch</span>;
+
+    <span class="pl-ent">&</span><span class="pl-v">--center</span> {
+      <span class="pl-c1"><span class="pl-c1">top</span></span>: <span class="pl-c1">50<span class="pl-k">%</span></span>;
+      <span class="pl-c1"><span class="pl-c1">left</span></span>: <span class="pl-c1">50<span class="pl-k">%</span></span>;
+      <span class="pl-c1"><span class="pl-c1">transform</span></span>: <span class="pl-c1">translate3d</span>(<span class="pl-c1">-50<span class="pl-k">%</span></span>, <span class="pl-c1">-50<span class="pl-k">%</span></span>, <span class="pl-c1">0</span>);
+
+      <span class="pl-ent">&</span><span class="pl-e">.van-popup--round</span> {
+        <span class="pl-c1"><span class="pl-c1">border-radius</span></span>: @popup<span class="pl-c1">-</span>round<span class="pl-c1">-</span>border<span class="pl-c1">-</span>radius;
+      }
+    }
+
+    <span class="pl-ent">&</span><span class="pl-v">--bottom</span> {
+      <span class="pl-c1"><span class="pl-c1">bottom</span></span>: <span class="pl-c1">0</span>;
+      <span class="pl-c1"><span class="pl-c1">left</span></span>: <span class="pl-c1">0</span>;
+      <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;
+
+      <span class="pl-ent">&</span><span class="pl-e">.van-popup--round</span> {
+        <span class="pl-c1"><span class="pl-c1">border-radius</span></span>: @popup<span class="pl-c1">-</span>round<span class="pl-c1">-</span>border<span class="pl-c1">-</span>radius @popup<span class="pl-c1">-</span>round<span class="pl-c1">-</span>border<span class="pl-c1">-</span>radius <span class="pl-c1">0</span> <span class="pl-c1">0</span>;
+      }
+    }
+
+    <span class="pl-ent">&</span><span class="pl-e">-slide-bottom-enter-active</span> {
+      <span class="pl-c1"><span class="pl-c1">transition-timing-function</span></span>: <span class="pl-c1">ease-out</span>;
+    }
+    <span class="pl-ent">&</span><span class="pl-e">-slide-bottom-enter</span>,
+    <span class="pl-ent">&</span><span class="pl-e">-slide-bottom-leave-active</span> {
+      <span class="pl-c1"><span class="pl-c1">transform</span></span>: <span class="pl-c1">translate3d</span>(<span class="pl-c1">0</span>, <span class="pl-c1">100<span class="pl-k">%</span></span>, <span class="pl-c1">0</span>);
+    }
+  }
+}</pre></div>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup-open.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup-open.jpg" alt="" style="max-width:100%"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup-fold.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup-fold.jpg" alt="" style="max-width:100%"></a></p>
+<h2 id="main-heading-H2-8">层级展示</h2>
+<p dir="auto">当前后打开两个弹窗，用户的预期是按照打开的先后顺序，越后打开的弹窗在越上层，简而言之就是新弹窗永远在最上层。可以通过记录当前出现过的最大 zIndex，新弹窗<code class="notranslate">zIndex = zIndex+1</code>。 另外滑动穿透问题在多弹窗情况下也需要处理，对于非当前最高层级弹窗，不应当收到滚动影响。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="this.$el.style.zIndex = ++context.zIndex + 1; // popup 加 2
+context.zIndex++; // overlay 加 1"><pre class="notranslate"><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$el</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span> <span class="pl-c1">=</span> <span class="pl-c1">++</span><span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-c">// popup 加 2</span>
+<span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span><span class="pl-c1">++</span><span class="pl-kos">;</span> <span class="pl-c">// overlay 加 1</span></pre></div>
+<h3 id="main-heading-H3-9">1. zIndex 控制层级</h3>
+<p dir="auto">通过 mixin 的方式 openOverlay 打开遮罩层组件 Overlay</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  renderOverlay() {
+    if (this.$isServer || !this.value) {
+      return;
+    }
+
+    this.$nextTick(() => {
+      this.updateZIndex(this.overlay ? 1 : 0);
+
+      if (this.overlay) {
+        openOverlay(this, {
+          zIndex: context.zIndex++,
+          duration: this.duration,
+          className: this.overlayClass,
+          customStyle: this.overlayStyle,
+        });
+      } else {
+        closeOverlay(this);
+      }
+    });
+  },
+
+  updateZIndex(value = 0) {
+    this.$el.style.zIndex = ++context.zIndex + value;
+  },
+"><pre class="notranslate">  <span class="pl-en">renderOverlay</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$isServer</span> <span class="pl-c1">||</span> <span class="pl-c1">!</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">$nextTick</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">updateZIndex</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">overlay</span> ? <span class="pl-c1">1</span> : <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">overlay</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-en">openOverlay</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+          <span class="pl-c1">zIndex</span>: <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span><span class="pl-c1">++</span><span class="pl-kos">,</span>
+          <span class="pl-c1">duration</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">duration</span><span class="pl-kos">,</span>
+          <span class="pl-c1">className</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">overlayClass</span><span class="pl-kos">,</span>
+          <span class="pl-c1">customStyle</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">overlayStyle</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+        <span class="pl-en">closeOverlay</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+  <span class="pl-en">updateZIndex</span><span class="pl-kos">(</span><span class="pl-s1">value</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$el</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span> <span class="pl-c1">=</span> <span class="pl-c1">++</span><span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span> <span class="pl-c1">+</span> <span class="pl-s1">value</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>
+<h3 id="main-heading-H3-10">2. 层叠上下文</h3>
+<p dir="auto">overlay、popup 两个组件展示是平级的，且 <code class="notranslate">van-popup</code> 始终比 <code class="notranslate">van-overlay</code> 层级高一级，确保 popip 内容 一定在遮罩上层展示。</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<div class="van-doc-demo-block__card">
+  <div role="button" tabindex="0" class="van-cell van-cell--clickable">
+    <div class="van-cell__title"><span>顶部弹出</span></div>
+    <i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
+  </div>
+  <div role="button" tabindex="0" class="van-cell van-cell--clickable">
+    <div class="van-cell__title"><span>底部弹出</span></div>
+    <i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
+  </div>
+  <div role="button" tabindex="0" class="van-cell van-cell--clickable">
+    <div class="van-cell__title"><span>左侧弹出</span></div>
+    <i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
+  </div>
+  <div role="button" tabindex="0" class="van-cell van-cell--clickable">
+    <div class="van-cell__title"><span>右侧弹出</span></div>
+    <i class="van-icon van-icon-arrow van-cell__right-icon"><!----></i>
+  </div>
+  <div class="van-overlay" style="z-index: 2003; display: none"></div>
+  <div
+    class="van-popup van-popup--top"
+    style="height: 30%; z-index: 2004; display: none"
+  ></div>
+  <div class="van-overlay" style="z-index: 2001; display: none"></div>
+  <div
+    class="van-popup van-popup--bottom"
+    style="height: 30%; z-index: 2002; display: none"
+  ></div>
+  <!----><!---->
+</div>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-doc-demo-block__card</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">role</span>="<span class="pl-s">button</span>" <span class="pl-c1">tabindex</span>="<span class="pl-s">0</span>" <span class="pl-c1">class</span>="<span class="pl-s">van-cell van-cell--clickable</span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-cell__title</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;</span><span class="pl-ent">span</span><span class="pl-kos">></span>顶部弹出<span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">van-icon van-icon-arrow van-cell__right-icon</span>"<span class="pl-kos">></span><span class="pl-c">&lt;!----></span><span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">role</span>="<span class="pl-s">button</span>" <span class="pl-c1">tabindex</span>="<span class="pl-s">0</span>" <span class="pl-c1">class</span>="<span class="pl-s">van-cell van-cell--clickable</span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-cell__title</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;</span><span class="pl-ent">span</span><span class="pl-kos">></span>底部弹出<span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">van-icon van-icon-arrow van-cell__right-icon</span>"<span class="pl-kos">></span><span class="pl-c">&lt;!----></span><span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">role</span>="<span class="pl-s">button</span>" <span class="pl-c1">tabindex</span>="<span class="pl-s">0</span>" <span class="pl-c1">class</span>="<span class="pl-s">van-cell van-cell--clickable</span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-cell__title</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;</span><span class="pl-ent">span</span><span class="pl-kos">></span>左侧弹出<span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">van-icon van-icon-arrow van-cell__right-icon</span>"<span class="pl-kos">></span><span class="pl-c">&lt;!----></span><span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">role</span>="<span class="pl-s">button</span>" <span class="pl-c1">tabindex</span>="<span class="pl-s">0</span>" <span class="pl-c1">class</span>="<span class="pl-s">van-cell van-cell--clickable</span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-cell__title</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;</span><span class="pl-ent">span</span><span class="pl-kos">></span>右侧弹出<span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">van-icon van-icon-arrow van-cell__right-icon</span>"<span class="pl-kos">></span><span class="pl-c">&lt;!----></span><span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-overlay</span>" <span class="pl-c1">style</span>="<span class="pl-s">z-index: 2003; display: none</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span>
+    <span class="pl-c1">class</span>="<span class="pl-s">van-popup van-popup--top</span>"
+    <span class="pl-c1">style</span>="<span class="pl-s">height: 30%; z-index: 2004; display: none</span>"
+  <span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-overlay</span>" <span class="pl-c1">style</span>="<span class="pl-s">z-index: 2001; display: none</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span>
+    <span class="pl-c1">class</span>="<span class="pl-s">van-popup van-popup--bottom</span>"
+    <span class="pl-c1">style</span>="<span class="pl-s">height: 30%; z-index: 2002; display: none</span>"
+  <span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+  <span class="pl-c">&lt;!----></span><span class="pl-c">&lt;!----></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">popup 组件为了避免 overlay 组件反复创建销毁，还在组件内部采用局部变量的方式维护了 popup context 的上下文。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { OverlayConfig } from './overlay';
+
+export type StackItem = {
+  vm: any; // 每一个 popup 实例维护了一个与之对应的 overlay
+  overlay: any; // overlay 实例，可以直接控制开关
+  config: OverlayConfig;
+};
+
+export const context = {
+  zIndex: 2000,
+  lockCount: 0,
+  stack: [] as StackItem[],
+  find(vm: any): StackItem | undefined {
+    // 全等也不怕，人家比较的是 this 指向的引用地址
+    return this.stack.filter((item) => item.vm === vm)[0];
+  },
+  remove: function remove(vm: any) {
+    const item = this.find(vm);
+    if (!item) return;
+    item.vm = null;
+    item.overlay = null;
+    const index = this.stack.indexOf(item);
+    this.stack.splice(index, 1);
+  },
+};
+"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">OverlayConfig</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'./overlay'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-s1">type</span> <span class="pl-v">StackItem</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">vm</span>: <span class="pl-s1">any</span><span class="pl-kos"></span><span class="pl-kos">;</span> <span class="pl-c">// 每一个 popup 实例维护了一个与之对应的 overlay</span>
+  overlay: <span class="pl-s1">any</span><span class="pl-kos">;</span> <span class="pl-c">// overlay 实例，可以直接控制开关</span>
+  config: <span class="pl-v">OverlayConfig</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-s1">context</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">zIndex</span>: <span class="pl-c1">2000</span><span class="pl-kos">,</span>
+  <span class="pl-c1">lockCount</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span>
+  <span class="pl-c1">stack</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span> <span class="pl-s1">as</span> <span class="pl-v">StackItem</span><span class="pl-kos">[</span><span class="pl-s1"></span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">find</span><span class="pl-kos">(</span><span class="pl-s1">vm</span>: <span class="pl-s1">any</span><span class="pl-kos">)</span>: <span class="pl-v">StackItem</span> <span class="pl-c1">|</span> <span class="pl-c1">undefined</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 全等也不怕，人家比较的是 this 指向的引用地址</span>
+    <span class="pl-s1">return</span> <span class="pl-s1">this</span><span class="pl-kos">.</span><span class="pl-c1">stack</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">item</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">vm</span> <span class="pl-c1">===</span> <span class="pl-s1">vm</span><span class="pl-kos">)</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-s1">remove</span>: <span class="pl-k">function</span> <span class="pl-s1">remove</span><span class="pl-kos">(</span><span class="pl-s1">vm</span>: <span class="pl-s1">any</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    const <span class="pl-s1">item</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s1">vm</span><span class="pl-kos">)</span><span class="pl-kos"></span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">item</span><span class="pl-kos">)</span> <span class="pl-k">return</span><span class="pl-kos">;</span>
+    <span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">vm</span> <span class="pl-c1">=</span> <span class="pl-c1">null</span><span class="pl-kos">;</span>
+    <span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">overlay</span> <span class="pl-c1">=</span> <span class="pl-c1">null</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-s1">index</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">stack</span><span class="pl-kos">.</span><span class="pl-en">indexOf</span><span class="pl-kos">(</span><span class="pl-s1">item</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">stack</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-11">3. 一个完整的打开关闭的代码流程</h3>
+<ul dir="auto">
+<li>van-popup 组件，v-model 默认关闭，用户通过按钮等途径触发打开 value 变为 true</li>
+<li>监听器捕捉到 value 变为 true，调用 open</li>
+<li>open
+<ul dir="auto">
+<li>记录已经打开 opened 为 true</li>
+<li>设置 popup => zIndex + 2</li>
+<li>记录 overlay => zIndex + 1</li>
+<li>打开遮罩 openOverlay（如果 context 记录已经创建过则直接复用，否则再创建并收集到 context）</li>
+<li>更新遮罩 updateOverlay，更新 overlay 与 popup 的层叠关系并更新 zIndex 为上次记录的</li>
+</ul>
+</li>
+<li>用户点击遮罩，默认关闭调用 close</li>
+<li>close
+<ul dir="auto">
+<li>closeOverlay，找到 context 里记录的遮罩 overlay 并设置 <code class="notranslate">show = false</code></li>
+<li>记录已经打开 opened 为 false</li>
+<li>同步 v-model, <code class="notranslate">this.$emit('input', false)</code></li>
+<li><code class="notranslate">vShow={this.value} = false</code>, popup 也隐藏了</li>
+</ul>
+</li>
+</ul>
+<h2 id="main-heading-H2-12">滑动穿透</h2>
+<ul dir="auto">
+<li>overflow:hidden 对移动端无效</li>
+<li>直接阻止 document的 touchmove事件 （passive event）</li>
+<li>浮层上面的滚动元素 （简单地规定带有 can-scroll类名的元素是可滚动的）</li>
+<li>多个浮层同时存在时 （每个浮层一个实例，在lock变化时调用 lock或 unlock来解决滚动穿透）</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  addLock() {
+    if (this.lockScroll) {
+      on(document, 'touchstart', this.touchStart);
+      on(document, 'touchmove', this.onTouchMove);
+
+      if (!context.lockCount) {
+        document.body.classList.add('van-overflow-hidden');
+      }
+      context.lockCount++;
+    }
+  },
+
+  removeLock() {
+    if (this.lockScroll && context.lockCount) {
+      context.lockCount--;
+      off(document, 'touchstart', this.touchStart);
+      off(document, 'touchmove', this.onTouchMove);
+
+      if (!context.lockCount) {
+        document.body.classList.remove('van-overflow-hidden');
+      }
+    }
+  },
+"><pre class="notranslate">  <span class="pl-en">addLock</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">lockScroll</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-en">on</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">,</span> <span class="pl-s">'touchstart'</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">touchStart</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-en">on</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">,</span> <span class="pl-s">'touchmove'</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">onTouchMove</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-c1">classList</span><span class="pl-kos">.</span><span class="pl-en">add</span><span class="pl-kos">(</span><span class="pl-s">'van-overflow-hidden'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+      <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-c1">++</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+  <span class="pl-en">removeLock</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">lockScroll</span> <span class="pl-c1">&&</span> <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-c1">--</span><span class="pl-kos">;</span>
+      <span class="pl-en">off</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">,</span> <span class="pl-s">'touchstart'</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">touchStart</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-en">off</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">,</span> <span class="pl-s">'touchmove'</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">onTouchMove</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-c1">classList</span><span class="pl-kos">.</span><span class="pl-en">remove</span><span class="pl-kos">(</span><span class="pl-s">'van-overflow-hidden'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="    onTouchMove(event) {
+      console.log('touchmove 事件触发：');
+      this.touchMove(event);
+      const direction = this.deltaY > 0 ? '10' : '01'; // 10 向上， 01 向下
+      const el = getScroller(event.target, this.$el);
+      // scrollTop 已经滚动的高度（内容顶部卷起来的部分 >= 0）
+      // scrollHeight 可滚动内容的高度
+      // offsetHeight 元素内部的高度（含内边距）
+      const { scrollHeight, offsetHeight, scrollTop } = el;
+      let status = '11';
+
+      /* istanbul ignore next */
+      // 默认状态下，能滚动也还没滚
+      if (scrollTop === 0) {
+        // 00 不能滚，01 可以滚
+        status = offsetHeight >= scrollHeight ? '00' : '01';
+      } else if (scrollTop + offsetHeight >= scrollHeight) {
+        // 10 可以滚
+        status = '10';
+      }
+
+      console.log({
+        el,
+        scrollHeight,
+        offsetHeight,
+        scrollTop,
+        status,
+        direction,
+      });
+
+      /* istanbul ignore next */
+      if (
+        status !== '11' &&
+        this.direction === 'vertical' &&
+        // ! 拦截向上下两个方向不能滑动的情况，不要穿透了
+        // 第一个 parseInt：选中 00 不能滚的情况 ('00', 2) = 0
+        // & 按位与（在 a,b 的位表示中，每一个对应的位都为 1 则返回 1，否则返回 0）
+        // 第二个 parseInt：选中上下两个方向，('10', 2) => 2, ('01', 2) => 1
+        !(parseInt(status, 2) & parseInt(direction, 2))
+      ) {
+        console.log('滚动穿透被拦截了！');
+        preventDefault(event, true);
+      }
+    },"><pre class="notranslate">    <span class="pl-en">onTouchMove</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'touchmove 事件触发：'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">touchMove</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">const</span> <span class="pl-s1">direction</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">deltaY</span> <span class="pl-c1">></span> <span class="pl-c1">0</span> ? <span class="pl-s">'10'</span> : <span class="pl-s">'01'</span><span class="pl-kos">;</span> <span class="pl-c">// 10 向上， 01 向下</span>
+      <span class="pl-k">const</span> <span class="pl-s1">el</span> <span class="pl-c1">=</span> <span class="pl-en">getScroller</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$el</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-c">// scrollTop 已经滚动的高度（内容顶部卷起来的部分 >= 0）</span>
+      <span class="pl-c">// scrollHeight 可滚动内容的高度</span>
+      <span class="pl-c">// offsetHeight 元素内部的高度（含内边距）</span>
+      <span class="pl-k">const</span> <span class="pl-kos">{</span> scrollHeight<span class="pl-kos">,</span> offsetHeight<span class="pl-kos">,</span> scrollTop <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">el</span><span class="pl-kos">;</span>
+      <span class="pl-k">let</span> <span class="pl-s1">status</span> <span class="pl-c1">=</span> <span class="pl-s">'11'</span><span class="pl-kos">;</span>
+
+      <span class="pl-c">/* istanbul ignore next */</span>
+      <span class="pl-c">// 默认状态下，能滚动也还没滚</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">scrollTop</span> <span class="pl-c1">===</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-c">// 00 不能滚，01 可以滚</span>
+        <span class="pl-s1">status</span> <span class="pl-c1">=</span> <span class="pl-s1">offsetHeight</span> <span class="pl-c1">>=</span> <span class="pl-s1">scrollHeight</span> ? <span class="pl-s">'00'</span> : <span class="pl-s">'01'</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">scrollTop</span> <span class="pl-c1">+</span> <span class="pl-s1">offsetHeight</span> <span class="pl-c1">>=</span> <span class="pl-s1">scrollHeight</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-c">// 10 可以滚</span>
+        <span class="pl-s1">status</span> <span class="pl-c1">=</span> <span class="pl-s">'10'</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        el<span class="pl-kos">,</span>
+        scrollHeight<span class="pl-kos">,</span>
+        offsetHeight<span class="pl-kos">,</span>
+        scrollTop<span class="pl-kos">,</span>
+        status<span class="pl-kos">,</span>
+        direction<span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+      <span class="pl-c">/* istanbul ignore next */</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span>
+        <span class="pl-s1">status</span> <span class="pl-c1">!==</span> <span class="pl-s">'11'</span> <span class="pl-c1">&&</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">direction</span> <span class="pl-c1">===</span> <span class="pl-s">'vertical'</span> <span class="pl-c1">&&</span>
+        <span class="pl-c">// ! 拦截向上下两个方向不能滑动的情况，不要穿透了</span>
+        <span class="pl-c">// 第一个 parseInt：选中 00 不能滚的情况 ('00', 2) = 0</span>
+        <span class="pl-c">// & 按位与（在 a,b 的位表示中，每一个对应的位都为 1 则返回 1，否则返回 0）</span>
+        <span class="pl-c">// 第二个 parseInt：选中上下两个方向，('10', 2) => 2, ('01', 2) => 1</span>
+        <span class="pl-c1">!</span><span class="pl-kos">(</span><span class="pl-en">parseInt</span><span class="pl-kos">(</span><span class="pl-s1">status</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">)</span> <span class="pl-c1">&</span> <span class="pl-en">parseInt</span><span class="pl-kos">(</span><span class="pl-s1">direction</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+      <span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'滚动穿透被拦截了！'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-en">preventDefault</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">,</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>
+<h2 id="main-heading-H2-13">参考连接</h2>
+<ul dir="auto">
+<li><a href="https://juejin.cn/post/6866331596090736647" rel="nofollow">仿 van-popup 实现一个从底部弹出的 Popup - 掘金</a></li>
+<li><a href="https://juejin.cn/post/6844904030083219463" rel="nofollow">vue 组件库之 popup 弹窗组件 - 掘金</a></li>
+<li><a href="https://juejin.cn/post/6844904196739694605" rel="nofollow">NutUI 组件 popup 源码分析 - 掘金</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,c){return{layout:"default",data:[{post:{id:1634356665,number:250,title:"vant2 popup 源码学习",created_at:"2023-03-21T17:02:01Z",updated_at:"2025-11-23T16:37:47Z",body_html:'<blockquote>\n<p dir="auto">选取 vant@v2.12.54  <a href="https://github.com/yanyue404/vant/tree/t_2.12.54/src/popup">https://github.com/yanyue404/vant/tree/t_2.12.54/src/popup</a></p>\n<p dir="auto">在线文档：<a href="https://vant-contrib.gitee.io/vant/v2/mobile.html#/zh-CN/popup" rel="nofollow">https://vant-contrib.gitee.io/vant/v2/mobile.html#/zh-CN/popup</a></p>\n</blockquote>\n<h2 id="main-heading-H2-0">popup 组件的用法</h2>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup.gif"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup.gif" width="60%" data-animated-image="" style="max-width: 100%;"></a></p>\n<h3 id="main-heading-H3-1">基础用法</h3>\n<p dir="auto">通过 <code class="notranslate">v-model</code> 控制弹出层是否展示。</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;van-cell is-link @click=&quot;showPopup&quot;&gt;展示弹出层&lt;/van-cell&gt;\n&lt;van-popup v-model=&quot;show&quot;&gt;内容&lt;/van-popup&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">van-cell</span> <span class="pl-c1">is-link</span> <span class="pl-c1">@click</span>="<span class="pl-s">showPopup</span>"<span class="pl-kos">&gt;</span>展示弹出层<span class="pl-kos">&lt;/</span><span class="pl-ent">van-cell</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">van-popup</span> <span class="pl-c1">v-model</span>="<span class="pl-s">show</span>"<span class="pl-kos">&gt;</span>内容<span class="pl-kos">&lt;/</span><span class="pl-ent">van-popup</span><span class="pl-kos">&gt;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  data() {\n    return {\n      show: false,\n    };\n  },\n\n  methods: {\n    showPopup() {\n      this.show = true;\n    },\n  },\n};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">show</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n\n  <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>\n    <span class="pl-en">showPopup</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">show</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-2">弹出位置</h3>\n<p dir="auto">通过 <code class="notranslate">position</code> 属性设置弹出位置，默认居中弹出，可以设置为 <code class="notranslate">top</code>、<code class="notranslate">bottom</code>、<code class="notranslate">left</code>、<code class="notranslate">right</code>。</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;van-popup v-model=&quot;show&quot; position=&quot;top&quot; :style=&quot;{ height: \'30%\' }&quot; /&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">van-popup</span> <span class="pl-c1">v-model</span>="<span class="pl-s">show</span>" <span class="pl-c1">position</span>="<span class="pl-s">top</span>" <span class="pl-c1">:style</span>="<span class="pl-s">{ height: \'30%\' }</span>" <span class="pl-kos">/&gt;</span></pre></div>\n<h3 id="main-heading-H3-3">常用 api</h3>\n<p dir="auto">官方文档（<a href="https://vant-contrib.gitee.io/vant/v2/#/zh-CN/popup%EF%BC%89" rel="nofollow">https://vant-contrib.gitee.io/vant/v2/#/zh-CN/popup）</a></p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>参数</th>\n<th>说明</th>\n<th>类型</th>\n<th>默认值</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>v-model (value)</strong></td>\n<td>是否显示弹出层</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">false</code></td>\n</tr>\n<tr>\n<td><strong>overlay</strong></td>\n<td>是否显示遮罩层</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">true</code></td>\n</tr>\n<tr>\n<td><strong>zIndex(我的补充)</strong></td>\n<td>自定义层级</td>\n<td><em>number</em></td>\n<td>2000</td>\n</tr>\n<tr>\n<td><strong>position</strong></td>\n<td>弹出位置，可选值为 <code class="notranslate">top</code> <code class="notranslate">bottom</code> <code class="notranslate">right</code> <code class="notranslate">left</code></td>\n<td><em>string</em></td>\n<td><code class="notranslate">center</code></td>\n</tr>\n<tr>\n<td>overlay-class</td>\n<td>自定义遮罩层类名</td>\n<td><em>string</em></td>\n<td>-</td>\n</tr>\n<tr>\n<td>overlay-style</td>\n<td>自定义遮罩层样式</td>\n<td><em>object</em></td>\n<td>-</td>\n</tr>\n<tr>\n<td>duration</td>\n<td>动画时长，单位秒</td>\n<td><em>number | string</em></td>\n<td><code class="notranslate">0.3</code></td>\n</tr>\n<tr>\n<td><strong>round</strong></td>\n<td>是否显示圆角</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">false</code></td>\n</tr>\n<tr>\n<td><strong>lock-scroll</strong></td>\n<td>是否锁定背景滚动</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">true</code></td>\n</tr>\n<tr>\n<td>lazy-render</td>\n<td>是否在显示弹层时才渲染节点</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">true</code></td>\n</tr>\n<tr>\n<td>close-on-popstate</td>\n<td>是否在页面回退时自动关闭</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">false</code></td>\n</tr>\n<tr>\n<td><strong>close-on-click-overlay</strong></td>\n<td>是否在点击遮罩层后关闭</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">true</code></td>\n</tr>\n<tr>\n<td>closeable</td>\n<td>是否显示关闭图标</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">false</code></td>\n</tr>\n<tr>\n<td>close-icon</td>\n<td>关闭图标名称或图片链接</td>\n<td><em>string</em></td>\n<td><code class="notranslate">cross</code></td>\n</tr>\n<tr>\n<td>close-icon-position</td>\n<td>关闭图标位置，可选值为<code class="notranslate">top-left</code><br><code class="notranslate">bottom-left</code> <code class="notranslate">bottom-right</code></td>\n<td><em>string</em></td>\n<td><code class="notranslate">top-right</code></td>\n</tr>\n<tr>\n<td>transition</td>\n<td>动画类名，等价于 <a href="https://cn.vuejs.org/v2/api/index.html#transition" rel="nofollow">transition</a> 的<code class="notranslate">name</code>属性</td>\n<td><em>string</em></td>\n<td>-</td>\n</tr>\n<tr>\n<td>transition-appear <code class="notranslate">v2.10.14</code></td>\n<td>是否在初始渲染时启用过渡动画</td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">false</code></td>\n</tr>\n<tr>\n<td>get-container</td>\n<td>指定挂载的节点</td>\n<td><em>string | () =&gt; Element</em></td>\n<td>-</td>\n</tr>\n<tr>\n<td>safe-area-inset-bottom</td>\n<td>是否开启<a href="#/zh-CN/advanced-usage#di-bu-an-quan-qu-gua-pei">底部安全区适配</a></td>\n<td><em>boolean</em></td>\n<td><code class="notranslate">false</code></td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h2 id="main-heading-H2-4">进入组件源码</h2>\n<h3 id="main-heading-H3-5">1. source-map 调试</h3>\n<p dir="auto">vant@2.12.54 是最后一个大的 vue2 语法的版本，vant 项目采用 git 多包管理项目。</p>\n<p dir="auto">vant 本地开发和打包使用的是 <a href="https://github.com/youzan/vant/blob/main/packages/vant-cli/README.zh-CN.md">vant/packages/vant-cli</a>, 据 <a href="https://github.com/youzan/vant/blob/main/packages/vant-cli/README.zh-CN.md">changelog</a> 可以看到 @vant-cli@v2.5.4 版本开始支持在 <code class="notranslate">webpack.config.js</code> 中修改内部 Webpack 配置, 这样方便我们修改 source-map 配置而不用改源码。</p>\n<p dir="auto">在 vant 根目录已有的 <code class="notranslate">webpack.config.js</code> 文件添加 devtool 开启调试模式。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = function () {\n  if (process.env.BUILD_TARGET === \'package\') {\n    return {};\n  }\n\n  return {\n    devtool: \'source-map\',\n    entry: {\n      \'site-mobile\': [\'./docs/site/entry\'],\n      \'site-desktop\': [\'./docs/site/entry\'],\n    },\n  };\n};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-en">exports</span> <span class="pl-c1">=</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">BUILD_TARGET</span> <span class="pl-c1">===</span> <span class="pl-s">\'package\'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-k">return</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">devtool</span>: <span class="pl-s">\'source-map\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>\n      <span class="pl-s">\'site-mobile\'</span>: <span class="pl-kos">[</span><span class="pl-s">\'./docs/site/entry\'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n      <span class="pl-s">\'site-desktop\'</span>: <span class="pl-kos">[</span><span class="pl-s">\'./docs/site/entry\'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/vant2-source-map.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/vant2-source-map.jpg" alt="" style="max-width: 100%;"></a></p>\n<h3 id="main-heading-H3-6">2. 组件声明</h3>\n<p dir="auto">组件采用对象式 options 的方式构成，<code class="notranslate">render</code> 函数代替 template 语法, 可以更精细化的控制组件的逻辑渲染。</p>\n<ol dir="auto">\n<li>createNamespace 创建组件命名空间</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export function createNamespace(name: string): CreateNamespaceReturn {\n  name = \'van-\' + name;\n  return [createComponent(name), createBEM(name), createI18N(name)];\n}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">function</span> <span class="pl-en">createNamespace</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-s1">string</span><span class="pl-kos">)</span>: <span class="pl-v">CreateNamespaceReturn</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">name</span> <span class="pl-c1">=</span> <span class="pl-s">\'van-\'</span> <span class="pl-c1">+</span> <span class="pl-s1">name</span><span class="pl-kos">;</span>\n  <span class="pl-k">return</span> <span class="pl-kos">[</span><span class="pl-en">createComponent</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-en">createBEM</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-en">createI18N</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">)</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<ol start="2" dir="auto">\n<li>createComponent</li>\n</ol>\n<div class="highlight highlight-source-ts notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export function createComponent(name: string) {\n  return function &lt;Props = DefaultProps, Events = {}, Slots = {}&gt;(\n    sfc: VantComponentOptions | FunctionComponent\n  ): TsxComponent&lt;Props, Events, Slots&gt; {\n    // 函数式组件\n    if (isFunction(sfc)) {\n      sfc = transformFunctionComponent(sfc);\n    }\n\n    // 普通对象式的\n    if (!sfc.functional) {\n      sfc.mixins = sfc.mixins || [];\n      sfc.mixins.push(SlotsMixin); // 混入了 slot 的 mixin\n    }\n\n    sfc.name = name;\n    sfc.install = install;\n\n    return sfc as TsxComponent&lt;Props, Events, Slots&gt;;\n  };\n\n  function install(this: ComponentOptions&lt;Vue&gt;, Vue: VueConstructor) {\n    const { name } = this;\n    Vue.component(name as string, this);\n    Vue.component(camelize(`-${name}`), this);\n  }\n}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">function</span> <span class="pl-en">createComponent</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-smi">string</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">return</span> <span class="pl-k">function</span> <span class="pl-c1">&lt;</span><span class="pl-smi">Props</span> <span class="pl-c1">=</span> <span class="pl-smi">DefaultProps</span><span class="pl-kos">,</span> <span class="pl-smi">Events</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-smi">Slots</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span><span class="pl-kos">(</span>\n    <span class="pl-s1">sfc</span>: <span class="pl-smi">VantComponentOptions</span> <span class="pl-c1">|</span> <span class="pl-smi">FunctionComponent</span>\n  <span class="pl-kos">)</span>: <span class="pl-smi">TsxComponent</span><span class="pl-c1">&lt;</span><span class="pl-smi">Props</span><span class="pl-kos">,</span> <span class="pl-smi">Events</span><span class="pl-kos">,</span> <span class="pl-smi">Slots</span><span class="pl-c1">&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 函数式组件</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-en">isFunction</span><span class="pl-kos">(</span><span class="pl-s1">sfc</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">sfc</span> <span class="pl-c1">=</span> <span class="pl-en">transformFunctionComponent</span><span class="pl-kos">(</span><span class="pl-s1">sfc</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n\n    <span class="pl-c">// 普通对象式的</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">functional</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">mixins</span> <span class="pl-c1">=</span> <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">mixins</span> <span class="pl-c1">||</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n      <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">mixins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-v">SlotsMixin</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 混入了 slot 的 mixin</span>\n    <span class="pl-kos">}</span>\n\n    <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">name</span> <span class="pl-c1">=</span> <span class="pl-s1">name</span><span class="pl-kos">;</span>\n    <span class="pl-s1">sfc</span><span class="pl-kos">.</span><span class="pl-c1">install</span> <span class="pl-c1">=</span> <span class="pl-s1">install</span><span class="pl-kos">;</span>\n\n    <span class="pl-k">return</span> <span class="pl-s1">sfc</span> <span class="pl-k">as</span> <span class="pl-smi">TsxComponent</span><span class="pl-c1">&lt;</span><span class="pl-smi">Props</span><span class="pl-kos">,</span> <span class="pl-smi">Events</span><span class="pl-kos">,</span> <span class="pl-smi">Slots</span><span class="pl-c1">&gt;</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">function</span> <span class="pl-en">install</span><span class="pl-kos">(</span><span class="pl-smi">this</span>: <span class="pl-smi">ComponentOptions</span><span class="pl-c1">&lt;</span><span class="pl-smi">Vue</span><span class="pl-c1">&gt;</span><span class="pl-kos">,</span> <span class="pl-v">Vue</span>: <span class="pl-smi">VueConstructor</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">const</span> <span class="pl-kos">{</span> name <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">;</span>\n    <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-s1">name</span> <span class="pl-k">as</span> <span class="pl-smi">string</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-en">camelize</span><span class="pl-kos">(</span><span class="pl-s">`-<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<ol start="3" dir="auto">\n<li>createBEM</li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/**\n * bem helper\n * b() // \'button\'\n * b(\'text\') // \'button__text\'\n * b({ disabled }) // \'button button--disabled\'\n * b(\'text\', { disabled }) // \'button__text button__text--disabled\'\n * b([\'disabled\', \'primary\']) // \'button button--disabled button--primary\'\n */\n\nfunction gen(name: string, mods?: Mods): string {\n  if (!mods) {\n    return \'\';\n  }\n\n  if (typeof mods === \'string\') {\n    return ` ${name}--${mods}`; // 装饰类\n  }\n\n  if (Array.isArray(mods)) {\n    return mods.reduce &lt; string &gt; ((ret, item) =&gt; ret + gen(name, item), \'\');\n  }\n\n  return Object.keys(mods).reduce(\n    (ret, key) =&gt; ret + (mods[key] ? gen(name, key) : \'\'),\n    \'\'\n  );\n}\n\nexport function createBEM(name: string) {\n  return function (el?: Mods, mods?: Mods): Mods {\n    // createNamespace 绑定了 \'button\'\n    if (el &amp;&amp; typeof el !== \'string\') {\n      mods = el;\n      el = \'\';\n    }\n\n    el = el ? `${name}__${el}` : name;\n\n    return `${el}${gen(el, mods)}`;\n  };\n}"><pre class="notranslate"><span class="pl-c">/**</span>\n<span class="pl-c"> * bem helper</span>\n<span class="pl-c"> * b() // \'button\'</span>\n<span class="pl-c"> * b(\'text\') // \'button__text\'</span>\n<span class="pl-c"> * b({ disabled }) // \'button button--disabled\'</span>\n<span class="pl-c"> * b(\'text\', { disabled }) // \'button__text button__text--disabled\'</span>\n<span class="pl-c"> * b([\'disabled\', \'primary\']) // \'button button--disabled button--primary\'</span>\n<span class="pl-c"> */</span>\n\n<span class="pl-k">function</span> <span class="pl-s1">gen</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-s1">string</span><span class="pl-kos">,</span> <span class="pl-s1">mods</span>?: <span class="pl-v">Mods</span><span class="pl-kos">)</span>: <span class="pl-s1">string</span> <span class="pl-kos">{</span>\n  <span class="pl-en">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">mods</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-s">\'\'</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-s1">if</span> <span class="pl-kos">(</span><span class="pl-k">typeof</span> <span class="pl-s1">mods</span> <span class="pl-c1">===</span> <span class="pl-s">\'string\'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">return</span> <span class="pl-s">` <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>--<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">mods</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span> <span class="pl-c">// 装饰类</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-en">isArray</span><span class="pl-kos">(</span><span class="pl-s1">mods</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">return</span> <span class="pl-s1">mods</span><span class="pl-kos">.</span><span class="pl-s1">reduce</span> <span class="pl-c1">&lt;</span> <span class="pl-s1">string</span> <span class="pl-c1">&gt;</span> ((ret, item) =<span class="pl-c1">&gt;</span> <span class="pl-s1">ret</span> <span class="pl-c1">+</span> <span class="pl-en">gen</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">,</span> <span class="pl-s1">item</span><span class="pl-kos">)</span><span class="pl-kos">,</span> \'\');\n  <span class="pl-kos">}</span>\n\n  <span class="pl-k">return</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-s1">mods</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">reduce</span><span class="pl-kos">(</span>\n    <span class="pl-kos">(</span><span class="pl-s1">ret</span><span class="pl-kos">,</span> <span class="pl-s1">key</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">ret</span> <span class="pl-c1">+</span> <span class="pl-kos">(</span><span class="pl-s1">mods</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> ? <span class="pl-en">gen</span><span class="pl-kos">(</span><span class="pl-s1">name</span><span class="pl-kos">,</span> <span class="pl-s1">key</span><span class="pl-kos">)</span> : <span class="pl-s">\'\'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-s">\'\'</span>\n  <span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">function</span> <span class="pl-s1">createBEM</span><span class="pl-kos">(</span><span class="pl-s1">name</span>: <span class="pl-s1">string</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">return</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">el</span>?: <span class="pl-v">Mods</span><span class="pl-kos">,</span> <span class="pl-s1">mods</span>?: <span class="pl-v">Mods</span><span class="pl-kos">)</span>: <span class="pl-v">Mods</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// createNamespace 绑定了 \'button\'</span>\n    <span class="pl-en">if</span> <span class="pl-kos">(</span><span class="pl-s1">el</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-k">typeof</span> <span class="pl-s1">el</span> <span class="pl-c1">!==</span> <span class="pl-s">\'string\'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">mods</span> <span class="pl-c1">=</span> <span class="pl-s1">el</span><span class="pl-kos">;</span>\n      <span class="pl-s1">el</span> <span class="pl-c1">=</span> <span class="pl-s">\'\'</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n\n    el <span class="pl-c1">=</span> <span class="pl-s1">el</span> ? <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>__<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">el</span><span class="pl-kos">}</span></span>`</span> : <span class="pl-s1">name</span><span class="pl-kos">;</span>\n\n    <span class="pl-k">return</span> <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">el</span><span class="pl-kos">}</span></span><span class="pl-s1"><span class="pl-kos">${</span><span class="pl-en">gen</span><span class="pl-kos">(</span><span class="pl-s1">el</span><span class="pl-kos">,</span> <span class="pl-s1">mods</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-7">动画交互</h2>\n<p dir="auto">popup 组件的打开关闭蒙层和抽屉式打开效果采用 vue 的 <code class="notranslate">transition</code> [内置过渡组件]（<a href="https://v2.cn.vuejs.org/v2/api/#transition%EF%BC%89%E5%AE%8C%E6%88%90%E3%80%82" rel="nofollow">https://v2.cn.vuejs.org/v2/api/#transition）完成。</a></p>\n<p dir="auto">Vue 提供了 transition 的封装组件，在下列情形中，可以给任何元素和组件添加进入/离开过渡：</p>\n<ul dir="auto">\n<li>条件渲染 (使用 v-if)</li>\n<li>条件展示 (使用 v-show)</li>\n<li>动态组件</li>\n<li>组件根节点</li>\n</ul>\n<p dir="auto">当插入或删除包含在 transition 组件中的元素时，Vue 将会做以下处理：</p>\n<ol dir="auto">\n<li>\n<p dir="auto">自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名。</p>\n</li>\n<li>\n<p dir="auto">如果过渡组件提供了 JavaScript 钩子函数，这些钩子函数将在恰当的时机被调用。</p>\n</li>\n<li>\n<p dir="auto">如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作 (插入/删除) 在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，和 Vue 的 nextTick 概念不同)</p>\n</li>\n</ol>\n<p dir="auto">过渡的类名：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/transition%20-class.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/transition%20-class.jpg" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2d2c9a74502ee7b7f497e44136ef8ecf9273595a99f298a5077007effee99467/68747470733a2f2f76322e636e2e7675656a732e6f72672f696d616765732f7472616e736974696f6e2e706e67"><img src="https://camo.githubusercontent.com/2d2c9a74502ee7b7f497e44136ef8ecf9273595a99f298a5077007effee99467/68747470733a2f2f76322e636e2e7675656a732e6f72672f696d616765732f7472616e736974696f6e2e706e67" alt="" data-canonical-src="https://v2.cn.vuejs.org/images/transition.png" style="max-width: 100%;"></a></p>\n<p dir="auto">popup 组件用到的过渡 transition</p>\n<ul dir="auto">\n<li><strong>蒙层</strong>\n<ul dir="auto">\n<li>默认居中： van-fade</li>\n</ul>\n</li>\n<li><strong>弹出层</strong>\n<ul dir="auto">\n<li>底部弹出 ， van-popup-slide-bottom</li>\n</ul>\n</li>\n</ul>\n<p dir="auto">蒙层 CSS 过渡类名（animation.less） ：</p>\n<ul dir="auto">\n<li>van-fade-enter（进入过渡开始）, <strong>van-fade-enter-active</strong>（进入过渡生效），van-fede-enter-to (进入过渡结束)</li>\n<li>Van-fade-leave（离开过渡开始）, <strong>van-fade-leave-active</strong>（离开过渡生效）, van-fade-leave-to (离开过渡结束)</li>\n</ul>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@keyframes van-fade-in {\n  from {\n    opacity: 0;\n  }\n\n  to {\n    opacity: 1;\n  }\n}\n\n@keyframes van-fade-out {\n  from {\n    opacity: 1;\n  }\n\n  to {\n    opacity: 0;\n  }\n}"><pre class="notranslate"><span class="pl-k">@keyframes</span> <span class="pl-en">van-fade-in</span> {\n  <span class="pl-e">from</span> {\n    <span class="pl-c1"><span class="pl-c1">opacity</span></span>: <span class="pl-c1">0</span>;\n  }\n\n  <span class="pl-e">to</span> {\n    <span class="pl-c1"><span class="pl-c1">opacity</span></span>: <span class="pl-c1">1</span>;\n  }\n}\n\n<span class="pl-k">@keyframes</span> <span class="pl-en">van-fade-out</span> {\n  <span class="pl-e">from</span> {\n    <span class="pl-c1"><span class="pl-c1">opacity</span></span>: <span class="pl-c1">1</span>;\n  }\n\n  <span class="pl-e">to</span> {\n    <span class="pl-c1"><span class="pl-c1">opacity</span></span>: <span class="pl-c1">0</span>;\n  }\n}</pre></div>\n<p dir="auto">弹出过渡类名</p>\n<ul dir="auto">\n<li><strong>van-popup-slide-bottom-enter,</strong> van-popup-slide-bottom-enter-active，van-popup-slide-bottom-enter-to</li>\n<li>van-popup-slide-bottom-leave, <strong>van-popup-slide-bottom-leave-active</strong>, van-popup-slide-bottom-leave-to</li>\n</ul>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@import \'../style/var\';\n\n.van {\n  &amp;-overflow-hidden {\n    overflow: hidden !important;\n  }\n\n  &amp;-popup {\n    position: fixed;\n    max-height: 100%;\n    overflow-y: auto;\n    background-color: @popup-background-color;\n    transition: @popup-transition;\n    -webkit-overflow-scrolling: touch;\n\n    &amp;--center {\n      top: 50%;\n      left: 50%;\n      transform: translate3d(-50%, -50%, 0);\n\n      &amp;.van-popup--round {\n        border-radius: @popup-round-border-radius;\n      }\n    }\n\n    &amp;--bottom {\n      bottom: 0;\n      left: 0;\n      width: 100%;\n\n      &amp;.van-popup--round {\n        border-radius: @popup-round-border-radius @popup-round-border-radius 0 0;\n      }\n    }\n\n    &amp;-slide-bottom-enter-active {\n      transition-timing-function: ease-out;\n    }\n    &amp;-slide-bottom-enter,\n    &amp;-slide-bottom-leave-active {\n      transform: translate3d(0, 100%, 0);\n    }\n  }\n}"><pre class="notranslate"><span class="pl-k">@import</span> <span class="pl-s"><span class="pl-pds">\'</span>../style/var<span class="pl-pds">\'</span></span>;\n\n<span class="pl-e">.van</span> {\n  <span class="pl-ent">&amp;</span><span class="pl-e">-overflow-hidden</span> {\n    <span class="pl-c1"><span class="pl-c1">overflow</span></span>: <span class="pl-c1">hidden</span> <span class="pl-k">!important</span>;\n  }\n\n  <span class="pl-ent">&amp;</span><span class="pl-e">-popup</span> {\n    <span class="pl-c1"><span class="pl-c1">position</span></span>: <span class="pl-c1">fixed</span>;\n    <span class="pl-c1"><span class="pl-c1">max-height</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;\n    <span class="pl-c1"><span class="pl-c1">overflow-y</span></span>: <span class="pl-c1">auto</span>;\n    <span class="pl-c1"><span class="pl-c1">background-color</span></span>: @popup<span class="pl-c1">-</span>background<span class="pl-c1">-</span>color;\n    <span class="pl-c1"><span class="pl-c1">transition</span></span>: @popup<span class="pl-c1">-</span>transition;\n    <span class="pl-c1"><span class="pl-c1">-webkit-overflow-scrolling</span></span>: <span class="pl-c1">touch</span>;\n\n    <span class="pl-ent">&amp;</span><span class="pl-v">--center</span> {\n      <span class="pl-c1"><span class="pl-c1">top</span></span>: <span class="pl-c1">50<span class="pl-k">%</span></span>;\n      <span class="pl-c1"><span class="pl-c1">left</span></span>: <span class="pl-c1">50<span class="pl-k">%</span></span>;\n      <span class="pl-c1"><span class="pl-c1">transform</span></span>: <span class="pl-c1">translate3d</span>(<span class="pl-c1">-50<span class="pl-k">%</span></span>, <span class="pl-c1">-50<span class="pl-k">%</span></span>, <span class="pl-c1">0</span>);\n\n      <span class="pl-ent">&amp;</span><span class="pl-e">.van-popup--round</span> {\n        <span class="pl-c1"><span class="pl-c1">border-radius</span></span>: @popup<span class="pl-c1">-</span>round<span class="pl-c1">-</span>border<span class="pl-c1">-</span>radius;\n      }\n    }\n\n    <span class="pl-ent">&amp;</span><span class="pl-v">--bottom</span> {\n      <span class="pl-c1"><span class="pl-c1">bottom</span></span>: <span class="pl-c1">0</span>;\n      <span class="pl-c1"><span class="pl-c1">left</span></span>: <span class="pl-c1">0</span>;\n      <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;\n\n      <span class="pl-ent">&amp;</span><span class="pl-e">.van-popup--round</span> {\n        <span class="pl-c1"><span class="pl-c1">border-radius</span></span>: @popup<span class="pl-c1">-</span>round<span class="pl-c1">-</span>border<span class="pl-c1">-</span>radius @popup<span class="pl-c1">-</span>round<span class="pl-c1">-</span>border<span class="pl-c1">-</span>radius <span class="pl-c1">0</span> <span class="pl-c1">0</span>;\n      }\n    }\n\n    <span class="pl-ent">&amp;</span><span class="pl-e">-slide-bottom-enter-active</span> {\n      <span class="pl-c1"><span class="pl-c1">transition-timing-function</span></span>: <span class="pl-c1">ease-out</span>;\n    }\n    <span class="pl-ent">&amp;</span><span class="pl-e">-slide-bottom-enter</span>,\n    <span class="pl-ent">&amp;</span><span class="pl-e">-slide-bottom-leave-active</span> {\n      <span class="pl-c1"><span class="pl-c1">transform</span></span>: <span class="pl-c1">translate3d</span>(<span class="pl-c1">0</span>, <span class="pl-c1">100<span class="pl-k">%</span></span>, <span class="pl-c1">0</span>);\n    }\n  }\n}</pre></div>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup-open.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup-open.jpg" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup-fold.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/vue/popup-fold.jpg" alt="" style="max-width: 100%;"></a></p>\n<h2 id="main-heading-H2-8">层级展示</h2>\n<p dir="auto">当前后打开两个弹窗，用户的预期是按照打开的先后顺序，越后打开的弹窗在越上层，简而言之就是新弹窗永远在最上层。可以通过记录当前出现过的最大 zIndex，新弹窗<code class="notranslate">zIndex = zIndex+1</code>。 另外滑动穿透问题在多弹窗情况下也需要处理，对于非当前最高层级弹窗，不应当收到滚动影响。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="this.$el.style.zIndex = ++context.zIndex + 1; // popup 加 2\ncontext.zIndex++; // overlay 加 1"><pre class="notranslate"><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$el</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span> <span class="pl-c1">=</span> <span class="pl-c1">++</span><span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-c">// popup 加 2</span>\n<span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span><span class="pl-c1">++</span><span class="pl-kos">;</span> <span class="pl-c">// overlay 加 1</span></pre></div>\n<h3 id="main-heading-H3-9">1. zIndex 控制层级</h3>\n<p dir="auto">通过 mixin 的方式 openOverlay 打开遮罩层组件 Overlay</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  renderOverlay() {\n    if (this.$isServer || !this.value) {\n      return;\n    }\n\n    this.$nextTick(() =&gt; {\n      this.updateZIndex(this.overlay ? 1 : 0);\n\n      if (this.overlay) {\n        openOverlay(this, {\n          zIndex: context.zIndex++,\n          duration: this.duration,\n          className: this.overlayClass,\n          customStyle: this.overlayStyle,\n        });\n      } else {\n        closeOverlay(this);\n      }\n    });\n  },\n\n  updateZIndex(value = 0) {\n    this.$el.style.zIndex = ++context.zIndex + value;\n  },\n"><pre class="notranslate">  <span class="pl-en">renderOverlay</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$isServer</span> <span class="pl-c1">||</span> <span class="pl-c1">!</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">$nextTick</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">updateZIndex</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">overlay</span> ? <span class="pl-c1">1</span> : <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">overlay</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-en">openOverlay</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n          <span class="pl-c1">zIndex</span>: <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span><span class="pl-c1">++</span><span class="pl-kos">,</span>\n          <span class="pl-c1">duration</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">duration</span><span class="pl-kos">,</span>\n          <span class="pl-c1">className</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">overlayClass</span><span class="pl-kos">,</span>\n          <span class="pl-c1">customStyle</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">overlayStyle</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n        <span class="pl-en">closeOverlay</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n\n  <span class="pl-en">updateZIndex</span><span class="pl-kos">(</span><span class="pl-s1">value</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$el</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span> <span class="pl-c1">=</span> <span class="pl-c1">++</span><span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">zIndex</span> <span class="pl-c1">+</span> <span class="pl-s1">value</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>\n<h3 id="main-heading-H3-10">2. 层叠上下文</h3>\n<p dir="auto">overlay、popup 两个组件展示是平级的，且 <code class="notranslate">van-popup</code> 始终比 <code class="notranslate">van-overlay</code> 层级高一级，确保 popip 内容 一定在遮罩上层展示。</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;div class=&quot;van-doc-demo-block__card&quot;&gt;\n  &lt;div role=&quot;button&quot; tabindex=&quot;0&quot; class=&quot;van-cell van-cell--clickable&quot;&gt;\n    &lt;div class=&quot;van-cell__title&quot;&gt;&lt;span&gt;顶部弹出&lt;/span&gt;&lt;/div&gt;\n    &lt;i class=&quot;van-icon van-icon-arrow van-cell__right-icon&quot;&gt;&lt;!----&gt;&lt;/i&gt;\n  &lt;/div&gt;\n  &lt;div role=&quot;button&quot; tabindex=&quot;0&quot; class=&quot;van-cell van-cell--clickable&quot;&gt;\n    &lt;div class=&quot;van-cell__title&quot;&gt;&lt;span&gt;底部弹出&lt;/span&gt;&lt;/div&gt;\n    &lt;i class=&quot;van-icon van-icon-arrow van-cell__right-icon&quot;&gt;&lt;!----&gt;&lt;/i&gt;\n  &lt;/div&gt;\n  &lt;div role=&quot;button&quot; tabindex=&quot;0&quot; class=&quot;van-cell van-cell--clickable&quot;&gt;\n    &lt;div class=&quot;van-cell__title&quot;&gt;&lt;span&gt;左侧弹出&lt;/span&gt;&lt;/div&gt;\n    &lt;i class=&quot;van-icon van-icon-arrow van-cell__right-icon&quot;&gt;&lt;!----&gt;&lt;/i&gt;\n  &lt;/div&gt;\n  &lt;div role=&quot;button&quot; tabindex=&quot;0&quot; class=&quot;van-cell van-cell--clickable&quot;&gt;\n    &lt;div class=&quot;van-cell__title&quot;&gt;&lt;span&gt;右侧弹出&lt;/span&gt;&lt;/div&gt;\n    &lt;i class=&quot;van-icon van-icon-arrow van-cell__right-icon&quot;&gt;&lt;!----&gt;&lt;/i&gt;\n  &lt;/div&gt;\n  &lt;div class=&quot;van-overlay&quot; style=&quot;z-index: 2003; display: none&quot;&gt;&lt;/div&gt;\n  &lt;div\n    class=&quot;van-popup van-popup--top&quot;\n    style=&quot;height: 30%; z-index: 2004; display: none&quot;\n  &gt;&lt;/div&gt;\n  &lt;div class=&quot;van-overlay&quot; style=&quot;z-index: 2001; display: none&quot;&gt;&lt;/div&gt;\n  &lt;div\n    class=&quot;van-popup van-popup--bottom&quot;\n    style=&quot;height: 30%; z-index: 2002; display: none&quot;\n  &gt;&lt;/div&gt;\n  &lt;!----&gt;&lt;!----&gt;\n&lt;/div&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-doc-demo-block__card</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">role</span>="<span class="pl-s">button</span>" <span class="pl-c1">tabindex</span>="<span class="pl-s">0</span>" <span class="pl-c1">class</span>="<span class="pl-s">van-cell van-cell--clickable</span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-cell__title</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>顶部弹出<span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">van-icon van-icon-arrow van-cell__right-icon</span>"<span class="pl-kos">&gt;</span><span class="pl-c">&lt;!----&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">role</span>="<span class="pl-s">button</span>" <span class="pl-c1">tabindex</span>="<span class="pl-s">0</span>" <span class="pl-c1">class</span>="<span class="pl-s">van-cell van-cell--clickable</span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-cell__title</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>底部弹出<span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">van-icon van-icon-arrow van-cell__right-icon</span>"<span class="pl-kos">&gt;</span><span class="pl-c">&lt;!----&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">role</span>="<span class="pl-s">button</span>" <span class="pl-c1">tabindex</span>="<span class="pl-s">0</span>" <span class="pl-c1">class</span>="<span class="pl-s">van-cell van-cell--clickable</span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-cell__title</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>左侧弹出<span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">van-icon van-icon-arrow van-cell__right-icon</span>"<span class="pl-kos">&gt;</span><span class="pl-c">&lt;!----&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">role</span>="<span class="pl-s">button</span>" <span class="pl-c1">tabindex</span>="<span class="pl-s">0</span>" <span class="pl-c1">class</span>="<span class="pl-s">van-cell van-cell--clickable</span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-cell__title</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span>右侧弹出<span class="pl-kos">&lt;/</span><span class="pl-ent">span</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">i</span> <span class="pl-c1">class</span>="<span class="pl-s">van-icon van-icon-arrow van-cell__right-icon</span>"<span class="pl-kos">&gt;</span><span class="pl-c">&lt;!----&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">i</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-overlay</span>" <span class="pl-c1">style</span>="<span class="pl-s">z-index: 2003; display: none</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span>\n    <span class="pl-c1">class</span>="<span class="pl-s">van-popup van-popup--top</span>"\n    <span class="pl-c1">style</span>="<span class="pl-s">height: 30%; z-index: 2004; display: none</span>"\n  <span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">van-overlay</span>" <span class="pl-c1">style</span>="<span class="pl-s">z-index: 2001; display: none</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span>\n    <span class="pl-c1">class</span>="<span class="pl-s">van-popup van-popup--bottom</span>"\n    <span class="pl-c1">style</span>="<span class="pl-s">height: 30%; z-index: 2002; display: none</span>"\n  <span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n  <span class="pl-c">&lt;!----&gt;</span><span class="pl-c">&lt;!----&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">popup 组件为了避免 overlay 组件反复创建销毁，还在组件内部采用局部变量的方式维护了 popup context 的上下文。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { OverlayConfig } from \'./overlay\';\n\nexport type StackItem = {\n  vm: any; // 每一个 popup 实例维护了一个与之对应的 overlay\n  overlay: any; // overlay 实例，可以直接控制开关\n  config: OverlayConfig;\n};\n\nexport const context = {\n  zIndex: 2000,\n  lockCount: 0,\n  stack: [] as StackItem[],\n  find(vm: any): StackItem | undefined {\n    // 全等也不怕，人家比较的是 this 指向的引用地址\n    return this.stack.filter((item) =&gt; item.vm === vm)[0];\n  },\n  remove: function remove(vm: any) {\n    const item = this.find(vm);\n    if (!item) return;\n    item.vm = null;\n    item.overlay = null;\n    const index = this.stack.indexOf(item);\n    this.stack.splice(index, 1);\n  },\n};\n"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">OverlayConfig</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'./overlay\'</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-s1">type</span> <span class="pl-v">StackItem</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">vm</span>: <span class="pl-s1">any</span><span class="pl-kos"></span><span class="pl-kos">;</span> <span class="pl-c">// 每一个 popup 实例维护了一个与之对应的 overlay</span>\n  overlay: <span class="pl-s1">any</span><span class="pl-kos">;</span> <span class="pl-c">// overlay 实例，可以直接控制开关</span>\n  config: <span class="pl-v">OverlayConfig</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-s1">context</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">zIndex</span>: <span class="pl-c1">2000</span><span class="pl-kos">,</span>\n  <span class="pl-c1">lockCount</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span>\n  <span class="pl-c1">stack</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span> <span class="pl-s1">as</span> <span class="pl-v">StackItem</span><span class="pl-kos">[</span><span class="pl-s1"></span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">find</span><span class="pl-kos">(</span><span class="pl-s1">vm</span>: <span class="pl-s1">any</span><span class="pl-kos">)</span>: <span class="pl-v">StackItem</span> <span class="pl-c1">|</span> <span class="pl-c1">undefined</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 全等也不怕，人家比较的是 this 指向的引用地址</span>\n    <span class="pl-s1">return</span> <span class="pl-s1">this</span><span class="pl-kos">.</span><span class="pl-c1">stack</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">item</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">vm</span> <span class="pl-c1">===</span> <span class="pl-s1">vm</span><span class="pl-kos">)</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-s1">remove</span>: <span class="pl-k">function</span> <span class="pl-s1">remove</span><span class="pl-kos">(</span><span class="pl-s1">vm</span>: <span class="pl-s1">any</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    const <span class="pl-s1">item</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s1">vm</span><span class="pl-kos">)</span><span class="pl-kos"></span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">item</span><span class="pl-kos">)</span> <span class="pl-k">return</span><span class="pl-kos">;</span>\n    <span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">vm</span> <span class="pl-c1">=</span> <span class="pl-c1">null</span><span class="pl-kos">;</span>\n    <span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">overlay</span> <span class="pl-c1">=</span> <span class="pl-c1">null</span><span class="pl-kos">;</span>\n    <span class="pl-k">const</span> <span class="pl-s1">index</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">stack</span><span class="pl-kos">.</span><span class="pl-en">indexOf</span><span class="pl-kos">(</span><span class="pl-s1">item</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">stack</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-11">3. 一个完整的打开关闭的代码流程</h3>\n<ul dir="auto">\n<li>van-popup 组件，v-model 默认关闭，用户通过按钮等途径触发打开 value 变为 true</li>\n<li>监听器捕捉到 value 变为 true，调用 open</li>\n<li>open\n<ul dir="auto">\n<li>记录已经打开 opened 为 true</li>\n<li>设置 popup =&gt; zIndex + 2</li>\n<li>记录 overlay =&gt; zIndex + 1</li>\n<li>打开遮罩 openOverlay（如果 context 记录已经创建过则直接复用，否则再创建并收集到 context）</li>\n<li>更新遮罩 updateOverlay，更新 overlay 与 popup 的层叠关系并更新 zIndex 为上次记录的</li>\n</ul>\n</li>\n<li>用户点击遮罩，默认关闭调用 close</li>\n<li>close\n<ul dir="auto">\n<li>closeOverlay，找到 context 里记录的遮罩 overlay 并设置 <code class="notranslate">show = false</code></li>\n<li>记录已经打开 opened 为 false</li>\n<li>同步 v-model, <code class="notranslate">this.$emit(\'input\', false)</code></li>\n<li><code class="notranslate">vShow={this.value} = false</code>, popup 也隐藏了</li>\n</ul>\n</li>\n</ul>\n<h2 id="main-heading-H2-12">滑动穿透</h2>\n<ul dir="auto">\n<li>overflow:hidden 对移动端无效</li>\n<li>直接阻止 document的 touchmove事件 （passive event）</li>\n<li>浮层上面的滚动元素 （简单地规定带有 can-scroll类名的元素是可滚动的）</li>\n<li>多个浮层同时存在时 （每个浮层一个实例，在lock变化时调用 lock或 unlock来解决滚动穿透）</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  addLock() {\n    if (this.lockScroll) {\n      on(document, \'touchstart\', this.touchStart);\n      on(document, \'touchmove\', this.onTouchMove);\n\n      if (!context.lockCount) {\n        document.body.classList.add(\'van-overflow-hidden\');\n      }\n      context.lockCount++;\n    }\n  },\n\n  removeLock() {\n    if (this.lockScroll &amp;&amp; context.lockCount) {\n      context.lockCount--;\n      off(document, \'touchstart\', this.touchStart);\n      off(document, \'touchmove\', this.onTouchMove);\n\n      if (!context.lockCount) {\n        document.body.classList.remove(\'van-overflow-hidden\');\n      }\n    }\n  },\n"><pre class="notranslate">  <span class="pl-en">addLock</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">lockScroll</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-en">on</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">,</span> <span class="pl-s">\'touchstart\'</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">touchStart</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-en">on</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">,</span> <span class="pl-s">\'touchmove\'</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">onTouchMove</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-c1">classList</span><span class="pl-kos">.</span><span class="pl-en">add</span><span class="pl-kos">(</span><span class="pl-s">\'van-overflow-hidden\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n      <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-c1">++</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n\n  <span class="pl-en">removeLock</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">lockScroll</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-c1">--</span><span class="pl-kos">;</span>\n      <span class="pl-en">off</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">,</span> <span class="pl-s">\'touchstart\'</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">touchStart</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-en">off</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">,</span> <span class="pl-s">\'touchmove\'</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">onTouchMove</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-c1">lockCount</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-c1">classList</span><span class="pl-kos">.</span><span class="pl-en">remove</span><span class="pl-kos">(</span><span class="pl-s">\'van-overflow-hidden\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="    onTouchMove(event) {\n      console.log(\'touchmove 事件触发：\');\n      this.touchMove(event);\n      const direction = this.deltaY &gt; 0 ? \'10\' : \'01\'; // 10 向上， 01 向下\n      const el = getScroller(event.target, this.$el);\n      // scrollTop 已经滚动的高度（内容顶部卷起来的部分 &gt;= 0）\n      // scrollHeight 可滚动内容的高度\n      // offsetHeight 元素内部的高度（含内边距）\n      const { scrollHeight, offsetHeight, scrollTop } = el;\n      let status = \'11\';\n\n      /* istanbul ignore next */\n      // 默认状态下，能滚动也还没滚\n      if (scrollTop === 0) {\n        // 00 不能滚，01 可以滚\n        status = offsetHeight &gt;= scrollHeight ? \'00\' : \'01\';\n      } else if (scrollTop + offsetHeight &gt;= scrollHeight) {\n        // 10 可以滚\n        status = \'10\';\n      }\n\n      console.log({\n        el,\n        scrollHeight,\n        offsetHeight,\n        scrollTop,\n        status,\n        direction,\n      });\n\n      /* istanbul ignore next */\n      if (\n        status !== \'11\' &amp;&amp;\n        this.direction === \'vertical\' &amp;&amp;\n        // ! 拦截向上下两个方向不能滑动的情况，不要穿透了\n        // 第一个 parseInt：选中 00 不能滚的情况 (\'00\', 2) = 0\n        // &amp; 按位与（在 a,b 的位表示中，每一个对应的位都为 1 则返回 1，否则返回 0）\n        // 第二个 parseInt：选中上下两个方向，(\'10\', 2) =&gt; 2, (\'01\', 2) =&gt; 1\n        !(parseInt(status, 2) &amp; parseInt(direction, 2))\n      ) {\n        console.log(\'滚动穿透被拦截了！\');\n        preventDefault(event, true);\n      }\n    },"><pre class="notranslate">    <span class="pl-en">onTouchMove</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'touchmove 事件触发：\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">touchMove</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-k">const</span> <span class="pl-s1">direction</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">deltaY</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span> ? <span class="pl-s">\'10\'</span> : <span class="pl-s">\'01\'</span><span class="pl-kos">;</span> <span class="pl-c">// 10 向上， 01 向下</span>\n      <span class="pl-k">const</span> <span class="pl-s1">el</span> <span class="pl-c1">=</span> <span class="pl-en">getScroller</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">$el</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-c">// scrollTop 已经滚动的高度（内容顶部卷起来的部分 &gt;= 0）</span>\n      <span class="pl-c">// scrollHeight 可滚动内容的高度</span>\n      <span class="pl-c">// offsetHeight 元素内部的高度（含内边距）</span>\n      <span class="pl-k">const</span> <span class="pl-kos">{</span> scrollHeight<span class="pl-kos">,</span> offsetHeight<span class="pl-kos">,</span> scrollTop <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">el</span><span class="pl-kos">;</span>\n      <span class="pl-k">let</span> <span class="pl-s1">status</span> <span class="pl-c1">=</span> <span class="pl-s">\'11\'</span><span class="pl-kos">;</span>\n\n      <span class="pl-c">/* istanbul ignore next */</span>\n      <span class="pl-c">// 默认状态下，能滚动也还没滚</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">scrollTop</span> <span class="pl-c1">===</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-c">// 00 不能滚，01 可以滚</span>\n        <span class="pl-s1">status</span> <span class="pl-c1">=</span> <span class="pl-s1">offsetHeight</span> <span class="pl-c1">&gt;=</span> <span class="pl-s1">scrollHeight</span> ? <span class="pl-s">\'00\'</span> : <span class="pl-s">\'01\'</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">scrollTop</span> <span class="pl-c1">+</span> <span class="pl-s1">offsetHeight</span> <span class="pl-c1">&gt;=</span> <span class="pl-s1">scrollHeight</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-c">// 10 可以滚</span>\n        <span class="pl-s1">status</span> <span class="pl-c1">=</span> <span class="pl-s">\'10\'</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        el<span class="pl-kos">,</span>\n        scrollHeight<span class="pl-kos">,</span>\n        offsetHeight<span class="pl-kos">,</span>\n        scrollTop<span class="pl-kos">,</span>\n        status<span class="pl-kos">,</span>\n        direction<span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n      <span class="pl-c">/* istanbul ignore next */</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span>\n        <span class="pl-s1">status</span> <span class="pl-c1">!==</span> <span class="pl-s">\'11\'</span> <span class="pl-c1">&amp;&amp;</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">direction</span> <span class="pl-c1">===</span> <span class="pl-s">\'vertical\'</span> <span class="pl-c1">&amp;&amp;</span>\n        <span class="pl-c">// ! 拦截向上下两个方向不能滑动的情况，不要穿透了</span>\n        <span class="pl-c">// 第一个 parseInt：选中 00 不能滚的情况 (\'00\', 2) = 0</span>\n        <span class="pl-c">// &amp; 按位与（在 a,b 的位表示中，每一个对应的位都为 1 则返回 1，否则返回 0）</span>\n        <span class="pl-c">// 第二个 parseInt：选中上下两个方向，(\'10\', 2) =&gt; 2, (\'01\', 2) =&gt; 1</span>\n        <span class="pl-c1">!</span><span class="pl-kos">(</span><span class="pl-en">parseInt</span><span class="pl-kos">(</span><span class="pl-s1">status</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">)</span> <span class="pl-c1">&amp;</span> <span class="pl-en">parseInt</span><span class="pl-kos">(</span><span class="pl-s1">direction</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n      <span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">\'滚动穿透被拦截了！\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-en">preventDefault</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">,</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>\n<h2 id="main-heading-H2-13">参考连接</h2>\n<ul dir="auto">\n<li><a href="https://juejin.cn/post/6866331596090736647" rel="nofollow">仿 van-popup 实现一个从底部弹出的 Popup - 掘金</a></li>\n<li><a href="https://juejin.cn/post/6844904030083219463" rel="nofollow">vue 组件库之 popup 弹窗组件 - 掘金</a></li>\n<li><a href="https://juejin.cn/post/6844904196739694605" rel="nofollow">NutUI 组件 popup 源码分析 - 掘金</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/250"},navList:[{text:"popup 组件的用法",id:"main-heading-H2-0",type:n,children:[{text:"基础用法",id:"main-heading-H3-1",type:a},{text:"弹出位置",id:"main-heading-H3-2",type:a},{text:"常用 api",id:"main-heading-H3-3",type:a}]},{text:"进入组件源码",id:"main-heading-H2-4",type:n,children:[{text:"1. source-map 调试",id:"main-heading-H3-5",type:a},{text:"2. 组件声明",id:"main-heading-H3-6",type:a}]},{text:"动画交互",id:"main-heading-H2-7",type:n,children:[]},{text:"层级展示",id:"main-heading-H2-8",type:n,children:[{text:"1. zIndex 控制层级",id:"main-heading-H3-9",type:a},{text:"2. 层叠上下文",id:"main-heading-H3-10",type:a},{text:"3. 一个完整的打开关闭的代码流程",id:"main-heading-H3-11",type:a}]},{text:"滑动穿透",id:"main-heading-H2-12",type:n,children:[]},{text:"参考连接",id:"main-heading-H2-13",type:n,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H3","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

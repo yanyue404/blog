@@ -1,0 +1,797 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>《编程之道》 (Tao of Programming) 最新中英双语版 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="作者：Geoffrey James 译者：Coco 以下为《编程之道》目录及全文。 目录 1. The Silent Void 寂静的虚空 2. The Ancient Masters 旧时代的大师 3. Design 程序设计 4. Coding 编程 5. Maintenance 代码维护 6."><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="《编程之道》 (Tao of Programming) 最新中英双语版"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="作者：Geoffrey James 译者：Coco 以下为《编程之道》目录及全文。 目录 1. The Silent Void 寂静的虚空 2. The Ancient Masters 旧时代的大师 3. Design 程序设计 4. Coding 编程 5. Maintenance 代码维护 6."><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="《编程之道》 (Tao of Programming) 最新中英双语版"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="作者：Geoffrey James 译者：Coco 以下为《编程之道》目录及全文。 目录 1. The Silent Void 寂静的虚空 2. The Ancient Masters 旧时代的大师 3. Design 程序设计 4. Coding 编程 5. Maintenance 代码维护 6."><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-0" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-1" title="1. The Silent Void 寂静的虚空" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              1. The Silent Void 寂静的虚空
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-2" title="1.1" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.1
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-3" title="1.2" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.2
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-4" title="1.3" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.3
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-5" title="1.4" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.4
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-6" title="2. The Ancient Masters 旧时代的大师" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              2. The Ancient Masters 旧时代的大师
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-7" title="2.1" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.1
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-8" title="2.2" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.2
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-9" title="2.3" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.3
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-10" title="2.4" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.4
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-11" title="3. Design 程序设计" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              3. Design 程序设计
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-12" title="3.1" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.1
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-13" title="3.2" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.2
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-14" title="3.3" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.3
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-15" title="3.4" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.4
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-16" title="4. Coding 编程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              4. Coding 编程
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-17" title="4.1" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4.1
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-18" title="4.2" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4.2
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-19" title="4.3" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4.3
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-20" title="4.4" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4.4
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-21" title="5. Maintenance 代码维护" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              5. Maintenance 代码维护
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-22" title="5.1" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5.1
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-23" title="5.2" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5.2
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-24" title="5.3" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5.3
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-25" title="5.4" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5.4
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-26" title="6. Management 管理" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              6. Management 管理
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-27" title="6.1" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  6.1
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-28" title="6.2" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  6.2
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-29" title="6.3" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  6.3
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-30" title="6.4" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  6.4
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-31" title="7. Corporate Wisdom 企业智慧" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              7. Corporate Wisdom 企业智慧
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-32" title="7.1" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  7.1
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-33" title="7.2" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  7.2
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-34" title="7.3" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  7.3
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-35" title="7.4" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  7.4
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-36" title="8. Hardware and Software 硬件和软件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              8. Hardware and Software 硬件和软件
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-37" title="8.1" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  8.1
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-38" title="8.2" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  8.2
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-39" title="8.3" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  8.3
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H3-40" title="8.4" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  8.4
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/198#main-heading-H2-41" title="9. Epilogue 尾声" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              9. Epilogue 尾声
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>《编程之道》 (Tao of Programming) 最新中英双语版</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>《编程之道》 (Tao of Programming) 最新中英双语版</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2020-11-27</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 68 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><p dir="auto">作者：Geoffrey James</p>
+<p dir="auto">译者：<a href="https://github.com/yikeke">Coco</a></p>
+<hr>
+<p dir="auto">以下为《编程之道》目录及全文。</p>
+<h2 id="main-heading-H2-0">目录</h2>
+<ul dir="auto">
+<li><a href="#1-the-silent-void-%E5%AF%82%E9%9D%99%E7%9A%84%E8%99%9A%E7%A9%BA">1. The Silent Void 寂静的虚空</a></li>
+<li><a href="#2-the-ancient-masters-%E6%97%A7%E6%97%B6%E4%BB%A3%E7%9A%84%E5%A4%A7%E5%B8%88">2. The Ancient Masters 旧时代的大师</a></li>
+<li><a href="#3-design-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1">3. Design 程序设计</a></li>
+<li><a href="#4-coding-%E7%BC%96%E7%A8%8B">4. Coding 编程</a></li>
+<li><a href="#5-maintenance-%E4%BB%A3%E7%A0%81%E7%BB%B4%E6%8A%A4">5. Maintenance 代码维护</a></li>
+<li><a href="#6-management-%E7%AE%A1%E7%90%86">6. Management 管理</a></li>
+<li><a href="#7-corporate-wisdom-%E4%BC%81%E4%B8%9A%E6%99%BA%E6%85%A7">7. Corporate Wisdom 企业智慧</a></li>
+<li><a href="#8-hardware-and-software-%E7%A1%AC%E4%BB%B6%E5%92%8C%E8%BD%AF%E4%BB%B6">8. Hardware and Software 硬件和软件</a></li>
+<li><a href="#9-epilogue-%E5%B0%BE%E5%A3%B0">9. Epilogue 尾声</a></li>
+</ul>
+<h2 id="main-heading-H2-1">1. The Silent Void 寂静的虚空</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"When you have learned to snatch the error code from the trap frame, it will be time for you to leave."</p>
+</blockquote>
+<p dir="auto">“待你能一眼看出代码框架中的错误，就是你学成离开的那天。”</p>
+<h3 id="main-heading-H3-2">1.1</h3>
+<blockquote>
+<p dir="auto">Something mysterious is formed, born in the silent void. Waiting alone and unmoving, it is at once still and yet in constant motion. It is the source of all programs. I do not know its name, so I will call it the Tao of Programming.</p>
+</blockquote>
+<p dir="auto">寂静虚空中，某种神秘的东西诞生了。它独自等待着，似一动不动，却作用恒久。它是所有程序的源头。我不知道它的名字，姑且称之为——“编程之道”。</p>
+<blockquote>
+<p dir="auto">If the Tao is great, then the operating system is great.</p>
+</blockquote>
+<p dir="auto">如果编程之道是伟大的，那么操作系统也是伟大的。</p>
+<blockquote>
+<p dir="auto">If the operating system is great, then the compiler is great.</p>
+</blockquote>
+<p dir="auto">如果操作系统是伟大的，那么编译器也是伟大的。</p>
+<blockquote>
+<p dir="auto">If the compiler is great, then the application is great.</p>
+</blockquote>
+<p dir="auto">如果编译器是伟大的，那么应用程序也是伟大的。</p>
+<blockquote>
+<p dir="auto">The user is pleased, and there is harmony in the world.</p>
+</blockquote>
+<p dir="auto">只有用户高兴，世界才能和谐。</p>
+<blockquote>
+<p dir="auto">The Tao of Programming flows far away and returns on the wind of morning.</p>
+</blockquote>
+<p dir="auto">编程之道流淌至远方，又乘着第一缕晨风回归。</p>
+<h3 id="main-heading-H3-3">1.2</h3>
+<blockquote>
+<p dir="auto">The Tao gave birth to machine language. Machine language gave birth to the assembler.</p>
+</blockquote>
+<p dir="auto">编程之道孕育了机器语言，机器语言孕育了汇编器。</p>
+<blockquote>
+<p dir="auto">The assembler gave birth to the compiler. Now there are ten thousand languages.</p>
+</blockquote>
+<p dir="auto">汇编器孕育了编译器。如今，世上出现了一万种语言。</p>
+<blockquote>
+<p dir="auto">Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao.</p>
+</blockquote>
+<p dir="auto">每种语言都有自己的目的，哪怕微不足道。每种语言都表达了软件的阴阳两面。每种语言在道中都有一席之地。</p>
+<blockquote>
+<p dir="auto">But do not program in COBOL if you can avoid it.</p>
+</blockquote>
+<p dir="auto">但如果可能，尽量不要使用 COBOL 商业语言来编程。</p>
+<p dir="auto"><a href="https://github.com/yikeke/tao-of-programming/issues/1" data-hovercard-type="discussion" data-hovercard-url="/yikeke/tao-of-programming/discussions/1/hovercard">【讨论】为何作者不鼓励使用 COBOL 商业语言编程？</a></p>
+<h3 id="main-heading-H3-4">1.3</h3>
+<blockquote>
+<p dir="auto">In the beginning was the Tao. The Tao gave birth to Space and Time.</p>
+</blockquote>
+<p dir="auto">世间混沌之初只有道。道孕育了空间和时间。</p>
+<blockquote>
+<p dir="auto">Therefore Space and Time are the Yin and Yang of programming.</p>
+</blockquote>
+<p dir="auto">空间和时间，即是编程的阴和阳。</p>
+<blockquote>
+<p dir="auto">Programmers that do not comprehend the Tao are always running out of time and space for their programs. Programmers that comprehend the Tao always have enough time and space to accomplish their goals.</p>
+</blockquote>
+<p dir="auto">悟道前，程序员总是耗尽程序的时间和空间。悟道后，他们总有足够的时间和空间来达成程序的目的。</p>
+<blockquote>
+<p dir="auto">How could it be otherwise?</p>
+</blockquote>
+<p dir="auto">如何能反其道而行之？</p>
+<h3 id="main-heading-H3-5">1.4</h3>
+<blockquote>
+<p dir="auto">The wise programmer is told about Tao and follows it. The average programmer is told about Tao and searches for it. The foolish programmer is told about Tao and laughs at it.</p>
+</blockquote>
+<p dir="auto">聪明的程序员一朝闻道，余生行道；普通的程序员一朝闻道，余生寻道。愚蠢的程序员一朝闻道，只哈哈笑道。</p>
+<blockquote>
+<p dir="auto">If it were not for laughter, there would be no Tao.</p>
+</blockquote>
+<p dir="auto">但若没有这笑，也不能称之为道。</p>
+<blockquote>
+<p dir="auto">The highest sounds are hardest to hear. Going forward is a way to retreat. Great talent shows itself late in life. Even a perfect program still has bugs.</p>
+</blockquote>
+<p dir="auto">人们总是最难听见最高处的声音。进是退的一种。大器总是晚成。没有完美的程序，任何程序都有漏洞。</p>
+<h2 id="main-heading-H2-6">2. The Ancient Masters 旧时代的大师</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"After three days without programming, life becomes meaningless."</p>
+</blockquote>
+<p dir="auto">“三日不编程，生命便了无意义。”</p>
+<h3 id="main-heading-H3-7">2.1</h3>
+<blockquote>
+<p dir="auto">The programmers of old were mysterious and profound. We cannot fathom their thoughts, so all we do is describe their appearance.</p>
+</blockquote>
+<p dir="auto">旧时代的程序员神秘而深奥。我们无法理解他们的想法，只能描述他们的样子。</p>
+<blockquote>
+<p dir="auto">Aware, like a fox crossing the water.</p>
+</blockquote>
+<p dir="auto">觉察，如狐狸游过水面</p>
+<blockquote>
+<p dir="auto">Alert, like a general on the battlefield.</p>
+</blockquote>
+<p dir="auto">警惕，如将军坐镇战场</p>
+<blockquote>
+<p dir="auto">Kind, like a hostess greeting her guests.</p>
+</blockquote>
+<p dir="auto">亲切，如主人迎接客人</p>
+<blockquote>
+<p dir="auto">Simple, like uncarved blocks of wood.</p>
+</blockquote>
+<p dir="auto">简单，如木块未经雕刻</p>
+<blockquote>
+<p dir="auto">Opaque, like black pools in darkened caves.</p>
+</blockquote>
+<p dir="auto">隐晦，如穴中幽暗水池</p>
+<blockquote>
+<p dir="auto">Who can tell the secrets of their hearts and minds?</p>
+</blockquote>
+<p dir="auto">谁能窥探他们的内心，谁能看穿他们的想法？</p>
+<blockquote>
+<p dir="auto">The answer exists only in Tao.</p>
+</blockquote>
+<p dir="auto">答案尽在道中。</p>
+<h3 id="main-heading-H3-8">2.2</h3>
+<blockquote>
+<p dir="auto">The Grand Master Turing once dreamed that he was a machine. When he awoke, he exclaimed:</p>
+</blockquote>
+<p dir="auto">昔日，图灵大师梦见自己变成了一台机器，他醒来后惊呼：</p>
+<blockquote>
+<p dir="auto">"I don't know whether I am Turing dreaming that I am a machine, or a machine dreaming that I am Turing!"</p>
+</blockquote>
+<p dir="auto">“我不确定我是图灵梦见自己变成了机器，还是我是机器梦见自己变成了图灵！”</p>
+<h3 id="main-heading-H3-9">2.3</h3>
+<blockquote>
+<p dir="auto">A programmer from a very large computer company went to a software conference and then returned to report to his manager, saying: "What sort of programmers work for other companies? They behaved badly and were unconcerned with appearances. Their hair was long and unkempt and their clothes were wrinkled and old. They crashed our hospitality suite and they made rude noises during my presentation."</p>
+</blockquote>
+<p dir="auto">一位大型计算机公司的程序员去参加一个软件会议，回来后向他的老板汇报，说：“其他公司的程序员怎么是这个样子？他们不讲礼貌，不注重外表——头发又长又乱，衣服又皱又旧。不仅闯进我们的接待室，还在我演讲时随便说话。”</p>
+<blockquote>
+<p dir="auto">The manager said: "I should have never sent you to the conference. Those programmers live beyond the physical world. They consider life absurd, an accidental coincidence. They come and go without knowing limitations. Without a care, they live only for their programs. Why should they bother with social conventions?"</p>
+</blockquote>
+<p dir="auto">老板说：“我不该让你去参会的。那些程序员早已从现实世界超脱。他们认为生活是荒谬的，只是一场偶然的巧合。他们来去随心，不受限制。没有牵挂的他们，只为程序而活。社会习俗如何能左右他们？”</p>
+<blockquote>
+<p dir="auto">"They are alive within the Tao."</p>
+</blockquote>
+<p dir="auto">“他们活在道中。”</p>
+<h3 id="main-heading-H3-10">2.4</h3>
+<blockquote>
+<p dir="auto">A novice asked the Master: "Here is a programmer that never designs, documents or tests his programs. Yet all who know him consider him one of the best programmers in the world. Why is this?"</p>
+</blockquote>
+<p dir="auto">弟子问大师：“有位程序员从来不提前设计自己的程序，也不写文档或进行测试。但所有认识他的人都视他为世上最好的程序员之一。为什么？”</p>
+<blockquote>
+<p dir="auto">The Master replied: "That programmer has mastered the Tao. He has gone beyond the need for design; he does not become angry when the system crashes, but accepts the universe without concern. He has gone beyond the need for documentation; he no longer cares if anyone else sees his code. He has gone beyond the need for testing; each of his programs are perfect within themselves, serene and elegant, their purpose self-evident. Truly, he has entered the mystery of Tao."</p>
+</blockquote>
+<p dir="auto">大师回答说：“因为他已得道。他不再需要设计：当系统崩溃时，他不会生气，而是毫不在意地接受现实；他不再需要文档：他不关心是否有人看到他的代码；他不再需要测试：他的每个程序都是完美的，平静而优雅，程序的目的不言而喻。他已经领悟了道的真意。”</p>
+<h2 id="main-heading-H2-11">3. Design 程序设计</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"When a program is being tested, it is too late to make design changes."</p>
+</blockquote>
+<p dir="auto">“待程序进入测试阶段，任何设计上的修改都太晚了。”</p>
+<h3 id="main-heading-H3-12">3.1</h3>
+<blockquote>
+<p dir="auto">There once was a man who went to a computer trade show. Each day as he entered, the man told the guard at the door:</p>
+</blockquote>
+<p dir="auto">从前，有个人去参加计算机商展。每天他进门时，都会跟门口的保安说：</p>
+<blockquote>
+<p dir="auto">"I am a great thief, renowned for my feats of shoplifting. Be forewarned, for this trade show shall not escape unplundered."</p>
+</blockquote>
+<p dir="auto">“我是一名伟大的小偷，最擅长顺手牵羊，颇负盛名。提前警告你，这次展会也是我的目标之一。”</p>
+<blockquote>
+<p dir="auto">This speech disturbed the guard greatly, because there were millions of dollars of computer equipment inside, so he watched the man carefully. But the man merely wandered from booth to booth, humming quietly to himself.</p>
+</blockquote>
+<p dir="auto">这番话让保安大为不安，因为里面有价值数百万美元的计算机设备。因此他仔细注意着这个人。但这人只是从一个摊位走到另一个摊位，嘴里念念有词。</p>
+<blockquote>
+<p dir="auto">When the man left, the guard took him aside and searched his clothes, but nothing was to be found.</p>
+</blockquote>
+<p dir="auto">这人离开时，保安把他拉到一旁搜身，却什么也没有找到。</p>
+<blockquote>
+<p dir="auto">On the next day of the trade show, the man returned and chided the guard, saying: "I escaped with a vast booty yesterday, but today will be even better." So the guard watched him ever more closely, but to no avail.</p>
+</blockquote>
+<p dir="auto">展会第二天，这人又来了。他骂着保安，说：“我昨天掳走了一大笔战利品，今天的收获会更好。”于是保安更加密切地关注他，但没发现任何异常。</p>
+<blockquote>
+<p dir="auto">On the final day of the trade show, the guard could restrain his curiosity no longer. "Sir Thief," he said, "I am so perplexed, I cannot live in peace. Please enlighten me. What is it that you are stealing?"</p>
+</blockquote>
+<p dir="auto">展会最后一天，保安再也抑制不住好奇心。“小偷先生，”他问，“我真的很困惑，我没法安心生活。求给个痛快，你到底偷了什么？”</p>
+<blockquote>
+<p dir="auto">The man smiled. "I am stealing ideas," he said.</p>
+</blockquote>
+<p dir="auto">这人笑了，“我在偷取创意，”他说。</p>
+<h3 id="main-heading-H3-13">3.2</h3>
+<blockquote>
+<p dir="auto">There once was a Master Programmer who wrote unstructured programs. A novice programmer, seeking to imitate him, also began to write unstructured programs. When the novice asked the Master to evaluate his progress, the Master criticized him for writing unstructured programs, saying, "What is appropriate for the Master is not appropriate for the novice. You must understand Tao before transcending structure."</p>
+</blockquote>
+<p dir="auto">从前，有位编程大师擅长编写没有结构的程序。他的弟子模仿他，也开始编写没有结构的程序。当弟子请大师评价他的程序，大师批评他：“适合大师的不一定适合初学者。在超越结构之前，你必须先领悟道。”</p>
+<h3 id="main-heading-H3-14">3.3</h3>
+<blockquote>
+<p dir="auto">There was once a programmer who was attached to the court of the warlord of Wu. The warlord asked the programmer: "Which is easier to design: an accounting package or an operating system?"</p>
+</blockquote>
+<p dir="auto">从前有位程序员在吴氏企业任职。吴总问程序员：“财务系统和操作系统，哪个更容易设计？”</p>
+<blockquote>
+<p dir="auto">"An operating system," replied the programmer.</p>
+</blockquote>
+<p dir="auto">“操作系统，”程序员回答。</p>
+<blockquote>
+<p dir="auto">The warlord uttered an exclamation of disbelief. "Surely an accounting package is trivial next to the complexity of an operating system," he said.</p>
+</blockquote>
+<p dir="auto">吴总发出一声惊叹，难以置信道：“但与操作系统的复杂性相比，设计财务系统肯定易如反掌吧？”</p>
+<blockquote>
+<p dir="auto">"Not so," said the programmer, "When designing an accounting package, the programmer operates as a mediator between people having different ideas: how it must operate, how its reports must appear, and how it must conform to the tax laws. By contrast, an operating system is not limited by outside appearances. When designing an operating system, the programmer seeks the simplest harmony between machine and ideas. This is why an operating system is easier to design."</p>
+</blockquote>
+<p dir="auto">“不，”程序员说，“设计财务系统时，程序员是协调者，帮助人们在不同使用需求​间达成一致，比如如何操作界面、显示报表、遵守税法等。但操作系统不受前端的限制。设计操作系统时，程序员只需在机器与想法之间，寻求最简单的和谐统一。因此，操作系统更容易设计。”</p>
+<blockquote>
+<p dir="auto">The warlord of Wu nodded and smiled. "That is all good and well, but which is easier to debug?"</p>
+</blockquote>
+<p dir="auto">吴总点点头，笑道：“你说得很好，但是哪个更容易调试呢？”</p>
+<blockquote>
+<p dir="auto">The programmer made no reply.</p>
+</blockquote>
+<p dir="auto">程序员没有回答。</p>
+<h3 id="main-heading-H3-15">3.4</h3>
+<blockquote>
+<p dir="auto">A manager went to the Master Programmer and showed him the requirements document for a new application. The manager asked the Master: "How long will it take to design this system if I assign five programmers to it?"</p>
+</blockquote>
+<p dir="auto">一位主管找到编程大师，请他看一个应用程序的需求文档。主管问：“如果让 5 个程序员去设计这个系统，需要多长时间？”</p>
+<blockquote>
+<p dir="auto">"It will take one year," said the Master promptly.</p>
+</blockquote>
+<p dir="auto">“需要一年，”大师毫不犹豫地说。</p>
+<blockquote>
+<p dir="auto">"But we need this system immediately or even sooner! How long will it take if I assign ten programmers to it?"</p>
+</blockquote>
+<p dir="auto">“但我们现在就需要这个系统，越快越好！如果我找 10 个程序员呢？需要多长时间？”</p>
+<blockquote>
+<p dir="auto">The Master Programmer frowned. "In that case, it will take two years."</p>
+</blockquote>
+<p dir="auto">大师皱了皱眉头，“如此的话，需要两年。”</p>
+<blockquote>
+<p dir="auto">"And what if I assign a hundred programmers to it?"</p>
+</blockquote>
+<p dir="auto">“那如果我找 100 个程序员呢？”</p>
+<blockquote>
+<p dir="auto">The Master Programmer shrugged. "Then the design will never be completed," he said.</p>
+</blockquote>
+<p dir="auto">大师耸耸肩，“那这个设计就永远别想完成了。”</p>
+<h2 id="main-heading-H2-16">4. Coding 编程</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"A well-written program is its own Heaven; a poorly-written program is its own Hell."</p>
+</blockquote>
+<p dir="auto">“优秀的程序仿佛置身天堂，差劲的程序如同自取灭亡。”</p>
+<h3 id="main-heading-H3-17">4.1</h3>
+<blockquote>
+<p dir="auto">A program should be light and agile, its subroutines connected like a string of pearls. The spirit and intent of the program should be retained throughout. There should be neither too little nor too much. Neither needless loops nor useless variables; neither lack of structure nor overwhelming rigidity.</p>
+</blockquote>
+<p dir="auto">程序应当轻巧灵活，内部的子过程彼此连接，串若珍珠。程序的精神和目的，当一以贯之。代码量要恰到好处，减一行则少，增一行则多。不存在多余的循环或变量。既不失整体结构，也不至僵化死板。</p>
+<blockquote>
+<p dir="auto">A program should follow the "Law of Least Astonishment". What is this law? It is simply that the program should always respond to the users in the way that least astonishes them.</p>
+</blockquote>
+<p dir="auto">程序应当遵循“最少惊讶原则”。这个原则很简单：程序返回的结果永远符合用户的预期。</p>
+<blockquote>
+<p dir="auto">A program, no matter how complex, should act as a single unit. The program should be directed by the logic within rather than by outward appearances.</p>
+</blockquote>
+<p dir="auto">无论程序多么复杂，都可当作一个独立单元来运行。程序应靠内在逻辑指导，而不为前端形式左右。</p>
+<blockquote>
+<p dir="auto">If the program fails in these requirements, it will be in a state of disorder and confusion. The only way to correct this is to rewrite the program.</p>
+</blockquote>
+<p dir="auto">如果程序不满足以上要求，它将陷入无序与混乱。唯一的修复办法就是重写程序。</p>
+<h3 id="main-heading-H3-18">4.2</h3>
+<blockquote>
+<p dir="auto">A novice asked the Master: "I have a program that sometimes runs and sometimes aborts. I have followed the rules of programming, yet I am totally baffled. What is the reason for this?"</p>
+</blockquote>
+<p dir="auto">弟子问大师：“我的程序有时跑得通，有时跑不通。我遵守了编程的法则，但我这次彻底束手无策了。这是为什么？”</p>
+<blockquote>
+<p dir="auto">The Master replied: "You are confused because you do not understand Tao. Only a fool expects rational behavior from his fellow humans. Why do you expect it from a machine that humans have constructed? Computers simulate determinism; only Tao is perfect.</p>
+</blockquote>
+<p dir="auto">大师答：“你心存疑惑，只因你还未悟道。唯有傻子才会期望世人举止理性。你又如何期望世人建造的机器能有理性的行为呢？计算机只能模拟决定论；世间唯有道是完美的。</p>
+<blockquote>
+<p dir="auto">The rules of programming are transitory; only Tao is eternal. Therefore, you must contemplate Tao before you receive Enlightenment."</p>
+</blockquote>
+<p dir="auto">编程无常法，唯道恒久远。在获得启示之前，你必须深思道。”</p>
+<blockquote>
+<p dir="auto">"But how will I know when I have received Enlightenment?" asked the novice.</p>
+</blockquote>
+<p dir="auto">“但我如何知道我获得了启示呢？”弟子问。</p>
+<blockquote>
+<p dir="auto">"Your program will run correctly," replied the Master.</p>
+</blockquote>
+<p dir="auto">“你的程序将顺利运行，”大师答。</p>
+<h3 id="main-heading-H3-19">4.3</h3>
+<blockquote>
+<p dir="auto">The Master was explaining the nature of Tao to one of his novices.</p>
+</blockquote>
+<p dir="auto">大师正向他的一个弟子解释道的本质。</p>
+<blockquote>
+<p dir="auto">"The Tao is embodied in all software -- regardless of how insignificant," said the Master.</p>
+</blockquote>
+<p dir="auto">“道的真意存在于所有的软件中，即使是最不重要的软件。”大师说。</p>
+<blockquote>
+<p dir="auto">"Is the Tao in a hand-held calculator?" asked the novice.</p>
+</blockquote>
+<p dir="auto">“道在手持计算器里吗？”弟子问。</p>
+<blockquote>
+<p dir="auto">"It is," came the reply.</p>
+</blockquote>
+<p dir="auto">“在，”大师答。</p>
+<blockquote>
+<p dir="auto">"Is the Tao in a video game?" asked the novice.</p>
+</blockquote>
+<p dir="auto">“道在电子游戏里吗？”</p>
+<blockquote>
+<p dir="auto">"It is even in a video game," said the Master.</p>
+</blockquote>
+<p dir="auto">“也在。”</p>
+<blockquote>
+<p dir="auto">"Is the Tao in the DOS for a personal computer?" asked the novice.</p>
+</blockquote>
+<p dir="auto">“个人电脑的 DOS 中也有道吗？”</p>
+<blockquote>
+<p dir="auto">The Master coughed and shifted his position slightly. "The lesson is over for today," he said.</p>
+</blockquote>
+<p dir="auto">大师轻咳一声，微微一动。“今天的课就上到这里。”</p>
+<h3 id="main-heading-H3-20">4.4</h3>
+<blockquote>
+<p dir="auto">Prince Wang's programmer was coding software. His fingers danced upon the keyboard. The program compiled without and error message, and the program ran like a gentle wind.</p>
+</blockquote>
+<p dir="auto">王氏企业内，一名程序员正在编写软件。他的指尖在键盘上飞舞。程序编译时没有任何错误，运行起来如清风拂过，丝滑顺畅。</p>
+<blockquote>
+<p dir="auto">"Excellent!" the Prince exclaimed. "Your technique is faultless!"</p>
+</blockquote>
+<p dir="auto">“太棒了！”王总惊呼道，“你的技术简直完美！”</p>
+<blockquote>
+<p dir="auto">"Technique?" said the programmer, turning from his terminal, "What I follow is Tao -- beyond all techniques! When I first began to program, I would see before me the whole problem in one mass. After three years, I no longer saw this mass. Instead, I used subroutines. But now I see nothing. My whole being exists in a formless void. My senses are idle. My spirit, free to work without a plan, follows its own instinct. In short, my program writes itself. True, sometimes there are difficult problems. I see them coming, I slow down, I watch silently. Then I change a single line of code and the difficulties vanish like puffs of idle smoke. I then compile the program. I sit still and let the joy of the work fill my being. I close my eyes for a moment and then log off."</p>
+</blockquote>
+<p dir="auto">“技术？”程序员转过身，“我追求的是道——超越所有技术的道！我刚开始编程时，眼前的问题堆积成团、杂乱如麻。三年后，我再也没见过这样的问题，因为我学会了子程序。如今，我什么也看不见了。我的存在变得虚无，我感受不到任何事物。我的精神不受约束，全凭本能自由工作。换句话说，我写程序时，代码是一行行自己显现的。当然，有时我会碰到一些棘手的问题。我看着这些问题出现，我慢下来，静静地看着。然后我改动一行代码，问题像轻烟般自己消失了。我开始编译程序。我静静地坐着，感受着快乐盈满身心。我闭目冥想片刻，然后退出系统。”</p>
+<blockquote>
+<p dir="auto">Prince Wang said, "Would that all of my programmers were as wise!"</p>
+</blockquote>
+<p dir="auto">王总说：“愿我司所有的程序员都这样聪明！”</p>
+<h2 id="main-heading-H2-21">5. Maintenance 代码维护</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"Though a program be but three lines long, someday it will have to be maintained."</p>
+</blockquote>
+<p dir="auto">哪怕程序只有三行，总有一天也需要人维护。</p>
+<h3 id="main-heading-H3-22">5.1</h3>
+<blockquote>
+<p dir="auto">A well-used door needs no oil on its hinges.</p>
+</blockquote>
+<p dir="auto">户枢不蠹。</p>
+<blockquote>
+<p dir="auto">A swift-flowing stream does not grow stagnant.</p>
+</blockquote>
+<p dir="auto">流水不腐。</p>
+<blockquote>
+<p dir="auto">A deer blends perfectly into the forest colors.</p>
+</blockquote>
+<p dir="auto">一只鹿完美地融入森林的色彩中。</p>
+<blockquote>
+<p dir="auto">Software rots if not used.</p>
+</blockquote>
+<p dir="auto">软件没人用，神奇也会化为腐朽。</p>
+<blockquote>
+<p dir="auto">These are great mysteries.</p>
+</blockquote>
+<p dir="auto">这些都是道的奥秘。</p>
+<h3 id="main-heading-H3-23">5.2</h3>
+<blockquote>
+<p dir="auto">A manager asked a programmer how long it would take him to finish the program on which he was working. "I will be finished tomorrow," the programmer promptly replied.</p>
+</blockquote>
+<p dir="auto">主管问程序员，写完手上的程序需要多久。“我明天能写完，”程序员毫不犹豫地说。</p>
+<blockquote>
+<p dir="auto">"I think you are being unrealistic," said the manager, "Truthfully, how long will it take?"</p>
+</blockquote>
+<p dir="auto">“这太不切实际了，”主管说，“实话实说，到底要多久？”</p>
+<blockquote>
+<p dir="auto">The programmer thought for a moment. "I have some features that I wish to add. This will take at least two weeks," he finally said.</p>
+</blockquote>
+<p dir="auto">程序员想了一会儿。“我想补充一些功能，这至少需要两周，”他最终表示。</p>
+<blockquote>
+<p dir="auto">"Even that is too much to expect," insisted the manager, "I will be satisfied if you simply tell me when the program is complete."</p>
+</blockquote>
+<p dir="auto">“两周也期望过高了，”主管继续说，“你写完的时候告诉我一声，我就知足了。”</p>
+<blockquote>
+<p dir="auto">The programmer agreed to this.</p>
+</blockquote>
+<p dir="auto">程序员同意了。</p>
+<blockquote>
+<p dir="auto">Several years later, the manager retired. On the way to his retirement luncheon, he discovered the programmer asleep at his terminal. He had been programming all night.</p>
+</blockquote>
+<p dir="auto">几年后，主管退休了。在去退休午宴的路上，他发现程序员在电脑前睡着了。他整晚都在写代码。</p>
+<h3 id="main-heading-H3-24">5.3</h3>
+<blockquote>
+<p dir="auto">A novice programmer was once assigned to code a simple financial package.</p>
+</blockquote>
+<p dir="auto">从前，大师让一个弟子做一个简单的财务系统。</p>
+<blockquote>
+<p dir="auto">The novice worked furiously for many days, but when his Master reviewed his program, he discovered it contained a screen editor, a set of generalized graphics routines, and an artificial intelligence interface, but not the slightest hint of anything financial.</p>
+</blockquote>
+<p dir="auto">弟子疯狂地写了很多天代码。大师检查进度时，他发现程序里多了一个屏幕编辑器、一套通用的图形程序和一个人工智能界面，但没发现任何与财务相关的东西。</p>
+<blockquote>
+<p dir="auto">When the Master asked about this, the novice became indignant. "Don't be so impatient," he said, "I'll put in the financial stuff eventually."</p>
+</blockquote>
+<p dir="auto">当大师提到这一点，弟子有点生气。“耐心点，”他说，“我最后会写财务的部分的。”</p>
+<h3 id="main-heading-H3-25">5.4</h3>
+<blockquote>
+<p dir="auto">Does a good farmer neglect a crop he has planted?</p>
+</blockquote>
+<p dir="auto">好的农民会随意对待自己种的庄稼吗？</p>
+<blockquote>
+<p dir="auto">Does a good teacher overlook even the most humble student?</p>
+</blockquote>
+<p dir="auto">好的老师会忽视自己最谦虚的学生吗？</p>
+<blockquote>
+<p dir="auto">Does a good father allow a single child to starve?</p>
+</blockquote>
+<p dir="auto">好的父亲会舍得让任何一个孩子挨饿吗？</p>
+<blockquote>
+<p dir="auto">Does a good programmer refuse to maintain his code?</p>
+</blockquote>
+<p dir="auto">好的程序员会拒绝维护自己的代码吗？</p>
+<h2 id="main-heading-H2-26">6. Management 管理</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"Let the programmers be many and the managers few -- then all will be productive."</p>
+</blockquote>
+<p dir="auto">“愿世间的程序员多一些，管理人员少一些——这样所有人做事都会更高效。”</p>
+<h3 id="main-heading-H3-27">6.1</h3>
+<blockquote>
+<p dir="auto">When managers hold endless meetings, the programmers write games.</p>
+</blockquote>
+<p dir="auto">当管理人员不停地开会，程序员在编写游戏。</p>
+<blockquote>
+<p dir="auto">When accountants speak of quarterly profits, the development budget is about to be cut.</p>
+</blockquote>
+<p dir="auto">当财务主管谈到季度盈收，开发预算就要削减。</p>
+<blockquote>
+<p dir="auto">When senior scientists talk blue sky, the clouds are about to roll in.</p>
+</blockquote>
+<p dir="auto">当资深科学家谈及蓝天，云层从天边滚滚袭来。</p>
+<blockquote>
+<p dir="auto">Truly, this is not the Tao of Programming.</p>
+</blockquote>
+<p dir="auto">确实，这不是编程之道。</p>
+<blockquote>
+<p dir="auto">When managers make commitments, game programs are ignored.</p>
+</blockquote>
+<p dir="auto">当管理人员做出承诺，没人再会写游戏程序。</p>
+<blockquote>
+<p dir="auto">When accountants make long-range plans, harmony and order are about to be restored.</p>
+</blockquote>
+<p dir="auto">当财务主管制定长期计划，和谐与秩序将会恢复。</p>
+<blockquote>
+<p dir="auto">When senior scientists address the problems at hand, the problems will soon be solved.</p>
+</blockquote>
+<p dir="auto">当资深科学家开始处理手头的问题，问题将很快得到解决。</p>
+<blockquote>
+<p dir="auto">Truly, this is the Tao of Programming.</p>
+</blockquote>
+<p dir="auto">确实，这就是编程之道。</p>
+<h3 id="main-heading-H3-28">6.2</h3>
+<blockquote>
+<p dir="auto">Why are programmers non-productive? Because their time is wasted in meetings.</p>
+</blockquote>
+<p dir="auto">为什么程序员没有工作效率？因为要开的会议没完没了。</p>
+<blockquote>
+<p dir="auto">Why are programmers rebellious? Because the management interferes too much.</p>
+</blockquote>
+<p dir="auto">为什么程序员不听指挥？因为管理层管得太多太深。</p>
+<blockquote>
+<p dir="auto">Why are the programmers resigning one by one? Because they are burnt out.</p>
+</blockquote>
+<p dir="auto">为什么程序员一个接一个辞职？因为他们累得心力交瘁。</p>
+<blockquote>
+<p dir="auto">Having worked for poor management, they no longer value their jobs.</p>
+</blockquote>
+<p dir="auto">在管理不善的部门工作，他们再也看不到自己工作的价值。</p>
+<h3 id="main-heading-H3-29">6.3</h3>
+<blockquote>
+<p dir="auto">A manager was about to be fired, but a programmer who worked for him wrote a new program that became popular and sold well. As a result, the manager retained his job.</p>
+</blockquote>
+<p dir="auto">主管要被解雇了，但他手下的一位程序员写了个新程序，这个程序大受欢迎，销量很好。结果，主管保住了工作。</p>
+<blockquote>
+<p dir="auto">The manager tried to give the programmer a bonus, but the programmer refused it, saying, "I wrote the program because I thought it was an interesting concept, and thus I expect no reward."</p>
+</blockquote>
+<p dir="auto">主管想给这位程序员额外奖赏，程序员拒绝道：“我写这个程序只是为了实现一个有意思的设想，我不想要任何奖励。”</p>
+<blockquote>
+<p dir="auto">The manager upon hearing this remarked, "This programmer, though he holds a position of small esteem, understands well the proper duty of an employee. Let us promote him to the exalted position of management consultant!"</p>
+</blockquote>
+<p dir="auto">主管听完，评价道：“这人虽然职位不高，但他很清楚员工应尽的责任。我们应该让他做公司的管理顾问！”</p>
+<blockquote>
+<p dir="auto">But when told this, the programmer once more refused, saying, "I exist so that I can program. If I were promoted, I would do nothing but waste everyone's time. Can I go now? I have a program that I am working on."</p>
+</blockquote>
+<p dir="auto">程序员听说后，再次拒绝了：“我在这里是为了写代码。如果我升职了，我就什么也不会做，只会浪费大家的时间。我可以走了吗？我还有个项目要做。”</p>
+<h3 id="main-heading-H3-30">6.4</h3>
+<blockquote>
+<p dir="auto">A manager went to his programmers and told them: "As regards to your work hours: you are going to have to come in at nine in the morning and leave at five in the afternoon." At this, all of them became angry and several resigned on the spot.</p>
+</blockquote>
+<p dir="auto">主管对他手下的程序员说：“关于工作时间的规定下来了：以后你们必须早上九点上班，下午五点下班。”听了这话，所有人都很生气，有几个当场辞职了。</p>
+<blockquote>
+<p dir="auto">So the manager said: "All right, in that case you may set your own working hours, as long as you finish your projects on schedule." The programmers, now satisfied, began to come in at noon and work to the wee hours of the morning.</p>
+</blockquote>
+<p dir="auto">于是主管说：“好吧，这样的话，以后你们自己安排工作时间，只要保证按时完成项目。”程序员们这下满意了，从中午开始工作，一直忙碌到凌晨。</p>
+<h2 id="main-heading-H2-31">7. Corporate Wisdom 企业智慧</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"You can demonstrate a program for a corporate executive, but you can't make him computer literate."</p>
+</blockquote>
+<p dir="auto">“你可以给企业高管演示程序，但无法让他精通电脑。”</p>
+<h3 id="main-heading-H3-32">7.1</h3>
+<blockquote>
+<p dir="auto">A novice asked the Master: "In the East, there is a great tree-structure that men call 'Corporate Headquarters'. It is bloated out of shape with vice presidents and accountants. It issues a multitude of memos, each saying 'Go Hence!' or 'Go Hither!' and nobody knows what is meant. Every year new names are put onto the branches, but all to no avail. How can such an unnatural entity exist?"</p>
+</blockquote>
+<p dir="auto">弟子问大师：“在西方，有一个巨大的树状结构组织，人们称之为‘企业总部’。里面的副总裁和财务人员多如牛毛，整个组织臃肿不堪。它每天发布大量的备忘录，每一条都写着‘做这个’‘做那个’，没人知道是什么意思。每年，有很多新人加入各个分公司，但都无济于事。为什么会有这么怪异的组织呢？”</p>
+<blockquote>
+<p dir="auto">The Master replied: "You perceive this immense structure and are disturbed that it has no rational purpose. Can you not take amusement from its endless gyrations? Do you not enjoy the untroubled ease of programming beneath its sheltering branches? Why are you bothered by its uselessness?"</p>
+</blockquote>
+<p dir="auto">大师答：“你对这个巨大的结构感到不安，因为它没有合理的目的。可是从它不停歇的运作中，你难道不能发现快乐吗？在其枝叶的遮蔽下，你难道不享受编程的轻松自在吗？你为何因为它的无用而苦恼呢？”</p>
+<h3 id="main-heading-H3-33">7.2</h3>
+<blockquote>
+<p dir="auto">In the East there is a shark which is larger than all other fish. It changes into a bird whose wings are like clouds filling the sky.</p>
+</blockquote>
+<p dir="auto">东方有鱼，其名为鲲。鲲之大，绵绵若千里之远；化而为鸟，其名为鹏。鹏之翼，皇皇若垂天之云。</p>
+<blockquote>
+<p dir="auto">When this bird moves across the land, it brings a message from Corporate Headquarters. This message drops into the midst of the programmers, like a seagull making its mark upon the beach. Then the bird mounts on the wind and, with the blue sky at its back, returns home.</p>
+</blockquote>
+<p dir="auto">这只大鸟从东边飞来，带来了企业总部的消息。如海鸥掠过沙滩，大鸟将消息撒播在了程序员之间。随后它背负青天，扶摇直上，缓缓归去。</p>
+<blockquote>
+<p dir="auto">The novice programmer stares in wonder at the bird, for he understands it not. The average programmer dreads the coming of the bird, for he fears its message. The Master Programmer continues to work at his terminal, unaware that the bird has come and gone.</p>
+</blockquote>
+<p dir="auto">初级程序员惊奇地盯着大鸟，因为他不明白这意味着什么。中级程序员害怕大鸟的到来，因为它带来了总部的消息。而编程大师一直在电脑前工作，完全没注意到大鸟来过。</p>
+<h3 id="main-heading-H3-34">7.3</h3>
+<blockquote>
+<p dir="auto">The Magician of the Ivory Tower brought his latest invention for the Master Programmer to examine. The Magician wheeled a large black box into the Master's office while the Master waited in silence.</p>
+</blockquote>
+<p dir="auto">来自象牙塔的老学究请编程大师看看他的最新发明。大师默默等着，老学究推着一个大黑匣子进了大师的办公室。</p>
+<blockquote>
+<p dir="auto">"This is an integrated, distributed, general-purpose workstation," began the Magician, "ergonomically designed with a proprietary operating system, sixth generation languages, and multiple state of the art user interfaces. It took my assistants several hundred man years to construct. Is it not amazing?"</p>
+</blockquote>
+<p dir="auto">“这是一个集成的、分布式的通用工作站，”老学究开始说，“符合人体工程学的设计，专有操作系统，第六代语言，拥有多种最先进的用户界面。我的助手们总计花了几百年的人天来建造。了不起吧？”</p>
+<blockquote>
+<p dir="auto">The Master Programmer raised his eyebrows slightly. "It is indeed amazing," he said.</p>
+</blockquote>
+<p dir="auto">编程大师轻挑了下眉头，说：“的确很了不起。”</p>
+<blockquote>
+<p dir="auto">"Corporate Headquarters has commanded," continued the Magician, "that everyone use this workstation as a platform for new programs. Do you agree to this?"</p>
+</blockquote>
+<p dir="auto">“总部已经下令，”老学究继续说，“对于未来的新项目，所有人都得用这个工作站作为新的开发平台。你同意吗？”</p>
+<blockquote>
+<p dir="auto">"Certainly," replied the Master. "I will have it transported to the Data Center immediately!" And the Magician returned to his tower, well pleased.</p>
+</blockquote>
+<p dir="auto">“当然，”大师答道。“我马上把它送到数据中心去！”老学究满意地回到了象牙塔。</p>
+<blockquote>
+<p dir="auto">Several days later, a novice wandered into the office of the Master Programmer and said, "I cannot find the listing for my new program. Do you know where it might be?"</p>
+</blockquote>
+<p dir="auto">几天后，一位新手走进编程大师的办公室，说：“我找不着我新项目的文件了。你知道它在哪儿吗？”</p>
+<blockquote>
+<p dir="auto">"Yes," replied the Master, "the listings are stacked on the platform in the Data Center."</p>
+</blockquote>
+<p dir="auto">“知道，”大师回答，“它们在数据中心平台上放着呢。”</p>
+<h3 id="main-heading-H3-35">7.4</h3>
+<blockquote>
+<p dir="auto">The Master Programmer moves from program to program without fear. No change in management can harm him. He will not be fired, even if the project is cancelled. Why is this? He is filled with Tao.</p>
+</blockquote>
+<p dir="auto">编程大师从一个项目转到另一个项目，心中丝毫不慌。任何管理上的变动都影响不了他。即使砍掉项目，上级也不会解雇他。为什么呢？因为他心中充满了道。</p>
+<h2 id="main-heading-H2-36">8. Hardware and Software 硬件和软件</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"Without the wind, the grass does not move. Without software hardware is useless."</p>
+</blockquote>
+<p dir="auto">“没有风，草就不会动；没有软件，硬件就没用。”</p>
+<h3 id="main-heading-H3-37">8.1</h3>
+<blockquote>
+<p dir="auto">A novice asked the Master: "I perceive that one computer company is much larger than all others. It towers above its competition like a giant among dwarfs. Any one of its divisions could comprise an entire business. Why is this so?"</p>
+</blockquote>
+<p dir="auto">弟子问大师：“我发现有家计算机公司的规模堪称世界之最。它高高在上，就像矮人中的巨人。它的任何一个部门都可以组成一个完整的公司。为何会这样呢？”</p>
+<blockquote>
+<p dir="auto">The Master replied, "Why do you ask such foolish questions? That company is large because it is large. If it only made hardware, nobody would buy it. If it only made software, nobody would use it. If it only maintained systems, people would treat it like a servant. But because it combines all of these things, people think it one of the gods! By not seeking to strive, it conquers without effort."</p>
+</blockquote>
+<p dir="auto">大师答道：“你怎么会问这么蠢的问题？因为那家公司很大，所以它很大。如果它只生产硬件，没人会买它的东西。如果它只做软件，没人会用它的东西。如果它只维护系统，用户会把它当成仆人。但正因为它现在什么都做，人们会将它捧上神坛！因为选择不精益求精，它毫不费力地征服了一切。”</p>
+<h3 id="main-heading-H3-38">8.2</h3>
+<blockquote>
+<p dir="auto">A Master Programmer passed a novice programmer one day.</p>
+</blockquote>
+<p dir="auto">一天，编程大师从一个弟子身边路过。</p>
+<blockquote>
+<p dir="auto">The Master noted the novice's preoccupation with a hand-held computer game.</p>
+</blockquote>
+<p dir="auto">大师发现弟子正专心致志地玩着掌上游戏机。</p>
+<blockquote>
+<p dir="auto">"Excuse me," he said, "may I examine it?"</p>
+</blockquote>
+<p dir="auto">“不好意思，”大师说，“可以让我看看你的游戏机吗？”</p>
+<blockquote>
+<p dir="auto">The novice bolted to attention and handed the device to the Master. "I see that the device claims to have three levels of play: Easy, Medium, and Hard," said the Master. "Yet every such device has another level of play, where the device seeks not to conquer the human, nor to be conquered by the human."</p>
+</blockquote>
+<p dir="auto">弟子抬起头，把机器递给了大师。“这游戏机上显示有三种等级的玩法：简单、中等和困难，”大师说，“但这种游戏机还有另一种隐藏玩法。在隐藏玩法下，机器既不会让玩家赢，也不会让玩家输。”</p>
+<blockquote>
+<p dir="auto">"Pray, Great Master," implored the novice, "how does one find this mysterious setting?"</p>
+</blockquote>
+<p dir="auto">“请告诉我，大师，”弟子恳求道，“这种神秘的玩法怎么进入？”</p>
+<blockquote>
+<p dir="auto">The Master dropped the device to the ground and crushed it with his heel. Suddenly the novice was enlightened.</p>
+</blockquote>
+<p dir="auto">大师把游戏机扔到地上，狠狠踩碎了它。一瞬间，弟子获得了启示。</p>
+<p dir="auto"><a href="https://github.com/yikeke/tao-of-programming/issues/2" data-hovercard-type="discussion" data-hovercard-url="/yikeke/tao-of-programming/discussions/2/hovercard">【讨论】大师砸了游戏机后，弟子为什么突然开悟？悟了什么？</a></p>
+<h3 id="main-heading-H3-39">8.3</h3>
+<blockquote>
+<p dir="auto">There was once a programmer who wrote software for personal computers. "Look at how well off I am here," he said to a mainframe programmer who came to visit. "I have my own operating system and file storage device. I do not have to share my resources with anyone. The software is self-consistent and easy-to-use. Why do you not quit your present job and join me here?"</p>
+</blockquote>
+<p dir="auto">从前，有位 PC 机程序员邀请一位大型机程序员来做客。“看看我这儿多好，”他对大型机程序员说，”我有自己的操作系统和文件存储设备，不需要和任何人共享资源。软件易用、彼此兼容。考虑辞职来和我一起干吗？”</p>
+<blockquote>
+<p dir="auto">The mainframe programmer then began to describe his system to his friend, saying, "The mainframe sits like an ancient Sage meditating in the midst of the Data Center. Its disk drives lie end-to-end like a great ocean of machinery. The software is as multifaceted as a diamond, and as convoluted as a primeval jungle. The programs, each unique, move through the system like a swift-flowing river. That is why I am happy where I am."</p>
+</blockquote>
+<p dir="auto">大型机程序员开始描述他的系统：“大型机就像一个古老的圣人，坐在数据中心的中央冥想。它的磁盘驱动器彼此相连，形成巨大的机器海洋。软件像钻石般多面、像原始森林般复杂。内部的程序，个个独一无二，运行起来如同一条湍急的河流，在系统中奔腾涌动。因此，我对我现在的工作很满意。”</p>
+<blockquote>
+<p dir="auto">The personal computer programmer, upon hearing this, fell silent. But the two programmers remained friends until the end of their days.</p>
+</blockquote>
+<p dir="auto">PC 机程序员听完陷入了沉默。不过，这两位程序员做了一辈子的朋友。</p>
+<h3 id="main-heading-H3-40">8.4</h3>
+<blockquote>
+<p dir="auto">Hardware met Software on the road to Changtse. Software said: "You are Yin and I am Yang. If we travel together, we will become famous and earn vast sums of money." And so they set forth together, thinking to conquer the world.</p>
+</blockquote>
+<p dir="auto">在通往长江的路上，硬件和软件相遇了。软件说：“你是阴，我是阳。我们结伴而行，日后一定会出名、赚大钱。”于是他们一同出发，想要征服世界。</p>
+<blockquote>
+<p dir="auto">Presently, they met Firmware, who was dressed in tattered rags and hobbled along propped on a thorny stick. Firmware said to them: "The Tao lies beyond Yin and Yang. It is silent and still as a pool of water. It does not seek fame; therefore, nobody knows its presence. It does not seek fortune, for it is complete within itself. It exists beyond space and time."</p>
+</blockquote>
+<p dir="auto">不久，他们碰见了固件。固件衣衫褴褛，拄着一根拐杖，步履蹒跚地走着。固件对他们说：“道在阴阳之外。它似一潭止水，寂静无声。它不求闻达，所以没人知道它在哪儿。它不求财富，因为它自身已完整无缺。它独立于时空存在。”</p>
+<blockquote>
+<p dir="auto">Software and Hardware, ashamed, returned to their homes.</p>
+</blockquote>
+<p dir="auto">软件和硬件羞愧不已，回到了各自的家。</p>
+<h2 id="main-heading-H2-41">9. Epilogue 尾声</h2>
+<blockquote>
+<p dir="auto">Thus spake the Master Programmer:</p>
+</blockquote>
+<p dir="auto">编程大师如是说：</p>
+<blockquote>
+<p dir="auto">"Time for you to leave."</p>
+</blockquote>
+<p dir="auto">“你该离开了。”</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(e,o,t,a,n,i){return{layout:"default",data:[{post:{id:752000834,number:198,title:"《编程之道》 (Tao of Programming) 最新中英双语版",created_at:"2020-11-27T05:54:38Z",updated_at:"2021-05-30T17:02:21Z",body_html:'<p dir="auto">作者：Geoffrey James</p>\n<p dir="auto">译者：<a href="https://github.com/yikeke">Coco</a></p>\n<hr>\n<p dir="auto">以下为《编程之道》目录及全文。</p>\n<h2 id="main-heading-H2-0">目录</h2>\n<ul dir="auto">\n<li><a href="#1-the-silent-void-%E5%AF%82%E9%9D%99%E7%9A%84%E8%99%9A%E7%A9%BA">1. The Silent Void 寂静的虚空</a></li>\n<li><a href="#2-the-ancient-masters-%E6%97%A7%E6%97%B6%E4%BB%A3%E7%9A%84%E5%A4%A7%E5%B8%88">2. The Ancient Masters 旧时代的大师</a></li>\n<li><a href="#3-design-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1">3. Design 程序设计</a></li>\n<li><a href="#4-coding-%E7%BC%96%E7%A8%8B">4. Coding 编程</a></li>\n<li><a href="#5-maintenance-%E4%BB%A3%E7%A0%81%E7%BB%B4%E6%8A%A4">5. Maintenance 代码维护</a></li>\n<li><a href="#6-management-%E7%AE%A1%E7%90%86">6. Management 管理</a></li>\n<li><a href="#7-corporate-wisdom-%E4%BC%81%E4%B8%9A%E6%99%BA%E6%85%A7">7. Corporate Wisdom 企业智慧</a></li>\n<li><a href="#8-hardware-and-software-%E7%A1%AC%E4%BB%B6%E5%92%8C%E8%BD%AF%E4%BB%B6">8. Hardware and Software 硬件和软件</a></li>\n<li><a href="#9-epilogue-%E5%B0%BE%E5%A3%B0">9. Epilogue 尾声</a></li>\n</ul>\n<h2 id="main-heading-H2-1">1. The Silent Void 寂静的虚空</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"When you have learned to snatch the error code from the trap frame, it will be time for you to leave."</p>\n</blockquote>\n<p dir="auto">“待你能一眼看出代码框架中的错误，就是你学成离开的那天。”</p>\n<h3 id="main-heading-H3-2">1.1</h3>\n<blockquote>\n<p dir="auto">Something mysterious is formed, born in the silent void. Waiting alone and unmoving, it is at once still and yet in constant motion. It is the source of all programs. I do not know its name, so I will call it the Tao of Programming.</p>\n</blockquote>\n<p dir="auto">寂静虚空中，某种神秘的东西诞生了。它独自等待着，似一动不动，却作用恒久。它是所有程序的源头。我不知道它的名字，姑且称之为——“编程之道”。</p>\n<blockquote>\n<p dir="auto">If the Tao is great, then the operating system is great.</p>\n</blockquote>\n<p dir="auto">如果编程之道是伟大的，那么操作系统也是伟大的。</p>\n<blockquote>\n<p dir="auto">If the operating system is great, then the compiler is great.</p>\n</blockquote>\n<p dir="auto">如果操作系统是伟大的，那么编译器也是伟大的。</p>\n<blockquote>\n<p dir="auto">If the compiler is great, then the application is great.</p>\n</blockquote>\n<p dir="auto">如果编译器是伟大的，那么应用程序也是伟大的。</p>\n<blockquote>\n<p dir="auto">The user is pleased, and there is harmony in the world.</p>\n</blockquote>\n<p dir="auto">只有用户高兴，世界才能和谐。</p>\n<blockquote>\n<p dir="auto">The Tao of Programming flows far away and returns on the wind of morning.</p>\n</blockquote>\n<p dir="auto">编程之道流淌至远方，又乘着第一缕晨风回归。</p>\n<h3 id="main-heading-H3-3">1.2</h3>\n<blockquote>\n<p dir="auto">The Tao gave birth to machine language. Machine language gave birth to the assembler.</p>\n</blockquote>\n<p dir="auto">编程之道孕育了机器语言，机器语言孕育了汇编器。</p>\n<blockquote>\n<p dir="auto">The assembler gave birth to the compiler. Now there are ten thousand languages.</p>\n</blockquote>\n<p dir="auto">汇编器孕育了编译器。如今，世上出现了一万种语言。</p>\n<blockquote>\n<p dir="auto">Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao.</p>\n</blockquote>\n<p dir="auto">每种语言都有自己的目的，哪怕微不足道。每种语言都表达了软件的阴阳两面。每种语言在道中都有一席之地。</p>\n<blockquote>\n<p dir="auto">But do not program in COBOL if you can avoid it.</p>\n</blockquote>\n<p dir="auto">但如果可能，尽量不要使用 COBOL 商业语言来编程。</p>\n<p dir="auto"><a href="https://github.com/yikeke/tao-of-programming/issues/1" data-hovercard-type="discussion" data-hovercard-url="/yikeke/tao-of-programming/discussions/1/hovercard">【讨论】为何作者不鼓励使用 COBOL 商业语言编程？</a></p>\n<h3 id="main-heading-H3-4">1.3</h3>\n<blockquote>\n<p dir="auto">In the beginning was the Tao. The Tao gave birth to Space and Time.</p>\n</blockquote>\n<p dir="auto">世间混沌之初只有道。道孕育了空间和时间。</p>\n<blockquote>\n<p dir="auto">Therefore Space and Time are the Yin and Yang of programming.</p>\n</blockquote>\n<p dir="auto">空间和时间，即是编程的阴和阳。</p>\n<blockquote>\n<p dir="auto">Programmers that do not comprehend the Tao are always running out of time and space for their programs. Programmers that comprehend the Tao always have enough time and space to accomplish their goals.</p>\n</blockquote>\n<p dir="auto">悟道前，程序员总是耗尽程序的时间和空间。悟道后，他们总有足够的时间和空间来达成程序的目的。</p>\n<blockquote>\n<p dir="auto">How could it be otherwise?</p>\n</blockquote>\n<p dir="auto">如何能反其道而行之？</p>\n<h3 id="main-heading-H3-5">1.4</h3>\n<blockquote>\n<p dir="auto">The wise programmer is told about Tao and follows it. The average programmer is told about Tao and searches for it. The foolish programmer is told about Tao and laughs at it.</p>\n</blockquote>\n<p dir="auto">聪明的程序员一朝闻道，余生行道；普通的程序员一朝闻道，余生寻道。愚蠢的程序员一朝闻道，只哈哈笑道。</p>\n<blockquote>\n<p dir="auto">If it were not for laughter, there would be no Tao.</p>\n</blockquote>\n<p dir="auto">但若没有这笑，也不能称之为道。</p>\n<blockquote>\n<p dir="auto">The highest sounds are hardest to hear. Going forward is a way to retreat. Great talent shows itself late in life. Even a perfect program still has bugs.</p>\n</blockquote>\n<p dir="auto">人们总是最难听见最高处的声音。进是退的一种。大器总是晚成。没有完美的程序，任何程序都有漏洞。</p>\n<h2 id="main-heading-H2-6">2. The Ancient Masters 旧时代的大师</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"After three days without programming, life becomes meaningless."</p>\n</blockquote>\n<p dir="auto">“三日不编程，生命便了无意义。”</p>\n<h3 id="main-heading-H3-7">2.1</h3>\n<blockquote>\n<p dir="auto">The programmers of old were mysterious and profound. We cannot fathom their thoughts, so all we do is describe their appearance.</p>\n</blockquote>\n<p dir="auto">旧时代的程序员神秘而深奥。我们无法理解他们的想法，只能描述他们的样子。</p>\n<blockquote>\n<p dir="auto">Aware, like a fox crossing the water.</p>\n</blockquote>\n<p dir="auto">觉察，如狐狸游过水面</p>\n<blockquote>\n<p dir="auto">Alert, like a general on the battlefield.</p>\n</blockquote>\n<p dir="auto">警惕，如将军坐镇战场</p>\n<blockquote>\n<p dir="auto">Kind, like a hostess greeting her guests.</p>\n</blockquote>\n<p dir="auto">亲切，如主人迎接客人</p>\n<blockquote>\n<p dir="auto">Simple, like uncarved blocks of wood.</p>\n</blockquote>\n<p dir="auto">简单，如木块未经雕刻</p>\n<blockquote>\n<p dir="auto">Opaque, like black pools in darkened caves.</p>\n</blockquote>\n<p dir="auto">隐晦，如穴中幽暗水池</p>\n<blockquote>\n<p dir="auto">Who can tell the secrets of their hearts and minds?</p>\n</blockquote>\n<p dir="auto">谁能窥探他们的内心，谁能看穿他们的想法？</p>\n<blockquote>\n<p dir="auto">The answer exists only in Tao.</p>\n</blockquote>\n<p dir="auto">答案尽在道中。</p>\n<h3 id="main-heading-H3-8">2.2</h3>\n<blockquote>\n<p dir="auto">The Grand Master Turing once dreamed that he was a machine. When he awoke, he exclaimed:</p>\n</blockquote>\n<p dir="auto">昔日，图灵大师梦见自己变成了一台机器，他醒来后惊呼：</p>\n<blockquote>\n<p dir="auto">"I don\'t know whether I am Turing dreaming that I am a machine, or a machine dreaming that I am Turing!"</p>\n</blockquote>\n<p dir="auto">“我不确定我是图灵梦见自己变成了机器，还是我是机器梦见自己变成了图灵！”</p>\n<h3 id="main-heading-H3-9">2.3</h3>\n<blockquote>\n<p dir="auto">A programmer from a very large computer company went to a software conference and then returned to report to his manager, saying: "What sort of programmers work for other companies? They behaved badly and were unconcerned with appearances. Their hair was long and unkempt and their clothes were wrinkled and old. They crashed our hospitality suite and they made rude noises during my presentation."</p>\n</blockquote>\n<p dir="auto">一位大型计算机公司的程序员去参加一个软件会议，回来后向他的老板汇报，说：“其他公司的程序员怎么是这个样子？他们不讲礼貌，不注重外表——头发又长又乱，衣服又皱又旧。不仅闯进我们的接待室，还在我演讲时随便说话。”</p>\n<blockquote>\n<p dir="auto">The manager said: "I should have never sent you to the conference. Those programmers live beyond the physical world. They consider life absurd, an accidental coincidence. They come and go without knowing limitations. Without a care, they live only for their programs. Why should they bother with social conventions?"</p>\n</blockquote>\n<p dir="auto">老板说：“我不该让你去参会的。那些程序员早已从现实世界超脱。他们认为生活是荒谬的，只是一场偶然的巧合。他们来去随心，不受限制。没有牵挂的他们，只为程序而活。社会习俗如何能左右他们？”</p>\n<blockquote>\n<p dir="auto">"They are alive within the Tao."</p>\n</blockquote>\n<p dir="auto">“他们活在道中。”</p>\n<h3 id="main-heading-H3-10">2.4</h3>\n<blockquote>\n<p dir="auto">A novice asked the Master: "Here is a programmer that never designs, documents or tests his programs. Yet all who know him consider him one of the best programmers in the world. Why is this?"</p>\n</blockquote>\n<p dir="auto">弟子问大师：“有位程序员从来不提前设计自己的程序，也不写文档或进行测试。但所有认识他的人都视他为世上最好的程序员之一。为什么？”</p>\n<blockquote>\n<p dir="auto">The Master replied: "That programmer has mastered the Tao. He has gone beyond the need for design; he does not become angry when the system crashes, but accepts the universe without concern. He has gone beyond the need for documentation; he no longer cares if anyone else sees his code. He has gone beyond the need for testing; each of his programs are perfect within themselves, serene and elegant, their purpose self-evident. Truly, he has entered the mystery of Tao."</p>\n</blockquote>\n<p dir="auto">大师回答说：“因为他已得道。他不再需要设计：当系统崩溃时，他不会生气，而是毫不在意地接受现实；他不再需要文档：他不关心是否有人看到他的代码；他不再需要测试：他的每个程序都是完美的，平静而优雅，程序的目的不言而喻。他已经领悟了道的真意。”</p>\n<h2 id="main-heading-H2-11">3. Design 程序设计</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"When a program is being tested, it is too late to make design changes."</p>\n</blockquote>\n<p dir="auto">“待程序进入测试阶段，任何设计上的修改都太晚了。”</p>\n<h3 id="main-heading-H3-12">3.1</h3>\n<blockquote>\n<p dir="auto">There once was a man who went to a computer trade show. Each day as he entered, the man told the guard at the door:</p>\n</blockquote>\n<p dir="auto">从前，有个人去参加计算机商展。每天他进门时，都会跟门口的保安说：</p>\n<blockquote>\n<p dir="auto">"I am a great thief, renowned for my feats of shoplifting. Be forewarned, for this trade show shall not escape unplundered."</p>\n</blockquote>\n<p dir="auto">“我是一名伟大的小偷，最擅长顺手牵羊，颇负盛名。提前警告你，这次展会也是我的目标之一。”</p>\n<blockquote>\n<p dir="auto">This speech disturbed the guard greatly, because there were millions of dollars of computer equipment inside, so he watched the man carefully. But the man merely wandered from booth to booth, humming quietly to himself.</p>\n</blockquote>\n<p dir="auto">这番话让保安大为不安，因为里面有价值数百万美元的计算机设备。因此他仔细注意着这个人。但这人只是从一个摊位走到另一个摊位，嘴里念念有词。</p>\n<blockquote>\n<p dir="auto">When the man left, the guard took him aside and searched his clothes, but nothing was to be found.</p>\n</blockquote>\n<p dir="auto">这人离开时，保安把他拉到一旁搜身，却什么也没有找到。</p>\n<blockquote>\n<p dir="auto">On the next day of the trade show, the man returned and chided the guard, saying: "I escaped with a vast booty yesterday, but today will be even better." So the guard watched him ever more closely, but to no avail.</p>\n</blockquote>\n<p dir="auto">展会第二天，这人又来了。他骂着保安，说：“我昨天掳走了一大笔战利品，今天的收获会更好。”于是保安更加密切地关注他，但没发现任何异常。</p>\n<blockquote>\n<p dir="auto">On the final day of the trade show, the guard could restrain his curiosity no longer. "Sir Thief," he said, "I am so perplexed, I cannot live in peace. Please enlighten me. What is it that you are stealing?"</p>\n</blockquote>\n<p dir="auto">展会最后一天，保安再也抑制不住好奇心。“小偷先生，”他问，“我真的很困惑，我没法安心生活。求给个痛快，你到底偷了什么？”</p>\n<blockquote>\n<p dir="auto">The man smiled. "I am stealing ideas," he said.</p>\n</blockquote>\n<p dir="auto">这人笑了，“我在偷取创意，”他说。</p>\n<h3 id="main-heading-H3-13">3.2</h3>\n<blockquote>\n<p dir="auto">There once was a Master Programmer who wrote unstructured programs. A novice programmer, seeking to imitate him, also began to write unstructured programs. When the novice asked the Master to evaluate his progress, the Master criticized him for writing unstructured programs, saying, "What is appropriate for the Master is not appropriate for the novice. You must understand Tao before transcending structure."</p>\n</blockquote>\n<p dir="auto">从前，有位编程大师擅长编写没有结构的程序。他的弟子模仿他，也开始编写没有结构的程序。当弟子请大师评价他的程序，大师批评他：“适合大师的不一定适合初学者。在超越结构之前，你必须先领悟道。”</p>\n<h3 id="main-heading-H3-14">3.3</h3>\n<blockquote>\n<p dir="auto">There was once a programmer who was attached to the court of the warlord of Wu. The warlord asked the programmer: "Which is easier to design: an accounting package or an operating system?"</p>\n</blockquote>\n<p dir="auto">从前有位程序员在吴氏企业任职。吴总问程序员：“财务系统和操作系统，哪个更容易设计？”</p>\n<blockquote>\n<p dir="auto">"An operating system," replied the programmer.</p>\n</blockquote>\n<p dir="auto">“操作系统，”程序员回答。</p>\n<blockquote>\n<p dir="auto">The warlord uttered an exclamation of disbelief. "Surely an accounting package is trivial next to the complexity of an operating system," he said.</p>\n</blockquote>\n<p dir="auto">吴总发出一声惊叹，难以置信道：“但与操作系统的复杂性相比，设计财务系统肯定易如反掌吧？”</p>\n<blockquote>\n<p dir="auto">"Not so," said the programmer, "When designing an accounting package, the programmer operates as a mediator between people having different ideas: how it must operate, how its reports must appear, and how it must conform to the tax laws. By contrast, an operating system is not limited by outside appearances. When designing an operating system, the programmer seeks the simplest harmony between machine and ideas. This is why an operating system is easier to design."</p>\n</blockquote>\n<p dir="auto">“不，”程序员说，“设计财务系统时，程序员是协调者，帮助人们在不同使用需求​间达成一致，比如如何操作界面、显示报表、遵守税法等。但操作系统不受前端的限制。设计操作系统时，程序员只需在机器与想法之间，寻求最简单的和谐统一。因此，操作系统更容易设计。”</p>\n<blockquote>\n<p dir="auto">The warlord of Wu nodded and smiled. "That is all good and well, but which is easier to debug?"</p>\n</blockquote>\n<p dir="auto">吴总点点头，笑道：“你说得很好，但是哪个更容易调试呢？”</p>\n<blockquote>\n<p dir="auto">The programmer made no reply.</p>\n</blockquote>\n<p dir="auto">程序员没有回答。</p>\n<h3 id="main-heading-H3-15">3.4</h3>\n<blockquote>\n<p dir="auto">A manager went to the Master Programmer and showed him the requirements document for a new application. The manager asked the Master: "How long will it take to design this system if I assign five programmers to it?"</p>\n</blockquote>\n<p dir="auto">一位主管找到编程大师，请他看一个应用程序的需求文档。主管问：“如果让 5 个程序员去设计这个系统，需要多长时间？”</p>\n<blockquote>\n<p dir="auto">"It will take one year," said the Master promptly.</p>\n</blockquote>\n<p dir="auto">“需要一年，”大师毫不犹豫地说。</p>\n<blockquote>\n<p dir="auto">"But we need this system immediately or even sooner! How long will it take if I assign ten programmers to it?"</p>\n</blockquote>\n<p dir="auto">“但我们现在就需要这个系统，越快越好！如果我找 10 个程序员呢？需要多长时间？”</p>\n<blockquote>\n<p dir="auto">The Master Programmer frowned. "In that case, it will take two years."</p>\n</blockquote>\n<p dir="auto">大师皱了皱眉头，“如此的话，需要两年。”</p>\n<blockquote>\n<p dir="auto">"And what if I assign a hundred programmers to it?"</p>\n</blockquote>\n<p dir="auto">“那如果我找 100 个程序员呢？”</p>\n<blockquote>\n<p dir="auto">The Master Programmer shrugged. "Then the design will never be completed," he said.</p>\n</blockquote>\n<p dir="auto">大师耸耸肩，“那这个设计就永远别想完成了。”</p>\n<h2 id="main-heading-H2-16">4. Coding 编程</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"A well-written program is its own Heaven; a poorly-written program is its own Hell."</p>\n</blockquote>\n<p dir="auto">“优秀的程序仿佛置身天堂，差劲的程序如同自取灭亡。”</p>\n<h3 id="main-heading-H3-17">4.1</h3>\n<blockquote>\n<p dir="auto">A program should be light and agile, its subroutines connected like a string of pearls. The spirit and intent of the program should be retained throughout. There should be neither too little nor too much. Neither needless loops nor useless variables; neither lack of structure nor overwhelming rigidity.</p>\n</blockquote>\n<p dir="auto">程序应当轻巧灵活，内部的子过程彼此连接，串若珍珠。程序的精神和目的，当一以贯之。代码量要恰到好处，减一行则少，增一行则多。不存在多余的循环或变量。既不失整体结构，也不至僵化死板。</p>\n<blockquote>\n<p dir="auto">A program should follow the "Law of Least Astonishment". What is this law? It is simply that the program should always respond to the users in the way that least astonishes them.</p>\n</blockquote>\n<p dir="auto">程序应当遵循“最少惊讶原则”。这个原则很简单：程序返回的结果永远符合用户的预期。</p>\n<blockquote>\n<p dir="auto">A program, no matter how complex, should act as a single unit. The program should be directed by the logic within rather than by outward appearances.</p>\n</blockquote>\n<p dir="auto">无论程序多么复杂，都可当作一个独立单元来运行。程序应靠内在逻辑指导，而不为前端形式左右。</p>\n<blockquote>\n<p dir="auto">If the program fails in these requirements, it will be in a state of disorder and confusion. The only way to correct this is to rewrite the program.</p>\n</blockquote>\n<p dir="auto">如果程序不满足以上要求，它将陷入无序与混乱。唯一的修复办法就是重写程序。</p>\n<h3 id="main-heading-H3-18">4.2</h3>\n<blockquote>\n<p dir="auto">A novice asked the Master: "I have a program that sometimes runs and sometimes aborts. I have followed the rules of programming, yet I am totally baffled. What is the reason for this?"</p>\n</blockquote>\n<p dir="auto">弟子问大师：“我的程序有时跑得通，有时跑不通。我遵守了编程的法则，但我这次彻底束手无策了。这是为什么？”</p>\n<blockquote>\n<p dir="auto">The Master replied: "You are confused because you do not understand Tao. Only a fool expects rational behavior from his fellow humans. Why do you expect it from a machine that humans have constructed? Computers simulate determinism; only Tao is perfect.</p>\n</blockquote>\n<p dir="auto">大师答：“你心存疑惑，只因你还未悟道。唯有傻子才会期望世人举止理性。你又如何期望世人建造的机器能有理性的行为呢？计算机只能模拟决定论；世间唯有道是完美的。</p>\n<blockquote>\n<p dir="auto">The rules of programming are transitory; only Tao is eternal. Therefore, you must contemplate Tao before you receive Enlightenment."</p>\n</blockquote>\n<p dir="auto">编程无常法，唯道恒久远。在获得启示之前，你必须深思道。”</p>\n<blockquote>\n<p dir="auto">"But how will I know when I have received Enlightenment?" asked the novice.</p>\n</blockquote>\n<p dir="auto">“但我如何知道我获得了启示呢？”弟子问。</p>\n<blockquote>\n<p dir="auto">"Your program will run correctly," replied the Master.</p>\n</blockquote>\n<p dir="auto">“你的程序将顺利运行，”大师答。</p>\n<h3 id="main-heading-H3-19">4.3</h3>\n<blockquote>\n<p dir="auto">The Master was explaining the nature of Tao to one of his novices.</p>\n</blockquote>\n<p dir="auto">大师正向他的一个弟子解释道的本质。</p>\n<blockquote>\n<p dir="auto">"The Tao is embodied in all software -- regardless of how insignificant," said the Master.</p>\n</blockquote>\n<p dir="auto">“道的真意存在于所有的软件中，即使是最不重要的软件。”大师说。</p>\n<blockquote>\n<p dir="auto">"Is the Tao in a hand-held calculator?" asked the novice.</p>\n</blockquote>\n<p dir="auto">“道在手持计算器里吗？”弟子问。</p>\n<blockquote>\n<p dir="auto">"It is," came the reply.</p>\n</blockquote>\n<p dir="auto">“在，”大师答。</p>\n<blockquote>\n<p dir="auto">"Is the Tao in a video game?" asked the novice.</p>\n</blockquote>\n<p dir="auto">“道在电子游戏里吗？”</p>\n<blockquote>\n<p dir="auto">"It is even in a video game," said the Master.</p>\n</blockquote>\n<p dir="auto">“也在。”</p>\n<blockquote>\n<p dir="auto">"Is the Tao in the DOS for a personal computer?" asked the novice.</p>\n</blockquote>\n<p dir="auto">“个人电脑的 DOS 中也有道吗？”</p>\n<blockquote>\n<p dir="auto">The Master coughed and shifted his position slightly. "The lesson is over for today," he said.</p>\n</blockquote>\n<p dir="auto">大师轻咳一声，微微一动。“今天的课就上到这里。”</p>\n<h3 id="main-heading-H3-20">4.4</h3>\n<blockquote>\n<p dir="auto">Prince Wang\'s programmer was coding software. His fingers danced upon the keyboard. The program compiled without and error message, and the program ran like a gentle wind.</p>\n</blockquote>\n<p dir="auto">王氏企业内，一名程序员正在编写软件。他的指尖在键盘上飞舞。程序编译时没有任何错误，运行起来如清风拂过，丝滑顺畅。</p>\n<blockquote>\n<p dir="auto">"Excellent!" the Prince exclaimed. "Your technique is faultless!"</p>\n</blockquote>\n<p dir="auto">“太棒了！”王总惊呼道，“你的技术简直完美！”</p>\n<blockquote>\n<p dir="auto">"Technique?" said the programmer, turning from his terminal, "What I follow is Tao -- beyond all techniques! When I first began to program, I would see before me the whole problem in one mass. After three years, I no longer saw this mass. Instead, I used subroutines. But now I see nothing. My whole being exists in a formless void. My senses are idle. My spirit, free to work without a plan, follows its own instinct. In short, my program writes itself. True, sometimes there are difficult problems. I see them coming, I slow down, I watch silently. Then I change a single line of code and the difficulties vanish like puffs of idle smoke. I then compile the program. I sit still and let the joy of the work fill my being. I close my eyes for a moment and then log off."</p>\n</blockquote>\n<p dir="auto">“技术？”程序员转过身，“我追求的是道——超越所有技术的道！我刚开始编程时，眼前的问题堆积成团、杂乱如麻。三年后，我再也没见过这样的问题，因为我学会了子程序。如今，我什么也看不见了。我的存在变得虚无，我感受不到任何事物。我的精神不受约束，全凭本能自由工作。换句话说，我写程序时，代码是一行行自己显现的。当然，有时我会碰到一些棘手的问题。我看着这些问题出现，我慢下来，静静地看着。然后我改动一行代码，问题像轻烟般自己消失了。我开始编译程序。我静静地坐着，感受着快乐盈满身心。我闭目冥想片刻，然后退出系统。”</p>\n<blockquote>\n<p dir="auto">Prince Wang said, "Would that all of my programmers were as wise!"</p>\n</blockquote>\n<p dir="auto">王总说：“愿我司所有的程序员都这样聪明！”</p>\n<h2 id="main-heading-H2-21">5. Maintenance 代码维护</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"Though a program be but three lines long, someday it will have to be maintained."</p>\n</blockquote>\n<p dir="auto">哪怕程序只有三行，总有一天也需要人维护。</p>\n<h3 id="main-heading-H3-22">5.1</h3>\n<blockquote>\n<p dir="auto">A well-used door needs no oil on its hinges.</p>\n</blockquote>\n<p dir="auto">户枢不蠹。</p>\n<blockquote>\n<p dir="auto">A swift-flowing stream does not grow stagnant.</p>\n</blockquote>\n<p dir="auto">流水不腐。</p>\n<blockquote>\n<p dir="auto">A deer blends perfectly into the forest colors.</p>\n</blockquote>\n<p dir="auto">一只鹿完美地融入森林的色彩中。</p>\n<blockquote>\n<p dir="auto">Software rots if not used.</p>\n</blockquote>\n<p dir="auto">软件没人用，神奇也会化为腐朽。</p>\n<blockquote>\n<p dir="auto">These are great mysteries.</p>\n</blockquote>\n<p dir="auto">这些都是道的奥秘。</p>\n<h3 id="main-heading-H3-23">5.2</h3>\n<blockquote>\n<p dir="auto">A manager asked a programmer how long it would take him to finish the program on which he was working. "I will be finished tomorrow," the programmer promptly replied.</p>\n</blockquote>\n<p dir="auto">主管问程序员，写完手上的程序需要多久。“我明天能写完，”程序员毫不犹豫地说。</p>\n<blockquote>\n<p dir="auto">"I think you are being unrealistic," said the manager, "Truthfully, how long will it take?"</p>\n</blockquote>\n<p dir="auto">“这太不切实际了，”主管说，“实话实说，到底要多久？”</p>\n<blockquote>\n<p dir="auto">The programmer thought for a moment. "I have some features that I wish to add. This will take at least two weeks," he finally said.</p>\n</blockquote>\n<p dir="auto">程序员想了一会儿。“我想补充一些功能，这至少需要两周，”他最终表示。</p>\n<blockquote>\n<p dir="auto">"Even that is too much to expect," insisted the manager, "I will be satisfied if you simply tell me when the program is complete."</p>\n</blockquote>\n<p dir="auto">“两周也期望过高了，”主管继续说，“你写完的时候告诉我一声，我就知足了。”</p>\n<blockquote>\n<p dir="auto">The programmer agreed to this.</p>\n</blockquote>\n<p dir="auto">程序员同意了。</p>\n<blockquote>\n<p dir="auto">Several years later, the manager retired. On the way to his retirement luncheon, he discovered the programmer asleep at his terminal. He had been programming all night.</p>\n</blockquote>\n<p dir="auto">几年后，主管退休了。在去退休午宴的路上，他发现程序员在电脑前睡着了。他整晚都在写代码。</p>\n<h3 id="main-heading-H3-24">5.3</h3>\n<blockquote>\n<p dir="auto">A novice programmer was once assigned to code a simple financial package.</p>\n</blockquote>\n<p dir="auto">从前，大师让一个弟子做一个简单的财务系统。</p>\n<blockquote>\n<p dir="auto">The novice worked furiously for many days, but when his Master reviewed his program, he discovered it contained a screen editor, a set of generalized graphics routines, and an artificial intelligence interface, but not the slightest hint of anything financial.</p>\n</blockquote>\n<p dir="auto">弟子疯狂地写了很多天代码。大师检查进度时，他发现程序里多了一个屏幕编辑器、一套通用的图形程序和一个人工智能界面，但没发现任何与财务相关的东西。</p>\n<blockquote>\n<p dir="auto">When the Master asked about this, the novice became indignant. "Don\'t be so impatient," he said, "I\'ll put in the financial stuff eventually."</p>\n</blockquote>\n<p dir="auto">当大师提到这一点，弟子有点生气。“耐心点，”他说，“我最后会写财务的部分的。”</p>\n<h3 id="main-heading-H3-25">5.4</h3>\n<blockquote>\n<p dir="auto">Does a good farmer neglect a crop he has planted?</p>\n</blockquote>\n<p dir="auto">好的农民会随意对待自己种的庄稼吗？</p>\n<blockquote>\n<p dir="auto">Does a good teacher overlook even the most humble student?</p>\n</blockquote>\n<p dir="auto">好的老师会忽视自己最谦虚的学生吗？</p>\n<blockquote>\n<p dir="auto">Does a good father allow a single child to starve?</p>\n</blockquote>\n<p dir="auto">好的父亲会舍得让任何一个孩子挨饿吗？</p>\n<blockquote>\n<p dir="auto">Does a good programmer refuse to maintain his code?</p>\n</blockquote>\n<p dir="auto">好的程序员会拒绝维护自己的代码吗？</p>\n<h2 id="main-heading-H2-26">6. Management 管理</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"Let the programmers be many and the managers few -- then all will be productive."</p>\n</blockquote>\n<p dir="auto">“愿世间的程序员多一些，管理人员少一些——这样所有人做事都会更高效。”</p>\n<h3 id="main-heading-H3-27">6.1</h3>\n<blockquote>\n<p dir="auto">When managers hold endless meetings, the programmers write games.</p>\n</blockquote>\n<p dir="auto">当管理人员不停地开会，程序员在编写游戏。</p>\n<blockquote>\n<p dir="auto">When accountants speak of quarterly profits, the development budget is about to be cut.</p>\n</blockquote>\n<p dir="auto">当财务主管谈到季度盈收，开发预算就要削减。</p>\n<blockquote>\n<p dir="auto">When senior scientists talk blue sky, the clouds are about to roll in.</p>\n</blockquote>\n<p dir="auto">当资深科学家谈及蓝天，云层从天边滚滚袭来。</p>\n<blockquote>\n<p dir="auto">Truly, this is not the Tao of Programming.</p>\n</blockquote>\n<p dir="auto">确实，这不是编程之道。</p>\n<blockquote>\n<p dir="auto">When managers make commitments, game programs are ignored.</p>\n</blockquote>\n<p dir="auto">当管理人员做出承诺，没人再会写游戏程序。</p>\n<blockquote>\n<p dir="auto">When accountants make long-range plans, harmony and order are about to be restored.</p>\n</blockquote>\n<p dir="auto">当财务主管制定长期计划，和谐与秩序将会恢复。</p>\n<blockquote>\n<p dir="auto">When senior scientists address the problems at hand, the problems will soon be solved.</p>\n</blockquote>\n<p dir="auto">当资深科学家开始处理手头的问题，问题将很快得到解决。</p>\n<blockquote>\n<p dir="auto">Truly, this is the Tao of Programming.</p>\n</blockquote>\n<p dir="auto">确实，这就是编程之道。</p>\n<h3 id="main-heading-H3-28">6.2</h3>\n<blockquote>\n<p dir="auto">Why are programmers non-productive? Because their time is wasted in meetings.</p>\n</blockquote>\n<p dir="auto">为什么程序员没有工作效率？因为要开的会议没完没了。</p>\n<blockquote>\n<p dir="auto">Why are programmers rebellious? Because the management interferes too much.</p>\n</blockquote>\n<p dir="auto">为什么程序员不听指挥？因为管理层管得太多太深。</p>\n<blockquote>\n<p dir="auto">Why are the programmers resigning one by one? Because they are burnt out.</p>\n</blockquote>\n<p dir="auto">为什么程序员一个接一个辞职？因为他们累得心力交瘁。</p>\n<blockquote>\n<p dir="auto">Having worked for poor management, they no longer value their jobs.</p>\n</blockquote>\n<p dir="auto">在管理不善的部门工作，他们再也看不到自己工作的价值。</p>\n<h3 id="main-heading-H3-29">6.3</h3>\n<blockquote>\n<p dir="auto">A manager was about to be fired, but a programmer who worked for him wrote a new program that became popular and sold well. As a result, the manager retained his job.</p>\n</blockquote>\n<p dir="auto">主管要被解雇了，但他手下的一位程序员写了个新程序，这个程序大受欢迎，销量很好。结果，主管保住了工作。</p>\n<blockquote>\n<p dir="auto">The manager tried to give the programmer a bonus, but the programmer refused it, saying, "I wrote the program because I thought it was an interesting concept, and thus I expect no reward."</p>\n</blockquote>\n<p dir="auto">主管想给这位程序员额外奖赏，程序员拒绝道：“我写这个程序只是为了实现一个有意思的设想，我不想要任何奖励。”</p>\n<blockquote>\n<p dir="auto">The manager upon hearing this remarked, "This programmer, though he holds a position of small esteem, understands well the proper duty of an employee. Let us promote him to the exalted position of management consultant!"</p>\n</blockquote>\n<p dir="auto">主管听完，评价道：“这人虽然职位不高，但他很清楚员工应尽的责任。我们应该让他做公司的管理顾问！”</p>\n<blockquote>\n<p dir="auto">But when told this, the programmer once more refused, saying, "I exist so that I can program. If I were promoted, I would do nothing but waste everyone\'s time. Can I go now? I have a program that I am working on."</p>\n</blockquote>\n<p dir="auto">程序员听说后，再次拒绝了：“我在这里是为了写代码。如果我升职了，我就什么也不会做，只会浪费大家的时间。我可以走了吗？我还有个项目要做。”</p>\n<h3 id="main-heading-H3-30">6.4</h3>\n<blockquote>\n<p dir="auto">A manager went to his programmers and told them: "As regards to your work hours: you are going to have to come in at nine in the morning and leave at five in the afternoon." At this, all of them became angry and several resigned on the spot.</p>\n</blockquote>\n<p dir="auto">主管对他手下的程序员说：“关于工作时间的规定下来了：以后你们必须早上九点上班，下午五点下班。”听了这话，所有人都很生气，有几个当场辞职了。</p>\n<blockquote>\n<p dir="auto">So the manager said: "All right, in that case you may set your own working hours, as long as you finish your projects on schedule." The programmers, now satisfied, began to come in at noon and work to the wee hours of the morning.</p>\n</blockquote>\n<p dir="auto">于是主管说：“好吧，这样的话，以后你们自己安排工作时间，只要保证按时完成项目。”程序员们这下满意了，从中午开始工作，一直忙碌到凌晨。</p>\n<h2 id="main-heading-H2-31">7. Corporate Wisdom 企业智慧</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"You can demonstrate a program for a corporate executive, but you can\'t make him computer literate."</p>\n</blockquote>\n<p dir="auto">“你可以给企业高管演示程序，但无法让他精通电脑。”</p>\n<h3 id="main-heading-H3-32">7.1</h3>\n<blockquote>\n<p dir="auto">A novice asked the Master: "In the East, there is a great tree-structure that men call \'Corporate Headquarters\'. It is bloated out of shape with vice presidents and accountants. It issues a multitude of memos, each saying \'Go Hence!\' or \'Go Hither!\' and nobody knows what is meant. Every year new names are put onto the branches, but all to no avail. How can such an unnatural entity exist?"</p>\n</blockquote>\n<p dir="auto">弟子问大师：“在西方，有一个巨大的树状结构组织，人们称之为‘企业总部’。里面的副总裁和财务人员多如牛毛，整个组织臃肿不堪。它每天发布大量的备忘录，每一条都写着‘做这个’‘做那个’，没人知道是什么意思。每年，有很多新人加入各个分公司，但都无济于事。为什么会有这么怪异的组织呢？”</p>\n<blockquote>\n<p dir="auto">The Master replied: "You perceive this immense structure and are disturbed that it has no rational purpose. Can you not take amusement from its endless gyrations? Do you not enjoy the untroubled ease of programming beneath its sheltering branches? Why are you bothered by its uselessness?"</p>\n</blockquote>\n<p dir="auto">大师答：“你对这个巨大的结构感到不安，因为它没有合理的目的。可是从它不停歇的运作中，你难道不能发现快乐吗？在其枝叶的遮蔽下，你难道不享受编程的轻松自在吗？你为何因为它的无用而苦恼呢？”</p>\n<h3 id="main-heading-H3-33">7.2</h3>\n<blockquote>\n<p dir="auto">In the East there is a shark which is larger than all other fish. It changes into a bird whose wings are like clouds filling the sky.</p>\n</blockquote>\n<p dir="auto">东方有鱼，其名为鲲。鲲之大，绵绵若千里之远；化而为鸟，其名为鹏。鹏之翼，皇皇若垂天之云。</p>\n<blockquote>\n<p dir="auto">When this bird moves across the land, it brings a message from Corporate Headquarters. This message drops into the midst of the programmers, like a seagull making its mark upon the beach. Then the bird mounts on the wind and, with the blue sky at its back, returns home.</p>\n</blockquote>\n<p dir="auto">这只大鸟从东边飞来，带来了企业总部的消息。如海鸥掠过沙滩，大鸟将消息撒播在了程序员之间。随后它背负青天，扶摇直上，缓缓归去。</p>\n<blockquote>\n<p dir="auto">The novice programmer stares in wonder at the bird, for he understands it not. The average programmer dreads the coming of the bird, for he fears its message. The Master Programmer continues to work at his terminal, unaware that the bird has come and gone.</p>\n</blockquote>\n<p dir="auto">初级程序员惊奇地盯着大鸟，因为他不明白这意味着什么。中级程序员害怕大鸟的到来，因为它带来了总部的消息。而编程大师一直在电脑前工作，完全没注意到大鸟来过。</p>\n<h3 id="main-heading-H3-34">7.3</h3>\n<blockquote>\n<p dir="auto">The Magician of the Ivory Tower brought his latest invention for the Master Programmer to examine. The Magician wheeled a large black box into the Master\'s office while the Master waited in silence.</p>\n</blockquote>\n<p dir="auto">来自象牙塔的老学究请编程大师看看他的最新发明。大师默默等着，老学究推着一个大黑匣子进了大师的办公室。</p>\n<blockquote>\n<p dir="auto">"This is an integrated, distributed, general-purpose workstation," began the Magician, "ergonomically designed with a proprietary operating system, sixth generation languages, and multiple state of the art user interfaces. It took my assistants several hundred man years to construct. Is it not amazing?"</p>\n</blockquote>\n<p dir="auto">“这是一个集成的、分布式的通用工作站，”老学究开始说，“符合人体工程学的设计，专有操作系统，第六代语言，拥有多种最先进的用户界面。我的助手们总计花了几百年的人天来建造。了不起吧？”</p>\n<blockquote>\n<p dir="auto">The Master Programmer raised his eyebrows slightly. "It is indeed amazing," he said.</p>\n</blockquote>\n<p dir="auto">编程大师轻挑了下眉头，说：“的确很了不起。”</p>\n<blockquote>\n<p dir="auto">"Corporate Headquarters has commanded," continued the Magician, "that everyone use this workstation as a platform for new programs. Do you agree to this?"</p>\n</blockquote>\n<p dir="auto">“总部已经下令，”老学究继续说，“对于未来的新项目，所有人都得用这个工作站作为新的开发平台。你同意吗？”</p>\n<blockquote>\n<p dir="auto">"Certainly," replied the Master. "I will have it transported to the Data Center immediately!" And the Magician returned to his tower, well pleased.</p>\n</blockquote>\n<p dir="auto">“当然，”大师答道。“我马上把它送到数据中心去！”老学究满意地回到了象牙塔。</p>\n<blockquote>\n<p dir="auto">Several days later, a novice wandered into the office of the Master Programmer and said, "I cannot find the listing for my new program. Do you know where it might be?"</p>\n</blockquote>\n<p dir="auto">几天后，一位新手走进编程大师的办公室，说：“我找不着我新项目的文件了。你知道它在哪儿吗？”</p>\n<blockquote>\n<p dir="auto">"Yes," replied the Master, "the listings are stacked on the platform in the Data Center."</p>\n</blockquote>\n<p dir="auto">“知道，”大师回答，“它们在数据中心平台上放着呢。”</p>\n<h3 id="main-heading-H3-35">7.4</h3>\n<blockquote>\n<p dir="auto">The Master Programmer moves from program to program without fear. No change in management can harm him. He will not be fired, even if the project is cancelled. Why is this? He is filled with Tao.</p>\n</blockquote>\n<p dir="auto">编程大师从一个项目转到另一个项目，心中丝毫不慌。任何管理上的变动都影响不了他。即使砍掉项目，上级也不会解雇他。为什么呢？因为他心中充满了道。</p>\n<h2 id="main-heading-H2-36">8. Hardware and Software 硬件和软件</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"Without the wind, the grass does not move. Without software hardware is useless."</p>\n</blockquote>\n<p dir="auto">“没有风，草就不会动；没有软件，硬件就没用。”</p>\n<h3 id="main-heading-H3-37">8.1</h3>\n<blockquote>\n<p dir="auto">A novice asked the Master: "I perceive that one computer company is much larger than all others. It towers above its competition like a giant among dwarfs. Any one of its divisions could comprise an entire business. Why is this so?"</p>\n</blockquote>\n<p dir="auto">弟子问大师：“我发现有家计算机公司的规模堪称世界之最。它高高在上，就像矮人中的巨人。它的任何一个部门都可以组成一个完整的公司。为何会这样呢？”</p>\n<blockquote>\n<p dir="auto">The Master replied, "Why do you ask such foolish questions? That company is large because it is large. If it only made hardware, nobody would buy it. If it only made software, nobody would use it. If it only maintained systems, people would treat it like a servant. But because it combines all of these things, people think it one of the gods! By not seeking to strive, it conquers without effort."</p>\n</blockquote>\n<p dir="auto">大师答道：“你怎么会问这么蠢的问题？因为那家公司很大，所以它很大。如果它只生产硬件，没人会买它的东西。如果它只做软件，没人会用它的东西。如果它只维护系统，用户会把它当成仆人。但正因为它现在什么都做，人们会将它捧上神坛！因为选择不精益求精，它毫不费力地征服了一切。”</p>\n<h3 id="main-heading-H3-38">8.2</h3>\n<blockquote>\n<p dir="auto">A Master Programmer passed a novice programmer one day.</p>\n</blockquote>\n<p dir="auto">一天，编程大师从一个弟子身边路过。</p>\n<blockquote>\n<p dir="auto">The Master noted the novice\'s preoccupation with a hand-held computer game.</p>\n</blockquote>\n<p dir="auto">大师发现弟子正专心致志地玩着掌上游戏机。</p>\n<blockquote>\n<p dir="auto">"Excuse me," he said, "may I examine it?"</p>\n</blockquote>\n<p dir="auto">“不好意思，”大师说，“可以让我看看你的游戏机吗？”</p>\n<blockquote>\n<p dir="auto">The novice bolted to attention and handed the device to the Master. "I see that the device claims to have three levels of play: Easy, Medium, and Hard," said the Master. "Yet every such device has another level of play, where the device seeks not to conquer the human, nor to be conquered by the human."</p>\n</blockquote>\n<p dir="auto">弟子抬起头，把机器递给了大师。“这游戏机上显示有三种等级的玩法：简单、中等和困难，”大师说，“但这种游戏机还有另一种隐藏玩法。在隐藏玩法下，机器既不会让玩家赢，也不会让玩家输。”</p>\n<blockquote>\n<p dir="auto">"Pray, Great Master," implored the novice, "how does one find this mysterious setting?"</p>\n</blockquote>\n<p dir="auto">“请告诉我，大师，”弟子恳求道，“这种神秘的玩法怎么进入？”</p>\n<blockquote>\n<p dir="auto">The Master dropped the device to the ground and crushed it with his heel. Suddenly the novice was enlightened.</p>\n</blockquote>\n<p dir="auto">大师把游戏机扔到地上，狠狠踩碎了它。一瞬间，弟子获得了启示。</p>\n<p dir="auto"><a href="https://github.com/yikeke/tao-of-programming/issues/2" data-hovercard-type="discussion" data-hovercard-url="/yikeke/tao-of-programming/discussions/2/hovercard">【讨论】大师砸了游戏机后，弟子为什么突然开悟？悟了什么？</a></p>\n<h3 id="main-heading-H3-39">8.3</h3>\n<blockquote>\n<p dir="auto">There was once a programmer who wrote software for personal computers. "Look at how well off I am here," he said to a mainframe programmer who came to visit. "I have my own operating system and file storage device. I do not have to share my resources with anyone. The software is self-consistent and easy-to-use. Why do you not quit your present job and join me here?"</p>\n</blockquote>\n<p dir="auto">从前，有位 PC 机程序员邀请一位大型机程序员来做客。“看看我这儿多好，”他对大型机程序员说，”我有自己的操作系统和文件存储设备，不需要和任何人共享资源。软件易用、彼此兼容。考虑辞职来和我一起干吗？”</p>\n<blockquote>\n<p dir="auto">The mainframe programmer then began to describe his system to his friend, saying, "The mainframe sits like an ancient Sage meditating in the midst of the Data Center. Its disk drives lie end-to-end like a great ocean of machinery. The software is as multifaceted as a diamond, and as convoluted as a primeval jungle. The programs, each unique, move through the system like a swift-flowing river. That is why I am happy where I am."</p>\n</blockquote>\n<p dir="auto">大型机程序员开始描述他的系统：“大型机就像一个古老的圣人，坐在数据中心的中央冥想。它的磁盘驱动器彼此相连，形成巨大的机器海洋。软件像钻石般多面、像原始森林般复杂。内部的程序，个个独一无二，运行起来如同一条湍急的河流，在系统中奔腾涌动。因此，我对我现在的工作很满意。”</p>\n<blockquote>\n<p dir="auto">The personal computer programmer, upon hearing this, fell silent. But the two programmers remained friends until the end of their days.</p>\n</blockquote>\n<p dir="auto">PC 机程序员听完陷入了沉默。不过，这两位程序员做了一辈子的朋友。</p>\n<h3 id="main-heading-H3-40">8.4</h3>\n<blockquote>\n<p dir="auto">Hardware met Software on the road to Changtse. Software said: "You are Yin and I am Yang. If we travel together, we will become famous and earn vast sums of money." And so they set forth together, thinking to conquer the world.</p>\n</blockquote>\n<p dir="auto">在通往长江的路上，硬件和软件相遇了。软件说：“你是阴，我是阳。我们结伴而行，日后一定会出名、赚大钱。”于是他们一同出发，想要征服世界。</p>\n<blockquote>\n<p dir="auto">Presently, they met Firmware, who was dressed in tattered rags and hobbled along propped on a thorny stick. Firmware said to them: "The Tao lies beyond Yin and Yang. It is silent and still as a pool of water. It does not seek fame; therefore, nobody knows its presence. It does not seek fortune, for it is complete within itself. It exists beyond space and time."</p>\n</blockquote>\n<p dir="auto">不久，他们碰见了固件。固件衣衫褴褛，拄着一根拐杖，步履蹒跚地走着。固件对他们说：“道在阴阳之外。它似一潭止水，寂静无声。它不求闻达，所以没人知道它在哪儿。它不求财富，因为它自身已完整无缺。它独立于时空存在。”</p>\n<blockquote>\n<p dir="auto">Software and Hardware, ashamed, returned to their homes.</p>\n</blockquote>\n<p dir="auto">软件和硬件羞愧不已，回到了各自的家。</p>\n<h2 id="main-heading-H2-41">9. Epilogue 尾声</h2>\n<blockquote>\n<p dir="auto">Thus spake the Master Programmer:</p>\n</blockquote>\n<p dir="auto">编程大师如是说：</p>\n<blockquote>\n<p dir="auto">"Time for you to leave."</p>\n</blockquote>\n<p dir="auto">“你该离开了。”</p>',user:{login:a,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:t,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:n,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:t}],html_url:"https://github.com/yanyue404/blog/issues/198"},navList:[{text:"目录",id:"main-heading-H2-0",type:o,children:[]},{text:"1. The Silent Void 寂静的虚空",id:"main-heading-H2-1",type:o,children:[{text:"1.1",id:"main-heading-H3-2",type:e},{text:"1.2",id:"main-heading-H3-3",type:e},{text:"1.3",id:"main-heading-H3-4",type:e},{text:"1.4",id:"main-heading-H3-5",type:e}]},{text:"2. The Ancient Masters 旧时代的大师",id:"main-heading-H2-6",type:o,children:[{text:"2.1",id:"main-heading-H3-7",type:e},{text:"2.2",id:"main-heading-H3-8",type:e},{text:"2.3",id:"main-heading-H3-9",type:e},{text:"2.4",id:"main-heading-H3-10",type:e}]},{text:"3. Design 程序设计",id:"main-heading-H2-11",type:o,children:[{text:"3.1",id:"main-heading-H3-12",type:e},{text:"3.2",id:"main-heading-H3-13",type:e},{text:"3.3",id:"main-heading-H3-14",type:e},{text:"3.4",id:"main-heading-H3-15",type:e}]},{text:"4. Coding 编程",id:"main-heading-H2-16",type:o,children:[{text:"4.1",id:"main-heading-H3-17",type:e},{text:"4.2",id:"main-heading-H3-18",type:e},{text:"4.3",id:"main-heading-H3-19",type:e},{text:"4.4",id:"main-heading-H3-20",type:e}]},{text:"5. Maintenance 代码维护",id:"main-heading-H2-21",type:o,children:[{text:"5.1",id:"main-heading-H3-22",type:e},{text:"5.2",id:"main-heading-H3-23",type:e},{text:"5.3",id:"main-heading-H3-24",type:e},{text:"5.4",id:"main-heading-H3-25",type:e}]},{text:"6. Management 管理",id:"main-heading-H2-26",type:o,children:[{text:"6.1",id:"main-heading-H3-27",type:e},{text:"6.2",id:"main-heading-H3-28",type:e},{text:"6.3",id:"main-heading-H3-29",type:e},{text:"6.4",id:"main-heading-H3-30",type:e}]},{text:"7. Corporate Wisdom 企业智慧",id:"main-heading-H2-31",type:o,children:[{text:"7.1",id:"main-heading-H3-32",type:e},{text:"7.2",id:"main-heading-H3-33",type:e},{text:"7.3",id:"main-heading-H3-34",type:e},{text:"7.4",id:"main-heading-H3-35",type:e}]},{text:"8. Hardware and Software 硬件和软件",id:"main-heading-H2-36",type:o,children:[{text:"8.1",id:"main-heading-H3-37",type:e},{text:"8.2",id:"main-heading-H3-38",type:e},{text:"8.3",id:"main-heading-H3-39",type:e},{text:"8.4",id:"main-heading-H3-40",type:e}]},{text:"9. Epilogue 尾声",id:"main-heading-H2-41",type:o,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:a,userEmail:"1656800216@qq.com",repository:"blog",blogName:i,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:i,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:t},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:t,avatar_url:t,name:t,html_url:t,bio:t,type:n}},serverRendered:!0}}("H3","H2","","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

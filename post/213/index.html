@@ -1,0 +1,446 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>统一团队代码风格方案：Prettier + ESlint + CommitLint | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="目录 面临痛点 Prettier 配置代码风格自动格式化 （1）VS Code 保存时自动格式化 （2）Git Hooks 提交自动格式化 pre-commit husky (新版) （3）小结 ESlint 静态代码检查 参考链接 一、面临痛点 项目组多人开发场景，由于相互间代码格式化风格不统一，"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="统一团队代码风格方案：Prettier + ESlint + CommitLint"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="目录 面临痛点 Prettier 配置代码风格自动格式化 （1）VS Code 保存时自动格式化 （2）Git Hooks 提交自动格式化 pre-commit husky (新版) （3）小结 ESlint 静态代码检查 参考链接 一、面临痛点 项目组多人开发场景，由于相互间代码格式化风格不统一，"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="统一团队代码风格方案：Prettier + ESlint + CommitLint"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="目录 面临痛点 Prettier 配置代码风格自动格式化 （1）VS Code 保存时自动格式化 （2）Git Hooks 提交自动格式化 pre-commit husky (新版) （3）小结 ESlint 静态代码检查 参考链接 一、面临痛点 项目组多人开发场景，由于相互间代码格式化风格不统一，"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H2-0" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H2-1" title="一、面临痛点" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              一、面临痛点
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H2-2" title="二、Prettier 配置代码风格自动格式化" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              二、Prettier 配置代码风格自动格式化
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H3-3" title="1、VS Code 保存时自动格式化" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1、VS Code 保存时自动格式化
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H3-4" title="2、Git Hooks 提交自动格式化" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2、Git Hooks 提交自动格式化
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H3-5" title="pre-commit" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  pre-commit
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H3-6" title="husky(新版)" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  husky(新版)
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H3-7" title="3、小结" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3、小结
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H2-8" title="三、ESlint 静态代码检查" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              三、ESlint 静态代码检查
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/213#main-heading-H2-9" title="参考链接" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考链接
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>统一团队代码风格方案：Prettier + ESlint + CommitLint</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>统一团队代码风格方案：Prettier + ESlint + CommitLint</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2021-07-27</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 17 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">目录</h2>
+<ul dir="auto">
+<li>
+<ol dir="auto">
+<li>面临痛点</li>
+</ol>
+</li>
+<li>
+<ol start="2" dir="auto">
+<li>Prettier 配置代码风格自动格式化</li>
+</ol>
+<ul dir="auto">
+<li>（1）VS Code 保存时自动格式化</li>
+<li>（2）Git Hooks 提交自动格式化
+<ul dir="auto">
+<li>pre-commit</li>
+<li>husky (新版)</li>
+</ul>
+</li>
+<li>（3）小结</li>
+</ul>
+</li>
+<li>
+<ol start="3" dir="auto">
+<li>ESlint 静态代码检查</li>
+</ol>
+</li>
+<li>
+<ol start="4" dir="auto">
+<li>参考链接</li>
+</ol>
+</li>
+</ul>
+<h2 id="main-heading-H2-1">一、面临痛点</h2>
+<p dir="auto">项目组多人开发场景，由于相互间代码格式化风格不统一，简单修改项目单文件的几行代码修改，保存不敢使用自己的格式化工具，而一旦格式化就很容易引发多行的代码的修改，不利于代码提交 review，快速定位有效代码变更。因此，统一组内代码格式化风格尤为重要。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0746b36235c630a9c7ed0c0c146e35687d4ca9339ada9fb66695cb36b148fc81/68747470733a2f2f65637561742e746b2e636e2f746b636d732f66696c652f75706c6f61642f746b2f66696c655f6b73682f646966666572656e742d666f726d61742e706e67"><img src="https://camo.githubusercontent.com/0746b36235c630a9c7ed0c0c146e35687d4ca9339ada9fb66695cb36b148fc81/68747470733a2f2f65637561742e746b2e636e2f746b636d732f66696c652f75706c6f61642f746b2f66696c655f6b73682f646966666572656e742d666f726d61742e706e67" alt="" data-canonical-src="https://ecuat.tk.cn/tkcms/file/upload/tk/file_ksh/different-format.png" style="max-width:100%"></a></p>
+<p align="center" dir="auto">（注）上图为未做代码修改，仅格式化造成的变更</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3a34486bf8bf3ec040ca45b553f768b2fc0fbf2c55ffef6f09f9008e4e35af7d/68747470733a2f2f65637561742e746b2e636e2f746b636d732f66696c652f75706c6f61642f746b2f66696c655f6b73682f7265766965772e676966"><img src="https://camo.githubusercontent.com/3a34486bf8bf3ec040ca45b553f768b2fc0fbf2c55ffef6f09f9008e4e35af7d/68747470733a2f2f65637561742e746b2e636e2f746b636d732f66696c652f75706c6f61642f746b2f66696c655f6b73682f7265766965772e676966" align="center" data-animated-image="" data-canonical-src="https://ecuat.tk.cn/tkcms/file/upload/tk/file_ksh/review.gif" style="max-width:100%"></a></p>
+<p align="center" dir="auto">（注）代码 review 例子，格式化造成的无关变更</p>
+<h2 id="main-heading-H2-2">二、Prettier 配置代码风格自动格式化</h2>
+<h3 id="main-heading-H3-3">1、VS Code 保存时自动格式化</h3>
+<p dir="auto">（1） 在 VSCode 中安装 prettier 格式化插件 【Prettier - Code formatter<br>
+】，格式化支持的文件类型有 <code class="notranslate">{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}</code>等。</p>
+<p dir="auto">（2） 保存时自动格式化（修改 VSCode 配置文件 <strong>setting.json</strong>）</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "files.autoSave": "afterDelay", // 延时后保存
+  "editor.formatOnSave": true, // 保存时自动格式化代码
+
+  // 默认格式化插件 prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 每一种语言设置默认格式化规则
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+   "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+}'><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-s">"files.autoSave"</span>: <span class="pl-s">"afterDelay"</span><span class="pl-kos">,</span> <span class="pl-c">// 延时后保存</span>
+  <span class="pl-s">"editor.formatOnSave"</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c">// 保存时自动格式化代码</span>
+
+  <span class="pl-c">// 默认格式化插件 prettier</span>
+  <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span><span class="pl-kos">,</span>
+
+  <span class="pl-c">// 每一种语言设置默认格式化规则</span>
+  <span class="pl-s">"[javascript]"</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+   <span class="pl-s">"[css]"</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-s">"[javascriptreact]"</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-s">"[vue]"</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">（3）配置自定义格式化规则</p>
+<p dir="auto">我们可以将格式化规则写在项目根目录的 <code class="notranslate">.prettierrc</code>（还支持 <code class="notranslate">prettierrc.js</code>） 配置文件或是保存在自己的 VSCode 配置文件 <strong>setting.json</strong> 中。</p>
+<p dir="auto"><strong>.prettierrc</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "printWidth": 120, // 超过最大值换行
+  "semi": true, //  要分号分号
+  "singleQuote": false //  要单引号
+}'><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-s">"printWidth"</span>: <span class="pl-c1">120</span><span class="pl-kos">,</span> <span class="pl-c">// 超过最大值换行</span>
+  <span class="pl-s">"semi"</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c">//  要分号分号</span>
+  <span class="pl-s">"singleQuote"</span>: <span class="pl-c1">false</span> <span class="pl-c">//  要单引号</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>setting.json</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "editor.rulers": [120], // 辅助标尺
+  // ! 自定义 prettier 格式配置
+  "prettier.printWidth": 120, // 超过最大值换行
+  "prettier.semi": true, // 句尾添加分号
+  "prettier.singleQuote": false // 要单引号
+  // ? 格式化 prettier end
+}'><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-s">"editor.rulers"</span>: <span class="pl-kos">[</span><span class="pl-c1">120</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 辅助标尺</span>
+  <span class="pl-c">// ! 自定义 prettier 格式配置</span>
+  <span class="pl-s">"prettier.printWidth"</span>: <span class="pl-c1">120</span><span class="pl-kos">,</span> <span class="pl-c">// 超过最大值换行</span>
+  <span class="pl-s">"prettier.semi"</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c">// 句尾添加分号</span>
+  <span class="pl-s">"prettier.singleQuote"</span>: <span class="pl-c1">false</span> <span class="pl-c">// 要单引号</span>
+  <span class="pl-c">// ? 格式化 prettier end</span>
+<span class="pl-kos">}</span></pre></div>
+<blockquote>
+<p dir="auto">建议将上面自定义 prettier 格式配置的内容单独放置在专门的配置文件中，这一点在多人开发统一规范很有必要。</p>
+</blockquote>
+<p dir="auto">（4）设置格式化过滤项文件（根目录<code class="notranslate">.prettierignore</code> 文件）</p>
+<p dir="auto"><strong>.prettierignore</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 忽略文件夹
+build
+coverage
+
+# 过滤所有的 html 文件
+*.html
+
+# 过滤所有名为 ignore.js 的文件
+ignore.js"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 忽略文件夹</span>
+build
+coverage
+
+<span class="pl-c"><span class="pl-c">#</span> 过滤所有的 html 文件</span>
+<span class="pl-k">*</span>.html
+
+<span class="pl-c"><span class="pl-c">#</span> 过滤所有名为 ignore.js 的文件</span>
+ignore.js</pre></div>
+<h3 id="main-heading-H3-4">2、Git Hooks 提交自动格式化</h3>
+<p dir="auto">在 <code class="notranslate">git commit</code> 之前，先强制执行 prettier 格式化（防止某些成员开发期间不开启编辑器格式化）再提交。</p>
+<p dir="auto">最有效的解决方案就是将 Lint 校验放到本地，常见做法是使用 <a href="https://github.com/typicode/husky">husky</a> 或者 <a href="https://github.com/observing/pre-commit">pre-commit</a> 在本地提交之前先做一次 Lint校验。</p>
+<h3 id="main-heading-H3-5">pre-commit</h3>
+<p dir="auto">（1）安装相关依赖</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install pre-commit lint-staged prettier -D"><pre class="notranslate">$ npm install pre-commit lint-staged prettier -D</pre></div>
+<blockquote>
+<p dir="auto">安装 <code class="notranslate">pre-commit</code> 将会在 .git/hooks 文件夹下生成一个 <code class="notranslate">pre-commit</code> 文件，这个 Git 钩子可以让我们在提交代码前做一些事情。</p>
+</blockquote>
+<p dir="auto">（2）配置自动格式化钩子</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "scripts": {
+    "lint-staged": "lint-staged"
+  },
+  "pre-commit": "lint-staged",
+   "lint-staged": {
+    "*.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"lint-staged"</span>: <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span>
+  },
+  <span class="pl-ent">"pre-commit"</span>: <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span>,
+   <span class="pl-ent">"lint-staged"</span>: {
+    <span class="pl-ent">"*.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}"</span>: [
+      <span class="pl-s"><span class="pl-pds">"</span>prettier --write<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>git add<span class="pl-pds">"</span></span>
+    ]
+  }
+}</pre></div>
+<p dir="auto">格式化命令行输出效果：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='yue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)
+$ git add .
+
+yue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)
+$ git commit -m "test: cmd commit"
+[STARTED] Preparing...
+[SUCCESS] Preparing...
+[STARTED] Running tasks...
+[STARTED] Running tasks for *.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}
+[STARTED] prettier --write
+[SUCCESS] prettier --write
+[SUCCESS] Running tasks for *.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}
+[SUCCESS] Running tasks...
+[STARTED] Applying modifications...
+[SUCCESS] Applying modifications...
+[STARTED] Cleaning up...
+[SUCCESS] Cleaning up...
+[master e85957a] test: cmd commit
+ 1 file changed, 2 insertions(+)
+
+yue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)
+$ git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 412 bytes | 412.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+To http://xxx.com/react-accounts-app.git
+   316adfb..e85957a  master -> master
+'><pre class="notranslate">yue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)
+$ git add <span class="pl-c1">.</span>
+
+yue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)
+$ git commit -m <span class="pl-s"><span class="pl-pds">"</span>test: cmd commit<span class="pl-pds">"</span></span>
+[STARTED] Preparing...
+[SUCCESS] Preparing...
+[STARTED] Running tasks...
+[STARTED] Running tasks <span class="pl-k">for</span> <span class="pl-k">*</span>.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}
+[STARTED] prettier --write
+[SUCCESS] prettier --write
+[SUCCESS] Running tasks <span class="pl-k">for</span> <span class="pl-k">*</span>.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}
+[SUCCESS] Running tasks...
+[STARTED] Applying modifications...
+[SUCCESS] Applying modifications...
+[STARTED] Cleaning up...
+[SUCCESS] Cleaning up...
+[master e85957a] test: cmd commit
+ 1 file changed, 2 insertions(+)
+
+yue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)
+$ git push
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 412 bytes <span class="pl-k">|</span> 412.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
+To http://xxx.com/react-accounts-app.git
+   316adfb..e85957a  master -<span class="pl-k">></span> master
+</pre></div>
+<p dir="auto">（3）配置自定义格式化规则（同上）</p>
+<p dir="auto">（4）设置格式化过滤项文件（同上）</p>
+<h3 id="main-heading-H3-6">husky(新版)</h3>
+<p dir="auto"><strong>新版 husky 的工作原理</strong></p>
+<p dir="auto">新版的 husky 使用了从 git 2.9 开始引入的一个新功能 core.hooksPath。core.hooksPath 可以让你指定 git hooks 所在的目录而不是使用默认的.git/hooks/。这样 husky 可以使用 husky install 将 git hooks 的目录指定为.husky/，然后使用 husky add 命令向.husky/中添加 hook。通过这种方式我们就可以只添加我们需要的 git hook，而且所有的脚本都保存在了一个地方（.husky/目录下）因此也就不存在同步文件的问题了。</p>
+<p dir="auto">（1）安装 husky</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install -D husky"><pre class="notranslate">npm install -D husky</pre></div>
+<p dir="auto">（2）在 packgae.json 中添加 prepare 与 lint-staged 脚本</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "scripts": {
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+   "lint-staged": {
+    "*.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"prepare"</span>: <span class="pl-s"><span class="pl-pds">"</span>husky install<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"lint-staged"</span>: <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span>
+  },
+   <span class="pl-ent">"lint-staged"</span>: {
+    <span class="pl-ent">"*.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}"</span>: [
+      <span class="pl-s"><span class="pl-pds">"</span>prettier --write<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>git add<span class="pl-pds">"</span></span>
+    ]
+  }
+}</pre></div>
+<p dir="auto">prepare 脚本会在 npm install（不带参数）之后自动执行。也就是说当我们执行 npm install 安装完项目依赖后会执行 husky install 命令，该命令会创建.husky/目录并指定该目录为 git hooks 所在的目录。</p>
+<p dir="auto">（3）添加 git hooks，运行一下命令创建 git hooks</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='npx husky add .husky/pre-commit "lint-staged"'><pre class="notranslate">npx husky add .husky/pre-commit <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span></pre></div>
+<p dir="auto">运行完该命令后我们会看到 <code class="notranslate">.husky/</code>目录下新增了一个名为 pre-commit 的 shell 脚本。也就是说在在执行 git commit 命令时会先执行 pre-commit 这个脚本。pre-commit 脚本内容如下：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run lint-staged'><pre class="notranslate"><span class="pl-c"><span class="pl-c">#!</span>/bin/sh</span>
+<span class="pl-c1">.</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>dirname <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$0</span><span class="pl-pds">"</span></span><span class="pl-pds">)</span></span>/_/husky.sh<span class="pl-pds">"</span></span>
+
+npm run lint-staged</pre></div>
+<p dir="auto">可以看到该脚本的功能就是执行 npm run lint-staged 这个命令</p>
+<p dir="auto">（4）其他人 npm install</p>
+<p dir="auto">注意下面的关键日志输出，该命令会创建.husky/目录并指定该目录为 git hooks 所在的目录，husky 配置的钩子就可以正常使用了。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="> husky install
+
+husky - Git hooks installed"><pre class="notranslate"><span class="pl-k">></span> husky install
+
+husky - Git hooks installed</pre></div>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='$ npm i
+
+> core-js@2.6.12 postinstall D:\Powerful\h5-editer\node_modules\core-js
+> node -e "try{require(&#39;./postinstall&#39;)}catch(e){}"
+
+Thank you for using core-js ( https://github.com/zloirock/core-js ) for polyfilling JavaScript standard library!
+
+The project needs your help! Please consider supporting of core-js on Open Collective or Patreon:
+> https://opencollective.com/core-js
+> https://www.patreon.com/zloirock
+
+Also, the author of core-js ( https://github.com/zloirock ) is looking for a good job -)
+
+
+> esbuild@0.12.8 postinstall D:\Powerful\h5-editer\node_modules\esbuild
+> node install.js
+
+
+> postinstall-postinstall@2.1.0 postinstall D:\Powerful\h5-editer\node_modules\postinstall-postinstall
+> node ./run.js
+
+
+> vite-vue-starter@0.0.0 prepare D:\Powerful\h5-editer
+> husky install
+
+husky - Git hooks installed
+npm WARN vite-vue-starter@0.0.0 No repository field.
+npm WARN vite-vue-starter@0.0.0 No license field.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"ia32"})
+
+added 615 packages from 1291 contributors and audited 616 packages in 84.989s
+
+51 packages are looking for funding
+  run `npm fund` for details
+
+found 206 vulnerabilities (16 moderate, 190 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+'><pre class="notranslate">$ npm i
+
+<span class="pl-k">></span> core-js@2.6.12 postinstall D:<span class="pl-cce">\P</span>owerful<span class="pl-cce">\h</span>5-editer<span class="pl-cce">\n</span>ode_modules<span class="pl-cce">\c</span>ore-js
+<span class="pl-k">></span> node -e <span class="pl-s"><span class="pl-pds">"</span>try{require('./postinstall')}catch(e){}<span class="pl-pds">"</span></span>
+
+Thank you <span class="pl-k">for</span> using core-js ( https://github.com/zloirock/core-js ) <span class="pl-k">for</span> polyfilling JavaScript standard library<span class="pl-k">!</span>
+
+The project needs your help<span class="pl-k">!</span> Please consider supporting of core-js on Open Collective or Patreon:
+<span class="pl-k">></span> https://opencollective.com/core-js
+<span class="pl-k">></span> https://www.patreon.com/zloirock
+
+Also, the author of core-js ( https://github.com/zloirock ) is looking <span class="pl-k">for</span> a good job -)
+
+
+<span class="pl-k">></span> esbuild@0.12.8 postinstall D:<span class="pl-cce">\P</span>owerful<span class="pl-cce">\h</span>5-editer<span class="pl-cce">\n</span>ode_modules<span class="pl-cce">\e</span>sbuild
+<span class="pl-k">></span> node install.js
+
+
+<span class="pl-k">></span> postinstall-postinstall@2.1.0 postinstall D:<span class="pl-cce">\P</span>owerful<span class="pl-cce">\h</span>5-editer<span class="pl-cce">\n</span>ode_modules<span class="pl-cce">\p</span>ostinstall-postinstall
+<span class="pl-k">></span> node ./run.js
+
+
+<span class="pl-k">></span> vite-vue-starter@0.0.0 prepare D:<span class="pl-cce">\P</span>owerful<span class="pl-cce">\h</span>5-editer
+<span class="pl-k">></span> husky install
+
+husky - Git hooks installed
+npm WARN vite-vue-starter@0.0.0 No repository field.
+npm WARN vite-vue-starter@0.0.0 No license field.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules<span class="pl-cce">\f</span>sevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="pl-k">for</span> fsevents@2.3.2: wanted {<span class="pl-s"><span class="pl-pds">"</span>os<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>darwin<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>arch<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>any<span class="pl-pds">"</span></span>} (current: {<span class="pl-s"><span class="pl-pds">"</span>os<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>win32<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>arch<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>ia32<span class="pl-pds">"</span></span>})
+
+added 615 packages from 1291 contributors and audited 616 packages <span class="pl-k">in</span> 84.989s
+
+51 packages are looking <span class="pl-k">for</span> funding
+  run <span class="pl-s"><span class="pl-pds">`</span>npm fund<span class="pl-pds">`</span></span> <span class="pl-k">for</span> details
+
+found 206 vulnerabilities (16 moderate, 190 high)
+  run <span class="pl-s"><span class="pl-pds">`</span>npm audit fix<span class="pl-pds">`</span></span> to fix them, or <span class="pl-s"><span class="pl-pds">`</span>npm audit<span class="pl-pds">`</span></span> <span class="pl-k">for</span> details
+</pre></div>
+<p dir="auto"><strong>需要注意的点</strong></p>
+<p dir="auto">使用新版本 husky 进行配置后，下面这种配置方式就不再需要了，可以移除。</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"husky"</span>: {
+    <span class="pl-ent">"hooks"</span>: {
+      <span class="pl-ent">"pre-commit"</span>: <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span>
+    }
+  }
+}</pre></div>
+<h3 id="main-heading-H3-7">3、小结</h3>
+<p dir="auto">方案一：VS Code 保存时自动格式化。配置完成使用 <code class="notranslate">Ctrl+S</code> 保存代码就可以自动格式化了 ！由开发者来决定哪些文件需要格式化。</p>
+<p dir="auto">方案二：Git 整合提交自动格式化，配置完成后提交代码就可以自动格式化了 ！需要注意的是配置不需要格式化的过滤项文件。</p>
+<p dir="auto">其实，这两种方案也可以结合起来，在本地开发的时候进行自动格式化，提交前的时候也进行格式化操作，确保代码风格一致性。</p>
+<p dir="auto">最佳的 lint 规范流程就是推荐团队成员先在自己的编辑器中配置 eslint，在 webpack 中配置并开启 eslint-loader 错误提示，这样平时写的时候编辑器就能帮你修正一些简单的格式错误，同时提醒你有哪些不符合 lint 规范的的地方，并在命令行中提示你错误。</p>
+<p dir="auto">但这并不是强制的，有些团队成员或者说刚来的实习生没有在编辑器中配置或者无视命令行中提示的错误，这时候就需要配置pre-commit 这种强制性校验的东西，保证所有提交到远程仓库的内容都是符合团队规范的。</p>
+<h2 id="main-heading-H2-8">三、ESlint 静态代码检查</h2>
+<p dir="auto">TODO</p>
+<h2 id="main-heading-H2-9">参考链接</h2>
+<ul dir="auto">
+<li><a href="https://blog.csdn.net/Banterise/article/details/115206267" rel="nofollow">husky自定义目录钩子的正确使用</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/391709116" rel="nofollow">Git Commit Message校验踩坑指南</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/366786798" rel="nofollow">husky使用总结</a></li>
+<li><a href="https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/git-hook.html" rel="nofollow">vue-element-admin - git-hook</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/64627216" rel="nofollow">VS Code Prettier + ESlint 格式化Vue代码及遇到问题</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,n,a,t,p,e){return{layout:"default",data:[{post:{id:953828029,number:213,title:"统一团队代码风格方案：Prettier + ESlint + CommitLint",created_at:"2021-07-27T12:24:02Z",updated_at:"2022-08-11T15:44:50Z",body_html:'<h2 id="main-heading-H2-0">目录</h2>\n<ul dir="auto">\n<li>\n<ol dir="auto">\n<li>面临痛点</li>\n</ol>\n</li>\n<li>\n<ol start="2" dir="auto">\n<li>Prettier 配置代码风格自动格式化</li>\n</ol>\n<ul dir="auto">\n<li>（1）VS Code 保存时自动格式化</li>\n<li>（2）Git Hooks 提交自动格式化\n<ul dir="auto">\n<li>pre-commit</li>\n<li>husky (新版)</li>\n</ul>\n</li>\n<li>（3）小结</li>\n</ul>\n</li>\n<li>\n<ol start="3" dir="auto">\n<li>ESlint 静态代码检查</li>\n</ol>\n</li>\n<li>\n<ol start="4" dir="auto">\n<li>参考链接</li>\n</ol>\n</li>\n</ul>\n<h2 id="main-heading-H2-1">一、面临痛点</h2>\n<p dir="auto">项目组多人开发场景，由于相互间代码格式化风格不统一，简单修改项目单文件的几行代码修改，保存不敢使用自己的格式化工具，而一旦格式化就很容易引发多行的代码的修改，不利于代码提交 review，快速定位有效代码变更。因此，统一组内代码格式化风格尤为重要。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0746b36235c630a9c7ed0c0c146e35687d4ca9339ada9fb66695cb36b148fc81/68747470733a2f2f65637561742e746b2e636e2f746b636d732f66696c652f75706c6f61642f746b2f66696c655f6b73682f646966666572656e742d666f726d61742e706e67"><img src="https://camo.githubusercontent.com/0746b36235c630a9c7ed0c0c146e35687d4ca9339ada9fb66695cb36b148fc81/68747470733a2f2f65637561742e746b2e636e2f746b636d732f66696c652f75706c6f61642f746b2f66696c655f6b73682f646966666572656e742d666f726d61742e706e67" alt="" data-canonical-src="https://ecuat.tk.cn/tkcms/file/upload/tk/file_ksh/different-format.png" style="max-width: 100%;"></a></p>\n<p align="center" dir="auto">（注）上图为未做代码修改，仅格式化造成的变更</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3a34486bf8bf3ec040ca45b553f768b2fc0fbf2c55ffef6f09f9008e4e35af7d/68747470733a2f2f65637561742e746b2e636e2f746b636d732f66696c652f75706c6f61642f746b2f66696c655f6b73682f7265766965772e676966"><img src="https://camo.githubusercontent.com/3a34486bf8bf3ec040ca45b553f768b2fc0fbf2c55ffef6f09f9008e4e35af7d/68747470733a2f2f65637561742e746b2e636e2f746b636d732f66696c652f75706c6f61642f746b2f66696c655f6b73682f7265766965772e676966" align="center" data-animated-image="" data-canonical-src="https://ecuat.tk.cn/tkcms/file/upload/tk/file_ksh/review.gif" style="max-width: 100%;"></a></p>\n<p align="center" dir="auto">（注）代码 review 例子，格式化造成的无关变更</p>\n<h2 id="main-heading-H2-2">二、Prettier 配置代码风格自动格式化</h2>\n<h3 id="main-heading-H3-3">1、VS Code 保存时自动格式化</h3>\n<p dir="auto">（1） 在 VSCode 中安装 prettier 格式化插件 【Prettier - Code formatter<br>\n】，格式化支持的文件类型有 <code class="notranslate">{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}</code>等。</p>\n<p dir="auto">（2） 保存时自动格式化（修改 VSCode 配置文件 <strong>setting.json</strong>）</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;files.autoSave&quot;: &quot;afterDelay&quot;, // 延时后保存\n  &quot;editor.formatOnSave&quot;: true, // 保存时自动格式化代码\n\n  // 默认格式化插件 prettier\n  &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;,\n\n  // 每一种语言设置默认格式化规则\n  &quot;[javascript]&quot;: {\n    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;\n  },\n   &quot;[css]&quot;: {\n    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;\n  },\n  &quot;[javascriptreact]&quot;: {\n    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;\n  },\n  &quot;[vue]&quot;: {\n    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;\n  },\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-s">"files.autoSave"</span>: <span class="pl-s">"afterDelay"</span><span class="pl-kos">,</span> <span class="pl-c">// 延时后保存</span>\n  <span class="pl-s">"editor.formatOnSave"</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c">// 保存时自动格式化代码</span>\n\n  <span class="pl-c">// 默认格式化插件 prettier</span>\n  <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span><span class="pl-kos">,</span>\n\n  <span class="pl-c">// 每一种语言设置默认格式化规则</span>\n  <span class="pl-s">"[javascript]"</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n   <span class="pl-s">"[css]"</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-s">"[javascriptreact]"</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-s">"[vue]"</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"editor.defaultFormatter"</span>: <span class="pl-s">"esbenp.prettier-vscode"</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">（3）配置自定义格式化规则</p>\n<p dir="auto">我们可以将格式化规则写在项目根目录的 <code class="notranslate">.prettierrc</code>（还支持 <code class="notranslate">prettierrc.js</code>） 配置文件或是保存在自己的 VSCode 配置文件 <strong>setting.json</strong> 中。</p>\n<p dir="auto"><strong>.prettierrc</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;printWidth&quot;: 120, // 超过最大值换行\n  &quot;semi&quot;: true, //  要分号分号\n  &quot;singleQuote&quot;: false //  要单引号\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-s">"printWidth"</span>: <span class="pl-c1">120</span><span class="pl-kos">,</span> <span class="pl-c">// 超过最大值换行</span>\n  <span class="pl-s">"semi"</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c">//  要分号分号</span>\n  <span class="pl-s">"singleQuote"</span>: <span class="pl-c1">false</span> <span class="pl-c">//  要单引号</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>setting.json</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;editor.rulers&quot;: [120], // 辅助标尺\n  // ! 自定义 prettier 格式配置\n  &quot;prettier.printWidth&quot;: 120, // 超过最大值换行\n  &quot;prettier.semi&quot;: true, // 句尾添加分号\n  &quot;prettier.singleQuote&quot;: false // 要单引号\n  // ? 格式化 prettier end\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-s">"editor.rulers"</span>: <span class="pl-kos">[</span><span class="pl-c1">120</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 辅助标尺</span>\n  <span class="pl-c">// ! 自定义 prettier 格式配置</span>\n  <span class="pl-s">"prettier.printWidth"</span>: <span class="pl-c1">120</span><span class="pl-kos">,</span> <span class="pl-c">// 超过最大值换行</span>\n  <span class="pl-s">"prettier.semi"</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span> <span class="pl-c">// 句尾添加分号</span>\n  <span class="pl-s">"prettier.singleQuote"</span>: <span class="pl-c1">false</span> <span class="pl-c">// 要单引号</span>\n  <span class="pl-c">// ? 格式化 prettier end</span>\n<span class="pl-kos">}</span></pre></div>\n<blockquote>\n<p dir="auto">建议将上面自定义 prettier 格式配置的内容单独放置在专门的配置文件中，这一点在多人开发统一规范很有必要。</p>\n</blockquote>\n<p dir="auto">（4）设置格式化过滤项文件（根目录<code class="notranslate">.prettierignore</code> 文件）</p>\n<p dir="auto"><strong>.prettierignore</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 忽略文件夹\nbuild\ncoverage\n\n# 过滤所有的 html 文件\n*.html\n\n# 过滤所有名为 ignore.js 的文件\nignore.js"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 忽略文件夹</span>\nbuild\ncoverage\n\n<span class="pl-c"><span class="pl-c">#</span> 过滤所有的 html 文件</span>\n<span class="pl-k">*</span>.html\n\n<span class="pl-c"><span class="pl-c">#</span> 过滤所有名为 ignore.js 的文件</span>\nignore.js</pre></div>\n<h3 id="main-heading-H3-4">2、Git Hooks 提交自动格式化</h3>\n<p dir="auto">在 <code class="notranslate">git commit</code> 之前，先强制执行 prettier 格式化（防止某些成员开发期间不开启编辑器格式化）再提交。</p>\n<p dir="auto">最有效的解决方案就是将 Lint 校验放到本地，常见做法是使用 <a href="https://github.com/typicode/husky">husky</a> 或者 <a href="https://github.com/observing/pre-commit">pre-commit</a> 在本地提交之前先做一次 Lint校验。</p>\n<h3 id="main-heading-H3-5">pre-commit</h3>\n<p dir="auto">（1）安装相关依赖</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install pre-commit lint-staged prettier -D"><pre class="notranslate">$ npm install pre-commit lint-staged prettier -D</pre></div>\n<blockquote>\n<p dir="auto">安装 <code class="notranslate">pre-commit</code> 将会在 .git/hooks 文件夹下生成一个 <code class="notranslate">pre-commit</code> 文件，这个 Git 钩子可以让我们在提交代码前做一些事情。</p>\n</blockquote>\n<p dir="auto">（2）配置自动格式化钩子</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;scripts&quot;: {\n    &quot;lint-staged&quot;: &quot;lint-staged&quot;\n  },\n  &quot;pre-commit&quot;: &quot;lint-staged&quot;,\n   &quot;lint-staged&quot;: {\n    &quot;*.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}&quot;: [\n      &quot;prettier --write&quot;,\n      &quot;git add&quot;\n    ]\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"scripts"</span>: {\n    <span class="pl-ent">"lint-staged"</span>: <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span>\n  },\n  <span class="pl-ent">"pre-commit"</span>: <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span>,\n   <span class="pl-ent">"lint-staged"</span>: {\n    <span class="pl-ent">"*.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}"</span>: [\n      <span class="pl-s"><span class="pl-pds">"</span>prettier --write<span class="pl-pds">"</span></span>,\n      <span class="pl-s"><span class="pl-pds">"</span>git add<span class="pl-pds">"</span></span>\n    ]\n  }\n}</pre></div>\n<p dir="auto">格式化命令行输出效果：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)\n$ git add .\n\nyue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)\n$ git commit -m &quot;test: cmd commit&quot;\n[STARTED] Preparing...\n[SUCCESS] Preparing...\n[STARTED] Running tasks...\n[STARTED] Running tasks for *.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}\n[STARTED] prettier --write\n[SUCCESS] prettier --write\n[SUCCESS] Running tasks for *.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}\n[SUCCESS] Running tasks...\n[STARTED] Applying modifications...\n[SUCCESS] Applying modifications...\n[STARTED] Cleaning up...\n[SUCCESS] Cleaning up...\n[master e85957a] test: cmd commit\n 1 file changed, 2 insertions(+)\n\nyue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)\n$ git push\nEnumerating objects: 9, done.\nCounting objects: 100% (9/9), done.\nDelta compression using up to 4 threads\nCompressing objects: 100% (4/4), done.\nWriting objects: 100% (5/5), 412 bytes | 412.00 KiB/s, done.\nTotal 5 (delta 3), reused 0 (delta 0), pack-reused 0\nTo http://xxx.com/react-accounts-app.git\n   316adfb..e85957a  master -&gt; master\n"><pre class="notranslate">yue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)\n$ git add <span class="pl-c1">.</span>\n\nyue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)\n$ git commit -m <span class="pl-s"><span class="pl-pds">"</span>test: cmd commit<span class="pl-pds">"</span></span>\n[STARTED] Preparing...\n[SUCCESS] Preparing...\n[STARTED] Running tasks...\n[STARTED] Running tasks <span class="pl-k">for</span> <span class="pl-k">*</span>.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}\n[STARTED] prettier --write\n[SUCCESS] prettier --write\n[SUCCESS] Running tasks <span class="pl-k">for</span> <span class="pl-k">*</span>.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}\n[SUCCESS] Running tasks...\n[STARTED] Applying modifications...\n[SUCCESS] Applying modifications...\n[STARTED] Cleaning up...\n[SUCCESS] Cleaning up...\n[master e85957a] test: cmd commit\n 1 file changed, 2 insertions(+)\n\nyue@03-709-6151 MINGW64 /d/Self/react-accounts-app (master)\n$ git push\nEnumerating objects: 9, done.\nCounting objects: 100% (9/9), done.\nDelta compression using up to 4 threads\nCompressing objects: 100% (4/4), done.\nWriting objects: 100% (5/5), 412 bytes <span class="pl-k">|</span> 412.00 KiB/s, done.\nTotal 5 (delta 3), reused 0 (delta 0), pack-reused 0\nTo http://xxx.com/react-accounts-app.git\n   316adfb..e85957a  master -<span class="pl-k">&gt;</span> master\n</pre></div>\n<p dir="auto">（3）配置自定义格式化规则（同上）</p>\n<p dir="auto">（4）设置格式化过滤项文件（同上）</p>\n<h3 id="main-heading-H3-6">husky(新版)</h3>\n<p dir="auto"><strong>新版 husky 的工作原理</strong></p>\n<p dir="auto">新版的 husky 使用了从 git 2.9 开始引入的一个新功能 core.hooksPath。core.hooksPath 可以让你指定 git hooks 所在的目录而不是使用默认的.git/hooks/。这样 husky 可以使用 husky install 将 git hooks 的目录指定为.husky/，然后使用 husky add 命令向.husky/中添加 hook。通过这种方式我们就可以只添加我们需要的 git hook，而且所有的脚本都保存在了一个地方（.husky/目录下）因此也就不存在同步文件的问题了。</p>\n<p dir="auto">（1）安装 husky</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install -D husky"><pre class="notranslate">npm install -D husky</pre></div>\n<p dir="auto">（2）在 packgae.json 中添加 prepare 与 lint-staged 脚本</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;scripts&quot;: {\n    &quot;prepare&quot;: &quot;husky install&quot;,\n    &quot;lint-staged&quot;: &quot;lint-staged&quot;\n  },\n   &quot;lint-staged&quot;: {\n    &quot;*.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}&quot;: [\n      &quot;prettier --write&quot;,\n      &quot;git add&quot;\n    ]\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"scripts"</span>: {\n    <span class="pl-ent">"prepare"</span>: <span class="pl-s"><span class="pl-pds">"</span>husky install<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"lint-staged"</span>: <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span>\n  },\n   <span class="pl-ent">"lint-staged"</span>: {\n    <span class="pl-ent">"*.{js,jsx,vue,css,html,scss,md,json,wxml,wxss,wxs}"</span>: [\n      <span class="pl-s"><span class="pl-pds">"</span>prettier --write<span class="pl-pds">"</span></span>,\n      <span class="pl-s"><span class="pl-pds">"</span>git add<span class="pl-pds">"</span></span>\n    ]\n  }\n}</pre></div>\n<p dir="auto">prepare 脚本会在 npm install（不带参数）之后自动执行。也就是说当我们执行 npm install 安装完项目依赖后会执行 husky install 命令，该命令会创建.husky/目录并指定该目录为 git hooks 所在的目录。</p>\n<p dir="auto">（3）添加 git hooks，运行一下命令创建 git hooks</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npx husky add .husky/pre-commit &quot;lint-staged&quot;"><pre class="notranslate">npx husky add .husky/pre-commit <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span></pre></div>\n<p dir="auto">运行完该命令后我们会看到 <code class="notranslate">.husky/</code>目录下新增了一个名为 pre-commit 的 shell 脚本。也就是说在在执行 git commit 命令时会先执行 pre-commit 这个脚本。pre-commit 脚本内容如下：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="#!/bin/sh\n. &quot;$(dirname &quot;$0&quot;)/_/husky.sh&quot;\n\nnpm run lint-staged"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#!</span>/bin/sh</span>\n<span class="pl-c1">.</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>dirname <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$0</span><span class="pl-pds">"</span></span><span class="pl-pds">)</span></span>/_/husky.sh<span class="pl-pds">"</span></span>\n\nnpm run lint-staged</pre></div>\n<p dir="auto">可以看到该脚本的功能就是执行 npm run lint-staged 这个命令</p>\n<p dir="auto">（4）其他人 npm install</p>\n<p dir="auto">注意下面的关键日志输出，该命令会创建.husky/目录并指定该目录为 git hooks 所在的目录，husky 配置的钩子就可以正常使用了。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&gt; husky install\n\nhusky - Git hooks installed"><pre class="notranslate"><span class="pl-k">&gt;</span> husky install\n\nhusky - Git hooks installed</pre></div>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm i\n\n&gt; core-js@2.6.12 postinstall D:\\Powerful\\h5-editer\\node_modules\\core-js\n&gt; node -e &quot;try{require(\'./postinstall\')}catch(e){}&quot;\n\nThank you for using core-js ( https://github.com/zloirock/core-js ) for polyfilling JavaScript standard library!\n\nThe project needs your help! Please consider supporting of core-js on Open Collective or Patreon:\n&gt; https://opencollective.com/core-js\n&gt; https://www.patreon.com/zloirock\n\nAlso, the author of core-js ( https://github.com/zloirock ) is looking for a good job -)\n\n\n&gt; esbuild@0.12.8 postinstall D:\\Powerful\\h5-editer\\node_modules\\esbuild\n&gt; node install.js\n\n\n&gt; postinstall-postinstall@2.1.0 postinstall D:\\Powerful\\h5-editer\\node_modules\\postinstall-postinstall\n&gt; node ./run.js\n\n\n&gt; vite-vue-starter@0.0.0 prepare D:\\Powerful\\h5-editer\n&gt; husky install\n\nhusky - Git hooks installed\nnpm WARN vite-vue-starter@0.0.0 No repository field.\nnpm WARN vite-vue-starter@0.0.0 No license field.\nnpm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\\fsevents):\nnpm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;ia32&quot;})\n\nadded 615 packages from 1291 contributors and audited 616 packages in 84.989s\n\n51 packages are looking for funding\n  run `npm fund` for details\n\nfound 206 vulnerabilities (16 moderate, 190 high)\n  run `npm audit fix` to fix them, or `npm audit` for details\n"><pre class="notranslate">$ npm i\n\n<span class="pl-k">&gt;</span> core-js@2.6.12 postinstall D:<span class="pl-cce">\\P</span>owerful<span class="pl-cce">\\h</span>5-editer<span class="pl-cce">\\n</span>ode_modules<span class="pl-cce">\\c</span>ore-js\n<span class="pl-k">&gt;</span> node -e <span class="pl-s"><span class="pl-pds">"</span>try{require(\'./postinstall\')}catch(e){}<span class="pl-pds">"</span></span>\n\nThank you <span class="pl-k">for</span> using core-js ( https://github.com/zloirock/core-js ) <span class="pl-k">for</span> polyfilling JavaScript standard library<span class="pl-k">!</span>\n\nThe project needs your help<span class="pl-k">!</span> Please consider supporting of core-js on Open Collective or Patreon:\n<span class="pl-k">&gt;</span> https://opencollective.com/core-js\n<span class="pl-k">&gt;</span> https://www.patreon.com/zloirock\n\nAlso, the author of core-js ( https://github.com/zloirock ) is looking <span class="pl-k">for</span> a good job -)\n\n\n<span class="pl-k">&gt;</span> esbuild@0.12.8 postinstall D:<span class="pl-cce">\\P</span>owerful<span class="pl-cce">\\h</span>5-editer<span class="pl-cce">\\n</span>ode_modules<span class="pl-cce">\\e</span>sbuild\n<span class="pl-k">&gt;</span> node install.js\n\n\n<span class="pl-k">&gt;</span> postinstall-postinstall@2.1.0 postinstall D:<span class="pl-cce">\\P</span>owerful<span class="pl-cce">\\h</span>5-editer<span class="pl-cce">\\n</span>ode_modules<span class="pl-cce">\\p</span>ostinstall-postinstall\n<span class="pl-k">&gt;</span> node ./run.js\n\n\n<span class="pl-k">&gt;</span> vite-vue-starter@0.0.0 prepare D:<span class="pl-cce">\\P</span>owerful<span class="pl-cce">\\h</span>5-editer\n<span class="pl-k">&gt;</span> husky install\n\nhusky - Git hooks installed\nnpm WARN vite-vue-starter@0.0.0 No repository field.\nnpm WARN vite-vue-starter@0.0.0 No license field.\nnpm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules<span class="pl-cce">\\f</span>sevents):\nnpm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="pl-k">for</span> fsevents@2.3.2: wanted {<span class="pl-s"><span class="pl-pds">"</span>os<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>darwin<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>arch<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>any<span class="pl-pds">"</span></span>} (current: {<span class="pl-s"><span class="pl-pds">"</span>os<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>win32<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>arch<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>ia32<span class="pl-pds">"</span></span>})\n\nadded 615 packages from 1291 contributors and audited 616 packages <span class="pl-k">in</span> 84.989s\n\n51 packages are looking <span class="pl-k">for</span> funding\n  run <span class="pl-s"><span class="pl-pds">`</span>npm fund<span class="pl-pds">`</span></span> <span class="pl-k">for</span> details\n\nfound 206 vulnerabilities (16 moderate, 190 high)\n  run <span class="pl-s"><span class="pl-pds">`</span>npm audit fix<span class="pl-pds">`</span></span> to fix them, or <span class="pl-s"><span class="pl-pds">`</span>npm audit<span class="pl-pds">`</span></span> <span class="pl-k">for</span> details\n</pre></div>\n<p dir="auto"><strong>需要注意的点</strong></p>\n<p dir="auto">使用新版本 husky 进行配置后，下面这种配置方式就不再需要了，可以移除。</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;husky&quot;: {\n    &quot;hooks&quot;: {\n      &quot;pre-commit&quot;: &quot;lint-staged&quot;\n    }\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"husky"</span>: {\n    <span class="pl-ent">"hooks"</span>: {\n      <span class="pl-ent">"pre-commit"</span>: <span class="pl-s"><span class="pl-pds">"</span>lint-staged<span class="pl-pds">"</span></span>\n    }\n  }\n}</pre></div>\n<h3 id="main-heading-H3-7">3、小结</h3>\n<p dir="auto">方案一：VS Code 保存时自动格式化。配置完成使用 <code class="notranslate">Ctrl+S</code> 保存代码就可以自动格式化了 ！由开发者来决定哪些文件需要格式化。</p>\n<p dir="auto">方案二：Git 整合提交自动格式化，配置完成后提交代码就可以自动格式化了 ！需要注意的是配置不需要格式化的过滤项文件。</p>\n<p dir="auto">其实，这两种方案也可以结合起来，在本地开发的时候进行自动格式化，提交前的时候也进行格式化操作，确保代码风格一致性。</p>\n<p dir="auto">最佳的 lint 规范流程就是推荐团队成员先在自己的编辑器中配置 eslint，在 webpack 中配置并开启 eslint-loader 错误提示，这样平时写的时候编辑器就能帮你修正一些简单的格式错误，同时提醒你有哪些不符合 lint 规范的的地方，并在命令行中提示你错误。</p>\n<p dir="auto">但这并不是强制的，有些团队成员或者说刚来的实习生没有在编辑器中配置或者无视命令行中提示的错误，这时候就需要配置pre-commit 这种强制性校验的东西，保证所有提交到远程仓库的内容都是符合团队规范的。</p>\n<h2 id="main-heading-H2-8">三、ESlint 静态代码检查</h2>\n<p dir="auto">TODO</p>\n<h2 id="main-heading-H2-9">参考链接</h2>\n<ul dir="auto">\n<li><a href="https://blog.csdn.net/Banterise/article/details/115206267" rel="nofollow">husky自定义目录钩子的正确使用</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/391709116" rel="nofollow">Git Commit Message校验踩坑指南</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/366786798" rel="nofollow">husky使用总结</a></li>\n<li><a href="https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/git-hook.html" rel="nofollow">vue-element-admin - git-hook</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/64627216" rel="nofollow">VS Code Prettier + ESlint 格式化Vue代码及遇到问题</a></li>\n</ul>',user:{login:t,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:p,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/213"},navList:[{text:"目录",id:"main-heading-H2-0",type:n,children:[]},{text:"一、面临痛点",id:"main-heading-H2-1",type:n,children:[]},{text:"二、Prettier 配置代码风格自动格式化",id:"main-heading-H2-2",type:n,children:[{text:"1、VS Code 保存时自动格式化",id:"main-heading-H3-3",type:a},{text:"2、Git Hooks 提交自动格式化",id:"main-heading-H3-4",type:a},{text:"pre-commit",id:"main-heading-H3-5",type:a},{text:"husky(新版)",id:"main-heading-H3-6",type:a},{text:"3、小结",id:"main-heading-H3-7",type:a}]},{text:"三、ESlint 静态代码检查",id:"main-heading-H2-8",type:n,children:[]},{text:"参考链接",id:"main-heading-H2-9",type:n,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:t,userEmail:"1656800216@qq.com",repository:"blog",blogName:e,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:e,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:p}},serverRendered:!0}}("","H2","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

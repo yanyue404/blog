@@ -1,0 +1,649 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Claude Code 中文实战手册：常用命令、工作流程与最佳实践 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content='基本命令 以下是日常使用中最重要的命令： 命令 功能 示例 claude 启动交互模式 claude claude "task" 运行一次性任务 claude "fix the build error" claude -p "query" 运行一次性查询，然后退出 claude -p "explai'><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Claude Code 中文实战手册：常用命令、工作流程与最佳实践"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content='基本命令 以下是日常使用中最重要的命令： 命令 功能 示例 claude 启动交互模式 claude claude "task" 运行一次性任务 claude "fix the build error" claude -p "query" 运行一次性查询，然后退出 claude -p "explai'><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Claude Code 中文实战手册：常用命令、工作流程与最佳实践"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content='基本命令 以下是日常使用中最重要的命令： 命令 功能 示例 claude 启动交互模式 claude claude "task" 运行一次性任务 claude "fix the build error" claude -p "query" 运行一次性查询，然后退出 claude -p "explai'><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H2-0" title="基本命令" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              基本命令
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H2-1" title="常见工作流程" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              常见工作流程
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-2" title="1) 快速理解新代码库" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1) 快速理解新代码库
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-3" title="2) 高效修复错误" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2) 高效修复错误
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-4" title="3) 安全重构代码" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3) 安全重构代码
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-5" title="4) 使用 Plan Mode 做安全分析" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4) 使用 Plan Mode 做安全分析
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-6" title="5) 补测试与边界覆盖" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5) 补测试与边界覆盖
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-7" title="6) 创建 PR（拉取请求）" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  6) 创建 PR（拉取请求）
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-8" title="7) 文档补全与规范化" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  7) 文档补全与规范化
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-9" title="使用图像" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  使用图像
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-10" title="引用文件和目录" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  引用文件和目录
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-11" title="8) 管理会话与恢复上下文" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  8) 管理会话与恢复上下文
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-12" title="9) 并行任务：使用 Git worktree" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  9) 并行任务：使用 Git worktree
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-13" title="10) 把 Claude 当作命令行工具集成" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  10) 把 Claude 当作命令行工具集成
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H2-14" title="Claude Code 最佳实践" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Claude Code 最佳实践
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-15" title="给 Claude 一种验证其工作的方式" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  给 Claude 一种验证其工作的方式
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-16" title="先探索，再规划，最后编码" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  先探索，再规划，最后编码
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-17" title="在提示中提供具体的上下文" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  在提示中提供具体的上下文
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-18" title="配置你的环境" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  配置你的环境
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-19" title="有效沟通" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  有效沟通
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-20" title="管理你的会话" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  管理你的会话
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-21" title="避免常见失败模式" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  避免常见失败模式
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-22" title="培养你的直觉" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  培养你的直觉
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H2-23" title="相关资源" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              相关资源
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H2-24" title="扩展 Claude Code" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              扩展 Claude Code
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-25" title="概述" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  概述
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/306#main-heading-H3-26" title="将功能与您的目标相匹配" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  将功能与您的目标相匹配
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Claude Code 中文实战手册：常用命令、工作流程与最佳实践</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Claude Code 中文实战手册：常用命令、工作流程与最佳实践</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2026-03-26</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 23 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">基本命令</h2>
+<p dir="auto">以下是日常使用中最重要的命令：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">claude</code></td>
+<td>启动交互模式</td>
+<td><code class="notranslate">claude</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">claude "task"</code></td>
+<td>运行一次性任务</td>
+<td><code class="notranslate">claude "fix the build error"</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">claude -p "query"</code></td>
+<td>运行一次性查询，然后退出</td>
+<td><code class="notranslate">claude -p "explain this function"</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">claude -c</code></td>
+<td>在当前目录中继续最近的对话</td>
+<td><code class="notranslate">claude -c</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">claude -r</code></td>
+<td>恢复之前的对话</td>
+<td><code class="notranslate">claude -r</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">claude commit</code></td>
+<td>创建 Git 提交</td>
+<td><code class="notranslate">claude commit</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">/</code></td>
+<td>查看内置命令和技能</td>
+<td><code class="notranslate">/</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">!</code></td>
+<td>Bash 模式, 执行 Bash 命令</td>
+<td><code class="notranslate">!ls</code> <code class="notranslate">!git status</code> <code class="notranslate">!npm run build</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">/clear</code></td>
+<td>清除对话历史</td>
+<td><code class="notranslate">/clear</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">/btw</code></td>
+<td>侧边快速提问</td>
+<td><code class="notranslate">/btw 这个函数的返回值是什么类型</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">/help</code> 或 <code class="notranslate">?</code></td>
+<td>显示可用命令</td>
+<td><code class="notranslate">/help</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">exit</code>  或 两次<code class="notranslate">Ctrl+C</code></td>
+<td>退出 Claude Code</td>
+<td>两次<code class="notranslate">exit</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+C</code> 或两次 <code class="notranslate">ESC</code></td>
+<td>取消当前输入或生成，标准中断</td>
+<td><code class="notranslate">Ctrl+C</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+Enter</code></td>
+<td>换行输出提示词</td>
+<td><code class="notranslate">Ctrl+Enter</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+o</code></td>
+<td>切换详细输出模式（显示更多思考过程或完整日志）</td>
+<td><code class="notranslate">Ctrl+o</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+l</code></td>
+<td>清除终端屏幕，保留对话历史</td>
+<td><code class="notranslate">Ctrl+C</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+t</code></td>
+<td>切换/显示后台任务列表（background tasks）</td>
+<td><code class="notranslate">Ctrl+t</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Alt+v</code></td>
+<td>粘贴图像</td>
+<td><code class="notranslate">Alt+v</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+R</code></td>
+<td>反向搜索命令历史，交互式搜索先前命令</td>
+<td><code class="notranslate">Ctrl+R</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+s</code></td>
+<td>临时保存当前提示（stash），方便之后恢复</td>
+<td><code class="notranslate">Ctrl+s</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+g</code></td>
+<td>打开默认文本编辑器来编辑当前的长提示，特别适合写很长的复杂提示时，先用外部编辑器写好再粘贴回来令，避免在 CLI 中写长提示</td>
+<td><code class="notranslate">Ctrl+g</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Ctrl+Shift+-</code></td>
+<td>于撤销上一步输入或编辑操作</td>
+<td><code class="notranslate">Ctrl+Shift+-</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Shift+Tab</code></td>
+<td>循环切换权限模式，通过  <code class="notranslate">default</code>（每次编辑都询问你权限） 、 <code class="notranslate">acceptEdits</code>（自动接受文件编辑，无需每次确认，适合信任 Claude 时使用） 、 <code class="notranslate">plan</code> （先规划，再执行）</td>
+<td><code class="notranslate">Shift+Tab</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">Meta（Ctrl 或 Alt，取决于系统）+p</code></td>
+<td>快速在 Claude Sonnet / Opus 等模型间切换</td>
+<td><code class="notranslate">Alt+p</code></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">有关完整的命令列表，请参阅  <a href="https://code.claude.com/docs/zh-CN/cli-reference" rel="nofollow">CLI 参考</a>、<a href="https://code.claude.com/docs/en/interactive-mode" rel="nofollow">交互模式</a>。</p>
+<h2 id="main-heading-H2-1">常见工作流程</h2>
+<p dir="auto">使用 Claude Code 探索代码库、修复错误、重构、测试和其他日常任务的分步指南。</p>
+<p dir="auto">本页涵盖日常开发的实用工作流程：探索陌生代码、调试、重构、编写测试、创建 PR 和管理会话。每个部分都包含示例提示，您可以根据自己的项目进行调整。有关更高级的模式和提示，请参阅<a href="https://code.claude.com/docs/zh-CN/best-practices" rel="nofollow">最佳实践</a>。</p>
+<h3 id="main-heading-H3-2">1) 快速理解新代码库</h3>
+<h4 dir="auto">步骤一：进入项目并启动</h4>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="cd /path/to/project
+claude"><pre class="notranslate"><span class="pl-c1">cd</span> /path/to/project
+claude</pre></div>
+<h4 dir="auto">步骤二：先问全局，再问细节</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请先给我这个代码库的整体概览"><pre lang="text" class="notranslate"><code class="notranslate">请先给我这个代码库的整体概览
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请解释这里使用的主要架构模式"><pre lang="text" class="notranslate"><code class="notranslate">请解释这里使用的主要架构模式
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="关键的数据模型有哪些？"><pre lang="text" class="notranslate"><code class="notranslate">关键的数据模型有哪些？
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这个项目的认证流程是如何处理的？"><pre lang="text" class="notranslate"><code class="notranslate">这个项目的认证流程是如何处理的？
+</code></pre></div>
+<h4 dir="auto">步骤三：定位相关代码并追踪执行流程</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请找出处理用户认证相关逻辑的文件"><pre lang="text" class="notranslate"><code class="notranslate">请找出处理用户认证相关逻辑的文件
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这些认证相关文件之间是如何协作的？"><pre lang="text" class="notranslate"><code class="notranslate">这些认证相关文件之间是如何协作的？
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请从前端到数据库追踪一次登录流程"><pre lang="text" class="notranslate"><code class="notranslate">请从前端到数据库追踪一次登录流程
+</code></pre></div>
+<hr>
+<h3 id="main-heading-H3-3">2) 高效修复错误</h3>
+<h4 dir="auto">步骤一：先给可复现信息</h4>
+<ul dir="auto">
+<li>告诉 Claude 报错命令、堆栈和复现步骤（稳定复现/偶发都要说明）。</li>
+<li>如果有日志，直接粘贴或通过管道传入。</li>
+</ul>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="我在运行 npm test 时出现报错，请帮我定位原因"><pre lang="text" class="notranslate"><code class="notranslate">我在运行 npm test 时出现报错，请帮我定位原因
+</code></pre></div>
+<h4 dir="auto">步骤二：先要修复思路，再执行改动</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请给出几种修复 user.ts 中 @ts-ignore 的方案"><pre lang="text" class="notranslate"><code class="notranslate">请给出几种修复 user.ts 中 @ts-ignore 的方案
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请按你建议的方案修改 user.ts，并补上空值判断"><pre lang="text" class="notranslate"><code class="notranslate">请按你建议的方案修改 user.ts，并补上空值判断
+</code></pre></div>
+<hr>
+<h3 id="main-heading-H3-4">3) 安全重构代码</h3>
+<h4 dir="auto">推荐节奏：小步重构 + 每步验证</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请找出代码库里已废弃 API 的使用位置"><pre lang="text" class="notranslate"><code class="notranslate">请找出代码库里已废弃 API 的使用位置
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请建议如何重构 utils.js，使用更现代的 JavaScript 写法"><pre lang="text" class="notranslate"><code class="notranslate">请建议如何重构 utils.js，使用更现代的 JavaScript 写法
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请在保持行为一致的前提下，用 ES2024 特性重构 utils.js"><pre lang="text" class="notranslate"><code class="notranslate">请在保持行为一致的前提下，用 ES2024 特性重构 utils.js
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请运行重构后的相关测试并反馈结果"><pre lang="text" class="notranslate"><code class="notranslate">请运行重构后的相关测试并反馈结果
+</code></pre></div>
+<hr>
+<h3 id="main-heading-H3-5">4) 使用 Plan Mode 做安全分析</h3>
+<p dir="auto">适用场景：改动范围大、需要先评估方案、涉及多个模块联动。</p>
+<h4 dir="auto">启用方式</h4>
+<ul dir="auto">
+<li>会话中按 <code class="notranslate">Shift+Tab</code> 切换到 Plan Mode。</li>
+<li>或启动时直接使用：</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="claude --permission-mode plan"><pre class="notranslate">claude --permission-mode plan</pre></div>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='claude --permission-mode plan -p "请分析当前认证系统并给出改进建议"'><pre class="notranslate">claude --permission-mode plan -p <span class="pl-s"><span class="pl-pds">"</span>请分析当前认证系统并给出改进建议<span class="pl-pds">"</span></span></pre></div>
+<h4 dir="auto">典型用法</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="我需要把现有认证系统重构为 OAuth2，请给出详细迁移方案"><pre lang="text" class="notranslate"><code class="notranslate">我需要把现有认证系统重构为 OAuth2，请给出详细迁移方案
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="向后兼容方面需要怎么处理？"><pre lang="text" class="notranslate"><code class="notranslate">向后兼容方面需要怎么处理？
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="数据库迁移应该如何规划和执行？"><pre lang="text" class="notranslate"><code class="notranslate">数据库迁移应该如何规划和执行？
+</code></pre></div>
+<hr>
+<h3 id="main-heading-H3-6">5) 补测试与边界覆盖</h3>
+<h4 dir="auto">建议流程</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请找出 NotificationsService.swift 中尚未被测试覆盖的函数"><pre lang="text" class="notranslate"><code class="notranslate">请找出 NotificationsService.swift 中尚未被测试覆盖的函数
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请为通知服务补充测试"><pre lang="text" class="notranslate"><code class="notranslate">请为通知服务补充测试
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请补充通知服务在边界条件下的测试用例"><pre lang="text" class="notranslate"><code class="notranslate">请补充通知服务在边界条件下的测试用例
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请运行新增测试并修复失败项"><pre lang="text" class="notranslate"><code class="notranslate">请运行新增测试并修复失败项
+</code></pre></div>
+<p dir="auto">要点：明确“要验证什么”，让 Claude 重点覆盖边界值、异常路径和易漏场景。</p>
+<hr>
+<h3 id="main-heading-H3-7">6) 创建 PR（拉取请求）</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请总结我在认证模块上的改动"><pre lang="text" class="notranslate"><code class="notranslate">请总结我在认证模块上的改动
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请为当前改动创建一个 PR"><pre lang="text" class="notranslate"><code class="notranslate">请为当前改动创建一个 PR
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请补充 PR 描述，重点说明这次安全改进的背景与价值"><pre lang="text" class="notranslate"><code class="notranslate">请补充 PR 描述，重点说明这次安全改进的背景与价值
+</code></pre></div>
+<p dir="auto">建议在提交前让 Claude 额外检查风险点、回归影响和测试说明。</p>
+<hr>
+<h3 id="main-heading-H3-8">7) 文档补全与规范化</h3>
+<h4 dir="auto">建议流程</h4>
+<p dir="auto"><strong>识别未记录的代码</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请找出 auth 模块中缺少规范 JSDoc 注释的函数"><pre lang="text" class="notranslate"><code class="notranslate">请找出 auth 模块中缺少规范 JSDoc 注释的函数
+</code></pre></div>
+<p dir="auto"><strong>生成文档</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请为 auth.js 中未文档化的函数补充 JSDoc 注释"><pre lang="text" class="notranslate"><code class="notranslate">请为 auth.js 中未文档化的函数补充 JSDoc 注释
+</code></pre></div>
+<p dir="auto"><strong>审查和增强</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请优化生成的文档，补充更多上下文和示例"><pre lang="text" class="notranslate"><code class="notranslate">请优化生成的文档，补充更多上下文和示例
+</code></pre></div>
+<p dir="auto"><strong>验证文档</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请检查文档是否符合我们的项目规范"><pre lang="text" class="notranslate"><code class="notranslate">请检查文档是否符合我们的项目规范
+</code></pre></div>
+<hr>
+<h3 id="main-heading-H3-9">使用图像</h3>
+<p dir="auto">当文字描述不够直观时，可直接让 Claude 基于图片理解问题并给出建议。</p>
+<h4 dir="auto">建议流程</h4>
+<p dir="auto"><strong>将图片加入对话</strong></p>
+<ul dir="auto">
+<li>直接拖拽图片到对话窗口。</li>
+<li>或复制图片后粘贴到 CLI（Windows/Linux 常用 <code class="notranslate">Ctrl+V</code>）。</li>
+<li>或提供图片路径。</li>
+</ul>
+<p dir="auto"><strong>让 Claude 分析图片内容</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这张图里展示了什么？"><pre lang="text" class="notranslate"><code class="notranslate">这张图里展示了什么？
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请描述这张截图中的 UI 元素和层级关系"><pre lang="text" class="notranslate"><code class="notranslate">请描述这张截图中的 UI 元素和层级关系
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请检查这张图里是否有明显的设计或交互问题"><pre lang="text" class="notranslate"><code class="notranslate">请检查这张图里是否有明显的设计或交互问题
+</code></pre></div>
+<p dir="auto"><strong>结合图片排查问题或生成代码建议</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这是报错截图，请帮我判断可能的根因"><pre lang="text" class="notranslate"><code class="notranslate">这是报错截图，请帮我判断可能的根因
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这是当前数据库结构图，请给出支持新功能的调整建议"><pre lang="text" class="notranslate"><code class="notranslate">这是当前数据库结构图，请给出支持新功能的调整建议
+</code></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请根据这张设计图生成对应的 CSS 结构"><pre lang="text" class="notranslate"><code class="notranslate">请根据这张设计图生成对应的 CSS 结构
+</code></pre></div>
+<p dir="auto">要点：涉及 UI、报错现场、流程图时，优先附图，信息密度更高、沟通成本更低。</p>
+<hr>
+<h3 id="main-heading-H3-10">引用文件和目录</h3>
+<p dir="auto">使用 <code class="notranslate">@</code> 引用文件或目录，可显著减少“描述不清文件位置”带来的沟通损耗。</p>
+<h4 dir="auto">建议流程</h4>
+<p dir="auto"><strong>引用单个文件</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请解释 @src/utils/auth.js 的核心逻辑"><pre lang="text" class="notranslate"><code class="notranslate">请解释 @src/utils/auth.js 的核心逻辑
+</code></pre></div>
+<p dir="auto"><strong>引用目录结构</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请说明 @src/components 的目录结构和职责划分"><pre lang="text" class="notranslate"><code class="notranslate">请说明 @src/components 的目录结构和职责划分
+</code></pre></div>
+<p dir="auto"><strong>引用 MCP 资源（如已接入）</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请展示 @github:repos/owner/repo/issues 的数据"><pre lang="text" class="notranslate"><code class="notranslate">请展示 @github:repos/owner/repo/issues 的数据
+</code></pre></div>
+<h4 dir="auto">使用建议</h4>
+<ul dir="auto">
+<li>优先用 <code class="notranslate">@</code> 指定上下文，避免让 Claude 猜文件位置。</li>
+<li>可在同一条消息中引用多个文件，便于跨文件分析。</li>
+<li>引用目录时会给出文件列表，适合先做范围收敛再深入。</li>
+</ul>
+<hr>
+<h3 id="main-heading-H3-11">8) 管理会话与恢复上下文</h3>
+<h4 dir="auto">常用命令</h4>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="claude --continue
+claude --resume
+claude --from-pr 123"><pre class="notranslate">claude --continue
+claude --resume
+claude --from-pr 123</pre></div>
+<h4 dir="auto">实践建议</h4>
+<ul dir="auto">
+<li>处理多个任务时尽早给会话命名，便于后续恢复。</li>
+<li>任务切换频繁时，善用会话恢复，避免反复补充背景信息。</li>
+</ul>
+<hr>
+<h3 id="main-heading-H3-12">9) 并行任务：使用 Git worktree</h3>
+<p dir="auto">当需要并行处理多个需求（如新功能 + 紧急修复）时，建议为每个任务创建独立 <code class="notranslate">worktree</code>，减少改动互相干扰。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="claude --worktree feature-auth
+claude --worktree bugfix-123"><pre class="notranslate">claude --worktree feature-auth
+claude --worktree bugfix-123</pre></div>
+<p dir="auto">或手动管理：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git worktree add ../project-feature-a -b feature-a
+git worktree add ../project-bugfix bugfix-123
+git worktree list
+git worktree remove ../project-feature-a"><pre class="notranslate">git worktree add ../project-feature-a -b feature-a
+git worktree add ../project-bugfix bugfix-123
+git worktree list
+git worktree remove ../project-feature-a</pre></div>
+<hr>
+<h3 id="main-heading-H3-13">10) 把 Claude 当作命令行工具集成</h3>
+<h4 dir="auto">作为审查/校验步骤</h4>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='"scripts": {
+  "lint:claude": "claude -p &#39;你现在充当代码校验器。请检查当前改动与 main 分支的差异，报告所有拼写相关问题。每个问题分两行输出：第一行写文件名和行号，第二行写问题描述。除这些内容外不要输出其他文本。&#39;"
+}'><pre class="notranslate"><span class="pl-ent">"scripts"</span>: {
+  <span class="pl-ent">"lint:claude"</span>: <span class="pl-s"><span class="pl-pds">"</span>claude -p '你现在充当代码校验器。请检查当前改动与 main 分支的差异，报告所有拼写相关问题。每个问题分两行输出：第一行写文件名和行号，第二行写问题描述。除这些内容外不要输出其他文本。'<span class="pl-pds">"</span></span>
+}</pre></div>
+<h4 dir="auto">管道输入输出</h4>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='cat build-error.txt | claude -p "请简要说明这次构建报错的根因" > output.txt'><pre class="notranslate">cat build-error.txt <span class="pl-k">|</span> claude -p <span class="pl-s"><span class="pl-pds">"</span>请简要说明这次构建报错的根因<span class="pl-pds">"</span></span> <span class="pl-k">></span> output.txt</pre></div>
+<h4 dir="auto">指定输出格式</h4>
+<ul dir="auto">
+<li><code class="notranslate">text</code>：纯文本，适合直接阅读</li>
+<li><code class="notranslate">json</code>：结构化输出，适合脚本集成</li>
+<li><code class="notranslate">stream-json</code>：流式输出，适合实时处理</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='claude -p "请总结这份数据的关键信息" --output-format text
+claude -p "请分析这段代码中的潜在缺陷" --output-format json
+claude -p "请解析这份日志并提取错误信息" --output-format stream-json'><pre class="notranslate">claude -p <span class="pl-s"><span class="pl-pds">"</span>请总结这份数据的关键信息<span class="pl-pds">"</span></span> --output-format text
+claude -p <span class="pl-s"><span class="pl-pds">"</span>请分析这段代码中的潜在缺陷<span class="pl-pds">"</span></span> --output-format json
+claude -p <span class="pl-s"><span class="pl-pds">"</span>请解析这份日志并提取错误信息<span class="pl-pds">"</span></span> --output-format stream-json</pre></div>
+<h2 id="main-heading-H2-14">Claude Code 最佳实践</h2>
+<blockquote>
+<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/best-practices" rel="nofollow">https://code.claude.com/docs/zh-CN/best-practices</a></p>
+</blockquote>
+<h3 id="main-heading-H3-15">给 Claude 一种验证其工作的方式</h3>
+<blockquote>
+<p dir="auto">包括测试、屏幕截图或预期输出，以便 Claude 可以检查自己。这是你能做的最高杠杆的事情。</p>
+</blockquote>
+<p dir="auto">当 Claude 能够验证自己的工作时，例如运行测试、比较屏幕截图和验证输出，它的表现会显著提高。</p>
+<h3 id="main-heading-H3-16">先探索，再规划，最后编码</h3>
+<blockquote>
+<p dir="auto">将研究和规划与实现分开，以避免解决错误的问题。</p>
+</blockquote>
+<p dir="auto">让 Claude 直接跳到编码可能会产生解决错误问题的代码。使用  <a href="https://code.claude.com/docs/zh-CN/common-workflows#use-plan-mode-for-safe-code-analysis" rel="nofollow">Plan Mode</a>  将探索与执行分开。</p>
+<h3 id="main-heading-H3-17">在提示中提供具体的上下文</h3>
+<blockquote>
+<p dir="auto">你的指令越精确，你需要的更正就越少。</p>
+</blockquote>
+<p dir="auto">Claude 可以推断意图，但它不能读心术。引用特定文件、提及约束，并指出示例模式。</p>
+<h4 dir="auto">提供丰富的内容</h4>
+<blockquote>
+<p dir="auto">使用 @ 引用文件、粘贴屏幕截图/图像或直接管道数据。</p>
+</blockquote>
+<ul dir="auto">
+<li><strong>使用  <code class="notranslate">@</code>  引用文件</strong>，而不是描述代码的位置。Claude 在响应前读取文件。</li>
+<li><strong>直接粘贴图像</strong>。复制/粘贴或拖放图像到提示中。</li>
+<li><strong>提供 URL</strong>  用于文档和 API 参考。使用  <code class="notranslate">/permissions</code>  来允许列表经常使用的域。</li>
+<li><strong>管道数据</strong>  通过运行  <code class="notranslate">cat error.log | claude</code>  直接发送文件内容。</li>
+<li><strong>让 Claude 获取它需要的东西</strong>。告诉 Claude 使用 Bash 命令、MCP 工具或通过读取文件来自己拉取上下文。</li>
+</ul>
+<h3 id="main-heading-H3-18">配置你的环境</h3>
+<p dir="auto">一些设置步骤使 Claude Code 在所有会话中显著更有效。有关扩展功能的完整概述和何时使用每个功能，请参阅  <a href="https://code.claude.com/docs/zh-CN/features-overview" rel="nofollow">扩展 Claude Code</a>。</p>
+<h4 dir="auto">编写有效的 <strong>CLAUDE.md</strong></h4>
+<p dir="auto">运行 <strong>/init</strong> 根据你的当前项目结构生成启动 CLAUDE.md 文件，然后随时间精化。</p>
+<p dir="auto">CLAUDE.md 文件没有必需的格式，但保持简短和易读。</p>
+<p dir="auto">CLAUDE.md 在每个会话中加载，所以只包括广泛适用的东西。对于仅有时相关的域知识或工作流，改用  <a href="https://code.claude.com/docs/zh-CN/skills" rel="nofollow">skills</a>。Claude 按需加载它们，不会使每次对话都膨胀。</p>
+<p dir="auto">保持简洁。对于每一行，问自己：<em>"删除这个会导致 Claude 犯错吗？"</em>  如果不会，删除它。膨胀的 CLAUDE.md 文件会导致 Claude 忽略你的实际指令！</p>
+<h4 dir="auto">使用 CLI 工具</h4>
+<blockquote>
+<p dir="auto">告诉 Claude Code 在与外部服务交互时使用 CLI 工具，如  <code class="notranslate">gh</code>、<code class="notranslate">aws</code>、<code class="notranslate">gcloud</code>  和  <code class="notranslate">sentry-cli</code>。</p>
+</blockquote>
+<h4 dir="auto">连接 MCP 服务器</h4>
+<blockquote>
+<p dir="auto">运行 claude mcp add 来连接外部工具，如 Notion、Figma 或你的数据库。</p>
+</blockquote>
+<p dir="auto">使用  <a href="https://code.claude.com/docs/zh-CN/mcp" rel="nofollow">MCP servers</a>，你可以要求 Claude 从问题跟踪器实现功能、查询数据库、分析监控数据、集成来自 Figma 的设计并自动化工作流。</p>
+<h4 dir="auto">设置 hooks</h4>
+<blockquote>
+<p dir="auto">使用 hooks 来处理必须每次发生且没有例外的操作。</p>
+</blockquote>
+<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/hooks-guide" rel="nofollow">Hooks</a>  在 Claude 工作流中的特定点自动运行脚本。与 CLAUDE.md 指令不同，hooks 是确定性的，保证操作发生。</p>
+<h4 dir="auto">创建 skills</h4>
+<blockquote>
+<p dir="auto">在  <code class="notranslate">.claude/skills/</code>  中创建  <code class="notranslate">SKILL.md</code>  文件，为 Claude 提供域知识和可重用工作流。</p>
+</blockquote>
+<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/skills" rel="nofollow">Skills</a>  使用特定于你的项目、团队或域的信息扩展 Claude 的知识。Claude 在相关时自动应用它们，或者你可以使用  <code class="notranslate">/skill-name</code>  直接调用它们。</p>
+<p dir="auto">通过向  <code class="notranslate">.claude/skills/</code>  添加带有  <code class="notranslate">SKILL.md</code>  的目录来创建 skill：</p>
+<p dir="auto">.claude/skills/api-conventions/SKILL.md</p>
+<div class="highlight highlight-text-md notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="---
+name: api-conventions
+description: REST API design conventions for our services
+---
+
+# API Conventions
+
+- Use kebab-case for URL paths
+- Use camelCase for JSON properties
+- Always include pagination for list endpoints
+- Version APIs in the URL path (/v1/, /v2/)"><pre class="notranslate"><span class="pl-s">---</span>
+<span class="pl-ent">name</span>: <span class="pl-s">api-conventions</span>
+<span class="pl-ent">description</span>: <span class="pl-s">REST API design conventions for our services</span>
+<span class="pl-s">---</span>
+
+<span class="pl-mh"># <span class="pl-en">API Conventions</span></span>
+
+<span class="pl-v">-</span> Use kebab-case for URL paths
+<span class="pl-v">-</span> Use camelCase for JSON properties
+<span class="pl-v">-</span> Always include pagination for list endpoints
+<span class="pl-v">-</span> Version APIs in the URL path (/v1/, /v2/)</pre></div>
+<h4 dir="auto">安装 plugins</h4>
+<blockquote>
+<p dir="auto">运行 /plugin 来浏览市场。Plugins 添加 skills、工具和集成，无需配置。</p>
+</blockquote>
+<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/plugins" rel="nofollow">Plugins</a>  将 skills、hooks、subagents 和 MCP 服务器捆绑到来自社区和 Anthropic 的单个可安装单元中。如果你使用类型化语言，安装  <a href="https://code.claude.com/docs/zh-CN/discover-plugins#code-intelligence" rel="nofollow">代码智能 plugin</a>  来为 Claude 提供精确的符号导航和编辑后的自动错误检测。</p>
+<p dir="auto">有关在 skills、subagents、hooks 和 MCP 之间选择的指导，请参阅  <a href="https://code.claude.com/docs/zh-CN/features-overview#match-features-to-your-goal" rel="nofollow">扩展 Claude Code</a>。</p>
+<h3 id="main-heading-H3-19">有效沟通</h3>
+<p dir="auto">你与 Claude Code 沟通的方式显著影响结果的质量。</p>
+<h4 dir="auto">提出代码库问题</h4>
+<p dir="auto">问 Claude 你会问资深工程师的问题。</p>
+<h4 dir="auto">让 Claude 采访你</h4>
+<blockquote>
+<p dir="auto">对于更大的功能，让 Claude 先采访你。从最小的提示开始，要求 Claude 使用 AskUserQuestion 工具采访你。</p>
+</blockquote>
+<h3 id="main-heading-H3-20">管理你的会话</h3>
+<p dir="auto">对话是持久的和可逆的。利用这一点！</p>
+<h4 dir="auto">尽早且经常改正方向</h4>
+<blockquote>
+<p dir="auto">一旦你注意到 Claude 偏离轨道，立即改正它。</p>
+</blockquote>
+<p dir="auto">最好的结果来自紧密的反馈循环。虽然 Claude 有时会在第一次尝试时完美地解决问题，但快速改正它通常会更快地产生更好的解决方案。</p>
+<ul dir="auto">
+<li><strong><code class="notranslate">Esc</code></strong>：使用  <code class="notranslate">Esc</code>  键在中途停止 Claude。Context 被保留，所以你可以重定向。</li>
+<li><strong><code class="notranslate">Esc + Esc</code>  或  <code class="notranslate">/rewind</code></strong>：按  <code class="notranslate">Esc</code>  两次或运行  <code class="notranslate">/rewind</code>  来打开 rewind 菜单并恢复之前的对话和代码状态，或从选定的消息进行总结。</li>
+<li><strong><code class="notranslate">"撤销那个"</code></strong>：让 Claude 恢复其更改。</li>
+<li><strong><code class="notranslate">/clear</code></strong>：在不相关的任务之间重置 context。长会话与无关的 context 可能会降低性能。</li>
+</ul>
+<p dir="auto">如果你在一个会话中对同一问题改正了 Claude 两次以上，context 就充满了失败的方法。运行  <code class="notranslate">/clear</code>  并使用更具体的提示重新开始，该提示包含你学到的东西。干净的会话与更好的提示几乎总是优于长会话与累积的改正。</p>
+<h4 dir="auto">积极管理 context</h4>
+<p dir="auto">在不相关的任务之间频繁运行 /clear 来重置 context。</p>
+<h4 dir="auto">使用 subagents 进行调查</h4>
+<blockquote>
+<p dir="auto">使用  <code class="notranslate">"use subagents to investigate X"</code>  委托研究。它们在单独的 context 中探索，为实现保持你的主对话干净。</p>
+</blockquote>
+<p dir="auto">由于 context 是你的基本约束，subagents 是可用的最强大的工具之一。当 Claude 研究代码库时，它读取许多文件，所有这些都消耗你的 context。Subagents 在单独的 context windows 中运行并报告摘要。</p>
+<p dir="auto">subagent 探索代码库、读取相关文件并报告发现，所有这些都不会使你的主对话混乱。</p>
+<h4 dir="auto">恢复对话</h4>
+<p dir="auto">运行 claude --continue 来继续你离开的地方，或 --resume 来从最近的会话中选择。</p>
+<h3 id="main-heading-H3-21">避免常见失败模式</h3>
+<p dir="auto">这些是常见的错误。尽早识别它们可以节省时间：</p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>厨房水槽会话。</strong>  你从一个任务开始，然后问 Claude 一些不相关的东西，然后回到第一个任务。Context 充满了无关的信息。</p>
+<blockquote>
+<p dir="auto"><strong>修复</strong>：在不相关的任务之间  <code class="notranslate">/clear</code>。</p>
+</blockquote>
+</li>
+<li>
+<p dir="auto"><strong>一次又一次地改正。</strong> Claude 做错了什么，你改正它，它仍然是错的，你再改正。Context 被失败的方法污染。</p>
+<blockquote>
+<p dir="auto"><strong>修复</strong>：在两次失败的改正后，<code class="notranslate">/clear</code>  并编写一个更好的初始提示，包含你学到的东西。</p>
+</blockquote>
+</li>
+<li>
+<p dir="auto"><strong>过度指定的 CLAUDE.md。</strong>  如果你的 CLAUDE.md 太长，Claude 会忽略一半，因为重要的规则在噪音中丢失。</p>
+<blockquote>
+<p dir="auto"><strong>修复</strong>：无情地修剪。如果 Claude 已经在没有指令的情况下正确地做某事，删除它或将其转换为 hook。</p>
+</blockquote>
+</li>
+<li>
+<p dir="auto"><strong>信任然后验证的差距。</strong> Claude 产生一个看起来合理的实现，但不处理边界情况。</p>
+<blockquote>
+<p dir="auto"><strong>修复</strong>：始终提供验证（测试、脚本、屏幕截图）。如果你不能验证它，不要发布它。</p>
+</blockquote>
+</li>
+<li>
+<p dir="auto"><strong>无限探索。</strong>  你要求 Claude "调查"某些东西而不限定范围。Claude 读取数百个文件，填充 context。</p>
+<blockquote>
+<p dir="auto"><strong>修复</strong>：狭隘地限定调查或使用 subagents，以便探索不会消耗你的主 context。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="main-heading-H3-22">培养你的直觉</h3>
+<p dir="auto">本指南中的模式不是一成不变的。它们是通常效果很好的起点，但可能不是每种情况的最优选择。</p>
+<p dir="auto">有时你<em>应该</em>让 context 累积，因为你深入一个复杂的问题，历史很有价值。有时你应该跳过规划，让 Claude 弄清楚，因为任务是探索性的。有时模糊的提示正是你想要的，因为你想看看 Claude 如何解释问题，然后再限制它。</p>
+<p dir="auto">注意什么有效。当 Claude 产生很好的输出时，注意你做了什么：提示结构、你提供的 context、你所在的模式。当 Claude 遇到困难时，问为什么。Context 太嘈杂了吗？提示太模糊了吗？任务对于一次通过来说太大了吗？</p>
+<p dir="auto">随着时间的推移，你会培养没有指南能捕捉的直觉。你会知道何时具体，何时开放，何时规划，何时探索，何时清除 context，何时让它累积。</p>
+<h2 id="main-heading-H2-23">相关资源</h2>
+<ul dir="auto">
+<li><a href="https://code.claude.com/docs/zh-CN/how-claude-code-works" rel="nofollow">Claude Code 如何工作</a>：代理循环、工具和 context 管理</li>
+<li><a href="https://code.claude.com/docs/zh-CN/features-overview" rel="nofollow">扩展 Claude Code</a>：skills、hooks、MCP、subagents 和 plugins</li>
+<li><a href="https://code.claude.com/docs/zh-CN/common-workflows" rel="nofollow">常见工作流</a>：调试、测试、PR 等的分步配方</li>
+<li><a href="https://code.claude.com/docs/zh-CN/memory" rel="nofollow">CLAUDE.md</a>：存储项目约定和持久 context</li>
+</ul>
+<h2 id="main-heading-H2-24">扩展 Claude Code</h2>
+<blockquote>
+<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/features-overview" rel="nofollow">https://code.claude.com/docs/zh-CN/features-overview</a></p>
+</blockquote>
+<h3 id="main-heading-H3-25">概述</h3>
+<ul dir="auto">
+<li><strong><a href="https://code.claude.com/docs/zh-CN/memory" rel="nofollow">CLAUDE.md</a></strong>  添加 Claude 每个会话都能看到的持久上下文</li>
+<li><strong><a href="https://code.claude.com/docs/zh-CN/skills" rel="nofollow">Skills</a></strong>  添加可重用的知识和可调用的工作流</li>
+<li><strong><a href="https://code.claude.com/docs/zh-CN/mcp" rel="nofollow">MCP</a></strong>  将 Claude 连接到外部服务和工具</li>
+<li><strong><a href="https://code.claude.com/docs/zh-CN/sub-agents" rel="nofollow">Subagents</a></strong>  在隔离的上下文中运行自己的循环，返回摘要</li>
+<li><strong><a href="https://code.claude.com/docs/zh-CN/agent-teams" rel="nofollow">Agent teams</a></strong>  协调多个独立会话，具有共享任务和点对点消息传递</li>
+<li><strong><a href="https://code.claude.com/docs/zh-CN/hooks" rel="nofollow">Hooks</a></strong>  完全在循环外作为确定性脚本运行</li>
+<li><strong><a href="https://code.claude.com/docs/zh-CN/plugins" rel="nofollow">Plugins</a></strong>  和  <strong><a href="https://code.claude.com/docs/zh-CN/plugin-marketplaces" rel="nofollow">marketplaces</a></strong>  打包和分发这些功能</li>
+</ul>
+<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/skills" rel="nofollow">Skills</a>  是最灵活的扩展。Skill 是一个包含知识、工作流或说明的 markdown 文件。您可以使用  <code class="notranslate">/deploy</code>  之类的命令调用 skills，或者 Claude 可以在相关时自动加载它们。Skills 可以在您当前的对话中运行，也可以通过 subagents 在隔离的上下文中运行。</p>
+<h3 id="main-heading-H3-26">将功能与您的目标相匹配</h3>
+<p dir="auto">功能范围从 Claude 每个会话都能看到的始终开启的上下文，到您或 Claude 可以调用的按需功能，再到在特定事件上运行的后台自动化。下表显示了可用的功能以及何时使用每个功能。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>功能</th>
+<th>作用</th>
+<th>何时使用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CLAUDE.md</strong></td>
+<td>每次对话加载的持久上下文</td>
+<td>项目约定、"始终执行 X" 规则</td>
+<td>"使用 pnpm，而不是 npm。提交前运行测试。"</td>
+</tr>
+<tr>
+<td><strong>Skill</strong></td>
+<td>Claude 可以使用的说明、知识和工作流</td>
+<td>可重用内容、参考文档、可重复的任务</td>
+<td><code class="notranslate">/deploy</code>  运行您的部署清单；包含端点模式的 API 文档 skill</td>
+</tr>
+<tr>
+<td><strong>Subagent</strong></td>
+<td>返回摘要结果的隔离执行上下文</td>
+<td>上下文隔离、并行任务、专门的工作者</td>
+<td>读取许多文件但仅返回关键发现的研究任务</td>
+</tr>
+<tr>
+<td><strong><a href="https://code.claude.com/docs/zh-CN/agent-teams" rel="nofollow">Agent teams</a></strong></td>
+<td>协调多个独立的 Claude Code 会话</td>
+<td>并行研究、新功能开发、使用竞争假设进行调试</td>
+<td>生成审查者同时检查安全性、性能和测试</td>
+</tr>
+<tr>
+<td><strong>MCP</strong></td>
+<td>连接到外部服务</td>
+<td>外部数据或操作</td>
+<td>查询您的数据库、发布到 Slack、控制浏览器</td>
+</tr>
+<tr>
+<td><strong>Hook</strong></td>
+<td>在事件上运行的确定性脚本</td>
+<td>可预测的自动化，不涉及 LLM</td>
+<td>每次文件编辑后运行 ESLint</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong><a href="https://code.claude.com/docs/zh-CN/plugins" rel="nofollow">Plugins</a></strong>  是打包层。Plugin 将 skills、hooks、subagents 和 MCP servers 捆绑到单个可安装单元中。Plugin skills 是命名空间的（如  <code class="notranslate">/my-plugin:review</code>），因此多个 plugins 可以共存。当您想在多个存储库中重用相同的设置或通过  <strong><a href="https://code.claude.com/docs/zh-CN/plugin-marketplaces" rel="nofollow">marketplace</a></strong>  分发给他人时，使用 plugins。</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(t,n,a,e,o,s){return{layout:"default",data:[{post:{id:4142275999,number:306,title:"Claude Code 中文实战手册：常用命令、工作流程与最佳实践",created_at:"2026-03-26T09:43:28Z",updated_at:"2026-03-27T03:15:18Z",body_html:'<h2 id="main-heading-H2-0">基本命令</h2>\n<p dir="auto">以下是日常使用中最重要的命令：</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>命令</th>\n<th>功能</th>\n<th>示例</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code class="notranslate">claude</code></td>\n<td>启动交互模式</td>\n<td><code class="notranslate">claude</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">claude "task"</code></td>\n<td>运行一次性任务</td>\n<td><code class="notranslate">claude "fix the build error"</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">claude -p "query"</code></td>\n<td>运行一次性查询，然后退出</td>\n<td><code class="notranslate">claude -p "explain this function"</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">claude -c</code></td>\n<td>在当前目录中继续最近的对话</td>\n<td><code class="notranslate">claude -c</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">claude -r</code></td>\n<td>恢复之前的对话</td>\n<td><code class="notranslate">claude -r</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">claude commit</code></td>\n<td>创建 Git 提交</td>\n<td><code class="notranslate">claude commit</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">/</code></td>\n<td>查看内置命令和技能</td>\n<td><code class="notranslate">/</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">!</code></td>\n<td>Bash 模式, 执行 Bash 命令</td>\n<td><code class="notranslate">!ls</code> <code class="notranslate">!git status</code> <code class="notranslate">!npm run build</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">/clear</code></td>\n<td>清除对话历史</td>\n<td><code class="notranslate">/clear</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">/btw</code></td>\n<td>侧边快速提问</td>\n<td><code class="notranslate">/btw 这个函数的返回值是什么类型</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">/help</code> 或 <code class="notranslate">?</code></td>\n<td>显示可用命令</td>\n<td><code class="notranslate">/help</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">exit</code>  或 两次<code class="notranslate">Ctrl+C</code></td>\n<td>退出 Claude Code</td>\n<td>两次<code class="notranslate">exit</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+C</code> 或两次 <code class="notranslate">ESC</code></td>\n<td>取消当前输入或生成，标准中断</td>\n<td><code class="notranslate">Ctrl+C</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+Enter</code></td>\n<td>换行输出提示词</td>\n<td><code class="notranslate">Ctrl+Enter</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+o</code></td>\n<td>切换详细输出模式（显示更多思考过程或完整日志）</td>\n<td><code class="notranslate">Ctrl+o</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+l</code></td>\n<td>清除终端屏幕，保留对话历史</td>\n<td><code class="notranslate">Ctrl+C</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+t</code></td>\n<td>切换/显示后台任务列表（background tasks）</td>\n<td><code class="notranslate">Ctrl+t</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Alt+v</code></td>\n<td>粘贴图像</td>\n<td><code class="notranslate">Alt+v</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+R</code></td>\n<td>反向搜索命令历史，交互式搜索先前命令</td>\n<td><code class="notranslate">Ctrl+R</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+s</code></td>\n<td>临时保存当前提示（stash），方便之后恢复</td>\n<td><code class="notranslate">Ctrl+s</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+g</code></td>\n<td>打开默认文本编辑器来编辑当前的长提示，特别适合写很长的复杂提示时，先用外部编辑器写好再粘贴回来令，避免在 CLI 中写长提示</td>\n<td><code class="notranslate">Ctrl+g</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Ctrl+Shift+-</code></td>\n<td>于撤销上一步输入或编辑操作</td>\n<td><code class="notranslate">Ctrl+Shift+-</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Shift+Tab</code></td>\n<td>循环切换权限模式，通过  <code class="notranslate">default</code>（每次编辑都询问你权限） 、 <code class="notranslate">acceptEdits</code>（自动接受文件编辑，无需每次确认，适合信任 Claude 时使用） 、 <code class="notranslate">plan</code> （先规划，再执行）</td>\n<td><code class="notranslate">Shift+Tab</code></td>\n</tr>\n<tr>\n<td><code class="notranslate">Meta（Ctrl 或 Alt，取决于系统）+p</code></td>\n<td>快速在 Claude Sonnet / Opus 等模型间切换</td>\n<td><code class="notranslate">Alt+p</code></td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto">有关完整的命令列表，请参阅  <a href="https://code.claude.com/docs/zh-CN/cli-reference" rel="nofollow">CLI 参考</a>、<a href="https://code.claude.com/docs/en/interactive-mode" rel="nofollow">交互模式</a>。</p>\n<h2 id="main-heading-H2-1">常见工作流程</h2>\n<p dir="auto">使用 Claude Code 探索代码库、修复错误、重构、测试和其他日常任务的分步指南。</p>\n<p dir="auto">本页涵盖日常开发的实用工作流程：探索陌生代码、调试、重构、编写测试、创建 PR 和管理会话。每个部分都包含示例提示，您可以根据自己的项目进行调整。有关更高级的模式和提示，请参阅<a href="https://code.claude.com/docs/zh-CN/best-practices" rel="nofollow">最佳实践</a>。</p>\n<h3 id="main-heading-H3-2">1) 快速理解新代码库</h3>\n<h4 dir="auto">步骤一：进入项目并启动</h4>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="cd /path/to/project\nclaude"><pre class="notranslate"><span class="pl-c1">cd</span> /path/to/project\nclaude</pre></div>\n<h4 dir="auto">步骤二：先问全局，再问细节</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请先给我这个代码库的整体概览"><pre lang="text" class="notranslate"><code class="notranslate">请先给我这个代码库的整体概览\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请解释这里使用的主要架构模式"><pre lang="text" class="notranslate"><code class="notranslate">请解释这里使用的主要架构模式\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="关键的数据模型有哪些？"><pre lang="text" class="notranslate"><code class="notranslate">关键的数据模型有哪些？\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这个项目的认证流程是如何处理的？"><pre lang="text" class="notranslate"><code class="notranslate">这个项目的认证流程是如何处理的？\n</code></pre></div>\n<h4 dir="auto">步骤三：定位相关代码并追踪执行流程</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请找出处理用户认证相关逻辑的文件"><pre lang="text" class="notranslate"><code class="notranslate">请找出处理用户认证相关逻辑的文件\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这些认证相关文件之间是如何协作的？"><pre lang="text" class="notranslate"><code class="notranslate">这些认证相关文件之间是如何协作的？\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请从前端到数据库追踪一次登录流程"><pre lang="text" class="notranslate"><code class="notranslate">请从前端到数据库追踪一次登录流程\n</code></pre></div>\n<hr>\n<h3 id="main-heading-H3-3">2) 高效修复错误</h3>\n<h4 dir="auto">步骤一：先给可复现信息</h4>\n<ul dir="auto">\n<li>告诉 Claude 报错命令、堆栈和复现步骤（稳定复现/偶发都要说明）。</li>\n<li>如果有日志，直接粘贴或通过管道传入。</li>\n</ul>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="我在运行 npm test 时出现报错，请帮我定位原因"><pre lang="text" class="notranslate"><code class="notranslate">我在运行 npm test 时出现报错，请帮我定位原因\n</code></pre></div>\n<h4 dir="auto">步骤二：先要修复思路，再执行改动</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请给出几种修复 user.ts 中 @ts-ignore 的方案"><pre lang="text" class="notranslate"><code class="notranslate">请给出几种修复 user.ts 中 @ts-ignore 的方案\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请按你建议的方案修改 user.ts，并补上空值判断"><pre lang="text" class="notranslate"><code class="notranslate">请按你建议的方案修改 user.ts，并补上空值判断\n</code></pre></div>\n<hr>\n<h3 id="main-heading-H3-4">3) 安全重构代码</h3>\n<h4 dir="auto">推荐节奏：小步重构 + 每步验证</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请找出代码库里已废弃 API 的使用位置"><pre lang="text" class="notranslate"><code class="notranslate">请找出代码库里已废弃 API 的使用位置\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请建议如何重构 utils.js，使用更现代的 JavaScript 写法"><pre lang="text" class="notranslate"><code class="notranslate">请建议如何重构 utils.js，使用更现代的 JavaScript 写法\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请在保持行为一致的前提下，用 ES2024 特性重构 utils.js"><pre lang="text" class="notranslate"><code class="notranslate">请在保持行为一致的前提下，用 ES2024 特性重构 utils.js\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请运行重构后的相关测试并反馈结果"><pre lang="text" class="notranslate"><code class="notranslate">请运行重构后的相关测试并反馈结果\n</code></pre></div>\n<hr>\n<h3 id="main-heading-H3-5">4) 使用 Plan Mode 做安全分析</h3>\n<p dir="auto">适用场景：改动范围大、需要先评估方案、涉及多个模块联动。</p>\n<h4 dir="auto">启用方式</h4>\n<ul dir="auto">\n<li>会话中按 <code class="notranslate">Shift+Tab</code> 切换到 Plan Mode。</li>\n<li>或启动时直接使用：</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="claude --permission-mode plan"><pre class="notranslate">claude --permission-mode plan</pre></div>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="claude --permission-mode plan -p &quot;请分析当前认证系统并给出改进建议&quot;"><pre class="notranslate">claude --permission-mode plan -p <span class="pl-s"><span class="pl-pds">"</span>请分析当前认证系统并给出改进建议<span class="pl-pds">"</span></span></pre></div>\n<h4 dir="auto">典型用法</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="我需要把现有认证系统重构为 OAuth2，请给出详细迁移方案"><pre lang="text" class="notranslate"><code class="notranslate">我需要把现有认证系统重构为 OAuth2，请给出详细迁移方案\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="向后兼容方面需要怎么处理？"><pre lang="text" class="notranslate"><code class="notranslate">向后兼容方面需要怎么处理？\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="数据库迁移应该如何规划和执行？"><pre lang="text" class="notranslate"><code class="notranslate">数据库迁移应该如何规划和执行？\n</code></pre></div>\n<hr>\n<h3 id="main-heading-H3-6">5) 补测试与边界覆盖</h3>\n<h4 dir="auto">建议流程</h4>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请找出 NotificationsService.swift 中尚未被测试覆盖的函数"><pre lang="text" class="notranslate"><code class="notranslate">请找出 NotificationsService.swift 中尚未被测试覆盖的函数\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请为通知服务补充测试"><pre lang="text" class="notranslate"><code class="notranslate">请为通知服务补充测试\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请补充通知服务在边界条件下的测试用例"><pre lang="text" class="notranslate"><code class="notranslate">请补充通知服务在边界条件下的测试用例\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请运行新增测试并修复失败项"><pre lang="text" class="notranslate"><code class="notranslate">请运行新增测试并修复失败项\n</code></pre></div>\n<p dir="auto">要点：明确“要验证什么”，让 Claude 重点覆盖边界值、异常路径和易漏场景。</p>\n<hr>\n<h3 id="main-heading-H3-7">6) 创建 PR（拉取请求）</h3>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请总结我在认证模块上的改动"><pre lang="text" class="notranslate"><code class="notranslate">请总结我在认证模块上的改动\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请为当前改动创建一个 PR"><pre lang="text" class="notranslate"><code class="notranslate">请为当前改动创建一个 PR\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请补充 PR 描述，重点说明这次安全改进的背景与价值"><pre lang="text" class="notranslate"><code class="notranslate">请补充 PR 描述，重点说明这次安全改进的背景与价值\n</code></pre></div>\n<p dir="auto">建议在提交前让 Claude 额外检查风险点、回归影响和测试说明。</p>\n<hr>\n<h3 id="main-heading-H3-8">7) 文档补全与规范化</h3>\n<h4 dir="auto">建议流程</h4>\n<p dir="auto"><strong>识别未记录的代码</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请找出 auth 模块中缺少规范 JSDoc 注释的函数"><pre lang="text" class="notranslate"><code class="notranslate">请找出 auth 模块中缺少规范 JSDoc 注释的函数\n</code></pre></div>\n<p dir="auto"><strong>生成文档</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请为 auth.js 中未文档化的函数补充 JSDoc 注释"><pre lang="text" class="notranslate"><code class="notranslate">请为 auth.js 中未文档化的函数补充 JSDoc 注释\n</code></pre></div>\n<p dir="auto"><strong>审查和增强</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请优化生成的文档，补充更多上下文和示例"><pre lang="text" class="notranslate"><code class="notranslate">请优化生成的文档，补充更多上下文和示例\n</code></pre></div>\n<p dir="auto"><strong>验证文档</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请检查文档是否符合我们的项目规范"><pre lang="text" class="notranslate"><code class="notranslate">请检查文档是否符合我们的项目规范\n</code></pre></div>\n<hr>\n<h3 id="main-heading-H3-9">使用图像</h3>\n<p dir="auto">当文字描述不够直观时，可直接让 Claude 基于图片理解问题并给出建议。</p>\n<h4 dir="auto">建议流程</h4>\n<p dir="auto"><strong>将图片加入对话</strong></p>\n<ul dir="auto">\n<li>直接拖拽图片到对话窗口。</li>\n<li>或复制图片后粘贴到 CLI（Windows/Linux 常用 <code class="notranslate">Ctrl+V</code>）。</li>\n<li>或提供图片路径。</li>\n</ul>\n<p dir="auto"><strong>让 Claude 分析图片内容</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这张图里展示了什么？"><pre lang="text" class="notranslate"><code class="notranslate">这张图里展示了什么？\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请描述这张截图中的 UI 元素和层级关系"><pre lang="text" class="notranslate"><code class="notranslate">请描述这张截图中的 UI 元素和层级关系\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请检查这张图里是否有明显的设计或交互问题"><pre lang="text" class="notranslate"><code class="notranslate">请检查这张图里是否有明显的设计或交互问题\n</code></pre></div>\n<p dir="auto"><strong>结合图片排查问题或生成代码建议</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这是报错截图，请帮我判断可能的根因"><pre lang="text" class="notranslate"><code class="notranslate">这是报错截图，请帮我判断可能的根因\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="这是当前数据库结构图，请给出支持新功能的调整建议"><pre lang="text" class="notranslate"><code class="notranslate">这是当前数据库结构图，请给出支持新功能的调整建议\n</code></pre></div>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请根据这张设计图生成对应的 CSS 结构"><pre lang="text" class="notranslate"><code class="notranslate">请根据这张设计图生成对应的 CSS 结构\n</code></pre></div>\n<p dir="auto">要点：涉及 UI、报错现场、流程图时，优先附图，信息密度更高、沟通成本更低。</p>\n<hr>\n<h3 id="main-heading-H3-10">引用文件和目录</h3>\n<p dir="auto">使用 <code class="notranslate">@</code> 引用文件或目录，可显著减少“描述不清文件位置”带来的沟通损耗。</p>\n<h4 dir="auto">建议流程</h4>\n<p dir="auto"><strong>引用单个文件</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请解释 @src/utils/auth.js 的核心逻辑"><pre lang="text" class="notranslate"><code class="notranslate">请解释 @src/utils/auth.js 的核心逻辑\n</code></pre></div>\n<p dir="auto"><strong>引用目录结构</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请说明 @src/components 的目录结构和职责划分"><pre lang="text" class="notranslate"><code class="notranslate">请说明 @src/components 的目录结构和职责划分\n</code></pre></div>\n<p dir="auto"><strong>引用 MCP 资源（如已接入）</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="请展示 @github:repos/owner/repo/issues 的数据"><pre lang="text" class="notranslate"><code class="notranslate">请展示 @github:repos/owner/repo/issues 的数据\n</code></pre></div>\n<h4 dir="auto">使用建议</h4>\n<ul dir="auto">\n<li>优先用 <code class="notranslate">@</code> 指定上下文，避免让 Claude 猜文件位置。</li>\n<li>可在同一条消息中引用多个文件，便于跨文件分析。</li>\n<li>引用目录时会给出文件列表，适合先做范围收敛再深入。</li>\n</ul>\n<hr>\n<h3 id="main-heading-H3-11">8) 管理会话与恢复上下文</h3>\n<h4 dir="auto">常用命令</h4>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="claude --continue\nclaude --resume\nclaude --from-pr 123"><pre class="notranslate">claude --continue\nclaude --resume\nclaude --from-pr 123</pre></div>\n<h4 dir="auto">实践建议</h4>\n<ul dir="auto">\n<li>处理多个任务时尽早给会话命名，便于后续恢复。</li>\n<li>任务切换频繁时，善用会话恢复，避免反复补充背景信息。</li>\n</ul>\n<hr>\n<h3 id="main-heading-H3-12">9) 并行任务：使用 Git worktree</h3>\n<p dir="auto">当需要并行处理多个需求（如新功能 + 紧急修复）时，建议为每个任务创建独立 <code class="notranslate">worktree</code>，减少改动互相干扰。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="claude --worktree feature-auth\nclaude --worktree bugfix-123"><pre class="notranslate">claude --worktree feature-auth\nclaude --worktree bugfix-123</pre></div>\n<p dir="auto">或手动管理：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="git worktree add ../project-feature-a -b feature-a\ngit worktree add ../project-bugfix bugfix-123\ngit worktree list\ngit worktree remove ../project-feature-a"><pre class="notranslate">git worktree add ../project-feature-a -b feature-a\ngit worktree add ../project-bugfix bugfix-123\ngit worktree list\ngit worktree remove ../project-feature-a</pre></div>\n<hr>\n<h3 id="main-heading-H3-13">10) 把 Claude 当作命令行工具集成</h3>\n<h4 dir="auto">作为审查/校验步骤</h4>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;scripts&quot;: {\n  &quot;lint:claude&quot;: &quot;claude -p \'你现在充当代码校验器。请检查当前改动与 main 分支的差异，报告所有拼写相关问题。每个问题分两行输出：第一行写文件名和行号，第二行写问题描述。除这些内容外不要输出其他文本。\'&quot;\n}"><pre class="notranslate"><span class="pl-ent">"scripts"</span>: {\n  <span class="pl-ent">"lint:claude"</span>: <span class="pl-s"><span class="pl-pds">"</span>claude -p \'你现在充当代码校验器。请检查当前改动与 main 分支的差异，报告所有拼写相关问题。每个问题分两行输出：第一行写文件名和行号，第二行写问题描述。除这些内容外不要输出其他文本。\'<span class="pl-pds">"</span></span>\n}</pre></div>\n<h4 dir="auto">管道输入输出</h4>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="cat build-error.txt | claude -p &quot;请简要说明这次构建报错的根因&quot; &gt; output.txt"><pre class="notranslate">cat build-error.txt <span class="pl-k">|</span> claude -p <span class="pl-s"><span class="pl-pds">"</span>请简要说明这次构建报错的根因<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> output.txt</pre></div>\n<h4 dir="auto">指定输出格式</h4>\n<ul dir="auto">\n<li><code class="notranslate">text</code>：纯文本，适合直接阅读</li>\n<li><code class="notranslate">json</code>：结构化输出，适合脚本集成</li>\n<li><code class="notranslate">stream-json</code>：流式输出，适合实时处理</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="claude -p &quot;请总结这份数据的关键信息&quot; --output-format text\nclaude -p &quot;请分析这段代码中的潜在缺陷&quot; --output-format json\nclaude -p &quot;请解析这份日志并提取错误信息&quot; --output-format stream-json"><pre class="notranslate">claude -p <span class="pl-s"><span class="pl-pds">"</span>请总结这份数据的关键信息<span class="pl-pds">"</span></span> --output-format text\nclaude -p <span class="pl-s"><span class="pl-pds">"</span>请分析这段代码中的潜在缺陷<span class="pl-pds">"</span></span> --output-format json\nclaude -p <span class="pl-s"><span class="pl-pds">"</span>请解析这份日志并提取错误信息<span class="pl-pds">"</span></span> --output-format stream-json</pre></div>\n<h2 id="main-heading-H2-14">Claude Code 最佳实践</h2>\n<blockquote>\n<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/best-practices" rel="nofollow">https://code.claude.com/docs/zh-CN/best-practices</a></p>\n</blockquote>\n<h3 id="main-heading-H3-15">给 Claude 一种验证其工作的方式</h3>\n<blockquote>\n<p dir="auto">包括测试、屏幕截图或预期输出，以便 Claude 可以检查自己。这是你能做的最高杠杆的事情。</p>\n</blockquote>\n<p dir="auto">当 Claude 能够验证自己的工作时，例如运行测试、比较屏幕截图和验证输出，它的表现会显著提高。</p>\n<h3 id="main-heading-H3-16">先探索，再规划，最后编码</h3>\n<blockquote>\n<p dir="auto">将研究和规划与实现分开，以避免解决错误的问题。</p>\n</blockquote>\n<p dir="auto">让 Claude 直接跳到编码可能会产生解决错误问题的代码。使用  <a href="https://code.claude.com/docs/zh-CN/common-workflows#use-plan-mode-for-safe-code-analysis" rel="nofollow">Plan Mode</a>  将探索与执行分开。</p>\n<h3 id="main-heading-H3-17">在提示中提供具体的上下文</h3>\n<blockquote>\n<p dir="auto">你的指令越精确，你需要的更正就越少。</p>\n</blockquote>\n<p dir="auto">Claude 可以推断意图，但它不能读心术。引用特定文件、提及约束，并指出示例模式。</p>\n<h4 dir="auto">提供丰富的内容</h4>\n<blockquote>\n<p dir="auto">使用 @ 引用文件、粘贴屏幕截图/图像或直接管道数据。</p>\n</blockquote>\n<ul dir="auto">\n<li><strong>使用  <code class="notranslate">@</code>  引用文件</strong>，而不是描述代码的位置。Claude 在响应前读取文件。</li>\n<li><strong>直接粘贴图像</strong>。复制/粘贴或拖放图像到提示中。</li>\n<li><strong>提供 URL</strong>  用于文档和 API 参考。使用  <code class="notranslate">/permissions</code>  来允许列表经常使用的域。</li>\n<li><strong>管道数据</strong>  通过运行  <code class="notranslate">cat error.log | claude</code>  直接发送文件内容。</li>\n<li><strong>让 Claude 获取它需要的东西</strong>。告诉 Claude 使用 Bash 命令、MCP 工具或通过读取文件来自己拉取上下文。</li>\n</ul>\n<h3 id="main-heading-H3-18">配置你的环境</h3>\n<p dir="auto">一些设置步骤使 Claude Code 在所有会话中显著更有效。有关扩展功能的完整概述和何时使用每个功能，请参阅  <a href="https://code.claude.com/docs/zh-CN/features-overview" rel="nofollow">扩展 Claude Code</a>。</p>\n<h4 dir="auto">编写有效的 <strong>CLAUDE.md</strong></h4>\n<p dir="auto">运行 <strong>/init</strong> 根据你的当前项目结构生成启动 CLAUDE.md 文件，然后随时间精化。</p>\n<p dir="auto">CLAUDE.md 文件没有必需的格式，但保持简短和易读。</p>\n<p dir="auto">CLAUDE.md 在每个会话中加载，所以只包括广泛适用的东西。对于仅有时相关的域知识或工作流，改用  <a href="https://code.claude.com/docs/zh-CN/skills" rel="nofollow">skills</a>。Claude 按需加载它们，不会使每次对话都膨胀。</p>\n<p dir="auto">保持简洁。对于每一行，问自己：<em>"删除这个会导致 Claude 犯错吗？"</em>  如果不会，删除它。膨胀的 CLAUDE.md 文件会导致 Claude 忽略你的实际指令！</p>\n<h4 dir="auto">使用 CLI 工具</h4>\n<blockquote>\n<p dir="auto">告诉 Claude Code 在与外部服务交互时使用 CLI 工具，如  <code class="notranslate">gh</code>、<code class="notranslate">aws</code>、<code class="notranslate">gcloud</code>  和  <code class="notranslate">sentry-cli</code>。</p>\n</blockquote>\n<h4 dir="auto">连接 MCP 服务器</h4>\n<blockquote>\n<p dir="auto">运行 claude mcp add 来连接外部工具，如 Notion、Figma 或你的数据库。</p>\n</blockquote>\n<p dir="auto">使用  <a href="https://code.claude.com/docs/zh-CN/mcp" rel="nofollow">MCP servers</a>，你可以要求 Claude 从问题跟踪器实现功能、查询数据库、分析监控数据、集成来自 Figma 的设计并自动化工作流。</p>\n<h4 dir="auto">设置 hooks</h4>\n<blockquote>\n<p dir="auto">使用 hooks 来处理必须每次发生且没有例外的操作。</p>\n</blockquote>\n<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/hooks-guide" rel="nofollow">Hooks</a>  在 Claude 工作流中的特定点自动运行脚本。与 CLAUDE.md 指令不同，hooks 是确定性的，保证操作发生。</p>\n<h4 dir="auto">创建 skills</h4>\n<blockquote>\n<p dir="auto">在  <code class="notranslate">.claude/skills/</code>  中创建  <code class="notranslate">SKILL.md</code>  文件，为 Claude 提供域知识和可重用工作流。</p>\n</blockquote>\n<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/skills" rel="nofollow">Skills</a>  使用特定于你的项目、团队或域的信息扩展 Claude 的知识。Claude 在相关时自动应用它们，或者你可以使用  <code class="notranslate">/skill-name</code>  直接调用它们。</p>\n<p dir="auto">通过向  <code class="notranslate">.claude/skills/</code>  添加带有  <code class="notranslate">SKILL.md</code>  的目录来创建 skill：</p>\n<p dir="auto">.claude/skills/api-conventions/SKILL.md</p>\n<div class="highlight highlight-text-md notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="---\nname: api-conventions\ndescription: REST API design conventions for our services\n---\n\n# API Conventions\n\n- Use kebab-case for URL paths\n- Use camelCase for JSON properties\n- Always include pagination for list endpoints\n- Version APIs in the URL path (/v1/, /v2/)"><pre class="notranslate"><span class="pl-s">---</span>\n<span class="pl-ent">name</span>: <span class="pl-s">api-conventions</span>\n<span class="pl-ent">description</span>: <span class="pl-s">REST API design conventions for our services</span>\n<span class="pl-s">---</span>\n\n<span class="pl-mh"># <span class="pl-en">API Conventions</span></span>\n\n<span class="pl-v">-</span> Use kebab-case for URL paths\n<span class="pl-v">-</span> Use camelCase for JSON properties\n<span class="pl-v">-</span> Always include pagination for list endpoints\n<span class="pl-v">-</span> Version APIs in the URL path (/v1/, /v2/)</pre></div>\n<h4 dir="auto">安装 plugins</h4>\n<blockquote>\n<p dir="auto">运行 /plugin 来浏览市场。Plugins 添加 skills、工具和集成，无需配置。</p>\n</blockquote>\n<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/plugins" rel="nofollow">Plugins</a>  将 skills、hooks、subagents 和 MCP 服务器捆绑到来自社区和 Anthropic 的单个可安装单元中。如果你使用类型化语言，安装  <a href="https://code.claude.com/docs/zh-CN/discover-plugins#code-intelligence" rel="nofollow">代码智能 plugin</a>  来为 Claude 提供精确的符号导航和编辑后的自动错误检测。</p>\n<p dir="auto">有关在 skills、subagents、hooks 和 MCP 之间选择的指导，请参阅  <a href="https://code.claude.com/docs/zh-CN/features-overview#match-features-to-your-goal" rel="nofollow">扩展 Claude Code</a>。</p>\n<h3 id="main-heading-H3-19">有效沟通</h3>\n<p dir="auto">你与 Claude Code 沟通的方式显著影响结果的质量。</p>\n<h4 dir="auto">提出代码库问题</h4>\n<p dir="auto">问 Claude 你会问资深工程师的问题。</p>\n<h4 dir="auto">让 Claude 采访你</h4>\n<blockquote>\n<p dir="auto">对于更大的功能，让 Claude 先采访你。从最小的提示开始，要求 Claude 使用 AskUserQuestion 工具采访你。</p>\n</blockquote>\n<h3 id="main-heading-H3-20">管理你的会话</h3>\n<p dir="auto">对话是持久的和可逆的。利用这一点！</p>\n<h4 dir="auto">尽早且经常改正方向</h4>\n<blockquote>\n<p dir="auto">一旦你注意到 Claude 偏离轨道，立即改正它。</p>\n</blockquote>\n<p dir="auto">最好的结果来自紧密的反馈循环。虽然 Claude 有时会在第一次尝试时完美地解决问题，但快速改正它通常会更快地产生更好的解决方案。</p>\n<ul dir="auto">\n<li><strong><code class="notranslate">Esc</code></strong>：使用  <code class="notranslate">Esc</code>  键在中途停止 Claude。Context 被保留，所以你可以重定向。</li>\n<li><strong><code class="notranslate">Esc + Esc</code>  或  <code class="notranslate">/rewind</code></strong>：按  <code class="notranslate">Esc</code>  两次或运行  <code class="notranslate">/rewind</code>  来打开 rewind 菜单并恢复之前的对话和代码状态，或从选定的消息进行总结。</li>\n<li><strong><code class="notranslate">"撤销那个"</code></strong>：让 Claude 恢复其更改。</li>\n<li><strong><code class="notranslate">/clear</code></strong>：在不相关的任务之间重置 context。长会话与无关的 context 可能会降低性能。</li>\n</ul>\n<p dir="auto">如果你在一个会话中对同一问题改正了 Claude 两次以上，context 就充满了失败的方法。运行  <code class="notranslate">/clear</code>  并使用更具体的提示重新开始，该提示包含你学到的东西。干净的会话与更好的提示几乎总是优于长会话与累积的改正。</p>\n<h4 dir="auto">积极管理 context</h4>\n<p dir="auto">在不相关的任务之间频繁运行 /clear 来重置 context。</p>\n<h4 dir="auto">使用 subagents 进行调查</h4>\n<blockquote>\n<p dir="auto">使用  <code class="notranslate">"use subagents to investigate X"</code>  委托研究。它们在单独的 context 中探索，为实现保持你的主对话干净。</p>\n</blockquote>\n<p dir="auto">由于 context 是你的基本约束，subagents 是可用的最强大的工具之一。当 Claude 研究代码库时，它读取许多文件，所有这些都消耗你的 context。Subagents 在单独的 context windows 中运行并报告摘要。</p>\n<p dir="auto">subagent 探索代码库、读取相关文件并报告发现，所有这些都不会使你的主对话混乱。</p>\n<h4 dir="auto">恢复对话</h4>\n<p dir="auto">运行 claude --continue 来继续你离开的地方，或 --resume 来从最近的会话中选择。</p>\n<h3 id="main-heading-H3-21">避免常见失败模式</h3>\n<p dir="auto">这些是常见的错误。尽早识别它们可以节省时间：</p>\n<ul dir="auto">\n<li>\n<p dir="auto"><strong>厨房水槽会话。</strong>  你从一个任务开始，然后问 Claude 一些不相关的东西，然后回到第一个任务。Context 充满了无关的信息。</p>\n<blockquote>\n<p dir="auto"><strong>修复</strong>：在不相关的任务之间  <code class="notranslate">/clear</code>。</p>\n</blockquote>\n</li>\n<li>\n<p dir="auto"><strong>一次又一次地改正。</strong> Claude 做错了什么，你改正它，它仍然是错的，你再改正。Context 被失败的方法污染。</p>\n<blockquote>\n<p dir="auto"><strong>修复</strong>：在两次失败的改正后，<code class="notranslate">/clear</code>  并编写一个更好的初始提示，包含你学到的东西。</p>\n</blockquote>\n</li>\n<li>\n<p dir="auto"><strong>过度指定的 CLAUDE.md。</strong>  如果你的 CLAUDE.md 太长，Claude 会忽略一半，因为重要的规则在噪音中丢失。</p>\n<blockquote>\n<p dir="auto"><strong>修复</strong>：无情地修剪。如果 Claude 已经在没有指令的情况下正确地做某事，删除它或将其转换为 hook。</p>\n</blockquote>\n</li>\n<li>\n<p dir="auto"><strong>信任然后验证的差距。</strong> Claude 产生一个看起来合理的实现，但不处理边界情况。</p>\n<blockquote>\n<p dir="auto"><strong>修复</strong>：始终提供验证（测试、脚本、屏幕截图）。如果你不能验证它，不要发布它。</p>\n</blockquote>\n</li>\n<li>\n<p dir="auto"><strong>无限探索。</strong>  你要求 Claude "调查"某些东西而不限定范围。Claude 读取数百个文件，填充 context。</p>\n<blockquote>\n<p dir="auto"><strong>修复</strong>：狭隘地限定调查或使用 subagents，以便探索不会消耗你的主 context。</p>\n</blockquote>\n</li>\n</ul>\n<h3 id="main-heading-H3-22">培养你的直觉</h3>\n<p dir="auto">本指南中的模式不是一成不变的。它们是通常效果很好的起点，但可能不是每种情况的最优选择。</p>\n<p dir="auto">有时你<em>应该</em>让 context 累积，因为你深入一个复杂的问题，历史很有价值。有时你应该跳过规划，让 Claude 弄清楚，因为任务是探索性的。有时模糊的提示正是你想要的，因为你想看看 Claude 如何解释问题，然后再限制它。</p>\n<p dir="auto">注意什么有效。当 Claude 产生很好的输出时，注意你做了什么：提示结构、你提供的 context、你所在的模式。当 Claude 遇到困难时，问为什么。Context 太嘈杂了吗？提示太模糊了吗？任务对于一次通过来说太大了吗？</p>\n<p dir="auto">随着时间的推移，你会培养没有指南能捕捉的直觉。你会知道何时具体，何时开放，何时规划，何时探索，何时清除 context，何时让它累积。</p>\n<h2 id="main-heading-H2-23">相关资源</h2>\n<ul dir="auto">\n<li><a href="https://code.claude.com/docs/zh-CN/how-claude-code-works" rel="nofollow">Claude Code 如何工作</a>：代理循环、工具和 context 管理</li>\n<li><a href="https://code.claude.com/docs/zh-CN/features-overview" rel="nofollow">扩展 Claude Code</a>：skills、hooks、MCP、subagents 和 plugins</li>\n<li><a href="https://code.claude.com/docs/zh-CN/common-workflows" rel="nofollow">常见工作流</a>：调试、测试、PR 等的分步配方</li>\n<li><a href="https://code.claude.com/docs/zh-CN/memory" rel="nofollow">CLAUDE.md</a>：存储项目约定和持久 context</li>\n</ul>\n<h2 id="main-heading-H2-24">扩展 Claude Code</h2>\n<blockquote>\n<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/features-overview" rel="nofollow">https://code.claude.com/docs/zh-CN/features-overview</a></p>\n</blockquote>\n<h3 id="main-heading-H3-25">概述</h3>\n<ul dir="auto">\n<li><strong><a href="https://code.claude.com/docs/zh-CN/memory" rel="nofollow">CLAUDE.md</a></strong>  添加 Claude 每个会话都能看到的持久上下文</li>\n<li><strong><a href="https://code.claude.com/docs/zh-CN/skills" rel="nofollow">Skills</a></strong>  添加可重用的知识和可调用的工作流</li>\n<li><strong><a href="https://code.claude.com/docs/zh-CN/mcp" rel="nofollow">MCP</a></strong>  将 Claude 连接到外部服务和工具</li>\n<li><strong><a href="https://code.claude.com/docs/zh-CN/sub-agents" rel="nofollow">Subagents</a></strong>  在隔离的上下文中运行自己的循环，返回摘要</li>\n<li><strong><a href="https://code.claude.com/docs/zh-CN/agent-teams" rel="nofollow">Agent teams</a></strong>  协调多个独立会话，具有共享任务和点对点消息传递</li>\n<li><strong><a href="https://code.claude.com/docs/zh-CN/hooks" rel="nofollow">Hooks</a></strong>  完全在循环外作为确定性脚本运行</li>\n<li><strong><a href="https://code.claude.com/docs/zh-CN/plugins" rel="nofollow">Plugins</a></strong>  和  <strong><a href="https://code.claude.com/docs/zh-CN/plugin-marketplaces" rel="nofollow">marketplaces</a></strong>  打包和分发这些功能</li>\n</ul>\n<p dir="auto"><a href="https://code.claude.com/docs/zh-CN/skills" rel="nofollow">Skills</a>  是最灵活的扩展。Skill 是一个包含知识、工作流或说明的 markdown 文件。您可以使用  <code class="notranslate">/deploy</code>  之类的命令调用 skills，或者 Claude 可以在相关时自动加载它们。Skills 可以在您当前的对话中运行，也可以通过 subagents 在隔离的上下文中运行。</p>\n<h3 id="main-heading-H3-26">将功能与您的目标相匹配</h3>\n<p dir="auto">功能范围从 Claude 每个会话都能看到的始终开启的上下文，到您或 Claude 可以调用的按需功能，再到在特定事件上运行的后台自动化。下表显示了可用的功能以及何时使用每个功能。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>功能</th>\n<th>作用</th>\n<th>何时使用</th>\n<th>示例</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>CLAUDE.md</strong></td>\n<td>每次对话加载的持久上下文</td>\n<td>项目约定、"始终执行 X" 规则</td>\n<td>"使用 pnpm，而不是 npm。提交前运行测试。"</td>\n</tr>\n<tr>\n<td><strong>Skill</strong></td>\n<td>Claude 可以使用的说明、知识和工作流</td>\n<td>可重用内容、参考文档、可重复的任务</td>\n<td><code class="notranslate">/deploy</code>  运行您的部署清单；包含端点模式的 API 文档 skill</td>\n</tr>\n<tr>\n<td><strong>Subagent</strong></td>\n<td>返回摘要结果的隔离执行上下文</td>\n<td>上下文隔离、并行任务、专门的工作者</td>\n<td>读取许多文件但仅返回关键发现的研究任务</td>\n</tr>\n<tr>\n<td><strong><a href="https://code.claude.com/docs/zh-CN/agent-teams" rel="nofollow">Agent teams</a></strong></td>\n<td>协调多个独立的 Claude Code 会话</td>\n<td>并行研究、新功能开发、使用竞争假设进行调试</td>\n<td>生成审查者同时检查安全性、性能和测试</td>\n</tr>\n<tr>\n<td><strong>MCP</strong></td>\n<td>连接到外部服务</td>\n<td>外部数据或操作</td>\n<td>查询您的数据库、发布到 Slack、控制浏览器</td>\n</tr>\n<tr>\n<td><strong>Hook</strong></td>\n<td>在事件上运行的确定性脚本</td>\n<td>可预测的自动化，不涉及 LLM</td>\n<td>每次文件编辑后运行 ESLint</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong><a href="https://code.claude.com/docs/zh-CN/plugins" rel="nofollow">Plugins</a></strong>  是打包层。Plugin 将 skills、hooks、subagents 和 MCP servers 捆绑到单个可安装单元中。Plugin skills 是命名空间的（如  <code class="notranslate">/my-plugin:review</code>），因此多个 plugins 可以共存。当您想在多个存储库中重用相同的设置或通过  <strong><a href="https://code.claude.com/docs/zh-CN/plugin-marketplaces" rel="nofollow">marketplace</a></strong>  分发给他人时，使用 plugins。</p>',user:{login:e,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:o,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/306"},navList:[{text:"基本命令",id:"main-heading-H2-0",type:a,children:[]},{text:"常见工作流程",id:"main-heading-H2-1",type:a,children:[{text:"1) 快速理解新代码库",id:"main-heading-H3-2",type:t},{text:"2) 高效修复错误",id:"main-heading-H3-3",type:t},{text:"3) 安全重构代码",id:"main-heading-H3-4",type:t},{text:"4) 使用 Plan Mode 做安全分析",id:"main-heading-H3-5",type:t},{text:"5) 补测试与边界覆盖",id:"main-heading-H3-6",type:t},{text:"6) 创建 PR（拉取请求）",id:"main-heading-H3-7",type:t},{text:"7) 文档补全与规范化",id:"main-heading-H3-8",type:t},{text:"使用图像",id:"main-heading-H3-9",type:t},{text:"引用文件和目录",id:"main-heading-H3-10",type:t},{text:"8) 管理会话与恢复上下文",id:"main-heading-H3-11",type:t},{text:"9) 并行任务：使用 Git worktree",id:"main-heading-H3-12",type:t},{text:"10) 把 Claude 当作命令行工具集成",id:"main-heading-H3-13",type:t}]},{text:"Claude Code 最佳实践",id:"main-heading-H2-14",type:a,children:[{text:"给 Claude 一种验证其工作的方式",id:"main-heading-H3-15",type:t},{text:"先探索，再规划，最后编码",id:"main-heading-H3-16",type:t},{text:"在提示中提供具体的上下文",id:"main-heading-H3-17",type:t},{text:"配置你的环境",id:"main-heading-H3-18",type:t},{text:"有效沟通",id:"main-heading-H3-19",type:t},{text:"管理你的会话",id:"main-heading-H3-20",type:t},{text:"避免常见失败模式",id:"main-heading-H3-21",type:t},{text:"培养你的直觉",id:"main-heading-H3-22",type:t}]},{text:"相关资源",id:"main-heading-H2-23",type:a,children:[]},{text:"扩展 Claude Code",id:"main-heading-H2-24",type:a,children:[{text:"概述",id:"main-heading-H3-25",type:t},{text:"将功能与您的目标相匹配",id:"main-heading-H3-26",type:t}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:e,userEmail:"1656800216@qq.com",repository:"blog",blogName:s,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:s,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:o}},serverRendered:!0}}("H3","","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

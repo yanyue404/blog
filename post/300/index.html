@@ -1,0 +1,232 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Page Lifecycle API 教程（转载） | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="作者： 阮一峰 日期： 2018年11月 5日 两周前，我介绍了 Page Visibility API。有了它，就可以监听各种情况的网页卸载。 但是，它没有解决一个问题。Android、iOS 和最新的 Windows 系统可以随时自主地停止后台进程，及时释放系统资源。也就是说，网页可能随时被系统"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Page Lifecycle API 教程（转载）"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="作者： 阮一峰 日期： 2018年11月 5日 两周前，我介绍了 Page Visibility API。有了它，就可以监听各种情况的网页卸载。 但是，它没有解决一个问题。Android、iOS 和最新的 Windows 系统可以随时自主地停止后台进程，及时释放系统资源。也就是说，网页可能随时被系统"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Page Lifecycle API 教程（转载）"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="作者： 阮一峰 日期： 2018年11月 5日 两周前，我介绍了 Page Visibility API。有了它，就可以监听各种情况的网页卸载。 但是，它没有解决一个问题。Android、iOS 和最新的 Windows 系统可以随时自主地停止后台进程，及时释放系统资源。也就是说，网页可能随时被系统"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H2-0" title="一、生命周期阶段" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              一、生命周期阶段
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H2-1" title="二、常见场景" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              二、常见场景
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H2-2" title="三、事件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              三、事件
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-3" title="3.1 focus 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.1 focus 事件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-4" title="3.2 blur 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.2 blur 事件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-5" title="3.3 visibilitychange 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.3 visibilitychange 事件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-6" title="3.4 freeze 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.4 freeze 事件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-7" title="3.5 resume 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.5 resume 事件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-8" title="3.6 pageshow 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.6 pageshow 事件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-9" title="3.7 pagehide 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.7 pagehide 事件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-10" title="3.8 beforeunload 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.8 beforeunload 事件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H3-11" title="3.9 unload 事件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.9 unload 事件
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H2-12" title="四、获取当前阶段" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              四、获取当前阶段
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H2-13" title="五、document.wasDiscarded" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              五、document.wasDiscarded
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/300#main-heading-H2-14" title="六、参考链接" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              六、参考链接
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Page Lifecycle API 教程（转载）</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Page Lifecycle API 教程（转载）</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2025-12-04</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 11 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><p dir="auto">作者： <a href="https://www.ruanyifeng.com/" rel="nofollow">阮一峰</a></p>
+<p dir="auto">日期： <a href="https://www.ruanyifeng.com/blog/2018/11/" rel="nofollow">2018年11月 5日</a></p>
+<p dir="auto">两周前，我介绍了 <a href="https://www.ruanyifeng.com/blog/2018/10/page_visibility_api.html" rel="nofollow">Page Visibility API</a>。有了它，就可以监听各种情况的网页卸载。</p>
+<p dir="auto">但是，它没有解决一个问题。Android、iOS 和最新的 Windows 系统可以随时自主地停止后台进程，及时释放系统资源。也就是说，网页可能随时被系统丢弃掉。Page Visibility API 只在网页对用户不可见时触发，至于网页会不会被系统丢弃掉，它就无能为力了。</p>
+<p dir="auto">为了解决这个问题，W3C 新制定了一个 <a href="https://github.com/WICG/page-lifecycle">Page Lifecycle API</a>，统一了网页从诞生到卸载的行为模式，并且定义了新的事件，允许开发者响应网页状态的各种转换。</p>
+<p dir="auto">有了这个 API，开发者就可以预测网页下一步的状态，从而进行各种针对性的处理。Chrome 68 支持这个 API，对于老式浏览器可以使用谷歌开发的兼容库 <a href="https://github.com/GoogleChromeLabs/page-lifecycle">PageLifecycle.js</a>。</p>
+<h2 id="main-heading-H2-0">一、生命周期阶段</h2>
+<p dir="auto">网页的生命周期分成六个阶段，每个时刻只可能处于其中一个阶段。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/6093664771ab3842f27c3723184d64198a354b913f23b52dea8b84acb23a62b1/68747470733a2f2f63646e2e6265656b6b612e636f6d2f626c6f67696d672f61737365742f3230313831312f6267323031383131303430312e706e67"><img src="https://camo.githubusercontent.com/6093664771ab3842f27c3723184d64198a354b913f23b52dea8b84acb23a62b1/68747470733a2f2f63646e2e6265656b6b612e636f6d2f626c6f67696d672f61737365742f3230313831312f6267323031383131303430312e706e67" alt="" data-canonical-src="https://cdn.beekka.com/blogimg/asset/201811/bg2018110401.png" style="max-width:100%"></a></p>
+<p dir="auto"><strong>（1）Active 阶段</strong></p>
+<p dir="auto">在 Active 阶段，网页处于可见状态，且拥有输入焦点。</p>
+<p dir="auto"><strong>（2）Passive 阶段</strong></p>
+<p dir="auto">在 Passive 阶段，网页可见，但没有输入焦点，无法接受输入。UI 更新（比如动画）仍然在执行。该阶段只可能发生在桌面同时有多个窗口的情况。</p>
+<p dir="auto"><strong>（3）Hidden 阶段</strong></p>
+<p dir="auto">在 Hidden 阶段，用户的桌面被其他窗口占据，网页不可见，但尚未冻结。UI 更新不再执行。</p>
+<p dir="auto"><strong>（4）Terminated 阶段</strong></p>
+<p dir="auto">在 Terminated 阶段，由于用户主动关闭窗口，或者在同一个窗口前往其他页面，导致当前页面开始被浏览器卸载并从内存中清除。注意，这个阶段总是在 Hidden 阶段之后发生，也就是说，用户主动离开当前页面，总是先进入 Hidden 阶段，再进入 Terminated 阶段。</p>
+<p dir="auto">这个阶段会导致网页卸载，任何新任务都不会在这个阶段启动，并且如果运行时间太长，正在进行的任务可能会被终止。</p>
+<p dir="auto"><strong>（5）Frozen 阶段</strong></p>
+<p dir="auto">如果网页处于 Hidden 阶段的时间过久，用户又不关闭网页，浏览器就有可能冻结网页，使其进入 Frozen 阶段。不过，也有可能，处于可见状态的页面长时间没有操作，也会进入 Frozen 阶段。</p>
+<p dir="auto">这个阶段的特征是，网页不会再被分配 CPU 计算资源。定时器、回调函数、网络请求、DOM 操作都不会执行，不过正在运行的任务会执行完。浏览器可能会允许 Frozen 阶段的页面，周期性复苏一小段时间，短暂变回 Hidden 状态，允许一小部分任务执行。</p>
+<p dir="auto"><strong>（6）Discarded 阶段</strong></p>
+<p dir="auto">如果网页长时间处于 Frozen 阶段，用户又不唤醒页面，那么就会进入 Discarded 阶段，即浏览器自动卸载网页，清除该网页的内存占用。不过，Passive 阶段的网页如果长时间没有互动，也可能直接进入 Discarded 阶段。</p>
+<p dir="auto">这一般是在用户没有介入的情况下，由系统强制执行。任何类型的新任务或 JavaScript 代码，都不能在此阶段执行，因为这时通常处在资源限制的状况下。</p>
+<p dir="auto">网页被浏览器自动 Discarded 以后，它的 Tab 窗口还是在的。如果用户重新访问这个 Tab 页，浏览器将会重新向服务器发出请求，再一次重新加载网页，回到 Active 阶段。</p>
+<h2 id="main-heading-H2-1">二、常见场景</h2>
+<p dir="auto">以下是几个常见场景的网页生命周期变化。</p>
+<p dir="auto">（1）用户打开网页后，又切换到其他 App，但只过了一会又回到网页。</p>
+<p dir="auto">网页由 Active 变成 Hidden，又变回 Active。</p>
+<p dir="auto">（2）用户打开网页后，又切换到其他 App，并且长时候使用后者，导致系统自动丢弃网页。</p>
+<p dir="auto">网页由 Active 变成 Hidden，再变成 Frozen，最后 Discarded。</p>
+<p dir="auto">（3）用户打开网页后，又切换到其他 App，然后从任务管理器里面将浏览器进程清除。</p>
+<p dir="auto">网页由 Active 变成 Hidden，然后 Terminated。</p>
+<p dir="auto">（4）系统丢弃了某个 Tab 里面的页面后，用户重新打开这个 Tab。</p>
+<p dir="auto">网页由 Discarded 变成 Active。</p>
+<h2 id="main-heading-H2-2">三、事件</h2>
+<p dir="auto">生命周期的各个阶段都有自己的事件，以供开发者指定监听函数。这些事件里面，只有两个是新定义的（<code class="notranslate">freeze</code>事件和<code class="notranslate">resume</code>事件），其它都是现有的。</p>
+<p dir="auto">注意，网页的生命周期事件是在所有帧（frame）触发，不管是底层的帧，还是内嵌的帧。也就是说，内嵌的<code class="notranslate">&lt;iframe></code>网页跟顶层网页一样，都会同时监听到下面的事件。</p>
+<h3 id="main-heading-H3-3">3.1 focus 事件</h3>
+<p dir="auto"><code class="notranslate">focus</code>事件在页面获得输入焦点时触发，比如网页从 Passive 阶段变为 Active 阶段。</p>
+<h3 id="main-heading-H3-4">3.2 blur 事件</h3>
+<p dir="auto"><code class="notranslate">blur</code>事件在页面失去输入焦点时触发，比如网页从 Active 阶段变为 Passive 阶段。</p>
+<h3 id="main-heading-H3-5">3.3 visibilitychange 事件</h3>
+<p dir="auto"><code class="notranslate">visibilitychange</code>事件在网页可见状态发生变化时触发，一般发生在以下几种场景。</p>
+<blockquote>
+<ul dir="auto">
+<li>用户隐藏页面（切换 Tab、最小化浏览器），页面由 Active 阶段变成 Hidden 阶段。</li>
+<li>用户重新访问隐藏的页面，页面由 Hidden 阶段变成 Active 阶段。</li>
+<li>用户关闭页面，页面会先进入 Hidden 阶段，然后进入 Terminated 阶段。</li>
+</ul>
+</blockquote>
+<p dir="auto">可以通过<code class="notranslate">document.onvisibilitychange</code>属性指定这个事件的回调函数。</p>
+<h3 id="main-heading-H3-6">3.4 freeze 事件</h3>
+<p dir="auto"><code class="notranslate">freeze</code>事件在网页进入 Frozen 阶段时触发。</p>
+<p dir="auto">可以通过<code class="notranslate">document.onfreeze</code>属性指定在进入 Frozen 阶段时调用的回调函数。</p>
+<blockquote>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="
+function handleFreeze(e) {
+  // Handle transition to FROZEN
+}
+document.addEventListener('freeze', handleFreeze);
+
+# 或者
+document.onfreeze = function() { ... }
+"><pre class="notranslate"><code class="notranslate">
+function handleFreeze(e) {
+  // Handle transition to FROZEN
+}
+document.addEventListener('freeze', handleFreeze);
+
+# 或者
+document.onfreeze = function() { ... }
+
+</code></pre></div>
+</blockquote>
+<p dir="auto">这个事件的监听函数，最长只能运行500毫秒。并且只能复用已经打开的网络连接，不能发起新的网络请求。</p>
+<p dir="auto">注意，从 Frozen 阶段进入 Discarded 阶段，不会触发任何事件，无法指定回调函数，只能在进入 Frozen 阶段时指定回调函数。</p>
+<h3 id="main-heading-H3-7">3.5 resume 事件</h3>
+<p dir="auto"><code class="notranslate">resume</code>事件在网页离开 Frozen 阶段，变为 Active / Passive / Hidden 阶段时触发。</p>
+<p dir="auto"><code class="notranslate">document.onresume</code>属性指的是页面离开 Frozen 阶段、进入可用状态时调用的回调函数。</p>
+<blockquote>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='
+function handleResume(e) {
+  // handle state transition FROZEN -> ACTIVE
+}
+document.addEventListener("resume", handleResume);
+
+# 或者
+document.onresume = function() { ... }
+'><pre class="notranslate"><code class="notranslate">
+function handleResume(e) {
+  // handle state transition FROZEN -> ACTIVE
+}
+document.addEventListener("resume", handleResume);
+
+# 或者
+document.onresume = function() { ... }
+
+</code></pre></div>
+</blockquote>
+<h3 id="main-heading-H3-8">3.6 pageshow 事件</h3>
+<p dir="auto"><code class="notranslate">pageshow</code>事件在用户加载网页时触发。这时，有可能是全新的页面加载，也可能是从缓存中获取的页面。如果是从缓存中获取，则该事件对象的<code class="notranslate">event.persisted</code>属性为<code class="notranslate">true</code>，否则为<code class="notranslate">false</code>。</p>
+<p dir="auto">这个事件的名字有点误导，它跟页面的可见性其实毫无关系，只跟浏览器的 History 记录的变化有关。</p>
+<h3 id="main-heading-H3-9">3.7 pagehide 事件</h3>
+<p dir="auto"><code class="notranslate">pagehide</code>事件在用户离开当前网页、进入另一个网页时触发。它的前提是浏览器的 History 记录必须发生变化，跟网页是否可见无关。</p>
+<p dir="auto">如果浏览器能够将当前页面添加到缓存以供稍后重用，则事件对象的<code class="notranslate">event.persisted</code>属性为<code class="notranslate">true</code>。 如果为<code class="notranslate">true</code>。如果页面添加到了缓存，则页面进入 Frozen 状态，否则进入 Terminatied 状态。</p>
+<h3 id="main-heading-H3-10">3.8 beforeunload 事件</h3>
+<p dir="auto"><code class="notranslate">beforeunload</code>事件在窗口或文档即将卸载时触发。该事件发生时，文档仍然可见，此时卸载仍可取消。经过这个事件，网页进入 Terminated 状态。</p>
+<h3 id="main-heading-H3-11">3.9 unload 事件</h3>
+<p dir="auto"><code class="notranslate">unload</code>事件在页面正在卸载时触发。经过这个事件，网页进入 Terminated 状态。</p>
+<h2 id="main-heading-H2-12">四、获取当前阶段</h2>
+<p dir="auto">如果网页处于 Active、Passive 或 Hidden 阶段，可以通过下面的代码，获得网页当前的状态。</p>
+<blockquote>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="
+const getState = () => {
+  if (document.visibilityState === 'hidden') {
+    return 'hidden';
+  }
+  if (document.hasFocus()) {
+    return 'active';
+  }
+  return 'passive';
+};
+"><pre class="notranslate"><code class="notranslate">
+const getState = () => {
+  if (document.visibilityState === 'hidden') {
+    return 'hidden';
+  }
+  if (document.hasFocus()) {
+    return 'active';
+  }
+  return 'passive';
+};
+
+</code></pre></div>
+</blockquote>
+<p dir="auto">如果网页处于 Frozen 和 Terminated 状态，由于定时器代码不会执行，只能通过事件监听判断状态。进入 Frozen 阶段，可以监听<code class="notranslate">freeze</code>事件；进入 Terminated 阶段，可以监听<code class="notranslate">pagehide</code>事件。</p>
+<h2 id="main-heading-H2-13">五、document.wasDiscarded</h2>
+<p dir="auto">如果某个选项卡处于 Frozen 阶段，就随时有可能被系统丢弃，进入 Discarded 阶段。如果后来用户再次点击该选项卡，浏览器会重新加载该页面。</p>
+<p dir="auto">这时，开发者可以通过判断<code class="notranslate">document.wasDiscarded</code>属性，了解先前的网页是否被丢弃了。</p>
+<blockquote>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="
+if (document.wasDiscarded) {
+  // 该网页已经不是原来的状态了，曾经被浏览器丢弃过
+  // 恢复以前的状态
+  getPersistedState(self.discardedClientId);
+}
+"><pre class="notranslate"><code class="notranslate">
+if (document.wasDiscarded) {
+  // 该网页已经不是原来的状态了，曾经被浏览器丢弃过
+  // 恢复以前的状态
+  getPersistedState(self.discardedClientId);
+}
+
+</code></pre></div>
+</blockquote>
+<p dir="auto">同时，<code class="notranslate">window</code>对象上会新增<code class="notranslate">window.clientId</code>和<code class="notranslate">window.discardedClientId</code>两个属性，用来恢复丢弃前的状态。</p>
+<h2 id="main-heading-H2-14">六、参考链接</h2>
+<ul dir="auto">
+<li><a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api" rel="nofollow">Page Lifecycle API</a>, Philip Walton</li>
+<li><a href="https://github.com/WICG/page-lifecycle">Lifecycle API for Web Pages</a>, W3C</li>
+<li><a href="https://wicg.github.io/page-lifecycle/spec.html" rel="nofollow">Page Lifecycle 1 Editor's Draft</a>, W3C</li>
+</ul>
+<p dir="auto">（完）</p></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(e,n,t,a,i,o,d){return{layout:"default",data:[{post:{id:3692630722,number:300,title:"Page Lifecycle API 教程（转载）",created_at:a,updated_at:a,body_html:'<p dir="auto">作者： <a href="https://www.ruanyifeng.com/" rel="nofollow">阮一峰</a></p>\n<p dir="auto">日期： <a href="https://www.ruanyifeng.com/blog/2018/11/" rel="nofollow">2018年11月 5日</a></p>\n<p dir="auto">两周前，我介绍了 <a href="https://www.ruanyifeng.com/blog/2018/10/page_visibility_api.html" rel="nofollow">Page Visibility API</a>。有了它，就可以监听各种情况的网页卸载。</p>\n<p dir="auto">但是，它没有解决一个问题。Android、iOS 和最新的 Windows 系统可以随时自主地停止后台进程，及时释放系统资源。也就是说，网页可能随时被系统丢弃掉。Page Visibility API 只在网页对用户不可见时触发，至于网页会不会被系统丢弃掉，它就无能为力了。</p>\n<p dir="auto">为了解决这个问题，W3C 新制定了一个 <a href="https://github.com/WICG/page-lifecycle">Page Lifecycle API</a>，统一了网页从诞生到卸载的行为模式，并且定义了新的事件，允许开发者响应网页状态的各种转换。</p>\n<p dir="auto">有了这个 API，开发者就可以预测网页下一步的状态，从而进行各种针对性的处理。Chrome 68 支持这个 API，对于老式浏览器可以使用谷歌开发的兼容库 <a href="https://github.com/GoogleChromeLabs/page-lifecycle">PageLifecycle.js</a>。</p>\n<h2 id="main-heading-H2-0">一、生命周期阶段</h2>\n<p dir="auto">网页的生命周期分成六个阶段，每个时刻只可能处于其中一个阶段。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/6093664771ab3842f27c3723184d64198a354b913f23b52dea8b84acb23a62b1/68747470733a2f2f63646e2e6265656b6b612e636f6d2f626c6f67696d672f61737365742f3230313831312f6267323031383131303430312e706e67"><img src="https://camo.githubusercontent.com/6093664771ab3842f27c3723184d64198a354b913f23b52dea8b84acb23a62b1/68747470733a2f2f63646e2e6265656b6b612e636f6d2f626c6f67696d672f61737365742f3230313831312f6267323031383131303430312e706e67" alt="" data-canonical-src="https://cdn.beekka.com/blogimg/asset/201811/bg2018110401.png" style="max-width: 100%;"></a></p>\n<p dir="auto"><strong>（1）Active 阶段</strong></p>\n<p dir="auto">在 Active 阶段，网页处于可见状态，且拥有输入焦点。</p>\n<p dir="auto"><strong>（2）Passive 阶段</strong></p>\n<p dir="auto">在 Passive 阶段，网页可见，但没有输入焦点，无法接受输入。UI 更新（比如动画）仍然在执行。该阶段只可能发生在桌面同时有多个窗口的情况。</p>\n<p dir="auto"><strong>（3）Hidden 阶段</strong></p>\n<p dir="auto">在 Hidden 阶段，用户的桌面被其他窗口占据，网页不可见，但尚未冻结。UI 更新不再执行。</p>\n<p dir="auto"><strong>（4）Terminated 阶段</strong></p>\n<p dir="auto">在 Terminated 阶段，由于用户主动关闭窗口，或者在同一个窗口前往其他页面，导致当前页面开始被浏览器卸载并从内存中清除。注意，这个阶段总是在 Hidden 阶段之后发生，也就是说，用户主动离开当前页面，总是先进入 Hidden 阶段，再进入 Terminated 阶段。</p>\n<p dir="auto">这个阶段会导致网页卸载，任何新任务都不会在这个阶段启动，并且如果运行时间太长，正在进行的任务可能会被终止。</p>\n<p dir="auto"><strong>（5）Frozen 阶段</strong></p>\n<p dir="auto">如果网页处于 Hidden 阶段的时间过久，用户又不关闭网页，浏览器就有可能冻结网页，使其进入 Frozen 阶段。不过，也有可能，处于可见状态的页面长时间没有操作，也会进入 Frozen 阶段。</p>\n<p dir="auto">这个阶段的特征是，网页不会再被分配 CPU 计算资源。定时器、回调函数、网络请求、DOM 操作都不会执行，不过正在运行的任务会执行完。浏览器可能会允许 Frozen 阶段的页面，周期性复苏一小段时间，短暂变回 Hidden 状态，允许一小部分任务执行。</p>\n<p dir="auto"><strong>（6）Discarded 阶段</strong></p>\n<p dir="auto">如果网页长时间处于 Frozen 阶段，用户又不唤醒页面，那么就会进入 Discarded 阶段，即浏览器自动卸载网页，清除该网页的内存占用。不过，Passive 阶段的网页如果长时间没有互动，也可能直接进入 Discarded 阶段。</p>\n<p dir="auto">这一般是在用户没有介入的情况下，由系统强制执行。任何类型的新任务或 JavaScript 代码，都不能在此阶段执行，因为这时通常处在资源限制的状况下。</p>\n<p dir="auto">网页被浏览器自动 Discarded 以后，它的 Tab 窗口还是在的。如果用户重新访问这个 Tab 页，浏览器将会重新向服务器发出请求，再一次重新加载网页，回到 Active 阶段。</p>\n<h2 id="main-heading-H2-1">二、常见场景</h2>\n<p dir="auto">以下是几个常见场景的网页生命周期变化。</p>\n<p dir="auto">（1）用户打开网页后，又切换到其他 App，但只过了一会又回到网页。</p>\n<p dir="auto">网页由 Active 变成 Hidden，又变回 Active。</p>\n<p dir="auto">（2）用户打开网页后，又切换到其他 App，并且长时候使用后者，导致系统自动丢弃网页。</p>\n<p dir="auto">网页由 Active 变成 Hidden，再变成 Frozen，最后 Discarded。</p>\n<p dir="auto">（3）用户打开网页后，又切换到其他 App，然后从任务管理器里面将浏览器进程清除。</p>\n<p dir="auto">网页由 Active 变成 Hidden，然后 Terminated。</p>\n<p dir="auto">（4）系统丢弃了某个 Tab 里面的页面后，用户重新打开这个 Tab。</p>\n<p dir="auto">网页由 Discarded 变成 Active。</p>\n<h2 id="main-heading-H2-2">三、事件</h2>\n<p dir="auto">生命周期的各个阶段都有自己的事件，以供开发者指定监听函数。这些事件里面，只有两个是新定义的（<code class="notranslate">freeze</code>事件和<code class="notranslate">resume</code>事件），其它都是现有的。</p>\n<p dir="auto">注意，网页的生命周期事件是在所有帧（frame）触发，不管是底层的帧，还是内嵌的帧。也就是说，内嵌的<code class="notranslate">&lt;iframe&gt;</code>网页跟顶层网页一样，都会同时监听到下面的事件。</p>\n<h3 id="main-heading-H3-3">3.1 focus 事件</h3>\n<p dir="auto"><code class="notranslate">focus</code>事件在页面获得输入焦点时触发，比如网页从 Passive 阶段变为 Active 阶段。</p>\n<h3 id="main-heading-H3-4">3.2 blur 事件</h3>\n<p dir="auto"><code class="notranslate">blur</code>事件在页面失去输入焦点时触发，比如网页从 Active 阶段变为 Passive 阶段。</p>\n<h3 id="main-heading-H3-5">3.3 visibilitychange 事件</h3>\n<p dir="auto"><code class="notranslate">visibilitychange</code>事件在网页可见状态发生变化时触发，一般发生在以下几种场景。</p>\n<blockquote>\n<ul dir="auto">\n<li>用户隐藏页面（切换 Tab、最小化浏览器），页面由 Active 阶段变成 Hidden 阶段。</li>\n<li>用户重新访问隐藏的页面，页面由 Hidden 阶段变成 Active 阶段。</li>\n<li>用户关闭页面，页面会先进入 Hidden 阶段，然后进入 Terminated 阶段。</li>\n</ul>\n</blockquote>\n<p dir="auto">可以通过<code class="notranslate">document.onvisibilitychange</code>属性指定这个事件的回调函数。</p>\n<h3 id="main-heading-H3-6">3.4 freeze 事件</h3>\n<p dir="auto"><code class="notranslate">freeze</code>事件在网页进入 Frozen 阶段时触发。</p>\n<p dir="auto">可以通过<code class="notranslate">document.onfreeze</code>属性指定在进入 Frozen 阶段时调用的回调函数。</p>\n<blockquote>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="\nfunction handleFreeze(e) {\n  // Handle transition to FROZEN\n}\ndocument.addEventListener(\'freeze\', handleFreeze);\n\n# 或者\ndocument.onfreeze = function() { ... }\n"><pre class="notranslate"><code class="notranslate">\nfunction handleFreeze(e) {\n  // Handle transition to FROZEN\n}\ndocument.addEventListener(\'freeze\', handleFreeze);\n\n# 或者\ndocument.onfreeze = function() { ... }\n\n</code></pre></div>\n</blockquote>\n<p dir="auto">这个事件的监听函数，最长只能运行500毫秒。并且只能复用已经打开的网络连接，不能发起新的网络请求。</p>\n<p dir="auto">注意，从 Frozen 阶段进入 Discarded 阶段，不会触发任何事件，无法指定回调函数，只能在进入 Frozen 阶段时指定回调函数。</p>\n<h3 id="main-heading-H3-7">3.5 resume 事件</h3>\n<p dir="auto"><code class="notranslate">resume</code>事件在网页离开 Frozen 阶段，变为 Active / Passive / Hidden 阶段时触发。</p>\n<p dir="auto"><code class="notranslate">document.onresume</code>属性指的是页面离开 Frozen 阶段、进入可用状态时调用的回调函数。</p>\n<blockquote>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="\nfunction handleResume(e) {\n  // handle state transition FROZEN -&gt; ACTIVE\n}\ndocument.addEventListener(&quot;resume&quot;, handleResume);\n\n# 或者\ndocument.onresume = function() { ... }\n"><pre class="notranslate"><code class="notranslate">\nfunction handleResume(e) {\n  // handle state transition FROZEN -&gt; ACTIVE\n}\ndocument.addEventListener("resume", handleResume);\n\n# 或者\ndocument.onresume = function() { ... }\n\n</code></pre></div>\n</blockquote>\n<h3 id="main-heading-H3-8">3.6 pageshow 事件</h3>\n<p dir="auto"><code class="notranslate">pageshow</code>事件在用户加载网页时触发。这时，有可能是全新的页面加载，也可能是从缓存中获取的页面。如果是从缓存中获取，则该事件对象的<code class="notranslate">event.persisted</code>属性为<code class="notranslate">true</code>，否则为<code class="notranslate">false</code>。</p>\n<p dir="auto">这个事件的名字有点误导，它跟页面的可见性其实毫无关系，只跟浏览器的 History 记录的变化有关。</p>\n<h3 id="main-heading-H3-9">3.7 pagehide 事件</h3>\n<p dir="auto"><code class="notranslate">pagehide</code>事件在用户离开当前网页、进入另一个网页时触发。它的前提是浏览器的 History 记录必须发生变化，跟网页是否可见无关。</p>\n<p dir="auto">如果浏览器能够将当前页面添加到缓存以供稍后重用，则事件对象的<code class="notranslate">event.persisted</code>属性为<code class="notranslate">true</code>。 如果为<code class="notranslate">true</code>。如果页面添加到了缓存，则页面进入 Frozen 状态，否则进入 Terminatied 状态。</p>\n<h3 id="main-heading-H3-10">3.8 beforeunload 事件</h3>\n<p dir="auto"><code class="notranslate">beforeunload</code>事件在窗口或文档即将卸载时触发。该事件发生时，文档仍然可见，此时卸载仍可取消。经过这个事件，网页进入 Terminated 状态。</p>\n<h3 id="main-heading-H3-11">3.9 unload 事件</h3>\n<p dir="auto"><code class="notranslate">unload</code>事件在页面正在卸载时触发。经过这个事件，网页进入 Terminated 状态。</p>\n<h2 id="main-heading-H2-12">四、获取当前阶段</h2>\n<p dir="auto">如果网页处于 Active、Passive 或 Hidden 阶段，可以通过下面的代码，获得网页当前的状态。</p>\n<blockquote>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="\nconst getState = () =&gt; {\n  if (document.visibilityState === \'hidden\') {\n    return \'hidden\';\n  }\n  if (document.hasFocus()) {\n    return \'active\';\n  }\n  return \'passive\';\n};\n"><pre class="notranslate"><code class="notranslate">\nconst getState = () =&gt; {\n  if (document.visibilityState === \'hidden\') {\n    return \'hidden\';\n  }\n  if (document.hasFocus()) {\n    return \'active\';\n  }\n  return \'passive\';\n};\n\n</code></pre></div>\n</blockquote>\n<p dir="auto">如果网页处于 Frozen 和 Terminated 状态，由于定时器代码不会执行，只能通过事件监听判断状态。进入 Frozen 阶段，可以监听<code class="notranslate">freeze</code>事件；进入 Terminated 阶段，可以监听<code class="notranslate">pagehide</code>事件。</p>\n<h2 id="main-heading-H2-13">五、document.wasDiscarded</h2>\n<p dir="auto">如果某个选项卡处于 Frozen 阶段，就随时有可能被系统丢弃，进入 Discarded 阶段。如果后来用户再次点击该选项卡，浏览器会重新加载该页面。</p>\n<p dir="auto">这时，开发者可以通过判断<code class="notranslate">document.wasDiscarded</code>属性，了解先前的网页是否被丢弃了。</p>\n<blockquote>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="\nif (document.wasDiscarded) {\n  // 该网页已经不是原来的状态了，曾经被浏览器丢弃过\n  // 恢复以前的状态\n  getPersistedState(self.discardedClientId);\n}\n"><pre class="notranslate"><code class="notranslate">\nif (document.wasDiscarded) {\n  // 该网页已经不是原来的状态了，曾经被浏览器丢弃过\n  // 恢复以前的状态\n  getPersistedState(self.discardedClientId);\n}\n\n</code></pre></div>\n</blockquote>\n<p dir="auto">同时，<code class="notranslate">window</code>对象上会新增<code class="notranslate">window.clientId</code>和<code class="notranslate">window.discardedClientId</code>两个属性，用来恢复丢弃前的状态。</p>\n<h2 id="main-heading-H2-14">六、参考链接</h2>\n<ul dir="auto">\n<li><a href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api" rel="nofollow">Page Lifecycle API</a>, Philip Walton</li>\n<li><a href="https://github.com/WICG/page-lifecycle">Lifecycle API for Web Pages</a>, W3C</li>\n<li><a href="https://wicg.github.io/page-lifecycle/spec.html" rel="nofollow">Page Lifecycle 1 Editor\'s Draft</a>, W3C</li>\n</ul>\n<p dir="auto">（完）</p>',user:{login:i,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:o,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/300"},navList:[{text:"一、生命周期阶段",id:"main-heading-H2-0",type:t,children:[]},{text:"二、常见场景",id:"main-heading-H2-1",type:t,children:[]},{text:"三、事件",id:"main-heading-H2-2",type:t,children:[{text:"3.1 focus 事件",id:"main-heading-H3-3",type:e},{text:"3.2 blur 事件",id:"main-heading-H3-4",type:e},{text:"3.3 visibilitychange 事件",id:"main-heading-H3-5",type:e},{text:"3.4 freeze 事件",id:"main-heading-H3-6",type:e},{text:"3.5 resume 事件",id:"main-heading-H3-7",type:e},{text:"3.6 pageshow 事件",id:"main-heading-H3-8",type:e},{text:"3.7 pagehide 事件",id:"main-heading-H3-9",type:e},{text:"3.8 beforeunload 事件",id:"main-heading-H3-10",type:e},{text:"3.9 unload 事件",id:"main-heading-H3-11",type:e}]},{text:"四、获取当前阶段",id:"main-heading-H2-12",type:t,children:[]},{text:"五、document.wasDiscarded",id:"main-heading-H2-13",type:t,children:[]},{text:"六、参考链接",id:"main-heading-H2-14",type:t,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:i,userEmail:"1656800216@qq.com",repository:"blog",blogName:d,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:d,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:o}},serverRendered:!0}}("H3","","H2","2025-12-04T02:52:14Z","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

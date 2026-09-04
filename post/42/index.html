@@ -1,0 +1,1042 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>玩好 Terminal 终端 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="导航栏 gitBash conEmu vim cmd Windows Terminal 快捷键补充 vscode chrome gitBash cd 切换路径 cd E:切换盘符 cd ~ 退回到系统根路径 cd Desktop/ 进入桌面（注意：需要在根路径） cd Front\ End 切换文件"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="玩好 Terminal 终端"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="导航栏 gitBash conEmu vim cmd Windows Terminal 快捷键补充 vscode chrome gitBash cd 切换路径 cd E:切换盘符 cd ~ 退回到系统根路径 cd Desktop/ 进入桌面（注意：需要在根路径） cd Front\ End 切换文件"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="玩好 Terminal 终端"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="导航栏 gitBash conEmu vim cmd Windows Terminal 快捷键补充 vscode chrome gitBash cd 切换路径 cd E:切换盘符 cd ~ 退回到系统根路径 cd Desktop/ 进入桌面（注意：需要在根路径） cd Front\ End 切换文件"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H2-0" title="导航栏" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              导航栏
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-1" title="快捷键补充" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  快捷键补充
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H2-2" title="gitBash" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              gitBash
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-3" title="光标相关" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  光标相关
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H2-4" title="ConEmu" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              ConEmu
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H2-5" title="cmd" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              cmd
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H2-6" title="vim" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              vim
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-7" title="模式" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  模式
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-8" title="三种常用模式的切换" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  三种常用模式的切换
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-9" title="常用命令" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  常用命令
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H2-10" title="chrome" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              chrome
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H2-11" title="vscode" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              vscode
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-12" title="命令行" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  命令行
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-13" title="光标相关" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  光标相关
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H2-14" title="Windows-terminal" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Windows-terminal
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-15" title="快捷键" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  快捷键
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/42#main-heading-H3-16" title="settings.json 配置" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  settings.json 配置
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>玩好 Terminal 终端</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>玩好 Terminal 终端</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-09-10</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 37 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">导航栏</h2>
+<ul dir="auto">
+<li><a href="#gitbash">gitBash</a></li>
+<li><a href="#conemu">conEmu</a></li>
+<li><a href="#vim">vim</a></li>
+<li><a href="#cmd">cmd</a></li>
+<li><a href="Windows-terminal">Windows Terminal</a></li>
+</ul>
+<h3 id="main-heading-H3-1">快捷键补充</h3>
+<ul dir="auto">
+<li><a href="#vscode">vscode</a></li>
+<li><a href="#chrome">chrome</a></li>
+</ul>
+<h2 id="main-heading-H2-2">gitBash</h2>
+<ul dir="auto">
+<li><code class="notranslate">cd</code> 切换路径
+<ul dir="auto">
+<li><code class="notranslate">cd E:</code>切换盘符</li>
+<li><code class="notranslate">cd ~</code> 退回到系统根路径</li>
+<li><code class="notranslate">cd Desktop/</code> 进入桌面（注意：需要在根路径）</li>
+<li><code class="notranslate">cd Front\ End</code> 切换文件夹</li>
+<li><code class="notranslate">cd ../..</code>或者<code class="notranslate">cd Front\ End/smart/FE/</code> 执行多条命令（注意绝对路径和相对路径）</li>
+<li><code class="notranslate">快速导入路径的方法</code> => 直接将待编辑文件或文件夹拖入终端中即可</li>
+</ul>
+</li>
+<li><code class="notranslate">pwd</code>显示当前路径</li>
+<li><code class="notranslate">touch</code>创建文件</li>
+<li><code class="notranslate">mv a.html b.html</code> a.html 文件重命名为 b.html</li>
+<li><code class="notranslate">rm</code> 移除文件
+<ul dir="auto">
+<li><code class="notranslate">rm -r</code>删除文件夹（递归删除）</li>
+<li><code class="notranslate">rm -rf</code> 删除文件夹（强制删除）</li>
+</ul>
+</li>
+<li><code class="notranslate">rmdir</code>删除文件夹（只能删除空文件夹，不常用）</li>
+<li><code class="notranslate">ls</code> 列出当前根目录下的所有文件
+<ul dir="auto">
+<li><code class="notranslate">ls -R</code> 举当前路径下的全部文件并展开所有子文件夹</li>
+</ul>
+</li>
+<li><code class="notranslate">cat README.md</code> 查看文件内容（一次性将内容全部显示）</li>
+<li><code class="notranslate">less README.md</code> 查看文件内容（显示部分信息） 空格键 滚动一页<br>
+回车键 滚动一行 Q 退出命令 h 显示帮助页面</li>
+<li><code class="notranslate">clear/ctrl+l</code> 清空命令窗口</li>
+<li><code class="notranslate">exit</code> 可以直接退出窗口</li>
+<li><code class="notranslate">git help</code>查看帮助命令</li>
+</ul>
+<h3 id="main-heading-H3-3">光标相关</h3>
+<ul dir="auto">
+<li><code class="notranslate">ctrl + U/K</code> 删除光标左/右侧的所有内容</li>
+<li><code class="notranslate">ctrl + W</code>/<code class="notranslate">Alt + D</code> 删除光标左/右侧的单词</li>
+<li><code class="notranslate">Ctrl + A</code>移动光标到整条命令的起始位置</li>
+<li><code class="notranslate">Ctrl + E</code> 移动光标到整条命令的结束位置</li>
+<li><code class="notranslate">Alt + B</code>/<code class="notranslate">Alt + F</code> 根据单词向左/右移动光标</li>
+</ul>
+<h2 id="main-heading-H2-4">ConEmu</h2>
+<ul dir="auto">
+<li><code class="notranslate">ctrl+N</code> 当前 window 窗口创建新的 console 面板</li>
+<li><code class="notranslate">ctrl+shift+N</code> 创建新的 window 窗口</li>
+<li><code class="notranslate">ctrl+shift+delete</code> 关闭当前选中的 console 窗口</li>
+<li><code class="notranslate">alt+2</code> 右侧分屏</li>
+<li><code class="notranslate">ctrl+f</code> 查找关键字</li>
+<li><code class="notranslate">ctrl+tab+左/右箭头</code> 切换标签栏(左右箭头辅助，可以不要)</li>
+<li><code class="notranslate">ctrl+R</code> 重命名活动窗口页</li>
+<li><code class="notranslate">pwd</code> git bash 显示当前所在路径</li>
+</ul>
+<h2 id="main-heading-H2-5">cmd</h2>
+<p dir="auto">将 <strong>C:\Program Files\Git\bin</strong> （或计算机上的任何文件）放在 PATH 中，则可以使用，因为 Git 在其中放置了 包括 sh.exe 在内的各种有用的工具。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="sh build.sh"><pre class="notranslate">sh build.sh</pre></div>
+<ul dir="auto">
+<li><code class="notranslate">cd E:\</code> 切换盘符</li>
+<li><code class="notranslate">dir</code> 列出当前目录下的所有文件</li>
+<li><code class="notranslate">cd Desktop</code>切换到桌面</li>
+<li><code class="notranslate">cd "Front End"</code>进入带空格的文件夹</li>
+<li><code class="notranslate">mkdir</code>创建文件夹（<code class="notranslate">md</code>）</li>
+<li><code class="notranslate">cd.> demo.html</code> 创建空文件/(<code class="notranslate">type nul>.babelrc</code>)</li>
+<li><code class="notranslate">cls</code> 清空命令窗口</li>
+<li><code class="notranslate">tree</code></li>
+<li><code class="notranslate">rd /S htdocs</code> 删除非空文件夹</li>
+<li><code class="notranslate">rmdir htdocs</code> 删除空文件夹</li>
+<li><code class="notranslate">shutdown -s -t 3600</code> 一小时后关机</li>
+<li><code class="notranslate">help</code> 帮助</li>
+</ul>
+<h4 dir="auto">用命令行做的事情</h4>
+<ul dir="auto">
+<li>关闭占用端口</li>
+</ul>
+<ol dir="auto">
+<li>cmd 命令行和 git bash 都可以，先查看<code class="notranslate">9009</code>端口占用情况，记住 TCP 连接的最后一列数字，这个是<code class="notranslate">PID</code>,例子为<code class="notranslate">6692</code>;</li>
+</ol>
+<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="netstat -aon|findstr 9009"><pre class="notranslate"><span class="pl-k">netstat</span> -aon<span class="pl-k">|</span>findstr <span class="pl-c1">9009</span></pre></div>
+<p dir="auto">过滤情况如下：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="TCP   127.0.0.1:9009   0.0.0.0:0   LISTENING  6692"><pre class="notranslate">TCP   127.0.0.1:9009   0.0.0.0:0   LISTENING  6692</pre></div>
+<ol start="2" dir="auto">
+<li>关闭进程,在任务管理器中，查找进程 PID 为<code class="notranslate">6692</code>，右键单击，选择<code class="notranslate">结束任务</code></li>
+</ol>
+<h2 id="main-heading-H2-6">vim</h2>
+<h3 id="main-heading-H3-7">模式</h3>
+<p dir="auto">普通模式(Normal mode)</p>
+<p dir="auto">在普通模式中，有很多方法可以进入插入模式。比较普通的方式是按 a（append／追加）键或者 i（insert／插入）键。</p>
+<p dir="auto">插入模式(Insert mode)</p>
+<p dir="auto">在这个模式中，大多数按键都会向文本缓冲中插入文本。大多数新用户希望文本编辑器编辑过程中一直保持这个模式。</p>
+<p dir="auto">在插入模式中，可以按 ESC 键回到普通模式。</p>
+<p dir="auto">命令行模式(Command line mode)</p>
+<p dir="auto">在命令行模式中可以输入会被解释成并执行的文本。例如执行命令（:键），搜索（/和?键）或者过滤命令（!键）。在命令执行之后，Vim 返回到命令行模式之前的模式，通常是普通模式。</p>
+<h3 id="main-heading-H3-8">三种常用模式的切换</h3>
+<p dir="auto">vim 启动进入普通模式，处于插入模式或命令行模式时只需要按 Esc 或者 Ctrl+[(这在 vim 课程环境中不管用)即可进入普通模式。普通模式中按 i（插入）或 a（附加）键都可以进入插入模式，普通模式中按:进入命令行模式。命令行模式中输入 wq 回车后保存并退出 vim。</p>
+<p dir="auto">命令行打开，用户环境变量 path 添加如下 D:\Alike\vim\vim74</p>
+<h3 id="main-heading-H3-9">常用命令</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>命令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:e E:\</td>
+<td>切换目录到 E 盘</td>
+</tr>
+<tr>
+<td>i</td>
+<td>插入</td>
+</tr>
+<tr>
+<td>a</td>
+<td>插入</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>强制退出，不保存</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存文件并退出</td>
+</tr>
+<tr>
+<td>:wq!</td>
+<td>强制保存并退出</td>
+</tr>
+<tr>
+<td>:w &lt;文件路径></td>
+<td>另存为</td>
+</tr>
+<tr>
+<td>:savesa &lt;文件路径></td>
+<td>另存为</td>
+</tr>
+<tr>
+<td>vim 文件名/文件路径</td>
+<td>打开文件或文件夹</td>
+</tr>
+<tr>
+<td>:set nu</td>
+<td>显示行号</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>到第一行</td>
+</tr>
+<tr>
+<td>G</td>
+<td>到最后一行</td>
+</tr>
+<tr>
+<td>nG</td>
+<td>跳到第 n 行</td>
+</tr>
+<tr>
+<td>:u</td>
+<td>回退操作</td>
+</tr>
+<tr>
+<td>ctrl+r</td>
+<td>恢复上一步被撤销的操作</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 id="main-heading-H2-10">chrome</h2>
+<ul dir="auto">
+<li><code class="notranslate">ctrl+p</code> 查找当前网站已加载的资源文件</li>
+<li><code class="notranslate">ctrl+shift+p</code> 显示所有命令</li>
+<li><code class="notranslate">ctrl+l</code> 清空 console 面板数据</li>
+<li><code class="notranslate">ctrl+R</code>/ <code class="notranslate">f5</code> 正常重新加载</li>
+<li><code class="notranslate">ctrl+shift+R</code>/<code class="notranslate">shift f5</code> 硬性重新加载</li>
+<li><code class="notranslate">ctrl+h</code>查看历史记录</li>
+</ul>
+<p dir="auto">其他</p>
+<ul dir="auto">
+<li>network 面板，点亮左上角那个像是摄像机的图标（鼠标移上去会提示 Capture screenshots），会打开新的一折叠面板，使用 trl + R 来启动截图调试。</li>
+</ul>
+<h2 id="main-heading-H2-11">vscode</h2>
+<ul dir="auto">
+<li><code class="notranslate">ctrl+p</code> 查找工作区的所有文件</li>
+<li><code class="notranslate">ctrl+shift+p</code>显示所有命令</li>
+<li><code class="notranslate">ctrl+b</code>侧边栏显示/隐藏</li>
+<li><code class="notranslate">ctrl+tab</code>多个打开的文件切换</li>
+<li><code class="notranslate">ctrl+shift+m</code>预览 markdown（自定义）</li>
+<li><code class="notranslate">ctrl+shift+[/]</code>折叠/打开代码块</li>
+<li><code class="notranslate">ctrl+Shift+F</code>整个文件夹中查找</li>
+<li><code class="notranslate">ctl+shift+n</code>新开编辑窗口</li>
+<li><code class="notranslate">ctrl+w</code>关闭编辑窗口</li>
+<li><code class="notranslate">ctrl+shift+w</code>关闭编辑器</li>
+<li><code class="notranslate">ctrl+\</code>新建分栏</li>
+<li><code class="notranslate">ctrl+g</code>跳转到行数</li>
+</ul>
+<h3 id="main-heading-H3-12">命令行</h3>
+<ul dir="auto">
+<li><code class="notranslate">code .</code> # 用 VSCode 打开当前目录</li>
+<li><code class="notranslate">code xxx</code> # 用 VSCode 打开某个目录</li>
+</ul>
+<h3 id="main-heading-H3-13">光标相关</h3>
+<ul dir="auto">
+<li><code class="notranslate">home/end</code>移动光标到行尾或行首</li>
+<li><code class="notranslate">shift+end/home</code>选择从光标至行尾或行首</li>
+<li><code class="notranslate">ctrl + shift+end/home</code>删除从行尾或行首到光标位置</li>
+<li><code class="notranslate">shift+alt+left/right</code>扩展/缩小选取范围：</li>
+<li><code class="notranslate">ctrl+delete</code>删除光标右侧的所有字</li>
+<li><code class="notranslate">ctrl+shift+l</code>同时选中所有匹配</li>
+<li><code class="notranslate">ctrl+u</code>回退到上一个光标操作位置</li>
+<li><code class="notranslate">ctrl+i</code>选中当前行</li>
+<li><code class="notranslate">ctrl+shift+左/右箭头</code>选中单个或者多个单词</li>
+</ul>
+<h2 id="main-heading-H2-14">Windows-terminal</h2>
+<blockquote>
+<p dir="auto">Windows Terminal 要求windows 10 version 最低 18362.0</p>
+</blockquote>
+<p dir="auto">在Build 2019大会上，微软公布了新的Windows Terminal命令行终端工具，这是一个现代化的快速终端应用程序，适用于命令行工具和shell，包括命令提示符、PowerShell和WSL。Windows Terminal应用程序带有几个新功能，如多选项卡支持，GPU加速DirectWrite/DirectX文本呈现引擎，支持许多设置和配置选项，允许用户个性化终端的外观等等。因为早期预览没有完整功能，自定义选项只能通过编辑JSON文件，庆幸的是Microsoft提供了有关如何在JSON文件中配置设置和键绑定的一些说明，您甚至可以更改背景图像。</p>
+<ul dir="auto">
+<li><a href="https://blog.csdn.net/SweetTool/article/details/94591100" rel="nofollow">Windows10如何安装windows terminal</a></li>
+<li><a href="https://frxcat.fun/about/about_Windows_Terminal/" rel="nofollow">关于-Windows Terminal</a></li>
+</ul>
+<h3 id="main-heading-H3-15">快捷键</h3>
+<ul dir="auto">
+<li>ctrl = shift + p 命令行面板</li>
+<li>shift + alt + plus（+） 纵向拆分窗格</li>
+<li>shift + alt + minus（-）横向拆分窗格</li>
+<li>ctrl + w 关闭当前光标所在窗格</li>
+<li>alt + （up/down/left/right） 向上下左右移动焦点</li>
+<li>ctrl + shift + number（1-4）新建标签页（按不同的命令行形式）</li>
+<li>ctrl + alt + number（1-n） 切换到选项卡 index</li>
+<li>ctrl = shift + tab 切换至上一个选项卡</li>
+<li>ctrl + shift + up/down 向上/下滚动</li>
+<li>ctrl + shift + home/end 向窗格顶部/底部滚动</li>
+<li>ctrl + shift + page up/down 按页面单位向上/下滚动</li>
+</ul>
+<h3 id="main-heading-H3-16">settings.json 配置</h3>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
+    [
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
+        },
+        {
+            "command": "paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": "closePane",
+            "keys": "ctrl+w"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
+        }
+    ],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{a30bec85-09ab-459a-a901-7a2bf36fb541}",
+    "firstWindowPreference": "defaultProfile",
+    "focusFollowMouse": true,
+    "launchMode": "default",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "backgroundImage": null,
+            "backgroundImageOpacity": 0.3,
+            "colorScheme": "Campbell",
+            "elevate": false,
+            "experimental.retroTerminalEffect": false,
+            "font": 
+            {
+                "size": 12.0,
+                "weight": "bold"
+            },
+            "opacity": 100,
+            "padding": "8",
+            "useAcrylic": true
+        },
+        "list": 
+        [
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "font": 
+                {
+                    "face": "Consolas"
+                },
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "commandline": "D:\\Alike\\git\\Git\\bin\\bash.exe",
+                "guid": "{a30bec85-09ab-459a-a901-7a2bf36fb541}",
+                "hidden": false,
+                "icon": "D:\\Alike\\git\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "name": "Git Bash"
+            }
+        ]
+    },
+    "schemes": 
+    [
+        {
+            "background": "#0C0C0C",
+            "black": "#0C0C0C",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#3B78FF",
+            "brightCyan": "#61D6D6",
+            "brightGreen": "#16C60C",
+            "brightPurple": "#B4009E",
+            "brightRed": "#E74856",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#F9F1A5",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#CCCCCC",
+            "green": "#13A10E",
+            "name": "Campbell",
+            "purple": "#881798",
+            "red": "#C50F1F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#C19C00"
+        },
+        {
+            "background": "#012456",
+            "black": "#0C0C0C",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#3B78FF",
+            "brightCyan": "#61D6D6",
+            "brightGreen": "#16C60C",
+            "brightPurple": "#B4009E",
+            "brightRed": "#E74856",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#F9F1A5",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#CCCCCC",
+            "green": "#13A10E",
+            "name": "Campbell Powershell",
+            "purple": "#881798",
+            "red": "#C50F1F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#C19C00"
+        },
+        {
+            "background": "#282C34",
+            "black": "#282C34",
+            "blue": "#61AFEF",
+            "brightBlack": "#5A6374",
+            "brightBlue": "#61AFEF",
+            "brightCyan": "#56B6C2",
+            "brightGreen": "#98C379",
+            "brightPurple": "#C678DD",
+            "brightRed": "#E06C75",
+            "brightWhite": "#DCDFE4",
+            "brightYellow": "#E5C07B",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#56B6C2",
+            "foreground": "#DCDFE4",
+            "green": "#98C379",
+            "name": "One Half Dark",
+            "purple": "#C678DD",
+            "red": "#E06C75",
+            "selectionBackground": "#FFFFFF",
+            "white": "#DCDFE4",
+            "yellow": "#E5C07B"
+        },
+        {
+            "background": "#FAFAFA",
+            "black": "#383A42",
+            "blue": "#0184BC",
+            "brightBlack": "#4F525D",
+            "brightBlue": "#61AFEF",
+            "brightCyan": "#56B5C1",
+            "brightGreen": "#98C379",
+            "brightPurple": "#C577DD",
+            "brightRed": "#DF6C75",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#E4C07A",
+            "cursorColor": "#4F525D",
+            "cyan": "#0997B3",
+            "foreground": "#383A42",
+            "green": "#50A14F",
+            "name": "One Half Light",
+            "purple": "#A626A4",
+            "red": "#E45649",
+            "selectionBackground": "#FFFFFF",
+            "white": "#FAFAFA",
+            "yellow": "#C18301"
+        },
+        {
+            "background": "#002B36",
+            "black": "#002B36",
+            "blue": "#268BD2",
+            "brightBlack": "#073642",
+            "brightBlue": "#839496",
+            "brightCyan": "#93A1A1",
+            "brightGreen": "#586E75",
+            "brightPurple": "#6C71C4",
+            "brightRed": "#CB4B16",
+            "brightWhite": "#FDF6E3",
+            "brightYellow": "#657B83",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#2AA198",
+            "foreground": "#839496",
+            "green": "#859900",
+            "name": "Solarized Dark",
+            "purple": "#D33682",
+            "red": "#DC322F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#EEE8D5",
+            "yellow": "#B58900"
+        },
+        {
+            "background": "#FDF6E3",
+            "black": "#002B36",
+            "blue": "#268BD2",
+            "brightBlack": "#073642",
+            "brightBlue": "#839496",
+            "brightCyan": "#93A1A1",
+            "brightGreen": "#586E75",
+            "brightPurple": "#6C71C4",
+            "brightRed": "#CB4B16",
+            "brightWhite": "#FDF6E3",
+            "brightYellow": "#657B83",
+            "cursorColor": "#002B36",
+            "cyan": "#2AA198",
+            "foreground": "#657B83",
+            "green": "#859900",
+            "name": "Solarized Light",
+            "purple": "#D33682",
+            "red": "#DC322F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#EEE8D5",
+            "yellow": "#B58900"
+        },
+        {
+            "background": "#000000",
+            "black": "#000000",
+            "blue": "#3465A4",
+            "brightBlack": "#555753",
+            "brightBlue": "#729FCF",
+            "brightCyan": "#34E2E2",
+            "brightGreen": "#8AE234",
+            "brightPurple": "#AD7FA8",
+            "brightRed": "#EF2929",
+            "brightWhite": "#EEEEEC",
+            "brightYellow": "#FCE94F",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#06989A",
+            "foreground": "#D3D7CF",
+            "green": "#4E9A06",
+            "name": "Tango Dark",
+            "purple": "#75507B",
+            "red": "#CC0000",
+            "selectionBackground": "#FFFFFF",
+            "white": "#D3D7CF",
+            "yellow": "#C4A000"
+        },
+        {
+            "background": "#FFFFFF",
+            "black": "#000000",
+            "blue": "#3465A4",
+            "brightBlack": "#555753",
+            "brightBlue": "#729FCF",
+            "brightCyan": "#34E2E2",
+            "brightGreen": "#8AE234",
+            "brightPurple": "#AD7FA8",
+            "brightRed": "#EF2929",
+            "brightWhite": "#EEEEEC",
+            "brightYellow": "#FCE94F",
+            "cursorColor": "#000000",
+            "cyan": "#06989A",
+            "foreground": "#555753",
+            "green": "#4E9A06",
+            "name": "Tango Light",
+            "purple": "#75507B",
+            "red": "#CC0000",
+            "selectionBackground": "#FFFFFF",
+            "white": "#D3D7CF",
+            "yellow": "#C4A000"
+        },
+        {
+            "background": "#000000",
+            "black": "#000000",
+            "blue": "#000080",
+            "brightBlack": "#808080",
+            "brightBlue": "#0000FF",
+            "brightCyan": "#00FFFF",
+            "brightGreen": "#00FF00",
+            "brightPurple": "#FF00FF",
+            "brightRed": "#FF0000",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#FFFF00",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#008080",
+            "foreground": "#C0C0C0",
+            "green": "#008000",
+            "name": "Vintage",
+            "purple": "#800080",
+            "red": "#800000",
+            "selectionBackground": "#FFFFFF",
+            "white": "#C0C0C0",
+            "yellow": "#808000"
+        }
+    ],
+    "startOnUserLogin": true,
+    "theme": "legacyDark",
+    "themes": 
+    [
+        {
+            "name": "legacyDark",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "dark",
+                "useMica": false
+            }
+        },
+        {
+            "name": "legacyLight",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "light",
+                "useMica": false
+            }
+        },
+        {
+            "name": "legacySystem",
+            "tab": 
+            {
+                "background": null,
+                "showCloseButton": "always",
+                "unfocusedBackground": null
+            },
+            "window": 
+            {
+                "applicationTheme": "system",
+                "useMica": false
+            }
+        }
+    ],
+    "useAcrylicInTabRow": true
+}'><pre class="notranslate">{
+    <span class="pl-ent">"$help"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://aka.ms/terminal-documentation<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"$schema"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://aka.ms/terminal-profiles-schema<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"actions"</span>: 
+    [
+        {
+            <span class="pl-ent">"command"</span>: 
+            {
+                <span class="pl-ent">"action"</span>: <span class="pl-s"><span class="pl-pds">"</span>copy<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"singleLine"</span>: <span class="pl-c1">false</span>
+            },
+            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>ctrl+c<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>paste<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>ctrl+v<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>closePane<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>ctrl+w<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>find<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>ctrl+shift+f<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"command"</span>: 
+            {
+                <span class="pl-ent">"action"</span>: <span class="pl-s"><span class="pl-pds">"</span>splitPane<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"split"</span>: <span class="pl-s"><span class="pl-pds">"</span>auto<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"splitMode"</span>: <span class="pl-s"><span class="pl-pds">"</span>duplicate<span class="pl-pds">"</span></span>
+            },
+            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>alt+shift+d<span class="pl-pds">"</span></span>
+        }
+    ],
+    <span class="pl-ent">"copyFormatting"</span>: <span class="pl-s"><span class="pl-pds">"</span>none<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"copyOnSelect"</span>: <span class="pl-c1">false</span>,
+    <span class="pl-ent">"defaultProfile"</span>: <span class="pl-s"><span class="pl-pds">"</span>{a30bec85-09ab-459a-a901-7a2bf36fb541}<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"firstWindowPreference"</span>: <span class="pl-s"><span class="pl-pds">"</span>defaultProfile<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"focusFollowMouse"</span>: <span class="pl-c1">true</span>,
+    <span class="pl-ent">"launchMode"</span>: <span class="pl-s"><span class="pl-pds">"</span>default<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"newTabMenu"</span>: 
+    [
+        {
+            <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>remainingProfiles<span class="pl-pds">"</span></span>
+        }
+    ],
+    <span class="pl-ent">"profiles"</span>: 
+    {
+        <span class="pl-ent">"defaults"</span>: 
+        {
+            <span class="pl-ent">"backgroundImage"</span>: <span class="pl-c1">null</span>,
+            <span class="pl-ent">"backgroundImageOpacity"</span>: <span class="pl-c1">0.3</span>,
+            <span class="pl-ent">"colorScheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>Campbell<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"elevate"</span>: <span class="pl-c1">false</span>,
+            <span class="pl-ent">"experimental.retroTerminalEffect"</span>: <span class="pl-c1">false</span>,
+            <span class="pl-ent">"font"</span>: 
+            {
+                <span class="pl-ent">"size"</span>: <span class="pl-c1">12.0</span>,
+                <span class="pl-ent">"weight"</span>: <span class="pl-s"><span class="pl-pds">"</span>bold<span class="pl-pds">"</span></span>
+            },
+            <span class="pl-ent">"opacity"</span>: <span class="pl-c1">100</span>,
+            <span class="pl-ent">"padding"</span>: <span class="pl-s"><span class="pl-pds">"</span>8<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"useAcrylic"</span>: <span class="pl-c1">true</span>
+        },
+        <span class="pl-ent">"list"</span>: 
+        [
+            {
+                <span class="pl-ent">"commandline"</span>: <span class="pl-s"><span class="pl-pds">"</span>%SystemRoot%<span class="pl-cce">\\</span>System32<span class="pl-cce">\\</span>WindowsPowerShell<span class="pl-cce">\\</span>v1.0<span class="pl-cce">\\</span>powershell.exe<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"font"</span>: 
+                {
+                    <span class="pl-ent">"face"</span>: <span class="pl-s"><span class="pl-pds">"</span>Consolas<span class="pl-pds">"</span></span>
+                },
+                <span class="pl-ent">"guid"</span>: <span class="pl-s"><span class="pl-pds">"</span>{61c54bbd-c2c6-5271-96e7-009a87ff44bf}<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"hidden"</span>: <span class="pl-c1">false</span>,
+                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Windows PowerShell<span class="pl-pds">"</span></span>
+            },
+            {
+                <span class="pl-ent">"commandline"</span>: <span class="pl-s"><span class="pl-pds">"</span>%SystemRoot%<span class="pl-cce">\\</span>System32<span class="pl-cce">\\</span>cmd.exe<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"guid"</span>: <span class="pl-s"><span class="pl-pds">"</span>{0caa0dad-35be-5f56-a8ff-afceeeaa6101}<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"hidden"</span>: <span class="pl-c1">false</span>,
+                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\u547d\u4ee4\u63d0\u793a\u7b26</span><span class="pl-pds">"</span></span>
+            },
+            {
+                <span class="pl-ent">"guid"</span>: <span class="pl-s"><span class="pl-pds">"</span>{b453ae62-4e3d-5e58-b989-0a998ec441b8}<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"hidden"</span>: <span class="pl-c1">false</span>,
+                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Azure Cloud Shell<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"source"</span>: <span class="pl-s"><span class="pl-pds">"</span>Windows.Terminal.Azure<span class="pl-pds">"</span></span>
+            },
+            {
+                <span class="pl-ent">"commandline"</span>: <span class="pl-s"><span class="pl-pds">"</span>D:<span class="pl-cce">\\</span>Alike<span class="pl-cce">\\</span>git<span class="pl-cce">\\</span>Git<span class="pl-cce">\\</span>bin<span class="pl-cce">\\</span>bash.exe<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"guid"</span>: <span class="pl-s"><span class="pl-pds">"</span>{a30bec85-09ab-459a-a901-7a2bf36fb541}<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"hidden"</span>: <span class="pl-c1">false</span>,
+                <span class="pl-ent">"icon"</span>: <span class="pl-s"><span class="pl-pds">"</span>D:<span class="pl-cce">\\</span>Alike<span class="pl-cce">\\</span>git<span class="pl-cce">\\</span>Git<span class="pl-cce">\\</span>mingw64<span class="pl-cce">\\</span>share<span class="pl-cce">\\</span>git<span class="pl-cce">\\</span>git-for-windows.ico<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Git Bash<span class="pl-pds">"</span></span>
+            }
+        ]
+    },
+    <span class="pl-ent">"schemes"</span>: 
+    [
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0C0C0C<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0C0C0C<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0037DA<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#767676<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3B78FF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61D6D6<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#16C60C<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#B4009E<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E74856<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#F2F2F2<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#F9F1A5<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3A96DD<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CCCCCC<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#13A10E<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Campbell<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#881798<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C50F1F<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CCCCCC<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C19C00<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#012456<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0C0C0C<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0037DA<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#767676<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3B78FF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61D6D6<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#16C60C<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#B4009E<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E74856<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#F2F2F2<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#F9F1A5<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3A96DD<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CCCCCC<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#13A10E<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Campbell Powershell<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#881798<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C50F1F<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CCCCCC<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C19C00<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#282C34<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#282C34<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61AFEF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#5A6374<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61AFEF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#56B6C2<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#98C379<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C678DD<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E06C75<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DCDFE4<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E5C07B<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#56B6C2<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DCDFE4<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#98C379<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>One Half Dark<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C678DD<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E06C75<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DCDFE4<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E5C07B<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FAFAFA<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#383A42<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0184BC<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#4F525D<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61AFEF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#56B5C1<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#98C379<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C577DD<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DF6C75<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E4C07A<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#4F525D<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0997B3<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#383A42<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#50A14F<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>One Half Light<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#A626A4<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E45649<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FAFAFA<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C18301<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#002B36<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#002B36<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#268BD2<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#073642<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#839496<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#93A1A1<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#586E75<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#6C71C4<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CB4B16<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FDF6E3<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#657B83<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#2AA198<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#839496<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#859900<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Solarized Dark<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D33682<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DC322F<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EEE8D5<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#B58900<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FDF6E3<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#002B36<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#268BD2<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#073642<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#839496<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#93A1A1<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#586E75<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#6C71C4<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CB4B16<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FDF6E3<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#657B83<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#002B36<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#2AA198<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#657B83<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#859900<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Solarized Light<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D33682<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DC322F<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EEE8D5<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#B58900<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3465A4<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#555753<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#729FCF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#34E2E2<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#8AE234<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#AD7FA8<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EF2929<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EEEEEC<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FCE94F<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#06989A<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D3D7CF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#4E9A06<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Tango Dark<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#75507B<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CC0000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D3D7CF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C4A000<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3465A4<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#555753<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#729FCF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#34E2E2<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#8AE234<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#AD7FA8<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EF2929<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EEEEEC<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FCE94F<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#06989A<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#555753<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#4E9A06<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Tango Light<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#75507B<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CC0000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D3D7CF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C4A000<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000080<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#808080<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0000FF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#00FFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#00FF00<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FF00FF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FF0000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFF00<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#008080<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C0C0C0<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#008000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Vintage<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#800080<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#800000<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C0C0C0<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#808000<span class="pl-pds">"</span></span>
+        }
+    ],
+    <span class="pl-ent">"startOnUserLogin"</span>: <span class="pl-c1">true</span>,
+    <span class="pl-ent">"theme"</span>: <span class="pl-s"><span class="pl-pds">"</span>legacyDark<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"themes"</span>: 
+    [
+        {
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>legacyDark<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"tab"</span>: 
+            {
+                <span class="pl-ent">"background"</span>: <span class="pl-c1">null</span>,
+                <span class="pl-ent">"showCloseButton"</span>: <span class="pl-s"><span class="pl-pds">"</span>always<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"unfocusedBackground"</span>: <span class="pl-c1">null</span>
+            },
+            <span class="pl-ent">"window"</span>: 
+            {
+                <span class="pl-ent">"applicationTheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>dark<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"useMica"</span>: <span class="pl-c1">false</span>
+            }
+        },
+        {
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>legacyLight<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"tab"</span>: 
+            {
+                <span class="pl-ent">"background"</span>: <span class="pl-c1">null</span>,
+                <span class="pl-ent">"showCloseButton"</span>: <span class="pl-s"><span class="pl-pds">"</span>always<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"unfocusedBackground"</span>: <span class="pl-c1">null</span>
+            },
+            <span class="pl-ent">"window"</span>: 
+            {
+                <span class="pl-ent">"applicationTheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>light<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"useMica"</span>: <span class="pl-c1">false</span>
+            }
+        },
+        {
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>legacySystem<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"tab"</span>: 
+            {
+                <span class="pl-ent">"background"</span>: <span class="pl-c1">null</span>,
+                <span class="pl-ent">"showCloseButton"</span>: <span class="pl-s"><span class="pl-pds">"</span>always<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"unfocusedBackground"</span>: <span class="pl-c1">null</span>
+            },
+            <span class="pl-ent">"window"</span>: 
+            {
+                <span class="pl-ent">"applicationTheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>system<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"useMica"</span>: <span class="pl-c1">false</span>
+            }
+        }
+    ],
+    <span class="pl-ent">"useAcrylicInTabRow"</span>: <span class="pl-c1">true</span>
+}</pre></div>
+<h4 dir="auto">参考链接</h4>
+<ul dir="auto">
+<li><a href="https://www.cnblogs.com/kmsfan/p/vim_beginner.html" rel="nofollow">https://www.cnblogs.com/kmsfan/p/vim_beginner.html</a></li>
+<li><a href="https://learn.microsoft.com/zh-cn/powershell/" rel="nofollow">https://learn.microsoft.com/zh-cn/powershell/</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,n,a,p,l,t,o){return{layout:"default",data:[{post:{id:358640343,number:42,title:"玩好 Terminal 终端",created_at:"2018-09-10T14:08:19Z",updated_at:"2026-01-10T22:03:26Z",body_html:'<h2 id="main-heading-H2-0">导航栏</h2>\n<ul dir="auto">\n<li><a href="#gitbash">gitBash</a></li>\n<li><a href="#conemu">conEmu</a></li>\n<li><a href="#vim">vim</a></li>\n<li><a href="#cmd">cmd</a></li>\n<li><a href="Windows-terminal">Windows Terminal</a></li>\n</ul>\n<h3 id="main-heading-H3-1">快捷键补充</h3>\n<ul dir="auto">\n<li><a href="#vscode">vscode</a></li>\n<li><a href="#chrome">chrome</a></li>\n</ul>\n<h2 id="main-heading-H2-2">gitBash</h2>\n<ul dir="auto">\n<li><code class="notranslate">cd</code> 切换路径\n<ul dir="auto">\n<li><code class="notranslate">cd E:</code>切换盘符</li>\n<li><code class="notranslate">cd ~</code> 退回到系统根路径</li>\n<li><code class="notranslate">cd Desktop/</code> 进入桌面（注意：需要在根路径）</li>\n<li><code class="notranslate">cd Front\\ End</code> 切换文件夹</li>\n<li><code class="notranslate">cd ../..</code>或者<code class="notranslate">cd Front\\ End/smart/FE/</code> 执行多条命令（注意绝对路径和相对路径）</li>\n<li><code class="notranslate">快速导入路径的方法</code> =&gt; 直接将待编辑文件或文件夹拖入终端中即可</li>\n</ul>\n</li>\n<li><code class="notranslate">pwd</code>显示当前路径</li>\n<li><code class="notranslate">touch</code>创建文件</li>\n<li><code class="notranslate">mv a.html b.html</code> a.html 文件重命名为 b.html</li>\n<li><code class="notranslate">rm</code> 移除文件\n<ul dir="auto">\n<li><code class="notranslate">rm -r</code>删除文件夹（递归删除）</li>\n<li><code class="notranslate">rm -rf</code> 删除文件夹（强制删除）</li>\n</ul>\n</li>\n<li><code class="notranslate">rmdir</code>删除文件夹（只能删除空文件夹，不常用）</li>\n<li><code class="notranslate">ls</code> 列出当前根目录下的所有文件\n<ul dir="auto">\n<li><code class="notranslate">ls -R</code> 举当前路径下的全部文件并展开所有子文件夹</li>\n</ul>\n</li>\n<li><code class="notranslate">cat README.md</code> 查看文件内容（一次性将内容全部显示）</li>\n<li><code class="notranslate">less README.md</code> 查看文件内容（显示部分信息） 空格键 滚动一页<br>\n回车键 滚动一行 Q 退出命令 h 显示帮助页面</li>\n<li><code class="notranslate">clear/ctrl+l</code> 清空命令窗口</li>\n<li><code class="notranslate">exit</code> 可以直接退出窗口</li>\n<li><code class="notranslate">git help</code>查看帮助命令</li>\n</ul>\n<h3 id="main-heading-H3-3">光标相关</h3>\n<ul dir="auto">\n<li><code class="notranslate">ctrl + U/K</code> 删除光标左/右侧的所有内容</li>\n<li><code class="notranslate">ctrl + W</code>/<code class="notranslate">Alt + D</code> 删除光标左/右侧的单词</li>\n<li><code class="notranslate">Ctrl + A</code>移动光标到整条命令的起始位置</li>\n<li><code class="notranslate">Ctrl + E</code> 移动光标到整条命令的结束位置</li>\n<li><code class="notranslate">Alt + B</code>/<code class="notranslate">Alt + F</code> 根据单词向左/右移动光标</li>\n</ul>\n<h2 id="main-heading-H2-4">ConEmu</h2>\n<ul dir="auto">\n<li><code class="notranslate">ctrl+N</code> 当前 window 窗口创建新的 console 面板</li>\n<li><code class="notranslate">ctrl+shift+N</code> 创建新的 window 窗口</li>\n<li><code class="notranslate">ctrl+shift+delete</code> 关闭当前选中的 console 窗口</li>\n<li><code class="notranslate">alt+2</code> 右侧分屏</li>\n<li><code class="notranslate">ctrl+f</code> 查找关键字</li>\n<li><code class="notranslate">ctrl+tab+左/右箭头</code> 切换标签栏(左右箭头辅助，可以不要)</li>\n<li><code class="notranslate">ctrl+R</code> 重命名活动窗口页</li>\n<li><code class="notranslate">pwd</code> git bash 显示当前所在路径</li>\n</ul>\n<h2 id="main-heading-H2-5">cmd</h2>\n<p dir="auto">将 <strong>C:\\Program Files\\Git\\bin</strong> （或计算机上的任何文件）放在 PATH 中，则可以使用，因为 Git 在其中放置了 包括 sh.exe 在内的各种有用的工具。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="sh build.sh"><pre class="notranslate">sh build.sh</pre></div>\n<ul dir="auto">\n<li><code class="notranslate">cd E:\\</code> 切换盘符</li>\n<li><code class="notranslate">dir</code> 列出当前目录下的所有文件</li>\n<li><code class="notranslate">cd Desktop</code>切换到桌面</li>\n<li><code class="notranslate">cd "Front End"</code>进入带空格的文件夹</li>\n<li><code class="notranslate">mkdir</code>创建文件夹（<code class="notranslate">md</code>）</li>\n<li><code class="notranslate">cd.&gt; demo.html</code> 创建空文件/(<code class="notranslate">type nul&gt;.babelrc</code>)</li>\n<li><code class="notranslate">cls</code> 清空命令窗口</li>\n<li><code class="notranslate">tree</code></li>\n<li><code class="notranslate">rd /S htdocs</code> 删除非空文件夹</li>\n<li><code class="notranslate">rmdir htdocs</code> 删除空文件夹</li>\n<li><code class="notranslate">shutdown -s -t 3600</code> 一小时后关机</li>\n<li><code class="notranslate">help</code> 帮助</li>\n</ul>\n<h4 dir="auto">用命令行做的事情</h4>\n<ul dir="auto">\n<li>关闭占用端口</li>\n</ul>\n<ol dir="auto">\n<li>cmd 命令行和 git bash 都可以，先查看<code class="notranslate">9009</code>端口占用情况，记住 TCP 连接的最后一列数字，这个是<code class="notranslate">PID</code>,例子为<code class="notranslate">6692</code>;</li>\n</ol>\n<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="netstat -aon|findstr 9009"><pre class="notranslate"><span class="pl-k">netstat</span> -aon<span class="pl-k">|</span>findstr <span class="pl-c1">9009</span></pre></div>\n<p dir="auto">过滤情况如下：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="TCP   127.0.0.1:9009   0.0.0.0:0   LISTENING  6692"><pre class="notranslate">TCP   127.0.0.1:9009   0.0.0.0:0   LISTENING  6692</pre></div>\n<ol start="2" dir="auto">\n<li>关闭进程,在任务管理器中，查找进程 PID 为<code class="notranslate">6692</code>，右键单击，选择<code class="notranslate">结束任务</code></li>\n</ol>\n<h2 id="main-heading-H2-6">vim</h2>\n<h3 id="main-heading-H3-7">模式</h3>\n<p dir="auto">普通模式(Normal mode)</p>\n<p dir="auto">在普通模式中，有很多方法可以进入插入模式。比较普通的方式是按 a（append／追加）键或者 i（insert／插入）键。</p>\n<p dir="auto">插入模式(Insert mode)</p>\n<p dir="auto">在这个模式中，大多数按键都会向文本缓冲中插入文本。大多数新用户希望文本编辑器编辑过程中一直保持这个模式。</p>\n<p dir="auto">在插入模式中，可以按 ESC 键回到普通模式。</p>\n<p dir="auto">命令行模式(Command line mode)</p>\n<p dir="auto">在命令行模式中可以输入会被解释成并执行的文本。例如执行命令（:键），搜索（/和?键）或者过滤命令（!键）。在命令执行之后，Vim 返回到命令行模式之前的模式，通常是普通模式。</p>\n<h3 id="main-heading-H3-8">三种常用模式的切换</h3>\n<p dir="auto">vim 启动进入普通模式，处于插入模式或命令行模式时只需要按 Esc 或者 Ctrl+[(这在 vim 课程环境中不管用)即可进入普通模式。普通模式中按 i（插入）或 a（附加）键都可以进入插入模式，普通模式中按:进入命令行模式。命令行模式中输入 wq 回车后保存并退出 vim。</p>\n<p dir="auto">命令行打开，用户环境变量 path 添加如下 D:\\Alike\\vim\\vim74</p>\n<h3 id="main-heading-H3-9">常用命令</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>命令</th>\n<th>操作</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>:e E:\\</td>\n<td>切换目录到 E 盘</td>\n</tr>\n<tr>\n<td>i</td>\n<td>插入</td>\n</tr>\n<tr>\n<td>a</td>\n<td>插入</td>\n</tr>\n<tr>\n<td>:q</td>\n<td>退出</td>\n</tr>\n<tr>\n<td>:q!</td>\n<td>强制退出，不保存</td>\n</tr>\n<tr>\n<td>:wq</td>\n<td>保存文件并退出</td>\n</tr>\n<tr>\n<td>:wq!</td>\n<td>强制保存并退出</td>\n</tr>\n<tr>\n<td>:w &lt;文件路径&gt;</td>\n<td>另存为</td>\n</tr>\n<tr>\n<td>:savesa &lt;文件路径&gt;</td>\n<td>另存为</td>\n</tr>\n<tr>\n<td>vim 文件名/文件路径</td>\n<td>打开文件或文件夹</td>\n</tr>\n<tr>\n<td>:set nu</td>\n<td>显示行号</td>\n</tr>\n<tr>\n<td>gg</td>\n<td>到第一行</td>\n</tr>\n<tr>\n<td>G</td>\n<td>到最后一行</td>\n</tr>\n<tr>\n<td>nG</td>\n<td>跳到第 n 行</td>\n</tr>\n<tr>\n<td>:u</td>\n<td>回退操作</td>\n</tr>\n<tr>\n<td>ctrl+r</td>\n<td>恢复上一步被撤销的操作</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h2 id="main-heading-H2-10">chrome</h2>\n<ul dir="auto">\n<li><code class="notranslate">ctrl+p</code> 查找当前网站已加载的资源文件</li>\n<li><code class="notranslate">ctrl+shift+p</code> 显示所有命令</li>\n<li><code class="notranslate">ctrl+l</code> 清空 console 面板数据</li>\n<li><code class="notranslate">ctrl+R</code>/ <code class="notranslate">f5</code> 正常重新加载</li>\n<li><code class="notranslate">ctrl+shift+R</code>/<code class="notranslate">shift f5</code> 硬性重新加载</li>\n<li><code class="notranslate">ctrl+h</code>查看历史记录</li>\n</ul>\n<p dir="auto">其他</p>\n<ul dir="auto">\n<li>network 面板，点亮左上角那个像是摄像机的图标（鼠标移上去会提示 Capture screenshots），会打开新的一折叠面板，使用 trl + R 来启动截图调试。</li>\n</ul>\n<h2 id="main-heading-H2-11">vscode</h2>\n<ul dir="auto">\n<li><code class="notranslate">ctrl+p</code> 查找工作区的所有文件</li>\n<li><code class="notranslate">ctrl+shift+p</code>显示所有命令</li>\n<li><code class="notranslate">ctrl+b</code>侧边栏显示/隐藏</li>\n<li><code class="notranslate">ctrl+tab</code>多个打开的文件切换</li>\n<li><code class="notranslate">ctrl+shift+m</code>预览 markdown（自定义）</li>\n<li><code class="notranslate">ctrl+shift+[/]</code>折叠/打开代码块</li>\n<li><code class="notranslate">ctrl+Shift+F</code>整个文件夹中查找</li>\n<li><code class="notranslate">ctl+shift+n</code>新开编辑窗口</li>\n<li><code class="notranslate">ctrl+w</code>关闭编辑窗口</li>\n<li><code class="notranslate">ctrl+shift+w</code>关闭编辑器</li>\n<li><code class="notranslate">ctrl+\\</code>新建分栏</li>\n<li><code class="notranslate">ctrl+g</code>跳转到行数</li>\n</ul>\n<h3 id="main-heading-H3-12">命令行</h3>\n<ul dir="auto">\n<li><code class="notranslate">code .</code> # 用 VSCode 打开当前目录</li>\n<li><code class="notranslate">code xxx</code> # 用 VSCode 打开某个目录</li>\n</ul>\n<h3 id="main-heading-H3-13">光标相关</h3>\n<ul dir="auto">\n<li><code class="notranslate">home/end</code>移动光标到行尾或行首</li>\n<li><code class="notranslate">shift+end/home</code>选择从光标至行尾或行首</li>\n<li><code class="notranslate">ctrl + shift+end/home</code>删除从行尾或行首到光标位置</li>\n<li><code class="notranslate">shift+alt+left/right</code>扩展/缩小选取范围：</li>\n<li><code class="notranslate">ctrl+delete</code>删除光标右侧的所有字</li>\n<li><code class="notranslate">ctrl+shift+l</code>同时选中所有匹配</li>\n<li><code class="notranslate">ctrl+u</code>回退到上一个光标操作位置</li>\n<li><code class="notranslate">ctrl+i</code>选中当前行</li>\n<li><code class="notranslate">ctrl+shift+左/右箭头</code>选中单个或者多个单词</li>\n</ul>\n<h2 id="main-heading-H2-14">Windows-terminal</h2>\n<blockquote>\n<p dir="auto">Windows Terminal 要求windows 10 version 最低 18362.0</p>\n</blockquote>\n<p dir="auto">在Build 2019大会上，微软公布了新的Windows Terminal命令行终端工具，这是一个现代化的快速终端应用程序，适用于命令行工具和shell，包括命令提示符、PowerShell和WSL。Windows Terminal应用程序带有几个新功能，如多选项卡支持，GPU加速DirectWrite/DirectX文本呈现引擎，支持许多设置和配置选项，允许用户个性化终端的外观等等。因为早期预览没有完整功能，自定义选项只能通过编辑JSON文件，庆幸的是Microsoft提供了有关如何在JSON文件中配置设置和键绑定的一些说明，您甚至可以更改背景图像。</p>\n<ul dir="auto">\n<li><a href="https://blog.csdn.net/SweetTool/article/details/94591100" rel="nofollow">Windows10如何安装windows terminal</a></li>\n<li><a href="https://frxcat.fun/about/about_Windows_Terminal/" rel="nofollow">关于-Windows Terminal</a></li>\n</ul>\n<h3 id="main-heading-H3-15">快捷键</h3>\n<ul dir="auto">\n<li>ctrl = shift + p 命令行面板</li>\n<li>shift + alt + plus（+） 纵向拆分窗格</li>\n<li>shift + alt + minus（-）横向拆分窗格</li>\n<li>ctrl + w 关闭当前光标所在窗格</li>\n<li>alt + （up/down/left/right） 向上下左右移动焦点</li>\n<li>ctrl + shift + number（1-4）新建标签页（按不同的命令行形式）</li>\n<li>ctrl + alt + number（1-n） 切换到选项卡 index</li>\n<li>ctrl = shift + tab 切换至上一个选项卡</li>\n<li>ctrl + shift + up/down 向上/下滚动</li>\n<li>ctrl + shift + home/end 向窗格顶部/底部滚动</li>\n<li>ctrl + shift + page up/down 按页面单位向上/下滚动</li>\n</ul>\n<h3 id="main-heading-H3-16">settings.json 配置</h3>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n    &quot;$help&quot;: &quot;https://aka.ms/terminal-documentation&quot;,\n    &quot;$schema&quot;: &quot;https://aka.ms/terminal-profiles-schema&quot;,\n    &quot;actions&quot;: \n    [\n        {\n            &quot;command&quot;: \n            {\n                &quot;action&quot;: &quot;copy&quot;,\n                &quot;singleLine&quot;: false\n            },\n            &quot;keys&quot;: &quot;ctrl+c&quot;\n        },\n        {\n            &quot;command&quot;: &quot;paste&quot;,\n            &quot;keys&quot;: &quot;ctrl+v&quot;\n        },\n        {\n            &quot;command&quot;: &quot;closePane&quot;,\n            &quot;keys&quot;: &quot;ctrl+w&quot;\n        },\n        {\n            &quot;command&quot;: &quot;find&quot;,\n            &quot;keys&quot;: &quot;ctrl+shift+f&quot;\n        },\n        {\n            &quot;command&quot;: \n            {\n                &quot;action&quot;: &quot;splitPane&quot;,\n                &quot;split&quot;: &quot;auto&quot;,\n                &quot;splitMode&quot;: &quot;duplicate&quot;\n            },\n            &quot;keys&quot;: &quot;alt+shift+d&quot;\n        }\n    ],\n    &quot;copyFormatting&quot;: &quot;none&quot;,\n    &quot;copyOnSelect&quot;: false,\n    &quot;defaultProfile&quot;: &quot;{a30bec85-09ab-459a-a901-7a2bf36fb541}&quot;,\n    &quot;firstWindowPreference&quot;: &quot;defaultProfile&quot;,\n    &quot;focusFollowMouse&quot;: true,\n    &quot;launchMode&quot;: &quot;default&quot;,\n    &quot;newTabMenu&quot;: \n    [\n        {\n            &quot;type&quot;: &quot;remainingProfiles&quot;\n        }\n    ],\n    &quot;profiles&quot;: \n    {\n        &quot;defaults&quot;: \n        {\n            &quot;backgroundImage&quot;: null,\n            &quot;backgroundImageOpacity&quot;: 0.3,\n            &quot;colorScheme&quot;: &quot;Campbell&quot;,\n            &quot;elevate&quot;: false,\n            &quot;experimental.retroTerminalEffect&quot;: false,\n            &quot;font&quot;: \n            {\n                &quot;size&quot;: 12.0,\n                &quot;weight&quot;: &quot;bold&quot;\n            },\n            &quot;opacity&quot;: 100,\n            &quot;padding&quot;: &quot;8&quot;,\n            &quot;useAcrylic&quot;: true\n        },\n        &quot;list&quot;: \n        [\n            {\n                &quot;commandline&quot;: &quot;%SystemRoot%\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe&quot;,\n                &quot;font&quot;: \n                {\n                    &quot;face&quot;: &quot;Consolas&quot;\n                },\n                &quot;guid&quot;: &quot;{61c54bbd-c2c6-5271-96e7-009a87ff44bf}&quot;,\n                &quot;hidden&quot;: false,\n                &quot;name&quot;: &quot;Windows PowerShell&quot;\n            },\n            {\n                &quot;commandline&quot;: &quot;%SystemRoot%\\\\System32\\\\cmd.exe&quot;,\n                &quot;guid&quot;: &quot;{0caa0dad-35be-5f56-a8ff-afceeeaa6101}&quot;,\n                &quot;hidden&quot;: false,\n                &quot;name&quot;: &quot;\\u547d\\u4ee4\\u63d0\\u793a\\u7b26&quot;\n            },\n            {\n                &quot;guid&quot;: &quot;{b453ae62-4e3d-5e58-b989-0a998ec441b8}&quot;,\n                &quot;hidden&quot;: false,\n                &quot;name&quot;: &quot;Azure Cloud Shell&quot;,\n                &quot;source&quot;: &quot;Windows.Terminal.Azure&quot;\n            },\n            {\n                &quot;commandline&quot;: &quot;D:\\\\Alike\\\\git\\\\Git\\\\bin\\\\bash.exe&quot;,\n                &quot;guid&quot;: &quot;{a30bec85-09ab-459a-a901-7a2bf36fb541}&quot;,\n                &quot;hidden&quot;: false,\n                &quot;icon&quot;: &quot;D:\\\\Alike\\\\git\\\\Git\\\\mingw64\\\\share\\\\git\\\\git-for-windows.ico&quot;,\n                &quot;name&quot;: &quot;Git Bash&quot;\n            }\n        ]\n    },\n    &quot;schemes&quot;: \n    [\n        {\n            &quot;background&quot;: &quot;#0C0C0C&quot;,\n            &quot;black&quot;: &quot;#0C0C0C&quot;,\n            &quot;blue&quot;: &quot;#0037DA&quot;,\n            &quot;brightBlack&quot;: &quot;#767676&quot;,\n            &quot;brightBlue&quot;: &quot;#3B78FF&quot;,\n            &quot;brightCyan&quot;: &quot;#61D6D6&quot;,\n            &quot;brightGreen&quot;: &quot;#16C60C&quot;,\n            &quot;brightPurple&quot;: &quot;#B4009E&quot;,\n            &quot;brightRed&quot;: &quot;#E74856&quot;,\n            &quot;brightWhite&quot;: &quot;#F2F2F2&quot;,\n            &quot;brightYellow&quot;: &quot;#F9F1A5&quot;,\n            &quot;cursorColor&quot;: &quot;#FFFFFF&quot;,\n            &quot;cyan&quot;: &quot;#3A96DD&quot;,\n            &quot;foreground&quot;: &quot;#CCCCCC&quot;,\n            &quot;green&quot;: &quot;#13A10E&quot;,\n            &quot;name&quot;: &quot;Campbell&quot;,\n            &quot;purple&quot;: &quot;#881798&quot;,\n            &quot;red&quot;: &quot;#C50F1F&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#CCCCCC&quot;,\n            &quot;yellow&quot;: &quot;#C19C00&quot;\n        },\n        {\n            &quot;background&quot;: &quot;#012456&quot;,\n            &quot;black&quot;: &quot;#0C0C0C&quot;,\n            &quot;blue&quot;: &quot;#0037DA&quot;,\n            &quot;brightBlack&quot;: &quot;#767676&quot;,\n            &quot;brightBlue&quot;: &quot;#3B78FF&quot;,\n            &quot;brightCyan&quot;: &quot;#61D6D6&quot;,\n            &quot;brightGreen&quot;: &quot;#16C60C&quot;,\n            &quot;brightPurple&quot;: &quot;#B4009E&quot;,\n            &quot;brightRed&quot;: &quot;#E74856&quot;,\n            &quot;brightWhite&quot;: &quot;#F2F2F2&quot;,\n            &quot;brightYellow&quot;: &quot;#F9F1A5&quot;,\n            &quot;cursorColor&quot;: &quot;#FFFFFF&quot;,\n            &quot;cyan&quot;: &quot;#3A96DD&quot;,\n            &quot;foreground&quot;: &quot;#CCCCCC&quot;,\n            &quot;green&quot;: &quot;#13A10E&quot;,\n            &quot;name&quot;: &quot;Campbell Powershell&quot;,\n            &quot;purple&quot;: &quot;#881798&quot;,\n            &quot;red&quot;: &quot;#C50F1F&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#CCCCCC&quot;,\n            &quot;yellow&quot;: &quot;#C19C00&quot;\n        },\n        {\n            &quot;background&quot;: &quot;#282C34&quot;,\n            &quot;black&quot;: &quot;#282C34&quot;,\n            &quot;blue&quot;: &quot;#61AFEF&quot;,\n            &quot;brightBlack&quot;: &quot;#5A6374&quot;,\n            &quot;brightBlue&quot;: &quot;#61AFEF&quot;,\n            &quot;brightCyan&quot;: &quot;#56B6C2&quot;,\n            &quot;brightGreen&quot;: &quot;#98C379&quot;,\n            &quot;brightPurple&quot;: &quot;#C678DD&quot;,\n            &quot;brightRed&quot;: &quot;#E06C75&quot;,\n            &quot;brightWhite&quot;: &quot;#DCDFE4&quot;,\n            &quot;brightYellow&quot;: &quot;#E5C07B&quot;,\n            &quot;cursorColor&quot;: &quot;#FFFFFF&quot;,\n            &quot;cyan&quot;: &quot;#56B6C2&quot;,\n            &quot;foreground&quot;: &quot;#DCDFE4&quot;,\n            &quot;green&quot;: &quot;#98C379&quot;,\n            &quot;name&quot;: &quot;One Half Dark&quot;,\n            &quot;purple&quot;: &quot;#C678DD&quot;,\n            &quot;red&quot;: &quot;#E06C75&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#DCDFE4&quot;,\n            &quot;yellow&quot;: &quot;#E5C07B&quot;\n        },\n        {\n            &quot;background&quot;: &quot;#FAFAFA&quot;,\n            &quot;black&quot;: &quot;#383A42&quot;,\n            &quot;blue&quot;: &quot;#0184BC&quot;,\n            &quot;brightBlack&quot;: &quot;#4F525D&quot;,\n            &quot;brightBlue&quot;: &quot;#61AFEF&quot;,\n            &quot;brightCyan&quot;: &quot;#56B5C1&quot;,\n            &quot;brightGreen&quot;: &quot;#98C379&quot;,\n            &quot;brightPurple&quot;: &quot;#C577DD&quot;,\n            &quot;brightRed&quot;: &quot;#DF6C75&quot;,\n            &quot;brightWhite&quot;: &quot;#FFFFFF&quot;,\n            &quot;brightYellow&quot;: &quot;#E4C07A&quot;,\n            &quot;cursorColor&quot;: &quot;#4F525D&quot;,\n            &quot;cyan&quot;: &quot;#0997B3&quot;,\n            &quot;foreground&quot;: &quot;#383A42&quot;,\n            &quot;green&quot;: &quot;#50A14F&quot;,\n            &quot;name&quot;: &quot;One Half Light&quot;,\n            &quot;purple&quot;: &quot;#A626A4&quot;,\n            &quot;red&quot;: &quot;#E45649&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#FAFAFA&quot;,\n            &quot;yellow&quot;: &quot;#C18301&quot;\n        },\n        {\n            &quot;background&quot;: &quot;#002B36&quot;,\n            &quot;black&quot;: &quot;#002B36&quot;,\n            &quot;blue&quot;: &quot;#268BD2&quot;,\n            &quot;brightBlack&quot;: &quot;#073642&quot;,\n            &quot;brightBlue&quot;: &quot;#839496&quot;,\n            &quot;brightCyan&quot;: &quot;#93A1A1&quot;,\n            &quot;brightGreen&quot;: &quot;#586E75&quot;,\n            &quot;brightPurple&quot;: &quot;#6C71C4&quot;,\n            &quot;brightRed&quot;: &quot;#CB4B16&quot;,\n            &quot;brightWhite&quot;: &quot;#FDF6E3&quot;,\n            &quot;brightYellow&quot;: &quot;#657B83&quot;,\n            &quot;cursorColor&quot;: &quot;#FFFFFF&quot;,\n            &quot;cyan&quot;: &quot;#2AA198&quot;,\n            &quot;foreground&quot;: &quot;#839496&quot;,\n            &quot;green&quot;: &quot;#859900&quot;,\n            &quot;name&quot;: &quot;Solarized Dark&quot;,\n            &quot;purple&quot;: &quot;#D33682&quot;,\n            &quot;red&quot;: &quot;#DC322F&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#EEE8D5&quot;,\n            &quot;yellow&quot;: &quot;#B58900&quot;\n        },\n        {\n            &quot;background&quot;: &quot;#FDF6E3&quot;,\n            &quot;black&quot;: &quot;#002B36&quot;,\n            &quot;blue&quot;: &quot;#268BD2&quot;,\n            &quot;brightBlack&quot;: &quot;#073642&quot;,\n            &quot;brightBlue&quot;: &quot;#839496&quot;,\n            &quot;brightCyan&quot;: &quot;#93A1A1&quot;,\n            &quot;brightGreen&quot;: &quot;#586E75&quot;,\n            &quot;brightPurple&quot;: &quot;#6C71C4&quot;,\n            &quot;brightRed&quot;: &quot;#CB4B16&quot;,\n            &quot;brightWhite&quot;: &quot;#FDF6E3&quot;,\n            &quot;brightYellow&quot;: &quot;#657B83&quot;,\n            &quot;cursorColor&quot;: &quot;#002B36&quot;,\n            &quot;cyan&quot;: &quot;#2AA198&quot;,\n            &quot;foreground&quot;: &quot;#657B83&quot;,\n            &quot;green&quot;: &quot;#859900&quot;,\n            &quot;name&quot;: &quot;Solarized Light&quot;,\n            &quot;purple&quot;: &quot;#D33682&quot;,\n            &quot;red&quot;: &quot;#DC322F&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#EEE8D5&quot;,\n            &quot;yellow&quot;: &quot;#B58900&quot;\n        },\n        {\n            &quot;background&quot;: &quot;#000000&quot;,\n            &quot;black&quot;: &quot;#000000&quot;,\n            &quot;blue&quot;: &quot;#3465A4&quot;,\n            &quot;brightBlack&quot;: &quot;#555753&quot;,\n            &quot;brightBlue&quot;: &quot;#729FCF&quot;,\n            &quot;brightCyan&quot;: &quot;#34E2E2&quot;,\n            &quot;brightGreen&quot;: &quot;#8AE234&quot;,\n            &quot;brightPurple&quot;: &quot;#AD7FA8&quot;,\n            &quot;brightRed&quot;: &quot;#EF2929&quot;,\n            &quot;brightWhite&quot;: &quot;#EEEEEC&quot;,\n            &quot;brightYellow&quot;: &quot;#FCE94F&quot;,\n            &quot;cursorColor&quot;: &quot;#FFFFFF&quot;,\n            &quot;cyan&quot;: &quot;#06989A&quot;,\n            &quot;foreground&quot;: &quot;#D3D7CF&quot;,\n            &quot;green&quot;: &quot;#4E9A06&quot;,\n            &quot;name&quot;: &quot;Tango Dark&quot;,\n            &quot;purple&quot;: &quot;#75507B&quot;,\n            &quot;red&quot;: &quot;#CC0000&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#D3D7CF&quot;,\n            &quot;yellow&quot;: &quot;#C4A000&quot;\n        },\n        {\n            &quot;background&quot;: &quot;#FFFFFF&quot;,\n            &quot;black&quot;: &quot;#000000&quot;,\n            &quot;blue&quot;: &quot;#3465A4&quot;,\n            &quot;brightBlack&quot;: &quot;#555753&quot;,\n            &quot;brightBlue&quot;: &quot;#729FCF&quot;,\n            &quot;brightCyan&quot;: &quot;#34E2E2&quot;,\n            &quot;brightGreen&quot;: &quot;#8AE234&quot;,\n            &quot;brightPurple&quot;: &quot;#AD7FA8&quot;,\n            &quot;brightRed&quot;: &quot;#EF2929&quot;,\n            &quot;brightWhite&quot;: &quot;#EEEEEC&quot;,\n            &quot;brightYellow&quot;: &quot;#FCE94F&quot;,\n            &quot;cursorColor&quot;: &quot;#000000&quot;,\n            &quot;cyan&quot;: &quot;#06989A&quot;,\n            &quot;foreground&quot;: &quot;#555753&quot;,\n            &quot;green&quot;: &quot;#4E9A06&quot;,\n            &quot;name&quot;: &quot;Tango Light&quot;,\n            &quot;purple&quot;: &quot;#75507B&quot;,\n            &quot;red&quot;: &quot;#CC0000&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#D3D7CF&quot;,\n            &quot;yellow&quot;: &quot;#C4A000&quot;\n        },\n        {\n            &quot;background&quot;: &quot;#000000&quot;,\n            &quot;black&quot;: &quot;#000000&quot;,\n            &quot;blue&quot;: &quot;#000080&quot;,\n            &quot;brightBlack&quot;: &quot;#808080&quot;,\n            &quot;brightBlue&quot;: &quot;#0000FF&quot;,\n            &quot;brightCyan&quot;: &quot;#00FFFF&quot;,\n            &quot;brightGreen&quot;: &quot;#00FF00&quot;,\n            &quot;brightPurple&quot;: &quot;#FF00FF&quot;,\n            &quot;brightRed&quot;: &quot;#FF0000&quot;,\n            &quot;brightWhite&quot;: &quot;#FFFFFF&quot;,\n            &quot;brightYellow&quot;: &quot;#FFFF00&quot;,\n            &quot;cursorColor&quot;: &quot;#FFFFFF&quot;,\n            &quot;cyan&quot;: &quot;#008080&quot;,\n            &quot;foreground&quot;: &quot;#C0C0C0&quot;,\n            &quot;green&quot;: &quot;#008000&quot;,\n            &quot;name&quot;: &quot;Vintage&quot;,\n            &quot;purple&quot;: &quot;#800080&quot;,\n            &quot;red&quot;: &quot;#800000&quot;,\n            &quot;selectionBackground&quot;: &quot;#FFFFFF&quot;,\n            &quot;white&quot;: &quot;#C0C0C0&quot;,\n            &quot;yellow&quot;: &quot;#808000&quot;\n        }\n    ],\n    &quot;startOnUserLogin&quot;: true,\n    &quot;theme&quot;: &quot;legacyDark&quot;,\n    &quot;themes&quot;: \n    [\n        {\n            &quot;name&quot;: &quot;legacyDark&quot;,\n            &quot;tab&quot;: \n            {\n                &quot;background&quot;: null,\n                &quot;showCloseButton&quot;: &quot;always&quot;,\n                &quot;unfocusedBackground&quot;: null\n            },\n            &quot;window&quot;: \n            {\n                &quot;applicationTheme&quot;: &quot;dark&quot;,\n                &quot;useMica&quot;: false\n            }\n        },\n        {\n            &quot;name&quot;: &quot;legacyLight&quot;,\n            &quot;tab&quot;: \n            {\n                &quot;background&quot;: null,\n                &quot;showCloseButton&quot;: &quot;always&quot;,\n                &quot;unfocusedBackground&quot;: null\n            },\n            &quot;window&quot;: \n            {\n                &quot;applicationTheme&quot;: &quot;light&quot;,\n                &quot;useMica&quot;: false\n            }\n        },\n        {\n            &quot;name&quot;: &quot;legacySystem&quot;,\n            &quot;tab&quot;: \n            {\n                &quot;background&quot;: null,\n                &quot;showCloseButton&quot;: &quot;always&quot;,\n                &quot;unfocusedBackground&quot;: null\n            },\n            &quot;window&quot;: \n            {\n                &quot;applicationTheme&quot;: &quot;system&quot;,\n                &quot;useMica&quot;: false\n            }\n        }\n    ],\n    &quot;useAcrylicInTabRow&quot;: true\n}"><pre class="notranslate">{\n    <span class="pl-ent">"$help"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://aka.ms/terminal-documentation<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"$schema"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://aka.ms/terminal-profiles-schema<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"actions"</span>: \n    [\n        {\n            <span class="pl-ent">"command"</span>: \n            {\n                <span class="pl-ent">"action"</span>: <span class="pl-s"><span class="pl-pds">"</span>copy<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"singleLine"</span>: <span class="pl-c1">false</span>\n            },\n            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>ctrl+c<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>paste<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>ctrl+v<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>closePane<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>ctrl+w<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"command"</span>: <span class="pl-s"><span class="pl-pds">"</span>find<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>ctrl+shift+f<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"command"</span>: \n            {\n                <span class="pl-ent">"action"</span>: <span class="pl-s"><span class="pl-pds">"</span>splitPane<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"split"</span>: <span class="pl-s"><span class="pl-pds">"</span>auto<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"splitMode"</span>: <span class="pl-s"><span class="pl-pds">"</span>duplicate<span class="pl-pds">"</span></span>\n            },\n            <span class="pl-ent">"keys"</span>: <span class="pl-s"><span class="pl-pds">"</span>alt+shift+d<span class="pl-pds">"</span></span>\n        }\n    ],\n    <span class="pl-ent">"copyFormatting"</span>: <span class="pl-s"><span class="pl-pds">"</span>none<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"copyOnSelect"</span>: <span class="pl-c1">false</span>,\n    <span class="pl-ent">"defaultProfile"</span>: <span class="pl-s"><span class="pl-pds">"</span>{a30bec85-09ab-459a-a901-7a2bf36fb541}<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"firstWindowPreference"</span>: <span class="pl-s"><span class="pl-pds">"</span>defaultProfile<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"focusFollowMouse"</span>: <span class="pl-c1">true</span>,\n    <span class="pl-ent">"launchMode"</span>: <span class="pl-s"><span class="pl-pds">"</span>default<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"newTabMenu"</span>: \n    [\n        {\n            <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>remainingProfiles<span class="pl-pds">"</span></span>\n        }\n    ],\n    <span class="pl-ent">"profiles"</span>: \n    {\n        <span class="pl-ent">"defaults"</span>: \n        {\n            <span class="pl-ent">"backgroundImage"</span>: <span class="pl-c1">null</span>,\n            <span class="pl-ent">"backgroundImageOpacity"</span>: <span class="pl-c1">0.3</span>,\n            <span class="pl-ent">"colorScheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>Campbell<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"elevate"</span>: <span class="pl-c1">false</span>,\n            <span class="pl-ent">"experimental.retroTerminalEffect"</span>: <span class="pl-c1">false</span>,\n            <span class="pl-ent">"font"</span>: \n            {\n                <span class="pl-ent">"size"</span>: <span class="pl-c1">12.0</span>,\n                <span class="pl-ent">"weight"</span>: <span class="pl-s"><span class="pl-pds">"</span>bold<span class="pl-pds">"</span></span>\n            },\n            <span class="pl-ent">"opacity"</span>: <span class="pl-c1">100</span>,\n            <span class="pl-ent">"padding"</span>: <span class="pl-s"><span class="pl-pds">"</span>8<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"useAcrylic"</span>: <span class="pl-c1">true</span>\n        },\n        <span class="pl-ent">"list"</span>: \n        [\n            {\n                <span class="pl-ent">"commandline"</span>: <span class="pl-s"><span class="pl-pds">"</span>%SystemRoot%<span class="pl-cce">\\\\</span>System32<span class="pl-cce">\\\\</span>WindowsPowerShell<span class="pl-cce">\\\\</span>v1.0<span class="pl-cce">\\\\</span>powershell.exe<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"font"</span>: \n                {\n                    <span class="pl-ent">"face"</span>: <span class="pl-s"><span class="pl-pds">"</span>Consolas<span class="pl-pds">"</span></span>\n                },\n                <span class="pl-ent">"guid"</span>: <span class="pl-s"><span class="pl-pds">"</span>{61c54bbd-c2c6-5271-96e7-009a87ff44bf}<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"hidden"</span>: <span class="pl-c1">false</span>,\n                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Windows PowerShell<span class="pl-pds">"</span></span>\n            },\n            {\n                <span class="pl-ent">"commandline"</span>: <span class="pl-s"><span class="pl-pds">"</span>%SystemRoot%<span class="pl-cce">\\\\</span>System32<span class="pl-cce">\\\\</span>cmd.exe<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"guid"</span>: <span class="pl-s"><span class="pl-pds">"</span>{0caa0dad-35be-5f56-a8ff-afceeeaa6101}<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"hidden"</span>: <span class="pl-c1">false</span>,\n                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\\u547d\\u4ee4\\u63d0\\u793a\\u7b26</span><span class="pl-pds">"</span></span>\n            },\n            {\n                <span class="pl-ent">"guid"</span>: <span class="pl-s"><span class="pl-pds">"</span>{b453ae62-4e3d-5e58-b989-0a998ec441b8}<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"hidden"</span>: <span class="pl-c1">false</span>,\n                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Azure Cloud Shell<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"source"</span>: <span class="pl-s"><span class="pl-pds">"</span>Windows.Terminal.Azure<span class="pl-pds">"</span></span>\n            },\n            {\n                <span class="pl-ent">"commandline"</span>: <span class="pl-s"><span class="pl-pds">"</span>D:<span class="pl-cce">\\\\</span>Alike<span class="pl-cce">\\\\</span>git<span class="pl-cce">\\\\</span>Git<span class="pl-cce">\\\\</span>bin<span class="pl-cce">\\\\</span>bash.exe<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"guid"</span>: <span class="pl-s"><span class="pl-pds">"</span>{a30bec85-09ab-459a-a901-7a2bf36fb541}<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"hidden"</span>: <span class="pl-c1">false</span>,\n                <span class="pl-ent">"icon"</span>: <span class="pl-s"><span class="pl-pds">"</span>D:<span class="pl-cce">\\\\</span>Alike<span class="pl-cce">\\\\</span>git<span class="pl-cce">\\\\</span>Git<span class="pl-cce">\\\\</span>mingw64<span class="pl-cce">\\\\</span>share<span class="pl-cce">\\\\</span>git<span class="pl-cce">\\\\</span>git-for-windows.ico<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Git Bash<span class="pl-pds">"</span></span>\n            }\n        ]\n    },\n    <span class="pl-ent">"schemes"</span>: \n    [\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0C0C0C<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0C0C0C<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0037DA<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#767676<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3B78FF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61D6D6<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#16C60C<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#B4009E<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E74856<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#F2F2F2<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#F9F1A5<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3A96DD<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CCCCCC<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#13A10E<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Campbell<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#881798<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C50F1F<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CCCCCC<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C19C00<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#012456<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0C0C0C<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0037DA<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#767676<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3B78FF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61D6D6<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#16C60C<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#B4009E<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E74856<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#F2F2F2<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#F9F1A5<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3A96DD<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CCCCCC<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#13A10E<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Campbell Powershell<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#881798<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C50F1F<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CCCCCC<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C19C00<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#282C34<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#282C34<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61AFEF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#5A6374<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61AFEF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#56B6C2<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#98C379<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C678DD<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E06C75<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DCDFE4<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E5C07B<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#56B6C2<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DCDFE4<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#98C379<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>One Half Dark<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C678DD<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E06C75<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DCDFE4<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E5C07B<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FAFAFA<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#383A42<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0184BC<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#4F525D<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#61AFEF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#56B5C1<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#98C379<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C577DD<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DF6C75<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E4C07A<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#4F525D<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0997B3<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#383A42<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#50A14F<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>One Half Light<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#A626A4<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#E45649<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FAFAFA<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C18301<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#002B36<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#002B36<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#268BD2<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#073642<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#839496<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#93A1A1<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#586E75<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#6C71C4<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CB4B16<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FDF6E3<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#657B83<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#2AA198<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#839496<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#859900<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Solarized Dark<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D33682<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DC322F<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EEE8D5<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#B58900<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FDF6E3<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#002B36<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#268BD2<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#073642<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#839496<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#93A1A1<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#586E75<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#6C71C4<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CB4B16<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FDF6E3<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#657B83<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#002B36<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#2AA198<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#657B83<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#859900<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Solarized Light<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D33682<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#DC322F<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EEE8D5<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#B58900<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3465A4<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#555753<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#729FCF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#34E2E2<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#8AE234<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#AD7FA8<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EF2929<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EEEEEC<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FCE94F<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#06989A<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D3D7CF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#4E9A06<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Tango Dark<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#75507B<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CC0000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D3D7CF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C4A000<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#3465A4<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#555753<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#729FCF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#34E2E2<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#8AE234<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#AD7FA8<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EF2929<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#EEEEEC<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FCE94F<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#06989A<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#555753<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#4E9A06<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Tango Light<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#75507B<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#CC0000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#D3D7CF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C4A000<span class="pl-pds">"</span></span>\n        },\n        {\n            <span class="pl-ent">"background"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"black"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"blue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#000080<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlack"</span>: <span class="pl-s"><span class="pl-pds">"</span>#808080<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightBlue"</span>: <span class="pl-s"><span class="pl-pds">"</span>#0000FF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightCyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#00FFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightGreen"</span>: <span class="pl-s"><span class="pl-pds">"</span>#00FF00<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightPurple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FF00FF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightRed"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FF0000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightWhite"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"brightYellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFF00<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cursorColor"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"cyan"</span>: <span class="pl-s"><span class="pl-pds">"</span>#008080<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"foreground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C0C0C0<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"green"</span>: <span class="pl-s"><span class="pl-pds">"</span>#008000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Vintage<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"purple"</span>: <span class="pl-s"><span class="pl-pds">"</span>#800080<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"red"</span>: <span class="pl-s"><span class="pl-pds">"</span>#800000<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"selectionBackground"</span>: <span class="pl-s"><span class="pl-pds">"</span>#FFFFFF<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"white"</span>: <span class="pl-s"><span class="pl-pds">"</span>#C0C0C0<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"yellow"</span>: <span class="pl-s"><span class="pl-pds">"</span>#808000<span class="pl-pds">"</span></span>\n        }\n    ],\n    <span class="pl-ent">"startOnUserLogin"</span>: <span class="pl-c1">true</span>,\n    <span class="pl-ent">"theme"</span>: <span class="pl-s"><span class="pl-pds">"</span>legacyDark<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"themes"</span>: \n    [\n        {\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>legacyDark<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"tab"</span>: \n            {\n                <span class="pl-ent">"background"</span>: <span class="pl-c1">null</span>,\n                <span class="pl-ent">"showCloseButton"</span>: <span class="pl-s"><span class="pl-pds">"</span>always<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"unfocusedBackground"</span>: <span class="pl-c1">null</span>\n            },\n            <span class="pl-ent">"window"</span>: \n            {\n                <span class="pl-ent">"applicationTheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>dark<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"useMica"</span>: <span class="pl-c1">false</span>\n            }\n        },\n        {\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>legacyLight<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"tab"</span>: \n            {\n                <span class="pl-ent">"background"</span>: <span class="pl-c1">null</span>,\n                <span class="pl-ent">"showCloseButton"</span>: <span class="pl-s"><span class="pl-pds">"</span>always<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"unfocusedBackground"</span>: <span class="pl-c1">null</span>\n            },\n            <span class="pl-ent">"window"</span>: \n            {\n                <span class="pl-ent">"applicationTheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>light<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"useMica"</span>: <span class="pl-c1">false</span>\n            }\n        },\n        {\n            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>legacySystem<span class="pl-pds">"</span></span>,\n            <span class="pl-ent">"tab"</span>: \n            {\n                <span class="pl-ent">"background"</span>: <span class="pl-c1">null</span>,\n                <span class="pl-ent">"showCloseButton"</span>: <span class="pl-s"><span class="pl-pds">"</span>always<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"unfocusedBackground"</span>: <span class="pl-c1">null</span>\n            },\n            <span class="pl-ent">"window"</span>: \n            {\n                <span class="pl-ent">"applicationTheme"</span>: <span class="pl-s"><span class="pl-pds">"</span>system<span class="pl-pds">"</span></span>,\n                <span class="pl-ent">"useMica"</span>: <span class="pl-c1">false</span>\n            }\n        }\n    ],\n    <span class="pl-ent">"useAcrylicInTabRow"</span>: <span class="pl-c1">true</span>\n}</pre></div>\n<h4 dir="auto">参考链接</h4>\n<ul dir="auto">\n<li><a href="https://www.cnblogs.com/kmsfan/p/vim_beginner.html" rel="nofollow">https://www.cnblogs.com/kmsfan/p/vim_beginner.html</a></li>\n<li><a href="https://learn.microsoft.com/zh-cn/powershell/" rel="nofollow">https://learn.microsoft.com/zh-cn/powershell/</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/42"},navList:[{text:"导航栏",id:"main-heading-H2-0",type:a,children:[{text:"快捷键补充",id:"main-heading-H3-1",type:s}]},{text:"gitBash",id:"main-heading-H2-2",type:a,children:[{text:t,id:"main-heading-H3-3",type:s}]},{text:"ConEmu",id:"main-heading-H2-4",type:a,children:[]},{text:"cmd",id:"main-heading-H2-5",type:a,children:[]},{text:"vim",id:"main-heading-H2-6",type:a,children:[{text:"模式",id:"main-heading-H3-7",type:s},{text:"三种常用模式的切换",id:"main-heading-H3-8",type:s},{text:"常用命令",id:"main-heading-H3-9",type:s}]},{text:"chrome",id:"main-heading-H2-10",type:a,children:[]},{text:"vscode",id:"main-heading-H2-11",type:a,children:[{text:"命令行",id:"main-heading-H3-12",type:s},{text:t,id:"main-heading-H3-13",type:s}]},{text:"Windows-terminal",id:"main-heading-H2-14",type:a,children:[{text:"快捷键",id:"main-heading-H3-15",type:s},{text:"settings.json 配置",id:"main-heading-H3-16",type:s}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:o,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:o,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:l}},serverRendered:!0}}("H3","","H2","yanyue404","User","光标相关","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

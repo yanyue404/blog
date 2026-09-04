@@ -1,0 +1,643 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Css预处理器之-Sass | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 css 预处理语言我选择用 sass，此篇记录 sass 的安装与用法。 Sass 与 SCSS 是什么关系？ SCSS 语法使用 .scss 文件扩展名。除了极少部分的例外， 它是 CSS 的超集，也就是说 所有有效的 CSS 同样都是有效的 SCSS，只需将扩展名从.css 更改为.scs"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Css预处理器之-Sass"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 css 预处理语言我选择用 sass，此篇记录 sass 的安装与用法。 Sass 与 SCSS 是什么关系？ SCSS 语法使用 .scss 文件扩展名。除了极少部分的例外， 它是 CSS 的超集，也就是说 所有有效的 CSS 同样都是有效的 SCSS，只需将扩展名从.css 更改为.scs"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Css预处理器之-Sass"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 css 预处理语言我选择用 sass，此篇记录 sass 的安装与用法。 Sass 与 SCSS 是什么关系？ SCSS 语法使用 .scss 文件扩展名。除了极少部分的例外， 它是 CSS 的超集，也就是说 所有有效的 CSS 同样都是有效的 SCSS，只需将扩展名从.css 更改为.scs"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-1" title="Sass 与 SCSS 是什么关系？" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Sass 与 SCSS 是什么关系？
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-2" title="Docs" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Docs
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H2-3" title="编译 Sass" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              编译 Sass
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-4" title="命令行编译" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  命令行编译
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-5" title="软件方式-Koala" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  软件方式-Koala
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-6" title="vscode 插件 easysass" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  vscode 插件 easysass
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-7" title="编译格式" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  编译格式
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H2-8" title="基本语法" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              基本语法
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-9" title="1.插入文件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.插入文件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-10" title="2.变量" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.变量
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-11" title="3.计算功能" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.计算功能
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-12" title="4.嵌套" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4.嵌套
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-13" title="5.注释" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5.注释
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H2-14" title="二.代码的重用" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              二.代码的重用
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-15" title="1.继承" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.继承
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-16" title="2.Mixin" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.Mixin
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-17" title="3.颜色函数" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.颜色函数
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H2-18" title="三.高级用法" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              三.高级用法
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-19" title="1.条件语句" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.条件语句
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-20" title="2.循环语句" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.循环语句
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/38#main-heading-H3-21" title="3.自定义函数" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.自定义函数
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Css预处理器之-Sass</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Css预处理器之-Sass</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-06-21</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 16 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto">css 预处理语言我选择用 sass，此篇记录 sass 的安装与用法。</p>
+<h3 id="main-heading-H3-1">Sass 与 SCSS 是什么关系？</h3>
+<p dir="auto">SCSS 语法使用 <code class="notranslate">.scss</code> 文件扩展名。除了极少部分的例外， 它是 CSS 的超集，也就是说 所有有效的 CSS 同样都是有效的 SCSS，只需将扩展名从.css 更改为.scss，就可以将任何有效的 CSS 文档转换为 Sassy CSS（SCSS）。 由于其与 CSS 的相似性，它是最容易上手的语法，也是最流行的语法。</p>
+<p dir="auto">The Sass .sass file is visually different from .scss file, e.g.</p>
+<p dir="auto"><strong>Example.sass (缩进语法) - sass is the older syntax</strong></p>
+<div class="highlight highlight-source-sass notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$color: red
+
+=my-border($color)
+  border: 1px solid $color
+
+body
+  background: $color
+  +my-border(green)"><pre class="notranslate">$<span class="pl-smi">color</span>: <span class="pl-c1">red</span>
+
+<span class="pl-k">=</span><span class="pl-smi">my-border</span>($<span class="pl-smi">color</span>)
+  <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> $<span class="pl-smi">color</span>
+
+<span class="pl-ent">body</span>
+  <span class="pl-c1"><span class="pl-c1">background</span></span>: $<span class="pl-smi">color</span>
+  <span class="pl-k">+</span><span class="pl-smi">my-border</span>(<span class="pl-c1">green</span>)</pre></div>
+<p dir="auto"><strong>Example.scss（新语法） - sassy css is the new syntax as of Sass 3</strong></p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$color: red;
+
+@mixin my-border($color) {
+  border: 1px solid $color;
+}
+
+body {
+  background: $color;
+  @include my-border(green);
+}"><pre class="notranslate"><span class="pl-v">$color</span>: <span class="pl-c1">red</span>;
+
+<span class="pl-k">@mixin</span> <span class="pl-en">my-border</span>(<span class="pl-v">$color</span>) {
+  <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-v">$color</span>;
+}
+
+<span class="pl-ent">body</span> {
+  <span class="pl-c1"><span class="pl-c1">background</span></span>: <span class="pl-v">$color</span>;
+  <span class="pl-k">@include</span> <span class="pl-en">my-border</span>(<span class="pl-c1">green</span>);
+}</pre></div>
+<h3 id="main-heading-H3-2">Docs</h3>
+<p dir="auto">前往: <a href="https://www.sass.hk/guide/" rel="nofollow">sass 中文网</a><br>
+github：<a href="https://github.com/sass/sass">sass</a></p>
+<h2 id="main-heading-H2-3">编译 Sass</h2>
+<p dir="auto">sass 编译有很多种方式，如命令行编译模式、编译软件 koala、Grunt 打造前端自动化工作流 grunt-sass、Gulp 打造前端自动化工作流 gulp-ruby-sass，以及 webpack 的<a href="https://github.com/webpack-contrib/sass-loader">sass-loader</a>。</p>
+<h3 id="main-heading-H3-4">命令行编译</h3>
+<p dir="auto">安装 Ruby 环境，Sass 和 Compass 后的工作流:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//单文件转换命令
+sass input.scss output.css
+
+//单文件监听命令
+sass --watch input.scss:output.css
+
+//如果你有很多的sass文件的目录，你也可以告诉sass监听整个目录：
+sass --watch app/sass:public/stylesheets"><pre class="notranslate">//单文件转换命令
+sass input.scss output.css
+
+//单文件监听命令
+sass --watch input.scss:output.css
+
+//如果你有很多的sass文件的目录，你也可以告诉sass监听整个目录：
+sass --watch app/sass:public/stylesheets</pre></div>
+<h3 id="main-heading-H3-5">软件方式-Koala</h3>
+<p dir="auto">koala 是一个前端预处理器语言图形编译工具，支持 Less、Sass、Compass、CoffeeScript，帮助 web 开发者更高效地使用它们进行开发。跨平台运行，完美兼容 windows、linux、mac。</p>
+<p dir="auto">免费可用：<a href="https://www.sass.hk/install/" rel="nofollow">下载地址</a></p>
+<h3 id="main-heading-H3-6">vscode 插件 easysass</h3>
+<p dir="auto">需要安装好 Ruby 环境,装好后在 ruby 的命令行输入 <code class="notranslate">gem install sass</code> 来安装 Sass，安装完成后启动 VSCode，在拓展商店里搜索“easy sass”，并安装，安装成功后重启 VSCode。</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='/** Easy Sass 插件 **/
+    "easysass.formats": [
+        {
+            "format": "compressed",  //  压缩(编译格式)
+            "extension": ".css"
+        }
+    ],
+    "easysass.targetDir": "./"  // 自定义css输出文件路径'><pre class="notranslate"><span class="pl-ii">/** Easy Sass 插件 **/</span>
+    <span class="pl-ent">"easysass.formats"</span>: [
+        {
+            <span class="pl-ent">"format"</span>: <span class="pl-s"><span class="pl-pds">"</span>compressed<span class="pl-pds">"</span></span>,  <span class="pl-ii">//  压缩(编译格式)</span>
+            <span class="pl-ent">"extension"</span>: <span class="pl-s"><span class="pl-pds">"</span>.css<span class="pl-pds">"</span></span>
+        }
+    ],
+    <span class="pl-ent">"easysass.targetDir"</span>: <span class="pl-s"><span class="pl-pds">"</span>./<span class="pl-pds">"</span></span>  <span class="pl-ii">// 自定义css输出文件路径</span></pre></div>
+<h3 id="main-heading-H3-7">编译格式</h3>
+<p dir="auto">四种编译排版演示;</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//未编译样式
+.box {
+  width: 300px;
+  height: 400px;
+  &-title {
+    height: 30px;
+    line-height: 30px;
+  }
+}"><pre class="notranslate">//未编译样式
+.<span class="pl-c1">box</span> {
+  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;
+  <span class="pl-ent">&</span><span class="pl-ent">-title</span> {
+    <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+    <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+  }
+}</pre></div>
+<p dir="auto">nested 编译排版格式(嵌套)</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*命令行内容*/
+sass style.scss:style.css --style nested
+
+/*编译过后样式*/
+.box {
+  width: 300px;
+  height: 400px;
+}
+.box-title {
+  height: 30px;
+  line-height: 30px;
+}"><pre class="notranslate"><span class="pl-c">/*命令行内容*/</span>
+<span class="pl-ent">sass</span> <span class="pl-ent">style</span>.<span class="pl-c1">scss</span><span class="pl-kos">:</span><span class="pl-c1">style</span>.<span class="pl-c1">css</span> <span class="pl-ent">--style</span> <span class="pl-ent">nested</span>
+
+<span class="pl-c">/*编译过后样式*/</span>
+.<span class="pl-c1">box</span> {
+  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;
+}
+.<span class="pl-c1">box-title</span> {
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+}</pre></div>
+<p dir="auto">expanded 编译排版格式(扩展)</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*命令行内容*/
+sass style.scss:style.css --style expanded
+
+/*编译过后样式*/
+.box {
+  width: 300px;
+  height: 400px;
+}
+.box-title {
+  height: 30px;
+  line-height: 30px;
+}"><pre class="notranslate"><span class="pl-c">/*命令行内容*/</span>
+<span class="pl-ent">sass</span> <span class="pl-ent">style</span>.<span class="pl-c1">scss</span><span class="pl-kos">:</span><span class="pl-c1">style</span>.<span class="pl-c1">css</span> <span class="pl-ent">--style</span> <span class="pl-ent">expanded</span>
+
+<span class="pl-c">/*编译过后样式*/</span>
+.<span class="pl-c1">box</span> {
+  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;
+}
+.<span class="pl-c1">box-title</span> {
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+}</pre></div>
+<p dir="auto">compact 编译排版格式(紧凑格式)</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*命令行内容*/
+sass style.scss:style.css --style compact
+
+/*编译过后样式*/
+.box {
+  width: 300px;
+  height: 400px;
+}
+.box-title {
+  height: 30px;
+  line-height: 30px;
+}"><pre class="notranslate"><span class="pl-c">/*命令行内容*/</span>
+<span class="pl-ent">sass</span> <span class="pl-ent">style</span>.<span class="pl-c1">scss</span><span class="pl-kos">:</span><span class="pl-c1">style</span>.<span class="pl-c1">css</span> <span class="pl-ent">--style</span> <span class="pl-ent">compact</span>
+
+<span class="pl-c">/*编译过后样式*/</span>
+.<span class="pl-c1">box</span> {
+  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;
+}
+.<span class="pl-c1">box-title</span> {
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+}</pre></div>
+<p dir="auto">compressed 编译排版格式(压缩格式)</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*命令行内容*/
+sass style.scss:style.css --style compressed
+
+/*编译过后样式*/
+.box {
+  width: 300px;
+  height: 400px;
+}
+.box-title {
+  height: 30px;
+  line-height: 30px;
+}"><pre class="notranslate"><span class="pl-c">/*命令行内容*/</span>
+<span class="pl-ent">sass</span> <span class="pl-ent">style</span>.<span class="pl-c1">scss</span><span class="pl-kos">:</span><span class="pl-c1">style</span>.<span class="pl-c1">css</span> <span class="pl-ent">--style</span> <span class="pl-ent">compressed</span>
+
+<span class="pl-c">/*编译过后样式*/</span>
+.<span class="pl-c1">box</span> {
+  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;
+}
+.<span class="pl-c1">box-title</span> {
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+  <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;
+}</pre></div>
+<h2 id="main-heading-H2-8">基本语法</h2>
+<h3 id="main-heading-H3-9">1.插入文件</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/import/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/import">@import</a> 命令，用来插入外部文件。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='　@import "path/filename.scss";'><pre class="notranslate">　<span class="pl-k">@import</span> <span class="pl-s"><span class="pl-pds">"</span>path/filename.scss<span class="pl-pds">"</span></span>;</pre></div>
+<p dir="auto">如果插入的是.css 文件，则等同于 css 的 import 命令。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='　@import "foo.css";'><pre class="notranslate">　<span class="pl-k">@import</span> <span class="pl-s"><span class="pl-pds">"</span>foo.css<span class="pl-pds">"</span></span>;</pre></div>
+<h3 id="main-heading-H3-10">2.变量</h3>
+<p dir="auto">SASS 允许使用变量，所有变量以$开头。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$blue : #1875e7;　
+
+　　div {
+　　　color : $blue;
+　　}"><pre class="notranslate"><span class="pl-v">$blue</span> : <span class="pl-c1">#1875e7</span>;　
+
+　　<span class="pl-ent">div</span> {
+　　　<span class="pl-c1"><span class="pl-c1">color</span></span> : <span class="pl-v">$blue</span>;
+　　}</pre></div>
+<p dir="auto">如果变量需要镶嵌在字符串之中，就必须需要写在<code class="notranslate">#{}</code>之中。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$side : left;
+　　.rounded {
+　　　　border-#{$side}-radius: 5px;
+　　}"><pre class="notranslate"><span class="pl-v">$side</span> : <span class="pl-c1">left</span>;
+　　<span class="pl-e">.rounded</span> {
+　　　　<span class="pl-c1">border-</span><span class="pl-v">#{<span class="pl-v">$side</span>}</span><span class="pl-c1">-radius</span>: <span class="pl-c1">5<span class="pl-k">px</span></span>;
+　　}</pre></div>
+<h3 id="main-heading-H3-11">3.计算功能</h3>
+<p dir="auto">SASS 允许在代码中使用算式：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="body {
+　　　　margin: (14px/2);
+　　　　top: 50px + 100px;
+　　　　right: $var * 10%;
+　　}"><pre class="notranslate"><span class="pl-ent">body</span> {
+　　　　<span class="pl-c1"><span class="pl-c1">margin</span></span>: (<span class="pl-c1">14<span class="pl-k">px</span></span><span class="pl-c1">/</span><span class="pl-c1">2</span>);
+　　　　<span class="pl-c1"><span class="pl-c1">top</span></span>: <span class="pl-c1">50<span class="pl-k">px</span></span> <span class="pl-k">+</span> <span class="pl-c1">100<span class="pl-k">px</span></span>;
+　　　　<span class="pl-c1"><span class="pl-c1">right</span></span>: <span class="pl-v">$var</span> <span class="pl-k">*</span> <span class="pl-c1">10<span class="pl-k">%</span></span>;
+　　}</pre></div>
+<h3 id="main-heading-H3-12">4.嵌套</h3>
+<p dir="auto">SASS 允许选择器嵌套。比如，下面的 CSS 代码：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="#content article h1 {
+  color: #333;
+}
+#content article p {
+  margin-bottom: 4px;
+}
+#content aside {
+  background-color: #eee;
+}"><pre class="notranslate"><span class="pl-e">#content</span> <span class="pl-ent">article</span> <span class="pl-ent">h1</span> {
+  <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#333</span>;
+}
+<span class="pl-e">#content</span> <span class="pl-ent">article</span> <span class="pl-ent">p</span> {
+  <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">4<span class="pl-k">px</span></span>;
+}
+<span class="pl-e">#content</span> <span class="pl-ent">aside</span> {
+  <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#eee</span>;
+}</pre></div>
+<p dir="auto">可以写成：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　#content {
+  article {
+    h1 {
+      color: #333;
+    }
+    p {
+      margin-bottom: 4px;
+    }
+  }
+  aside {
+    background-color: #eee;
+  }
+}"><pre class="notranslate">　<span class="pl-e">#content</span> {
+  <span class="pl-ent">article</span> {
+    <span class="pl-ent">h1</span> {
+      <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#333</span>;
+    }
+    <span class="pl-ent">p</span> {
+      <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">4<span class="pl-k">px</span></span>;
+    }
+  }
+  <span class="pl-ent">aside</span> {
+    <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#eee</span>;
+  }
+}</pre></div>
+<p dir="auto">1.属性也可以嵌套，比如 border-color 属性，可以写成：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="p {
+　 border: {
+　       color: red;
+　      　}
+　}"><pre class="notranslate"><span class="pl-ent">p</span> {
+　 <span class="pl-c1"><span class="pl-c1">border</span></span>: {
+　       <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">red</span>;
+　      　}
+　}</pre></div>
+<blockquote>
+<p dir="auto">注意，border 后面必须加上冒号。</p>
+</blockquote>
+<p dir="auto">2.父选择器的标识符，可以使用&引用父元素。比如 a:hover 伪类，可以写成：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" 　a {
+　     &:hover { color: #ffb3ff; }
+　   }"><pre class="notranslate"> 　<span class="pl-ent">a</span> {
+　     <span class="pl-ent">&</span><span class="pl-e">:hover</span> { <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#ffb3ff</span>; }
+　   }</pre></div>
+<p dir="auto"><strong>BEM 书写规范</strong></p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".article {
+  height: 100px;
+  &__header {
+    width: 100%;
+    &--left {
+      font-size: 28px;
+    }
+    &--right {
+      font-size: 28px;
+    }
+  }
+
+  &__content {
+    font-size: 28px;
+  }
+}"><pre class="notranslate"><span class="pl-e">.article</span> {
+  <span class="pl-c1"><span class="pl-c1">height</span></span>: <span class="pl-c1">100<span class="pl-k">px</span></span>;
+  <span class="pl-ent">&</span><span class="pl-e">__header</span> {
+    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;
+    <span class="pl-ent">&</span><span class="pl-v">--left</span> {
+      <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">28<span class="pl-k">px</span></span>;
+    }
+    <span class="pl-ent">&</span><span class="pl-v">--right</span> {
+      <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">28<span class="pl-k">px</span></span>;
+    }
+  }
+
+  <span class="pl-ent">&</span><span class="pl-e">__content</span> {
+    <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">28<span class="pl-k">px</span></span>;
+  }
+}</pre></div>
+<p dir="auto">会被转换成:</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".article {
+  height: 100px;
+}
+.article__header {
+  width: 100%;
+}
+.article__header--left {
+  font-size: 28px;
+}
+.article__header--right {
+  font-size: 28px;
+}
+.article__content {
+  font-size: 28px;
+}"><pre class="notranslate">.<span class="pl-c1">article</span> {
+  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;
+}
+.<span class="pl-c1">article__header</span> {
+  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">%</span></span>;
+}
+.<span class="pl-c1">article__header--left</span> {
+  <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">28<span class="pl-smi">px</span></span>;
+}
+.<span class="pl-c1">article__header--right</span> {
+  <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">28<span class="pl-smi">px</span></span>;
+}
+.<span class="pl-c1">article__content</span> {
+  <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">28<span class="pl-smi">px</span></span>;
+}</pre></div>
+<p dir="auto">3.子组合选择器 >(直接子元素选择器)</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="article > section {
+  border: 1px solid #ccc;
+}
+}"><pre class="notranslate"><span class="pl-ent">article</span> > <span class="pl-ent">section</span> {
+  <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-c1">#ccc</span>;
+}
+}</pre></div>
+<p dir="auto">4.群组选择器的嵌套</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".container h1,
+.container h2,
+.container h3 {
+  margin-bottom: 8px;
+}
+.container {
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 8px;
+  }
+}"><pre class="notranslate"><span class="pl-e">.container</span> <span class="pl-ent">h1</span>,
+<span class="pl-e">.container</span> <span class="pl-ent">h2</span>,
+<span class="pl-e">.container</span> <span class="pl-ent">h3</span> {
+  <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">8<span class="pl-k">px</span></span>;
+}
+<span class="pl-e">.container</span> {
+  <span class="pl-ent">h1</span>,
+  <span class="pl-ent">h2</span>,
+  <span class="pl-ent">h3</span> {
+    <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">8<span class="pl-k">px</span></span>;
+  }
+}</pre></div>
+<h3 id="main-heading-H3-13">5.注释</h3>
+<p dir="auto">SASS 共有两种注释风格。</p>
+<p dir="auto">标准的 CSS 注释 /_ comment _/ ，会保留到编译后的文件。</p>
+<p dir="auto">单行注释 // comment，只保留在 SASS 源文件中，编译后被省略。(静默注释)</p>
+<p dir="auto">在/*后面加一个感叹号，表示这是"重要注释"。即使是压缩模式编译，也会保留这行注释，通常可以用于声明版权信息。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="　/*!
+　　　　重要注释！
+　　*/"><pre class="notranslate"><code class="notranslate">　/*!
+　　　　重要注释！
+　　*/
+</code></pre></div>
+<h2 id="main-heading-H2-14">二.代码的重用</h2>
+<h3 id="main-heading-H3-15">1.继承</h3>
+<p dir="auto">SASS 允许一个选择器，继承另一个选择器。比如，现有 class1：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　.class1 {
+　　　　border: 1px solid #ddd;
+　　}"><pre class="notranslate">　<span class="pl-e">.class1</span> {
+　　　　<span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-c1">#ddd</span>;
+　　}</pre></div>
+<p dir="auto">class2 要继承 class1，就要使用<a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/extend/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/extend">@extend</a> 命令：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　.class2 {
+　　　　@extend .class1;
+　　　　font-size:120%;
+　　}"><pre class="notranslate">　　<span class="pl-e">.class2</span> {
+　　　　<span class="pl-k">@extend</span> <span class="pl-e">.class1</span>;
+　　　　<span class="pl-c1"><span class="pl-c1">font-size</span></span>:<span class="pl-c1">120<span class="pl-k">%</span></span>;
+　　}</pre></div>
+<h3 id="main-heading-H3-16">2.Mixin</h3>
+<p dir="auto">Mixin 有点像 C 语言的宏（macro），是可以重用的代码块。</p>
+<p dir="auto">使用<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mixin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mixin">@mixin</a> 命令，定义一个代码块。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　@mixin left {
+　　　　float: left;
+　　　　margin-left: 10px;
+　　}
+"><pre class="notranslate">　　<span class="pl-k">@mixin</span> <span class="pl-en">left</span> {
+　　　　<span class="pl-c1"><span class="pl-c1">float</span></span>: <span class="pl-c1">left</span>;
+　　　　<span class="pl-c1"><span class="pl-c1">margin-left</span></span>: <span class="pl-c1">10<span class="pl-k">px</span></span>;
+　　}
+</pre></div>
+<p dir="auto">使用<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/include/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/include">@include</a> 命令，调用这个 mixin。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="div {
+　　　　@include left;
+　　}
+"><pre class="notranslate"><span class="pl-ent">div</span> {
+　　　　<span class="pl-k">@include</span> <span class="pl-en">left</span>;
+　　}
+</pre></div>
+<p dir="auto">mixin 的强大之处，在于可以指定参数和缺省值。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@mixin left($value: 10px) {
+　　　　float: left;
+　　　　margin-right: $value;
+　　}"><pre class="notranslate">　<span class="pl-k">@mixin</span> <span class="pl-en">left</span>(<span class="pl-v">$value</span>: <span class="pl-c1">10<span class="pl-k">px</span></span>) {
+　　　　<span class="pl-c1"><span class="pl-c1">float</span></span>: <span class="pl-c1">left</span>;
+　　　　<span class="pl-c1"><span class="pl-c1">margin-right</span></span>: <span class="pl-v">$value</span>;
+　　}</pre></div>
+<p dir="auto">使用的时候，根据需要加入参数：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　div {
+　　　　@include left(20px);
+　　}"><pre class="notranslate">　<span class="pl-ent">div</span> {
+　　　　<span class="pl-k">@include</span> <span class="pl-en">left</span>(<span class="pl-c1">20<span class="pl-k">px</span></span>);
+　　}</pre></div>
+<p dir="auto">下面是一个 mixin 的实例，用来生成浏览器前缀.(设置了默认参数,可以更改)</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　@mixin rounded($vert, $horz, $radius: 10px) {
+　　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+　　}"><pre class="notranslate">　　<span class="pl-k">@mixin</span> <span class="pl-en">rounded</span>(<span class="pl-v">$vert</span>, <span class="pl-v">$horz</span>, <span class="pl-v">$radius</span>: <span class="pl-c1">10<span class="pl-k">px</span></span>) {
+　　　　<span class="pl-c1">border-</span><span class="pl-v">#{<span class="pl-v">$vert</span>}</span><span class="pl-c1">-</span><span class="pl-v">#{<span class="pl-v">$horz</span>}</span><span class="pl-c1">-radius</span>: <span class="pl-v">$radius</span>;
+　　　　<span class="pl-c1"><span class="pl-c1">-moz-border-radius-</span></span><span class="pl-v">#{<span class="pl-v">$vert</span>}#{<span class="pl-v">$horz</span>}</span>: <span class="pl-v">$radius</span>;
+　　　　<span class="pl-c1"><span class="pl-c1">-webkit-border-</span></span><span class="pl-v">#{<span class="pl-v">$vert</span>}</span><span class="pl-c1">-</span><span class="pl-v">#{<span class="pl-v">$horz</span>}</span><span class="pl-c1">-radius</span>: <span class="pl-v">$radius</span>;
+　　}</pre></div>
+<p dir="auto">使用的时候，可以像下面这样调用：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　#navbar li {
+  @include rounded(top, left);
+}
+
+　　#footer {
+  @include rounded(top, left, 5px);
+}"><pre class="notranslate">　　<span class="pl-e">#navbar</span> <span class="pl-ent">li</span> {
+  <span class="pl-k">@include</span> <span class="pl-en">rounded</span>(<span class="pl-c1">top</span>, <span class="pl-c1">left</span>);
+}
+
+　　<span class="pl-e">#footer</span> {
+  <span class="pl-k">@include</span> <span class="pl-en">rounded</span>(<span class="pl-c1">top</span>, <span class="pl-c1">left</span>, <span class="pl-c1">5<span class="pl-k">px</span></span>);
+}</pre></div>
+<h3 id="main-heading-H3-17">3.颜色函数</h3>
+<p dir="auto">SASS 提供了一些内置的颜色函数，以便生成系列颜色。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　lighten(#cc3, 10%) // #d6d65c
+　　darken(#cc3, 10%) // #a3a329
+　　grayscale(#cc3) // #808080
+　　complement(#cc3) // #33c"><pre class="notranslate">　　lighten(<span class="pl-e">#cc3</span>, 10%) <span class="pl-c"><span class="pl-c">//</span> #d6d65c</span>
+　　darken(<span class="pl-e">#cc3</span>, 10%) <span class="pl-c"><span class="pl-c">//</span> #a3a329</span>
+　　grayscale(<span class="pl-e">#cc3</span>) <span class="pl-c"><span class="pl-c">//</span> #808080</span>
+　　complement(<span class="pl-e">#cc3</span>) <span class="pl-c"><span class="pl-c">//</span> #33c</span></pre></div>
+<h2 id="main-heading-H2-18">三.高级用法</h2>
+<h3 id="main-heading-H3-19">1.条件语句</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/if/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/if">@if</a> 可以用来判断：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　p {
+　　　　@if 1 + 1 == 2 { border: 1px solid; }
+　　　　@if 5 < 3 { border: 2px dotted; }
+　　}"><pre class="notranslate">　<span class="pl-ent">p</span> {
+　　　　<span class="pl-k">@if</span> <span class="pl-c1">1</span> <span class="pl-k">+</span> <span class="pl-c1">1</span> <span class="pl-k">==</span> <span class="pl-c1">2</span> { <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span>; }
+　　　　<span class="pl-k">@if</span> <span class="pl-c1">5</span> <span class="pl-k">&lt;</span> <span class="pl-c1">3</span> { <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">2<span class="pl-k">px</span></span> <span class="pl-c1">dotted</span>; }
+　　}</pre></div>
+<p dir="auto">配套的还有<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/else/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/else">@else</a> 命令：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@if lightness($color) > 30% {
+　　　　background-color: #000;
+　　} @else {
+　　　　background-color: #fff;
+　　}"><pre class="notranslate">　<span class="pl-k">@if</span> <span class="pl-c1">lightness</span>(<span class="pl-v">$color</span>) <span class="pl-k">></span> <span class="pl-c1">30<span class="pl-k">%</span></span> {
+　　　　<span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#000</span>;
+　　} <span class="pl-k">@else </span>{
+　　　　<span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#fff</span>;
+　　}</pre></div>
+<h3 id="main-heading-H3-20">2.循环语句</h3>
+<p dir="auto">SASS 支持 for 循环：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@for $i from 1 to 10 {
+　　　　.border-#{$i} {
+　　　　　　border: #{$i}px solid blue;
+　　　　}
+　　}"><pre class="notranslate">　<span class="pl-k">@for</span> <span class="pl-v">$i</span> <span class="pl-k">from</span> <span class="pl-c1">1</span> <span class="pl-k">to</span> <span class="pl-c1">10</span> {
+　　　　<span class="pl-e">.border-<span class="pl-v">#{<span class="pl-v">$i</span>}</span></span> {
+　　　　　　<span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-v">#{<span class="pl-v">$i</span>}</span>px <span class="pl-c1">solid</span> <span class="pl-c1">blue</span>;
+　　　　}
+　　}</pre></div>
+<p dir="auto">也支持 while 循环：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　$i: 6;
+
+　　@while $i > 0 {
+　　　　.item-#{$i} { width: 2em * $i; }
+　　　　$i: $i - 2;
+　　}"><pre class="notranslate">　<span class="pl-v">$i</span>: <span class="pl-c1">6</span>;
+
+　　<span class="pl-k">@while</span> <span class="pl-v">$i</span> <span class="pl-k">></span> <span class="pl-c1">0</span> {
+　　　　<span class="pl-e">.item-<span class="pl-v">#{<span class="pl-v">$i</span>}</span></span> { <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">2<span class="pl-k">em</span></span> <span class="pl-k">*</span> <span class="pl-v">$i</span>; }
+　　　　<span class="pl-v">$i</span>: <span class="pl-v">$i</span> <span class="pl-k">-</span> <span class="pl-c1">2</span>;
+　　}</pre></div>
+<p dir="auto">each 命令，作用与 for 类似：</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='　@each $member in a, b, c, d {
+　　　　.#{$member} {
+　　　　　　background-image: url("/image/#{$member}.jpg");
+　　　　}
+　　}'><pre class="notranslate">　<span class="pl-k">@each</span> <span class="pl-v">$member</span> <span class="pl-k">in</span> <span class="pl-ent">a</span>, <span class="pl-ent">b</span>, c, d {
+　　　　<span class="pl-e">.<span class="pl-v">#{<span class="pl-v">$member</span>}</span></span> {
+　　　　　　<span class="pl-c1"><span class="pl-c1">background-image</span></span>: <span class="pl-c1">url</span>(<span class="pl-s"><span class="pl-pds">"</span>/image/<span class="pl-v">#{<span class="pl-v">$member</span>}</span>.jpg<span class="pl-pds">"</span></span>);
+　　　　}
+　　}</pre></div>
+<h3 id="main-heading-H3-21">3.自定义函数</h3>
+<p dir="auto">SASS 允许用户编写自己的函数。</p>
+<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@function double($n) {
+　　　　@return $n * 2;
+　　}
+
+　　#sidebar {
+　　　　width: double(5px);
+　　}"><pre class="notranslate"><span class="pl-k">@function</span> <span class="pl-c1">double</span>(<span class="pl-v">$n</span>) {
+　　　　<span class="pl-k">@return</span> <span class="pl-v">$n</span> <span class="pl-k">*</span> <span class="pl-c1">2</span>;
+　　}
+
+　　<span class="pl-e">#sidebar</span> {
+　　　　<span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">double</span>(<span class="pl-c1">5<span class="pl-k">px</span></span>);
+　　}</pre></div>
+<h4 dir="auto">参考链接</h4>
+<ul dir="auto">
+<li><a href="https://www.sass.hk/install/" rel="nofollow">https://www.sass.hk/install/</a></li>
+<li><a href="http://hyuhan.com/2016/09/07/compares-less-sass-and-stylus/" rel="nofollow">http://hyuhan.com/2016/09/07/compares-less-sass-and-stylus/</a></li>
+<li><a href="https://stackoverflow.com/questions/5654447/whats-the-difference-between-scss-and-sass" rel="nofollow">https://stackoverflow.com/questions/5654447/whats-the-difference-between-scss-and-sass</a></li>
+<li><a href="https://blog.csdn.net/qq_35697034/article/details/78251173" rel="nofollow">https://blog.csdn.net/qq_35697034/article/details/78251173</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,c){return{layout:"default",data:[{post:{id:334466454,number:38,title:"Css预处理器之-Sass",created_at:"2018-06-21T12:15:25Z",updated_at:"2025-11-23T15:54:26Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto">css 预处理语言我选择用 sass，此篇记录 sass 的安装与用法。</p>\n<h3 id="main-heading-H3-1">Sass 与 SCSS 是什么关系？</h3>\n<p dir="auto">SCSS 语法使用 <code class="notranslate">.scss</code> 文件扩展名。除了极少部分的例外， 它是 CSS 的超集，也就是说 所有有效的 CSS 同样都是有效的 SCSS，只需将扩展名从.css 更改为.scss，就可以将任何有效的 CSS 文档转换为 Sassy CSS（SCSS）。 由于其与 CSS 的相似性，它是最容易上手的语法，也是最流行的语法。</p>\n<p dir="auto">The Sass .sass file is visually different from .scss file, e.g.</p>\n<p dir="auto"><strong>Example.sass (缩进语法) - sass is the older syntax</strong></p>\n<div class="highlight highlight-source-sass notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$color: red\n\n=my-border($color)\n  border: 1px solid $color\n\nbody\n  background: $color\n  +my-border(green)"><pre class="notranslate">$<span class="pl-smi">color</span>: <span class="pl-c1">red</span>\n\n<span class="pl-k">=</span><span class="pl-smi">my-border</span>($<span class="pl-smi">color</span>)\n  <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> $<span class="pl-smi">color</span>\n\n<span class="pl-ent">body</span>\n  <span class="pl-c1"><span class="pl-c1">background</span></span>: $<span class="pl-smi">color</span>\n  <span class="pl-k">+</span><span class="pl-smi">my-border</span>(<span class="pl-c1">green</span>)</pre></div>\n<p dir="auto"><strong>Example.scss（新语法） - sassy css is the new syntax as of Sass 3</strong></p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$color: red;\n\n@mixin my-border($color) {\n  border: 1px solid $color;\n}\n\nbody {\n  background: $color;\n  @include my-border(green);\n}"><pre class="notranslate"><span class="pl-v">$color</span>: <span class="pl-c1">red</span>;\n\n<span class="pl-k">@mixin</span> <span class="pl-en">my-border</span>(<span class="pl-v">$color</span>) {\n  <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-v">$color</span>;\n}\n\n<span class="pl-ent">body</span> {\n  <span class="pl-c1"><span class="pl-c1">background</span></span>: <span class="pl-v">$color</span>;\n  <span class="pl-k">@include</span> <span class="pl-en">my-border</span>(<span class="pl-c1">green</span>);\n}</pre></div>\n<h3 id="main-heading-H3-2">Docs</h3>\n<p dir="auto">前往: <a href="https://www.sass.hk/guide/" rel="nofollow">sass 中文网</a><br>\ngithub：<a href="https://github.com/sass/sass">sass</a></p>\n<h2 id="main-heading-H2-3">编译 Sass</h2>\n<p dir="auto">sass 编译有很多种方式，如命令行编译模式、编译软件 koala、Grunt 打造前端自动化工作流 grunt-sass、Gulp 打造前端自动化工作流 gulp-ruby-sass，以及 webpack 的<a href="https://github.com/webpack-contrib/sass-loader">sass-loader</a>。</p>\n<h3 id="main-heading-H3-4">命令行编译</h3>\n<p dir="auto">安装 Ruby 环境，Sass 和 Compass 后的工作流:</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//单文件转换命令\nsass input.scss output.css\n\n//单文件监听命令\nsass --watch input.scss:output.css\n\n//如果你有很多的sass文件的目录，你也可以告诉sass监听整个目录：\nsass --watch app/sass:public/stylesheets"><pre class="notranslate">//单文件转换命令\nsass input.scss output.css\n\n//单文件监听命令\nsass --watch input.scss:output.css\n\n//如果你有很多的sass文件的目录，你也可以告诉sass监听整个目录：\nsass --watch app/sass:public/stylesheets</pre></div>\n<h3 id="main-heading-H3-5">软件方式-Koala</h3>\n<p dir="auto">koala 是一个前端预处理器语言图形编译工具，支持 Less、Sass、Compass、CoffeeScript，帮助 web 开发者更高效地使用它们进行开发。跨平台运行，完美兼容 windows、linux、mac。</p>\n<p dir="auto">免费可用：<a href="https://www.sass.hk/install/" rel="nofollow">下载地址</a></p>\n<h3 id="main-heading-H3-6">vscode 插件 easysass</h3>\n<p dir="auto">需要安装好 Ruby 环境,装好后在 ruby 的命令行输入 <code class="notranslate">gem install sass</code> 来安装 Sass，安装完成后启动 VSCode，在拓展商店里搜索“easy sass”，并安装，安装成功后重启 VSCode。</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/** Easy Sass 插件 **/\n    &quot;easysass.formats&quot;: [\n        {\n            &quot;format&quot;: &quot;compressed&quot;,  //  压缩(编译格式)\n            &quot;extension&quot;: &quot;.css&quot;\n        }\n    ],\n    &quot;easysass.targetDir&quot;: &quot;./&quot;  // 自定义css输出文件路径"><pre class="notranslate"><span class="pl-ii">/** Easy Sass 插件 **/</span>\n    <span class="pl-ent">"easysass.formats"</span>: [\n        {\n            <span class="pl-ent">"format"</span>: <span class="pl-s"><span class="pl-pds">"</span>compressed<span class="pl-pds">"</span></span>,  <span class="pl-ii">//  压缩(编译格式)</span>\n            <span class="pl-ent">"extension"</span>: <span class="pl-s"><span class="pl-pds">"</span>.css<span class="pl-pds">"</span></span>\n        }\n    ],\n    <span class="pl-ent">"easysass.targetDir"</span>: <span class="pl-s"><span class="pl-pds">"</span>./<span class="pl-pds">"</span></span>  <span class="pl-ii">// 自定义css输出文件路径</span></pre></div>\n<h3 id="main-heading-H3-7">编译格式</h3>\n<p dir="auto">四种编译排版演示;</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//未编译样式\n.box {\n  width: 300px;\n  height: 400px;\n  &amp;-title {\n    height: 30px;\n    line-height: 30px;\n  }\n}"><pre class="notranslate">//未编译样式\n.<span class="pl-c1">box</span> {\n  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;\n  <span class="pl-ent">&amp;</span><span class="pl-ent">-title</span> {\n    <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n    <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n  }\n}</pre></div>\n<p dir="auto">nested 编译排版格式(嵌套)</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*命令行内容*/\nsass style.scss:style.css --style nested\n\n/*编译过后样式*/\n.box {\n  width: 300px;\n  height: 400px;\n}\n.box-title {\n  height: 30px;\n  line-height: 30px;\n}"><pre class="notranslate"><span class="pl-c">/*命令行内容*/</span>\n<span class="pl-ent">sass</span> <span class="pl-ent">style</span>.<span class="pl-c1">scss</span><span class="pl-kos">:</span><span class="pl-c1">style</span>.<span class="pl-c1">css</span> <span class="pl-ent">--style</span> <span class="pl-ent">nested</span>\n\n<span class="pl-c">/*编译过后样式*/</span>\n.<span class="pl-c1">box</span> {\n  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;\n}\n.<span class="pl-c1">box-title</span> {\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n}</pre></div>\n<p dir="auto">expanded 编译排版格式(扩展)</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*命令行内容*/\nsass style.scss:style.css --style expanded\n\n/*编译过后样式*/\n.box {\n  width: 300px;\n  height: 400px;\n}\n.box-title {\n  height: 30px;\n  line-height: 30px;\n}"><pre class="notranslate"><span class="pl-c">/*命令行内容*/</span>\n<span class="pl-ent">sass</span> <span class="pl-ent">style</span>.<span class="pl-c1">scss</span><span class="pl-kos">:</span><span class="pl-c1">style</span>.<span class="pl-c1">css</span> <span class="pl-ent">--style</span> <span class="pl-ent">expanded</span>\n\n<span class="pl-c">/*编译过后样式*/</span>\n.<span class="pl-c1">box</span> {\n  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;\n}\n.<span class="pl-c1">box-title</span> {\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n}</pre></div>\n<p dir="auto">compact 编译排版格式(紧凑格式)</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*命令行内容*/\nsass style.scss:style.css --style compact\n\n/*编译过后样式*/\n.box {\n  width: 300px;\n  height: 400px;\n}\n.box-title {\n  height: 30px;\n  line-height: 30px;\n}"><pre class="notranslate"><span class="pl-c">/*命令行内容*/</span>\n<span class="pl-ent">sass</span> <span class="pl-ent">style</span>.<span class="pl-c1">scss</span><span class="pl-kos">:</span><span class="pl-c1">style</span>.<span class="pl-c1">css</span> <span class="pl-ent">--style</span> <span class="pl-ent">compact</span>\n\n<span class="pl-c">/*编译过后样式*/</span>\n.<span class="pl-c1">box</span> {\n  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;\n}\n.<span class="pl-c1">box-title</span> {\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n}</pre></div>\n<p dir="auto">compressed 编译排版格式(压缩格式)</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/*命令行内容*/\nsass style.scss:style.css --style compressed\n\n/*编译过后样式*/\n.box {\n  width: 300px;\n  height: 400px;\n}\n.box-title {\n  height: 30px;\n  line-height: 30px;\n}"><pre class="notranslate"><span class="pl-c">/*命令行内容*/</span>\n<span class="pl-ent">sass</span> <span class="pl-ent">style</span>.<span class="pl-c1">scss</span><span class="pl-kos">:</span><span class="pl-c1">style</span>.<span class="pl-c1">css</span> <span class="pl-ent">--style</span> <span class="pl-ent">compressed</span>\n\n<span class="pl-c">/*编译过后样式*/</span>\n.<span class="pl-c1">box</span> {\n  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">300<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">400<span class="pl-smi">px</span></span>;\n}\n.<span class="pl-c1">box-title</span> {\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n  <span class="pl-c1">line-height</span><span class="pl-kos">:</span> <span class="pl-c1">30<span class="pl-smi">px</span></span>;\n}</pre></div>\n<h2 id="main-heading-H2-8">基本语法</h2>\n<h3 id="main-heading-H3-9">1.插入文件</h3>\n<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/import/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/import">@import</a> 命令，用来插入外部文件。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@import &quot;path/filename.scss&quot;;"><pre class="notranslate">　<span class="pl-k">@import</span> <span class="pl-s"><span class="pl-pds">"</span>path/filename.scss<span class="pl-pds">"</span></span>;</pre></div>\n<p dir="auto">如果插入的是.css 文件，则等同于 css 的 import 命令。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@import &quot;foo.css&quot;;"><pre class="notranslate">　<span class="pl-k">@import</span> <span class="pl-s"><span class="pl-pds">"</span>foo.css<span class="pl-pds">"</span></span>;</pre></div>\n<h3 id="main-heading-H3-10">2.变量</h3>\n<p dir="auto">SASS 允许使用变量，所有变量以$开头。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$blue : #1875e7;　\n\n　　div {\n　　　color : $blue;\n　　}"><pre class="notranslate"><span class="pl-v">$blue</span> : <span class="pl-c1">#1875e7</span>;　\n\n　　<span class="pl-ent">div</span> {\n　　　<span class="pl-c1"><span class="pl-c1">color</span></span> : <span class="pl-v">$blue</span>;\n　　}</pre></div>\n<p dir="auto">如果变量需要镶嵌在字符串之中，就必须需要写在<code class="notranslate">#{}</code>之中。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$side : left;\n　　.rounded {\n　　　　border-#{$side}-radius: 5px;\n　　}"><pre class="notranslate"><span class="pl-v">$side</span> : <span class="pl-c1">left</span>;\n　　<span class="pl-e">.rounded</span> {\n　　　　<span class="pl-c1">border-</span><span class="pl-v">#{<span class="pl-v">$side</span>}</span><span class="pl-c1">-radius</span>: <span class="pl-c1">5<span class="pl-k">px</span></span>;\n　　}</pre></div>\n<h3 id="main-heading-H3-11">3.计算功能</h3>\n<p dir="auto">SASS 允许在代码中使用算式：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="body {\n　　　　margin: (14px/2);\n　　　　top: 50px + 100px;\n　　　　right: $var * 10%;\n　　}"><pre class="notranslate"><span class="pl-ent">body</span> {\n　　　　<span class="pl-c1"><span class="pl-c1">margin</span></span>: (<span class="pl-c1">14<span class="pl-k">px</span></span><span class="pl-c1">/</span><span class="pl-c1">2</span>);\n　　　　<span class="pl-c1"><span class="pl-c1">top</span></span>: <span class="pl-c1">50<span class="pl-k">px</span></span> <span class="pl-k">+</span> <span class="pl-c1">100<span class="pl-k">px</span></span>;\n　　　　<span class="pl-c1"><span class="pl-c1">right</span></span>: <span class="pl-v">$var</span> <span class="pl-k">*</span> <span class="pl-c1">10<span class="pl-k">%</span></span>;\n　　}</pre></div>\n<h3 id="main-heading-H3-12">4.嵌套</h3>\n<p dir="auto">SASS 允许选择器嵌套。比如，下面的 CSS 代码：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="#content article h1 {\n  color: #333;\n}\n#content article p {\n  margin-bottom: 4px;\n}\n#content aside {\n  background-color: #eee;\n}"><pre class="notranslate"><span class="pl-e">#content</span> <span class="pl-ent">article</span> <span class="pl-ent">h1</span> {\n  <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#333</span>;\n}\n<span class="pl-e">#content</span> <span class="pl-ent">article</span> <span class="pl-ent">p</span> {\n  <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">4<span class="pl-k">px</span></span>;\n}\n<span class="pl-e">#content</span> <span class="pl-ent">aside</span> {\n  <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#eee</span>;\n}</pre></div>\n<p dir="auto">可以写成：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　#content {\n  article {\n    h1 {\n      color: #333;\n    }\n    p {\n      margin-bottom: 4px;\n    }\n  }\n  aside {\n    background-color: #eee;\n  }\n}"><pre class="notranslate">　<span class="pl-e">#content</span> {\n  <span class="pl-ent">article</span> {\n    <span class="pl-ent">h1</span> {\n      <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#333</span>;\n    }\n    <span class="pl-ent">p</span> {\n      <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">4<span class="pl-k">px</span></span>;\n    }\n  }\n  <span class="pl-ent">aside</span> {\n    <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#eee</span>;\n  }\n}</pre></div>\n<p dir="auto">1.属性也可以嵌套，比如 border-color 属性，可以写成：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="p {\n　 border: {\n　       color: red;\n　      　}\n　}"><pre class="notranslate"><span class="pl-ent">p</span> {\n　 <span class="pl-c1"><span class="pl-c1">border</span></span>: {\n　       <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">red</span>;\n　      　}\n　}</pre></div>\n<blockquote>\n<p dir="auto">注意，border 后面必须加上冒号。</p>\n</blockquote>\n<p dir="auto">2.父选择器的标识符，可以使用&amp;引用父元素。比如 a:hover 伪类，可以写成：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" 　a {\n　     &amp;:hover { color: #ffb3ff; }\n　   }"><pre class="notranslate"> 　<span class="pl-ent">a</span> {\n　     <span class="pl-ent">&amp;</span><span class="pl-e">:hover</span> { <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#ffb3ff</span>; }\n　   }</pre></div>\n<p dir="auto"><strong>BEM 书写规范</strong></p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".article {\n  height: 100px;\n  &amp;__header {\n    width: 100%;\n    &amp;--left {\n      font-size: 28px;\n    }\n    &amp;--right {\n      font-size: 28px;\n    }\n  }\n\n  &amp;__content {\n    font-size: 28px;\n  }\n}"><pre class="notranslate"><span class="pl-e">.article</span> {\n  <span class="pl-c1"><span class="pl-c1">height</span></span>: <span class="pl-c1">100<span class="pl-k">px</span></span>;\n  <span class="pl-ent">&amp;</span><span class="pl-e">__header</span> {\n    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;\n    <span class="pl-ent">&amp;</span><span class="pl-v">--left</span> {\n      <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">28<span class="pl-k">px</span></span>;\n    }\n    <span class="pl-ent">&amp;</span><span class="pl-v">--right</span> {\n      <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">28<span class="pl-k">px</span></span>;\n    }\n  }\n\n  <span class="pl-ent">&amp;</span><span class="pl-e">__content</span> {\n    <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">28<span class="pl-k">px</span></span>;\n  }\n}</pre></div>\n<p dir="auto">会被转换成:</p>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".article {\n  height: 100px;\n}\n.article__header {\n  width: 100%;\n}\n.article__header--left {\n  font-size: 28px;\n}\n.article__header--right {\n  font-size: 28px;\n}\n.article__content {\n  font-size: 28px;\n}"><pre class="notranslate">.<span class="pl-c1">article</span> {\n  <span class="pl-c1">height</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">px</span></span>;\n}\n.<span class="pl-c1">article__header</span> {\n  <span class="pl-c1">width</span><span class="pl-kos">:</span> <span class="pl-c1">100<span class="pl-smi">%</span></span>;\n}\n.<span class="pl-c1">article__header--left</span> {\n  <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">28<span class="pl-smi">px</span></span>;\n}\n.<span class="pl-c1">article__header--right</span> {\n  <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">28<span class="pl-smi">px</span></span>;\n}\n.<span class="pl-c1">article__content</span> {\n  <span class="pl-c1">font-size</span><span class="pl-kos">:</span> <span class="pl-c1">28<span class="pl-smi">px</span></span>;\n}</pre></div>\n<p dir="auto">3.子组合选择器 &gt;(直接子元素选择器)</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="article &gt; section {\n  border: 1px solid #ccc;\n}\n}"><pre class="notranslate"><span class="pl-ent">article</span> &gt; <span class="pl-ent">section</span> {\n  <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-c1">#ccc</span>;\n}\n}</pre></div>\n<p dir="auto">4.群组选择器的嵌套</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".container h1,\n.container h2,\n.container h3 {\n  margin-bottom: 8px;\n}\n.container {\n  h1,\n  h2,\n  h3 {\n    margin-bottom: 8px;\n  }\n}"><pre class="notranslate"><span class="pl-e">.container</span> <span class="pl-ent">h1</span>,\n<span class="pl-e">.container</span> <span class="pl-ent">h2</span>,\n<span class="pl-e">.container</span> <span class="pl-ent">h3</span> {\n  <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">8<span class="pl-k">px</span></span>;\n}\n<span class="pl-e">.container</span> {\n  <span class="pl-ent">h1</span>,\n  <span class="pl-ent">h2</span>,\n  <span class="pl-ent">h3</span> {\n    <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">8<span class="pl-k">px</span></span>;\n  }\n}</pre></div>\n<h3 id="main-heading-H3-13">5.注释</h3>\n<p dir="auto">SASS 共有两种注释风格。</p>\n<p dir="auto">标准的 CSS 注释 /_ comment _/ ，会保留到编译后的文件。</p>\n<p dir="auto">单行注释 // comment，只保留在 SASS 源文件中，编译后被省略。(静默注释)</p>\n<p dir="auto">在/*后面加一个感叹号，表示这是"重要注释"。即使是压缩模式编译，也会保留这行注释，通常可以用于声明版权信息。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="　/*!\n　　　　重要注释！\n　　*/"><pre class="notranslate"><code class="notranslate">　/*!\n　　　　重要注释！\n　　*/\n</code></pre></div>\n<h2 id="main-heading-H2-14">二.代码的重用</h2>\n<h3 id="main-heading-H3-15">1.继承</h3>\n<p dir="auto">SASS 允许一个选择器，继承另一个选择器。比如，现有 class1：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　.class1 {\n　　　　border: 1px solid #ddd;\n　　}"><pre class="notranslate">　<span class="pl-e">.class1</span> {\n　　　　<span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-c1">#ddd</span>;\n　　}</pre></div>\n<p dir="auto">class2 要继承 class1，就要使用<a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/extend/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/extend">@extend</a> 命令：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　.class2 {\n　　　　@extend .class1;\n　　　　font-size:120%;\n　　}"><pre class="notranslate">　　<span class="pl-e">.class2</span> {\n　　　　<span class="pl-k">@extend</span> <span class="pl-e">.class1</span>;\n　　　　<span class="pl-c1"><span class="pl-c1">font-size</span></span>:<span class="pl-c1">120<span class="pl-k">%</span></span>;\n　　}</pre></div>\n<h3 id="main-heading-H3-16">2.Mixin</h3>\n<p dir="auto">Mixin 有点像 C 语言的宏（macro），是可以重用的代码块。</p>\n<p dir="auto">使用<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mixin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mixin">@mixin</a> 命令，定义一个代码块。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　@mixin left {\n　　　　float: left;\n　　　　margin-left: 10px;\n　　}\n"><pre class="notranslate">　　<span class="pl-k">@mixin</span> <span class="pl-en">left</span> {\n　　　　<span class="pl-c1"><span class="pl-c1">float</span></span>: <span class="pl-c1">left</span>;\n　　　　<span class="pl-c1"><span class="pl-c1">margin-left</span></span>: <span class="pl-c1">10<span class="pl-k">px</span></span>;\n　　}\n</pre></div>\n<p dir="auto">使用<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/include/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/include">@include</a> 命令，调用这个 mixin。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="div {\n　　　　@include left;\n　　}\n"><pre class="notranslate"><span class="pl-ent">div</span> {\n　　　　<span class="pl-k">@include</span> <span class="pl-en">left</span>;\n　　}\n</pre></div>\n<p dir="auto">mixin 的强大之处，在于可以指定参数和缺省值。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@mixin left($value: 10px) {\n　　　　float: left;\n　　　　margin-right: $value;\n　　}"><pre class="notranslate">　<span class="pl-k">@mixin</span> <span class="pl-en">left</span>(<span class="pl-v">$value</span>: <span class="pl-c1">10<span class="pl-k">px</span></span>) {\n　　　　<span class="pl-c1"><span class="pl-c1">float</span></span>: <span class="pl-c1">left</span>;\n　　　　<span class="pl-c1"><span class="pl-c1">margin-right</span></span>: <span class="pl-v">$value</span>;\n　　}</pre></div>\n<p dir="auto">使用的时候，根据需要加入参数：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　div {\n　　　　@include left(20px);\n　　}"><pre class="notranslate">　<span class="pl-ent">div</span> {\n　　　　<span class="pl-k">@include</span> <span class="pl-en">left</span>(<span class="pl-c1">20<span class="pl-k">px</span></span>);\n　　}</pre></div>\n<p dir="auto">下面是一个 mixin 的实例，用来生成浏览器前缀.(设置了默认参数,可以更改)</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　@mixin rounded($vert, $horz, $radius: 10px) {\n　　　　border-#{$vert}-#{$horz}-radius: $radius;\n　　　　-moz-border-radius-#{$vert}#{$horz}: $radius;\n　　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;\n　　}"><pre class="notranslate">　　<span class="pl-k">@mixin</span> <span class="pl-en">rounded</span>(<span class="pl-v">$vert</span>, <span class="pl-v">$horz</span>, <span class="pl-v">$radius</span>: <span class="pl-c1">10<span class="pl-k">px</span></span>) {\n　　　　<span class="pl-c1">border-</span><span class="pl-v">#{<span class="pl-v">$vert</span>}</span><span class="pl-c1">-</span><span class="pl-v">#{<span class="pl-v">$horz</span>}</span><span class="pl-c1">-radius</span>: <span class="pl-v">$radius</span>;\n　　　　<span class="pl-c1"><span class="pl-c1">-moz-border-radius-</span></span><span class="pl-v">#{<span class="pl-v">$vert</span>}#{<span class="pl-v">$horz</span>}</span>: <span class="pl-v">$radius</span>;\n　　　　<span class="pl-c1"><span class="pl-c1">-webkit-border-</span></span><span class="pl-v">#{<span class="pl-v">$vert</span>}</span><span class="pl-c1">-</span><span class="pl-v">#{<span class="pl-v">$horz</span>}</span><span class="pl-c1">-radius</span>: <span class="pl-v">$radius</span>;\n　　}</pre></div>\n<p dir="auto">使用的时候，可以像下面这样调用：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　#navbar li {\n  @include rounded(top, left);\n}\n\n　　#footer {\n  @include rounded(top, left, 5px);\n}"><pre class="notranslate">　　<span class="pl-e">#navbar</span> <span class="pl-ent">li</span> {\n  <span class="pl-k">@include</span> <span class="pl-en">rounded</span>(<span class="pl-c1">top</span>, <span class="pl-c1">left</span>);\n}\n\n　　<span class="pl-e">#footer</span> {\n  <span class="pl-k">@include</span> <span class="pl-en">rounded</span>(<span class="pl-c1">top</span>, <span class="pl-c1">left</span>, <span class="pl-c1">5<span class="pl-k">px</span></span>);\n}</pre></div>\n<h3 id="main-heading-H3-17">3.颜色函数</h3>\n<p dir="auto">SASS 提供了一些内置的颜色函数，以便生成系列颜色。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　　lighten(#cc3, 10%) // #d6d65c\n　　darken(#cc3, 10%) // #a3a329\n　　grayscale(#cc3) // #808080\n　　complement(#cc3) // #33c"><pre class="notranslate">　　lighten(<span class="pl-e">#cc3</span>, 10%) <span class="pl-c"><span class="pl-c">//</span> #d6d65c</span>\n　　darken(<span class="pl-e">#cc3</span>, 10%) <span class="pl-c"><span class="pl-c">//</span> #a3a329</span>\n　　grayscale(<span class="pl-e">#cc3</span>) <span class="pl-c"><span class="pl-c">//</span> #808080</span>\n　　complement(<span class="pl-e">#cc3</span>) <span class="pl-c"><span class="pl-c">//</span> #33c</span></pre></div>\n<h2 id="main-heading-H2-18">三.高级用法</h2>\n<h3 id="main-heading-H3-19">1.条件语句</h3>\n<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/if/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/if">@if</a> 可以用来判断：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　p {\n　　　　@if 1 + 1 == 2 { border: 1px solid; }\n　　　　@if 5 &lt; 3 { border: 2px dotted; }\n　　}"><pre class="notranslate">　<span class="pl-ent">p</span> {\n　　　　<span class="pl-k">@if</span> <span class="pl-c1">1</span> <span class="pl-k">+</span> <span class="pl-c1">1</span> <span class="pl-k">==</span> <span class="pl-c1">2</span> { <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span>; }\n　　　　<span class="pl-k">@if</span> <span class="pl-c1">5</span> <span class="pl-k">&lt;</span> <span class="pl-c1">3</span> { <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">2<span class="pl-k">px</span></span> <span class="pl-c1">dotted</span>; }\n　　}</pre></div>\n<p dir="auto">配套的还有<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/else/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/else">@else</a> 命令：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@if lightness($color) &gt; 30% {\n　　　　background-color: #000;\n　　} @else {\n　　　　background-color: #fff;\n　　}"><pre class="notranslate">　<span class="pl-k">@if</span> <span class="pl-c1">lightness</span>(<span class="pl-v">$color</span>) <span class="pl-k">&gt;</span> <span class="pl-c1">30<span class="pl-k">%</span></span> {\n　　　　<span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#000</span>;\n　　} <span class="pl-k">@else </span>{\n　　　　<span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#fff</span>;\n　　}</pre></div>\n<h3 id="main-heading-H3-20">2.循环语句</h3>\n<p dir="auto">SASS 支持 for 循环：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@for $i from 1 to 10 {\n　　　　.border-#{$i} {\n　　　　　　border: #{$i}px solid blue;\n　　　　}\n　　}"><pre class="notranslate">　<span class="pl-k">@for</span> <span class="pl-v">$i</span> <span class="pl-k">from</span> <span class="pl-c1">1</span> <span class="pl-k">to</span> <span class="pl-c1">10</span> {\n　　　　<span class="pl-e">.border-<span class="pl-v">#{<span class="pl-v">$i</span>}</span></span> {\n　　　　　　<span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-v">#{<span class="pl-v">$i</span>}</span>px <span class="pl-c1">solid</span> <span class="pl-c1">blue</span>;\n　　　　}\n　　}</pre></div>\n<p dir="auto">也支持 while 循环：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　$i: 6;\n\n　　@while $i &gt; 0 {\n　　　　.item-#{$i} { width: 2em * $i; }\n　　　　$i: $i - 2;\n　　}"><pre class="notranslate">　<span class="pl-v">$i</span>: <span class="pl-c1">6</span>;\n\n　　<span class="pl-k">@while</span> <span class="pl-v">$i</span> <span class="pl-k">&gt;</span> <span class="pl-c1">0</span> {\n　　　　<span class="pl-e">.item-<span class="pl-v">#{<span class="pl-v">$i</span>}</span></span> { <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">2<span class="pl-k">em</span></span> <span class="pl-k">*</span> <span class="pl-v">$i</span>; }\n　　　　<span class="pl-v">$i</span>: <span class="pl-v">$i</span> <span class="pl-k">-</span> <span class="pl-c1">2</span>;\n　　}</pre></div>\n<p dir="auto">each 命令，作用与 for 类似：</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="　@each $member in a, b, c, d {\n　　　　.#{$member} {\n　　　　　　background-image: url(&quot;/image/#{$member}.jpg&quot;);\n　　　　}\n　　}"><pre class="notranslate">　<span class="pl-k">@each</span> <span class="pl-v">$member</span> <span class="pl-k">in</span> <span class="pl-ent">a</span>, <span class="pl-ent">b</span>, c, d {\n　　　　<span class="pl-e">.<span class="pl-v">#{<span class="pl-v">$member</span>}</span></span> {\n　　　　　　<span class="pl-c1"><span class="pl-c1">background-image</span></span>: <span class="pl-c1">url</span>(<span class="pl-s"><span class="pl-pds">"</span>/image/<span class="pl-v">#{<span class="pl-v">$member</span>}</span>.jpg<span class="pl-pds">"</span></span>);\n　　　　}\n　　}</pre></div>\n<h3 id="main-heading-H3-21">3.自定义函数</h3>\n<p dir="auto">SASS 允许用户编写自己的函数。</p>\n<div class="highlight highlight-source-css-scss notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@function double($n) {\n　　　　@return $n * 2;\n　　}\n\n　　#sidebar {\n　　　　width: double(5px);\n　　}"><pre class="notranslate"><span class="pl-k">@function</span> <span class="pl-c1">double</span>(<span class="pl-v">$n</span>) {\n　　　　<span class="pl-k">@return</span> <span class="pl-v">$n</span> <span class="pl-k">*</span> <span class="pl-c1">2</span>;\n　　}\n\n　　<span class="pl-e">#sidebar</span> {\n　　　　<span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">double</span>(<span class="pl-c1">5<span class="pl-k">px</span></span>);\n　　}</pre></div>\n<h4 dir="auto">参考链接</h4>\n<ul dir="auto">\n<li><a href="https://www.sass.hk/install/" rel="nofollow">https://www.sass.hk/install/</a></li>\n<li><a href="http://hyuhan.com/2016/09/07/compares-less-sass-and-stylus/" rel="nofollow">http://hyuhan.com/2016/09/07/compares-less-sass-and-stylus/</a></li>\n<li><a href="https://stackoverflow.com/questions/5654447/whats-the-difference-between-scss-and-sass" rel="nofollow">https://stackoverflow.com/questions/5654447/whats-the-difference-between-scss-and-sass</a></li>\n<li><a href="https://blog.csdn.net/qq_35697034/article/details/78251173" rel="nofollow">https://blog.csdn.net/qq_35697034/article/details/78251173</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:a,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:a}],html_url:"https://github.com/yanyue404/blog/issues/38"},navList:[{text:"前言",id:"main-heading-H2-0",type:n,children:[{text:"Sass 与 SCSS 是什么关系？",id:"main-heading-H3-1",type:s},{text:"Docs",id:"main-heading-H3-2",type:s}]},{text:"编译 Sass",id:"main-heading-H2-3",type:n,children:[{text:"命令行编译",id:"main-heading-H3-4",type:s},{text:"软件方式-Koala",id:"main-heading-H3-5",type:s},{text:"vscode 插件 easysass",id:"main-heading-H3-6",type:s},{text:"编译格式",id:"main-heading-H3-7",type:s}]},{text:"基本语法",id:"main-heading-H2-8",type:n,children:[{text:"1.插入文件",id:"main-heading-H3-9",type:s},{text:"2.变量",id:"main-heading-H3-10",type:s},{text:"3.计算功能",id:"main-heading-H3-11",type:s},{text:"4.嵌套",id:"main-heading-H3-12",type:s},{text:"5.注释",id:"main-heading-H3-13",type:s}]},{text:"二.代码的重用",id:"main-heading-H2-14",type:n,children:[{text:"1.继承",id:"main-heading-H3-15",type:s},{text:"2.Mixin",id:"main-heading-H3-16",type:s},{text:"3.颜色函数",id:"main-heading-H3-17",type:s}]},{text:"三.高级用法",id:"main-heading-H2-18",type:n,children:[{text:"1.条件语句",id:"main-heading-H3-19",type:s},{text:"2.循环语句",id:"main-heading-H3-20",type:s},{text:"3.自定义函数",id:"main-heading-H3-21",type:s}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:a},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:a,avatar_url:a,name:a,html_url:a,bio:a,type:l}},serverRendered:!0}}("H3","","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

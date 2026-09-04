@@ -1,0 +1,933 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>React组件通信 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="组件通信 在这里只讲 React 组件与组件本身的通信，组件通信主要分为三个部分： 父组件向子组件通信：父组件向子组件传参或者是父组件调用子组件的方法 子组件向父组件通信：子组件向父组件传参或者是子组件调用父组件的方法 兄弟组件通信：兄弟组件之间相互传参或调用 建议不要有太深的的嵌套关系 父传子 父"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="React组件通信"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="组件通信 在这里只讲 React 组件与组件本身的通信，组件通信主要分为三个部分： 父组件向子组件通信：父组件向子组件传参或者是父组件调用子组件的方法 子组件向父组件通信：子组件向父组件传参或者是子组件调用父组件的方法 兄弟组件通信：兄弟组件之间相互传参或调用 建议不要有太深的的嵌套关系 父传子 父"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="React组件通信"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="组件通信 在这里只讲 React 组件与组件本身的通信，组件通信主要分为三个部分： 父组件向子组件通信：父组件向子组件传参或者是父组件调用子组件的方法 子组件向父组件通信：子组件向父组件传参或者是子组件调用父组件的方法 兄弟组件通信：兄弟组件之间相互传参或调用 建议不要有太深的的嵌套关系 父传子 父"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H2-0" title="组件通信" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              组件通信
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H2-1" title="父传子" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              父传子
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H2-2" title="子传父" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              子传父
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H2-3" title="兄弟组件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              兄弟组件
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H3-4" title="利用共同的父组件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  利用共同的父组件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H3-5" title="利用 Context" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  利用 Context
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H3-6" title="发布订阅" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  发布订阅
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H2-7" title="主流通信库" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              主流通信库
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/28#main-heading-H3-8" title="参考文章" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  参考文章
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>React组件通信</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>React组件通信</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-05-24</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 24 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">组件通信</h2>
+<p dir="auto">在这里只讲 React 组件与组件本身的通信，组件通信主要分为三个部分：</p>
+<ul dir="auto">
+<li>父组件向子组件通信：父组件向子组件传参或者是父组件调用子组件的方法</li>
+<li>子组件向父组件通信：子组件向父组件传参或者是子组件调用父组件的方法</li>
+<li>兄弟组件通信：兄弟组件之间相互传参或调用 建议不要有太深的的嵌套关系</li>
+</ul>
+<h2 id="main-heading-H2-1">父传子</h2>
+<ul dir="auto">
+<li>
+<p dir="auto">父组件向子组件传参<br>
+父组件向子组件参可以在子组件上绑定自定义属性，或者将父组件内部 state 的值进行绑定为子组件的属性值进行传递。</p>
+</li>
+<li>
+<p dir="auto">父组件调用子组件的方法<br>
+在子组件上绑定 ref 属性，并在子组件内部定义方法（可接受参数），在父组件内部使用<code class="notranslate">this.refs.自定义属性值.函数方法名</code>，进行调用，可传递参数。</p>
+</li>
+<li>
+<p dir="auto">components/parentToChild/Parent.js</p>
+</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 父组件
+
+import React from 'react';
+import Child from './child';
+
+class Parent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ''
+    };
+  }
+  handleChange(e) {
+    this.value = e.target.value;
+    // 调用子组件的方法
+    this.refs.c1.changeChild(this.value);
+  }
+  handleClick() {
+    this.setState({
+      value: this.value
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        我是parent
+        <input onChange={this.handleChange.bind(this)} />
+        <button className=&#34;button&#34; onClick={this.handleClick.bind(this)}>
+          通知
+        </button>
+        <div>
+          <Child ref=&#34;c1&#34; value={this.state.value} />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Parent;"><pre class="notranslate"><span class="pl-c">// 父组件</span>
+
+<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">Child</span> <span class="pl-k">from</span> <span class="pl-s">'./child'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">class</span> <span class="pl-v">Parent</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">value</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">value</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">;</span>
+    <span class="pl-c">// 调用子组件的方法</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">c1</span><span class="pl-kos">.</span><span class="pl-en">changeChild</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">handleClick</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">value</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">value</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        我是parent
+        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"button"</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleClick</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">></span>
+          通知
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-v">Child</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"c1"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Parent</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>components/parentToChild/child.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 子组件
+import React from 'react';
+
+class Child extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: ''
+    };
+  }
+
+  changeChild(text) {
+    this.setState({
+      text: text
+    });
+  }
+  render() {
+    return (
+      <div>
+        <p>我是Child,接受来自父组件的传参：{this.props.value}</p>
+        <br />
+        <p>我是child，来自父组件对组件内部函数的的调用：{this.state.text}</p>
+      </div>
+    );
+  }
+}
+
+export default Child;"><pre class="notranslate"><span class="pl-c">// 子组件</span>
+<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">class</span> <span class="pl-v">Child</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">text</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">changeChild</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">text</span>: <span class="pl-s1">text</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>我是Child,接受来自父组件的传参：<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>我是child，来自父组件对组件内部函数的的调用：<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Child</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>App.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React from 'react';
+import './App.css';
+import ParentToChild from './components/parentToChild/Parent';
+
+class App extends React.Component {
+  render() {
+    return (
+      <div className=&#34;App&#34;>
+        {/* 父传子 */}
+        {/* <ParentToChild /> */}
+      </div>
+    );
+  }
+}
+
+export default App;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s">'./App.css'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">ParentToChild</span> <span class="pl-k">from</span> <span class="pl-s">'./components/parentToChild/Parent'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">class</span> <span class="pl-v">App</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"App"</span><span class="pl-c1">></span>
+        <span class="pl-kos">{</span><span class="pl-c">/* 父传子 */</span><span class="pl-kos">}</span>
+        <span class="pl-kos">{</span><span class="pl-c">/* &lt;ParentToChild /> */</span><span class="pl-kos">}</span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">App</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-2">子传父</h2>
+<p dir="auto">子组件向父组件传值，在被调用的子组件上先定义回调函数，再来单独的子组件上定义新的函数，通过 props 获取 callback 函数进行值传递.</p>
+<blockquote>
+<p dir="auto">这里的 state 可以分别定义在父组件或组子组件上</p>
+</blockquote>
+<ul dir="auto">
+<li>components/sonToFather/Father.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Father
+
+import React from 'react';
+import Son from './son';
+class Father extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ''
+    };
+  }
+
+  setValue(param) {
+    this.setState({
+      value: param
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <Son setValue={this.setValue.bind(this)}></Son>
+        <p>我是Father,接受子组件的传参:{this.state.value}</p>
+      </div>
+    );
+  }
+}
+
+export default Father;"><pre class="notranslate"><span class="pl-c">// Father</span>
+
+<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">Son</span> <span class="pl-k">from</span> <span class="pl-s">'./son'</span><span class="pl-kos">;</span>
+<span class="pl-k">class</span> <span class="pl-v">Father</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">value</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">setValue</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">value</span>: <span class="pl-s1">param</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">Son</span> <span class="pl-c1">setValue</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setValue</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-v">Son</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>我是Father,接受子组件的传参:<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Father</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>components/sonToFather/son.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// son
+import React from 'react';
+class Son extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: ''
+    };
+  }
+  handleChange(e) {
+    this.props.setValue(e.target.value);
+  }
+
+  render() {
+    return (
+      <div>
+        我是Son
+        <input onChange={this.handleChange.bind(this)} />
+        <br />
+      </div>
+    );
+  }
+}
+
+export default Son;"><pre class="notranslate"><span class="pl-c">// son</span>
+<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">class</span> <span class="pl-v">Son</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">text</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-en">setValue</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        我是Son
+        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Son</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>App.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React from 'react';
+import './App.css';
+import SonToFather from './components/sonToFather/Father';
+class App extends React.Component {
+  render() {
+    return (
+      <div className=&#34;App&#34;>
+        {/* 子传父 */}
+        <SonToFather />
+      </div>
+    );
+  }
+}
+
+export default App;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s">'./App.css'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">SonToFather</span> <span class="pl-k">from</span> <span class="pl-s">'./components/sonToFather/Father'</span><span class="pl-kos">;</span>
+<span class="pl-k">class</span> <span class="pl-v">App</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"App"</span><span class="pl-c1">></span>
+        <span class="pl-kos">{</span><span class="pl-c">/* 子传父 */</span><span class="pl-kos">}</span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">SonToFather</span> <span class="pl-kos">/></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">App</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-3">兄弟组件</h2>
+<h3 id="main-heading-H3-4">利用共同的父组件</h3>
+<p dir="auto">先将两个子组件<code class="notranslate">child1</code>和<code class="notranslate">child2</code>的参数传递给父组件，再由分发参数，通过<code class="notranslate">refs</code>寻找函数方法的方式进行函数调用传参。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// Parent
+
+class Parent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: &#39;&#39;
+    };
+  }
+
+  setValue2(param) {
+    this.refs.c1.changeState(param);
+    this.setState({
+      value: param
+    });
+  }
+
+  setValue1(param) {
+    this.refs.c2.changeState(param);
+    this.setState({
+      value: param
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>我是Parent,接受子组件的传参:{this.state.value}</p>
+
+        <Child1 ref="c1" setValue={this.setValue1.bind(this)}></Child1>
+        <Child2 ref="c2" setValue={this.setValue2.bind(this)}></Child2>
+      </div>
+    );
+  }
+}'><pre class="notranslate"><span class="pl-c">// Parent</span>
+
+<span class="pl-k">class</span> <span class="pl-v">Parent</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">value</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">setValue2</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">c1</span><span class="pl-kos">.</span><span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">value</span>: <span class="pl-s1">param</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">setValue1</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">c2</span><span class="pl-kos">.</span><span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">value</span>: <span class="pl-s1">param</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>我是Parent,接受子组件的传参:<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+
+        <span class="pl-c1">&lt;</span><span class="pl-v">Child1</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"c1"</span> <span class="pl-c1">setValue</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setValue1</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-v">Child1</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">Child2</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"c2"</span> <span class="pl-c1">setValue</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setValue2</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-v">Child2</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Child1
+
+class Child1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: ''
+    };
+  }
+  handleChange(e) {
+    this.props.setValue(e.target.value);
+  }
+  changeState(text) {
+    this.setState({ text: text });
+  }
+
+  render() {
+    return (
+      <div>
+        我是child1
+        <input onChange={this.handleChange.bind(this)} />
+        <p>来自子组件2的调用: {this.state.text}</p>
+        <br />
+      </div>
+    );
+  }
+}"><pre class="notranslate"><span class="pl-c">// Child1</span>
+
+<span class="pl-k">class</span> <span class="pl-v">Child1</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">text</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-en">setValue</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s1">text</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        我是child1
+        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>来自子组件2的调用: <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Child2
+class Child2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: ''
+    };
+  }
+  handleChange(e) {
+    this.props.setValue(e.target.value);
+  }
+  changeState(text) {
+    this.setState({ text: text });
+  }
+
+  render() {
+    return (
+      <div>
+        我是child1
+        <input onChange={this.handleChange.bind(this)} />
+        <p>来自子组件1的调用: {this.state.text}</p>
+        <br />
+      </div>
+    );
+  }
+}"><pre class="notranslate"><span class="pl-c">// Child2</span>
+<span class="pl-k">class</span> <span class="pl-v">Child2</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">text</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-en">setValue</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s1">text</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        我是child1
+        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>来自子组件1的调用: <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-5">利用 Context</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// 父组件
+var Parent = React.createClass({
+  getChildContext: function() {
+    return {
+      changeChildren1: function(text) {
+        this.refs.cp1.changeState(text);
+      }.bind(this),
+      changeChildren2: function(text) {
+        this.refs.cp2.changeState(text);
+      }.bind(this)
+    };
+  },
+  childContextTypes: {
+    changeChildren1: React.PropTypes.func.isRequired,
+    changeChildren2: React.PropTypes.func.isRequired
+  },
+  render: function() {
+    return (
+      <div>
+        <Children1 ref="cp1" />
+        <Children2 ref="cp2" />
+      </div>
+    );
+  }
+});'><pre class="notranslate"><span class="pl-c">// 父组件</span>
+<span class="pl-k">var</span> <span class="pl-v">Parent</span> <span class="pl-c1">=</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createClass</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">getChildContext</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">changeChildren1</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">cp1</span><span class="pl-kos">.</span><span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+      <span class="pl-c1">changeChildren2</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">cp2</span><span class="pl-kos">.</span><span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">childContextTypes</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">changeChildren1</span>: <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">PropTypes</span><span class="pl-kos">.</span><span class="pl-c1">func</span><span class="pl-kos">.</span><span class="pl-c1">isRequired</span><span class="pl-kos">,</span>
+    <span class="pl-c1">changeChildren2</span>: <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">PropTypes</span><span class="pl-kos">.</span><span class="pl-c1">func</span><span class="pl-kos">.</span><span class="pl-c1">isRequired</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">render</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">Children1</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"cp1"</span> <span class="pl-kos">/></span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">Children2</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"cp2"</span> <span class="pl-kos">/></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//子组件1
+var Children1 = React.createClass({
+  getInitialState: function() {
+    return {
+      text: ''
+    };
+  },
+  contextTypes: {
+    changeChildren2: React.PropTypes.func.isRequired
+  },
+  changeState: function(text) {
+    this.setState({ text: text });
+  },
+  //输入事件
+  change: function(event) {
+    //调用子组件的方法
+    this.context.changeChildren2(event.target.value);
+  },
+  render: function() {
+    return (
+      <div>
+        <p>
+          <label>子组件1</label>
+          <input type=&#34;text&#34; onChange={this.change} />
+        </p>
+        <p>来自子组件2的调用-{this.state.text}</p>
+      </div>
+    );
+  }
+});"><pre class="notranslate"><span class="pl-c">//子组件1</span>
+<span class="pl-k">var</span> <span class="pl-v">Children1</span> <span class="pl-c1">=</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createClass</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">getInitialState</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">text</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">contextTypes</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">changeChildren2</span>: <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">PropTypes</span><span class="pl-kos">.</span><span class="pl-c1">func</span><span class="pl-kos">.</span><span class="pl-c1">isRequired</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">changeState</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s1">text</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">//输入事件</span>
+  <span class="pl-en">change</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">//调用子组件的方法</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">context</span><span class="pl-kos">.</span><span class="pl-en">changeChildren2</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">render</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">label</span><span class="pl-c1">></span>子组件1<span class="pl-kos">&lt;/</span><span class="pl-s1">label</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">change</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>来自子组件2的调用-<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//子组件2
+var Children2 = React.createClass({
+  getInitialState: function() {
+    return {
+      text: ''
+    };
+  },
+  contextTypes: {
+    changeChildren1: React.PropTypes.func.isRequired
+  },
+  changeState: function(text) {
+    this.setState({ text: text });
+  },
+  //输入事件
+  change: function(event) {
+    //调用子组件的方法
+    this.context.changeChildren1(event.target.value);
+  },
+  render: function() {
+    return (
+      <div>
+        <p>
+          <label>子组件2</label>
+          <input type=&#34;text&#34; onChange={this.change} />
+        </p>
+        <p>来自子组件1的调用-{this.state.text}</p>
+      </div>
+    );
+  }
+});"><pre class="notranslate"><span class="pl-c">//子组件2</span>
+<span class="pl-k">var</span> <span class="pl-v">Children2</span> <span class="pl-c1">=</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createClass</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">getInitialState</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">text</span>: <span class="pl-s">''</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">contextTypes</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">changeChildren1</span>: <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">PropTypes</span><span class="pl-kos">.</span><span class="pl-c1">func</span><span class="pl-kos">.</span><span class="pl-c1">isRequired</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">changeState</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s1">text</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">//输入事件</span>
+  <span class="pl-en">change</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">//调用子组件的方法</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">context</span><span class="pl-kos">.</span><span class="pl-en">changeChildren1</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">render</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">label</span><span class="pl-c1">></span>子组件2<span class="pl-kos">&lt;/</span><span class="pl-s1">label</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">change</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">></span>来自子组件1的调用-<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-6">发布订阅</h3>
+<blockquote>
+<p dir="auto">在 componentDidMount 事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在 componentWillUnmount 事件中取消事件的订阅;以常用的发布/订阅模式举例,借用 Node.js Events 模块的浏览器版实现</p>
+</blockquote>
+<p dir="auto">先引入 node <code class="notranslate">events</code> 模块</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn add events"><pre class="notranslate">yarn add events</pre></div>
+<p dir="auto">在 src 下新建一个 util 目录里面建一个 events.js</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { EventEmitter } from 'events';
+export default new EventEmitter();"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">EventEmitter</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'events'</span><span class="pl-kos">;</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">new</span> <span class="pl-v">EventEmitter</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>components/eventCenter/List1.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React, { Component } from 'react';
+import emitter from '../../util/events';
+class List1 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'List1'
+    };
+  }
+  componentDidMount() {
+    // 组件装载完成以后声明一个自定义事件
+    this.eventEmitter = emitter.addListener('changeMessage', message => {
+      this.setState({
+        message
+      });
+    });
+  }
+  componentWillUnmount() {
+    emitter.removeListener(this.eventEmitter);
+  }
+  render() {
+    return (
+      <div>
+        {this.state.message} {this.props.msg}
+      </div>
+    );
+  }
+}
+export default List1;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-v">Component</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">emitter</span> <span class="pl-k">from</span> <span class="pl-s">'../../util/events'</span><span class="pl-kos">;</span>
+<span class="pl-k">class</span> <span class="pl-v">List1</span> <span class="pl-k">extends</span> <span class="pl-v">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">message</span>: <span class="pl-s">'List1'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">componentDidMount</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 组件装载完成以后声明一个自定义事件</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">eventEmitter</span> <span class="pl-c1">=</span> <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">addListener</span><span class="pl-kos">(</span><span class="pl-s">'changeMessage'</span><span class="pl-kos">,</span> <span class="pl-s1">message</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        message
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">componentWillUnmount</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">removeListener</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">eventEmitter</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">}</span> <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">msg</span><span class="pl-kos">}</span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">List1</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>components/eventCenter/List2.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React, { Component } from 'react';
+import emitter from '../../util/events';
+class List2 extends Component {
+  handleClick = message => {
+    emitter.emit('changeMessage', message);
+  };
+  handleClick2 = message => {
+    emitter.emit('changeMessageApp', message);
+  };
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick.bind(this, 'List2')}>
+          点击我改变List1组件中显示信息
+        </button>
+        <button onClick={this.handleClick2.bind(this, 'List2App')}>
+          点击我改变App组件中显示信息
+        </button>
+      </div>
+    );
+  }
+}
+
+export default List2;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-v">Component</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">emitter</span> <span class="pl-k">from</span> <span class="pl-s">'../../util/events'</span><span class="pl-kos">;</span>
+<span class="pl-k">class</span> <span class="pl-v">List2</span> <span class="pl-k">extends</span> <span class="pl-v">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">handleClick</span> <span class="pl-c1">=</span> <span class="pl-s1">message</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">emit</span><span class="pl-kos">(</span><span class="pl-s">'changeMessage'</span><span class="pl-kos">,</span> <span class="pl-s1">message</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-c1">handleClick2</span> <span class="pl-c1">=</span> <span class="pl-s1">message</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">emit</span><span class="pl-kos">(</span><span class="pl-s">'changeMessageApp'</span><span class="pl-kos">,</span> <span class="pl-s1">message</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleClick</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">,</span> <span class="pl-s">'List2'</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">></span>
+          点击我改变List1组件中显示信息
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleClick2</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">,</span> <span class="pl-s">'List2App'</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">></span>
+          点击我改变App组件中显示信息
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">List2</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">APP.js</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React from 'react';
+import './App.css';
+import List1 from './components/eventCenter/List1';
+import List2 from './components/eventCenter/List2';
+import emitter from './util/events';
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'msgFromApp'
+    };
+  }
+  componentDidMount() {
+    // 组件装载完成以后声明一个自定义事件
+    this.eventEmitter = emitter.addListener('changeMessageApp', message => {
+      this.setState({
+        message
+      });
+    });
+  }
+  render() {
+    return (
+      <div className=&#34;App&#34;>
+        <List1 msg={this.state.message} />
+        <List2 />
+      </div>
+    );
+  }
+}
+
+export default App;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s">'./App.css'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">List1</span> <span class="pl-k">from</span> <span class="pl-s">'./components/eventCenter/List1'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">List2</span> <span class="pl-k">from</span> <span class="pl-s">'./components/eventCenter/List2'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">emitter</span> <span class="pl-k">from</span> <span class="pl-s">'./util/events'</span><span class="pl-kos">;</span>
+<span class="pl-k">class</span> <span class="pl-v">App</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">message</span>: <span class="pl-s">'msgFromApp'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">componentDidMount</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 组件装载完成以后声明一个自定义事件</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">eventEmitter</span> <span class="pl-c1">=</span> <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">addListener</span><span class="pl-kos">(</span><span class="pl-s">'changeMessageApp'</span><span class="pl-kos">,</span> <span class="pl-s1">message</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        message
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"App"</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">List1</span> <span class="pl-c1">msg</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">List2</span> <span class="pl-kos">/></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">App</span><span class="pl-kos">;</span></pre></div>
+<blockquote>
+<p dir="auto">此方法还支持子父组件的传值，但考虑到消息中心的可维护性，易维护性，采用以下的方法</p>
+</blockquote>
+<h2 id="main-heading-H2-7">主流通信库</h2>
+<p dir="auto">Redux || Mobx</p>
+<h3 id="main-heading-H3-8">参考文章</h3>
+<ul dir="auto">
+<li><a href="https://github.com/sunyongjian/blog/issues/27" data-hovercard-type="issue" data-hovercard-url="/sunyongjian/blog/issues/27/hovercard">sunyongjian - React组件之间的通信</a></li>
+<li><a href="https://juejin.im/post/5d2d41a7e51d454f723025ad" rel="nofollow">React小技巧汇总</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l,c){return{layout:"default",data:[{post:{id:326000500,number:28,title:"React组件通信",created_at:"2018-05-24T07:41:56Z",updated_at:"2025-11-23T15:50:09Z",body_html:'<h2 id="main-heading-H2-0">组件通信</h2>\n<p dir="auto">在这里只讲 React 组件与组件本身的通信，组件通信主要分为三个部分：</p>\n<ul dir="auto">\n<li>父组件向子组件通信：父组件向子组件传参或者是父组件调用子组件的方法</li>\n<li>子组件向父组件通信：子组件向父组件传参或者是子组件调用父组件的方法</li>\n<li>兄弟组件通信：兄弟组件之间相互传参或调用 建议不要有太深的的嵌套关系</li>\n</ul>\n<h2 id="main-heading-H2-1">父传子</h2>\n<ul dir="auto">\n<li>\n<p dir="auto">父组件向子组件传参<br>\n父组件向子组件参可以在子组件上绑定自定义属性，或者将父组件内部 state 的值进行绑定为子组件的属性值进行传递。</p>\n</li>\n<li>\n<p dir="auto">父组件调用子组件的方法<br>\n在子组件上绑定 ref 属性，并在子组件内部定义方法（可接受参数），在父组件内部使用<code class="notranslate">this.refs.自定义属性值.函数方法名</code>，进行调用，可传递参数。</p>\n</li>\n<li>\n<p dir="auto">components/parentToChild/Parent.js</p>\n</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 父组件\n\nimport React from \'react\';\nimport Child from \'./child\';\n\nclass Parent extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: \'\'\n    };\n  }\n  handleChange(e) {\n    this.value = e.target.value;\n    // 调用子组件的方法\n    this.refs.c1.changeChild(this.value);\n  }\n  handleClick() {\n    this.setState({\n      value: this.value\n    });\n  }\n\n  render() {\n    return (\n      &lt;div&gt;\n        我是parent\n        &lt;input onChange={this.handleChange.bind(this)} /&gt;\n        &lt;button className=&quot;button&quot; onClick={this.handleClick.bind(this)}&gt;\n          通知\n        &lt;/button&gt;\n        &lt;div&gt;\n          &lt;Child ref=&quot;c1&quot; value={this.state.value} /&gt;\n        &lt;/div&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n\nexport default Parent;"><pre class="notranslate"><span class="pl-c">// 父组件</span>\n\n<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">Child</span> <span class="pl-k">from</span> <span class="pl-s">\'./child\'</span><span class="pl-kos">;</span>\n\n<span class="pl-k">class</span> <span class="pl-v">Parent</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">value</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">value</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">;</span>\n    <span class="pl-c">// 调用子组件的方法</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">c1</span><span class="pl-kos">.</span><span class="pl-en">changeChild</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">handleClick</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">value</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">value</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        我是parent\n        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"button"</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleClick</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>\n          通知\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-v">Child</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"c1"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Parent</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>components/parentToChild/child.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 子组件\nimport React from \'react\';\n\nclass Child extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      text: \'\'\n    };\n  }\n\n  changeChild(text) {\n    this.setState({\n      text: text\n    });\n  }\n  render() {\n    return (\n      &lt;div&gt;\n        &lt;p&gt;我是Child,接受来自父组件的传参：{this.props.value}&lt;/p&gt;\n        &lt;br /&gt;\n        &lt;p&gt;我是child，来自父组件对组件内部函数的的调用：{this.state.text}&lt;/p&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n\nexport default Child;"><pre class="notranslate"><span class="pl-c">// 子组件</span>\n<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n\n<span class="pl-k">class</span> <span class="pl-v">Child</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">text</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">changeChild</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">text</span>: <span class="pl-s1">text</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>我是Child,接受来自父组件的传参：<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>我是child，来自父组件对组件内部函数的的调用：<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Child</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>App.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React from \'react\';\nimport \'./App.css\';\nimport ParentToChild from \'./components/parentToChild/Parent\';\n\nclass App extends React.Component {\n  render() {\n    return (\n      &lt;div className=&quot;App&quot;&gt;\n        {/* 父传子 */}\n        {/* &lt;ParentToChild /&gt; */}\n      &lt;/div&gt;\n    );\n  }\n}\n\nexport default App;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s">\'./App.css\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">ParentToChild</span> <span class="pl-k">from</span> <span class="pl-s">\'./components/parentToChild/Parent\'</span><span class="pl-kos">;</span>\n\n<span class="pl-k">class</span> <span class="pl-v">App</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"App"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">{</span><span class="pl-c">/* 父传子 */</span><span class="pl-kos">}</span>\n        <span class="pl-kos">{</span><span class="pl-c">/* &lt;ParentToChild /&gt; */</span><span class="pl-kos">}</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">App</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-2">子传父</h2>\n<p dir="auto">子组件向父组件传值，在被调用的子组件上先定义回调函数，再来单独的子组件上定义新的函数，通过 props 获取 callback 函数进行值传递.</p>\n<blockquote>\n<p dir="auto">这里的 state 可以分别定义在父组件或组子组件上</p>\n</blockquote>\n<ul dir="auto">\n<li>components/sonToFather/Father.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Father\n\nimport React from \'react\';\nimport Son from \'./son\';\nclass Father extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: \'\'\n    };\n  }\n\n  setValue(param) {\n    this.setState({\n      value: param\n    });\n  }\n\n  render() {\n    return (\n      &lt;div&gt;\n        &lt;Son setValue={this.setValue.bind(this)}&gt;&lt;/Son&gt;\n        &lt;p&gt;我是Father,接受子组件的传参:{this.state.value}&lt;/p&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n\nexport default Father;"><pre class="notranslate"><span class="pl-c">// Father</span>\n\n<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">Son</span> <span class="pl-k">from</span> <span class="pl-s">\'./son\'</span><span class="pl-kos">;</span>\n<span class="pl-k">class</span> <span class="pl-v">Father</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">value</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">setValue</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">value</span>: <span class="pl-s1">param</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">Son</span> <span class="pl-c1">setValue</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setValue</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-v">Son</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>我是Father,接受子组件的传参:<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Father</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>components/sonToFather/son.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// son\nimport React from \'react\';\nclass Son extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      text: \'\'\n    };\n  }\n  handleChange(e) {\n    this.props.setValue(e.target.value);\n  }\n\n  render() {\n    return (\n      &lt;div&gt;\n        我是Son\n        &lt;input onChange={this.handleChange.bind(this)} /&gt;\n        &lt;br /&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n\nexport default Son;"><pre class="notranslate"><span class="pl-c">// son</span>\n<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">class</span> <span class="pl-v">Son</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">text</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-en">setValue</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        我是Son\n        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">Son</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>App.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React from \'react\';\nimport \'./App.css\';\nimport SonToFather from \'./components/sonToFather/Father\';\nclass App extends React.Component {\n  render() {\n    return (\n      &lt;div className=&quot;App&quot;&gt;\n        {/* 子传父 */}\n        &lt;SonToFather /&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n\nexport default App;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s">\'./App.css\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">SonToFather</span> <span class="pl-k">from</span> <span class="pl-s">\'./components/sonToFather/Father\'</span><span class="pl-kos">;</span>\n<span class="pl-k">class</span> <span class="pl-v">App</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"App"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">{</span><span class="pl-c">/* 子传父 */</span><span class="pl-kos">}</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">SonToFather</span> <span class="pl-kos">/&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">App</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-3">兄弟组件</h2>\n<h3 id="main-heading-H3-4">利用共同的父组件</h3>\n<p dir="auto">先将两个子组件<code class="notranslate">child1</code>和<code class="notranslate">child2</code>的参数传递给父组件，再由分发参数，通过<code class="notranslate">refs</code>寻找函数方法的方式进行函数调用传参。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Parent\n\nclass Parent extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      value: \'\'\n    };\n  }\n\n  setValue2(param) {\n    this.refs.c1.changeState(param);\n    this.setState({\n      value: param\n    });\n  }\n\n  setValue1(param) {\n    this.refs.c2.changeState(param);\n    this.setState({\n      value: param\n    });\n  }\n\n  render() {\n    return (\n      &lt;div&gt;\n        &lt;p&gt;我是Parent,接受子组件的传参:{this.state.value}&lt;/p&gt;\n\n        &lt;Child1 ref=&quot;c1&quot; setValue={this.setValue1.bind(this)}&gt;&lt;/Child1&gt;\n        &lt;Child2 ref=&quot;c2&quot; setValue={this.setValue2.bind(this)}&gt;&lt;/Child2&gt;\n      &lt;/div&gt;\n    );\n  }\n}"><pre class="notranslate"><span class="pl-c">// Parent</span>\n\n<span class="pl-k">class</span> <span class="pl-v">Parent</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">value</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">setValue2</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">c1</span><span class="pl-kos">.</span><span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">value</span>: <span class="pl-s1">param</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">setValue1</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">c2</span><span class="pl-kos">.</span><span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">value</span>: <span class="pl-s1">param</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>我是Parent,接受子组件的传参:<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n\n        <span class="pl-c1">&lt;</span><span class="pl-v">Child1</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"c1"</span> <span class="pl-c1">setValue</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setValue1</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-v">Child1</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">Child2</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"c2"</span> <span class="pl-c1">setValue</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">setValue2</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-v">Child2</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Child1\n\nclass Child1 extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      text: \'\'\n    };\n  }\n  handleChange(e) {\n    this.props.setValue(e.target.value);\n  }\n  changeState(text) {\n    this.setState({ text: text });\n  }\n\n  render() {\n    return (\n      &lt;div&gt;\n        我是child1\n        &lt;input onChange={this.handleChange.bind(this)} /&gt;\n        &lt;p&gt;来自子组件2的调用: {this.state.text}&lt;/p&gt;\n        &lt;br /&gt;\n      &lt;/div&gt;\n    );\n  }\n}"><pre class="notranslate"><span class="pl-c">// Child1</span>\n\n<span class="pl-k">class</span> <span class="pl-v">Child1</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">text</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-en">setValue</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s1">text</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        我是child1\n        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>来自子组件2的调用: <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Child2\nclass Child2 extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      text: \'\'\n    };\n  }\n  handleChange(e) {\n    this.props.setValue(e.target.value);\n  }\n  changeState(text) {\n    this.setState({ text: text });\n  }\n\n  render() {\n    return (\n      &lt;div&gt;\n        我是child1\n        &lt;input onChange={this.handleChange.bind(this)} /&gt;\n        &lt;p&gt;来自子组件1的调用: {this.state.text}&lt;/p&gt;\n        &lt;br /&gt;\n      &lt;/div&gt;\n    );\n  }\n}"><pre class="notranslate"><span class="pl-c">// Child2</span>\n<span class="pl-k">class</span> <span class="pl-v">Child2</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">text</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-en">setValue</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s1">text</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        我是child1\n        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>来自子组件1的调用: <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-5">利用 Context</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 父组件\nvar Parent = React.createClass({\n  getChildContext: function() {\n    return {\n      changeChildren1: function(text) {\n        this.refs.cp1.changeState(text);\n      }.bind(this),\n      changeChildren2: function(text) {\n        this.refs.cp2.changeState(text);\n      }.bind(this)\n    };\n  },\n  childContextTypes: {\n    changeChildren1: React.PropTypes.func.isRequired,\n    changeChildren2: React.PropTypes.func.isRequired\n  },\n  render: function() {\n    return (\n      &lt;div&gt;\n        &lt;Children1 ref=&quot;cp1&quot; /&gt;\n        &lt;Children2 ref=&quot;cp2&quot; /&gt;\n      &lt;/div&gt;\n    );\n  }\n});"><pre class="notranslate"><span class="pl-c">// 父组件</span>\n<span class="pl-k">var</span> <span class="pl-v">Parent</span> <span class="pl-c1">=</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createClass</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">getChildContext</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">changeChildren1</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">cp1</span><span class="pl-kos">.</span><span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n      <span class="pl-c1">changeChildren2</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">refs</span><span class="pl-kos">.</span><span class="pl-c1">cp2</span><span class="pl-kos">.</span><span class="pl-en">changeState</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">childContextTypes</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">changeChildren1</span>: <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">PropTypes</span><span class="pl-kos">.</span><span class="pl-c1">func</span><span class="pl-kos">.</span><span class="pl-c1">isRequired</span><span class="pl-kos">,</span>\n    <span class="pl-c1">changeChildren2</span>: <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">PropTypes</span><span class="pl-kos">.</span><span class="pl-c1">func</span><span class="pl-kos">.</span><span class="pl-c1">isRequired</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">render</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">Children1</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"cp1"</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">Children2</span> <span class="pl-c1">ref</span><span class="pl-c1">=</span><span class="pl-s">"cp2"</span> <span class="pl-kos">/&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//子组件1\nvar Children1 = React.createClass({\n  getInitialState: function() {\n    return {\n      text: \'\'\n    };\n  },\n  contextTypes: {\n    changeChildren2: React.PropTypes.func.isRequired\n  },\n  changeState: function(text) {\n    this.setState({ text: text });\n  },\n  //输入事件\n  change: function(event) {\n    //调用子组件的方法\n    this.context.changeChildren2(event.target.value);\n  },\n  render: function() {\n    return (\n      &lt;div&gt;\n        &lt;p&gt;\n          &lt;label&gt;子组件1&lt;/label&gt;\n          &lt;input type=&quot;text&quot; onChange={this.change} /&gt;\n        &lt;/p&gt;\n        &lt;p&gt;来自子组件2的调用-{this.state.text}&lt;/p&gt;\n      &lt;/div&gt;\n    );\n  }\n});"><pre class="notranslate"><span class="pl-c">//子组件1</span>\n<span class="pl-k">var</span> <span class="pl-v">Children1</span> <span class="pl-c1">=</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createClass</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">getInitialState</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">text</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">contextTypes</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">changeChildren2</span>: <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">PropTypes</span><span class="pl-kos">.</span><span class="pl-c1">func</span><span class="pl-kos">.</span><span class="pl-c1">isRequired</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">changeState</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s1">text</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">//输入事件</span>\n  <span class="pl-en">change</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">//调用子组件的方法</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">context</span><span class="pl-kos">.</span><span class="pl-en">changeChildren2</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">render</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">label</span><span class="pl-c1">&gt;</span>子组件1<span class="pl-kos">&lt;/</span><span class="pl-s1">label</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">change</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>来自子组件2的调用-<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="//子组件2\nvar Children2 = React.createClass({\n  getInitialState: function() {\n    return {\n      text: \'\'\n    };\n  },\n  contextTypes: {\n    changeChildren1: React.PropTypes.func.isRequired\n  },\n  changeState: function(text) {\n    this.setState({ text: text });\n  },\n  //输入事件\n  change: function(event) {\n    //调用子组件的方法\n    this.context.changeChildren1(event.target.value);\n  },\n  render: function() {\n    return (\n      &lt;div&gt;\n        &lt;p&gt;\n          &lt;label&gt;子组件2&lt;/label&gt;\n          &lt;input type=&quot;text&quot; onChange={this.change} /&gt;\n        &lt;/p&gt;\n        &lt;p&gt;来自子组件1的调用-{this.state.text}&lt;/p&gt;\n      &lt;/div&gt;\n    );\n  }\n});"><pre class="notranslate"><span class="pl-c">//子组件2</span>\n<span class="pl-k">var</span> <span class="pl-v">Children2</span> <span class="pl-c1">=</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">createClass</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">getInitialState</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">text</span>: <span class="pl-s">\'\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">contextTypes</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">changeChildren1</span>: <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">PropTypes</span><span class="pl-kos">.</span><span class="pl-c1">func</span><span class="pl-kos">.</span><span class="pl-c1">isRequired</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">changeState</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">text</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">text</span>: <span class="pl-s1">text</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">//输入事件</span>\n  <span class="pl-en">change</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">//调用子组件的方法</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">context</span><span class="pl-kos">.</span><span class="pl-en">changeChildren1</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">render</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">label</span><span class="pl-c1">&gt;</span>子组件2<span class="pl-kos">&lt;/</span><span class="pl-s1">label</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">change</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>来自子组件1的调用-<span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">p</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-6">发布订阅</h3>\n<blockquote>\n<p dir="auto">在 componentDidMount 事件中,如果组件挂载完成,再订阅事件;在组件卸载的时候,在 componentWillUnmount 事件中取消事件的订阅;以常用的发布/订阅模式举例,借用 Node.js Events 模块的浏览器版实现</p>\n</blockquote>\n<p dir="auto">先引入 node <code class="notranslate">events</code> 模块</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="yarn add events"><pre class="notranslate">yarn add events</pre></div>\n<p dir="auto">在 src 下新建一个 util 目录里面建一个 events.js</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { EventEmitter } from \'events\';\nexport default new EventEmitter();"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">EventEmitter</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'events\'</span><span class="pl-kos">;</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">new</span> <span class="pl-v">EventEmitter</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>components/eventCenter/List1.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React, { Component } from \'react\';\nimport emitter from \'../../util/events\';\nclass List1 extends Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      message: \'List1\'\n    };\n  }\n  componentDidMount() {\n    // 组件装载完成以后声明一个自定义事件\n    this.eventEmitter = emitter.addListener(\'changeMessage\', message =&gt; {\n      this.setState({\n        message\n      });\n    });\n  }\n  componentWillUnmount() {\n    emitter.removeListener(this.eventEmitter);\n  }\n  render() {\n    return (\n      &lt;div&gt;\n        {this.state.message} {this.props.msg}\n      &lt;/div&gt;\n    );\n  }\n}\nexport default List1;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-v">Component</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">emitter</span> <span class="pl-k">from</span> <span class="pl-s">\'../../util/events\'</span><span class="pl-kos">;</span>\n<span class="pl-k">class</span> <span class="pl-v">List1</span> <span class="pl-k">extends</span> <span class="pl-v">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">message</span>: <span class="pl-s">\'List1\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">componentDidMount</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 组件装载完成以后声明一个自定义事件</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">eventEmitter</span> <span class="pl-c1">=</span> <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">addListener</span><span class="pl-kos">(</span><span class="pl-s">\'changeMessage\'</span><span class="pl-kos">,</span> <span class="pl-s1">message</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        message\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">componentWillUnmount</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">removeListener</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">eventEmitter</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">}</span> <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">msg</span><span class="pl-kos">}</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">List1</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>components/eventCenter/List2.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React, { Component } from \'react\';\nimport emitter from \'../../util/events\';\nclass List2 extends Component {\n  handleClick = message =&gt; {\n    emitter.emit(\'changeMessage\', message);\n  };\n  handleClick2 = message =&gt; {\n    emitter.emit(\'changeMessageApp\', message);\n  };\n  render() {\n    return (\n      &lt;div&gt;\n        &lt;button onClick={this.handleClick.bind(this, \'List2\')}&gt;\n          点击我改变List1组件中显示信息\n        &lt;/button&gt;\n        &lt;button onClick={this.handleClick2.bind(this, \'List2App\')}&gt;\n          点击我改变App组件中显示信息\n        &lt;/button&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n\nexport default List2;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-v">Component</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">emitter</span> <span class="pl-k">from</span> <span class="pl-s">\'../../util/events\'</span><span class="pl-kos">;</span>\n<span class="pl-k">class</span> <span class="pl-v">List2</span> <span class="pl-k">extends</span> <span class="pl-v">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">handleClick</span> <span class="pl-c1">=</span> <span class="pl-s1">message</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">emit</span><span class="pl-kos">(</span><span class="pl-s">\'changeMessage\'</span><span class="pl-kos">,</span> <span class="pl-s1">message</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-c1">handleClick2</span> <span class="pl-c1">=</span> <span class="pl-s1">message</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">emit</span><span class="pl-kos">(</span><span class="pl-s">\'changeMessageApp\'</span><span class="pl-kos">,</span> <span class="pl-s1">message</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleClick</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">,</span> <span class="pl-s">\'List2\'</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>\n          点击我改变List1组件中显示信息\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleClick2</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">,</span> <span class="pl-s">\'List2App\'</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>\n          点击我改变App组件中显示信息\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">List2</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">APP.js</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React from \'react\';\nimport \'./App.css\';\nimport List1 from \'./components/eventCenter/List1\';\nimport List2 from \'./components/eventCenter/List2\';\nimport emitter from \'./util/events\';\nclass App extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      message: \'msgFromApp\'\n    };\n  }\n  componentDidMount() {\n    // 组件装载完成以后声明一个自定义事件\n    this.eventEmitter = emitter.addListener(\'changeMessageApp\', message =&gt; {\n      this.setState({\n        message\n      });\n    });\n  }\n  render() {\n    return (\n      &lt;div className=&quot;App&quot;&gt;\n        &lt;List1 msg={this.state.message} /&gt;\n        &lt;List2 /&gt;\n      &lt;/div&gt;\n    );\n  }\n}\n\nexport default App;"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s">\'./App.css\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">List1</span> <span class="pl-k">from</span> <span class="pl-s">\'./components/eventCenter/List1\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">List2</span> <span class="pl-k">from</span> <span class="pl-s">\'./components/eventCenter/List2\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-s1">emitter</span> <span class="pl-k">from</span> <span class="pl-s">\'./util/events\'</span><span class="pl-kos">;</span>\n<span class="pl-k">class</span> <span class="pl-v">App</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n      <span class="pl-c1">message</span>: <span class="pl-s">\'msgFromApp\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">componentDidMount</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 组件装载完成以后声明一个自定义事件</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">eventEmitter</span> <span class="pl-c1">=</span> <span class="pl-s1">emitter</span><span class="pl-kos">.</span><span class="pl-en">addListener</span><span class="pl-kos">(</span><span class="pl-s">\'changeMessageApp\'</span><span class="pl-kos">,</span> <span class="pl-s1">message</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        message\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"App"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">List1</span> <span class="pl-c1">msg</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">List2</span> <span class="pl-kos">/&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-v">App</span><span class="pl-kos">;</span></pre></div>\n<blockquote>\n<p dir="auto">此方法还支持子父组件的传值，但考虑到消息中心的可维护性，易维护性，采用以下的方法</p>\n</blockquote>\n<h2 id="main-heading-H2-7">主流通信库</h2>\n<p dir="auto">Redux || Mobx</p>\n<h3 id="main-heading-H3-8">参考文章</h3>\n<ul dir="auto">\n<li><a href="https://github.com/sunyongjian/blog/issues/27" data-hovercard-type="issue" data-hovercard-url="/sunyongjian/blog/issues/27/hovercard">sunyongjian - React组件之间的通信</a></li>\n<li><a href="https://juejin.im/post/5d2d41a7e51d454f723025ad" rel="nofollow">React小技巧汇总</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/28"},navList:[{text:"组件通信",id:"main-heading-H2-0",type:a,children:[]},{text:"父传子",id:"main-heading-H2-1",type:a,children:[]},{text:"子传父",id:"main-heading-H2-2",type:a,children:[]},{text:"兄弟组件",id:"main-heading-H2-3",type:a,children:[{text:"利用共同的父组件",id:"main-heading-H3-4",type:p},{text:"利用 Context",id:"main-heading-H3-5",type:p},{text:"发布订阅",id:"main-heading-H3-6",type:p}]},{text:"主流通信库",id:"main-heading-H2-7",type:a,children:[{text:"参考文章",id:"main-heading-H3-8",type:p}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H2","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

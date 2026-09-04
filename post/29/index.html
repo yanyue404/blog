@@ -1,0 +1,404 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>debug 调试技术指北 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 你的 debug 姿势够娴熟吗？ 如何减少 bug？或者可以换一个问题，怎样快速 fix bugs？ 编码 项目结构清晰合理 组件化解耦 编码的健壮性，适应 1、2，还有... 全局状态的管理维护 异常边界值考虑，try ... catch 为项目工具函数与组件编写单元测试用例 工程化流程 静"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="debug 调试技术指北"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 你的 debug 姿势够娴熟吗？ 如何减少 bug？或者可以换一个问题，怎样快速 fix bugs？ 编码 项目结构清晰合理 组件化解耦 编码的健壮性，适应 1、2，还有... 全局状态的管理维护 异常边界值考虑，try ... catch 为项目工具函数与组件编写单元测试用例 工程化流程 静"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="debug 调试技术指北"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 你的 debug 姿势够娴熟吗？ 如何减少 bug？或者可以换一个问题，怎样快速 fix bugs？ 编码 项目结构清晰合理 组件化解耦 编码的健壮性，适应 1、2，还有... 全局状态的管理维护 异常边界值考虑，try ... catch 为项目工具函数与组件编写单元测试用例 工程化流程 静"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/29#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/29#main-heading-H2-1" title="目录" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              目录
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/29#main-heading-H2-2" title="开发阶段" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              开发阶段
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/29#main-heading-H2-3" title="生产环境" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              生产环境
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/29#main-heading-H2-4" title="移动端调试工具预留" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              移动端调试工具预留
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/29#main-heading-H2-5" title="Node" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Node
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/29#main-heading-H2-6" title="参考资料" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考资料
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>debug 调试技术指北</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>debug 调试技术指北</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-05-27</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 13 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto">你的 debug 姿势够娴熟吗？</p>
+<p dir="auto">如何减少 bug？或者可以换一个问题，怎样快速 fix bugs？</p>
+<p dir="auto"><strong>编码</strong></p>
+<ul dir="auto">
+<li>项目结构清晰合理</li>
+<li>组件化解耦</li>
+<li>编码的健壮性，适应 1、2，还有...</li>
+<li>全局状态的管理维护</li>
+<li>异常边界值考虑，<code class="notranslate">try ... catch</code></li>
+<li>为项目工具函数与组件编写单元测试用例</li>
+</ul>
+<p dir="auto"><strong>工程化流程</strong></p>
+<ul dir="auto">
+<li>静态代码检查</li>
+<li>提交前预处理修复</li>
+<li>单元测试警报</li>
+<li>分支管理策略</li>
+</ul>
+<h2 id="main-heading-H2-1">目录</h2>
+<ul dir="auto">
+<li><a href="#%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5">1. 开发阶段</a></li>
+<li><a href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83">2. 生产环境</a></li>
+<li><a href="%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E9%A2%84%E7%95%99">3. 移动端调试工具预留</a></li>
+<li><a href="#Node">4. Node</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">5. 参考</a></li>
+</ul>
+<h2 id="main-heading-H2-2">开发阶段</h2>
+<p dir="auto">开发场景为 vue 或 react 为主的单页面应用。</p>
+<p dir="auto"><strong>Chrome DevTools</strong></p>
+<ul dir="auto">
+<li>Vue.js devtools</li>
+<li>React Developer Tools</li>
+</ul>
+<p dir="auto"><strong>Source Map 调试</strong></p>
+<p dir="auto">开启 source-map 的配置将会在本地以及发布后的线上生效，使用 Chrome 浏览器访问 后 Source 面板下的 <strong>webpack://</strong> 可以找到 Project 源码进行断点调试，就是在 <code class="notranslate">async</code>、<code class="notranslate">await</code>语法中也能精准定位。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='config.devtool = "eval-source-map"; //需要时才放开'><pre class="notranslate">config.devtool = <span class="pl-s"><span class="pl-pds">"</span>eval-source-map<span class="pl-pds">"</span></span><span class="pl-k">;</span> //需要时才放开</pre></div>
+<blockquote>
+<p dir="auto">重要提醒：修改好 bug 后务必及时关闭 source-map 并再次发布，以防源码泄露。</p>
+</blockquote>
+<p dir="auto"><strong>Vscode 调试</strong></p>
+<p dir="auto">首先安装 <code class="notranslate">Debugger for Chrome</code> 插件，配置好<code class="notranslate">launch.json</code></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='// launch.json
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "启动程序",
+      "url": "http://localhost:9009",
+      "webRoot": "${workspaceRoot}/src"
+    }
+  ]
+}'><pre class="notranslate"><code class="notranslate">// launch.json
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "启动程序",
+      "url": "http://localhost:9009",
+      "webRoot": "${workspaceRoot}/src"
+    }
+  ]
+}
+</code></pre></div>
+<p dir="auto">然后启动项目, <code class="notranslate">yarn dev</code>, 等待项目成功启动提示：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<s> [webpack.Progress] 100%
+
+  App running at:
+  - Local:   http://localhost:9009/
+  - Network: http://10.64.101.37:9009/"><pre class="notranslate"><span class="pl-k">&lt;</span>s<span class="pl-k">></span> [webpack.Progress] 100%
+
+  App running at:
+  - Local:   http://localhost:9009/
+  - Network: http://10.64.101.37:9009/</pre></div>
+<p dir="auto">按 <code class="notranslate">F5</code> 开启调试模式，打断点，继续 debug。如果出现 <code class="notranslate">Breakpoint set but not yet bound</code>说明 设置断点但尚未绑定, 可以强制使用 <code class="notranslate">debugger</code> 确保准确断点定位。</p>
+<p dir="auto"><strong>代理调试</strong></p>
+<p dir="auto">面临的使用场景：</p>
+<ul dir="auto">
+<li>后端接口微服务</li>
+<li>公众号必须使用线上 token 且与后端本地物理机不通用</li>
+<li>前后端联调场景</li>
+</ul>
+<p dir="auto">调试方案 ：大部分接口使用线上服务，部分接口代理至本地物理机独立的服务模块调试</p>
+<p dir="auto">原先全部使用线上：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// http.js
+axios.defaults.baseURL = "/prod-api";
+
+// vue.config.js
+module.exports = {
+  proxy: {
+    [process.env.VUE_APP_BASE_API]: {
+      target: `http://h5.baishi360.cn/`,
+      changeOrigin: true,
+      pathRewrite: {
+        "^/api": "",
+      },
+    },
+  },
+};'><pre class="notranslate"><span class="pl-c">// http.js</span>
+<span class="pl-s1">axios</span><span class="pl-kos">.</span><span class="pl-c1">defaults</span><span class="pl-kos">.</span><span class="pl-c1">baseURL</span> <span class="pl-c1">=</span> <span class="pl-s">"/prod-api"</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// vue.config.js</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">proxy</span>: <span class="pl-kos">{</span>
+    <span class="pl-kos">[</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">VUE_APP_BASE_API</span><span class="pl-kos">]</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">target</span>: <span class="pl-s">`http://h5.baishi360.cn/`</span><span class="pl-kos">,</span>
+      <span class="pl-c1">changeOrigin</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c1">pathRewrite</span>: <span class="pl-kos">{</span>
+        <span class="pl-s">"^/api"</span>: <span class="pl-s">""</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">部分接口代理到本地：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// http.js
+axios.defaults.baseURL = "";
+
+// vue.config.js
+module.exports = {
+  proxy: {
+    // 本地代理 1 保险公司 险种信息查询
+    "/api-inslife/api/ins/company/getCompanyWithProduct": {
+      target: `http://172.16.1.103:18013/`, // api-inslife
+      changeOrigin: true,
+      pathRewrite: {
+        "^/api-inslife": "",
+      },
+    },
+    // 本地代理 2 代理人计划书相关
+    "/api-agt/agt/planBook/saveAgtPlanInfo": {
+      target: `http://172.16.1.103:18010/`, // api-agt
+      changeOrigin: true,
+      pathRewrite: {
+        "^/api-agt": "",
+      },
+    },
+    // 线上代理
+    "": {
+      target: `http://h5.baishi360.cn/prod-api/`,
+      changeOrigin: true,
+    },
+  },
+};'><pre class="notranslate"><span class="pl-c">// http.js</span>
+<span class="pl-s1">axios</span><span class="pl-kos">.</span><span class="pl-c1">defaults</span><span class="pl-kos">.</span><span class="pl-c1">baseURL</span> <span class="pl-c1">=</span> <span class="pl-s">""</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// vue.config.js</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">proxy</span>: <span class="pl-kos">{</span>
+    <span class="pl-c">// 本地代理 1 保险公司 险种信息查询</span>
+    <span class="pl-s">"/api-inslife/api/ins/company/getCompanyWithProduct"</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">target</span>: <span class="pl-s">`http://172.16.1.103:18013/`</span><span class="pl-kos">,</span> <span class="pl-c">// api-inslife</span>
+      <span class="pl-c1">changeOrigin</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c1">pathRewrite</span>: <span class="pl-kos">{</span>
+        <span class="pl-s">"^/api-inslife"</span>: <span class="pl-s">""</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c">// 本地代理 2 代理人计划书相关</span>
+    <span class="pl-s">"/api-agt/agt/planBook/saveAgtPlanInfo"</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">target</span>: <span class="pl-s">`http://172.16.1.103:18010/`</span><span class="pl-kos">,</span> <span class="pl-c">// api-agt</span>
+      <span class="pl-c1">changeOrigin</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c1">pathRewrite</span>: <span class="pl-kos">{</span>
+        <span class="pl-s">"^/api-agt"</span>: <span class="pl-s">""</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c">// 线上代理</span>
+    <span class="pl-s">""</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">target</span>: <span class="pl-s">`http://h5.baishi360.cn/prod-api/`</span><span class="pl-kos">,</span>
+      <span class="pl-c1">changeOrigin</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-3">生产环境</h2>
+<ul dir="auto">
+<li><a href="https://github.com/Tencent/vConsole">vConsole</a></li>
+</ul>
+<p dir="auto">A lightweight, extendable front-end developer tool for mobile web page.</p>
+<ul dir="auto">
+<li><a href="https://github.com/liriliri/eruda">eruda</a></li>
+</ul>
+<p dir="auto">Console for mobile browsers</p>
+<ul dir="auto">
+<li>fiddler 抓包调试</li>
+</ul>
+<p dir="auto">推荐操作资料：<a href="https://juejin.im/post/6844904042422861831" rel="nofollow">Fiddler “抓包“最新详细教程</a></p>
+<p dir="auto">辅助工具：<a href="https://chrome.google.com/webstore/detail/padekgcemlokbadohgkifijomclgjgif" rel="nofollow">Proxy SwitchyOmega</a> - 轻松快捷地管理和切换多个代理设置</p>
+<p dir="auto">操作步骤：参照上面的资料进行，我的关键步骤截图<a href="https://github.com/yanyue404/blog/tree/master/assets/fiddler">在这里</a>（ip： 172.16.1.141）</p>
+<p dir="auto">注意项：在移动端真机调试的时候需要勾选 <code class="notranslate">Allow remote computers to connect</code></p>
+<ul dir="auto">
+<li><a href="https://github.com/wuchangming/spy-debugger">spy-debugger</a></li>
+</ul>
+<p dir="auto">微信调试，各种 WebView 样式调试、手机浏览器的页面真机调试。便捷的远程调试手机页面、抓包工具，支持：HTTP/HTTPS，无需 USB 连接设备。</p>
+<h2 id="main-heading-H2-4">移动端调试工具预留</h2>
+<blockquote>
+<p dir="auto">Eruda || vConsole</p>
+</blockquote>
+<p dir="auto"><strong>方案 1：</strong></p>
+<p dir="auto">实现效果：</p>
+<ol dir="auto">
+<li>NODE_ENV 为 development 模式时开启 debug 模式</li>
+<li>NODE_ENV 为 production 模式时可手动开启（与关闭）debug 模式 （通过预留的点击后门）</li>
+<li>跳转的页面添加 <code class="notranslate">debug=true</code> URL 参数可以打开调试模式</li>
+</ol>
+<ul dir="auto">
+<li><code class="notranslate">public/index.html</code></li>
+</ul>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<script>
+  (function () {
+    var ENV = sessionStorage.getItem("ENV");
+    console.log("ENV：", ENV);
+    var src = "";
+
+    if (
+      ENV == "development" ||
+      localStorage.getItem("debug") === "true" ||
+      /debug=true/.test(window.location)
+    ) {
+      src = "https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js";
+    }
+    // FIX: Uncaught TypeError: VConsole is not a constructor
+    if (ENV) {
+      document.write("<scr" + &#39;ipt src="&#39; + src + &#39;"></scr&#39; + "ipt>");
+      document.write(
+        "<scr" + "ipt> var VConsole = new VConsole();</scr" + "ipt>"
+      );
+    }
+  })();
+</script>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+  <span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">var</span> <span class="pl-c1">ENV</span> <span class="pl-c1">=</span> <span class="pl-s1">sessionStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"ENV"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"ENV："</span><span class="pl-kos">,</span> <span class="pl-c1">ENV</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">var</span> <span class="pl-s1">src</span> <span class="pl-c1">=</span> <span class="pl-s">""</span><span class="pl-kos">;</span>
+
+    <span class="pl-k">if</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">ENV</span> <span class="pl-c1">==</span> <span class="pl-s">"development"</span> <span class="pl-c1">||</span>
+      <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">)</span> <span class="pl-c1">===</span> <span class="pl-s">"true"</span> <span class="pl-c1">||</span>
+      <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">b</span><span class="pl-s">u</span><span class="pl-s">g</span><span class="pl-s">=</span><span class="pl-s">t</span><span class="pl-s">r</span><span class="pl-s">u</span><span class="pl-s">e</span><span class="pl-c1">/</span></span><span class="pl-kos">.</span><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">)</span>
+    <span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">src</span> <span class="pl-c1">=</span> <span class="pl-s">"https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-c">// FIX: Uncaught TypeError: VConsole is not a constructor</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">ENV</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">write</span><span class="pl-kos">(</span><span class="pl-s">"&lt;scr"</span> <span class="pl-c1">+</span> <span class="pl-s">'ipt src="'</span> <span class="pl-c1">+</span> <span class="pl-s1">src</span> <span class="pl-c1">+</span> <span class="pl-s">'">&lt;/scr'</span> <span class="pl-c1">+</span> <span class="pl-s">"ipt>"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">write</span><span class="pl-kos">(</span>
+        <span class="pl-s">"&lt;scr"</span> <span class="pl-c1">+</span> <span class="pl-s">"ipt> var VConsole = new VConsole();&lt;/scr"</span> <span class="pl-c1">+</span> <span class="pl-s">"ipt>"</span>
+      <span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span></pre></div>
+<ul dir="auto">
+<li><code class="notranslate">main.js</code></li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='sessionStorage.setItem("ENV", process.env.NODE_ENV);
+
+// 如果重定向后需要开启 debug 就不用关闭了
+localStorage.getItem("debug") === "true"
+  ? ""
+  : localStorage.setItem("debug", false);'><pre class="notranslate"><span class="pl-s1">sessionStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">"ENV"</span><span class="pl-kos">,</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 如果重定向后需要开启 debug 就不用关闭了</span>
+<span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">)</span> <span class="pl-c1">===</span> <span class="pl-s">"true"</span>
+  ? <span class="pl-s">""</span>
+  : <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li><code class="notranslate">home.vue</code></li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// 点击规则详情10次就可以唤起 debug 模式了，再点击10次就关闭 debug 模式
+var count = 0;
+const showDebug = () => {
+  if (count >= 10) {
+    var debug = localStorage.getItem("debug");
+    console.log("debug", debug);
+    if (!debug || debug === "false") {
+      localStorage.setItem("debug", "true");
+    } else {
+      localStorage.setItem("debug", "false");
+    }
+    count = 0; // 清零
+    location.reload(); // 重载
+  }
+  count++;
+};'><pre class="notranslate"><span class="pl-c">// 点击规则详情10次就可以唤起 debug 模式了，再点击10次就关闭 debug 模式</span>
+<span class="pl-k">var</span> <span class="pl-s1">count</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-en">showDebug</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">count</span> <span class="pl-c1">>=</span> <span class="pl-c1">10</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">var</span> <span class="pl-s1">debug</span> <span class="pl-c1">=</span> <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">,</span> <span class="pl-s1">debug</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">debug</span> <span class="pl-c1">||</span> <span class="pl-s1">debug</span> <span class="pl-c1">===</span> <span class="pl-s">"false"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">,</span> <span class="pl-s">"true"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">,</span> <span class="pl-s">"false"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-s1">count</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-c">// 清零</span>
+    <span class="pl-s1">location</span><span class="pl-kos">.</span><span class="pl-en">reload</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 重载</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-s1">count</span><span class="pl-c1">++</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>方案 2：</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// 依托环境变量注入
+{{ ENV.PATH_TYPE === "production" ? `` :  `<script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js></script>`}} 
+
+// app.html
+ <script>
+      if(location.href.indexOf(&#39;?vconsole=true&#39;) > 0) {
+          var sc = document.createElement(&#39;script&#39;);
+          sc.src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js";
+          document.head.insertBefore(sc, document.head.firstChild);
+      }
+  </script>'><pre class="notranslate"><span class="pl-c">// 依托环境变量注入</span>
+<span class="pl-kos">{</span><span class="pl-kos">{</span> <span class="pl-c1">ENV</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">===</span> <span class="pl-s">"production"</span> ? <span class="pl-s">``</span> :  <span class="pl-s">`&lt;script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js>&lt;/script>`</span><span class="pl-kos">}</span><span class="pl-kos">}</span> 
+
+<span class="pl-c">// app.html</span>
+ <span class="pl-c1">&lt;</span><span class="pl-s1">script</span><span class="pl-c1">></span>
+      if(location.href.indexOf('?vconsole=true') <span class="pl-c1">></span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-s1">var</span> <span class="pl-s1">sc</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'script'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-s1">sc</span><span class="pl-kos">.</span><span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"</span><span class="pl-kos">;</span>
+          <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">head</span><span class="pl-kos">.</span><span class="pl-en">insertBefore</span><span class="pl-kos">(</span><span class="pl-s1">sc</span><span class="pl-kos">,</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">head</span><span class="pl-kos">.</span><span class="pl-c1">firstChild</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+  <span class="pl-kos">&lt;/</span><span class="pl-s1">script</span><span class="pl-c1">></span></pre></div>
+<p dir="auto"><strong>方案 3：</strong>（<strong>推荐</strong>）</p>
+<p dir="auto"><strong>Whistle</strong> ，参见 <a href="https://github.com/yanyue404/blog/issues/204" data-hovercard-type="issue" data-hovercard-url="/yanyue404/blog/issues/204/hovercard">使用教程</a></p>
+<h2 id="main-heading-H2-5">Node</h2>
+<p dir="auto">Inspector 原理</p>
+<ul dir="auto">
+<li>WebSockets 服务（监听命令）</li>
+<li>Inspector 协议</li>
+<li>Http 服务（获取元信息）</li>
+</ul>
+<p dir="auto"><strong>Chrome DevTools</strong></p>
+<ul dir="auto">
+<li>访问 <code class="notranslate">chrome://inspect</code>,点击<code class="notranslate">配置</code>按钮，确保 Host Port 正确，然后点击 下方<code class="notranslate">inspect</code>按钮进入调试页面，打上断点后，在浏览器窗口打开监听的原始端口即可调试</li>
+<li>借助 vscode 打印的端口号 （<code class="notranslate">node --inspect app.js</code>）访问端口 <code class="notranslate">localhost:9229/json</code>获取元信息,在浏览器中访问 <code class="notranslate">devtoolsFrontendUrl</code></li>
+<li>在 chrome <code class="notranslate">http://localhost:3000/</code>打开开发者页面，选择 <code class="notranslate">Elements</code>元素按钮左侧的 <code class="notranslate">Node.js</code>图标，可进入调试页面</li>
+</ul>
+<h2 id="main-heading-H2-6">参考资料</h2>
+<ul dir="auto">
+<li><a href="https://www.imooc.com/learn/1093" rel="nofollow">imooc - node.js 调试入门</a></li>
+<li><a href="https://github.com/nswbmw/node-in-debugging">node-in-debugging</a></li>
+<li><a href="https://www.zhihu.com/question/43687153/answer/149944688" rel="nofollow">断点调试</a></li>
+<li><a href="https://stackoverflow.com/questions/42714449/vscode-debugging-with-create-react-app" rel="nofollow">stackoverflow - vscode-debugging-with-create-react-app</a></li>
+<li><a href="https://github.com/senntyou/blogs/blob/master/web-extend/8.md">细说 js 压缩、sourcemap、通过 sourcemap 查找原始报错信息</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/30916362" rel="nofollow">移动端网页调试神器 Eruda 使用技巧</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l){return{layout:"default",data:[{post:{id:326805651,number:29,title:"debug 调试技术指北",created_at:"2018-05-27T10:45:16Z",updated_at:"2025-11-23T16:03:21Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto">你的 debug 姿势够娴熟吗？</p>\n<p dir="auto">如何减少 bug？或者可以换一个问题，怎样快速 fix bugs？</p>\n<p dir="auto"><strong>编码</strong></p>\n<ul dir="auto">\n<li>项目结构清晰合理</li>\n<li>组件化解耦</li>\n<li>编码的健壮性，适应 1、2，还有...</li>\n<li>全局状态的管理维护</li>\n<li>异常边界值考虑，<code class="notranslate">try ... catch</code></li>\n<li>为项目工具函数与组件编写单元测试用例</li>\n</ul>\n<p dir="auto"><strong>工程化流程</strong></p>\n<ul dir="auto">\n<li>静态代码检查</li>\n<li>提交前预处理修复</li>\n<li>单元测试警报</li>\n<li>分支管理策略</li>\n</ul>\n<h2 id="main-heading-H2-1">目录</h2>\n<ul dir="auto">\n<li><a href="#%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5">1. 开发阶段</a></li>\n<li><a href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83">2. 生产环境</a></li>\n<li><a href="%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E9%A2%84%E7%95%99">3. 移动端调试工具预留</a></li>\n<li><a href="#Node">4. Node</a></li>\n<li><a href="#%E5%8F%82%E8%80%83">5. 参考</a></li>\n</ul>\n<h2 id="main-heading-H2-2">开发阶段</h2>\n<p dir="auto">开发场景为 vue 或 react 为主的单页面应用。</p>\n<p dir="auto"><strong>Chrome DevTools</strong></p>\n<ul dir="auto">\n<li>Vue.js devtools</li>\n<li>React Developer Tools</li>\n</ul>\n<p dir="auto"><strong>Source Map 调试</strong></p>\n<p dir="auto">开启 source-map 的配置将会在本地以及发布后的线上生效，使用 Chrome 浏览器访问 后 Source 面板下的 <strong>webpack://</strong> 可以找到 Project 源码进行断点调试，就是在 <code class="notranslate">async</code>、<code class="notranslate">await</code>语法中也能精准定位。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="config.devtool = &quot;eval-source-map&quot;; //需要时才放开"><pre class="notranslate">config.devtool = <span class="pl-s"><span class="pl-pds">"</span>eval-source-map<span class="pl-pds">"</span></span><span class="pl-k">;</span> //需要时才放开</pre></div>\n<blockquote>\n<p dir="auto">重要提醒：修改好 bug 后务必及时关闭 source-map 并再次发布，以防源码泄露。</p>\n</blockquote>\n<p dir="auto"><strong>Vscode 调试</strong></p>\n<p dir="auto">首先安装 <code class="notranslate">Debugger for Chrome</code> 插件，配置好<code class="notranslate">launch.json</code></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// launch.json\n{\n  // 使用 IntelliSense 了解相关属性。\n  // 悬停以查看现有属性的描述。\n  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387\n  &quot;version&quot;: &quot;0.2.0&quot;,\n  &quot;configurations&quot;: [\n    {\n      &quot;type&quot;: &quot;chrome&quot;,\n      &quot;request&quot;: &quot;launch&quot;,\n      &quot;name&quot;: &quot;启动程序&quot;,\n      &quot;url&quot;: &quot;http://localhost:9009&quot;,\n      &quot;webRoot&quot;: &quot;${workspaceRoot}/src&quot;\n    }\n  ]\n}"><pre class="notranslate"><code class="notranslate">// launch.json\n{\n  // 使用 IntelliSense 了解相关属性。\n  // 悬停以查看现有属性的描述。\n  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387\n  "version": "0.2.0",\n  "configurations": [\n    {\n      "type": "chrome",\n      "request": "launch",\n      "name": "启动程序",\n      "url": "http://localhost:9009",\n      "webRoot": "${workspaceRoot}/src"\n    }\n  ]\n}\n</code></pre></div>\n<p dir="auto">然后启动项目, <code class="notranslate">yarn dev</code>, 等待项目成功启动提示：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;s&gt; [webpack.Progress] 100%\n\n  App running at:\n  - Local:   http://localhost:9009/\n  - Network: http://10.64.101.37:9009/"><pre class="notranslate"><span class="pl-k">&lt;</span>s<span class="pl-k">&gt;</span> [webpack.Progress] 100%\n\n  App running at:\n  - Local:   http://localhost:9009/\n  - Network: http://10.64.101.37:9009/</pre></div>\n<p dir="auto">按 <code class="notranslate">F5</code> 开启调试模式，打断点，继续 debug。如果出现 <code class="notranslate">Breakpoint set but not yet bound</code>说明 设置断点但尚未绑定, 可以强制使用 <code class="notranslate">debugger</code> 确保准确断点定位。</p>\n<p dir="auto"><strong>代理调试</strong></p>\n<p dir="auto">面临的使用场景：</p>\n<ul dir="auto">\n<li>后端接口微服务</li>\n<li>公众号必须使用线上 token 且与后端本地物理机不通用</li>\n<li>前后端联调场景</li>\n</ul>\n<p dir="auto">调试方案 ：大部分接口使用线上服务，部分接口代理至本地物理机独立的服务模块调试</p>\n<p dir="auto">原先全部使用线上：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// http.js\naxios.defaults.baseURL = &quot;/prod-api&quot;;\n\n// vue.config.js\nmodule.exports = {\n  proxy: {\n    [process.env.VUE_APP_BASE_API]: {\n      target: `http://h5.baishi360.cn/`,\n      changeOrigin: true,\n      pathRewrite: {\n        &quot;^/api&quot;: &quot;&quot;,\n      },\n    },\n  },\n};"><pre class="notranslate"><span class="pl-c">// http.js</span>\n<span class="pl-s1">axios</span><span class="pl-kos">.</span><span class="pl-c1">defaults</span><span class="pl-kos">.</span><span class="pl-c1">baseURL</span> <span class="pl-c1">=</span> <span class="pl-s">"/prod-api"</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// vue.config.js</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">proxy</span>: <span class="pl-kos">{</span>\n    <span class="pl-kos">[</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">VUE_APP_BASE_API</span><span class="pl-kos">]</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">target</span>: <span class="pl-s">`http://h5.baishi360.cn/`</span><span class="pl-kos">,</span>\n      <span class="pl-c1">changeOrigin</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c1">pathRewrite</span>: <span class="pl-kos">{</span>\n        <span class="pl-s">"^/api"</span>: <span class="pl-s">""</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">部分接口代理到本地：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// http.js\naxios.defaults.baseURL = &quot;&quot;;\n\n// vue.config.js\nmodule.exports = {\n  proxy: {\n    // 本地代理 1 保险公司 险种信息查询\n    &quot;/api-inslife/api/ins/company/getCompanyWithProduct&quot;: {\n      target: `http://172.16.1.103:18013/`, // api-inslife\n      changeOrigin: true,\n      pathRewrite: {\n        &quot;^/api-inslife&quot;: &quot;&quot;,\n      },\n    },\n    // 本地代理 2 代理人计划书相关\n    &quot;/api-agt/agt/planBook/saveAgtPlanInfo&quot;: {\n      target: `http://172.16.1.103:18010/`, // api-agt\n      changeOrigin: true,\n      pathRewrite: {\n        &quot;^/api-agt&quot;: &quot;&quot;,\n      },\n    },\n    // 线上代理\n    &quot;&quot;: {\n      target: `http://h5.baishi360.cn/prod-api/`,\n      changeOrigin: true,\n    },\n  },\n};"><pre class="notranslate"><span class="pl-c">// http.js</span>\n<span class="pl-s1">axios</span><span class="pl-kos">.</span><span class="pl-c1">defaults</span><span class="pl-kos">.</span><span class="pl-c1">baseURL</span> <span class="pl-c1">=</span> <span class="pl-s">""</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// vue.config.js</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">proxy</span>: <span class="pl-kos">{</span>\n    <span class="pl-c">// 本地代理 1 保险公司 险种信息查询</span>\n    <span class="pl-s">"/api-inslife/api/ins/company/getCompanyWithProduct"</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">target</span>: <span class="pl-s">`http://172.16.1.103:18013/`</span><span class="pl-kos">,</span> <span class="pl-c">// api-inslife</span>\n      <span class="pl-c1">changeOrigin</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c1">pathRewrite</span>: <span class="pl-kos">{</span>\n        <span class="pl-s">"^/api-inslife"</span>: <span class="pl-s">""</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c">// 本地代理 2 代理人计划书相关</span>\n    <span class="pl-s">"/api-agt/agt/planBook/saveAgtPlanInfo"</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">target</span>: <span class="pl-s">`http://172.16.1.103:18010/`</span><span class="pl-kos">,</span> <span class="pl-c">// api-agt</span>\n      <span class="pl-c1">changeOrigin</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c1">pathRewrite</span>: <span class="pl-kos">{</span>\n        <span class="pl-s">"^/api-agt"</span>: <span class="pl-s">""</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c">// 线上代理</span>\n    <span class="pl-s">""</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">target</span>: <span class="pl-s">`http://h5.baishi360.cn/prod-api/`</span><span class="pl-kos">,</span>\n      <span class="pl-c1">changeOrigin</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-3">生产环境</h2>\n<ul dir="auto">\n<li><a href="https://github.com/Tencent/vConsole">vConsole</a></li>\n</ul>\n<p dir="auto">A lightweight, extendable front-end developer tool for mobile web page.</p>\n<ul dir="auto">\n<li><a href="https://github.com/liriliri/eruda">eruda</a></li>\n</ul>\n<p dir="auto">Console for mobile browsers</p>\n<ul dir="auto">\n<li>fiddler 抓包调试</li>\n</ul>\n<p dir="auto">推荐操作资料：<a href="https://juejin.im/post/6844904042422861831" rel="nofollow">Fiddler “抓包“最新详细教程</a></p>\n<p dir="auto">辅助工具：<a href="https://chrome.google.com/webstore/detail/padekgcemlokbadohgkifijomclgjgif" rel="nofollow">Proxy SwitchyOmega</a> - 轻松快捷地管理和切换多个代理设置</p>\n<p dir="auto">操作步骤：参照上面的资料进行，我的关键步骤截图<a href="https://github.com/yanyue404/blog/tree/master/assets/fiddler">在这里</a>（ip： 172.16.1.141）</p>\n<p dir="auto">注意项：在移动端真机调试的时候需要勾选 <code class="notranslate">Allow remote computers to connect</code></p>\n<ul dir="auto">\n<li><a href="https://github.com/wuchangming/spy-debugger">spy-debugger</a></li>\n</ul>\n<p dir="auto">微信调试，各种 WebView 样式调试、手机浏览器的页面真机调试。便捷的远程调试手机页面、抓包工具，支持：HTTP/HTTPS，无需 USB 连接设备。</p>\n<h2 id="main-heading-H2-4">移动端调试工具预留</h2>\n<blockquote>\n<p dir="auto">Eruda || vConsole</p>\n</blockquote>\n<p dir="auto"><strong>方案 1：</strong></p>\n<p dir="auto">实现效果：</p>\n<ol dir="auto">\n<li>NODE_ENV 为 development 模式时开启 debug 模式</li>\n<li>NODE_ENV 为 production 模式时可手动开启（与关闭）debug 模式 （通过预留的点击后门）</li>\n<li>跳转的页面添加 <code class="notranslate">debug=true</code> URL 参数可以打开调试模式</li>\n</ol>\n<ul dir="auto">\n<li><code class="notranslate">public/index.html</code></li>\n</ul>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;script&gt;\n  (function () {\n    var ENV = sessionStorage.getItem(&quot;ENV&quot;);\n    console.log(&quot;ENV：&quot;, ENV);\n    var src = &quot;&quot;;\n\n    if (\n      ENV == &quot;development&quot; ||\n      localStorage.getItem(&quot;debug&quot;) === &quot;true&quot; ||\n      /debug=true/.test(window.location)\n    ) {\n      src = &quot;https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js&quot;;\n    }\n    // FIX: Uncaught TypeError: VConsole is not a constructor\n    if (ENV) {\n      document.write(&quot;&lt;scr&quot; + \'ipt src=&quot;\' + src + \'&quot;&gt;&lt;/scr\' + &quot;ipt&gt;&quot;);\n      document.write(\n        &quot;&lt;scr&quot; + &quot;ipt&gt; var VConsole = new VConsole();&lt;/scr&quot; + &quot;ipt&gt;&quot;\n      );\n    }\n  })();\n&lt;/script&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">var</span> <span class="pl-c1">ENV</span> <span class="pl-c1">=</span> <span class="pl-s1">sessionStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"ENV"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"ENV："</span><span class="pl-kos">,</span> <span class="pl-c1">ENV</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">var</span> <span class="pl-s1">src</span> <span class="pl-c1">=</span> <span class="pl-s">""</span><span class="pl-kos">;</span>\n\n    <span class="pl-k">if</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">ENV</span> <span class="pl-c1">==</span> <span class="pl-s">"development"</span> <span class="pl-c1">||</span>\n      <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">)</span> <span class="pl-c1">===</span> <span class="pl-s">"true"</span> <span class="pl-c1">||</span>\n      <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">b</span><span class="pl-s">u</span><span class="pl-s">g</span><span class="pl-s">=</span><span class="pl-s">t</span><span class="pl-s">r</span><span class="pl-s">u</span><span class="pl-s">e</span><span class="pl-c1">/</span></span><span class="pl-kos">.</span><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">location</span><span class="pl-kos">)</span>\n    <span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">src</span> <span class="pl-c1">=</span> <span class="pl-s">"https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-c">// FIX: Uncaught TypeError: VConsole is not a constructor</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">ENV</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">write</span><span class="pl-kos">(</span><span class="pl-s">"&lt;scr"</span> <span class="pl-c1">+</span> <span class="pl-s">\'ipt src="\'</span> <span class="pl-c1">+</span> <span class="pl-s1">src</span> <span class="pl-c1">+</span> <span class="pl-s">\'"&gt;&lt;/scr\'</span> <span class="pl-c1">+</span> <span class="pl-s">"ipt&gt;"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">write</span><span class="pl-kos">(</span>\n        <span class="pl-s">"&lt;scr"</span> <span class="pl-c1">+</span> <span class="pl-s">"ipt&gt; var VConsole = new VConsole();&lt;/scr"</span> <span class="pl-c1">+</span> <span class="pl-s">"ipt&gt;"</span>\n      <span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span></pre></div>\n<ul dir="auto">\n<li><code class="notranslate">main.js</code></li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="sessionStorage.setItem(&quot;ENV&quot;, process.env.NODE_ENV);\n\n// 如果重定向后需要开启 debug 就不用关闭了\nlocalStorage.getItem(&quot;debug&quot;) === &quot;true&quot;\n  ? &quot;&quot;\n  : localStorage.setItem(&quot;debug&quot;, false);"><pre class="notranslate"><span class="pl-s1">sessionStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">"ENV"</span><span class="pl-kos">,</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 如果重定向后需要开启 debug 就不用关闭了</span>\n<span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">)</span> <span class="pl-c1">===</span> <span class="pl-s">"true"</span>\n  ? <span class="pl-s">""</span>\n  : <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">,</span> <span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li><code class="notranslate">home.vue</code></li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 点击规则详情10次就可以唤起 debug 模式了，再点击10次就关闭 debug 模式\nvar count = 0;\nconst showDebug = () =&gt; {\n  if (count &gt;= 10) {\n    var debug = localStorage.getItem(&quot;debug&quot;);\n    console.log(&quot;debug&quot;, debug);\n    if (!debug || debug === &quot;false&quot;) {\n      localStorage.setItem(&quot;debug&quot;, &quot;true&quot;);\n    } else {\n      localStorage.setItem(&quot;debug&quot;, &quot;false&quot;);\n    }\n    count = 0; // 清零\n    location.reload(); // 重载\n  }\n  count++;\n};"><pre class="notranslate"><span class="pl-c">// 点击规则详情10次就可以唤起 debug 模式了，再点击10次就关闭 debug 模式</span>\n<span class="pl-k">var</span> <span class="pl-s1">count</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>\n<span class="pl-k">const</span> <span class="pl-en">showDebug</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">count</span> <span class="pl-c1">&gt;=</span> <span class="pl-c1">10</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">var</span> <span class="pl-s1">debug</span> <span class="pl-c1">=</span> <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">,</span> <span class="pl-s1">debug</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">debug</span> <span class="pl-c1">||</span> <span class="pl-s1">debug</span> <span class="pl-c1">===</span> <span class="pl-s">"false"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">,</span> <span class="pl-s">"true"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">"debug"</span><span class="pl-kos">,</span> <span class="pl-s">"false"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-s1">count</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-c">// 清零</span>\n    <span class="pl-s1">location</span><span class="pl-kos">.</span><span class="pl-en">reload</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 重载</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-s1">count</span><span class="pl-c1">++</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>方案 2：</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 依托环境变量注入\n{{ ENV.PATH_TYPE === &quot;production&quot; ? `` :  `&lt;script src=&quot;https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js&gt;&lt;/script&gt;`}} \n\n// app.html\n &lt;script&gt;\n      if(location.href.indexOf(\'?vconsole=true\') &gt; 0) {\n          var sc = document.createElement(\'script\');\n          sc.src=&quot;https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js&quot;;\n          document.head.insertBefore(sc, document.head.firstChild);\n      }\n  &lt;/script&gt;"><pre class="notranslate"><span class="pl-c">// 依托环境变量注入</span>\n<span class="pl-kos">{</span><span class="pl-kos">{</span> <span class="pl-c1">ENV</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">===</span> <span class="pl-s">"production"</span> ? <span class="pl-s">``</span> :  <span class="pl-s">`&lt;script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js&gt;&lt;/script&gt;`</span><span class="pl-kos">}</span><span class="pl-kos">}</span> \n\n<span class="pl-c">// app.html</span>\n <span class="pl-c1">&lt;</span><span class="pl-s1">script</span><span class="pl-c1">&gt;</span>\n      if(location.href.indexOf(\'?vconsole=true\') <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-s1">var</span> <span class="pl-s1">sc</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">\'script\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-s1">sc</span><span class="pl-kos">.</span><span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"</span><span class="pl-kos">;</span>\n          <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">head</span><span class="pl-kos">.</span><span class="pl-en">insertBefore</span><span class="pl-kos">(</span><span class="pl-s1">sc</span><span class="pl-kos">,</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">head</span><span class="pl-kos">.</span><span class="pl-c1">firstChild</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-s1">script</span><span class="pl-c1">&gt;</span></pre></div>\n<p dir="auto"><strong>方案 3：</strong>（<strong>推荐</strong>）</p>\n<p dir="auto"><strong>Whistle</strong> ，参见 <a href="https://github.com/yanyue404/blog/issues/204" data-hovercard-type="issue" data-hovercard-url="/yanyue404/blog/issues/204/hovercard">使用教程</a></p>\n<h2 id="main-heading-H2-5">Node</h2>\n<p dir="auto">Inspector 原理</p>\n<ul dir="auto">\n<li>WebSockets 服务（监听命令）</li>\n<li>Inspector 协议</li>\n<li>Http 服务（获取元信息）</li>\n</ul>\n<p dir="auto"><strong>Chrome DevTools</strong></p>\n<ul dir="auto">\n<li>访问 <code class="notranslate">chrome://inspect</code>,点击<code class="notranslate">配置</code>按钮，确保 Host Port 正确，然后点击 下方<code class="notranslate">inspect</code>按钮进入调试页面，打上断点后，在浏览器窗口打开监听的原始端口即可调试</li>\n<li>借助 vscode 打印的端口号 （<code class="notranslate">node --inspect app.js</code>）访问端口 <code class="notranslate">localhost:9229/json</code>获取元信息,在浏览器中访问 <code class="notranslate">devtoolsFrontendUrl</code></li>\n<li>在 chrome <code class="notranslate">http://localhost:3000/</code>打开开发者页面，选择 <code class="notranslate">Elements</code>元素按钮左侧的 <code class="notranslate">Node.js</code>图标，可进入调试页面</li>\n</ul>\n<h2 id="main-heading-H2-6">参考资料</h2>\n<ul dir="auto">\n<li><a href="https://www.imooc.com/learn/1093" rel="nofollow">imooc - node.js 调试入门</a></li>\n<li><a href="https://github.com/nswbmw/node-in-debugging">node-in-debugging</a></li>\n<li><a href="https://www.zhihu.com/question/43687153/answer/149944688" rel="nofollow">断点调试</a></li>\n<li><a href="https://stackoverflow.com/questions/42714449/vscode-debugging-with-create-react-app" rel="nofollow">stackoverflow - vscode-debugging-with-create-react-app</a></li>\n<li><a href="https://github.com/senntyou/blogs/blob/master/web-extend/8.md">细说 js 压缩、sourcemap、通过 sourcemap 查找原始报错信息</a></li>\n<li><a href="https://zhuanlan.zhihu.com/p/30916362" rel="nofollow">移动端网页调试神器 Eruda 使用技巧</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:p,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/29"},navList:[{text:"前言",id:"main-heading-H2-0",type:a,children:[]},{text:"目录",id:"main-heading-H2-1",type:a,children:[]},{text:"开发阶段",id:"main-heading-H2-2",type:a,children:[]},{text:"生产环境",id:"main-heading-H2-3",type:a,children:[]},{text:"移动端调试工具预留",id:"main-heading-H2-4",type:a,children:[]},{text:"Node",id:"main-heading-H2-5",type:a,children:[]},{text:"参考资料",id:"main-heading-H2-6",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:p}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,1005 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>webpack3使用说明 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="webpack 3 入门命令 随后会用webpack-dev-server替代 基本构建 webpack src/app.js dist/app.bundle.js 开发环境实时构建 webpack --watch 生产环境中构建 webpack -p 其他 webpack -d – 包含资源地图 "><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="webpack3使用说明"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="webpack 3 入门命令 随后会用webpack-dev-server替代 基本构建 webpack src/app.js dist/app.bundle.js 开发环境实时构建 webpack --watch 生产环境中构建 webpack -p 其他 webpack -d – 包含资源地图 "><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="webpack3使用说明"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="webpack 3 入门命令 随后会用webpack-dev-server替代 基本构建 webpack src/app.js dist/app.bundle.js 开发环境实时构建 webpack --watch 生产环境中构建 webpack -p 其他 webpack -d – 包含资源地图 "><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-0" title="入门命令" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              入门命令
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-1" title="其他" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  其他
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-2" title="html-webpack-plugin" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              html-webpack-plugin
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-3" title="css-loader" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              css-loader
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-4" title="webpack-dev-server" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              webpack-dev-server
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-5" title="webpack 和 babel 配置 react 开发环境" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              webpack 和 babel 配置 react 开发环境
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-6" title="3.在 webpack 使用 babel-loader" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.在 webpack 使用 babel-loader
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-7" title="4. 写 react 组件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4. 写 react 组件
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-8" title="用 clean-webpack-plugin 来清除文件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              用 clean-webpack-plugin 来清除文件
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-9" title="配置多个 HTML 文件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              配置多个 HTML 文件
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-10" title="使用 pug (jade) 作为 HTML 的模板" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              使用 pug (jade) 作为 HTML 的模板
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-11" title="如何使用模块热替换 HMR 来处理 CSS" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              如何使用模块热替换 HMR 来处理 CSS
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-12" title="1.启用 HMR" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.启用 HMR
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-13" title="2.处理 extract-text-webpack-plugin" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.处理 extract-text-webpack-plugin
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-14" title="生产环境 vs 开发环境" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              生产环境 vs 开发环境
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-15" title="1. 增加环境变量" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. 增加环境变量
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-16" title="2.使用环境变量" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.使用环境变量
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-17" title="3.window平台使用" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.window平台使用
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H2-18" title="如何打包图片" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              如何打包图片
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-19" title="1.file-loader" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.file-loader
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-20" title="2. file-loader 的参数" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. file-loader 的参数
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-21" title="3.解析 html 代码里面 img 的标签" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.解析 html 代码里面 img 的标签
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/33#main-heading-H3-22" title="4. 压缩图片" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4. 压缩图片
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>webpack3使用说明</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>webpack3使用说明</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-05-31</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 30 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><blockquote>
+<p dir="auto">webpack 3</p>
+</blockquote>
+<h2 id="main-heading-H2-0">入门命令</h2>
+<blockquote>
+<p dir="auto">随后会用webpack-dev-server替代<br>
+基本构建</p>
+</blockquote>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="webpack src/app.js dist/app.bundle.js"><pre class="notranslate">webpack src/app.js dist/app.bundle.js</pre></div>
+<p dir="auto">开发环境实时构建</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="webpack --watch "><pre class="notranslate">webpack --watch </pre></div>
+<p dir="auto">生产环境中构建</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="webpack -p"><pre class="notranslate">webpack -p</pre></div>
+<h3 id="main-heading-H3-1">其他</h3>
+<ul dir="auto">
+<li>webpack -d – 包含资源地图</li>
+<li>webpack --colors - 让编译的输出内容带有颜色</li>
+</ul>
+<h2 id="main-heading-H2-2">html-webpack-plugin</h2>
+<blockquote>
+<p dir="auto">自动生成html文件，指定模板，添加hash，mini</p>
+</blockquote>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install html-webpack-plugin --save-dev"><pre class="notranslate">$ npm install html-webpack-plugin --save-dev</pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/app.js',
+  output: {
+    path: __dirname + '/dist',
+    filename: 'app.bundle.js'
+  },
+  plugins: [new HtmlWebpackPlugin({
+    template: './src/index.html',
+    filename: 'index.html',
+    minify: {
+      collapseWhitespace: true,
+    },
+    hash: true,
+  })]
+};"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-v">HtmlWebpackPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'html-webpack-plugin'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">entry</span>: <span class="pl-s">'./src/app.js'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">path</span>: <span class="pl-s1">__dirname</span> <span class="pl-c1">+</span> <span class="pl-s">'/dist'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">filename</span>: <span class="pl-s">'app.bundle.js'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span><span class="pl-k">new</span> <span class="pl-v">HtmlWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">template</span>: <span class="pl-s">'./src/index.html'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">filename</span>: <span class="pl-s">'index.html'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">minify</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">collapseWhitespace</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">hash</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">]</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-3">css-loader</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev css-loader style-loader"><pre class="notranslate">$ npm install --save-dev css-loader style-loader</pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      }
+    ]
+  }"><pre class="notranslate"> module: <span class="pl-kos">{</span>
+    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">use</span>: <span class="pl-kos">[</span> <span class="pl-s">'style-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'css-loader'</span> <span class="pl-kos">]</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span></pre></div>
+<ul dir="auto">
+<li>sass-loader</li>
+</ul>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install sass-loader node-sass --save-dev
+# 安装（中间可能要下载二进制包，要耐心等待）"><pre class="notranslate">$ npm install sass-loader node-sass --save-dev
+<span class="pl-c"><span class="pl-c">#</span> 安装（中间可能要下载二进制包，要耐心等待）</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import css from './app.scss';"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">css</span> <span class="pl-k">from</span> <span class="pl-s">'./app.scss'</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" rules: [
+      {
+        test: /\.scss$/,
+        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+      }"><pre class="notranslate"> <span class="pl-s1">rules</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">use</span>: <span class="pl-kos">[</span> <span class="pl-s">'style-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'css-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'sass-loader'</span> <span class="pl-kos">]</span>
+      <span class="pl-kos">}</span></pre></div>
+<ul dir="auto">
+<li>extract-text-webpack-plugin</li>
+</ul>
+<blockquote>
+<p dir="auto">用 extract-text-webpack-plugin 把 CSS 分离成文件</p>
+</blockquote>
+<p dir="auto">有时候我们要把 SASS 或 CSS 处理好后，放到一个 CSS 文件中，用这个插件就可以实现。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev extract-text-webpack-plugin"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">extract</span><span class="pl-c1">-</span><span class="pl-s1">text</span><span class="pl-c1">-</span><span class="pl-s1">webpack</span><span class="pl-c1">-</span><span class="pl-s1">plugin</span></pre></div>
+<h2 id="main-heading-H2-4">webpack-dev-server</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 先全局安装
+$ npm install -g webpack-dev-server@2.9.1
+$ npm install webpack-dev-server@2.9.1 --save-dev
+$ npm install webpack-cli -D"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 先全局安装</span>
+$ npm install -g webpack-dev-server@2.9.1
+$ npm install webpack-dev-server@2.9.1 --save-dev
+$ npm install webpack-cli -D</pre></div>
+<p dir="auto">自动打开，切换端口号</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {
+  entry: './src/app.js',
+  ...
+  devServer: {
+    port: 9000,
+    open: true
+  },
+  ...
+};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">entry</span>: <span class="pl-s">'./src/app.js'</span><span class="pl-kos">,</span>
+  ...
+  <span class="pl-s1">devServer</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">port</span>: <span class="pl-c1">9000</span><span class="pl-kos">,</span>
+    <span class="pl-c1">open</span>: <span class="pl-c1">true</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  ...
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">然后运行命令：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ webpack-dev-server"><pre class="notranslate">$ webpack-dev-server</pre></div>
+<h2 id="main-heading-H2-5">webpack 和 babel 配置 react 开发环境</h2>
+<h3 id="main-heading-H3-6">3.在 webpack 使用 babel-loader</h3>
+<p dir="auto">最后我们需要在 webpack 中使用一个 loader 来转化 react 的代码。<br>
+首先，安装。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev babel-loader"><pre class="notranslate">$ npm install --save-dev babel-loader</pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = {
+  entry: './src/app.js',
+  ...
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          //resolve-url-loader may be chained before sass-loader if necessary
+          use: ['css-loader', 'sass-loader']
+        })
+      },
+      // 这两行是处理 react 相关的内容
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+    ]
+  }
+};"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-v">HtmlWebpackPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'html-webpack-plugin'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-v">ExtractTextPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'extract-text-webpack-plugin'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">entry</span>: <span class="pl-s">'./src/app.js'</span><span class="pl-kos">,</span>
+  ...
+  <span class="pl-smi">module</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">use</span>: <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">.</span><span class="pl-en">extract</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">fallback</span>: <span class="pl-s">'style-loader'</span><span class="pl-kos">,</span>
+          <span class="pl-c">//resolve-url-loader may be chained before sass-loader if necessary</span>
+          <span class="pl-c1">use</span>: <span class="pl-kos">[</span><span class="pl-s">'css-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'sass-loader'</span><span class="pl-kos">]</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 这两行是处理 react 相关的内容</span>
+      <span class="pl-kos">{</span> <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span> <span class="pl-c1">loader</span>: <span class="pl-s">'babel-loader'</span><span class="pl-kos">,</span> <span class="pl-c1">exclude</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-c1">/</span></span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">{</span> <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-s">x</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span> <span class="pl-c1">loader</span>: <span class="pl-s">'babel-loader'</span><span class="pl-kos">,</span> <span class="pl-c1">exclude</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-c1">/</span></span> <span class="pl-kos">}</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-7">4. 写 react 组件</h3>
+<p dir="auto"><strong>src/index.html</strong></p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>'><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">></span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">></span>Hello World<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span>="<span class="pl-s">root</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">></span></pre></div>
+<p dir="auto"><strong>src/app.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import css from './app.scss';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Root from './Root';
+
+ReactDOM.render(
+  <Root></Root>,
+  document.getElementById('root')
+);"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">css</span> <span class="pl-k">from</span> <span class="pl-s">'./app.scss'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">'react-dom'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">Root</span> <span class="pl-k">from</span> <span class="pl-s">'./Root'</span><span class="pl-kos">;</span>
+
+<span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>
+  <span class="pl-c1">&lt;</span><span class="pl-v">Root</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-v">Root</span><span class="pl-c1">></span><span class="pl-kos">,</span>
+  <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">'root'</span><span class="pl-kos">)</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>src/Root.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React from 'react';
+
+export default class Root extends React.Component {
+  render() {
+    return (
+      <div style={{textAlign: 'center'}}>
+        <h1>Hello World</h1>
+      </div>);
+  }
+}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">class</span> <span class="pl-v">Root</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">textAlign</span>: <span class="pl-s">'center'</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">h1</span><span class="pl-c1">></span>Hello World<span class="pl-kos">&lt;/</span><span class="pl-s1">h1</span><span class="pl-c1">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-8">用 clean-webpack-plugin 来清除文件</h2>
+<p dir="auto">生产环境每次执行<code class="notranslate">npm run build</code>都会在dist文件目录生成新的<code class="notranslate">app.bundle.d01ae8858971a17f8ed2.js </code>，再多运行几次，生成的带 hash 的 app.bundle.js 文件就会很多。</p>
+<p dir="auto">这些带 hash 的 app.bundle.js 只有最新的才有用，其他的都没用，我们要在 build 之前把它们全清空：</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm i clean-webpack-plugin --save-dev
+"><pre class="notranslate">$ npm i clean-webpack-plugin --save-dev
+</pre></div>
+<p dir="auto"><strong>webpack.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require('path')
+...
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+let pathsToClean = [
+  'dist',
+]
+
+module.exports = {
+  entry: {
+    &#34;app.bundle&#34;: './src/app.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[chunkhash].js'
+  },
+  ...
+  plugins: [
+    new CleanWebpackPlugin(pathsToClean),
+    ...
+    new ExtractTextPlugin('style.css')
+  ],
+  ...
+};
+"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'path'</span><span class="pl-kos">)</span>
+<span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span>
+<span class="pl-c1">const</span><span class="pl-kos"></span> <span class="pl-v">CleanWebpackPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'clean-webpack-plugin'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-k">let</span> <span class="pl-s1">pathsToClean</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
+  <span class="pl-s">'dist'</span><span class="pl-kos">,</span>
+<span class="pl-kos">]</span>
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"app.bundle"</span>: <span class="pl-s">'./src/app.js'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">path</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">'dist'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-c1">filename</span>: <span class="pl-s">'[name].[chunkhash].js'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  ...
+  <span class="pl-s1">plugins</span>: <span class="pl-kos">[</span>
+    <span class="pl-k">new</span> <span class="pl-v">CleanWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-s1">pathsToClean</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    ...
+    <span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-s">'style.css'</span><span class="pl-kos">)</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  ...
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">现在运行 npm run build 试试，只有下面的文件：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="dist
+├── app.bundle.0e380cea371d050137cd.js
+├── index.html
+└── style.css"><pre class="notranslate"><code class="notranslate">dist
+├── app.bundle.0e380cea371d050137cd.js
+├── index.html
+└── style.css
+</code></pre></div>
+<h2 id="main-heading-H2-9">配置多个 HTML 文件</h2>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {
+  entry: {
+    &#34;app.bundle&#34;: './src/app.js',
+    // 这行是新增的。
+    &#34;contact&#34;: './src/contact.js'
+  },
+  ...
+  plugins: [
+    new CleanWebpackPlugin(pathsToClean),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      minify: {
+        collapseWhitespace: true,
+      },
+      hash: true,
+      // 这行是新增的。
+      excludeChunks: ['contact']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/contact.html',
+      filename: 'contact.html',
+      minify: {
+        collapseWhitespace: true,
+      },
+      hash: true,
+      // 这行是新增的。
+      chunks: ['contact']
+    }),
+    new ExtractTextPlugin('style.css')
+  ],
+  ...
+};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"app.bundle"</span>: <span class="pl-s">'./src/app.js'</span><span class="pl-kos">,</span>
+    <span class="pl-c">// 这行是新增的。</span>
+    <span class="pl-s">"contact"</span>: <span class="pl-s">'./src/contact.js'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  ...
+  <span class="pl-s1">plugins</span>: <span class="pl-kos">[</span>
+    <span class="pl-k">new</span> <span class="pl-v">CleanWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-s1">pathsToClean</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-k">new</span> <span class="pl-v">HtmlWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">template</span>: <span class="pl-s">'./src/index.html'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">filename</span>: <span class="pl-s">'index.html'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">minify</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">collapseWhitespace</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c1">hash</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 这行是新增的。</span>
+      <span class="pl-c1">excludeChunks</span>: <span class="pl-kos">[</span><span class="pl-s">'contact'</span><span class="pl-kos">]</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-k">new</span> <span class="pl-v">HtmlWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">template</span>: <span class="pl-s">'./src/contact.html'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">filename</span>: <span class="pl-s">'contact.html'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">minify</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">collapseWhitespace</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-c1">hash</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-c">// 这行是新增的。</span>
+      <span class="pl-c1">chunks</span>: <span class="pl-kos">[</span><span class="pl-s">'contact'</span><span class="pl-kos">]</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-s">'style.css'</span><span class="pl-kos">)</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  ...
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">上面的 excludeChunks 指的是不包含， chunks 代表的是包含。</p>
+<h2 id="main-heading-H2-10">使用 pug (jade) 作为 HTML 的模板</h2>
+<blockquote>
+<p dir="auto">pug,nodejs的html模板</p>
+</blockquote>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev pug pug-html-loader raw-loader"><pre class="notranslate">npm install --save-dev pug pug-html-loader raw-loader</pre></div>
+<p dir="auto"><strong>src/index.pug</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="doctype html
+html(lang=&#34;en&#34;)
+  head
+    title= pageTitle
+    script(type='text/javascript').
+      if (foo) bar(1 + 5)
+  body
+    h1 Pug - node template engine
+    #root
+    #container.col
+      if youAreUsingPug
+        p You are amazing
+      else
+        p Get on it!
+      p.
+        Pug is a terse and simple templating language with a
+        strong focus on performance and powerful features."><pre class="notranslate"><span class="pl-s1">doctype</span> <span class="pl-s1">html</span>
+<span class="pl-en">html</span><span class="pl-kos">(</span><span class="pl-s1">lang</span><span class="pl-c1">=</span><span class="pl-s">"en"</span><span class="pl-kos">)</span>
+  <span class="pl-s1">head</span>
+    <span class="pl-s1">title</span><span class="pl-c1">=</span> <span class="pl-s1">pageTitle</span>
+    <span class="pl-en">script</span><span class="pl-kos">(</span><span class="pl-s1">type</span><span class="pl-c1">=</span><span class="pl-s">'text/javascript'</span><span class="pl-kos">)</span><span class="pl-kos">.</span>
+      <span class="pl-en">if</span> <span class="pl-kos">(</span><span class="pl-s1">foo</span><span class="pl-kos">)</span> <span class="pl-s1">bar</span><span class="pl-kos">(</span><span class="pl-c1">1</span> <span class="pl-c1">+</span> <span class="pl-c1">5</span><span class="pl-kos">)</span>
+  <span class="pl-s1">body</span>
+    <span class="pl-s1">h1</span> <span class="pl-v">Pug</span> <span class="pl-c1">-</span> <span class="pl-s1">node</span> <span class="pl-s1">template</span> <span class="pl-s1">engine</span>
+    #root
+    #container<span class="pl-kos">.</span><span class="pl-s1">col</span>
+      <span class="pl-k">if</span> <span class="pl-s1">youAreUsingPug</span>
+        <span class="pl-s1">p</span> <span class="pl-v">You</span> <span class="pl-s1">are</span><span class="pl-kos"></span> <span class="pl-s1">amazing</span>
+      <span class="pl-s1">else</span>
+        <span class="pl-s1">p</span> <span class="pl-v">Get</span> <span class="pl-s1">on</span> <span class="pl-s1">it</span><span class="pl-c1">!</span>
+      <span class="pl-s1">p</span><span class="pl-kos">.</span>
+        <span class="pl-c1">Pug</span> <span class="pl-s1">is</span> <span class="pl-s1">a</span> <span class="pl-s1">terse</span> <span class="pl-s1">and</span> <span class="pl-s1">simple</span> <span class="pl-s1">templating</span> <span class="pl-s1">language</span> <span class="pl-k">with</span> <span class="pl-s1">a</span>
+        <span class="pl-s1">strong</span> <span class="pl-s1">focus</span> <span class="pl-s1">on</span> <span class="pl-s1">performance</span> <span class="pl-s1">and</span> <span class="pl-s1">powerful</span> <span class="pl-s1">features</span><span class="pl-kos">.</span></pre></div>
+<p dir="auto"><strong>webpack.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="
+module.exports = {
+  ...
+  plugins: [
+    ...
+    new HtmlWebpackPlugin({
+      template: './src/index.pug',
+      ...
+    }),
+    ...
+  ],
+  module: {
+    rules: [
+      ...
+      { test: /\.pug$/, loader: ['raw-loader', 'pug-html-loader'] }
+    ]
+  }
+};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  ...
+  <span class="pl-s1">plugins</span>: <span class="pl-kos">[</span>
+    ...
+    <span class="pl-k">new</span> <span class="pl-v">HtmlWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">template</span>: <span class="pl-s">'./src/index.pug'</span><span class="pl-kos">,</span>
+      ...
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    ...
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">module</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>
+      ...
+      <span class="pl-kos">{</span> <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">p</span><span class="pl-s">u</span><span class="pl-s">g</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span> <span class="pl-c1">loader</span>: <span class="pl-kos">[</span><span class="pl-s">'raw-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'pug-html-loader'</span><span class="pl-kos">]</span> <span class="pl-kos">}</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">我们来试试 pug 的 include 功能，就是可以包含子模板。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...
+  body
+    include includes/header.pug
+    ..."><pre class="notranslate">...
+  <span class="pl-s1">body</span>
+    <span class="pl-s1">include</span> <span class="pl-s1">includes</span><span class="pl-c1">/</span><span class="pl-s1">header</span><span class="pl-kos">.</span><span class="pl-c1">pug</span>
+    <span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span></pre></div>
+<p dir="auto"><strong>src/includes/header.pug</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  h1 from header pug file"><pre class="notranslate">  <span class="pl-s1">h1</span> <span class="pl-s1">from</span> <span class="pl-s1">header</span> <span class="pl-s1">pug</span> <span class="pl-s1">file</span></pre></div>
+<p dir="auto">目录结构是这样的：</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="src
+├── Root.js
+├── app.js
+├── app.scss
+├── contact.html
+├── contact.js
+├── includes
+│   └── header.pug
+└── index.pug"><pre class="notranslate"><code class="notranslate">src
+├── Root.js
+├── app.js
+├── app.scss
+├── contact.html
+├── contact.js
+├── includes
+│   └── header.pug
+└── index.pug
+</code></pre></div>
+<h2 id="main-heading-H2-11">如何使用模块热替换 HMR 来处理 CSS</h2>
+<h3 id="main-heading-H3-12">1.启用 HMR</h3>
+<p dir="auto"><strong>webpack.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  devServer: {
+    port: 9000,
+    open: true,
+  }"><pre class="notranslate">  devServer: <span class="pl-kos">{</span>
+    <span class="pl-c1">port</span>: <span class="pl-c1">9000</span><span class="pl-kos">,</span>
+    <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span></pre></div>
+<p dir="auto">改成下面这样：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" devServer: {
+    port: 9000,
+    open: true,
+    hot: true
+  }"><pre class="notranslate"> devServer: <span class="pl-kos">{</span>
+    <span class="pl-c1">port</span>: <span class="pl-c1">9000</span><span class="pl-kos">,</span>
+    <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-c1">hot</span>: <span class="pl-c1">true</span>
+  <span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>webpack.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...
+const webpack = require('webpack');
+
+...
+
+module.exports = {
+  entry: {
+    &#34;app.bundle&#34;: './src/app.js',
+    &#34;contact&#34;: './src/contact.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[chunkhash].js'
+  },
+  devServer: {
+    port: 9000,
+    open: true,
+    hot: true
+  },
+  plugins: [
+    new CleanWebpackPlugin(pathsToClean),
+    ...
+    // 这两行是新增的
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  ...
+};
+"><pre class="notranslate">...
+<span class="pl-k">const</span> <span class="pl-s1">webpack</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'webpack'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+...
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">"app.bundle"</span>: <span class="pl-s">'./src/app.js'</span><span class="pl-kos">,</span>
+    <span class="pl-s">"contact"</span>: <span class="pl-s">'./src/contact.js'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">path</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">'dist'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-c1">filename</span>: <span class="pl-s">'[name].[chunkhash].js'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">devServer</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">port</span>: <span class="pl-c1">9000</span><span class="pl-kos">,</span>
+    <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-c1">hot</span>: <span class="pl-c1">true</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>
+    <span class="pl-k">new</span> <span class="pl-v">CleanWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-s1">pathsToClean</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    ...
+    <span class="pl-c">// 这两行是新增的</span>
+    <span class="pl-k">new</span> <span class="pl-s1">webpack</span><span class="pl-kos">.</span><span class="pl-c1">NamedModulesPlugin</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-k">new</span> <span class="pl-s1">webpack</span><span class="pl-kos">.</span><span class="pl-c1">HotModuleReplacementPlugin</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  ...
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>报错！！！文件名还不能用 chunkhash 了，它说要用 hash 来代替 chunkhash。</strong></p>
+<p dir="auto">chunkhash是每个文件都使用不同的hash值</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="filename: '[name].[chunkhash].js'"><pre class="notranslate">filename: <span class="pl-s">'[name].[chunkhash].js'</span></pre></div>
+<p dir="auto">hash指每个文件使用相同的hash值</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="filename: '[name].[hash].js'"><pre class="notranslate">filename: <span class="pl-s">'[name].[hash].js'</span></pre></div>
+<h3 id="main-heading-H3-13">2.处理 extract-text-webpack-plugin</h3>
+<p dir="auto">现在你试一下改变 src/app.scss 的内容，你会发现页面不动了，你无论怎么改，页面都不会改变，也不会刷新。</p>
+<p dir="auto">之前我们是用 extract-text-webpack-plugin 这个插件来处理 CSS 的，在用 HMR 的时候要先把它关闭一下。</p>
+<p dir="auto">用一个参数 disable: true 就可以关闭掉。</p>
+<p dir="auto"><strong>webpack.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='new ExtractTextPlugin("style.css")'><pre class="notranslate"><span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-s">"style.css"</span><span class="pl-kos">)</span></pre></div>
+<p dir="auto">变成</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="new ExtractTextPlugin({
+  filename: 'style.css',
+  disable: true
+}),"><pre class="notranslate"><span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">filename</span>: <span class="pl-s">'style.css'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">disable</span>: <span class="pl-c1">true</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span></pre></div>
+<p dir="auto">然后把处理 scss 文件的 loader 部分变成类似下面这样：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...
+  test: /\.scss$/,
+  use: ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    //resolve-url-loader may be chained before sass-loader if necessary
+    use: ['css-loader', 'sass-loader']
+  })
+...
+"><pre class="notranslate">...
+  <span class="pl-s1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+  <span class="pl-s1">use</span>: <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">.</span><span class="pl-en">extract</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">fallback</span>: <span class="pl-s">'style-loader'</span><span class="pl-kos">,</span>
+    <span class="pl-c">//resolve-url-loader may be chained before sass-loader if necessary</span>
+    <span class="pl-c1">use</span>: <span class="pl-kos">[</span><span class="pl-s">'css-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'sass-loader'</span><span class="pl-kos">]</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span></pre></div>
+<p dir="auto">变成</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...
+  test: /\.scss$/,
+  use: ['style-loader', 'css-loader', 'sass-loader']
+..."><pre class="notranslate">...
+  <span class="pl-s1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+  <span class="pl-s1">use</span>: <span class="pl-kos">[</span><span class="pl-s">'style-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'css-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'sass-loader'</span><span class="pl-kos">]</span>
+<span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span></pre></div>
+<p dir="auto">再试试，能够生效。</p>
+<p dir="auto">为什么要关闭呢这个插件呢？</p>
+<p dir="auto">其实想想也能知道，在开发环境下，用不用 extract-text-webpack-plugin 这个插件，意义不大，你把 css 变不变成一个文件，关系不大，开发环境只要能调效，效果能够看到就可以，但是生产环境需要这个插件，我们总不能开发环境不使用这个插件，也导致生产环境也不使用吧？</p>
+<p dir="auto">那如何解决这个问题呢？也就是说让生产环境使用这个插件，而开发环境不使用.</p>
+<h2 id="main-heading-H2-14">生产环境 vs 开发环境</h2>
+<p dir="auto">要让生产环境使用 extract-text-webpack-plugin 这个插件，而开发环境不使用，如何做到呢？</p>
+<p dir="auto">其实原理很简单，只要能区分出哪个是开发环境，哪个是生产环境就可以，只要判断是生产环境的时候就用，不是的话...</p>
+<h3 id="main-heading-H3-15">1. 增加环境变量</h3>
+<p dir="auto">首先来看一下之前的开发环境和生产环境分别使用的编译命令：</p>
+<p dir="auto"><strong>webpack.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='"scripts": {
+  "dev": "webpack-dev-server",
+  "prod": "webpack -p"
+},'><pre class="notranslate"><span class="pl-s">"scripts"</span>: <span class="pl-kos">{</span>
+  <span class="pl-s">"dev"</span>: <span class="pl-s">"webpack-dev-server"</span><span class="pl-kos">,</span>
+  <span class="pl-s">"prod"</span>: <span class="pl-s">"webpack -p"</span>
+<span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>
+<p dir="auto">分别是开发环境使用的 npm run dev 命令和生产环境使用的 npm run prod 命令。</p>
+<p dir="auto">我们把它改成下面这样：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='"scripts": {
+  "dev": "webpack-dev-server",
+  "prod": "NODE_ENV=production webpack -p"
+},'><pre class="notranslate"><span class="pl-s">"scripts"</span>: <span class="pl-kos">{</span>
+  <span class="pl-s">"dev"</span>: <span class="pl-s">"webpack-dev-server"</span><span class="pl-kos">,</span>
+  <span class="pl-s">"prod"</span>: <span class="pl-s">"NODE_ENV=production webpack -p"</span>
+<span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>
+<p dir="auto">开发环境的部分不变，生产环境的加了一个环境变量：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="NODE_ENV=production"><pre class="notranslate"><span class="pl-c1">NODE_ENV</span><span class="pl-c1">=</span><span class="pl-s1">production</span></pre></div>
+<p dir="auto">很简单，NODE_ENV 是变量名，而 production 是 NODE_ENV 是这个变量的值，这些都不是固定的，你可以改成你想要的任意内容，只要能引用到就行了。</p>
+<p dir="auto">那么我们如何来使用这个变量呢？</p>
+<h3 id="main-heading-H3-16">2.使用环境变量</h3>
+<p dir="auto">要引用我们之前创建的环境变量，也蛮简单的。</p>
+<p dir="auto">在 webpack.config.js 文件中：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var isProd = process.env.NODE_ENV === 'production'; // true or false"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">isProd</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span> <span class="pl-c1">===</span> <span class="pl-s">'production'</span><span class="pl-kos">;</span> <span class="pl-c">// true or false</span></pre></div>
+<p dir="auto">process.env.NODE_ENV 就能得到之前设置的变量，如果运行的是 npm run prod，那么 process.env.NODE_ENV为true</p>
+<p dir="auto">上一节，我们有类似下面这样的两段关于 extract-text-webpack-plugin 这个插件的代码。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="new ExtractTextPlugin({
+  filename: 'style.css',
+  disable: false
+}),
+
+  test: /\.scss$/,
+  use: ['style-loader', 'css-loader', 'sass-loader']"><pre class="notranslate"><span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">filename</span>: <span class="pl-s">'style.css'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">disable</span>: <span class="pl-c1">false</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+
+  <span class="pl-s1">test</span>: <span class="pl-c1">/</span>\.<span class="pl-s1">scss$</span><span class="pl-c1">/</span><span class="pl-kos">,</span>
+  <span class="pl-s1">use</span>: <span class="pl-kos">[</span><span class="pl-s">'style-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'css-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'sass-loader'</span><span class="pl-kos">]</span></pre></div>
+<p dir="auto">我们把 webpack.config.js 中的代码更改如下：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...
+// 线上线下切换 css-loder
+var isProd = process.env.NODE_ENV === 'production'; // true or false
+var cssDev = ['style-loader', 'css-loader', 'sass-loader'];
+var cssProd = ExtractTextPlugin.extract({
+  fallback: 'style-loader',
+  //resolve-url-loader may be chained before sass-loader if necessary
+  use: ['css-loader', 'sass-loader']
+})
+
+var cssConfig = isProd ? cssProd : cssDev;
+
+module.exports = {
+  ...
+  plugins: [
+    ...
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      disable: !isProd
+    }),
+    ...
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: cssConfig
+      },
+      ...
+    ]
+  }
+};
+
+"><pre class="notranslate">...
+<span class="pl-c">// 线上线下切换 css-loder</span>
+<span class="pl-k">var</span> <span class="pl-s1">isProd</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span> <span class="pl-c1">===</span> <span class="pl-s">'production'</span><span class="pl-kos">;</span> <span class="pl-c">// true or false</span>
+<span class="pl-k">var</span> <span class="pl-s1">cssDev</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">'style-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'css-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'sass-loader'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-k">var</span> <span class="pl-s1">cssProd</span> <span class="pl-c1">=</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">.</span><span class="pl-en">extract</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">fallback</span>: <span class="pl-s">'style-loader'</span><span class="pl-kos">,</span>
+  <span class="pl-c">//resolve-url-loader may be chained before sass-loader if necessary</span>
+  <span class="pl-c1">use</span>: <span class="pl-kos">[</span><span class="pl-s">'css-loader'</span><span class="pl-kos">,</span> <span class="pl-s">'sass-loader'</span><span class="pl-kos">]</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-k">var</span> <span class="pl-s1">cssConfig</span> <span class="pl-c1">=</span> <span class="pl-s1">isProd</span> ? <span class="pl-s1">cssProd</span> : <span class="pl-s1">cssDev</span><span class="pl-kos">;</span>
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  ...
+  <span class="pl-s1">plugins</span>: <span class="pl-kos">[</span>
+    ...
+    <span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">filename</span>: <span class="pl-s">'style.css'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">disable</span>: <span class="pl-c1">!</span><span class="pl-s1">isProd</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    ...
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">module</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">use</span>: <span class="pl-s1">cssConfig</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      ...
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+</pre></div>
+<p dir="auto">只要能区别出不同的环境，使用不同的配置内容就可以了。</p>
+<p dir="auto">现在就可以放心地使用 npm run dev 和 npm run prod 命令了，再也不用临时关掉一些插件了。</p>
+<h3 id="main-heading-H3-17">3.window平台使用</h3>
+<p dir="auto">windows平台：不能直接使用NODE_ENV, 步骤如下：</p>
+<p dir="auto">1.npm install cross-env --save-dev</p>
+<p dir="auto">2.命令改为<br>
+"prod": "cross-env NODE_ENV=production webpack -p"</p>
+<h2 id="main-heading-H2-18">如何打包图片</h2>
+<p dir="auto"><strong>src/app.scss</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="body {
+  background: url('./images/logo.png') 0 0 no-repeat;
+  ...
+}"><pre class="notranslate"><span class="pl-s1">body</span> <span class="pl-kos">{</span>
+  background: <span class="pl-en">url</span><span class="pl-kos">(</span><span class="pl-s">'./images/logo.png'</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-s1">no</span><span class="pl-c1">-</span><span class="pl-s1">repeat</span><span class="pl-kos">;</span>
+  ...
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">然后 npm run dev，你会发现类似下面的错误：<br>
+只要找到适合的 loader 来处理扩展名为 png 的图片文件即可。</p>
+<h3 id="main-heading-H3-19">1.file-loader</h3>
+<blockquote>
+<p dir="auto"><a href="https://github.com/webpack-contrib/file-loader">file-loader</a></p>
+</blockquote>
+<p dir="auto">安装</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev file-loader"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">file</span><span class="pl-c1">-</span><span class="pl-s1">loader</span></pre></div>
+<h3 id="main-heading-H3-20">2. file-loader 的参数</h3>
+<p dir="auto">其实，file-loader 是可以带参数的，例如下面这样：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test: /\.(gif|png|jpe?g|svg)$/i,
+use: [
+  {
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]',
+      outputPath: 'images/'
+    }
+  },"><pre class="notranslate"><span class="pl-s1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-kos">(</span><span class="pl-s">g</span><span class="pl-s">i</span><span class="pl-s">f</span><span class="pl-c1">|</span><span class="pl-s">p</span><span class="pl-s">n</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">j</span><span class="pl-s">p</span><span class="pl-s">e</span><span class="pl-c1">?</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">s</span><span class="pl-s">v</span><span class="pl-s">g</span><span class="pl-kos">)</span><span class="pl-cce">$</span><span class="pl-c1">/</span>i</span><span class="pl-kos">,</span>
+<span class="pl-s1">use</span>: <span class="pl-kos">[</span>
+  <span class="pl-kos">{</span>
+    <span class="pl-c1">loader</span>: <span class="pl-s">'file-loader'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">name</span>: <span class="pl-s">'[name].[ext]'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">outputPath</span>: <span class="pl-s">'images/'</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>
+<p dir="auto"><code class="notranslate">/\.(gif|png|jpe?g|svg)$/i</code> 表示可以处理好多图片的格式，毕竟不只是 png 才是图片，别的扩展名的文件也可能是图片嘛。</p>
+<p dir="auto"><code class="notranslate">[name]</code> 代表文件名，<code class="notranslate">[ext]</code> 代表文件扩展名，<code class="notranslate">outputPath</code> 是输出的路径。</p>
+<h3 id="main-heading-H3-21">3.解析 html 代码里面 img 的标签</h3>
+<p dir="auto">忘了一个重要的地方，之前我们是在 CSS 里引用图片作为背景的，但是，我们经常是在 html 直接使用 src 标签</p>
+<p dir="auto">例如下面这样：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<img src="./images/money-bag.svg" alt="" height=50>'><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"./images/money-bag.svg"</span> <span class="pl-c1">alt</span><span class="pl-c1">=</span><span class="pl-s">""</span> <span class="pl-s1">height</span><span class="pl-c1">=</span><span class="pl-c1">50</span><span class="pl-c1">></span></pre></div>
+<p dir="auto"><strong>src/index.html</strong></p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <img src="./images/money-bag.svg" alt="" height=50>
+</body>
+</html>'><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">></span></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">./images/money-bag.svg</span>" <span class="pl-c1">alt</span>="" <span class="pl-c1">height</span>=<span class="pl-s">50</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">然而结果是这样的：<strong>404了，文件找不到，没有成功。</strong></p>
+<p dir="auto">其实缺少了一个在 html 代码里处理 img 标签的 loader。</p>
+<p dir="auto">这个 loader 是 <a href="https://github.com/webpack-contrib/html-loader">html-loader</a></p>
+<p dir="auto">官方对它的定义是这样的：</p>
+<blockquote>
+<p dir="auto">Exports HTML as string. HTML is minimized when the compiler demands.</p>
+</blockquote>
+<p dir="auto">大概意思是说，把 html 变成导出成字符串的过程中，还能进行压缩处理（minimized）。</p>
+<p dir="auto">现在我们来加上这个 loader。</p>
+<p dir="auto">先安装。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev html-loader"><pre class="notranslate">$ npm install --save-dev html-loader</pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...
+{
+  test: /\.(gif|png|jpe?g|svg)$/i,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+        outputPath: 'images/'
+      }
+    },
+  ]
+},
+// 下面几行才是 html-loader 的配置内容
+{
+  test: /\.html$/,
+  use: [ {
+    loader: 'html-loader',
+    options: {
+      minimize: true
+    }
+  }],
+}
+..."><pre class="notranslate">...
+<span class="pl-kos">{</span>
+  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-kos">(</span><span class="pl-s">g</span><span class="pl-s">i</span><span class="pl-s">f</span><span class="pl-c1">|</span><span class="pl-s">p</span><span class="pl-s">n</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">j</span><span class="pl-s">p</span><span class="pl-s">e</span><span class="pl-c1">?</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">s</span><span class="pl-s">v</span><span class="pl-s">g</span><span class="pl-kos">)</span><span class="pl-cce">$</span><span class="pl-c1">/</span>i</span><span class="pl-kos">,</span>
+  <span class="pl-c1">use</span>: <span class="pl-kos">[</span>
+    <span class="pl-kos">{</span>
+      <span class="pl-c1">loader</span>: <span class="pl-s">'file-loader'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-s">'[name].[ext]'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">outputPath</span>: <span class="pl-s">'images/'</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">]</span>
+<span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-c">// 下面几行才是 html-loader 的配置内容</span>
+<span class="pl-kos">{</span>
+  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">h</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">l</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+  <span class="pl-c1">use</span>: <span class="pl-kos">[</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">loader</span>: <span class="pl-s">'html-loader'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">minimize</span>: <span class="pl-c1">true</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span>
+<span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span></pre></div>
+<p dir="auto">再试试发现就可以了。</p>
+<h3 id="main-heading-H3-22">4. 压缩图片</h3>
+<p dir="auto">有时候图片太大，我们输出到生产环境的时候，希望可以让图片文件的体积小点，webpack 也可以轻易办到，就是自动压缩图片，然后生产环境拿到的图片就会很小。</p>
+<p dir="auto">还是用一个插件，这个插件叫 <a href="https://github.com/tcoopman/image-webpack-loader">image-webpack-loader</a>。</p>
+<p dir="auto">这个插件主要是来压缩图片文件的。</p>
+<p dir="auto">安装。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$  npm install image-webpack-loader --save-dev"><pre class="notranslate">$  npm install image-webpack-loader --save-dev</pre></div>
+<p dir="auto"><strong>webpack.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  test: /\.(gif|png|jpe?g|svg)$/i,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+        outputPath: 'images/'
+      }
+    },
+    {
+      loader: 'image-webpack-loader',
+      options: {
+        bypassOnDebug: true,
+      }
+    }
+  ]
+},
+{
+  test: /\.html$/,
+  use: [ {
+    loader: 'html-loader',
+    options: {
+      minimize: true
+    }
+  }],
+}"><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-kos">(</span><span class="pl-s">g</span><span class="pl-s">i</span><span class="pl-s">f</span><span class="pl-c1">|</span><span class="pl-s">p</span><span class="pl-s">n</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">j</span><span class="pl-s">p</span><span class="pl-s">e</span><span class="pl-c1">?</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">s</span><span class="pl-s">v</span><span class="pl-s">g</span><span class="pl-kos">)</span><span class="pl-cce">$</span><span class="pl-c1">/</span>i</span><span class="pl-kos">,</span>
+  <span class="pl-c1">use</span>: <span class="pl-kos">[</span>
+    <span class="pl-kos">{</span>
+      <span class="pl-c1">loader</span>: <span class="pl-s">'file-loader'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">name</span>: <span class="pl-s">'[name].[ext]'</span><span class="pl-kos">,</span>
+        <span class="pl-c1">outputPath</span>: <span class="pl-s">'images/'</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">{</span>
+      <span class="pl-c1">loader</span>: <span class="pl-s">'image-webpack-loader'</span><span class="pl-kos">,</span>
+      <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">bypassOnDebug</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">]</span>
+<span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">{</span>
+  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">h</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">l</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+  <span class="pl-c1">use</span>: <span class="pl-kos">[</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">loader</span>: <span class="pl-s">'html-loader'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+      <span class="pl-c1">minimize</span>: <span class="pl-c1">true</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">源文件的图片大小情况是这样的：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ ls -lh src/images
+total 256
+-rw-r--r--@ 1 hfpp2012  staff   112K Nov  3 23:10 logo.png
+-rw-r--r--@ 1 hfpp2012  staff    11K Dec  4 16:32 money-bag.svg"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">ls</span> <span class="pl-c1">-</span><span class="pl-s1">lh</span> <span class="pl-s1">src</span><span class="pl-c1">/</span><span class="pl-s1">images</span>
+<span class="pl-s1">total</span> <span class="pl-c1">256</span>
+<span class="pl-c1">-</span><span class="pl-s1">rw</span><span class="pl-c1">-</span><span class="pl-s1">r</span><span class="pl-c1">--</span><span class="pl-s1">r</span><span class="pl-c1">--</span>@ <span class="pl-c1">1</span> <span class="pl-s1">hfpp2012</span>  <span class="pl-s1">staff</span>   <span class="pl-c1">112</span><span class="pl-v">K</span> <span class="pl-v">Nov</span>  <span class="pl-c1">3</span> <span class="pl-c1">23</span>:<span class="pl-c1">10</span> <span class="pl-s1">logo</span><span class="pl-kos">.</span><span class="pl-c1">png</span>
+<span class="pl-c1">-</span><span class="pl-s1">rw</span><span class="pl-c1">-</span><span class="pl-s1">r</span><span class="pl-c1">--</span><span class="pl-s1">r</span><span class="pl-c1">--</span>@ <span class="pl-c1">1</span> <span class="pl-s1">hfpp2012</span>  <span class="pl-s1">staff</span>    <span class="pl-c1">11</span><span class="pl-v">K</span> <span class="pl-v">Dec</span>  <span class="pl-c1">4</span> <span class="pl-c1">16</span>:<span class="pl-c1">32</span> <span class="pl-s1">money</span><span class="pl-c1">-</span><span class="pl-s1">bag</span><span class="pl-kos">.</span><span class="pl-c1">svg</span></pre></div>
+<p dir="auto">而压缩后（npm run prod）：</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ ls -lh dist/images
+total 96
+-rw-r--r--  1 hfpp2012  staff    33K Dec  4 21:34 logo.png
+-rw-r--r--  1 hfpp2012  staff   8.5K Dec  4 21:34 money-bag.svg"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">ls</span> <span class="pl-c1">-</span><span class="pl-s1">lh</span> <span class="pl-s1">dist</span><span class="pl-c1">/</span><span class="pl-s1">images</span>
+<span class="pl-s1">total</span> <span class="pl-c1">96</span>
+<span class="pl-c1">-</span><span class="pl-s1">rw</span><span class="pl-c1">-</span><span class="pl-s1">r</span><span class="pl-c1">--</span><span class="pl-s1">r</span><span class="pl-c1">--</span>  <span class="pl-c1">1</span> <span class="pl-s1">hfpp2012</span>  <span class="pl-s1">staff</span>    <span class="pl-c1">33</span><span class="pl-v">K</span> <span class="pl-v">Dec</span>  <span class="pl-c1">4</span> <span class="pl-c1">21</span>:<span class="pl-c1">34</span> <span class="pl-s1">logo</span><span class="pl-kos">.</span><span class="pl-c1">png</span>
+<span class="pl-c1">-</span><span class="pl-s1">rw</span><span class="pl-c1">-</span><span class="pl-s1">r</span><span class="pl-c1">--</span><span class="pl-s1">r</span><span class="pl-c1">--</span>  <span class="pl-c1">1</span> <span class="pl-s1">hfpp2012</span>  <span class="pl-s1">staff</span>   <span class="pl-c1">8.5</span><span class="pl-v">K</span> <span class="pl-v">Dec</span>  <span class="pl-c1">4</span> <span class="pl-c1">21</span>:<span class="pl-c1">34</span> <span class="pl-s1">money</span><span class="pl-c1">-</span><span class="pl-s1">bag</span><span class="pl-kos">.</span><span class="pl-c1">svg</span></pre></div>
+<p dir="auto">由上面的对比可知，压缩后体积减少了一些。</p>
+<p dir="auto">当然这个插件，肯定还有更多的用法，具体查看 readme 文档吧。</p>
+<h4 dir="auto">参考</h4>
+<ul dir="auto">
+<li><a href="https://www.rails365.net/playlists/webpack-3-ling-ji-chu-ru-men-shi-pin-jiao-cheng" rel="nofollow">https://www.rails365.net/playlists/webpack-3-ling-ji-chu-ru-men-shi-pin-jiao-cheng</a></li>
+<li><a href="https://github.com/ruanyf/webpack-demos">https://github.com/ruanyf/webpack-demos</a></li>
+<li><a href="https://github.com/meishadevs/webpack-demos/blob/master/README.md">https://github.com/meishadevs/webpack-demos/blob/master/README.md</a></li>
+</ul>
+<h4 dir="auto">补充</h4>
+<ul dir="auto">
+<li><a href="https://www.jianshu.com/p/c0bec50ec385" rel="nofollow">https://www.jianshu.com/p/c0bec50ec385</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l,c){return{layout:"default",data:[{post:{id:328098893,number:33,title:"webpack3使用说明",created_at:"2018-05-31T11:21:09Z",updated_at:"2025-11-23T15:53:12Z",body_html:'<blockquote>\n<p dir="auto">webpack 3</p>\n</blockquote>\n<h2 id="main-heading-H2-0">入门命令</h2>\n<blockquote>\n<p dir="auto">随后会用webpack-dev-server替代<br>\n基本构建</p>\n</blockquote>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="webpack src/app.js dist/app.bundle.js"><pre class="notranslate">webpack src/app.js dist/app.bundle.js</pre></div>\n<p dir="auto">开发环境实时构建</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="webpack --watch "><pre class="notranslate">webpack --watch </pre></div>\n<p dir="auto">生产环境中构建</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="webpack -p"><pre class="notranslate">webpack -p</pre></div>\n<h3 id="main-heading-H3-1">其他</h3>\n<ul dir="auto">\n<li>webpack -d – 包含资源地图</li>\n<li>webpack --colors - 让编译的输出内容带有颜色</li>\n</ul>\n<h2 id="main-heading-H2-2">html-webpack-plugin</h2>\n<blockquote>\n<p dir="auto">自动生成html文件，指定模板，添加hash，mini</p>\n</blockquote>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install html-webpack-plugin --save-dev"><pre class="notranslate">$ npm install html-webpack-plugin --save-dev</pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var HtmlWebpackPlugin = require(\'html-webpack-plugin\');\n\nmodule.exports = {\n  entry: \'./src/app.js\',\n  output: {\n    path: __dirname + \'/dist\',\n    filename: \'app.bundle.js\'\n  },\n  plugins: [new HtmlWebpackPlugin({\n    template: \'./src/index.html\',\n    filename: \'index.html\',\n    minify: {\n      collapseWhitespace: true,\n    },\n    hash: true,\n  })]\n};"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-v">HtmlWebpackPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'html-webpack-plugin\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">entry</span>: <span class="pl-s">\'./src/app.js\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">path</span>: <span class="pl-s1">__dirname</span> <span class="pl-c1">+</span> <span class="pl-s">\'/dist\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">filename</span>: <span class="pl-s">\'app.bundle.js\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span><span class="pl-k">new</span> <span class="pl-v">HtmlWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n    <span class="pl-c1">template</span>: <span class="pl-s">\'./src/index.html\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">filename</span>: <span class="pl-s">\'index.html\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">minify</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">collapseWhitespace</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c1">hash</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">]</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-3">css-loader</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev css-loader style-loader"><pre class="notranslate">$ npm install --save-dev css-loader style-loader</pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" module: {\n    rules: [\n      {\n        test: /\\.css$/,\n        use: [ \'style-loader\', \'css-loader\' ]\n      }\n    ]\n  }"><pre class="notranslate"> module: <span class="pl-kos">{</span>\n    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">use</span>: <span class="pl-kos">[</span> <span class="pl-s">\'style-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'css-loader\'</span> <span class="pl-kos">]</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span></pre></div>\n<ul dir="auto">\n<li>sass-loader</li>\n</ul>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install sass-loader node-sass --save-dev\n# 安装（中间可能要下载二进制包，要耐心等待）"><pre class="notranslate">$ npm install sass-loader node-sass --save-dev\n<span class="pl-c"><span class="pl-c">#</span> 安装（中间可能要下载二进制包，要耐心等待）</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import css from \'./app.scss\';"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">css</span> <span class="pl-k">from</span> <span class="pl-s">\'./app.scss\'</span><span class="pl-kos">;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" rules: [\n      {\n        test: /\\.scss$/,\n        use: [ \'style-loader\', \'css-loader\', \'sass-loader\' ]\n      }"><pre class="notranslate"> <span class="pl-s1">rules</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">use</span>: <span class="pl-kos">[</span> <span class="pl-s">\'style-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'css-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'sass-loader\'</span> <span class="pl-kos">]</span>\n      <span class="pl-kos">}</span></pre></div>\n<ul dir="auto">\n<li>extract-text-webpack-plugin</li>\n</ul>\n<blockquote>\n<p dir="auto">用 extract-text-webpack-plugin 把 CSS 分离成文件</p>\n</blockquote>\n<p dir="auto">有时候我们要把 SASS 或 CSS 处理好后，放到一个 CSS 文件中，用这个插件就可以实现。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev extract-text-webpack-plugin"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">extract</span><span class="pl-c1">-</span><span class="pl-s1">text</span><span class="pl-c1">-</span><span class="pl-s1">webpack</span><span class="pl-c1">-</span><span class="pl-s1">plugin</span></pre></div>\n<h2 id="main-heading-H2-4">webpack-dev-server</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 先全局安装\n$ npm install -g webpack-dev-server@2.9.1\n$ npm install webpack-dev-server@2.9.1 --save-dev\n$ npm install webpack-cli -D"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 先全局安装</span>\n$ npm install -g webpack-dev-server@2.9.1\n$ npm install webpack-dev-server@2.9.1 --save-dev\n$ npm install webpack-cli -D</pre></div>\n<p dir="auto">自动打开，切换端口号</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {\n  entry: \'./src/app.js\',\n  ...\n  devServer: {\n    port: 9000,\n    open: true\n  },\n  ...\n};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">entry</span>: <span class="pl-s">\'./src/app.js\'</span><span class="pl-kos">,</span>\n  ...\n  <span class="pl-s1">devServer</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">port</span>: <span class="pl-c1">9000</span><span class="pl-kos">,</span>\n    <span class="pl-c1">open</span>: <span class="pl-c1">true</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  ...\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">然后运行命令：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ webpack-dev-server"><pre class="notranslate">$ webpack-dev-server</pre></div>\n<h2 id="main-heading-H2-5">webpack 和 babel 配置 react 开发环境</h2>\n<h3 id="main-heading-H3-6">3.在 webpack 使用 babel-loader</h3>\n<p dir="auto">最后我们需要在 webpack 中使用一个 loader 来转化 react 的代码。<br>\n首先，安装。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev babel-loader"><pre class="notranslate">$ npm install --save-dev babel-loader</pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var HtmlWebpackPlugin = require(\'html-webpack-plugin\');\nconst ExtractTextPlugin = require(\'extract-text-webpack-plugin\');\n\nmodule.exports = {\n  entry: \'./src/app.js\',\n  ...\n  module: {\n    rules: [\n      {\n        test: /\\.scss$/,\n        use: ExtractTextPlugin.extract({\n          fallback: \'style-loader\',\n          //resolve-url-loader may be chained before sass-loader if necessary\n          use: [\'css-loader\', \'sass-loader\']\n        })\n      },\n      // 这两行是处理 react 相关的内容\n      { test: /\\.js$/, loader: \'babel-loader\', exclude: /node_modules/ },\n      { test: /\\.jsx$/, loader: \'babel-loader\', exclude: /node_modules/ }\n    ]\n  }\n};"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-v">HtmlWebpackPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'html-webpack-plugin\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-k">const</span> <span class="pl-v">ExtractTextPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'extract-text-webpack-plugin\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">entry</span>: <span class="pl-s">\'./src/app.js\'</span><span class="pl-kos">,</span>\n  ...\n  <span class="pl-smi">module</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">use</span>: <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">.</span><span class="pl-en">extract</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">fallback</span>: <span class="pl-s">\'style-loader\'</span><span class="pl-kos">,</span>\n          <span class="pl-c">//resolve-url-loader may be chained before sass-loader if necessary</span>\n          <span class="pl-c1">use</span>: <span class="pl-kos">[</span><span class="pl-s">\'css-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'sass-loader\'</span><span class="pl-kos">]</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 这两行是处理 react 相关的内容</span>\n      <span class="pl-kos">{</span> <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span> <span class="pl-c1">loader</span>: <span class="pl-s">\'babel-loader\'</span><span class="pl-kos">,</span> <span class="pl-c1">exclude</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-c1">/</span></span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">{</span> <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-s">x</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span> <span class="pl-c1">loader</span>: <span class="pl-s">\'babel-loader\'</span><span class="pl-kos">,</span> <span class="pl-c1">exclude</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-c1">/</span></span> <span class="pl-kos">}</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-7">4. 写 react 组件</h3>\n<p dir="auto"><strong>src/index.html</strong></p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n  &lt;meta charset=&quot;UTF-8&quot;&gt;\n  &lt;title&gt;Hello World&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>Hello World<span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span>="<span class="pl-s">root</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto"><strong>src/app.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import css from \'./app.scss\';\n\nimport React from \'react\';\nimport ReactDOM from \'react-dom\';\nimport Root from \'./Root\';\n\nReactDOM.render(\n  &lt;Root&gt;&lt;/Root&gt;,\n  document.getElementById(\'root\')\n);"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">css</span> <span class="pl-k">from</span> <span class="pl-s">\'./app.scss\'</span><span class="pl-kos">;</span>\n\n<span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">ReactDOM</span> <span class="pl-k">from</span> <span class="pl-s">\'react-dom\'</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">Root</span> <span class="pl-k">from</span> <span class="pl-s">\'./Root\'</span><span class="pl-kos">;</span>\n\n<span class="pl-v">ReactDOM</span><span class="pl-kos">.</span><span class="pl-en">render</span><span class="pl-kos">(</span>\n  <span class="pl-c1">&lt;</span><span class="pl-v">Root</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-v">Root</span><span class="pl-c1">&gt;</span><span class="pl-kos">,</span>\n  <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">getElementById</span><span class="pl-kos">(</span><span class="pl-s">\'root\'</span><span class="pl-kos">)</span>\n<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>src/Root.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import React from \'react\';\n\nexport default class Root extends React.Component {\n  render() {\n    return (\n      &lt;div style={{textAlign: \'center\'}}&gt;\n        &lt;h1&gt;Hello World&lt;/h1&gt;\n      &lt;/div&gt;);\n  }\n}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span> <span class="pl-k">from</span> <span class="pl-s">\'react\'</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">class</span> <span class="pl-v">Root</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-c1">textAlign</span>: <span class="pl-s">\'center\'</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">h1</span><span class="pl-c1">&gt;</span>Hello World<span class="pl-kos">&lt;/</span><span class="pl-s1">h1</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-8">用 clean-webpack-plugin 来清除文件</h2>\n<p dir="auto">生产环境每次执行<code class="notranslate">npm run build</code>都会在dist文件目录生成新的<code class="notranslate">app.bundle.d01ae8858971a17f8ed2.js </code>，再多运行几次，生成的带 hash 的 app.bundle.js 文件就会很多。</p>\n<p dir="auto">这些带 hash 的 app.bundle.js 只有最新的才有用，其他的都没用，我们要在 build 之前把它们全清空：</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm i clean-webpack-plugin --save-dev\n"><pre class="notranslate">$ npm i clean-webpack-plugin --save-dev\n</pre></div>\n<p dir="auto"><strong>webpack.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require(\'path\')\n...\nconst CleanWebpackPlugin = require(\'clean-webpack-plugin\');\n\nlet pathsToClean = [\n  \'dist\',\n]\n\nmodule.exports = {\n  entry: {\n    &quot;app.bundle&quot;: \'./src/app.js\'\n  },\n  output: {\n    path: path.resolve(__dirname, \'dist\'),\n    filename: \'[name].[chunkhash].js\'\n  },\n  ...\n  plugins: [\n    new CleanWebpackPlugin(pathsToClean),\n    ...\n    new ExtractTextPlugin(\'style.css\')\n  ],\n  ...\n};\n"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'path\'</span><span class="pl-kos">)</span>\n<span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span>\n<span class="pl-c1">const</span><span class="pl-kos"></span> <span class="pl-v">CleanWebpackPlugin</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'clean-webpack-plugin\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-k">let</span> <span class="pl-s1">pathsToClean</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>\n  <span class="pl-s">\'dist\'</span><span class="pl-kos">,</span>\n<span class="pl-kos">]</span>\n\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"app.bundle"</span>: <span class="pl-s">\'./src/app.js\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">path</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">\'dist\'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-c1">filename</span>: <span class="pl-s">\'[name].[chunkhash].js\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  ...\n  <span class="pl-s1">plugins</span>: <span class="pl-kos">[</span>\n    <span class="pl-k">new</span> <span class="pl-v">CleanWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-s1">pathsToClean</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    ...\n    <span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-s">\'style.css\'</span><span class="pl-kos">)</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  ...\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">现在运行 npm run build 试试，只有下面的文件：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="dist\n├── app.bundle.0e380cea371d050137cd.js\n├── index.html\n└── style.css"><pre class="notranslate"><code class="notranslate">dist\n├── app.bundle.0e380cea371d050137cd.js\n├── index.html\n└── style.css\n</code></pre></div>\n<h2 id="main-heading-H2-9">配置多个 HTML 文件</h2>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="module.exports = {\n  entry: {\n    &quot;app.bundle&quot;: \'./src/app.js\',\n    // 这行是新增的。\n    &quot;contact&quot;: \'./src/contact.js\'\n  },\n  ...\n  plugins: [\n    new CleanWebpackPlugin(pathsToClean),\n    new HtmlWebpackPlugin({\n      template: \'./src/index.html\',\n      filename: \'index.html\',\n      minify: {\n        collapseWhitespace: true,\n      },\n      hash: true,\n      // 这行是新增的。\n      excludeChunks: [\'contact\']\n    }),\n    new HtmlWebpackPlugin({\n      template: \'./src/contact.html\',\n      filename: \'contact.html\',\n      minify: {\n        collapseWhitespace: true,\n      },\n      hash: true,\n      // 这行是新增的。\n      chunks: [\'contact\']\n    }),\n    new ExtractTextPlugin(\'style.css\')\n  ],\n  ...\n};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"app.bundle"</span>: <span class="pl-s">\'./src/app.js\'</span><span class="pl-kos">,</span>\n    <span class="pl-c">// 这行是新增的。</span>\n    <span class="pl-s">"contact"</span>: <span class="pl-s">\'./src/contact.js\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  ...\n  <span class="pl-s1">plugins</span>: <span class="pl-kos">[</span>\n    <span class="pl-k">new</span> <span class="pl-v">CleanWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-s1">pathsToClean</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-k">new</span> <span class="pl-v">HtmlWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">template</span>: <span class="pl-s">\'./src/index.html\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">filename</span>: <span class="pl-s">\'index.html\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">minify</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">collapseWhitespace</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c1">hash</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 这行是新增的。</span>\n      <span class="pl-c1">excludeChunks</span>: <span class="pl-kos">[</span><span class="pl-s">\'contact\'</span><span class="pl-kos">]</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-k">new</span> <span class="pl-v">HtmlWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">template</span>: <span class="pl-s">\'./src/contact.html\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">filename</span>: <span class="pl-s">\'contact.html\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">minify</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">collapseWhitespace</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-c1">hash</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-c">// 这行是新增的。</span>\n      <span class="pl-c1">chunks</span>: <span class="pl-kos">[</span><span class="pl-s">\'contact\'</span><span class="pl-kos">]</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-s">\'style.css\'</span><span class="pl-kos">)</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  ...\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">上面的 excludeChunks 指的是不包含， chunks 代表的是包含。</p>\n<h2 id="main-heading-H2-10">使用 pug (jade) 作为 HTML 的模板</h2>\n<blockquote>\n<p dir="auto">pug,nodejs的html模板</p>\n</blockquote>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --save-dev pug pug-html-loader raw-loader"><pre class="notranslate">npm install --save-dev pug pug-html-loader raw-loader</pre></div>\n<p dir="auto"><strong>src/index.pug</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="doctype html\nhtml(lang=&quot;en&quot;)\n  head\n    title= pageTitle\n    script(type=\'text/javascript\').\n      if (foo) bar(1 + 5)\n  body\n    h1 Pug - node template engine\n    #root\n    #container.col\n      if youAreUsingPug\n        p You are amazing\n      else\n        p Get on it!\n      p.\n        Pug is a terse and simple templating language with a\n        strong focus on performance and powerful features."><pre class="notranslate"><span class="pl-s1">doctype</span> <span class="pl-s1">html</span>\n<span class="pl-en">html</span><span class="pl-kos">(</span><span class="pl-s1">lang</span><span class="pl-c1">=</span><span class="pl-s">"en"</span><span class="pl-kos">)</span>\n  <span class="pl-s1">head</span>\n    <span class="pl-s1">title</span><span class="pl-c1">=</span> <span class="pl-s1">pageTitle</span>\n    <span class="pl-en">script</span><span class="pl-kos">(</span><span class="pl-s1">type</span><span class="pl-c1">=</span><span class="pl-s">\'text/javascript\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span>\n      <span class="pl-en">if</span> <span class="pl-kos">(</span><span class="pl-s1">foo</span><span class="pl-kos">)</span> <span class="pl-s1">bar</span><span class="pl-kos">(</span><span class="pl-c1">1</span> <span class="pl-c1">+</span> <span class="pl-c1">5</span><span class="pl-kos">)</span>\n  <span class="pl-s1">body</span>\n    <span class="pl-s1">h1</span> <span class="pl-v">Pug</span> <span class="pl-c1">-</span> <span class="pl-s1">node</span> <span class="pl-s1">template</span> <span class="pl-s1">engine</span>\n    #root\n    #container<span class="pl-kos">.</span><span class="pl-s1">col</span>\n      <span class="pl-k">if</span> <span class="pl-s1">youAreUsingPug</span>\n        <span class="pl-s1">p</span> <span class="pl-v">You</span> <span class="pl-s1">are</span><span class="pl-kos"></span> <span class="pl-s1">amazing</span>\n      <span class="pl-s1">else</span>\n        <span class="pl-s1">p</span> <span class="pl-v">Get</span> <span class="pl-s1">on</span> <span class="pl-s1">it</span><span class="pl-c1">!</span>\n      <span class="pl-s1">p</span><span class="pl-kos">.</span>\n        <span class="pl-c1">Pug</span> <span class="pl-s1">is</span> <span class="pl-s1">a</span> <span class="pl-s1">terse</span> <span class="pl-s1">and</span> <span class="pl-s1">simple</span> <span class="pl-s1">templating</span> <span class="pl-s1">language</span> <span class="pl-k">with</span> <span class="pl-s1">a</span>\n        <span class="pl-s1">strong</span> <span class="pl-s1">focus</span> <span class="pl-s1">on</span> <span class="pl-s1">performance</span> <span class="pl-s1">and</span> <span class="pl-s1">powerful</span> <span class="pl-s1">features</span><span class="pl-kos">.</span></pre></div>\n<p dir="auto"><strong>webpack.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="\nmodule.exports = {\n  ...\n  plugins: [\n    ...\n    new HtmlWebpackPlugin({\n      template: \'./src/index.pug\',\n      ...\n    }),\n    ...\n  ],\n  module: {\n    rules: [\n      ...\n      { test: /\\.pug$/, loader: [\'raw-loader\', \'pug-html-loader\'] }\n    ]\n  }\n};"><pre class="notranslate"><span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  ...\n  <span class="pl-s1">plugins</span>: <span class="pl-kos">[</span>\n    ...\n    <span class="pl-k">new</span> <span class="pl-v">HtmlWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">template</span>: <span class="pl-s">\'./src/index.pug\'</span><span class="pl-kos">,</span>\n      ...\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    ...\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">module</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>\n      ...\n      <span class="pl-kos">{</span> <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">p</span><span class="pl-s">u</span><span class="pl-s">g</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span> <span class="pl-c1">loader</span>: <span class="pl-kos">[</span><span class="pl-s">\'raw-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'pug-html-loader\'</span><span class="pl-kos">]</span> <span class="pl-kos">}</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">我们来试试 pug 的 include 功能，就是可以包含子模板。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...\n  body\n    include includes/header.pug\n    ..."><pre class="notranslate">...\n  <span class="pl-s1">body</span>\n    <span class="pl-s1">include</span> <span class="pl-s1">includes</span><span class="pl-c1">/</span><span class="pl-s1">header</span><span class="pl-kos">.</span><span class="pl-c1">pug</span>\n    <span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span></pre></div>\n<p dir="auto"><strong>src/includes/header.pug</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  h1 from header pug file"><pre class="notranslate">  <span class="pl-s1">h1</span> <span class="pl-s1">from</span> <span class="pl-s1">header</span> <span class="pl-s1">pug</span> <span class="pl-s1">file</span></pre></div>\n<p dir="auto">目录结构是这样的：</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="src\n├── Root.js\n├── app.js\n├── app.scss\n├── contact.html\n├── contact.js\n├── includes\n│   └── header.pug\n└── index.pug"><pre class="notranslate"><code class="notranslate">src\n├── Root.js\n├── app.js\n├── app.scss\n├── contact.html\n├── contact.js\n├── includes\n│   └── header.pug\n└── index.pug\n</code></pre></div>\n<h2 id="main-heading-H2-11">如何使用模块热替换 HMR 来处理 CSS</h2>\n<h3 id="main-heading-H3-12">1.启用 HMR</h3>\n<p dir="auto"><strong>webpack.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  devServer: {\n    port: 9000,\n    open: true,\n  }"><pre class="notranslate">  devServer: <span class="pl-kos">{</span>\n    <span class="pl-c1">port</span>: <span class="pl-c1">9000</span><span class="pl-kos">,</span>\n    <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span></pre></div>\n<p dir="auto">改成下面这样：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" devServer: {\n    port: 9000,\n    open: true,\n    hot: true\n  }"><pre class="notranslate"> devServer: <span class="pl-kos">{</span>\n    <span class="pl-c1">port</span>: <span class="pl-c1">9000</span><span class="pl-kos">,</span>\n    <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-c1">hot</span>: <span class="pl-c1">true</span>\n  <span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>webpack.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...\nconst webpack = require(\'webpack\');\n\n...\n\nmodule.exports = {\n  entry: {\n    &quot;app.bundle&quot;: \'./src/app.js\',\n    &quot;contact&quot;: \'./src/contact.js\'\n  },\n  output: {\n    path: path.resolve(__dirname, \'dist\'),\n    filename: \'[name].[chunkhash].js\'\n  },\n  devServer: {\n    port: 9000,\n    open: true,\n    hot: true\n  },\n  plugins: [\n    new CleanWebpackPlugin(pathsToClean),\n    ...\n    // 这两行是新增的\n    new webpack.NamedModulesPlugin(),\n    new webpack.HotModuleReplacementPlugin()\n  ],\n  ...\n};\n"><pre class="notranslate">...\n<span class="pl-k">const</span> <span class="pl-s1">webpack</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'webpack\'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n...\n\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">entry</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">"app.bundle"</span>: <span class="pl-s">\'./src/app.js\'</span><span class="pl-kos">,</span>\n    <span class="pl-s">"contact"</span>: <span class="pl-s">\'./src/contact.js\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">output</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">path</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">\'dist\'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-c1">filename</span>: <span class="pl-s">\'[name].[chunkhash].js\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">devServer</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">port</span>: <span class="pl-c1">9000</span><span class="pl-kos">,</span>\n    <span class="pl-c1">open</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-c1">hot</span>: <span class="pl-c1">true</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span>\n    <span class="pl-k">new</span> <span class="pl-v">CleanWebpackPlugin</span><span class="pl-kos">(</span><span class="pl-s1">pathsToClean</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    ...\n    <span class="pl-c">// 这两行是新增的</span>\n    <span class="pl-k">new</span> <span class="pl-s1">webpack</span><span class="pl-kos">.</span><span class="pl-c1">NamedModulesPlugin</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-k">new</span> <span class="pl-s1">webpack</span><span class="pl-kos">.</span><span class="pl-c1">HotModuleReplacementPlugin</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  ...\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>报错！！！文件名还不能用 chunkhash 了，它说要用 hash 来代替 chunkhash。</strong></p>\n<p dir="auto">chunkhash是每个文件都使用不同的hash值</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="filename: \'[name].[chunkhash].js\'"><pre class="notranslate">filename: <span class="pl-s">\'[name].[chunkhash].js\'</span></pre></div>\n<p dir="auto">hash指每个文件使用相同的hash值</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="filename: \'[name].[hash].js\'"><pre class="notranslate">filename: <span class="pl-s">\'[name].[hash].js\'</span></pre></div>\n<h3 id="main-heading-H3-13">2.处理 extract-text-webpack-plugin</h3>\n<p dir="auto">现在你试一下改变 src/app.scss 的内容，你会发现页面不动了，你无论怎么改，页面都不会改变，也不会刷新。</p>\n<p dir="auto">之前我们是用 extract-text-webpack-plugin 这个插件来处理 CSS 的，在用 HMR 的时候要先把它关闭一下。</p>\n<p dir="auto">用一个参数 disable: true 就可以关闭掉。</p>\n<p dir="auto"><strong>webpack.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="new ExtractTextPlugin(&quot;style.css&quot;)"><pre class="notranslate"><span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-s">"style.css"</span><span class="pl-kos">)</span></pre></div>\n<p dir="auto">变成</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="new ExtractTextPlugin({\n  filename: \'style.css\',\n  disable: true\n}),"><pre class="notranslate"><span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">filename</span>: <span class="pl-s">\'style.css\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">disable</span>: <span class="pl-c1">true</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span></pre></div>\n<p dir="auto">然后把处理 scss 文件的 loader 部分变成类似下面这样：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...\n  test: /\\.scss$/,\n  use: ExtractTextPlugin.extract({\n    fallback: \'style-loader\',\n    //resolve-url-loader may be chained before sass-loader if necessary\n    use: [\'css-loader\', \'sass-loader\']\n  })\n...\n"><pre class="notranslate">...\n  <span class="pl-s1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n  <span class="pl-s1">use</span>: <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">.</span><span class="pl-en">extract</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n    <span class="pl-c1">fallback</span>: <span class="pl-s">\'style-loader\'</span><span class="pl-kos">,</span>\n    <span class="pl-c">//resolve-url-loader may be chained before sass-loader if necessary</span>\n    <span class="pl-c1">use</span>: <span class="pl-kos">[</span><span class="pl-s">\'css-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'sass-loader\'</span><span class="pl-kos">]</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n<span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span></pre></div>\n<p dir="auto">变成</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...\n  test: /\\.scss$/,\n  use: [\'style-loader\', \'css-loader\', \'sass-loader\']\n..."><pre class="notranslate">...\n  <span class="pl-s1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n  <span class="pl-s1">use</span>: <span class="pl-kos">[</span><span class="pl-s">\'style-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'css-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'sass-loader\'</span><span class="pl-kos">]</span>\n<span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span></pre></div>\n<p dir="auto">再试试，能够生效。</p>\n<p dir="auto">为什么要关闭呢这个插件呢？</p>\n<p dir="auto">其实想想也能知道，在开发环境下，用不用 extract-text-webpack-plugin 这个插件，意义不大，你把 css 变不变成一个文件，关系不大，开发环境只要能调效，效果能够看到就可以，但是生产环境需要这个插件，我们总不能开发环境不使用这个插件，也导致生产环境也不使用吧？</p>\n<p dir="auto">那如何解决这个问题呢？也就是说让生产环境使用这个插件，而开发环境不使用.</p>\n<h2 id="main-heading-H2-14">生产环境 vs 开发环境</h2>\n<p dir="auto">要让生产环境使用 extract-text-webpack-plugin 这个插件，而开发环境不使用，如何做到呢？</p>\n<p dir="auto">其实原理很简单，只要能区分出哪个是开发环境，哪个是生产环境就可以，只要判断是生产环境的时候就用，不是的话...</p>\n<h3 id="main-heading-H3-15">1. 增加环境变量</h3>\n<p dir="auto">首先来看一下之前的开发环境和生产环境分别使用的编译命令：</p>\n<p dir="auto"><strong>webpack.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;scripts&quot;: {\n  &quot;dev&quot;: &quot;webpack-dev-server&quot;,\n  &quot;prod&quot;: &quot;webpack -p&quot;\n},"><pre class="notranslate"><span class="pl-s">"scripts"</span>: <span class="pl-kos">{</span>\n  <span class="pl-s">"dev"</span>: <span class="pl-s">"webpack-dev-server"</span><span class="pl-kos">,</span>\n  <span class="pl-s">"prod"</span>: <span class="pl-s">"webpack -p"</span>\n<span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>\n<p dir="auto">分别是开发环境使用的 npm run dev 命令和生产环境使用的 npm run prod 命令。</p>\n<p dir="auto">我们把它改成下面这样：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;scripts&quot;: {\n  &quot;dev&quot;: &quot;webpack-dev-server&quot;,\n  &quot;prod&quot;: &quot;NODE_ENV=production webpack -p&quot;\n},"><pre class="notranslate"><span class="pl-s">"scripts"</span>: <span class="pl-kos">{</span>\n  <span class="pl-s">"dev"</span>: <span class="pl-s">"webpack-dev-server"</span><span class="pl-kos">,</span>\n  <span class="pl-s">"prod"</span>: <span class="pl-s">"NODE_ENV=production webpack -p"</span>\n<span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>\n<p dir="auto">开发环境的部分不变，生产环境的加了一个环境变量：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="NODE_ENV=production"><pre class="notranslate"><span class="pl-c1">NODE_ENV</span><span class="pl-c1">=</span><span class="pl-s1">production</span></pre></div>\n<p dir="auto">很简单，NODE_ENV 是变量名，而 production 是 NODE_ENV 是这个变量的值，这些都不是固定的，你可以改成你想要的任意内容，只要能引用到就行了。</p>\n<p dir="auto">那么我们如何来使用这个变量呢？</p>\n<h3 id="main-heading-H3-16">2.使用环境变量</h3>\n<p dir="auto">要引用我们之前创建的环境变量，也蛮简单的。</p>\n<p dir="auto">在 webpack.config.js 文件中：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var isProd = process.env.NODE_ENV === \'production\'; // true or false"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">isProd</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span> <span class="pl-c1">===</span> <span class="pl-s">\'production\'</span><span class="pl-kos">;</span> <span class="pl-c">// true or false</span></pre></div>\n<p dir="auto">process.env.NODE_ENV 就能得到之前设置的变量，如果运行的是 npm run prod，那么 process.env.NODE_ENV为true</p>\n<p dir="auto">上一节，我们有类似下面这样的两段关于 extract-text-webpack-plugin 这个插件的代码。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="new ExtractTextPlugin({\n  filename: \'style.css\',\n  disable: false\n}),\n\n  test: /\\.scss$/,\n  use: [\'style-loader\', \'css-loader\', \'sass-loader\']"><pre class="notranslate"><span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">filename</span>: <span class="pl-s">\'style.css\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">disable</span>: <span class="pl-c1">false</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n\n  <span class="pl-s1">test</span>: <span class="pl-c1">/</span>\\.<span class="pl-s1">scss$</span><span class="pl-c1">/</span><span class="pl-kos">,</span>\n  <span class="pl-s1">use</span>: <span class="pl-kos">[</span><span class="pl-s">\'style-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'css-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'sass-loader\'</span><span class="pl-kos">]</span></pre></div>\n<p dir="auto">我们把 webpack.config.js 中的代码更改如下：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...\n// 线上线下切换 css-loder\nvar isProd = process.env.NODE_ENV === \'production\'; // true or false\nvar cssDev = [\'style-loader\', \'css-loader\', \'sass-loader\'];\nvar cssProd = ExtractTextPlugin.extract({\n  fallback: \'style-loader\',\n  //resolve-url-loader may be chained before sass-loader if necessary\n  use: [\'css-loader\', \'sass-loader\']\n})\n\nvar cssConfig = isProd ? cssProd : cssDev;\n\nmodule.exports = {\n  ...\n  plugins: [\n    ...\n    new ExtractTextPlugin({\n      filename: \'style.css\',\n      disable: !isProd\n    }),\n    ...\n  ],\n  module: {\n    rules: [\n      {\n        test: /\\.scss$/,\n        use: cssConfig\n      },\n      ...\n    ]\n  }\n};\n\n"><pre class="notranslate">...\n<span class="pl-c">// 线上线下切换 css-loder</span>\n<span class="pl-k">var</span> <span class="pl-s1">isProd</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">NODE_ENV</span> <span class="pl-c1">===</span> <span class="pl-s">\'production\'</span><span class="pl-kos">;</span> <span class="pl-c">// true or false</span>\n<span class="pl-k">var</span> <span class="pl-s1">cssDev</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-s">\'style-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'css-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'sass-loader\'</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n<span class="pl-k">var</span> <span class="pl-s1">cssProd</span> <span class="pl-c1">=</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">.</span><span class="pl-en">extract</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">fallback</span>: <span class="pl-s">\'style-loader\'</span><span class="pl-kos">,</span>\n  <span class="pl-c">//resolve-url-loader may be chained before sass-loader if necessary</span>\n  <span class="pl-c1">use</span>: <span class="pl-kos">[</span><span class="pl-s">\'css-loader\'</span><span class="pl-kos">,</span> <span class="pl-s">\'sass-loader\'</span><span class="pl-kos">]</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n<span class="pl-k">var</span> <span class="pl-s1">cssConfig</span> <span class="pl-c1">=</span> <span class="pl-s1">isProd</span> ? <span class="pl-s1">cssProd</span> : <span class="pl-s1">cssDev</span><span class="pl-kos">;</span>\n\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  ...\n  <span class="pl-s1">plugins</span>: <span class="pl-kos">[</span>\n    ...\n    <span class="pl-k">new</span> <span class="pl-v">ExtractTextPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">filename</span>: <span class="pl-s">\'style.css\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">disable</span>: <span class="pl-c1">!</span><span class="pl-s1">isProd</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    ...\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">module</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">rules</span>: <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">s</span><span class="pl-s">c</span><span class="pl-s">s</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">use</span>: <span class="pl-s1">cssConfig</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      ...\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span>\n</pre></div>\n<p dir="auto">只要能区别出不同的环境，使用不同的配置内容就可以了。</p>\n<p dir="auto">现在就可以放心地使用 npm run dev 和 npm run prod 命令了，再也不用临时关掉一些插件了。</p>\n<h3 id="main-heading-H3-17">3.window平台使用</h3>\n<p dir="auto">windows平台：不能直接使用NODE_ENV, 步骤如下：</p>\n<p dir="auto">1.npm install cross-env --save-dev</p>\n<p dir="auto">2.命令改为<br>\n"prod": "cross-env NODE_ENV=production webpack -p"</p>\n<h2 id="main-heading-H2-18">如何打包图片</h2>\n<p dir="auto"><strong>src/app.scss</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="body {\n  background: url(\'./images/logo.png\') 0 0 no-repeat;\n  ...\n}"><pre class="notranslate"><span class="pl-s1">body</span> <span class="pl-kos">{</span>\n  background: <span class="pl-en">url</span><span class="pl-kos">(</span><span class="pl-s">\'./images/logo.png\'</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-s1">no</span><span class="pl-c1">-</span><span class="pl-s1">repeat</span><span class="pl-kos">;</span>\n  ...\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">然后 npm run dev，你会发现类似下面的错误：<br>\n只要找到适合的 loader 来处理扩展名为 png 的图片文件即可。</p>\n<h3 id="main-heading-H3-19">1.file-loader</h3>\n<blockquote>\n<p dir="auto"><a href="https://github.com/webpack-contrib/file-loader">file-loader</a></p>\n</blockquote>\n<p dir="auto">安装</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev file-loader"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">file</span><span class="pl-c1">-</span><span class="pl-s1">loader</span></pre></div>\n<h3 id="main-heading-H3-20">2. file-loader 的参数</h3>\n<p dir="auto">其实，file-loader 是可以带参数的，例如下面这样：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test: /\\.(gif|png|jpe?g|svg)$/i,\nuse: [\n  {\n    loader: \'file-loader\',\n    options: {\n      name: \'[name].[ext]\',\n      outputPath: \'images/\'\n    }\n  },"><pre class="notranslate"><span class="pl-s1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-kos">(</span><span class="pl-s">g</span><span class="pl-s">i</span><span class="pl-s">f</span><span class="pl-c1">|</span><span class="pl-s">p</span><span class="pl-s">n</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">j</span><span class="pl-s">p</span><span class="pl-s">e</span><span class="pl-c1">?</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">s</span><span class="pl-s">v</span><span class="pl-s">g</span><span class="pl-kos">)</span><span class="pl-cce">$</span><span class="pl-c1">/</span>i</span><span class="pl-kos">,</span>\n<span class="pl-s1">use</span>: <span class="pl-kos">[</span>\n  <span class="pl-kos">{</span>\n    <span class="pl-c1">loader</span>: <span class="pl-s">\'file-loader\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">name</span>: <span class="pl-s">\'[name].[ext]\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">outputPath</span>: <span class="pl-s">\'images/\'</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span></pre></div>\n<p dir="auto"><code class="notranslate">/\\.(gif|png|jpe?g|svg)$/i</code> 表示可以处理好多图片的格式，毕竟不只是 png 才是图片，别的扩展名的文件也可能是图片嘛。</p>\n<p dir="auto"><code class="notranslate">[name]</code> 代表文件名，<code class="notranslate">[ext]</code> 代表文件扩展名，<code class="notranslate">outputPath</code> 是输出的路径。</p>\n<h3 id="main-heading-H3-21">3.解析 html 代码里面 img 的标签</h3>\n<p dir="auto">忘了一个重要的地方，之前我们是在 CSS 里引用图片作为背景的，但是，我们经常是在 html 直接使用 src 标签</p>\n<p dir="auto">例如下面这样：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;img src=&quot;./images/money-bag.svg&quot; alt=&quot;&quot; height=50&gt;"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">img</span> <span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"./images/money-bag.svg"</span> <span class="pl-c1">alt</span><span class="pl-c1">=</span><span class="pl-s">""</span> <span class="pl-s1">height</span><span class="pl-c1">=</span><span class="pl-c1">50</span><span class="pl-c1">&gt;</span></pre></div>\n<p dir="auto"><strong>src/index.html</strong></p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n  &lt;meta charset=&quot;UTF-8&quot;&gt;\n  &lt;title&gt;&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;img src=&quot;./images/money-bag.svg&quot; alt=&quot;&quot; height=50&gt;\n&lt;/body&gt;\n&lt;/html&gt;"><pre class="notranslate"><span class="pl-c1">&lt;!DOCTYPE html<span class="pl-kos">&gt;</span></span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">html</span> <span class="pl-c1">lang</span>="<span class="pl-s">en</span>"<span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">meta</span> <span class="pl-c1">charset</span>="<span class="pl-s">UTF-8</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">title</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">head</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">src</span>="<span class="pl-s">./images/money-bag.svg</span>" <span class="pl-c1">alt</span>="" <span class="pl-c1">height</span>=<span class="pl-s">50</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">body</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">html</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">然而结果是这样的：<strong>404了，文件找不到，没有成功。</strong></p>\n<p dir="auto">其实缺少了一个在 html 代码里处理 img 标签的 loader。</p>\n<p dir="auto">这个 loader 是 <a href="https://github.com/webpack-contrib/html-loader">html-loader</a></p>\n<p dir="auto">官方对它的定义是这样的：</p>\n<blockquote>\n<p dir="auto">Exports HTML as string. HTML is minimized when the compiler demands.</p>\n</blockquote>\n<p dir="auto">大概意思是说，把 html 变成导出成字符串的过程中，还能进行压缩处理（minimized）。</p>\n<p dir="auto">现在我们来加上这个 loader。</p>\n<p dir="auto">先安装。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save-dev html-loader"><pre class="notranslate">$ npm install --save-dev html-loader</pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...\n{\n  test: /\\.(gif|png|jpe?g|svg)$/i,\n  use: [\n    {\n      loader: \'file-loader\',\n      options: {\n        name: \'[name].[ext]\',\n        outputPath: \'images/\'\n      }\n    },\n  ]\n},\n// 下面几行才是 html-loader 的配置内容\n{\n  test: /\\.html$/,\n  use: [ {\n    loader: \'html-loader\',\n    options: {\n      minimize: true\n    }\n  }],\n}\n..."><pre class="notranslate">...\n<span class="pl-kos">{</span>\n  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-kos">(</span><span class="pl-s">g</span><span class="pl-s">i</span><span class="pl-s">f</span><span class="pl-c1">|</span><span class="pl-s">p</span><span class="pl-s">n</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">j</span><span class="pl-s">p</span><span class="pl-s">e</span><span class="pl-c1">?</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">s</span><span class="pl-s">v</span><span class="pl-s">g</span><span class="pl-kos">)</span><span class="pl-cce">$</span><span class="pl-c1">/</span>i</span><span class="pl-kos">,</span>\n  <span class="pl-c1">use</span>: <span class="pl-kos">[</span>\n    <span class="pl-kos">{</span>\n      <span class="pl-c1">loader</span>: <span class="pl-s">\'file-loader\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">name</span>: <span class="pl-s">\'[name].[ext]\'</span><span class="pl-kos">,</span>\n        <span class="pl-c1">outputPath</span>: <span class="pl-s">\'images/\'</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">]</span>\n<span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-c">// 下面几行才是 html-loader 的配置内容</span>\n<span class="pl-kos">{</span>\n  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">h</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">l</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n  <span class="pl-c1">use</span>: <span class="pl-kos">[</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">loader</span>: <span class="pl-s">\'html-loader\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">minimize</span>: <span class="pl-c1">true</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span>\n<span class="pl-kos">.</span><span class="pl-kos">.</span><span class="pl-kos">.</span></pre></div>\n<p dir="auto">再试试发现就可以了。</p>\n<h3 id="main-heading-H3-22">4. 压缩图片</h3>\n<p dir="auto">有时候图片太大，我们输出到生产环境的时候，希望可以让图片文件的体积小点，webpack 也可以轻易办到，就是自动压缩图片，然后生产环境拿到的图片就会很小。</p>\n<p dir="auto">还是用一个插件，这个插件叫 <a href="https://github.com/tcoopman/image-webpack-loader">image-webpack-loader</a>。</p>\n<p dir="auto">这个插件主要是来压缩图片文件的。</p>\n<p dir="auto">安装。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$  npm install image-webpack-loader --save-dev"><pre class="notranslate">$  npm install image-webpack-loader --save-dev</pre></div>\n<p dir="auto"><strong>webpack.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  test: /\\.(gif|png|jpe?g|svg)$/i,\n  use: [\n    {\n      loader: \'file-loader\',\n      options: {\n        name: \'[name].[ext]\',\n        outputPath: \'images/\'\n      }\n    },\n    {\n      loader: \'image-webpack-loader\',\n      options: {\n        bypassOnDebug: true,\n      }\n    }\n  ]\n},\n{\n  test: /\\.html$/,\n  use: [ {\n    loader: \'html-loader\',\n    options: {\n      minimize: true\n    }\n  }],\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-kos">(</span><span class="pl-s">g</span><span class="pl-s">i</span><span class="pl-s">f</span><span class="pl-c1">|</span><span class="pl-s">p</span><span class="pl-s">n</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">j</span><span class="pl-s">p</span><span class="pl-s">e</span><span class="pl-c1">?</span><span class="pl-s">g</span><span class="pl-c1">|</span><span class="pl-s">s</span><span class="pl-s">v</span><span class="pl-s">g</span><span class="pl-kos">)</span><span class="pl-cce">$</span><span class="pl-c1">/</span>i</span><span class="pl-kos">,</span>\n  <span class="pl-c1">use</span>: <span class="pl-kos">[</span>\n    <span class="pl-kos">{</span>\n      <span class="pl-c1">loader</span>: <span class="pl-s">\'file-loader\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">name</span>: <span class="pl-s">\'[name].[ext]\'</span><span class="pl-kos">,</span>\n        <span class="pl-c1">outputPath</span>: <span class="pl-s">\'images/\'</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">{</span>\n      <span class="pl-c1">loader</span>: <span class="pl-s">\'image-webpack-loader\'</span><span class="pl-kos">,</span>\n      <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n        <span class="pl-c1">bypassOnDebug</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">]</span>\n<span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">{</span>\n  <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">h</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">l</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n  <span class="pl-c1">use</span>: <span class="pl-kos">[</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">loader</span>: <span class="pl-s">\'html-loader\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n      <span class="pl-c1">minimize</span>: <span class="pl-c1">true</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">源文件的图片大小情况是这样的：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ ls -lh src/images\ntotal 256\n-rw-r--r--@ 1 hfpp2012  staff   112K Nov  3 23:10 logo.png\n-rw-r--r--@ 1 hfpp2012  staff    11K Dec  4 16:32 money-bag.svg"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">ls</span> <span class="pl-c1">-</span><span class="pl-s1">lh</span> <span class="pl-s1">src</span><span class="pl-c1">/</span><span class="pl-s1">images</span>\n<span class="pl-s1">total</span> <span class="pl-c1">256</span>\n<span class="pl-c1">-</span><span class="pl-s1">rw</span><span class="pl-c1">-</span><span class="pl-s1">r</span><span class="pl-c1">--</span><span class="pl-s1">r</span><span class="pl-c1">--</span>@ <span class="pl-c1">1</span> <span class="pl-s1">hfpp2012</span>  <span class="pl-s1">staff</span>   <span class="pl-c1">112</span><span class="pl-v">K</span> <span class="pl-v">Nov</span>  <span class="pl-c1">3</span> <span class="pl-c1">23</span>:<span class="pl-c1">10</span> <span class="pl-s1">logo</span><span class="pl-kos">.</span><span class="pl-c1">png</span>\n<span class="pl-c1">-</span><span class="pl-s1">rw</span><span class="pl-c1">-</span><span class="pl-s1">r</span><span class="pl-c1">--</span><span class="pl-s1">r</span><span class="pl-c1">--</span>@ <span class="pl-c1">1</span> <span class="pl-s1">hfpp2012</span>  <span class="pl-s1">staff</span>    <span class="pl-c1">11</span><span class="pl-v">K</span> <span class="pl-v">Dec</span>  <span class="pl-c1">4</span> <span class="pl-c1">16</span>:<span class="pl-c1">32</span> <span class="pl-s1">money</span><span class="pl-c1">-</span><span class="pl-s1">bag</span><span class="pl-kos">.</span><span class="pl-c1">svg</span></pre></div>\n<p dir="auto">而压缩后（npm run prod）：</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ ls -lh dist/images\ntotal 96\n-rw-r--r--  1 hfpp2012  staff    33K Dec  4 21:34 logo.png\n-rw-r--r--  1 hfpp2012  staff   8.5K Dec  4 21:34 money-bag.svg"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">ls</span> <span class="pl-c1">-</span><span class="pl-s1">lh</span> <span class="pl-s1">dist</span><span class="pl-c1">/</span><span class="pl-s1">images</span>\n<span class="pl-s1">total</span> <span class="pl-c1">96</span>\n<span class="pl-c1">-</span><span class="pl-s1">rw</span><span class="pl-c1">-</span><span class="pl-s1">r</span><span class="pl-c1">--</span><span class="pl-s1">r</span><span class="pl-c1">--</span>  <span class="pl-c1">1</span> <span class="pl-s1">hfpp2012</span>  <span class="pl-s1">staff</span>    <span class="pl-c1">33</span><span class="pl-v">K</span> <span class="pl-v">Dec</span>  <span class="pl-c1">4</span> <span class="pl-c1">21</span>:<span class="pl-c1">34</span> <span class="pl-s1">logo</span><span class="pl-kos">.</span><span class="pl-c1">png</span>\n<span class="pl-c1">-</span><span class="pl-s1">rw</span><span class="pl-c1">-</span><span class="pl-s1">r</span><span class="pl-c1">--</span><span class="pl-s1">r</span><span class="pl-c1">--</span>  <span class="pl-c1">1</span> <span class="pl-s1">hfpp2012</span>  <span class="pl-s1">staff</span>   <span class="pl-c1">8.5</span><span class="pl-v">K</span> <span class="pl-v">Dec</span>  <span class="pl-c1">4</span> <span class="pl-c1">21</span>:<span class="pl-c1">34</span> <span class="pl-s1">money</span><span class="pl-c1">-</span><span class="pl-s1">bag</span><span class="pl-kos">.</span><span class="pl-c1">svg</span></pre></div>\n<p dir="auto">由上面的对比可知，压缩后体积减少了一些。</p>\n<p dir="auto">当然这个插件，肯定还有更多的用法，具体查看 readme 文档吧。</p>\n<h4 dir="auto">参考</h4>\n<ul dir="auto">\n<li><a href="https://www.rails365.net/playlists/webpack-3-ling-ji-chu-ru-men-shi-pin-jiao-cheng" rel="nofollow">https://www.rails365.net/playlists/webpack-3-ling-ji-chu-ru-men-shi-pin-jiao-cheng</a></li>\n<li><a href="https://github.com/ruanyf/webpack-demos">https://github.com/ruanyf/webpack-demos</a></li>\n<li><a href="https://github.com/meishadevs/webpack-demos/blob/master/README.md">https://github.com/meishadevs/webpack-demos/blob/master/README.md</a></li>\n</ul>\n<h4 dir="auto">补充</h4>\n<ul dir="auto">\n<li><a href="https://www.jianshu.com/p/c0bec50ec385" rel="nofollow">https://www.jianshu.com/p/c0bec50ec385</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:p,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:p}],html_url:"https://github.com/yanyue404/blog/issues/33"},navList:[{text:"入门命令",id:"main-heading-H2-0",type:a,children:[{text:"其他",id:"main-heading-H3-1",type:s}]},{text:"html-webpack-plugin",id:"main-heading-H2-2",type:a,children:[]},{text:"css-loader",id:"main-heading-H2-3",type:a,children:[]},{text:"webpack-dev-server",id:"main-heading-H2-4",type:a,children:[]},{text:"webpack 和 babel 配置 react 开发环境",id:"main-heading-H2-5",type:a,children:[{text:"3.在 webpack 使用 babel-loader",id:"main-heading-H3-6",type:s},{text:"4. 写 react 组件",id:"main-heading-H3-7",type:s}]},{text:"用 clean-webpack-plugin 来清除文件",id:"main-heading-H2-8",type:a,children:[]},{text:"配置多个 HTML 文件",id:"main-heading-H2-9",type:a,children:[]},{text:"使用 pug (jade) 作为 HTML 的模板",id:"main-heading-H2-10",type:a,children:[]},{text:"如何使用模块热替换 HMR 来处理 CSS",id:"main-heading-H2-11",type:a,children:[{text:"1.启用 HMR",id:"main-heading-H3-12",type:s},{text:"2.处理 extract-text-webpack-plugin",id:"main-heading-H3-13",type:s}]},{text:"生产环境 vs 开发环境",id:"main-heading-H2-14",type:a,children:[{text:"1. 增加环境变量",id:"main-heading-H3-15",type:s},{text:"2.使用环境变量",id:"main-heading-H3-16",type:s},{text:"3.window平台使用",id:"main-heading-H3-17",type:s}]},{text:"如何打包图片",id:"main-heading-H2-18",type:a,children:[{text:"1.file-loader",id:"main-heading-H3-19",type:s},{text:"2. file-loader 的参数",id:"main-heading-H3-20",type:s},{text:"3.解析 html 代码里面 img 的标签",id:"main-heading-H3-21",type:s},{text:"4. 压缩图片",id:"main-heading-H3-22",type:s}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:p},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:p,avatar_url:p,name:p,html_url:p,bio:p,type:l}},serverRendered:!0}}("H3","H2","","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

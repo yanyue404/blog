@@ -1,0 +1,1289 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>2019,帮助你更好的开发小程序 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 原生开发小程序有了两个项目，在原生开发小程序经验技巧方面有一些自己的总结，此篇文章做原创分享！ 本文适合老手查看，新手请参阅官方文档，同步至github。 1.发布订阅处理复杂逻辑 支持先订阅后发布，以及先发布后订阅 方法源码 var Event = (function() { var cli"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="2019,帮助你更好的开发小程序"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 原生开发小程序有了两个项目，在原生开发小程序经验技巧方面有一些自己的总结，此篇文章做原创分享！ 本文适合老手查看，新手请参阅官方文档，同步至github。 1.发布订阅处理复杂逻辑 支持先订阅后发布，以及先发布后订阅 方法源码 var Event = (function() { var cli"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="2019,帮助你更好的开发小程序"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 原生开发小程序有了两个项目，在原生开发小程序经验技巧方面有一些自己的总结，此篇文章做原创分享！ 本文适合老手查看，新手请参阅官方文档，同步至github。 1.发布订阅处理复杂逻辑 支持先订阅后发布，以及先发布后订阅 方法源码 var Event = (function() { var cli"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-1" title="1.发布订阅处理复杂逻辑" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              1.发布订阅处理复杂逻辑
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-2" title="2.Storage" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              2.Storage
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H3-3" title="例子" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  例子
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-4" title="3.filter 计算属性" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              3.filter 计算属性
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-5" title="4.flex Style" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              4.flex Style
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-6" title="5.async await" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              5.async await
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-7" title="6.addKey Api" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              6.addKey Api
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-8" title="7. 组件化复用开发实践" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              7. 组件化复用开发实践
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H3-9" title='(1) 第一步，查看目录结构划分，主要为 <code class="notranslate">Carousel</code> 组件 在 <code class="notranslate">index</code> 页面的使用' class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  (1) 第一步，查看目录结构划分，主要为 Carousel 组件 在 index 页面的使用
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H3-10" title='(2) 第二步我们分析看如何使用,设计 组件需要的 <code class="notranslate">props</code>' class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  (2) 第二步我们分析看如何使用,设计 组件需要的 props
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H3-11" title="(3).业务代码编写" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  (3).业务代码编写
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H3-12" title="更多" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  更多
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H2-13" title="8. 自定义 headerBar" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              8. 自定义 headerBar
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H3-14" title="参考" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  参考
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/47#main-heading-H3-15" title="生态圈" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  生态圈
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>2019,帮助你更好的开发小程序</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>2019,帮助你更好的开发小程序</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2019-03-21</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 34 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto"><code class="notranslate">原生</code>开发小程序有了两个项目，在原生开发小程序经验技巧方面有一些自己的总结，此篇文章做原创分享！</p>
+<p dir="auto">本文适合老手查看，新手请参阅<a href="https://developers.weixin.qq.com/miniprogram/dev/index.html?t=18122618" rel="nofollow">官方文档</a>，同步至<a href="https://github.com/xiaoyueyue165/blog/issues/47" data-hovercard-type="issue" data-hovercard-url="/yanyue404/blog/issues/47/hovercard">github</a>。</p>
+<h2 id="main-heading-H2-1">1.发布订阅处理复杂逻辑</h2>
+<blockquote>
+<p dir="auto">支持先订阅后发布，以及先发布后订阅</p>
+</blockquote>
+<ul dir="auto">
+<li>方法源码</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='var Event = (function() {
+  var clientList = {},
+    pub,
+    sub,
+    remove;
+
+  var cached = {};
+
+  sub = function(key, fn) {
+    if (!clientList[key]) {
+      clientList[key] = [];
+    }
+    // 使用缓存执行的订阅不用多次调用执行
+    cached[key + "time"] == undefined ? clientList[key].push(fn) : "";
+    if (cached[key] instanceof Array && cached[key].length > 0) {
+      //说明有缓存的 可以执行
+      fn.apply(null, cached[key]);
+      cached[key + "time"] = 1;
+    }
+  };
+  pub = function() {
+    var key = Array.prototype.shift.call(arguments),
+      fns = clientList[key];
+    if (!fns || fns.length === 0) {
+      //初始默认缓存
+      cached[key] = Array.prototype.slice.call(arguments, 0);
+      return false;
+    }
+
+    for (var i = 0, fn; (fn = fns[i++]); ) {
+      // 再次发布更新缓存中的 data 参数
+      cached[key + "time"] != undefined
+        ? (cached[key] = Array.prototype.slice.call(arguments, 0))
+        : "";
+      fn.apply(this, arguments);
+    }
+  };
+  remove = function(key, fn) {
+    var fns = clientList[key];
+    // 缓存订阅一并删除
+    var cachedFn = cached[key];
+    if (!fns && !cachedFn) {
+      return false;
+    }
+    if (!fn) {
+      fns && (fns.length = 0);
+      cachedFn && (cachedFn.length = 0);
+    } else {
+      if (cachedFn) {
+        for (var m = cachedFn.length - 1; m >= 0; m--) {
+          var _fn_temp = cachedFn[m];
+          if (_fn_temp === fn) {
+            cachedFn.splice(m, 1);
+          }
+        }
+      }
+      for (var n = fns.length - 1; n >= 0; n--) {
+        var _fn = fns[n];
+        if (_fn === fn) {
+          fns.splice(n, 1);
+        }
+      }
+    }
+  };
+  return {
+    pub: pub,
+    sub: sub,
+    remove: remove
+  };
+})();'><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-v">Event</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">var</span> <span class="pl-s1">clientList</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-s1">pub</span><span class="pl-kos">,</span>
+    <span class="pl-s1">sub</span><span class="pl-kos">,</span>
+    <span class="pl-s1">remove</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">var</span> <span class="pl-s1">cached</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+  <span class="pl-s1">sub</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-c">// 使用缓存执行的订阅不用多次调用执行</span>
+    <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span> <span class="pl-c1">+</span> <span class="pl-s">"time"</span><span class="pl-kos">]</span> <span class="pl-c1">==</span> <span class="pl-c1">undefined</span> ? <span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s1">fn</span><span class="pl-kos">)</span> : <span class="pl-s">""</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-k">instanceof</span> <span class="pl-v">Array</span> <span class="pl-c1">&&</span> <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">></span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">//说明有缓存的 可以执行</span>
+      <span class="pl-s1">fn</span><span class="pl-kos">.</span><span class="pl-en">apply</span><span class="pl-kos">(</span><span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span> <span class="pl-c1">+</span> <span class="pl-s">"time"</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-s1">pub</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">var</span> <span class="pl-s1">key</span> <span class="pl-c1">=</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">shift</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+      <span class="pl-s1">fns</span> <span class="pl-c1">=</span> <span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">fns</span> <span class="pl-c1">||</span> <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">===</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">//初始默认缓存</span>
+      <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">slice</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">return</span> <span class="pl-c1">false</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-s1">fn</span><span class="pl-kos">;</span> <span class="pl-kos">(</span><span class="pl-s1">fn</span> <span class="pl-c1">=</span> <span class="pl-s1">fns</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">// 再次发布更新缓存中的 data 参数</span>
+      <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span> <span class="pl-c1">+</span> <span class="pl-s">"time"</span><span class="pl-kos">]</span> <span class="pl-c1">!=</span> <span class="pl-c1">undefined</span>
+        ? <span class="pl-kos">(</span><span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">slice</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+        : <span class="pl-s">""</span><span class="pl-kos">;</span>
+      <span class="pl-s1">fn</span><span class="pl-kos">.</span><span class="pl-en">apply</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">,</span> <span class="pl-smi">arguments</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-s1">remove</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">var</span> <span class="pl-s1">fns</span> <span class="pl-c1">=</span> <span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-c">// 缓存订阅一并删除</span>
+    <span class="pl-k">var</span> <span class="pl-s1">cachedFn</span> <span class="pl-c1">=</span> <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">fns</span> <span class="pl-c1">&&</span> <span class="pl-c1">!</span><span class="pl-s1">cachedFn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-c1">false</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">fns</span> <span class="pl-c1">&&</span> <span class="pl-kos">(</span><span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">cachedFn</span> <span class="pl-c1">&&</span> <span class="pl-kos">(</span><span class="pl-s1">cachedFn</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">cachedFn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">m</span> <span class="pl-c1">=</span> <span class="pl-s1">cachedFn</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-s1">m</span> <span class="pl-c1">>=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">m</span><span class="pl-c1">--</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-k">var</span> <span class="pl-s1">_fn_temp</span> <span class="pl-c1">=</span> <span class="pl-s1">cachedFn</span><span class="pl-kos">[</span><span class="pl-s1">m</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+          <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">_fn_temp</span> <span class="pl-c1">===</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-s1">cachedFn</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+      <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">n</span> <span class="pl-c1">=</span> <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-s1">n</span> <span class="pl-c1">>=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">n</span><span class="pl-c1">--</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">var</span> <span class="pl-s1">_fn</span> <span class="pl-c1">=</span> <span class="pl-s1">fns</span><span class="pl-kos">[</span><span class="pl-s1">n</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">_fn</span> <span class="pl-c1">===</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-k">return</span> <span class="pl-kos">{</span>
+    <span class="pl-c1">pub</span>: <span class="pl-s1">pub</span><span class="pl-kos">,</span>
+    <span class="pl-c1">sub</span>: <span class="pl-s1">sub</span><span class="pl-kos">,</span>
+    <span class="pl-c1">remove</span>: <span class="pl-s1">remove</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>全局挂载使用</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// app.js
+App({
+  onLaunch: function(e) {
+    // 注册 storage，这是第二条
+    wx.Storage = Storage;
+    // 注册发布订阅模式
+    wx.yue = Event;
+  }
+});"><pre class="notranslate"><span class="pl-c">// app.js</span>
+<span class="pl-v">App</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">onLaunch</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 注册 storage，这是第二条</span>
+    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">Storage</span> <span class="pl-c1">=</span> <span class="pl-v">Storage</span><span class="pl-kos">;</span>
+    <span class="pl-c">// 注册发布订阅模式</span>
+    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span> <span class="pl-c1">=</span> <span class="pl-v">Event</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>使用实例</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// 添加收货地址页面订阅
+ onLoad: function (options) {
+        wx.yue.sub("addAddress", function (data) {
+            y.setData({
+                addAddress: data
+            })
+        })
+ }
+/**
+ * 生命周期函数--监听页面隐藏
+ */
+ onHide: function () {
+    // 取消多余的事件订阅
+    wx.Storage.removeItem("addAddress");
+},
+ onUnload: function () {
+    // 取消多余的事件订阅
+    wx.yue.remove("addAddress");
+}'><pre class="notranslate"><span class="pl-c">// 添加收货地址页面订阅</span>
+ onLoad: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span><span class="pl-kos">.</span><span class="pl-en">sub</span><span class="pl-kos">(</span><span class="pl-s">"addAddress"</span><span class="pl-kos">,</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+                <span class="pl-c1">addAddress</span>: <span class="pl-s1">data</span>
+            <span class="pl-kos">}</span><span class="pl-kos">)</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+ <span class="pl-kos">}</span>
+<span class="pl-c">/**</span>
+<span class="pl-c"> * 生命周期函数--监听页面隐藏</span>
+<span class="pl-c"> */</span>
+ onHide: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 取消多余的事件订阅</span>
+    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">Storage</span><span class="pl-kos">.</span><span class="pl-en">removeItem</span><span class="pl-kos">(</span><span class="pl-s">"addAddress"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">,</span>
+ <span class="pl-s1">onUnload</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 取消多余的事件订阅</span>
+    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span><span class="pl-kos">.</span><span class="pl-en">remove</span><span class="pl-kos">(</span><span class="pl-s">"addAddress"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// 传递地址页面获取好数据传递
+wx.yue.pub("addAddress", data.info);
+// 补充跳转返回'><pre class="notranslate"><span class="pl-c">// 传递地址页面获取好数据传递</span>
+<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span><span class="pl-kos">.</span><span class="pl-en">pub</span><span class="pl-kos">(</span><span class="pl-s">"addAddress"</span><span class="pl-kos">,</span> <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// 补充跳转返回</span></pre></div>
+<blockquote>
+<p dir="auto">注意:使用完成数据后要注意卸载，在页面被关闭时操作</p>
+</blockquote>
+<h2 id="main-heading-H2-2">2.Storage</h2>
+<blockquote>
+<p dir="auto">storage 管理封装，用法和上面的一致，挂载在全局对象上调用，使用介绍就不列了</p>
+</blockquote>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const Storage = {
+  //  第一个 key 参数可以省略，直接传递 obj 对象，支持 callback
+  setItem: function(key, obj, callback) {
+    const getType = function(a) {
+      var typeArray = Object.prototype.toString.call(a).split(" ");
+      return typeArray[1].slice(0, -1);
+    };
+    var firstParamType = getType(arguments[0]);
+    if (firstParamType === "Object") {
+      var keyArrayLength = Object.keys(arguments[0]).length;
+      var index = 0;
+      for (var keyName in arguments[0]) {
+        index++;
+        wx.setStorage({
+          key: keyName,
+          data: arguments[0][keyName],
+          success: index == keyArrayLength ? arguments[1] : function() {}
+        });
+      }
+    }
+    if (firstParamType === "String") {
+      wx.setStorage({
+        key: key,
+        data: obj,
+        success: callback || function() {}
+      });
+    }
+  },
+  getItem: function(key) {
+    return wx.getStorageSync(key);
+  },
+  removeItem: function(key) {
+    wx.removeStorage({
+      key: key
+    });
+  }
+};'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">Storage</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c">//  第一个 key 参数可以省略，直接传递 obj 对象，支持 callback</span>
+  <span class="pl-en">setItem</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">obj</span><span class="pl-kos">,</span> <span class="pl-s1">callback</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-en">getType</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">var</span> <span class="pl-s1">typeArray</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">toString</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">" "</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">return</span> <span class="pl-s1">typeArray</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">slice</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">-</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-k">var</span> <span class="pl-s1">firstParamType</span> <span class="pl-c1">=</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">firstParamType</span> <span class="pl-c1">===</span> <span class="pl-s">"Object"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">var</span> <span class="pl-s1">keyArrayLength</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span>
+      <span class="pl-k">var</span> <span class="pl-s1">index</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+      <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">keyName</span> <span class="pl-k">in</span> <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">index</span><span class="pl-c1">++</span><span class="pl-kos">;</span>
+        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">setStorage</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">key</span>: <span class="pl-s1">keyName</span><span class="pl-kos">,</span>
+          <span class="pl-c1">data</span>: <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">keyName</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+          <span class="pl-c1">success</span>: <span class="pl-s1">index</span> <span class="pl-c1">==</span> <span class="pl-s1">keyArrayLength</span> ? <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span> : <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">firstParamType</span> <span class="pl-c1">===</span> <span class="pl-s">"String"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">setStorage</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">key</span>: <span class="pl-s1">key</span><span class="pl-kos">,</span>
+        <span class="pl-c1">data</span>: <span class="pl-s1">obj</span><span class="pl-kos">,</span>
+        <span class="pl-c1">success</span>: <span class="pl-s1">callback</span> <span class="pl-c1">||</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">getItem</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">getStorageSync</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">removeItem</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">removeStorage</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">key</span>: <span class="pl-s1">key</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-3">例子</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='wx.Storage.setItem(
+  {
+    class_pid: that.data.class_pid,
+    class_id: that.data.class_id,
+    is_import: that.data.is_import,
+    shop_type: 1
+  },
+  function() {
+    console.log("Storage 已设置完毕！");
+  }
+);'><pre class="notranslate"><span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">Storage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span>
+  <span class="pl-kos">{</span>
+    <span class="pl-c1">class_pid</span>: <span class="pl-s1">that</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">class_pid</span><span class="pl-kos">,</span>
+    <span class="pl-c1">class_id</span>: <span class="pl-s1">that</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">class_id</span><span class="pl-kos">,</span>
+    <span class="pl-c1">is_import</span>: <span class="pl-s1">that</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">is_import</span><span class="pl-kos">,</span>
+    <span class="pl-c1">shop_type</span>: <span class="pl-c1">1</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Storage 已设置完毕！"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-4">3.filter 计算属性</h2>
+<blockquote>
+<p dir="auto">小程序也有计算属性，你知道吗？</p>
+</blockquote>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// 文件名称为 ：filter.wxs
+// 不支持es6，Date,Number
+function filterOrderTitleName(status) {
+  switch (status) {
+    case "1":
+      return "待支付";
+    case "2":
+      return "待配送";
+    case "3":
+      return "配送中";
+    case "4":
+      return "已完成";
+  }
+}
+function filterPrice(str) {
+  // 四舍五入 格式化数字
+  // toFix(8440.55,1) => 8440.6
+  var times = Math.pow(10, 2);
+  var roundNum = Math.round(str * times) / times;
+  return roundNum.toFixed(2);
+}
+
+module.exports = {
+  filterOrderTitleName: filterOrderTitleName,
+  filterPrice: filterPrice
+};'><pre class="notranslate"><span class="pl-c">// 文件名称为 ：filter.wxs</span>
+<span class="pl-c">// 不支持es6，Date,Number</span>
+<span class="pl-k">function</span> <span class="pl-en">filterOrderTitleName</span><span class="pl-kos">(</span><span class="pl-s1">status</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">switch</span> <span class="pl-kos">(</span><span class="pl-s1">status</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">case</span> <span class="pl-s">"1"</span>:
+      <span class="pl-k">return</span> <span class="pl-s">"待支付"</span><span class="pl-kos">;</span>
+    <span class="pl-k">case</span> <span class="pl-s">"2"</span>:
+      <span class="pl-k">return</span> <span class="pl-s">"待配送"</span><span class="pl-kos">;</span>
+    <span class="pl-k">case</span> <span class="pl-s">"3"</span>:
+      <span class="pl-k">return</span> <span class="pl-s">"配送中"</span><span class="pl-kos">;</span>
+    <span class="pl-k">case</span> <span class="pl-s">"4"</span>:
+      <span class="pl-k">return</span> <span class="pl-s">"已完成"</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+<span class="pl-k">function</span> <span class="pl-en">filterPrice</span><span class="pl-kos">(</span><span class="pl-s1">str</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 四舍五入 格式化数字</span>
+  <span class="pl-c">// toFix(8440.55,1) => 8440.6</span>
+  <span class="pl-k">var</span> <span class="pl-s1">times</span> <span class="pl-c1">=</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">pow</span><span class="pl-kos">(</span><span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-k">var</span> <span class="pl-s1">roundNum</span> <span class="pl-c1">=</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">round</span><span class="pl-kos">(</span><span class="pl-s1">str</span> <span class="pl-c1">*</span> <span class="pl-s1">times</span><span class="pl-kos">)</span> <span class="pl-c1">/</span> <span class="pl-s1">times</span><span class="pl-kos">;</span>
+  <span class="pl-k">return</span> <span class="pl-s1">roundNum</span><span class="pl-kos">.</span><span class="pl-en">toFixed</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">filterOrderTitleName</span>: <span class="pl-s1">filterOrderTitleName</span><span class="pl-kos">,</span>
+  <span class="pl-c1">filterPrice</span>: <span class="pl-s1">filterPrice</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>使用实例，过滤处理打折后的金额小数位数</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 当前文件名：shoppingCart.wxml
+// wxs 文件顶部导入
+<wxs src=&#34;../../filter/filter.wxs&#34; module=&#34;filter&#34;></wxs>
+ <view class='offerPrice nowrap'>¥{{filter.filterPrice(item.plus*100*item.price/1000)}}
+    <image class='youhuiBox' src=&#34;../../assets/youhuiBox.png&#34;>
+        <view class='youhuiText'>会员{{item.dazhe}}折</view>
+    </image>
+ </view>"><pre class="notranslate"><span class="pl-c">// 当前文件名：shoppingCart.wxml</span>
+<span class="pl-c">// wxs 文件顶部导入</span>
+<span class="pl-c1">&lt;</span><span class="pl-s1">wxs</span> <span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"../../filter/filter.wxs"</span> <span class="pl-c1">module</span><span class="pl-c1">=</span><span class="pl-s">"filter"</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-s1">wxs</span><span class="pl-c1">></span>
+ <span class="pl-c1">&lt;</span><span class="pl-s1">view</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">'offerPrice nowrap'</span><span class="pl-c1">></span><span class="pl-s1">¥</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-s1">filter</span><span class="pl-kos">.</span><span class="pl-en">filterPrice</span><span class="pl-kos">(</span><span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">plus</span><span class="pl-c1">*</span><span class="pl-c1">100</span><span class="pl-c1">*</span><span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">price</span><span class="pl-c1">/</span><span class="pl-c1">1000</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">}</span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">image</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">'youhuiBox'</span> <span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"../../assets/youhuiBox.png"</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">view</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">'youhuiText'</span><span class="pl-c1">></span>会员<span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-s1">item</span><span class="pl-kos">.</span>dazhe<span class="pl-kos">}</span><span class="pl-kos">}</span>折<span class="pl-kos">&lt;/</span><span class="pl-s1">view</span><span class="pl-c1">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-s1">image</span><span class="pl-c1">></span>
+ <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">v</span><span class="pl-s">i</span><span class="pl-s">e</span><span class="pl-s">w</span><span class="pl-s">></span></pre></div>
+<h2 id="main-heading-H2-5">4.flex Style</h2>
+<blockquote>
+<p dir="auto">分享我常使用的自定义的一套 flex 样式,快速实现布局</p>
+</blockquote>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/* -------------------------------------------------------------flex------------------------------------------------------- */
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 单行水平垂直 */
+
+.oneLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平向左 */
+
+.oneLineStart {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平向右 */
+
+.oneLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平保持间距 */
+
+.oneLineAround {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 单行垂直居中，两端对齐 */
+
+.oneLineBetween {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 超过单行设置的最大宽度，允许换行显示 */
+
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+/* 多轴线方向，一般配合  wrap 使用 */
+
+/* 宽度不足换行后，垂直方向靠上排列 */
+
+.mulitLineStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+/* 宽度不足换行后，垂直方向居中排列 */
+
+.mulitLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+/* 宽度不足换行后，垂直方向靠下排列 */
+
+.mulitLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+/* 宽度不足换行后，垂直方向上保持间隔排列 */
+
+.mulitLineAround {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+/* 宽度不足换行后，垂直方向上靠两侧最顶开始间隔排列 */
+
+.mulitLineBetween {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+/* 纵轴变主轴，垂直靠上，水平居中 */
+
+.columnStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直靠下，水平居中 */
+
+.columnEnd {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直居中，水平居中 */
+
+.columnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直间隔排列，水平居中 */
+
+.columnAround {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直上下两侧按间隔排列，水平居中 */
+
+.columnBetween {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠左 */
+
+.columnBetweenStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠右 */
+
+.columnBetweenEnd {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}"><pre class="notranslate"><span class="pl-c">/* -------------------------------------------------------------flex------------------------------------------------------- */</span>
+
+.<span class="pl-c1">center</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 单行水平垂直 */</span>
+
+.<span class="pl-c1">oneLineCenter</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> center;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 单行垂直居中，水平向左 */</span>
+
+.<span class="pl-c1">oneLineStart</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> flex-start;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 单行垂直居中，水平向右 */</span>
+
+.<span class="pl-c1">oneLineEnd</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> flex-end;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 单行垂直居中，水平保持间距 */</span>
+
+.<span class="pl-c1">oneLineAround</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-around;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 单行垂直居中，两端对齐 */</span>
+
+.<span class="pl-c1">oneLineBetween</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-between;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 超过单行设置的最大宽度，允许换行显示 */</span>
+
+.<span class="pl-c1">f-wrap</span> {
+  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;
+}
+
+<span class="pl-c">/* 多轴线方向，一般配合  wrap 使用 */</span>
+
+<span class="pl-c">/* 宽度不足换行后，垂直方向靠上排列 */</span>
+
+.<span class="pl-c1">mulitLineStart</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;
+  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> flex-start;
+}
+
+<span class="pl-c">/* 宽度不足换行后，垂直方向居中排列 */</span>
+
+.<span class="pl-c1">mulitLineCenter</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;
+  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 宽度不足换行后，垂直方向靠下排列 */</span>
+
+.<span class="pl-c1">mulitLineEnd</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;
+  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> flex-end;
+}
+
+<span class="pl-c">/* 宽度不足换行后，垂直方向上保持间隔排列 */</span>
+
+.<span class="pl-c1">mulitLineAround</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;
+  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> space-around;
+}
+
+<span class="pl-c">/* 宽度不足换行后，垂直方向上靠两侧最顶开始间隔排列 */</span>
+
+.<span class="pl-c1">mulitLineBetween</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;
+  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> space-between;
+}
+
+<span class="pl-c">/* 纵轴变主轴，垂直靠上，水平居中 */</span>
+
+.<span class="pl-c1">columnStart</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;
+  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> flex-start;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 纵轴变主轴，垂直靠下，水平居中 */</span>
+
+.<span class="pl-c1">columnEnd</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> flex-end;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 纵轴变主轴，垂直居中，水平居中 */</span>
+
+.<span class="pl-c1">columnCenter</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> center;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 纵轴变主轴，垂直间隔排列，水平居中 */</span>
+
+.<span class="pl-c1">columnAround</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-around;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+
+<span class="pl-c">/* 纵轴变主轴，垂直上下两侧按间隔排列，水平居中 */</span>
+
+.<span class="pl-c1">columnBetween</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-between;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;
+}
+<span class="pl-c">/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠左 */</span>
+
+.<span class="pl-c1">columnBetweenStart</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-between;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> flex-start;
+}
+<span class="pl-c">/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠右 */</span>
+
+.<span class="pl-c1">columnBetweenEnd</span> {
+  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;
+  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;
+  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-between;
+  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> flex-end;
+}</pre></div>
+<h2 id="main-heading-H2-6">5.async await</h2>
+<p dir="auto">使用<a href="https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js">runtime.js</a>，使小程序支持 async await，拷贝文件至项目目录下。</p>
+<ul dir="auto">
+<li>实例用法</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const regeneratorRuntime = require("../../utils/runtime.js");
+Page({
+  shopCartInit() {
+    var y = this;
+    // 拿到商铺位置信息再去渲染购物计算当前的address符合不符合规定
+    var showCartList = function() {
+      // 显示全局的地址信息
+      var globalAddress = wx.Storage.getItem("globalAddress");
+      if (globalAddress) {
+        y.setData({
+          globalAddress: globalAddress,
+          addr_id: globalAddress.id
+        });
+        y.calculateDistance(
+          qqmapsdk,
+          globalAddress.latitude,
+          globalAddress.longitude
+        );
+      } else {
+        y.setData({
+          globalAddress: {}
+        });
+      }
+    };
+    // await 等待获取商铺位置信息
+    async function getShopPosTionMsg() {
+      await util.promiseRequest(api.merchant_addr, {}).then(res => {
+        var data = res.data.response_data.lists[0];
+        y.setData({
+          shop_lat: data.latitude, // 商铺纬度
+          shop_lng: data.longitude, // 商铺经度
+          peiSongFanWei: data.scope // 配送范围
+        });
+      });
+    }
+
+    async function initData() {
+      await getShopPosTionMsg();
+      await showCartList();
+      util.closeLoading();
+      y.setData({
+        loading: false
+      });
+    }
+    // 开始执行
+    initData();
+  }
+});'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">regeneratorRuntime</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"../../utils/runtime.js"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">shopCartInit</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">var</span> <span class="pl-s1">y</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">;</span>
+    <span class="pl-c">// 拿到商铺位置信息再去渲染购物计算当前的address符合不符合规定</span>
+    <span class="pl-k">var</span> <span class="pl-en">showCartList</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">// 显示全局的地址信息</span>
+      <span class="pl-k">var</span> <span class="pl-s1">globalAddress</span> <span class="pl-c1">=</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">Storage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"globalAddress"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">globalAddress</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">globalAddress</span>: <span class="pl-s1">globalAddress</span><span class="pl-kos">,</span>
+          <span class="pl-c1">addr_id</span>: <span class="pl-s1">globalAddress</span><span class="pl-kos">.</span><span class="pl-c1">id</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">calculateDistance</span><span class="pl-kos">(</span>
+          <span class="pl-s1">qqmapsdk</span><span class="pl-kos">,</span>
+          <span class="pl-s1">globalAddress</span><span class="pl-kos">.</span><span class="pl-c1">latitude</span><span class="pl-kos">,</span>
+          <span class="pl-s1">globalAddress</span><span class="pl-kos">.</span><span class="pl-c1">longitude</span>
+        <span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">globalAddress</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-c">// await 等待获取商铺位置信息</span>
+    <span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">getShopPosTionMsg</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">await</span> <span class="pl-s1">util</span><span class="pl-kos">.</span><span class="pl-en">promiseRequest</span><span class="pl-kos">(</span><span class="pl-s1">api</span><span class="pl-kos">.</span><span class="pl-c1">merchant_addr</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-s1">res</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-k">var</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">response_data</span><span class="pl-kos">.</span><span class="pl-c1">lists</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+        <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">shop_lat</span>: <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">latitude</span><span class="pl-kos">,</span> <span class="pl-c">// 商铺纬度</span>
+          <span class="pl-c1">shop_lng</span>: <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">longitude</span><span class="pl-kos">,</span> <span class="pl-c">// 商铺经度</span>
+          <span class="pl-c1">peiSongFanWei</span>: <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">scope</span> <span class="pl-c">// 配送范围</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">initData</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">await</span> <span class="pl-en">getShopPosTionMsg</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">await</span> <span class="pl-en">showCartList</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">util</span><span class="pl-kos">.</span><span class="pl-en">closeLoading</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">loading</span>: <span class="pl-c1">false</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-c">// 开始执行</span>
+    <span class="pl-en">initData</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-7">6.addKey Api</h2>
+<blockquote>
+<p dir="auto">使用自定义属性的方法辅助完成业务逻辑，已发布至 <a href="https://github.com/xiaoyueyue165/addKey">addKey</a></p>
+</blockquote>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='/**
+ * 为数组添加新的自定义键值以及过滤每个子项的方法
+ *
+ * @param {*} arr
+ * @param {*} obj { isShow:false,isStar:false}
+ * @param {*} filterFn
+ * @returns
+ */
+function addKey(sourceArray, extendObj, filterFn) {
+  var getType = function(a) {
+    var typeArray = Object.prototype.toString.call(a).split(" ");
+    return typeArray[1].slice(0, -1);
+  };
+  var secondParamType = getType(arguments[1]);
+
+  if (!getType(sourceArray) == "Array") {
+    throw new Error("The first argument must be an array type");
+  }
+  if (secondParamType === "Object") {
+    return sourceArray.forEach((v, index, sourceArray) => {
+      for (var key in extendObj) {
+        v[key] = extendObj[key];
+      }
+      typeof filterFn === "function" ? filterFn(v, index, sourceArray) : "";
+    });
+  } else if (secondParamType === "Function") {
+    return sourceArray.forEach((v, index, sourceArray) => {
+      arguments[1](v, index, sourceArray);
+    });
+  } else {
+    return sourceArray;
+  }
+}'><pre class="notranslate"><span class="pl-c">/**</span>
+<span class="pl-c"> * 为数组添加新的自定义键值以及过滤每个子项的方法</span>
+<span class="pl-c"> *</span>
+<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">*</span>} arr</span>
+<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">*</span>} obj { isShow:false,isStar:false}</span>
+<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">*</span>} filterFn</span>
+<span class="pl-c"> * <span class="pl-k">@returns</span></span>
+<span class="pl-c"> */</span>
+<span class="pl-k">function</span> <span class="pl-en">addKey</span><span class="pl-kos">(</span><span class="pl-s1">sourceArray</span><span class="pl-kos">,</span> <span class="pl-s1">extendObj</span><span class="pl-kos">,</span> <span class="pl-s1">filterFn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">var</span> <span class="pl-en">getType</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">var</span> <span class="pl-s1">typeArray</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">toString</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">" "</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">return</span> <span class="pl-s1">typeArray</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">slice</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">-</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-k">var</span> <span class="pl-s1">secondParamType</span> <span class="pl-c1">=</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-s1">sourceArray</span><span class="pl-kos">)</span> <span class="pl-c1">==</span> <span class="pl-s">"Array"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-v">Error</span><span class="pl-kos">(</span><span class="pl-s">"The first argument must be an array type"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">secondParamType</span> <span class="pl-c1">===</span> <span class="pl-s">"Object"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">key</span> <span class="pl-k">in</span> <span class="pl-s1">extendObj</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">v</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">extendObj</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+      <span class="pl-k">typeof</span> <span class="pl-s1">filterFn</span> <span class="pl-c1">===</span> <span class="pl-s">"function"</span> ? <span class="pl-s1">filterFn</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">)</span> : <span class="pl-s">""</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">secondParamType</span> <span class="pl-c1">===</span> <span class="pl-s">"Function"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<ul dir="auto">
+<li>使用实例</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="util.addKey(data, { y_isCheck: false }, function(v) {
+  v.dazhe = Number(v.plus);
+});
+this.setData({
+  cartList: data
+});"><pre class="notranslate"><span class="pl-s1">util</span><span class="pl-kos">.</span><span class="pl-en">addKey</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">y_isCheck</span>: <span class="pl-c1">false</span> <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">dazhe</span> <span class="pl-c1">=</span> <span class="pl-v">Number</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">plus</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">cartList</span>: <span class="pl-s1">data</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-8">7. 组件化复用开发实践</h2>
+<blockquote>
+<p dir="auto">组件化解构项目元件，提高开发效率,可参照<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/" rel="nofollow">官方介绍</a>起步 !</p>
+</blockquote>
+<p dir="auto">这里介绍一个自定义的跑马灯的轮播图组件实例</p>
+<h3 id="main-heading-H3-9">(1) 第一步，查看目录结构划分，主要为 <code class="notranslate">Carousel</code> 组件 在 <code class="notranslate">index</code> 页面的使用</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="│
+├───component
+│   └───Carousel
+│           Carousel.js
+│           Carousel.json
+│           Carousel.wxml
+│           Carousel.wxss
+│
+├───filter
+│       filter.wxs
+│
+├───pages
+│   └───index
+│           index.js
+│           index.json
+│           index.wxml
+│           index.wxss
+│
+└───utils
+        api.js
+        runtime.js
+        util.js"><pre class="notranslate">│
+├───component
+│   └───Carousel
+│           Carousel.js
+│           Carousel.json
+│           Carousel.wxml
+│           Carousel.wxss
+│
+├───filter
+│       filter.wxs
+│
+├───pages
+│   └───index
+│           index.js
+│           index.json
+│           index.wxml
+│           index.wxss
+│
+└───utils
+        api.js
+        runtime.js
+        util.js</pre></div>
+<h3 id="main-heading-H3-10">(2) 第二步我们分析看如何使用,设计 组件需要的 <code class="notranslate">props</code></h3>
+<ul dir="auto">
+<li>数据项，必须 <code class="notranslate">bannerList</code></li>
+<li>轮播图的固定高度 <code class="notranslate">swiperHeight</code></li>
+<li>自定义轮播按钮小点，宽与高一致，圆形 <code class="notranslate">dotWidthAndHeight</code></li>
+<li>轮播按钮盒子距离顶部的高度 <code class="notranslate">dotTop</code></li>
+</ul>
+<p dir="auto">** 最终在 index.wxml 的实际使用**</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<view class="Carousel">
+  <Carousel
+    swiperHeight="260rpx"
+    bannerList="{{bannerList}}"
+    dotWidthAndHeight="12rpx"
+    dotTop="-20rpx"
+  ></Carousel>
+</view>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">Carousel</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">Carousel</span>
+    <span class="pl-c1">swiperHeight</span>="<span class="pl-s">260rpx</span>"
+    <span class="pl-c1">bannerList</span>="<span class="pl-s">{{bannerList}}</span>"
+    <span class="pl-c1">dotWidthAndHeight</span>="<span class="pl-s">12rpx</span>"
+    <span class="pl-c1">dotTop</span>="<span class="pl-s">-20rpx</span>"
+  <span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">Carousel</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span></pre></div>
+<h3 id="main-heading-H3-11">(3).业务代码编写</h3>
+<ul dir="auto">
+<li>Carousel.json<br>
+开启自定义组件模式</li>
+</ul>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "component": true
+}'><pre class="notranslate">{
+  <span class="pl-ent">"component"</span>: <span class="pl-c1">true</span>
+}</pre></div>
+<ul dir="auto">
+<li>Carousel.wxml</li>
+</ul>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<view class="Carousel_wrap">
+  <!-- 图片区 -->
+  <swiper
+    current="{{swiperCurrentIndex}}"
+    circular="true"
+    bindchange="swiperChange"
+    indicator-dots="{{indicatorDots}}"
+    autoplay="true"
+    interval="5000"
+    duration="1000"
+    style="height:{{swiperHeight}}"
+  >
+    <swiper-item
+      wx:for="{{bannerList}}"
+      bindtap="toHref"
+      wx:key="{{index}}"
+      bindtap="toHref"
+      data-type="{{item.type}}"
+      data-id="{{item.goods_id}}"
+      data-content="{{item.content}}"
+      data-link="{{item.link}}"
+    >
+      <image src="{{item.img_url}}" class="slide-image" />
+    </swiper-item>
+  </swiper>
+  <!-- 关联按钮 -->
+  <view class="boxCell" style="top:{{dotTop}}">
+    <block
+      wx:for="{{bannerList.length > 1 ? bannerList:[]}}"
+      wx:for-index="index"
+      wx:key="{{item.banner}}"
+    >
+      <view
+        id="{{index}}"
+        class="dot {{index === swiperCurrentIndex ? &#39;dot_active&#39;:&#39;&#39;}}"
+        style="width:{{dotWidthAndHeight}},height:{{dotWidthAndHeight}}"
+        bindtap="selectCarouselByIndex"
+      />
+    </block>
+  </view>
+</view>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">Carousel_wrap</span>"<span class="pl-kos">></span>
+  <span class="pl-c">&lt;!-- 图片区 --></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">swiper</span>
+    <span class="pl-c1">current</span>="<span class="pl-s">{{swiperCurrentIndex}}</span>"
+    <span class="pl-c1">circular</span>="<span class="pl-s">true</span>"
+    <span class="pl-c1">bindchange</span>="<span class="pl-s">swiperChange</span>"
+    <span class="pl-c1">indicator-dots</span>="<span class="pl-s">{{indicatorDots}}</span>"
+    <span class="pl-c1">autoplay</span>="<span class="pl-s">true</span>"
+    <span class="pl-c1">interval</span>="<span class="pl-s">5000</span>"
+    <span class="pl-c1">duration</span>="<span class="pl-s">1000</span>"
+    <span class="pl-c1">style</span>="<span class="pl-s">height:{{swiperHeight}}</span>"
+  <span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">swiper-item</span>
+      <span class="pl-c1">wx:for</span>="<span class="pl-s">{{bannerList}}</span>"
+      <span class="pl-c1">bindtap</span>="<span class="pl-s">toHref</span>"
+      <span class="pl-c1">wx:key</span>="<span class="pl-s">{{index}}</span>"
+      <span class="pl-c1">bindtap</span>="<span class="pl-s">toHref</span>"
+      <span class="pl-c1">data-type</span>="<span class="pl-s">{{item.type}}</span>"
+      <span class="pl-c1">data-id</span>="<span class="pl-s">{{item.goods_id}}</span>"
+      <span class="pl-c1">data-content</span>="<span class="pl-s">{{item.content}}</span>"
+      <span class="pl-c1">data-link</span>="<span class="pl-s">{{item.link}}</span>"
+    <span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">image</span> <span class="pl-c1">src</span>="<span class="pl-s">{{item.img_url}}</span>" <span class="pl-c1">class</span>="<span class="pl-s">slide-image</span>" <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">swiper-item</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">swiper</span><span class="pl-kos">></span>
+  <span class="pl-c">&lt;!-- 关联按钮 --></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">boxCell</span>" <span class="pl-c1">style</span>="<span class="pl-s">top:{{dotTop}}</span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">block</span>
+      <span class="pl-c1">wx:for</span>="<span class="pl-s">{{bannerList.length > 1 ? bannerList:[]}}</span>"
+      <span class="pl-c1">wx:for-index</span>="<span class="pl-s">index</span>"
+      <span class="pl-c1">wx:key</span>="<span class="pl-s">{{item.banner}}</span>"
+    <span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">view</span>
+        <span class="pl-c1">id</span>="<span class="pl-s">{{index}}</span>"
+        <span class="pl-c1">class</span>="<span class="pl-s">dot {{index === swiperCurrentIndex ? 'dot_active':''}}</span>"
+        <span class="pl-c1">style</span>="<span class="pl-s">width:{{dotWidthAndHeight}},height:{{dotWidthAndHeight}}</span>"
+        <span class="pl-c1">bindtap</span>="<span class="pl-s">selectCarouselByIndex</span>"
+      <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">block</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span></pre></div>
+<ul dir="auto">
+<li>Carousel.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='Component({
+  /**
+   * 组件的属性列表 必须
+   */
+  properties: {
+    bannerList: {
+      // 属性名
+      type: Array, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+      value: [], // 属性初始值（可选），如果未指定则会根据类型选择一个
+      observer: function(newVal, oldVal) {} // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：&#39;_propertyChange&#39;
+    },
+    dotWidthAndHeight: String,
+    swiperHeight: String, // swiper 高度
+    dotTop: String // 小点距离顶部高度
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    swiperCurrentIndex: 0,
+    indicatorDots: false // 自定义轮播按钮
+  },
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    swiperChange: function(e) {
+      var source = e.detail.source;
+      if (source === "autoplay" || source === "touch") {
+        this.setData({
+          swiperCurrentIndex: e.detail.current
+        });
+      }
+    },
+    selectCarouselByIndex: function(e) {
+      this.setData({
+        swiperCurrentIndex: Number(e.currentTarget.id)
+      });
+    },
+    // 轮播图跳转至内部页面
+    toHref(e) {
+      const data = e.currentTarget.dataset;
+      // type = 2，根据 goods_id 展示商品详情
+      // type = 3, 展示富文本的活动详情页面
+      if (data.type === "2") {
+        wx.navigateTo({
+          url: `../sort_detail/sort_detail?id=${data.id}`
+        });
+      } else if (data.type === "3") {
+        wx.yue.pub("renderData", data.content);
+        wx.navigateTo({
+          url: `../activity_detail/activity_detail`
+        });
+      }
+    }
+  }
+});'><pre class="notranslate"><span class="pl-v">Component</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c">/**</span>
+<span class="pl-c">   * 组件的属性列表 必须</span>
+<span class="pl-c">   */</span>
+  <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">bannerList</span>: <span class="pl-kos">{</span>
+      <span class="pl-c">// 属性名</span>
+      <span class="pl-c1">type</span>: <span class="pl-v">Array</span><span class="pl-kos">,</span> <span class="pl-c">// 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）</span>
+      <span class="pl-c1">value</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 属性初始值（可选），如果未指定则会根据类型选择一个</span>
+      <span class="pl-en">observer</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">newVal</span><span class="pl-kos">,</span> <span class="pl-s1">oldVal</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span> <span class="pl-c">// 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">dotWidthAndHeight</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>
+    <span class="pl-c1">swiperHeight</span>: <span class="pl-v">String</span><span class="pl-kos">,</span> <span class="pl-c">// swiper 高度</span>
+    <span class="pl-c1">dotTop</span>: <span class="pl-v">String</span> <span class="pl-c">// 小点距离顶部高度</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+  <span class="pl-c">/**</span>
+<span class="pl-c">   * 组件的初始数据</span>
+<span class="pl-c">   */</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">swiperCurrentIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span>
+    <span class="pl-c1">indicatorDots</span>: <span class="pl-c1">false</span> <span class="pl-c">// 自定义轮播按钮</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">/**</span>
+<span class="pl-c">   * 组件的方法列表</span>
+<span class="pl-c">   */</span>
+  <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>
+    <span class="pl-en">swiperChange</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">var</span> <span class="pl-s1">source</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">source</span><span class="pl-kos">;</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">source</span> <span class="pl-c1">===</span> <span class="pl-s">"autoplay"</span> <span class="pl-c1">||</span> <span class="pl-s1">source</span> <span class="pl-c1">===</span> <span class="pl-s">"touch"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">swiperCurrentIndex</span>: <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">current</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-en">selectCarouselByIndex</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">swiperCurrentIndex</span>: <span class="pl-v">Number</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">)</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c">// 轮播图跳转至内部页面</span>
+    <span class="pl-en">toHref</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">const</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">dataset</span><span class="pl-kos">;</span>
+      <span class="pl-c">// type = 2，根据 goods_id 展示商品详情</span>
+      <span class="pl-c">// type = 3, 展示富文本的活动详情页面</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">===</span> <span class="pl-s">"2"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">url</span>: <span class="pl-s">`../sort_detail/sort_detail?id=<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">}</span></span>`</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">===</span> <span class="pl-s">"3"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span><span class="pl-kos">.</span><span class="pl-en">pub</span><span class="pl-kos">(</span><span class="pl-s">"renderData"</span><span class="pl-kos">,</span> <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">content</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">url</span>: <span class="pl-s">`../activity_detail/activity_detail`</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-12">更多</h3>
+<ul dir="auto">
+<li><a href="https://github.com/xiaoyueyue165/wxapp-rainbow">wxapp-rainbow</a> 安利一下自己写的小程序组件库（偏功能性）
+<ul dir="auto">
+<li>uploadImg 上传图片</li>
+<li>carousel 轮播图</li>
+<li>authorization 授权登录</li>
+<li>loading 加载中</li>
+</ul>
+</li>
+</ul>
+<h2 id="main-heading-H2-13">8. 自定义 headerBar</h2>
+<blockquote>
+<p dir="auto">后续分享...</p>
+</blockquote>
+<h3 id="main-heading-H3-14">参考</h3>
+<ul dir="auto">
+<li><a href="https://juejin.im/post/5c14b253e51d452f8e603896" rel="nofollow">https://juejin.im/post/5c14b253e51d452f8e603896</a></li>
+</ul>
+<h3 id="main-heading-H3-15">生态圈</h3>
+<ul dir="auto">
+<li><a href="https://github.com/weilanwl/ColorUI">ColorUI</a> 鲜亮的高饱和色彩，专注视觉的小程序组件库</li>
+<li><a href="https://github.com/NervJS/taro">taro</a> 多端统一开发框架，支持用 React 的开发方式编写一次代码，生成能运行在微信小程序、H5 、 React Native 等的应用</li>
+<li><a href="https://github.com/dcloudio/uni-app">uni-app</a> 使用 Vue.js 开发跨平台应用的前端框架</li>
+<li><a href="https://github.com/justjavac/awesome-wechat-weapp">微信小程序开发资源汇总</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l,c){return{layout:"default",data:[{post:{id:423775318,number:47,title:"2019,帮助你更好的开发小程序",created_at:"2019-03-21T14:59:08Z",updated_at:"2025-11-23T15:56:08Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto"><code class="notranslate">原生</code>开发小程序有了两个项目，在原生开发小程序经验技巧方面有一些自己的总结，此篇文章做原创分享！</p>\n<p dir="auto">本文适合老手查看，新手请参阅<a href="https://developers.weixin.qq.com/miniprogram/dev/index.html?t=18122618" rel="nofollow">官方文档</a>，同步至<a href="https://github.com/xiaoyueyue165/blog/issues/47" data-hovercard-type="issue" data-hovercard-url="/yanyue404/blog/issues/47/hovercard">github</a>。</p>\n<h2 id="main-heading-H2-1">1.发布订阅处理复杂逻辑</h2>\n<blockquote>\n<p dir="auto">支持先订阅后发布，以及先发布后订阅</p>\n</blockquote>\n<ul dir="auto">\n<li>方法源码</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var Event = (function() {\n  var clientList = {},\n    pub,\n    sub,\n    remove;\n\n  var cached = {};\n\n  sub = function(key, fn) {\n    if (!clientList[key]) {\n      clientList[key] = [];\n    }\n    // 使用缓存执行的订阅不用多次调用执行\n    cached[key + &quot;time&quot;] == undefined ? clientList[key].push(fn) : &quot;&quot;;\n    if (cached[key] instanceof Array &amp;&amp; cached[key].length &gt; 0) {\n      //说明有缓存的 可以执行\n      fn.apply(null, cached[key]);\n      cached[key + &quot;time&quot;] = 1;\n    }\n  };\n  pub = function() {\n    var key = Array.prototype.shift.call(arguments),\n      fns = clientList[key];\n    if (!fns || fns.length === 0) {\n      //初始默认缓存\n      cached[key] = Array.prototype.slice.call(arguments, 0);\n      return false;\n    }\n\n    for (var i = 0, fn; (fn = fns[i++]); ) {\n      // 再次发布更新缓存中的 data 参数\n      cached[key + &quot;time&quot;] != undefined\n        ? (cached[key] = Array.prototype.slice.call(arguments, 0))\n        : &quot;&quot;;\n      fn.apply(this, arguments);\n    }\n  };\n  remove = function(key, fn) {\n    var fns = clientList[key];\n    // 缓存订阅一并删除\n    var cachedFn = cached[key];\n    if (!fns &amp;&amp; !cachedFn) {\n      return false;\n    }\n    if (!fn) {\n      fns &amp;&amp; (fns.length = 0);\n      cachedFn &amp;&amp; (cachedFn.length = 0);\n    } else {\n      if (cachedFn) {\n        for (var m = cachedFn.length - 1; m &gt;= 0; m--) {\n          var _fn_temp = cachedFn[m];\n          if (_fn_temp === fn) {\n            cachedFn.splice(m, 1);\n          }\n        }\n      }\n      for (var n = fns.length - 1; n &gt;= 0; n--) {\n        var _fn = fns[n];\n        if (_fn === fn) {\n          fns.splice(n, 1);\n        }\n      }\n    }\n  };\n  return {\n    pub: pub,\n    sub: sub,\n    remove: remove\n  };\n})();"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-v">Event</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">var</span> <span class="pl-s1">clientList</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-s1">pub</span><span class="pl-kos">,</span>\n    <span class="pl-s1">sub</span><span class="pl-kos">,</span>\n    <span class="pl-s1">remove</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">var</span> <span class="pl-s1">cached</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n  <span class="pl-s1">sub</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-c">// 使用缓存执行的订阅不用多次调用执行</span>\n    <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span> <span class="pl-c1">+</span> <span class="pl-s">"time"</span><span class="pl-kos">]</span> <span class="pl-c1">==</span> <span class="pl-c1">undefined</span> ? <span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s1">fn</span><span class="pl-kos">)</span> : <span class="pl-s">""</span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-k">instanceof</span> <span class="pl-v">Array</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">//说明有缓存的 可以执行</span>\n      <span class="pl-s1">fn</span><span class="pl-kos">.</span><span class="pl-en">apply</span><span class="pl-kos">(</span><span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span> <span class="pl-c1">+</span> <span class="pl-s">"time"</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-s1">pub</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">var</span> <span class="pl-s1">key</span> <span class="pl-c1">=</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">shift</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n      <span class="pl-s1">fns</span> <span class="pl-c1">=</span> <span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">fns</span> <span class="pl-c1">||</span> <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">===</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">//初始默认缓存</span>\n      <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">slice</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-k">return</span> <span class="pl-c1">false</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n\n    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-s1">fn</span><span class="pl-kos">;</span> <span class="pl-kos">(</span><span class="pl-s1">fn</span> <span class="pl-c1">=</span> <span class="pl-s1">fns</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// 再次发布更新缓存中的 data 参数</span>\n      <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span> <span class="pl-c1">+</span> <span class="pl-s">"time"</span><span class="pl-kos">]</span> <span class="pl-c1">!=</span> <span class="pl-c1">undefined</span>\n        ? <span class="pl-kos">(</span><span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">slice</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n        : <span class="pl-s">""</span><span class="pl-kos">;</span>\n      <span class="pl-s1">fn</span><span class="pl-kos">.</span><span class="pl-en">apply</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">,</span> <span class="pl-smi">arguments</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-s1">remove</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">var</span> <span class="pl-s1">fns</span> <span class="pl-c1">=</span> <span class="pl-s1">clientList</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n    <span class="pl-c">// 缓存订阅一并删除</span>\n    <span class="pl-k">var</span> <span class="pl-s1">cachedFn</span> <span class="pl-c1">=</span> <span class="pl-s1">cached</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">fns</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-c1">!</span><span class="pl-s1">cachedFn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-c1">false</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">fns</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-kos">(</span><span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-s1">cachedFn</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-kos">(</span><span class="pl-s1">cachedFn</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">cachedFn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">m</span> <span class="pl-c1">=</span> <span class="pl-s1">cachedFn</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-s1">m</span> <span class="pl-c1">&gt;=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">m</span><span class="pl-c1">--</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-k">var</span> <span class="pl-s1">_fn_temp</span> <span class="pl-c1">=</span> <span class="pl-s1">cachedFn</span><span class="pl-kos">[</span><span class="pl-s1">m</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n          <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">_fn_temp</span> <span class="pl-c1">===</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n            <span class="pl-s1">cachedFn</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n      <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">n</span> <span class="pl-c1">=</span> <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-s1">n</span> <span class="pl-c1">&gt;=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">n</span><span class="pl-c1">--</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-k">var</span> <span class="pl-s1">_fn</span> <span class="pl-c1">=</span> <span class="pl-s1">fns</span><span class="pl-kos">[</span><span class="pl-s1">n</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">_fn</span> <span class="pl-c1">===</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-en">splice</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-k">return</span> <span class="pl-kos">{</span>\n    <span class="pl-c1">pub</span>: <span class="pl-s1">pub</span><span class="pl-kos">,</span>\n    <span class="pl-c1">sub</span>: <span class="pl-s1">sub</span><span class="pl-kos">,</span>\n    <span class="pl-c1">remove</span>: <span class="pl-s1">remove</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>全局挂载使用</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// app.js\nApp({\n  onLaunch: function(e) {\n    // 注册 storage，这是第二条\n    wx.Storage = Storage;\n    // 注册发布订阅模式\n    wx.yue = Event;\n  }\n});"><pre class="notranslate"><span class="pl-c">// app.js</span>\n<span class="pl-v">App</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">onLaunch</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 注册 storage，这是第二条</span>\n    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">Storage</span> <span class="pl-c1">=</span> <span class="pl-v">Storage</span><span class="pl-kos">;</span>\n    <span class="pl-c">// 注册发布订阅模式</span>\n    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span> <span class="pl-c1">=</span> <span class="pl-v">Event</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>使用实例</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 添加收货地址页面订阅\n onLoad: function (options) {\n        wx.yue.sub(&quot;addAddress&quot;, function (data) {\n            y.setData({\n                addAddress: data\n            })\n        })\n }\n/**\n * 生命周期函数--监听页面隐藏\n */\n onHide: function () {\n    // 取消多余的事件订阅\n    wx.Storage.removeItem(&quot;addAddress&quot;);\n},\n onUnload: function () {\n    // 取消多余的事件订阅\n    wx.yue.remove(&quot;addAddress&quot;);\n}"><pre class="notranslate"><span class="pl-c">// 添加收货地址页面订阅</span>\n onLoad: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span><span class="pl-kos">.</span><span class="pl-en">sub</span><span class="pl-kos">(</span><span class="pl-s">"addAddress"</span><span class="pl-kos">,</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n            <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n                <span class="pl-c1">addAddress</span>: <span class="pl-s1">data</span>\n            <span class="pl-kos">}</span><span class="pl-kos">)</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n <span class="pl-kos">}</span>\n<span class="pl-c">/**</span>\n<span class="pl-c"> * 生命周期函数--监听页面隐藏</span>\n<span class="pl-c"> */</span>\n onHide: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 取消多余的事件订阅</span>\n    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">Storage</span><span class="pl-kos">.</span><span class="pl-en">removeItem</span><span class="pl-kos">(</span><span class="pl-s">"addAddress"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">,</span>\n <span class="pl-s1">onUnload</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 取消多余的事件订阅</span>\n    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span><span class="pl-kos">.</span><span class="pl-en">remove</span><span class="pl-kos">(</span><span class="pl-s">"addAddress"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 传递地址页面获取好数据传递\nwx.yue.pub(&quot;addAddress&quot;, data.info);\n// 补充跳转返回"><pre class="notranslate"><span class="pl-c">// 传递地址页面获取好数据传递</span>\n<span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span><span class="pl-kos">.</span><span class="pl-en">pub</span><span class="pl-kos">(</span><span class="pl-s">"addAddress"</span><span class="pl-kos">,</span> <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-c">// 补充跳转返回</span></pre></div>\n<blockquote>\n<p dir="auto">注意:使用完成数据后要注意卸载，在页面被关闭时操作</p>\n</blockquote>\n<h2 id="main-heading-H2-2">2.Storage</h2>\n<blockquote>\n<p dir="auto">storage 管理封装，用法和上面的一致，挂载在全局对象上调用，使用介绍就不列了</p>\n</blockquote>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const Storage = {\n  //  第一个 key 参数可以省略，直接传递 obj 对象，支持 callback\n  setItem: function(key, obj, callback) {\n    const getType = function(a) {\n      var typeArray = Object.prototype.toString.call(a).split(&quot; &quot;);\n      return typeArray[1].slice(0, -1);\n    };\n    var firstParamType = getType(arguments[0]);\n    if (firstParamType === &quot;Object&quot;) {\n      var keyArrayLength = Object.keys(arguments[0]).length;\n      var index = 0;\n      for (var keyName in arguments[0]) {\n        index++;\n        wx.setStorage({\n          key: keyName,\n          data: arguments[0][keyName],\n          success: index == keyArrayLength ? arguments[1] : function() {}\n        });\n      }\n    }\n    if (firstParamType === &quot;String&quot;) {\n      wx.setStorage({\n        key: key,\n        data: obj,\n        success: callback || function() {}\n      });\n    }\n  },\n  getItem: function(key) {\n    return wx.getStorageSync(key);\n  },\n  removeItem: function(key) {\n    wx.removeStorage({\n      key: key\n    });\n  }\n};"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-v">Storage</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c">//  第一个 key 参数可以省略，直接传递 obj 对象，支持 callback</span>\n  <span class="pl-en">setItem</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">obj</span><span class="pl-kos">,</span> <span class="pl-s1">callback</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">const</span> <span class="pl-en">getType</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">var</span> <span class="pl-s1">typeArray</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">toString</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">" "</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-k">return</span> <span class="pl-s1">typeArray</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">slice</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">-</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n    <span class="pl-k">var</span> <span class="pl-s1">firstParamType</span> <span class="pl-c1">=</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">firstParamType</span> <span class="pl-c1">===</span> <span class="pl-s">"Object"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">var</span> <span class="pl-s1">keyArrayLength</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">keys</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span>\n      <span class="pl-k">var</span> <span class="pl-s1">index</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>\n      <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">keyName</span> <span class="pl-k">in</span> <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">index</span><span class="pl-c1">++</span><span class="pl-kos">;</span>\n        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">setStorage</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">key</span>: <span class="pl-s1">keyName</span><span class="pl-kos">,</span>\n          <span class="pl-c1">data</span>: <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">[</span><span class="pl-s1">keyName</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n          <span class="pl-c1">success</span>: <span class="pl-s1">index</span> <span class="pl-c1">==</span> <span class="pl-s1">keyArrayLength</span> ? <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span> : <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">firstParamType</span> <span class="pl-c1">===</span> <span class="pl-s">"String"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">setStorage</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">key</span>: <span class="pl-s1">key</span><span class="pl-kos">,</span>\n        <span class="pl-c1">data</span>: <span class="pl-s1">obj</span><span class="pl-kos">,</span>\n        <span class="pl-c1">success</span>: <span class="pl-s1">callback</span> <span class="pl-c1">||</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">getItem</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">getStorageSync</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">removeItem</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">removeStorage</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">key</span>: <span class="pl-s1">key</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-3">例子</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="wx.Storage.setItem(\n  {\n    class_pid: that.data.class_pid,\n    class_id: that.data.class_id,\n    is_import: that.data.is_import,\n    shop_type: 1\n  },\n  function() {\n    console.log(&quot;Storage 已设置完毕！&quot;);\n  }\n);"><pre class="notranslate"><span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">Storage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span>\n  <span class="pl-kos">{</span>\n    <span class="pl-c1">class_pid</span>: <span class="pl-s1">that</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">class_pid</span><span class="pl-kos">,</span>\n    <span class="pl-c1">class_id</span>: <span class="pl-s1">that</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">class_id</span><span class="pl-kos">,</span>\n    <span class="pl-c1">is_import</span>: <span class="pl-s1">that</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">is_import</span><span class="pl-kos">,</span>\n    <span class="pl-c1">shop_type</span>: <span class="pl-c1">1</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Storage 已设置完毕！"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-4">3.filter 计算属性</h2>\n<blockquote>\n<p dir="auto">小程序也有计算属性，你知道吗？</p>\n</blockquote>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 文件名称为 ：filter.wxs\n// 不支持es6，Date,Number\nfunction filterOrderTitleName(status) {\n  switch (status) {\n    case &quot;1&quot;:\n      return &quot;待支付&quot;;\n    case &quot;2&quot;:\n      return &quot;待配送&quot;;\n    case &quot;3&quot;:\n      return &quot;配送中&quot;;\n    case &quot;4&quot;:\n      return &quot;已完成&quot;;\n  }\n}\nfunction filterPrice(str) {\n  // 四舍五入 格式化数字\n  // toFix(8440.55,1) =&gt; 8440.6\n  var times = Math.pow(10, 2);\n  var roundNum = Math.round(str * times) / times;\n  return roundNum.toFixed(2);\n}\n\nmodule.exports = {\n  filterOrderTitleName: filterOrderTitleName,\n  filterPrice: filterPrice\n};"><pre class="notranslate"><span class="pl-c">// 文件名称为 ：filter.wxs</span>\n<span class="pl-c">// 不支持es6，Date,Number</span>\n<span class="pl-k">function</span> <span class="pl-en">filterOrderTitleName</span><span class="pl-kos">(</span><span class="pl-s1">status</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">switch</span> <span class="pl-kos">(</span><span class="pl-s1">status</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">case</span> <span class="pl-s">"1"</span>:\n      <span class="pl-k">return</span> <span class="pl-s">"待支付"</span><span class="pl-kos">;</span>\n    <span class="pl-k">case</span> <span class="pl-s">"2"</span>:\n      <span class="pl-k">return</span> <span class="pl-s">"待配送"</span><span class="pl-kos">;</span>\n    <span class="pl-k">case</span> <span class="pl-s">"3"</span>:\n      <span class="pl-k">return</span> <span class="pl-s">"配送中"</span><span class="pl-kos">;</span>\n    <span class="pl-k">case</span> <span class="pl-s">"4"</span>:\n      <span class="pl-k">return</span> <span class="pl-s">"已完成"</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span>\n<span class="pl-k">function</span> <span class="pl-en">filterPrice</span><span class="pl-kos">(</span><span class="pl-s1">str</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 四舍五入 格式化数字</span>\n  <span class="pl-c">// toFix(8440.55,1) =&gt; 8440.6</span>\n  <span class="pl-k">var</span> <span class="pl-s1">times</span> <span class="pl-c1">=</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">pow</span><span class="pl-kos">(</span><span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-k">var</span> <span class="pl-s1">roundNum</span> <span class="pl-c1">=</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">round</span><span class="pl-kos">(</span><span class="pl-s1">str</span> <span class="pl-c1">*</span> <span class="pl-s1">times</span><span class="pl-kos">)</span> <span class="pl-c1">/</span> <span class="pl-s1">times</span><span class="pl-kos">;</span>\n  <span class="pl-k">return</span> <span class="pl-s1">roundNum</span><span class="pl-kos">.</span><span class="pl-en">toFixed</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">filterOrderTitleName</span>: <span class="pl-s1">filterOrderTitleName</span><span class="pl-kos">,</span>\n  <span class="pl-c1">filterPrice</span>: <span class="pl-s1">filterPrice</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>使用实例，过滤处理打折后的金额小数位数</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 当前文件名：shoppingCart.wxml\n// wxs 文件顶部导入\n&lt;wxs src=&quot;../../filter/filter.wxs&quot; module=&quot;filter&quot;&gt;&lt;/wxs&gt;\n &lt;view class=\'offerPrice nowrap\'&gt;¥{{filter.filterPrice(item.plus*100*item.price/1000)}}\n    &lt;image class=\'youhuiBox\' src=&quot;../../assets/youhuiBox.png&quot;&gt;\n        &lt;view class=\'youhuiText\'&gt;会员{{item.dazhe}}折&lt;/view&gt;\n    &lt;/image&gt;\n &lt;/view&gt;"><pre class="notranslate"><span class="pl-c">// 当前文件名：shoppingCart.wxml</span>\n<span class="pl-c">// wxs 文件顶部导入</span>\n<span class="pl-c1">&lt;</span><span class="pl-s1">wxs</span> <span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"../../filter/filter.wxs"</span> <span class="pl-c1">module</span><span class="pl-c1">=</span><span class="pl-s">"filter"</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-s1">wxs</span><span class="pl-c1">&gt;</span>\n <span class="pl-c1">&lt;</span><span class="pl-s1">view</span> <span class="pl-s1">class</span><span class="pl-c1">=</span><span class="pl-s">\'offerPrice nowrap\'</span><span class="pl-c1">&gt;</span><span class="pl-s1">¥</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-s1">filter</span><span class="pl-kos">.</span><span class="pl-en">filterPrice</span><span class="pl-kos">(</span><span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">plus</span><span class="pl-c1">*</span><span class="pl-c1">100</span><span class="pl-c1">*</span><span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">price</span><span class="pl-c1">/</span><span class="pl-c1">1000</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">}</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">image</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">\'youhuiBox\'</span> <span class="pl-c1">src</span><span class="pl-c1">=</span><span class="pl-s">"../../assets/youhuiBox.png"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">view</span> <span class="pl-c1">class</span><span class="pl-c1">=</span><span class="pl-s">\'youhuiText\'</span><span class="pl-c1">&gt;</span>会员<span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-s1">item</span><span class="pl-kos">.</span>dazhe<span class="pl-kos">}</span><span class="pl-kos">}</span>折<span class="pl-kos">&lt;/</span><span class="pl-s1">view</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-s1">image</span><span class="pl-c1">&gt;</span>\n <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">v</span><span class="pl-s">i</span><span class="pl-s">e</span><span class="pl-s">w</span><span class="pl-s">&gt;</span></pre></div>\n<h2 id="main-heading-H2-5">4.flex Style</h2>\n<blockquote>\n<p dir="auto">分享我常使用的自定义的一套 flex 样式,快速实现布局</p>\n</blockquote>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/* -------------------------------------------------------------flex------------------------------------------------------- */\n\n.center {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n/* 单行水平垂直 */\n\n.oneLineCenter {\n  display: flex;\n  display: -webkit-flex;\n  justify-content: center;\n  align-items: center;\n}\n\n/* 单行垂直居中，水平向左 */\n\n.oneLineStart {\n  display: flex;\n  display: -webkit-flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n/* 单行垂直居中，水平向右 */\n\n.oneLineEnd {\n  display: flex;\n  display: -webkit-flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n\n/* 单行垂直居中，水平保持间距 */\n\n.oneLineAround {\n  display: flex;\n  display: -webkit-flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n/* 单行垂直居中，两端对齐 */\n\n.oneLineBetween {\n  display: flex;\n  display: -webkit-flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n/* 超过单行设置的最大宽度，允许换行显示 */\n\n.f-wrap {\n  flex-wrap: wrap;\n}\n\n/* 多轴线方向，一般配合  wrap 使用 */\n\n/* 宽度不足换行后，垂直方向靠上排列 */\n\n.mulitLineStart {\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  align-content: flex-start;\n}\n\n/* 宽度不足换行后，垂直方向居中排列 */\n\n.mulitLineCenter {\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  align-content: center;\n}\n\n/* 宽度不足换行后，垂直方向靠下排列 */\n\n.mulitLineEnd {\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  align-content: flex-end;\n}\n\n/* 宽度不足换行后，垂直方向上保持间隔排列 */\n\n.mulitLineAround {\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  align-content: space-around;\n}\n\n/* 宽度不足换行后，垂直方向上靠两侧最顶开始间隔排列 */\n\n.mulitLineBetween {\n  display: flex;\n  display: -webkit-flex;\n  flex-wrap: wrap;\n  align-content: space-between;\n}\n\n/* 纵轴变主轴，垂直靠上，水平居中 */\n\n.columnStart {\n  display: flex;\n  display: -webkit-flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n/* 纵轴变主轴，垂直靠下，水平居中 */\n\n.columnEnd {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  align-items: center;\n}\n\n/* 纵轴变主轴，垂直居中，水平居中 */\n\n.columnCenter {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n/* 纵轴变主轴，垂直间隔排列，水平居中 */\n\n.columnAround {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  align-items: center;\n}\n\n/* 纵轴变主轴，垂直上下两侧按间隔排列，水平居中 */\n\n.columnBetween {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠左 */\n\n.columnBetweenStart {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: flex-start;\n}\n/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠右 */\n\n.columnBetweenEnd {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: flex-end;\n}"><pre class="notranslate"><span class="pl-c">/* -------------------------------------------------------------flex------------------------------------------------------- */</span>\n\n.<span class="pl-c1">center</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 单行水平垂直 */</span>\n\n.<span class="pl-c1">oneLineCenter</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> center;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 单行垂直居中，水平向左 */</span>\n\n.<span class="pl-c1">oneLineStart</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> flex-start;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 单行垂直居中，水平向右 */</span>\n\n.<span class="pl-c1">oneLineEnd</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> flex-end;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 单行垂直居中，水平保持间距 */</span>\n\n.<span class="pl-c1">oneLineAround</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-around;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 单行垂直居中，两端对齐 */</span>\n\n.<span class="pl-c1">oneLineBetween</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-between;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 超过单行设置的最大宽度，允许换行显示 */</span>\n\n.<span class="pl-c1">f-wrap</span> {\n  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;\n}\n\n<span class="pl-c">/* 多轴线方向，一般配合  wrap 使用 */</span>\n\n<span class="pl-c">/* 宽度不足换行后，垂直方向靠上排列 */</span>\n\n.<span class="pl-c1">mulitLineStart</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;\n  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> flex-start;\n}\n\n<span class="pl-c">/* 宽度不足换行后，垂直方向居中排列 */</span>\n\n.<span class="pl-c1">mulitLineCenter</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;\n  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 宽度不足换行后，垂直方向靠下排列 */</span>\n\n.<span class="pl-c1">mulitLineEnd</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;\n  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> flex-end;\n}\n\n<span class="pl-c">/* 宽度不足换行后，垂直方向上保持间隔排列 */</span>\n\n.<span class="pl-c1">mulitLineAround</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;\n  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> space-around;\n}\n\n<span class="pl-c">/* 宽度不足换行后，垂直方向上靠两侧最顶开始间隔排列 */</span>\n\n.<span class="pl-c1">mulitLineBetween</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">flex-wrap</span><span class="pl-kos">:</span> wrap;\n  <span class="pl-c1">align-content</span><span class="pl-kos">:</span> space-between;\n}\n\n<span class="pl-c">/* 纵轴变主轴，垂直靠上，水平居中 */</span>\n\n.<span class="pl-c1">columnStart</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> -webkit-flex;\n  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> flex-start;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 纵轴变主轴，垂直靠下，水平居中 */</span>\n\n.<span class="pl-c1">columnEnd</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> flex-end;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 纵轴变主轴，垂直居中，水平居中 */</span>\n\n.<span class="pl-c1">columnCenter</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> center;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 纵轴变主轴，垂直间隔排列，水平居中 */</span>\n\n.<span class="pl-c1">columnAround</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-around;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n\n<span class="pl-c">/* 纵轴变主轴，垂直上下两侧按间隔排列，水平居中 */</span>\n\n.<span class="pl-c1">columnBetween</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-between;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> center;\n}\n<span class="pl-c">/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠左 */</span>\n\n.<span class="pl-c1">columnBetweenStart</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-between;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> flex-start;\n}\n<span class="pl-c">/* 纵轴变主轴，垂直上下两侧按间隔排列，水平靠右 */</span>\n\n.<span class="pl-c1">columnBetweenEnd</span> {\n  <span class="pl-c1">display</span><span class="pl-kos">:</span> flex;\n  <span class="pl-c1">flex-direction</span><span class="pl-kos">:</span> column;\n  <span class="pl-c1">justify-content</span><span class="pl-kos">:</span> space-between;\n  <span class="pl-c1">align-items</span><span class="pl-kos">:</span> flex-end;\n}</pre></div>\n<h2 id="main-heading-H2-6">5.async await</h2>\n<p dir="auto">使用<a href="https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js">runtime.js</a>，使小程序支持 async await，拷贝文件至项目目录下。</p>\n<ul dir="auto">\n<li>实例用法</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const regeneratorRuntime = require(&quot;../../utils/runtime.js&quot;);\nPage({\n  shopCartInit() {\n    var y = this;\n    // 拿到商铺位置信息再去渲染购物计算当前的address符合不符合规定\n    var showCartList = function() {\n      // 显示全局的地址信息\n      var globalAddress = wx.Storage.getItem(&quot;globalAddress&quot;);\n      if (globalAddress) {\n        y.setData({\n          globalAddress: globalAddress,\n          addr_id: globalAddress.id\n        });\n        y.calculateDistance(\n          qqmapsdk,\n          globalAddress.latitude,\n          globalAddress.longitude\n        );\n      } else {\n        y.setData({\n          globalAddress: {}\n        });\n      }\n    };\n    // await 等待获取商铺位置信息\n    async function getShopPosTionMsg() {\n      await util.promiseRequest(api.merchant_addr, {}).then(res =&gt; {\n        var data = res.data.response_data.lists[0];\n        y.setData({\n          shop_lat: data.latitude, // 商铺纬度\n          shop_lng: data.longitude, // 商铺经度\n          peiSongFanWei: data.scope // 配送范围\n        });\n      });\n    }\n\n    async function initData() {\n      await getShopPosTionMsg();\n      await showCartList();\n      util.closeLoading();\n      y.setData({\n        loading: false\n      });\n    }\n    // 开始执行\n    initData();\n  }\n});"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">regeneratorRuntime</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"../../utils/runtime.js"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">shopCartInit</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">var</span> <span class="pl-s1">y</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">;</span>\n    <span class="pl-c">// 拿到商铺位置信息再去渲染购物计算当前的address符合不符合规定</span>\n    <span class="pl-k">var</span> <span class="pl-en">showCartList</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// 显示全局的地址信息</span>\n      <span class="pl-k">var</span> <span class="pl-s1">globalAddress</span> <span class="pl-c1">=</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">Storage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">"globalAddress"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">globalAddress</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">globalAddress</span>: <span class="pl-s1">globalAddress</span><span class="pl-kos">,</span>\n          <span class="pl-c1">addr_id</span>: <span class="pl-s1">globalAddress</span><span class="pl-kos">.</span><span class="pl-c1">id</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">calculateDistance</span><span class="pl-kos">(</span>\n          <span class="pl-s1">qqmapsdk</span><span class="pl-kos">,</span>\n          <span class="pl-s1">globalAddress</span><span class="pl-kos">.</span><span class="pl-c1">latitude</span><span class="pl-kos">,</span>\n          <span class="pl-s1">globalAddress</span><span class="pl-kos">.</span><span class="pl-c1">longitude</span>\n        <span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">globalAddress</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n    <span class="pl-c">// await 等待获取商铺位置信息</span>\n    <span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">getShopPosTionMsg</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">await</span> <span class="pl-s1">util</span><span class="pl-kos">.</span><span class="pl-en">promiseRequest</span><span class="pl-kos">(</span><span class="pl-s1">api</span><span class="pl-kos">.</span><span class="pl-c1">merchant_addr</span><span class="pl-kos">,</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-s1">res</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-k">var</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">response_data</span><span class="pl-kos">.</span><span class="pl-c1">lists</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n        <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">shop_lat</span>: <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">latitude</span><span class="pl-kos">,</span> <span class="pl-c">// 商铺纬度</span>\n          <span class="pl-c1">shop_lng</span>: <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">longitude</span><span class="pl-kos">,</span> <span class="pl-c">// 商铺经度</span>\n          <span class="pl-c1">peiSongFanWei</span>: <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">scope</span> <span class="pl-c">// 配送范围</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n\n    <span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">initData</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">await</span> <span class="pl-en">getShopPosTionMsg</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-k">await</span> <span class="pl-en">showCartList</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-s1">util</span><span class="pl-kos">.</span><span class="pl-en">closeLoading</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-s1">y</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">loading</span>: <span class="pl-c1">false</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-c">// 开始执行</span>\n    <span class="pl-en">initData</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-7">6.addKey Api</h2>\n<blockquote>\n<p dir="auto">使用自定义属性的方法辅助完成业务逻辑，已发布至 <a href="https://github.com/xiaoyueyue165/addKey">addKey</a></p>\n</blockquote>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/**\n * 为数组添加新的自定义键值以及过滤每个子项的方法\n *\n * @param {*} arr\n * @param {*} obj { isShow:false,isStar:false}\n * @param {*} filterFn\n * @returns\n */\nfunction addKey(sourceArray, extendObj, filterFn) {\n  var getType = function(a) {\n    var typeArray = Object.prototype.toString.call(a).split(&quot; &quot;);\n    return typeArray[1].slice(0, -1);\n  };\n  var secondParamType = getType(arguments[1]);\n\n  if (!getType(sourceArray) == &quot;Array&quot;) {\n    throw new Error(&quot;The first argument must be an array type&quot;);\n  }\n  if (secondParamType === &quot;Object&quot;) {\n    return sourceArray.forEach((v, index, sourceArray) =&gt; {\n      for (var key in extendObj) {\n        v[key] = extendObj[key];\n      }\n      typeof filterFn === &quot;function&quot; ? filterFn(v, index, sourceArray) : &quot;&quot;;\n    });\n  } else if (secondParamType === &quot;Function&quot;) {\n    return sourceArray.forEach((v, index, sourceArray) =&gt; {\n      arguments[1](v, index, sourceArray);\n    });\n  } else {\n    return sourceArray;\n  }\n}"><pre class="notranslate"><span class="pl-c">/**</span>\n<span class="pl-c"> * 为数组添加新的自定义键值以及过滤每个子项的方法</span>\n<span class="pl-c"> *</span>\n<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">*</span>} arr</span>\n<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">*</span>} obj { isShow:false,isStar:false}</span>\n<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">*</span>} filterFn</span>\n<span class="pl-c"> * <span class="pl-k">@returns</span></span>\n<span class="pl-c"> */</span>\n<span class="pl-k">function</span> <span class="pl-en">addKey</span><span class="pl-kos">(</span><span class="pl-s1">sourceArray</span><span class="pl-kos">,</span> <span class="pl-s1">extendObj</span><span class="pl-kos">,</span> <span class="pl-s1">filterFn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">var</span> <span class="pl-en">getType</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">var</span> <span class="pl-s1">typeArray</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">toString</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">" "</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">return</span> <span class="pl-s1">typeArray</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">slice</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">-</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-k">var</span> <span class="pl-s1">secondParamType</span> <span class="pl-c1">=</span> <span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-en">getType</span><span class="pl-kos">(</span><span class="pl-s1">sourceArray</span><span class="pl-kos">)</span> <span class="pl-c1">==</span> <span class="pl-s">"Array"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-v">Error</span><span class="pl-kos">(</span><span class="pl-s">"The first argument must be an array type"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">secondParamType</span> <span class="pl-c1">===</span> <span class="pl-s">"Object"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">var</span> <span class="pl-s1">key</span> <span class="pl-k">in</span> <span class="pl-s1">extendObj</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">v</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">extendObj</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n      <span class="pl-k">typeof</span> <span class="pl-s1">filterFn</span> <span class="pl-c1">===</span> <span class="pl-s">"function"</span> ? <span class="pl-s1">filterFn</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">)</span> : <span class="pl-s">""</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">secondParamType</span> <span class="pl-c1">===</span> <span class="pl-s">"Function"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">arguments</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-s1">sourceArray</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<ul dir="auto">\n<li>使用实例</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="util.addKey(data, { y_isCheck: false }, function(v) {\n  v.dazhe = Number(v.plus);\n});\nthis.setData({\n  cartList: data\n});"><pre class="notranslate"><span class="pl-s1">util</span><span class="pl-kos">.</span><span class="pl-en">addKey</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">y_isCheck</span>: <span class="pl-c1">false</span> <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">dazhe</span> <span class="pl-c1">=</span> <span class="pl-v">Number</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">plus</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">cartList</span>: <span class="pl-s1">data</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-8">7. 组件化复用开发实践</h2>\n<blockquote>\n<p dir="auto">组件化解构项目元件，提高开发效率,可参照<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/" rel="nofollow">官方介绍</a>起步 !</p>\n</blockquote>\n<p dir="auto">这里介绍一个自定义的跑马灯的轮播图组件实例</p>\n<h3 id="main-heading-H3-9">(1) 第一步，查看目录结构划分，主要为 <code class="notranslate">Carousel</code> 组件 在 <code class="notranslate">index</code> 页面的使用</h3>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="│\n├───component\n│   └───Carousel\n│           Carousel.js\n│           Carousel.json\n│           Carousel.wxml\n│           Carousel.wxss\n│\n├───filter\n│       filter.wxs\n│\n├───pages\n│   └───index\n│           index.js\n│           index.json\n│           index.wxml\n│           index.wxss\n│\n└───utils\n        api.js\n        runtime.js\n        util.js"><pre class="notranslate">│\n├───component\n│   └───Carousel\n│           Carousel.js\n│           Carousel.json\n│           Carousel.wxml\n│           Carousel.wxss\n│\n├───filter\n│       filter.wxs\n│\n├───pages\n│   └───index\n│           index.js\n│           index.json\n│           index.wxml\n│           index.wxss\n│\n└───utils\n        api.js\n        runtime.js\n        util.js</pre></div>\n<h3 id="main-heading-H3-10">(2) 第二步我们分析看如何使用,设计 组件需要的 <code class="notranslate">props</code></h3>\n<ul dir="auto">\n<li>数据项，必须 <code class="notranslate">bannerList</code></li>\n<li>轮播图的固定高度 <code class="notranslate">swiperHeight</code></li>\n<li>自定义轮播按钮小点，宽与高一致，圆形 <code class="notranslate">dotWidthAndHeight</code></li>\n<li>轮播按钮盒子距离顶部的高度 <code class="notranslate">dotTop</code></li>\n</ul>\n<p dir="auto">** 最终在 index.wxml 的实际使用**</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;view class=&quot;Carousel&quot;&gt;\n  &lt;Carousel\n    swiperHeight=&quot;260rpx&quot;\n    bannerList=&quot;{{bannerList}}&quot;\n    dotWidthAndHeight=&quot;12rpx&quot;\n    dotTop=&quot;-20rpx&quot;\n  &gt;&lt;/Carousel&gt;\n&lt;/view&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">Carousel</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">Carousel</span>\n    <span class="pl-c1">swiperHeight</span>="<span class="pl-s">260rpx</span>"\n    <span class="pl-c1">bannerList</span>="<span class="pl-s">{{bannerList}}</span>"\n    <span class="pl-c1">dotWidthAndHeight</span>="<span class="pl-s">12rpx</span>"\n    <span class="pl-c1">dotTop</span>="<span class="pl-s">-20rpx</span>"\n  <span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">Carousel</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span></pre></div>\n<h3 id="main-heading-H3-11">(3).业务代码编写</h3>\n<ul dir="auto">\n<li>Carousel.json<br>\n开启自定义组件模式</li>\n</ul>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;component&quot;: true\n}"><pre class="notranslate">{\n  <span class="pl-ent">"component"</span>: <span class="pl-c1">true</span>\n}</pre></div>\n<ul dir="auto">\n<li>Carousel.wxml</li>\n</ul>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;view class=&quot;Carousel_wrap&quot;&gt;\n  &lt;!-- 图片区 --&gt;\n  &lt;swiper\n    current=&quot;{{swiperCurrentIndex}}&quot;\n    circular=&quot;true&quot;\n    bindchange=&quot;swiperChange&quot;\n    indicator-dots=&quot;{{indicatorDots}}&quot;\n    autoplay=&quot;true&quot;\n    interval=&quot;5000&quot;\n    duration=&quot;1000&quot;\n    style=&quot;height:{{swiperHeight}}&quot;\n  &gt;\n    &lt;swiper-item\n      wx:for=&quot;{{bannerList}}&quot;\n      bindtap=&quot;toHref&quot;\n      wx:key=&quot;{{index}}&quot;\n      bindtap=&quot;toHref&quot;\n      data-type=&quot;{{item.type}}&quot;\n      data-id=&quot;{{item.goods_id}}&quot;\n      data-content=&quot;{{item.content}}&quot;\n      data-link=&quot;{{item.link}}&quot;\n    &gt;\n      &lt;image src=&quot;{{item.img_url}}&quot; class=&quot;slide-image&quot; /&gt;\n    &lt;/swiper-item&gt;\n  &lt;/swiper&gt;\n  &lt;!-- 关联按钮 --&gt;\n  &lt;view class=&quot;boxCell&quot; style=&quot;top:{{dotTop}}&quot;&gt;\n    &lt;block\n      wx:for=&quot;{{bannerList.length &gt; 1 ? bannerList:[]}}&quot;\n      wx:for-index=&quot;index&quot;\n      wx:key=&quot;{{item.banner}}&quot;\n    &gt;\n      &lt;view\n        id=&quot;{{index}}&quot;\n        class=&quot;dot {{index === swiperCurrentIndex ? \'dot_active\':\'\'}}&quot;\n        style=&quot;width:{{dotWidthAndHeight}},height:{{dotWidthAndHeight}}&quot;\n        bindtap=&quot;selectCarouselByIndex&quot;\n      /&gt;\n    &lt;/block&gt;\n  &lt;/view&gt;\n&lt;/view&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">Carousel_wrap</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-c">&lt;!-- 图片区 --&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">swiper</span>\n    <span class="pl-c1">current</span>="<span class="pl-s">{{swiperCurrentIndex}}</span>"\n    <span class="pl-c1">circular</span>="<span class="pl-s">true</span>"\n    <span class="pl-c1">bindchange</span>="<span class="pl-s">swiperChange</span>"\n    <span class="pl-c1">indicator-dots</span>="<span class="pl-s">{{indicatorDots}}</span>"\n    <span class="pl-c1">autoplay</span>="<span class="pl-s">true</span>"\n    <span class="pl-c1">interval</span>="<span class="pl-s">5000</span>"\n    <span class="pl-c1">duration</span>="<span class="pl-s">1000</span>"\n    <span class="pl-c1">style</span>="<span class="pl-s">height:{{swiperHeight}}</span>"\n  <span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">swiper-item</span>\n      <span class="pl-c1">wx:for</span>="<span class="pl-s">{{bannerList}}</span>"\n      <span class="pl-c1">bindtap</span>="<span class="pl-s">toHref</span>"\n      <span class="pl-c1">wx:key</span>="<span class="pl-s">{{index}}</span>"\n      <span class="pl-c1">bindtap</span>="<span class="pl-s">toHref</span>"\n      <span class="pl-c1">data-type</span>="<span class="pl-s">{{item.type}}</span>"\n      <span class="pl-c1">data-id</span>="<span class="pl-s">{{item.goods_id}}</span>"\n      <span class="pl-c1">data-content</span>="<span class="pl-s">{{item.content}}</span>"\n      <span class="pl-c1">data-link</span>="<span class="pl-s">{{item.link}}</span>"\n    <span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">image</span> <span class="pl-c1">src</span>="<span class="pl-s">{{item.img_url}}</span>" <span class="pl-c1">class</span>="<span class="pl-s">slide-image</span>" <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">swiper-item</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">swiper</span><span class="pl-kos">&gt;</span>\n  <span class="pl-c">&lt;!-- 关联按钮 --&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">boxCell</span>" <span class="pl-c1">style</span>="<span class="pl-s">top:{{dotTop}}</span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">block</span>\n      <span class="pl-c1">wx:for</span>="<span class="pl-s">{{bannerList.length &gt; 1 ? bannerList:[]}}</span>"\n      <span class="pl-c1">wx:for-index</span>="<span class="pl-s">index</span>"\n      <span class="pl-c1">wx:key</span>="<span class="pl-s">{{item.banner}}</span>"\n    <span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">view</span>\n        <span class="pl-c1">id</span>="<span class="pl-s">{{index}}</span>"\n        <span class="pl-c1">class</span>="<span class="pl-s">dot {{index === swiperCurrentIndex ? \'dot_active\':\'\'}}</span>"\n        <span class="pl-c1">style</span>="<span class="pl-s">width:{{dotWidthAndHeight}},height:{{dotWidthAndHeight}}</span>"\n        <span class="pl-c1">bindtap</span>="<span class="pl-s">selectCarouselByIndex</span>"\n      <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">block</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span></pre></div>\n<ul dir="auto">\n<li>Carousel.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Component({\n  /**\n   * 组件的属性列表 必须\n   */\n  properties: {\n    bannerList: {\n      // 属性名\n      type: Array, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）\n      value: [], // 属性初始值（可选），如果未指定则会根据类型选择一个\n      observer: function(newVal, oldVal) {} // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：\'_propertyChange\'\n    },\n    dotWidthAndHeight: String,\n    swiperHeight: String, // swiper 高度\n    dotTop: String // 小点距离顶部高度\n  },\n\n  /**\n   * 组件的初始数据\n   */\n  data: {\n    swiperCurrentIndex: 0,\n    indicatorDots: false // 自定义轮播按钮\n  },\n  /**\n   * 组件的方法列表\n   */\n  methods: {\n    swiperChange: function(e) {\n      var source = e.detail.source;\n      if (source === &quot;autoplay&quot; || source === &quot;touch&quot;) {\n        this.setData({\n          swiperCurrentIndex: e.detail.current\n        });\n      }\n    },\n    selectCarouselByIndex: function(e) {\n      this.setData({\n        swiperCurrentIndex: Number(e.currentTarget.id)\n      });\n    },\n    // 轮播图跳转至内部页面\n    toHref(e) {\n      const data = e.currentTarget.dataset;\n      // type = 2，根据 goods_id 展示商品详情\n      // type = 3, 展示富文本的活动详情页面\n      if (data.type === &quot;2&quot;) {\n        wx.navigateTo({\n          url: `../sort_detail/sort_detail?id=${data.id}`\n        });\n      } else if (data.type === &quot;3&quot;) {\n        wx.yue.pub(&quot;renderData&quot;, data.content);\n        wx.navigateTo({\n          url: `../activity_detail/activity_detail`\n        });\n      }\n    }\n  }\n});"><pre class="notranslate"><span class="pl-v">Component</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c">/**</span>\n<span class="pl-c">   * 组件的属性列表 必须</span>\n<span class="pl-c">   */</span>\n  <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">bannerList</span>: <span class="pl-kos">{</span>\n      <span class="pl-c">// 属性名</span>\n      <span class="pl-c1">type</span>: <span class="pl-v">Array</span><span class="pl-kos">,</span> <span class="pl-c">// 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）</span>\n      <span class="pl-c1">value</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 属性初始值（可选），如果未指定则会根据类型选择一个</span>\n      <span class="pl-en">observer</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">newVal</span><span class="pl-kos">,</span> <span class="pl-s1">oldVal</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span> <span class="pl-c">// 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：\'_propertyChange\'</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c1">dotWidthAndHeight</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>\n    <span class="pl-c1">swiperHeight</span>: <span class="pl-v">String</span><span class="pl-kos">,</span> <span class="pl-c">// swiper 高度</span>\n    <span class="pl-c1">dotTop</span>: <span class="pl-v">String</span> <span class="pl-c">// 小点距离顶部高度</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n\n  <span class="pl-c">/**</span>\n<span class="pl-c">   * 组件的初始数据</span>\n<span class="pl-c">   */</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">swiperCurrentIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span>\n    <span class="pl-c1">indicatorDots</span>: <span class="pl-c1">false</span> <span class="pl-c">// 自定义轮播按钮</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">/**</span>\n<span class="pl-c">   * 组件的方法列表</span>\n<span class="pl-c">   */</span>\n  <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>\n    <span class="pl-en">swiperChange</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">var</span> <span class="pl-s1">source</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">source</span><span class="pl-kos">;</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">source</span> <span class="pl-c1">===</span> <span class="pl-s">"autoplay"</span> <span class="pl-c1">||</span> <span class="pl-s1">source</span> <span class="pl-c1">===</span> <span class="pl-s">"touch"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">swiperCurrentIndex</span>: <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">current</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-en">selectCarouselByIndex</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">swiperCurrentIndex</span>: <span class="pl-v">Number</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">)</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c">// 轮播图跳转至内部页面</span>\n    <span class="pl-en">toHref</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">const</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">dataset</span><span class="pl-kos">;</span>\n      <span class="pl-c">// type = 2，根据 goods_id 展示商品详情</span>\n      <span class="pl-c">// type = 3, 展示富文本的活动详情页面</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">===</span> <span class="pl-s">"2"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">url</span>: <span class="pl-s">`../sort_detail/sort_detail?id=<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">}</span></span>`</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">===</span> <span class="pl-s">"3"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-c1">yue</span><span class="pl-kos">.</span><span class="pl-en">pub</span><span class="pl-kos">(</span><span class="pl-s">"renderData"</span><span class="pl-kos">,</span> <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-c1">content</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">url</span>: <span class="pl-s">`../activity_detail/activity_detail`</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-12">更多</h3>\n<ul dir="auto">\n<li><a href="https://github.com/xiaoyueyue165/wxapp-rainbow">wxapp-rainbow</a> 安利一下自己写的小程序组件库（偏功能性）\n<ul dir="auto">\n<li>uploadImg 上传图片</li>\n<li>carousel 轮播图</li>\n<li>authorization 授权登录</li>\n<li>loading 加载中</li>\n</ul>\n</li>\n</ul>\n<h2 id="main-heading-H2-13">8. 自定义 headerBar</h2>\n<blockquote>\n<p dir="auto">后续分享...</p>\n</blockquote>\n<h3 id="main-heading-H3-14">参考</h3>\n<ul dir="auto">\n<li><a href="https://juejin.im/post/5c14b253e51d452f8e603896" rel="nofollow">https://juejin.im/post/5c14b253e51d452f8e603896</a></li>\n</ul>\n<h3 id="main-heading-H3-15">生态圈</h3>\n<ul dir="auto">\n<li><a href="https://github.com/weilanwl/ColorUI">ColorUI</a> 鲜亮的高饱和色彩，专注视觉的小程序组件库</li>\n<li><a href="https://github.com/NervJS/taro">taro</a> 多端统一开发框架，支持用 React 的开发方式编写一次代码，生成能运行在微信小程序、H5 、 React Native 等的应用</li>\n<li><a href="https://github.com/dcloudio/uni-app">uni-app</a> 使用 Vue.js 开发跨平台应用的前端框架</li>\n<li><a href="https://github.com/justjavac/awesome-wechat-weapp">微信小程序开发资源汇总</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:a,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:a}],html_url:"https://github.com/yanyue404/blog/issues/47"},navList:[{text:"前言",id:"main-heading-H2-0",type:s,children:[]},{text:"1.发布订阅处理复杂逻辑",id:"main-heading-H2-1",type:s,children:[]},{text:"2.Storage",id:"main-heading-H2-2",type:s,children:[{text:"例子",id:"main-heading-H3-3",type:p}]},{text:"3.filter 计算属性",id:"main-heading-H2-4",type:s,children:[]},{text:"4.flex Style",id:"main-heading-H2-5",type:s,children:[]},{text:"5.async await",id:"main-heading-H2-6",type:s,children:[]},{text:"6.addKey Api",id:"main-heading-H2-7",type:s,children:[]},{text:"7. 组件化复用开发实践",id:"main-heading-H2-8",type:s,children:[{text:'(1) 第一步，查看目录结构划分，主要为 <code class="notranslate">Carousel</code> 组件 在 <code class="notranslate">index</code> 页面的使用',id:"main-heading-H3-9",type:p},{text:'(2) 第二步我们分析看如何使用,设计 组件需要的 <code class="notranslate">props</code>',id:"main-heading-H3-10",type:p},{text:"(3).业务代码编写",id:"main-heading-H3-11",type:p},{text:"更多",id:"main-heading-H3-12",type:p}]},{text:"8. 自定义 headerBar",id:"main-heading-H2-13",type:s,children:[{text:"参考",id:"main-heading-H3-14",type:p},{text:"生态圈",id:"main-heading-H3-15",type:p}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:a},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:a,avatar_url:a,name:a,html_url:a,bio:a,type:l}},serverRendered:!0}}("H2","","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

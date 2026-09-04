@@ -1,0 +1,1073 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>你不知道的 Nuxt Module | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="Modules 模块是 Nuxt.js 扩展，可以扩展其核心功能并添加无限的集成。 在使用 Nuxt 开发应用程序时，您很快就会发现框架的核心功能还不够。 Nuxt 可以使用配置选项和插件进行扩展，但是在多个项目中维护这些自定义是繁琐、重复和耗时的。 另一方面，开箱即用支持每个项目的需求将使 Nux"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="你不知道的 Nuxt Module"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Modules 模块是 Nuxt.js 扩展，可以扩展其核心功能并添加无限的集成。 在使用 Nuxt 开发应用程序时，您很快就会发现框架的核心功能还不够。 Nuxt 可以使用配置选项和插件进行扩展，但是在多个项目中维护这些自定义是繁琐、重复和耗时的。 另一方面，开箱即用支持每个项目的需求将使 Nux"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="你不知道的 Nuxt Module"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="Modules 模块是 Nuxt.js 扩展，可以扩展其核心功能并添加无限的集成。 在使用 Nuxt 开发应用程序时，您很快就会发现框架的核心功能还不够。 Nuxt 可以使用配置选项和插件进行扩展，但是在多个项目中维护这些自定义是繁琐、重复和耗时的。 另一方面，开箱即用支持每个项目的需求将使 Nux"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-0" title="Modules" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Modules
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-1" title='<a href="https://www.nuxtjs.cn/guide/modules#nuxtjs-%E6%A8%A1%E5%9D%97%E5%88%97%E8%A1%A8" rel="nofollow">Nuxt.js 模块列表</a>' class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Nuxt.js 模块列表
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-2" title="基础模块" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              基础模块
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-3" title="编写自己的模块" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              编写自己的模块
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-4" title="异步模块" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              异步模块
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-5" title="使用 async/await" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  使用 async/await
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-6" title="返回 Promise" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  返回 Promise
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-7" title="使用回调" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  使用回调
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-8" title="常见模块" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              常见模块
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-9" title="优先级最高选项" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  优先级最高选项
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-10" title="注册插件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  注册插件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-11" title="模板插件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  模板插件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-12" title="注册 webpack loader" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  注册 webpack loader
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-13" title="注册 webpack 插件" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  注册 webpack 插件
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-14" title="为构建提供扩展配置" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  为构建提供扩展配置
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-15" title="nuxt 生命周期注册钩子" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  nuxt 生命周期注册钩子
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H3-16" title="在指定钩子上执行任务" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  在指定钩子上执行任务
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-17" title="来个实战" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              来个实战
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-18" title="调试" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              调试
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/263#main-heading-H2-19" title="参考" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>你不知道的 Nuxt Module</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>你不知道的 Nuxt Module</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2023-08-31</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 43 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">Modules</h2>
+<p dir="auto">模块是 Nuxt.js 扩展，可以扩展其核心功能并添加无限的集成。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/nuxt/nuxt-modules.svg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/nuxt/nuxt-modules.svg" alt="" style="max-width:100%"></a></p>
+<p dir="auto">在使用 Nuxt 开发应用程序时，您很快就会发现框架的核心功能还不够。 Nuxt 可以使用配置选项和插件进行扩展，但是在多个项目中维护这些自定义是繁琐、重复和耗时的。 另一方面，开箱即用支持每个项目的需求将使 Nuxt 非常复杂且难以使用。</p>
+<p dir="auto">这就是 Nuxt 提供高阶模块系统使得扩展核心成为可能的原因之一。模块是启动 Nuxt 时顺序调用的函数。框架等待每个模块完成后再继续。通过这种方式，模块几乎可以定制项目的任何方面。由于 Nuxt 的模块化设计（基于 webpack 的 Tapable ），模块可以轻松地为某些入口点（例如构建器初始化）注册钩子。模块还可以覆盖模板、配置 webpack 加载器、添加 CSS 库以及执行许多其他有用的任务。我们可以使用功能强大的  <a href="https://github.com/nuxt-contrib/hookable">Hookable</a> Nuxt.js 系统来完成特定事件的任务。</p>
+<p dir="auto">最重要的是，Nuxt 模块可以合并到 npm 包中。这使得跨项目重用并与社区共享成为可能，从而帮助创建高质量附加组件的生态系统。</p>
+<p dir="auto">如果你：</p>
+<ul dir="auto">
+<li>是优秀团队的成员，需要快速引导新项目。</li>
+<li>厌倦了为集成 Google Analytics 等常见任务重新造轮子。</li>
+<li>是一个优秀的开源爱好者，希望轻松与社区分享您的工作。</li>
+<li>是一家重视质量和可重用性的企业公司的成员。</li>
+<li>通常是在短期限内完成，没有时间深入了解每个新库或集成的细节。</li>
+<li>厌倦了处理对低级接口的重大改变，并且需要能够正常工作的东西。</li>
+</ul>
+<h2 id="main-heading-H2-1"><a href="https://www.nuxtjs.cn/guide/modules#nuxtjs-%E6%A8%A1%E5%9D%97%E5%88%97%E8%A1%A8" rel="nofollow">Nuxt.js 模块列表</a></h2>
+<p dir="auto">Nuxt.js 团队提供   官方   模块:</p>
+<ul dir="auto">
+<li><a href="https://http.nuxtjs.org/" rel="nofollow">@nuxt/http</a>: 基于<a href="https://github.com/sindresorhus/ky-universal">ky-universal</a>的轻量级和通用的 HTTP 请求</li>
+<li><a href="https://axios.nuxtjs.org/" rel="nofollow">@nuxtjs/axios</a>: 安全和使用简单 Axios 与 Nuxt.js 集成用来请求 HTTP</li>
+<li><a href="https://pwa.nuxtjs.org/" rel="nofollow">@nuxtjs/pwa</a>: 使用经过严格测试，更新且稳定的 PWA 解决方案来增强 Nuxt</li>
+<li><a href="https://auth.nuxtjs.org/" rel="nofollow">@nuxtjs/auth</a>: Nuxt.js 的身份验证模块，提供不同的方案和验证策略</li>
+</ul>
+<p dir="auto">Nuxt.js 社区制作的模块列表可在  <a href="https://github.com/topics/nuxt-module">https://github.com/topics/nuxt-module</a>  中查询</p>
+<h2 id="main-heading-H2-2">基础模块</h2>
+<p dir="auto">如下所示，一个模块只需要导出一个默认函数即可，当模块需要做一些异步操作时，可以返回 Promise 对象或者传入 callback 参数，此处推荐使用 <code class="notranslate">async/await</code> 直接返回 Promise 对象。</p>
+<p dir="auto"><strong>modules/simple.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function SimpleModule(moduleOptions) {
+  // Write your code here
+}
+
+// REQUIRED if publishing as an npm package
+// module.exports.meta = require('./package.json')"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">SimpleModule</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// Write your code here</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// REQUIRED if publishing as an npm package</span>
+<span class="pl-c">// module.exports.meta = require('./package.json')</span></pre></div>
+<p dir="auto">在模块中，通常会使用到以下变量：</p>
+<p dir="auto"><code class="notranslate">moduleOptions</code></p>
+<p dir="auto">这是用户使用<code class="notranslate">modules</code>数组传递对象，我们可以使用它来定制它的行为。</p>
+<p dir="auto"><code class="notranslate">this.options</code></p>
+<p dir="auto">您可以使用此属性直接访问 Nuxt 选项。这是<code class="notranslate">nuxt.config.js</code>，其中包含所有默认选项，可用于模块之间的共享选项。</p>
+<p dir="auto"><code class="notranslate">this.nuxt</code></p>
+<p dir="auto">这是对当前 Nuxt 实例的引用。 请参考 <a href="https://www.nuxtjs.cn/api/internals-nuxt" rel="nofollow">Nuxt class docs for available methods</a>.</p>
+<p dir="auto"><code class="notranslate">this</code></p>
+<p dir="auto">modules 中的 context, 请参考 <a href="https://www.nuxtjs.cn/api/internals-module-container" rel="nofollow">ModuleContainer</a> 来查看可用的方法。</p>
+<p dir="auto"><code class="notranslate">module.exports.meta</code></p>
+<p dir="auto">如果要将模块发布为 npm 包，则需要配置此选项。Nuxt 内部使用<code class="notranslate">meta</code>来更好地处理您的包。</p>
+<p dir="auto"><strong>nuxt.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='export default {
+  modules: [
+    // Using package name
+    "@nuxtjs/axios",
+
+    // Relative to your project srcDir
+    "~/modules/awesome.js",
+
+    // Providing options
+    ["@nuxtjs/google-analytics", { ua: "X1234567" }],
+
+    // Inline definition
+    function () {},
+  ],
+};'><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">modules</span>: <span class="pl-kos">[</span>
+    <span class="pl-c">// Using package name</span>
+    <span class="pl-s">"@nuxtjs/axios"</span><span class="pl-kos">,</span>
+
+    <span class="pl-c">// Relative to your project srcDir</span>
+    <span class="pl-s">"~/modules/awesome.js"</span><span class="pl-kos">,</span>
+
+    <span class="pl-c">// Providing options</span>
+    <span class="pl-kos">[</span><span class="pl-s">"@nuxtjs/google-analytics"</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">ua</span>: <span class="pl-s">"X1234567"</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+
+    <span class="pl-c">// Inline definition</span>
+    <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">模块需要在 nuxt.config.js 中通过 modules 注册，对于 npm 安装的模块可以直接使用包名，对于项目代码中的模块，可以使用相对路径，使用 <code class="notranslate">@</code> 别名，将从项目 <code class="notranslate">srcDir</code> 解析,我们还可以为模块提供额外的参数。</p>
+<h2 id="main-heading-H2-3">编写自己的模块</h2>
+<p dir="auto">模块就是函数。它们可以打包为 npm 模块或直接包含在项目源代码中。</p>
+<ul dir="auto">
+<li>nuxt.config.js</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='export default {
+  exampleMsg: "hello",
+  modules: [
+    // Simple usage
+    "~/modules/example",
+    // Passing options directly
+    ["~/modules/example", { token: "123" }],
+  ],
+};'><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">exampleMsg</span>: <span class="pl-s">"hello"</span><span class="pl-kos">,</span>
+  <span class="pl-c1">modules</span>: <span class="pl-kos">[</span>
+    <span class="pl-c">// Simple usage</span>
+    <span class="pl-s">"~/modules/example"</span><span class="pl-kos">,</span>
+    <span class="pl-c">// Passing options directly</span>
+    <span class="pl-kos">[</span><span class="pl-s">"~/modules/example"</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">token</span>: <span class="pl-s">"123"</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='export default function ExampleModule(moduleOptions) {
+  console.log(moduleOptions.token); // &#39;123&#39;
+  console.log(this.options.exampleMsg); // &#39;hello&#39;
+
+  this.nuxt.hook("ready", async (nuxt) => {
+    console.log("Nuxt is ready");
+  });
+}
+
+// REQUIRED if publishing the module as npm package
+module.exports.meta = require("./package.json");'><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">ExampleModule</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">token</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// '123'</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">exampleMsg</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 'hello'</span>
+
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"ready"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">nuxt</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Nuxt is ready"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// REQUIRED if publishing the module as npm package</span>
+<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span><span class="pl-kos">.</span><span class="pl-c1">meta</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"./package.json"</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-4">异步模块</h2>
+<p dir="auto">并非所有模块都会同步完成所有操作，例如：您可能希望开发一个需要获取某些 API 或执行异步 IO 的模块。为此，Nuxt 支持在异步模块中返回 Promise 或调用回调。</p>
+<h3 id="main-heading-H3-5">使用 async/await</h3>
+<blockquote>
+<p dir="auto">请注意，仅在 Node.js > 7.2 中支持使用 async / await。 因此，如果您是模块开发人员，至少要警告用户使用它们时 Node.js 版本不能低于 7.2。 对于大量异步模块或更好的传统支持，您可以使用 bundler 将其转换为兼容较旧的 Node.js 版本或 Promise 方法。</p>
+</blockquote>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='import fse from "fs-extra";
+
+export default async function asyncModule() {
+  // You can do async works here using `async`/`await`
+  const pages = await fse.readJson("./pages.json");
+}'><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">fse</span> <span class="pl-k">from</span> <span class="pl-s">"fs-extra"</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">asyncModule</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// You can do async works here using `async`/`await`</span>
+  <span class="pl-k">const</span> <span class="pl-s1">pages</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">fse</span><span class="pl-kos">.</span><span class="pl-en">readJson</span><span class="pl-kos">(</span><span class="pl-s">"./pages.json"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-6">返回 Promise</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='import axios from "axios";
+
+export default function asyncModule() {
+  return axios
+    .get("https://jsonplaceholder.typicode.com/users")
+    .then((res) => res.data.map((user) => `/users/${user.username}`))
+    .then((routes) => {
+      // Do something by extending Nuxt routes
+    });
+}'><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">axios</span> <span class="pl-k">from</span> <span class="pl-s">"axios"</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-en">asyncModule</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-s1">axios</span>
+    <span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"https://jsonplaceholder.typicode.com/users"</span><span class="pl-kos">)</span>
+    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">user</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s">`/users/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">user</span><span class="pl-kos">.</span><span class="pl-c1">username</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">routes</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-c">// Do something by extending Nuxt routes</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-7">使用回调</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='import axios from "axios";
+
+export default function asyncModule(callback) {
+  axios
+    .get("https://jsonplaceholder.typicode.com/users")
+    .then((res) => res.data.map((user) => `/users/${user.username}`))
+    .then((routes) => {
+      callback();
+    });
+}'><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">axios</span> <span class="pl-k">from</span> <span class="pl-s">"axios"</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-en">asyncModule</span><span class="pl-kos">(</span><span class="pl-s1">callback</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">axios</span>
+    <span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"https://jsonplaceholder.typicode.com/users"</span><span class="pl-kos">)</span>
+    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">user</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s">`/users/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">user</span><span class="pl-kos">.</span><span class="pl-c1">username</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">routes</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-s1">callback</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-8">常见模块</h2>
+<h3 id="main-heading-H3-9">优先级最高选项</h3>
+<p dir="auto">有时在<code class="notranslate">nuxt.config.js</code>中注册模块时可以使用顶级选项更方便，这允许我们组合多个选项源。</p>
+<p dir="auto">nuxt.config.js</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='export default {
+  modules: [["@nuxtjs/axios", { anotherOption: true }]],
+
+  // axios module is aware of this by using `this.options.axios`
+  axios: {
+    option1,
+    option2,
+  },
+};'><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">modules</span>: <span class="pl-kos">[</span><span class="pl-kos">[</span><span class="pl-s">"@nuxtjs/axios"</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">anotherOption</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+
+  <span class="pl-c">// axios module is aware of this by using `this.options.axios`</span>
+  <span class="pl-c1">axios</span>: <span class="pl-kos">{</span>
+    option1<span class="pl-kos">,</span>
+    option2<span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">module.js</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function (moduleOptions) {
+  const options = Object.assign({}, this.options.axios, moduleOptions);
+  // ...
+}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-s1">options</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">assign</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">axios</span><span class="pl-kos">,</span> <span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-c">// ...</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-10">注册插件</h3>
+<p dir="auto">通常，我们会在 nuxt.config.js 中配置 plugins 来注册插件，但如果我们想在模块中集成这部分功能，就需要用到<code class="notranslate">this.addPlugin</code>方法。</p>
+<p dir="auto"><strong>vantLoadPlugin.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='import { Dialog, Toast } from "vant";
+import Vue from "vue";
+
+Vue.use(Toast).use(Dialog);
+
+export default (context, inject) => {
+  // 与nuxt.config.js中定义的plugins一样，此处可以选择注入变量到context和vue实例
+};'><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">Dialog</span><span class="pl-kos">,</span> <span class="pl-v">Toast</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"vant"</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">Vue</span> <span class="pl-k">from</span> <span class="pl-s">"vue"</span><span class="pl-kos">;</span>
+
+<span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Toast</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Dialog</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">(</span><span class="pl-s1">context</span><span class="pl-kos">,</span> <span class="pl-s1">inject</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 与nuxt.config.js中定义的plugins一样，此处可以选择注入变量到context和vue实例</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>vantLoadModule.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='const path = require("path");
+
+export default async function vantLoadModule() {
+  // Registre &#39;vantLoadPlugin&#39; template
+  this.addPluin(path.resolve(__dirname, "vantLoad.js"));
+}'><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">vantLoadModule</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// Registre 'vantLoadPlugin' template</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">addPluin</span><span class="pl-kos">(</span><span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">"vantLoad.js"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-11">模板插件</h3>
+<p dir="auto">插件会在 @nuxt/builder 中通过 lodash template 方法进行模板编译，因此可以在注册插件时提供 options 做为模板编译参数使用，此时 addPlugin 参数对象 src 属性为插件地址。</p>
+<p dir="auto"><strong>plugin.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Set Google Analytics UA
+ga('create', '<%= options.ua %>', 'auto')
+
+<% if (options.debug) { %>
+// Dev only code
+<% } %>
+"><pre class="notranslate"><span class="pl-c">// Set Google Analytics UA</span>
+<span class="pl-en">ga</span><span class="pl-kos">(</span><span class="pl-s">'create'</span><span class="pl-kos">,</span> <span class="pl-s">'&lt;%= options.ua %>'</span><span class="pl-kos">,</span> <span class="pl-s">'auto'</span><span class="pl-kos">)</span>
+
+<span class="pl-c1">&lt;</span><span class="pl-c1">%</span> <span class="pl-en">if</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">debug</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> <span class="pl-c1">%</span><span class="pl-c1">></span>
+<span class="pl-c">// Dev only code</span>
+<span class="pl-c1">&lt;</span><span class="pl-c1">%</span> <span class="pl-kos">}</span> <span class="pl-c1">%</span><span class="pl-c1">></span></pre></div>
+<p dir="auto"><strong>module.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='import path from "path";
+
+export default function nuxtBootstrapVue(moduleOptions) {
+  // Register `plugin.js` template
+  this.addPlugin({
+    src: path.resolve(__dirname, "plugin.js"),
+    options: {
+      // Nuxt will replace `options.ua` with `123` when copying plugin to project
+      ua: 123,
+      // conditional parts with dev will be stripped from plugin code on production builds
+      debug: this.options.dev,
+    },
+  });
+}'><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">path</span> <span class="pl-k">from</span> <span class="pl-s">"path"</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-en">nuxtBootstrapVue</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// Register `plugin.js` template</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">addPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">src</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">"plugin.js"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+      <span class="pl-c">// Nuxt will replace `options.ua` with `123` when copying plugin to project</span>
+      <span class="pl-c1">ua</span>: <span class="pl-c1">123</span><span class="pl-kos">,</span>
+      <span class="pl-c">// conditional parts with dev will be stripped from plugin code on production builds</span>
+      <span class="pl-c1">debug</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">dev</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-12">注册 webpack loader</h3>
+<p dir="auto">我们可以使用 this.extendBuild 在 nuxt.config.js 中执行与 build.extend 相同的操作。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function (moduleOptions) {
+    this.extendBuild((config, { isClient, isServer }) => {
+      // `.foo` Loader
+      config.module.rules.push({
+        test: /\.foo$/,
+        use: [...]
+      })
+
+      // Customize existing loaders
+      // Refer to source code for Nuxt internals:
+      // https://github.com/nuxt/nuxt/blob/2.x-dev/packages/webpack/src/config/base.js
+      const barLoader = config.module.rules.find(rule => rule.loader === 'bar-loader')
+  })
+}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">extendBuild</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> isClient<span class="pl-kos">,</span> isServer <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-c">// `.foo` Loader</span>
+      <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">module</span><span class="pl-kos">.</span><span class="pl-c1">rules</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">f</span><span class="pl-s">o</span><span class="pl-s">o</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">use</span>: <span class="pl-kos">[</span>...<span class="pl-kos">]</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+      <span class="pl-c">// Customize existing loaders</span>
+      <span class="pl-c">// Refer to source code for Nuxt internals:</span>
+      <span class="pl-c">// https://github.com/nuxt/nuxt/blob/2.x-dev/packages/webpack/src/config/base.js</span>
+      <span class="pl-k">const</span> <span class="pl-s1">barLoader</span> <span class="pl-c1">=</span> <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">module</span><span class="pl-kos">.</span><span class="pl-c1">rules</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s1">rule</span> <span class="pl-c1">=></span> <span class="pl-s1">rule</span><span class="pl-kos">.</span><span class="pl-c1">loader</span> <span class="pl-c1">===</span> <span class="pl-s">'bar-loader'</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-13">注册 webpack 插件</h3>
+<p dir="auto">我们可以注册 webpack 插件用来在构建期间发出资源。需要了解 webpack 构建原理以及插件开发。</p>
+<ul dir="auto">
+<li><a href="https://webpack.docschina.org/api/compiler-hooks/" rel="nofollow">compiler-hooks</a></li>
+</ul>
+<blockquote>
+<p dir="auto">nuxt@2.11.0，对应 webpack 大版本为 v4，开发插件时请注意版本。</p>
+</blockquote>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='export default function (moduleOptions) {
+  const info = `Built by awesome module - 1.3 alpha on ${Date.now()}`;
+
+  this.options.build.plugins.push({
+    apply(compiler) {
+      compiler.hooks.emit.tapAsync("emit", (compilation, cb) => {
+        // This will generate `.nuxt/dist/info.txt&#39; with contents of info variable.
+        // Source can be buffer too
+        compilation.assets["info.txt"] = {
+          source: () => info,
+          size: () => info.length,
+        };
+
+        cb();
+      });
+    },
+  });
+}'><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-s1">info</span> <span class="pl-c1">=</span> <span class="pl-s">`Built by awesome module - 1.3 alpha on <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-v">Date</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>
+
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">build</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-en">apply</span><span class="pl-kos">(</span><span class="pl-s1">compiler</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">compiler</span><span class="pl-kos">.</span><span class="pl-c1">hooks</span><span class="pl-kos">.</span><span class="pl-c1">emit</span><span class="pl-kos">.</span><span class="pl-en">tapAsync</span><span class="pl-kos">(</span><span class="pl-s">"emit"</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">compilation</span><span class="pl-kos">,</span> <span class="pl-s1">cb</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-c">// This will generate `.nuxt/dist/info.txt' with contents of info variable.</span>
+        <span class="pl-c">// Source can be buffer too</span>
+        <span class="pl-s1">compilation</span><span class="pl-kos">.</span><span class="pl-c1">assets</span><span class="pl-kos">[</span><span class="pl-s">"info.txt"</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+          <span class="pl-en">source</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">info</span><span class="pl-kos">,</span>
+          <span class="pl-en">size</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">info</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+        <span class="pl-s1">cb</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">上面的模块为 webpack 添加了一个新 plugin，监听了 compiler 的 emit hooks，在生成资源到 output 目录之前添加了一个新的输出资源 info.txt。</p>
+<h3 id="main-heading-H3-14">为构建提供扩展配置</h3>
+<p dir="auto">我们可以使用<code class="notranslate">this.extendBuild</code>为客户端和服务端的构建配置进行手工的扩展处理，这与<code class="notranslate">nuxt.config.js</code>中的<code class="notranslate">build.extend</code>属性含义相同。该扩展方法会服务端和客户端打包构建分别被调用，该方法的参数如下：</p>
+<ol dir="auto">
+<li>Webpack 配置对象</li>
+<li>构建环境对象，包括这些属性(全部为布尔类型):<code class="notranslate">isDev</code>，<code class="notranslate">isClient</code>，<code class="notranslate">isServer</code></li>
+</ol>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='export default function (options) {
+  // 构建扩展配置,会在nuxt.config.js中build.extend之后执行
+  this.context.extendBuild((config, { isClient }) => {
+    config.externals = [];
+    // 为客户端打包进行扩展配置
+    if (isClient) {
+      // 开发环境增加source-map
+      if (this.envs.PATH_TYPE === "development") {
+        config.devtool = "eval-source-map";
+      } else {
+        // runtime不参与打包
+        config.externals.push({
+          vue: "Vue",
+          vuex: "Vuex",
+          "vue-router": "VueRouter",
+        });
+      }
+    }
+  });
+}'><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// 构建扩展配置,会在nuxt.config.js中build.extend之后执行</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">context</span><span class="pl-kos">.</span><span class="pl-en">extendBuild</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> isClient <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-c">// 为客户端打包进行扩展配置</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isClient</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">// 开发环境增加source-map</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">envs</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">===</span> <span class="pl-s">"development"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">devtool</span> <span class="pl-c1">=</span> <span class="pl-s">"eval-source-map"</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+        <span class="pl-c">// runtime不参与打包</span>
+        <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">vue</span>: <span class="pl-s">"Vue"</span><span class="pl-kos">,</span>
+          <span class="pl-c1">vuex</span>: <span class="pl-s">"Vuex"</span><span class="pl-kos">,</span>
+          <span class="pl-s">"vue-router"</span>: <span class="pl-s">"VueRouter"</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">上面的模块为构建提供了扩展配置，在客户端时构建时，开发环境配置 source-map ，非开发环境配置 vue runtime 不参与打包。您还可以使用暴露的 webpack 对象进行更加高级的操作。</p>
+<h3 id="main-heading-H3-15">nuxt 生命周期注册钩子</h3>
+<p dir="auto"><code class="notranslate">this.nuxt</code> ：这是对当前 Nuxt 实例的引用。我们可以在某些生命周期事件上注册钩子。</p>
+<ul dir="auto">
+<li>Ready : Nuxt is ready to work (ModuleContainer and Renderer ready).<br>
+就绪：Nuxt 已准备好工作（模块容器和渲染器已就绪）。</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='nuxt.hook("ready", async (nuxt) => {
+  // Your custom code here
+});'><pre class="notranslate"><span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"ready"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">nuxt</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-c">// Your custom code here</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>Error: An unhandled error when calling hooks.<br>
+错误：调用钩子时出现未处理的错误。</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='nuxt.hook("error", async (error) => {
+  // Your custom code here
+});'><pre class="notranslate"><span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"error"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-c">// Your custom code here</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>Close: Nuxt instance is gracefully closing.<br>
+关闭：Nuxt 实例正在正常关闭。</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='nuxt.hook("close", async (nuxt) => {
+  // Your custom code here
+});'><pre class="notranslate"><span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"close"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">nuxt</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-c">// Your custom code here</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<ul dir="auto">
+<li>Listen: Nuxt internal server starts listening. (Using nuxt start or nuxt dev)<br>
+Listen：Nuxt 内部服务器开始监听。 （使用 nuxt start 或 nuxt dev）</li>
+</ul>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='nuxt.hook("listen", async (server, { host, port }) => {
+  // Your custom code here
+});'><pre class="notranslate"><span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"listen"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">server</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> host<span class="pl-kos">,</span> port <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+  <span class="pl-c">// Your custom code here</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><code class="notranslate">this</code> ：模块的上下文。所有模块都将在 ModuleContainer 实例的上下文中调用。</p>
+<p dir="auto">请查看 <a href="https://v2.nuxt.com/docs/internals-glossary/internals-module-container" rel="nofollow">ModuleContainer</a> 类文档以获取可用的方法。</p>
+<h3 id="main-heading-H3-16">在指定钩子上执行任务</h3>
+<p dir="auto">您的模块可能只需要在特定条件下执行操作，而不仅仅是在 Nuxt 初始化期间。我们可以使用<a href="https://github.com/nuxt-contrib/hookable">Hookable</a> Nuxt.js 系统来完成特定事件的任务。Nuxt 将等待钩子返回<code class="notranslate">Promise</code>或被定义为<code class="notranslate">async</code>(异步)。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function () {
+  // Add hook for modules
+  this.nuxt.hook('modules:done', moduleContainer => {
+    // This will be called when all modules finished loading
+  })
+
+  // Add hook for renderer
+  this.nuxt.hook('render:before', renderer => {
+    // Called after the renderer was created
+  })
+
+  // Add hook for build:extendRoutes
+  this.nuxt.hook('build:extendRoutes', async routes => {
+    // This will be called after routes created
+  })
+
+  // Add hook for build:compile
+  this.nuxt.hook('build:compile', async {compiler} => {
+    // This will be run just before webpack compiler starts
+  })
+
+  // Add hook for generate
+  this.nuxt.hook('generate:before', async generator => {
+    // This will be called before Nuxt generates your pages
+  })
+}
+"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// Add hook for modules</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">'modules:done'</span><span class="pl-kos">,</span> <span class="pl-s1">moduleContainer</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-c">// This will be called when all modules finished loading</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// Add hook for renderer</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">'render:before'</span><span class="pl-kos">,</span> <span class="pl-s1">renderer</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-c">// Called after the renderer was created</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// Add hook for build:extendRoutes</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">'build:extendRoutes'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-s1">routes</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-c">// This will be called after routes created</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// Add hook for build:compile</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">'build:compile'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">{</span>compiler<span class="pl-kos">}</span> <span class="pl-c1">=</span><span class="pl-c1">></span> <span class="pl-kos">{</span>
+    <span class="pl-c">// This will be run just before webpack compiler starts</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// Add hook for generate</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">'generate:before'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-s1">generator</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-c">// This will be called before Nuxt generates your pages</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">上面仅列出了一部分 hooks，请参考 <a href="https://www.nuxtjs.cn/api/internals" rel="nofollow">Nuxt Internals</a> 了解有关 Nuxt 内部 API 的更多信息。</p>
+<p dir="auto">Nuxt 的 hooks 功能来自 <a href="https://www.npmjs.com/package/hable" rel="nofollow">hable</a> 模块，Nuxt 类本身继承了 hable，所以在模块中可以使用 this.nuxt 注册和调用。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='export default function () {
+  this.nuxt.hook("hook1", async (param) => {
+    // 注册 hook1 回调
+  });
+  // 调用钩子 hook1
+  await this.nuxt.callHook("hook1");
+}'><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"hook1"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 注册 hook1 回调</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-c">// 调用钩子 hook1</span>
+  <span class="pl-k">await</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">callHook</span><span class="pl-kos">(</span><span class="pl-s">"hook1"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-17">来个实战</h2>
+<p dir="auto">根治 ———— nuxt 项目遇到的，网页重新部署，通知用户。</p>
+<p dir="auto"><strong>nuxt.config.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {
+  mode: 'universal',
+  env: {
+    PATH_TYPE: process.env.PATH_TYPE
+  },
+  /*
+   ** Nuxt.js modules
+   */
+  modules: [
+    [
+      '~/webUpdateNotification',
+      {
+        logVersion: true,
+        checkInterval: 5 * 60 * 1000, // 5 分钟设置轮询一次
+        // 在某些环境下才开启该 Module
+        shouldBeEnable: (options) => {
+          if (options.env.PATH_TYPE === 'trial') {
+            return true
+          }
+          return false
+        }
+      }
+    ]
+  ],
+}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">mode</span>: <span class="pl-s">'universal'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">env</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">PATH_TYPE</span>: <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">/*</span>
+<span class="pl-c">   ** Nuxt.js modules</span>
+<span class="pl-c">   */</span>
+  <span class="pl-c1">modules</span>: <span class="pl-kos">[</span>
+    <span class="pl-kos">[</span>
+      <span class="pl-s">'~/webUpdateNotification'</span><span class="pl-kos">,</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">logVersion</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-c1">checkInterval</span>: <span class="pl-c1">5</span> <span class="pl-c1">*</span> <span class="pl-c1">60</span> <span class="pl-c1">*</span> <span class="pl-c1">1000</span><span class="pl-kos">,</span> <span class="pl-c">// 5 分钟设置轮询一次</span>
+        <span class="pl-c">// 在某些环境下才开启该 Module</span>
+        <span class="pl-en">shouldBeEnable</span>: <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">===</span> <span class="pl-s">'trial'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-k">return</span> <span class="pl-c1">true</span>
+          <span class="pl-kos">}</span>
+          <span class="pl-k">return</span> <span class="pl-c1">false</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>webUpdateNotification.js</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { accessSync, constants, readFileSync, writeFileSync } from 'fs'
+import { resolve } from 'path'
+import {
+  DIRECTORY_NAME,
+  INJECT_SCRIPT_FILE_NAME,
+  INJECT_STYLE_FILE_NAME,
+  JSON_FILE_NAME,
+  NOTIFICATION_ANCHOR_CLASS_NAME,
+  generateJSONFileContent,
+  generateJsFileContent,
+  getFileHash,
+  getVersion,
+  get__Dirname
+} from '@plugin-web-update-notification/core'
+
+const pluginName = 'WebUpdateNotificationPlugin'
+
+/**
+ * It injects the hash into the HTML, and injects the notification anchor and the stylesheet and the
+ * script into the HTML
+ * @param {string} html - The original HTML of the page
+ * @param {string} version - The hash of the current commit
+ * @param {Options} options - Options
+ * @returns The html of the page with the injected script and css.
+ */
+function injectPluginHtml(
+  html = '',
+  version = '',
+  options = {},
+  { cssFileHash = '', jsFileHash = '' }
+) {
+  const {
+    customNotificationHTML,
+    hiddenDefaultNotification,
+    injectFileBase = '/'
+  } = options
+
+  const versionScript = `<script>window.pluginWebUpdateNotice_version = '${version}';</script>`
+  const cssLinkHtml =
+    customNotificationHTML || hiddenDefaultNotification
+      ? ''
+      : `<link rel=&#34;stylesheet&#34; href=&#34;${injectFileBase}${DIRECTORY_NAME}/${INJECT_STYLE_FILE_NAME}.${cssFileHash}.css&#34;>`
+  let res = html
+
+  res = res.replace(
+    '<head>',
+    `<head>
+    ${cssLinkHtml}
+    <script src=&#34;${injectFileBase}${DIRECTORY_NAME}/${INJECT_SCRIPT_FILE_NAME}.${jsFileHash}.js&#34;></script>
+
+    ${versionScript}`
+  )
+
+  if (!hiddenDefaultNotification) {
+    res = res.replace(
+      '</body>',
+      `<div class=&#34;${NOTIFICATION_ANCHOR_CLASS_NAME}&#34;></div></body>`
+    )
+  }
+
+  return res
+}
+
+export default function WebUpdateNotificationPlugin(moduleOptions = {}) {
+  // this 为 modules 中的 context
+  // 所有的 nuxt 的配置项
+  const options = this.options
+  // 对当前 nuxt 实例的引用
+  const nuxt = this.nuxt
+
+  /** inject script file hash */
+  let jsFileHash = ''
+  /** inject css file hash */
+  let cssFileHash = ''
+  // 版本信息
+  let version = ''
+
+  // 留一个函数 shouldBeEnable 可以判断是否开启
+  if (typeof moduleOptions.shouldBeEnable === 'function') {
+    const enable = moduleOptions.shouldBeEnable(options)
+    if (!enable) {
+      return
+    }
+  }
+
+  // Emit assets： 注册 webpack 插件在构建期间发出资源
+  options.build.plugins.push({
+    apply(compiler) {
+      // 仅执行一次标识 （client 和 server 会分别走一次，不用再走服务端一次）
+      if (compiler.options.name !== 'client') {
+        return
+      }
+
+      const { publicPath } = compiler.options.output
+      if (moduleOptions.injectFileBase === undefined)
+        moduleOptions.injectFileBase =
+          typeof publicPath === 'string' ? publicPath : '/'
+
+      const { hiddenDefaultNotification, versionType, customVersion, silence } =
+        moduleOptions
+      if (versionType === 'custom')
+        version = getVersion(versionType, customVersion)
+      else version = getVersion(versionType)
+
+      compiler.hooks.emit.tap(pluginName, (compilation) => {
+        // const outputPath = compiler.outputPath
+        const jsonFileContent = generateJSONFileContent(version, silence)
+        // @ts-expect-error
+        compilation.assets[`${DIRECTORY_NAME}/${JSON_FILE_NAME}.json`] = {
+          source: () => jsonFileContent,
+          size: () => jsonFileContent.length
+        }
+        if (!hiddenDefaultNotification) {
+          const injectStyleContent = readFileSync(
+            `${get__Dirname()}/${INJECT_STYLE_FILE_NAME}.css`,
+            'utf8'
+          )
+          cssFileHash = getFileHash(injectStyleContent)
+
+          // @ts-expect-error
+          compilation.assets[
+            `${DIRECTORY_NAME}/${INJECT_STYLE_FILE_NAME}.${cssFileHash}.css`
+          ] = {
+            source: () => injectStyleContent,
+            size: () => injectStyleContent.length
+          }
+        }
+
+        const filePath = resolve(
+          `${get__Dirname()}/${INJECT_SCRIPT_FILE_NAME}.js`
+        )
+
+        const injectScriptContent = generateJsFileContent(
+          readFileSync(filePath, 'utf8').toString(),
+          version,
+          moduleOptions // 传入 module 的参数控制
+        )
+        jsFileHash = getFileHash(injectScriptContent)
+
+        // @ts-expect-error
+        compilation.assets[
+          `${DIRECTORY_NAME}/${INJECT_SCRIPT_FILE_NAME}.${jsFileHash}.js`
+        ] = {
+          source: () => injectScriptContent,
+          size: () => injectScriptContent.length
+        }
+      })
+    }
+  })
+
+  // Hook on generation finished
+  nuxt.hook('generate:done', async (generator) => {
+    const htmlFilePath = resolve(
+      generator.distPath,
+      moduleOptions.indexHtmlFilePath || './index.html' // 可以自定义写入要 inject 的 html 地址
+    )
+    try {
+      accessSync(htmlFilePath, constants.F_OK)
+
+      let html = readFileSync(htmlFilePath, 'utf8')
+      html = injectPluginHtml(html, version, moduleOptions, {
+        jsFileHash,
+        cssFileHash
+      })
+      writeFileSync(htmlFilePath, html)
+    } catch (error) {
+      console.error(error)
+      console.error(
+        `${pluginName} failed to inject the plugin into the HTML file. index.html（${htmlFilePath}） not found.`
+      )
+    }
+  })
+}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">accessSync</span><span class="pl-kos">,</span> <span class="pl-s1">constants</span><span class="pl-kos">,</span> <span class="pl-s1">readFileSync</span><span class="pl-kos">,</span> <span class="pl-s1">writeFileSync</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'fs'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">resolve</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'path'</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">,</span>
+  <span class="pl-c1">INJECT_SCRIPT_FILE_NAME</span><span class="pl-kos">,</span>
+  <span class="pl-c1">INJECT_STYLE_FILE_NAME</span><span class="pl-kos">,</span>
+  <span class="pl-c1">JSON_FILE_NAME</span><span class="pl-kos">,</span>
+  <span class="pl-c1">NOTIFICATION_ANCHOR_CLASS_NAME</span><span class="pl-kos">,</span>
+  <span class="pl-s1">generateJSONFileContent</span><span class="pl-kos">,</span>
+  <span class="pl-s1">generateJsFileContent</span><span class="pl-kos">,</span>
+  <span class="pl-s1">getFileHash</span><span class="pl-kos">,</span>
+  <span class="pl-s1">getVersion</span><span class="pl-kos">,</span>
+  <span class="pl-s1">get__Dirname</span>
+<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@plugin-web-update-notification/core'</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">pluginName</span> <span class="pl-c1">=</span> <span class="pl-s">'WebUpdateNotificationPlugin'</span>
+
+<span class="pl-c">/**</span>
+<span class="pl-c"> * It injects the hash into the HTML, and injects the notification anchor and the stylesheet and the</span>
+<span class="pl-c"> * script into the HTML</span>
+<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">string</span>} html - The original HTML of the page</span>
+<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">string</span>} version - The hash of the current commit</span>
+<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">Options</span>} options - Options</span>
+<span class="pl-c"> * <span class="pl-k">@returns</span> The html of the page with the injected script and css.</span>
+<span class="pl-c"> */</span>
+<span class="pl-k">function</span> <span class="pl-en">injectPluginHtml</span><span class="pl-kos">(</span>
+  <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-s">''</span><span class="pl-kos">,</span>
+  <span class="pl-s1">version</span> <span class="pl-c1">=</span> <span class="pl-s">''</span><span class="pl-kos">,</span>
+  <span class="pl-s1">options</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">{</span> cssFileHash <span class="pl-c1">=</span> <span class="pl-s">''</span><span class="pl-kos">,</span> jsFileHash <span class="pl-c1">=</span> <span class="pl-s">''</span> <span class="pl-kos">}</span>
+<span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-kos">{</span>
+    customNotificationHTML<span class="pl-kos">,</span>
+    hiddenDefaultNotification<span class="pl-kos">,</span>
+    injectFileBase <span class="pl-c1">=</span> <span class="pl-s">'/'</span>
+  <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">options</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">versionScript</span> <span class="pl-c1">=</span> <span class="pl-s">`&lt;script>window.pluginWebUpdateNotice_version = '<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">version</span><span class="pl-kos">}</span></span>';&lt;/script>`</span>
+  <span class="pl-k">const</span> <span class="pl-s1">cssLinkHtml</span> <span class="pl-c1">=</span>
+    <span class="pl-s1">customNotificationHTML</span> <span class="pl-c1">||</span> <span class="pl-s1">hiddenDefaultNotification</span>
+      ? <span class="pl-s">''</span>
+      : <span class="pl-s">`&lt;link rel="stylesheet" href="<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">injectFileBase</span><span class="pl-kos">}</span></span><span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_STYLE_FILE_NAME</span><span class="pl-kos">}</span></span>.<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">cssFileHash</span><span class="pl-kos">}</span></span>.css">`</span>
+  <span class="pl-k">let</span> <span class="pl-s1">res</span> <span class="pl-c1">=</span> <span class="pl-s1">html</span>
+
+  <span class="pl-s1">res</span> <span class="pl-c1">=</span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span>
+    <span class="pl-s">'&lt;head>'</span><span class="pl-kos">,</span>
+    <span class="pl-s">`&lt;head></span>
+<span class="pl-s">    <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">cssLinkHtml</span><span class="pl-kos">}</span></span></span>
+<span class="pl-s">    &lt;script src="<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">injectFileBase</span><span class="pl-kos">}</span></span><span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_SCRIPT_FILE_NAME</span><span class="pl-kos">}</span></span>.<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">jsFileHash</span><span class="pl-kos">}</span></span>.js">&lt;/script></span>
+<span class="pl-s"></span>
+<span class="pl-s">    <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">versionScript</span><span class="pl-kos">}</span></span>`</span>
+  <span class="pl-kos">)</span>
+
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">hiddenDefaultNotification</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">res</span> <span class="pl-c1">=</span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span>
+      <span class="pl-s">'&lt;/body>'</span><span class="pl-kos">,</span>
+      <span class="pl-s">`&lt;div class="<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">NOTIFICATION_ANCHOR_CLASS_NAME</span><span class="pl-kos">}</span></span>">&lt;/div>&lt;/body>`</span>
+    <span class="pl-kos">)</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">return</span> <span class="pl-s1">res</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">WebUpdateNotificationPlugin</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// this 为 modules 中的 context</span>
+  <span class="pl-c">// 所有的 nuxt 的配置项</span>
+  <span class="pl-k">const</span> <span class="pl-s1">options</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span>
+  <span class="pl-c">// 对当前 nuxt 实例的引用</span>
+  <span class="pl-k">const</span> <span class="pl-s1">nuxt</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span>
+
+  <span class="pl-c">/** inject script file hash */</span>
+  <span class="pl-k">let</span> <span class="pl-s1">jsFileHash</span> <span class="pl-c1">=</span> <span class="pl-s">''</span>
+  <span class="pl-c">/** inject css file hash */</span>
+  <span class="pl-k">let</span> <span class="pl-s1">cssFileHash</span> <span class="pl-c1">=</span> <span class="pl-s">''</span>
+  <span class="pl-c">// 版本信息</span>
+  <span class="pl-k">let</span> <span class="pl-s1">version</span> <span class="pl-c1">=</span> <span class="pl-s">''</span>
+
+  <span class="pl-c">// 留一个函数 shouldBeEnable 可以判断是否开启</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-k">typeof</span> <span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">shouldBeEnable</span> <span class="pl-c1">===</span> <span class="pl-s">'function'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">enable</span> <span class="pl-c1">=</span> <span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-en">shouldBeEnable</span><span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">enable</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-c">// Emit assets： 注册 webpack 插件在构建期间发出资源</span>
+  <span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">build</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-en">apply</span><span class="pl-kos">(</span><span class="pl-s1">compiler</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">// 仅执行一次标识 （client 和 server 会分别走一次，不用再走服务端一次）</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">compiler</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">name</span> <span class="pl-c1">!==</span> <span class="pl-s">'client'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span>
+      <span class="pl-kos">}</span>
+
+      <span class="pl-k">const</span> <span class="pl-kos">{</span> publicPath <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">compiler</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">output</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">injectFileBase</span> <span class="pl-c1">===</span> <span class="pl-c1">undefined</span><span class="pl-kos">)</span>
+        <span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">injectFileBase</span> <span class="pl-c1">=</span>
+          <span class="pl-k">typeof</span> <span class="pl-s1">publicPath</span> <span class="pl-c1">===</span> <span class="pl-s">'string'</span> ? <span class="pl-s1">publicPath</span> : <span class="pl-s">'/'</span>
+
+      <span class="pl-k">const</span> <span class="pl-kos">{</span> hiddenDefaultNotification<span class="pl-kos">,</span> versionType<span class="pl-kos">,</span> customVersion<span class="pl-kos">,</span> silence <span class="pl-kos">}</span> <span class="pl-c1">=</span>
+        <span class="pl-s1">moduleOptions</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">versionType</span> <span class="pl-c1">===</span> <span class="pl-s">'custom'</span><span class="pl-kos">)</span>
+        <span class="pl-s1">version</span> <span class="pl-c1">=</span> <span class="pl-en">getVersion</span><span class="pl-kos">(</span><span class="pl-s1">versionType</span><span class="pl-kos">,</span> <span class="pl-s1">customVersion</span><span class="pl-kos">)</span>
+      <span class="pl-k">else</span> <span class="pl-s1">version</span> <span class="pl-c1">=</span> <span class="pl-en">getVersion</span><span class="pl-kos">(</span><span class="pl-s1">versionType</span><span class="pl-kos">)</span>
+
+      <span class="pl-s1">compiler</span><span class="pl-kos">.</span><span class="pl-c1">hooks</span><span class="pl-kos">.</span><span class="pl-c1">emit</span><span class="pl-kos">.</span><span class="pl-en">tap</span><span class="pl-kos">(</span><span class="pl-s1">pluginName</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">compilation</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-c">// const outputPath = compiler.outputPath</span>
+        <span class="pl-k">const</span> <span class="pl-s1">jsonFileContent</span> <span class="pl-c1">=</span> <span class="pl-en">generateJSONFileContent</span><span class="pl-kos">(</span><span class="pl-s1">version</span><span class="pl-kos">,</span> <span class="pl-s1">silence</span><span class="pl-kos">)</span>
+        <span class="pl-c">// <span class="pl-k">@ts</span>-expect-error</span>
+        <span class="pl-s1">compilation</span><span class="pl-kos">.</span><span class="pl-c1">assets</span><span class="pl-kos">[</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">JSON_FILE_NAME</span><span class="pl-kos">}</span></span>.json`</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+          <span class="pl-en">source</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">jsonFileContent</span><span class="pl-kos">,</span>
+          <span class="pl-en">size</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">jsonFileContent</span><span class="pl-kos">.</span><span class="pl-c1">length</span>
+        <span class="pl-kos">}</span>
+        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">hiddenDefaultNotification</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-k">const</span> <span class="pl-s1">injectStyleContent</span> <span class="pl-c1">=</span> <span class="pl-en">readFileSync</span><span class="pl-kos">(</span>
+            <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-en">get__Dirname</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_STYLE_FILE_NAME</span><span class="pl-kos">}</span></span>.css`</span><span class="pl-kos">,</span>
+            <span class="pl-s">'utf8'</span>
+          <span class="pl-kos">)</span>
+          <span class="pl-s1">cssFileHash</span> <span class="pl-c1">=</span> <span class="pl-en">getFileHash</span><span class="pl-kos">(</span><span class="pl-s1">injectStyleContent</span><span class="pl-kos">)</span>
+
+          <span class="pl-c">// <span class="pl-k">@ts</span>-expect-error</span>
+          <span class="pl-s1">compilation</span><span class="pl-kos">.</span><span class="pl-c1">assets</span><span class="pl-kos">[</span>
+            <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_STYLE_FILE_NAME</span><span class="pl-kos">}</span></span>.<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">cssFileHash</span><span class="pl-kos">}</span></span>.css`</span>
+          <span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+            <span class="pl-en">source</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">injectStyleContent</span><span class="pl-kos">,</span>
+            <span class="pl-en">size</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">injectStyleContent</span><span class="pl-kos">.</span><span class="pl-c1">length</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span>
+
+        <span class="pl-k">const</span> <span class="pl-s1">filePath</span> <span class="pl-c1">=</span> <span class="pl-en">resolve</span><span class="pl-kos">(</span>
+          <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-en">get__Dirname</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_SCRIPT_FILE_NAME</span><span class="pl-kos">}</span></span>.js`</span>
+        <span class="pl-kos">)</span>
+
+        <span class="pl-k">const</span> <span class="pl-s1">injectScriptContent</span> <span class="pl-c1">=</span> <span class="pl-en">generateJsFileContent</span><span class="pl-kos">(</span>
+          <span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s1">filePath</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+          <span class="pl-s1">version</span><span class="pl-kos">,</span>
+          <span class="pl-s1">moduleOptions</span> <span class="pl-c">// 传入 module 的参数控制</span>
+        <span class="pl-kos">)</span>
+        <span class="pl-s1">jsFileHash</span> <span class="pl-c1">=</span> <span class="pl-en">getFileHash</span><span class="pl-kos">(</span><span class="pl-s1">injectScriptContent</span><span class="pl-kos">)</span>
+
+        <span class="pl-c">// <span class="pl-k">@ts</span>-expect-error</span>
+        <span class="pl-s1">compilation</span><span class="pl-kos">.</span><span class="pl-c1">assets</span><span class="pl-kos">[</span>
+          <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_SCRIPT_FILE_NAME</span><span class="pl-kos">}</span></span>.<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">jsFileHash</span><span class="pl-kos">}</span></span>.js`</span>
+        <span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+          <span class="pl-en">source</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">injectScriptContent</span><span class="pl-kos">,</span>
+          <span class="pl-en">size</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">injectScriptContent</span><span class="pl-kos">.</span><span class="pl-c1">length</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+  <span class="pl-c">// Hook on generation finished</span>
+  <span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">'generate:done'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">generator</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">htmlFilePath</span> <span class="pl-c1">=</span> <span class="pl-en">resolve</span><span class="pl-kos">(</span>
+      <span class="pl-s1">generator</span><span class="pl-kos">.</span><span class="pl-c1">distPath</span><span class="pl-kos">,</span>
+      <span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">indexHtmlFilePath</span> <span class="pl-c1">||</span> <span class="pl-s">'./index.html'</span> <span class="pl-c">// 可以自定义写入要 inject 的 html 地址</span>
+    <span class="pl-kos">)</span>
+    <span class="pl-k">try</span> <span class="pl-kos">{</span>
+      <span class="pl-en">accessSync</span><span class="pl-kos">(</span><span class="pl-s1">htmlFilePath</span><span class="pl-kos">,</span> <span class="pl-s1">constants</span><span class="pl-kos">.</span><span class="pl-c1">F_OK</span><span class="pl-kos">)</span>
+
+      <span class="pl-k">let</span> <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s1">htmlFilePath</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span>
+      <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-en">injectPluginHtml</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">,</span> <span class="pl-s1">version</span><span class="pl-kos">,</span> <span class="pl-s1">moduleOptions</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+        jsFileHash<span class="pl-kos">,</span>
+        cssFileHash
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+      <span class="pl-en">writeFileSync</span><span class="pl-kos">(</span><span class="pl-s1">htmlFilePath</span><span class="pl-kos">,</span> <span class="pl-s1">html</span><span class="pl-kos">)</span>
+    <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span>
+        <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">pluginName</span><span class="pl-kos">}</span></span> failed to inject the plugin into the HTML file. index.html（<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">htmlFilePath</span><span class="pl-kos">}</span></span>） not found.`</span>
+      <span class="pl-kos">)</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-18">调试</h2>
+<p dir="auto">教你调试 nuxt modules。</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/nuxt/nuxt-debugger.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/nuxt/nuxt-debugger.jpg" alt="" style="max-width:100%"></a></p>
+<p dir="auto">由于文档并不能全面了解 Nuxt 构建过程，所以很多时候需要查看 Nuxt 源码，这里提供些小技巧给大家。</p>
+<ul dir="auto">
+<li>定位启动 Nuxt 入口文件</li>
+</ul>
+<p dir="auto">我们可以在项目目录中执行 nuxt 命令，其实是因为npm install nuxt 过程中在 ~/node_modules/.bin 下添加了 nuxt 启动文件，内容如下所示：</p>
+<p dir="auto"><strong>~/node_modules/.bin/nuxt</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='#!/bin/sh
+basedir=$(dirname "$(echo "$0" | sed -e &#39;s,\\,/,g&#39;)")
+
+case `uname` in
+    *CYGWIN*|*MINGW*|*MSYS*) basedir=`cygpath -w "$basedir"`;;
+esac
+
+if [ -x "$basedir/node" ]; then
+  "$basedir/node"  "$basedir/../nuxt/bin/nuxt.js" "$@"
+  ret=$?
+else
+  node  "$basedir/../nuxt/bin/nuxt.js" "$@"
+  ret=$?
+fi
+exit $ret
+'><pre class="notranslate"><code class="notranslate">#!/bin/sh
+basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+
+case `uname` in
+    *CYGWIN*|*MINGW*|*MSYS*) basedir=`cygpath -w "$basedir"`;;
+esac
+
+if [ -x "$basedir/node" ]; then
+  "$basedir/node"  "$basedir/../nuxt/bin/nuxt.js" "$@"
+  ret=$?
+else
+  node  "$basedir/../nuxt/bin/nuxt.js" "$@"
+  ret=$?
+fi
+exit $ret
+
+</code></pre></div>
+<p dir="auto">可以看到最终执行了 /../nuxt/bin/nuxt.js</p>
+<p dir="auto"><strong>~/node_modules/nuxt/bin/nuxt.js</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="#!/usr/bin/env node
+const suffix = require('../package.json').name.includes('-edge') ? '-edge' : ''
+require('@nuxt/cli' + suffix).run()
+  .catch((error) => {
+    require('consola').fatal(error)
+    process.exit(2)
+  })
+"><pre class="notranslate"><code class="notranslate">#!/usr/bin/env node
+const suffix = require('../package.json').name.includes('-edge') ? '-edge' : ''
+require('@nuxt/cli' + suffix).run()
+  .catch((error) => {
+    require('consola').fatal(error)
+    process.exit(2)
+  })
+
+</code></pre></div>
+<p dir="auto">又调用了 @nuxt/cli ，查看 @nuxt/cli package.json 中 main 属性可知，入口文件为 ./dist/cli.js。结合 cli.js 中的逻辑可以确定，nuxt 入口文件就在这里，根据 nuxt 命令参数的不同，会分别调用 ./cli-dev.js 和 ./cli-generate.js</p>
+<ul dir="auto">
+<li>调试 Nuxt 构建过程</li>
+</ul>
+<p dir="auto">虽然确定了入口文件，但仅通过 console 的方式很难调试代码，还好 vscode 内置了调试功能，可以方便的调试 JS 代码。</p>
+<ol dir="auto">
+<li>在需要调试的代码行最前面添加断点。</li>
+<li>在 vscode 控制台右上角下拉选项中选择 JavaScript Debug Terminal</li>
+<li>在打开的 Debug Terminal 中执行构建命令会自动进行调试模式，如执行 npm run serve</li>
+<li>然后就可以愉快的调试了</li>
+</ol>
+<h2 id="main-heading-H2-19">参考</h2>
+<ul dir="auto">
+<li><a href="https://juejin.cn/post/7209234917288886331" rel="nofollow">https://juejin.cn/post/7209234917288886331</a></li>
+<li><a href="https://github.com/GreatAuk/plugin-web-update-notification/tree/master/packages/webpack-plugin">https://github.com/GreatAuk/plugin-web-update-notification/tree/master/packages/webpack-plugin</a></li>
+<li><a href="https://stackoverflow.com/questions/66603200/nuxt-html-injection-by-webpack-plugin" rel="nofollow">https://stackoverflow.com/questions/66603200/nuxt-html-injection-by-webpack-plugin</a></li>
+<li><a href="https://stackoverflow.com/questions/50468383/how-to-use-nuxt-hooks-in-a-module" rel="nofollow">https://stackoverflow.com/questions/50468383/how-to-use-nuxt-hooks-in-a-module</a></li>
+<li><a href="https://v2.nuxt.com/docs/directory-structure/modules/" rel="nofollow">https://v2.nuxt.com/docs/directory-structure/modules/</a></li>
+<li><a href="https://www.nuxtjs.cn/guide/modules" rel="nofollow">https://www.nuxtjs.cn/guide/modules</a></li>
+<li><a href="https://v2.nuxt.com/tutorials/creating-a-nuxt-module" rel="nofollow">https://v2.nuxt.com/tutorials/creating-a-nuxt-module</a></li>
+</ul>
+<p dir="auto">这里还有更多关于 nuxt</p>
+<ul dir="auto">
+<li><a href="https://v2.nuxt.com/docs/configuration-glossary/configuration-build" rel="nofollow">https://v2.nuxt.com/docs/configuration-glossary/configuration-build</a></li>
+<li><a href="https://v2.nuxt.com/docs/configuration-glossary/configuration-render/" rel="nofollow">https://v2.nuxt.com/docs/configuration-glossary/configuration-render/</a></li>
+<li><a href="https://v2.nuxt.com/docs/directory-structure/pages" rel="nofollow">https://v2.nuxt.com/docs/directory-structure/pages</a></li>
+<li><a href="https://v2.nuxt.com/docs/directory-structure/nuxt-config" rel="nofollow">https://v2.nuxt.com/docs/directory-structure/nuxt-config</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,c){return{layout:"default",data:[{post:{id:1875464585,number:263,title:"你不知道的 Nuxt Module",created_at:"2023-08-31T12:48:40Z",updated_at:"2023-09-04T08:56:49Z",body_html:'<h2 id="main-heading-H2-0">Modules</h2>\n<p dir="auto">模块是 Nuxt.js 扩展，可以扩展其核心功能并添加无限的集成。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/nuxt/nuxt-modules.svg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/nuxt/nuxt-modules.svg" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto">在使用 Nuxt 开发应用程序时，您很快就会发现框架的核心功能还不够。 Nuxt 可以使用配置选项和插件进行扩展，但是在多个项目中维护这些自定义是繁琐、重复和耗时的。 另一方面，开箱即用支持每个项目的需求将使 Nuxt 非常复杂且难以使用。</p>\n<p dir="auto">这就是 Nuxt 提供高阶模块系统使得扩展核心成为可能的原因之一。模块是启动 Nuxt 时顺序调用的函数。框架等待每个模块完成后再继续。通过这种方式，模块几乎可以定制项目的任何方面。由于 Nuxt 的模块化设计（基于 webpack 的 Tapable ），模块可以轻松地为某些入口点（例如构建器初始化）注册钩子。模块还可以覆盖模板、配置 webpack 加载器、添加 CSS 库以及执行许多其他有用的任务。我们可以使用功能强大的  <a href="https://github.com/nuxt-contrib/hookable">Hookable</a> Nuxt.js 系统来完成特定事件的任务。</p>\n<p dir="auto">最重要的是，Nuxt 模块可以合并到 npm 包中。这使得跨项目重用并与社区共享成为可能，从而帮助创建高质量附加组件的生态系统。</p>\n<p dir="auto">如果你：</p>\n<ul dir="auto">\n<li>是优秀团队的成员，需要快速引导新项目。</li>\n<li>厌倦了为集成 Google Analytics 等常见任务重新造轮子。</li>\n<li>是一个优秀的开源爱好者，希望轻松与社区分享您的工作。</li>\n<li>是一家重视质量和可重用性的企业公司的成员。</li>\n<li>通常是在短期限内完成，没有时间深入了解每个新库或集成的细节。</li>\n<li>厌倦了处理对低级接口的重大改变，并且需要能够正常工作的东西。</li>\n</ul>\n<h2 id="main-heading-H2-1"><a href="https://www.nuxtjs.cn/guide/modules#nuxtjs-%E6%A8%A1%E5%9D%97%E5%88%97%E8%A1%A8" rel="nofollow">Nuxt.js 模块列表</a></h2>\n<p dir="auto">Nuxt.js 团队提供   官方   模块:</p>\n<ul dir="auto">\n<li><a href="https://http.nuxtjs.org/" rel="nofollow">@nuxt/http</a>: 基于<a href="https://github.com/sindresorhus/ky-universal">ky-universal</a>的轻量级和通用的 HTTP 请求</li>\n<li><a href="https://axios.nuxtjs.org/" rel="nofollow">@nuxtjs/axios</a>: 安全和使用简单 Axios 与 Nuxt.js 集成用来请求 HTTP</li>\n<li><a href="https://pwa.nuxtjs.org/" rel="nofollow">@nuxtjs/pwa</a>: 使用经过严格测试，更新且稳定的 PWA 解决方案来增强 Nuxt</li>\n<li><a href="https://auth.nuxtjs.org/" rel="nofollow">@nuxtjs/auth</a>: Nuxt.js 的身份验证模块，提供不同的方案和验证策略</li>\n</ul>\n<p dir="auto">Nuxt.js 社区制作的模块列表可在  <a href="https://github.com/topics/nuxt-module">https://github.com/topics/nuxt-module</a>  中查询</p>\n<h2 id="main-heading-H2-2">基础模块</h2>\n<p dir="auto">如下所示，一个模块只需要导出一个默认函数即可，当模块需要做一些异步操作时，可以返回 Promise 对象或者传入 callback 参数，此处推荐使用 <code class="notranslate">async/await</code> 直接返回 Promise 对象。</p>\n<p dir="auto"><strong>modules/simple.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function SimpleModule(moduleOptions) {\n  // Write your code here\n}\n\n// REQUIRED if publishing as an npm package\n// module.exports.meta = require(\'./package.json\')"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">SimpleModule</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// Write your code here</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// REQUIRED if publishing as an npm package</span>\n<span class="pl-c">// module.exports.meta = require(\'./package.json\')</span></pre></div>\n<p dir="auto">在模块中，通常会使用到以下变量：</p>\n<p dir="auto"><code class="notranslate">moduleOptions</code></p>\n<p dir="auto">这是用户使用<code class="notranslate">modules</code>数组传递对象，我们可以使用它来定制它的行为。</p>\n<p dir="auto"><code class="notranslate">this.options</code></p>\n<p dir="auto">您可以使用此属性直接访问 Nuxt 选项。这是<code class="notranslate">nuxt.config.js</code>，其中包含所有默认选项，可用于模块之间的共享选项。</p>\n<p dir="auto"><code class="notranslate">this.nuxt</code></p>\n<p dir="auto">这是对当前 Nuxt 实例的引用。 请参考 <a href="https://www.nuxtjs.cn/api/internals-nuxt" rel="nofollow">Nuxt class docs for available methods</a>.</p>\n<p dir="auto"><code class="notranslate">this</code></p>\n<p dir="auto">modules 中的 context, 请参考 <a href="https://www.nuxtjs.cn/api/internals-module-container" rel="nofollow">ModuleContainer</a> 来查看可用的方法。</p>\n<p dir="auto"><code class="notranslate">module.exports.meta</code></p>\n<p dir="auto">如果要将模块发布为 npm 包，则需要配置此选项。Nuxt 内部使用<code class="notranslate">meta</code>来更好地处理您的包。</p>\n<p dir="auto"><strong>nuxt.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  modules: [\n    // Using package name\n    &quot;@nuxtjs/axios&quot;,\n\n    // Relative to your project srcDir\n    &quot;~/modules/awesome.js&quot;,\n\n    // Providing options\n    [&quot;@nuxtjs/google-analytics&quot;, { ua: &quot;X1234567&quot; }],\n\n    // Inline definition\n    function () {},\n  ],\n};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">modules</span>: <span class="pl-kos">[</span>\n    <span class="pl-c">// Using package name</span>\n    <span class="pl-s">"@nuxtjs/axios"</span><span class="pl-kos">,</span>\n\n    <span class="pl-c">// Relative to your project srcDir</span>\n    <span class="pl-s">"~/modules/awesome.js"</span><span class="pl-kos">,</span>\n\n    <span class="pl-c">// Providing options</span>\n    <span class="pl-kos">[</span><span class="pl-s">"@nuxtjs/google-analytics"</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">ua</span>: <span class="pl-s">"X1234567"</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n\n    <span class="pl-c">// Inline definition</span>\n    <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">模块需要在 nuxt.config.js 中通过 modules 注册，对于 npm 安装的模块可以直接使用包名，对于项目代码中的模块，可以使用相对路径，使用 <code class="notranslate">@</code> 别名，将从项目 <code class="notranslate">srcDir</code> 解析,我们还可以为模块提供额外的参数。</p>\n<h2 id="main-heading-H2-3">编写自己的模块</h2>\n<p dir="auto">模块就是函数。它们可以打包为 npm 模块或直接包含在项目源代码中。</p>\n<ul dir="auto">\n<li>nuxt.config.js</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  exampleMsg: &quot;hello&quot;,\n  modules: [\n    // Simple usage\n    &quot;~/modules/example&quot;,\n    // Passing options directly\n    [&quot;~/modules/example&quot;, { token: &quot;123&quot; }],\n  ],\n};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">exampleMsg</span>: <span class="pl-s">"hello"</span><span class="pl-kos">,</span>\n  <span class="pl-c1">modules</span>: <span class="pl-kos">[</span>\n    <span class="pl-c">// Simple usage</span>\n    <span class="pl-s">"~/modules/example"</span><span class="pl-kos">,</span>\n    <span class="pl-c">// Passing options directly</span>\n    <span class="pl-kos">[</span><span class="pl-s">"~/modules/example"</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">token</span>: <span class="pl-s">"123"</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function ExampleModule(moduleOptions) {\n  console.log(moduleOptions.token); // \'123\'\n  console.log(this.options.exampleMsg); // \'hello\'\n\n  this.nuxt.hook(&quot;ready&quot;, async (nuxt) =&gt; {\n    console.log(&quot;Nuxt is ready&quot;);\n  });\n}\n\n// REQUIRED if publishing the module as npm package\nmodule.exports.meta = require(&quot;./package.json&quot;);"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">ExampleModule</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">token</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// \'123\'</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">exampleMsg</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// \'hello\'</span>\n\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"ready"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">nuxt</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"Nuxt is ready"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// REQUIRED if publishing the module as npm package</span>\n<span class="pl-smi">module</span><span class="pl-kos">.</span><span class="pl-c1">exports</span><span class="pl-kos">.</span><span class="pl-c1">meta</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"./package.json"</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-4">异步模块</h2>\n<p dir="auto">并非所有模块都会同步完成所有操作，例如：您可能希望开发一个需要获取某些 API 或执行异步 IO 的模块。为此，Nuxt 支持在异步模块中返回 Promise 或调用回调。</p>\n<h3 id="main-heading-H3-5">使用 async/await</h3>\n<blockquote>\n<p dir="auto">请注意，仅在 Node.js &gt; 7.2 中支持使用 async / await。 因此，如果您是模块开发人员，至少要警告用户使用它们时 Node.js 版本不能低于 7.2。 对于大量异步模块或更好的传统支持，您可以使用 bundler 将其转换为兼容较旧的 Node.js 版本或 Promise 方法。</p>\n</blockquote>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import fse from &quot;fs-extra&quot;;\n\nexport default async function asyncModule() {\n  // You can do async works here using `async`/`await`\n  const pages = await fse.readJson(&quot;./pages.json&quot;);\n}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">fse</span> <span class="pl-k">from</span> <span class="pl-s">"fs-extra"</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">asyncModule</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// You can do async works here using `async`/`await`</span>\n  <span class="pl-k">const</span> <span class="pl-s1">pages</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">fse</span><span class="pl-kos">.</span><span class="pl-en">readJson</span><span class="pl-kos">(</span><span class="pl-s">"./pages.json"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-6">返回 Promise</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import axios from &quot;axios&quot;;\n\nexport default function asyncModule() {\n  return axios\n    .get(&quot;https://jsonplaceholder.typicode.com/users&quot;)\n    .then((res) =&gt; res.data.map((user) =&gt; `/users/${user.username}`))\n    .then((routes) =&gt; {\n      // Do something by extending Nuxt routes\n    });\n}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">axios</span> <span class="pl-k">from</span> <span class="pl-s">"axios"</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-en">asyncModule</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">return</span> <span class="pl-s1">axios</span>\n    <span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"https://jsonplaceholder.typicode.com/users"</span><span class="pl-kos">)</span>\n    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">user</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s">`/users/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">user</span><span class="pl-kos">.</span><span class="pl-c1">username</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">routes</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// Do something by extending Nuxt routes</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-7">使用回调</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import axios from &quot;axios&quot;;\n\nexport default function asyncModule(callback) {\n  axios\n    .get(&quot;https://jsonplaceholder.typicode.com/users&quot;)\n    .then((res) =&gt; res.data.map((user) =&gt; `/users/${user.username}`))\n    .then((routes) =&gt; {\n      callback();\n    });\n}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">axios</span> <span class="pl-k">from</span> <span class="pl-s">"axios"</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-en">asyncModule</span><span class="pl-kos">(</span><span class="pl-s1">callback</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-s1">axios</span>\n    <span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">"https://jsonplaceholder.typicode.com/users"</span><span class="pl-kos">)</span>\n    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">res</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">user</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s">`/users/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">user</span><span class="pl-kos">.</span><span class="pl-c1">username</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">)</span>\n    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">routes</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">callback</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-8">常见模块</h2>\n<h3 id="main-heading-H3-9">优先级最高选项</h3>\n<p dir="auto">有时在<code class="notranslate">nuxt.config.js</code>中注册模块时可以使用顶级选项更方便，这允许我们组合多个选项源。</p>\n<p dir="auto">nuxt.config.js</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  modules: [[&quot;@nuxtjs/axios&quot;, { anotherOption: true }]],\n\n  // axios module is aware of this by using `this.options.axios`\n  axios: {\n    option1,\n    option2,\n  },\n};"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">modules</span>: <span class="pl-kos">[</span><span class="pl-kos">[</span><span class="pl-s">"@nuxtjs/axios"</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">anotherOption</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n\n  <span class="pl-c">// axios module is aware of this by using `this.options.axios`</span>\n  <span class="pl-c1">axios</span>: <span class="pl-kos">{</span>\n    option1<span class="pl-kos">,</span>\n    option2<span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">module.js</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function (moduleOptions) {\n  const options = Object.assign({}, this.options.axios, moduleOptions);\n  // ...\n}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-s1">options</span> <span class="pl-c1">=</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">assign</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">axios</span><span class="pl-kos">,</span> <span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-c">// ...</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-10">注册插件</h3>\n<p dir="auto">通常，我们会在 nuxt.config.js 中配置 plugins 来注册插件，但如果我们想在模块中集成这部分功能，就需要用到<code class="notranslate">this.addPlugin</code>方法。</p>\n<p dir="auto"><strong>vantLoadPlugin.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { Dialog, Toast } from &quot;vant&quot;;\nimport Vue from &quot;vue&quot;;\n\nVue.use(Toast).use(Dialog);\n\nexport default (context, inject) =&gt; {\n  // 与nuxt.config.js中定义的plugins一样，此处可以选择注入变量到context和vue实例\n};"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">Dialog</span><span class="pl-kos">,</span> <span class="pl-v">Toast</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">"vant"</span><span class="pl-kos">;</span>\n<span class="pl-k">import</span> <span class="pl-v">Vue</span> <span class="pl-k">from</span> <span class="pl-s">"vue"</span><span class="pl-kos">;</span>\n\n<span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Toast</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">use</span><span class="pl-kos">(</span><span class="pl-v">Dialog</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">(</span><span class="pl-s1">context</span><span class="pl-kos">,</span> <span class="pl-s1">inject</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 与nuxt.config.js中定义的plugins一样，此处可以选择注入变量到context和vue实例</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>vantLoadModule.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const path = require(&quot;path&quot;);\n\nexport default async function vantLoadModule() {\n  // Registre \'vantLoadPlugin\' template\n  this.addPluin(path.resolve(__dirname, &quot;vantLoad.js&quot;));\n}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">"path"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">vantLoadModule</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// Registre \'vantLoadPlugin\' template</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">addPluin</span><span class="pl-kos">(</span><span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">"vantLoad.js"</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-11">模板插件</h3>\n<p dir="auto">插件会在 @nuxt/builder 中通过 lodash template 方法进行模板编译，因此可以在注册插件时提供 options 做为模板编译参数使用，此时 addPlugin 参数对象 src 属性为插件地址。</p>\n<p dir="auto"><strong>plugin.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Set Google Analytics UA\nga(\'create\', \'&lt;%= options.ua %&gt;\', \'auto\')\n\n&lt;% if (options.debug) { %&gt;\n// Dev only code\n&lt;% } %&gt;\n"><pre class="notranslate"><span class="pl-c">// Set Google Analytics UA</span>\n<span class="pl-en">ga</span><span class="pl-kos">(</span><span class="pl-s">\'create\'</span><span class="pl-kos">,</span> <span class="pl-s">\'&lt;%= options.ua %&gt;\'</span><span class="pl-kos">,</span> <span class="pl-s">\'auto\'</span><span class="pl-kos">)</span>\n\n<span class="pl-c1">&lt;</span><span class="pl-c1">%</span> <span class="pl-en">if</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">debug</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> <span class="pl-c1">%</span><span class="pl-c1">&gt;</span>\n<span class="pl-c">// Dev only code</span>\n<span class="pl-c1">&lt;</span><span class="pl-c1">%</span> <span class="pl-kos">}</span> <span class="pl-c1">%</span><span class="pl-c1">&gt;</span></pre></div>\n<p dir="auto"><strong>module.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import path from &quot;path&quot;;\n\nexport default function nuxtBootstrapVue(moduleOptions) {\n  // Register `plugin.js` template\n  this.addPlugin({\n    src: path.resolve(__dirname, &quot;plugin.js&quot;),\n    options: {\n      // Nuxt will replace `options.ua` with `123` when copying plugin to project\n      ua: 123,\n      // conditional parts with dev will be stripped from plugin code on production builds\n      debug: this.options.dev,\n    },\n  });\n}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">path</span> <span class="pl-k">from</span> <span class="pl-s">"path"</span><span class="pl-kos">;</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-en">nuxtBootstrapVue</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// Register `plugin.js` template</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">addPlugin</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n    <span class="pl-c1">src</span>: <span class="pl-s1">path</span><span class="pl-kos">.</span><span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">__dirname</span><span class="pl-kos">,</span> <span class="pl-s">"plugin.js"</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n    <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n      <span class="pl-c">// Nuxt will replace `options.ua` with `123` when copying plugin to project</span>\n      <span class="pl-c1">ua</span>: <span class="pl-c1">123</span><span class="pl-kos">,</span>\n      <span class="pl-c">// conditional parts with dev will be stripped from plugin code on production builds</span>\n      <span class="pl-c1">debug</span>: <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">dev</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-12">注册 webpack loader</h3>\n<p dir="auto">我们可以使用 this.extendBuild 在 nuxt.config.js 中执行与 build.extend 相同的操作。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function (moduleOptions) {\n    this.extendBuild((config, { isClient, isServer }) =&gt; {\n      // `.foo` Loader\n      config.module.rules.push({\n        test: /\\.foo$/,\n        use: [...]\n      })\n\n      // Customize existing loaders\n      // Refer to source code for Nuxt internals:\n      // https://github.com/nuxt/nuxt/blob/2.x-dev/packages/webpack/src/config/base.js\n      const barLoader = config.module.rules.find(rule =&gt; rule.loader === \'bar-loader\')\n  })\n}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">extendBuild</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> isClient<span class="pl-kos">,</span> isServer <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// `.foo` Loader</span>\n      <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">module</span><span class="pl-kos">.</span><span class="pl-c1">rules</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">f</span><span class="pl-s">o</span><span class="pl-s">o</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">use</span>: <span class="pl-kos">[</span>...<span class="pl-kos">]</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n      <span class="pl-c">// Customize existing loaders</span>\n      <span class="pl-c">// Refer to source code for Nuxt internals:</span>\n      <span class="pl-c">// https://github.com/nuxt/nuxt/blob/2.x-dev/packages/webpack/src/config/base.js</span>\n      <span class="pl-k">const</span> <span class="pl-s1">barLoader</span> <span class="pl-c1">=</span> <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">module</span><span class="pl-kos">.</span><span class="pl-c1">rules</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s1">rule</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">rule</span><span class="pl-kos">.</span><span class="pl-c1">loader</span> <span class="pl-c1">===</span> <span class="pl-s">\'bar-loader\'</span><span class="pl-kos">)</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-13">注册 webpack 插件</h3>\n<p dir="auto">我们可以注册 webpack 插件用来在构建期间发出资源。需要了解 webpack 构建原理以及插件开发。</p>\n<ul dir="auto">\n<li><a href="https://webpack.docschina.org/api/compiler-hooks/" rel="nofollow">compiler-hooks</a></li>\n</ul>\n<blockquote>\n<p dir="auto">nuxt@2.11.0，对应 webpack 大版本为 v4，开发插件时请注意版本。</p>\n</blockquote>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function (moduleOptions) {\n  const info = `Built by awesome module - 1.3 alpha on ${Date.now()}`;\n\n  this.options.build.plugins.push({\n    apply(compiler) {\n      compiler.hooks.emit.tapAsync(&quot;emit&quot;, (compilation, cb) =&gt; {\n        // This will generate `.nuxt/dist/info.txt\' with contents of info variable.\n        // Source can be buffer too\n        compilation.assets[&quot;info.txt&quot;] = {\n          source: () =&gt; info,\n          size: () =&gt; info.length,\n        };\n\n        cb();\n      });\n    },\n  });\n}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-s1">info</span> <span class="pl-c1">=</span> <span class="pl-s">`Built by awesome module - 1.3 alpha on <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-v">Date</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">;</span>\n\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">build</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n    <span class="pl-en">apply</span><span class="pl-kos">(</span><span class="pl-s1">compiler</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">compiler</span><span class="pl-kos">.</span><span class="pl-c1">hooks</span><span class="pl-kos">.</span><span class="pl-c1">emit</span><span class="pl-kos">.</span><span class="pl-en">tapAsync</span><span class="pl-kos">(</span><span class="pl-s">"emit"</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">compilation</span><span class="pl-kos">,</span> <span class="pl-s1">cb</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-c">// This will generate `.nuxt/dist/info.txt\' with contents of info variable.</span>\n        <span class="pl-c">// Source can be buffer too</span>\n        <span class="pl-s1">compilation</span><span class="pl-kos">.</span><span class="pl-c1">assets</span><span class="pl-kos">[</span><span class="pl-s">"info.txt"</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n          <span class="pl-en">source</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">info</span><span class="pl-kos">,</span>\n          <span class="pl-en">size</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">info</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n        <span class="pl-s1">cb</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">上面的模块为 webpack 添加了一个新 plugin，监听了 compiler 的 emit hooks，在生成资源到 output 目录之前添加了一个新的输出资源 info.txt。</p>\n<h3 id="main-heading-H3-14">为构建提供扩展配置</h3>\n<p dir="auto">我们可以使用<code class="notranslate">this.extendBuild</code>为客户端和服务端的构建配置进行手工的扩展处理，这与<code class="notranslate">nuxt.config.js</code>中的<code class="notranslate">build.extend</code>属性含义相同。该扩展方法会服务端和客户端打包构建分别被调用，该方法的参数如下：</p>\n<ol dir="auto">\n<li>Webpack 配置对象</li>\n<li>构建环境对象，包括这些属性(全部为布尔类型):<code class="notranslate">isDev</code>，<code class="notranslate">isClient</code>，<code class="notranslate">isServer</code></li>\n</ol>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function (options) {\n  // 构建扩展配置,会在nuxt.config.js中build.extend之后执行\n  this.context.extendBuild((config, { isClient }) =&gt; {\n    config.externals = [];\n    // 为客户端打包进行扩展配置\n    if (isClient) {\n      // 开发环境增加source-map\n      if (this.envs.PATH_TYPE === &quot;development&quot;) {\n        config.devtool = &quot;eval-source-map&quot;;\n      } else {\n        // runtime不参与打包\n        config.externals.push({\n          vue: &quot;Vue&quot;,\n          vuex: &quot;Vuex&quot;,\n          &quot;vue-router&quot;: &quot;VueRouter&quot;,\n        });\n      }\n    }\n  });\n}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// 构建扩展配置,会在nuxt.config.js中build.extend之后执行</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">context</span><span class="pl-kos">.</span><span class="pl-en">extendBuild</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> isClient <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n    <span class="pl-c">// 为客户端打包进行扩展配置</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isClient</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// 开发环境增加source-map</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">envs</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">===</span> <span class="pl-s">"development"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">devtool</span> <span class="pl-c1">=</span> <span class="pl-s">"eval-source-map"</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n        <span class="pl-c">// runtime不参与打包</span>\n        <span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">externals</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">vue</span>: <span class="pl-s">"Vue"</span><span class="pl-kos">,</span>\n          <span class="pl-c1">vuex</span>: <span class="pl-s">"Vuex"</span><span class="pl-kos">,</span>\n          <span class="pl-s">"vue-router"</span>: <span class="pl-s">"VueRouter"</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">上面的模块为构建提供了扩展配置，在客户端时构建时，开发环境配置 source-map ，非开发环境配置 vue runtime 不参与打包。您还可以使用暴露的 webpack 对象进行更加高级的操作。</p>\n<h3 id="main-heading-H3-15">nuxt 生命周期注册钩子</h3>\n<p dir="auto"><code class="notranslate">this.nuxt</code> ：这是对当前 Nuxt 实例的引用。我们可以在某些生命周期事件上注册钩子。</p>\n<ul dir="auto">\n<li>Ready : Nuxt is ready to work (ModuleContainer and Renderer ready).<br>\n就绪：Nuxt 已准备好工作（模块容器和渲染器已就绪）。</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="nuxt.hook(&quot;ready&quot;, async (nuxt) =&gt; {\n  // Your custom code here\n});"><pre class="notranslate"><span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"ready"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">nuxt</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// Your custom code here</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>Error: An unhandled error when calling hooks.<br>\n错误：调用钩子时出现未处理的错误。</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="nuxt.hook(&quot;error&quot;, async (error) =&gt; {\n  // Your custom code here\n});"><pre class="notranslate"><span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"error"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// Your custom code here</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>Close: Nuxt instance is gracefully closing.<br>\n关闭：Nuxt 实例正在正常关闭。</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="nuxt.hook(&quot;close&quot;, async (nuxt) =&gt; {\n  // Your custom code here\n});"><pre class="notranslate"><span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"close"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">nuxt</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// Your custom code here</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<ul dir="auto">\n<li>Listen: Nuxt internal server starts listening. (Using nuxt start or nuxt dev)<br>\nListen：Nuxt 内部服务器开始监听。 （使用 nuxt start 或 nuxt dev）</li>\n</ul>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="nuxt.hook(&quot;listen&quot;, async (server, { host, port }) =&gt; {\n  // Your custom code here\n});"><pre class="notranslate"><span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"listen"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">server</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> host<span class="pl-kos">,</span> port <span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// Your custom code here</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><code class="notranslate">this</code> ：模块的上下文。所有模块都将在 ModuleContainer 实例的上下文中调用。</p>\n<p dir="auto">请查看 <a href="https://v2.nuxt.com/docs/internals-glossary/internals-module-container" rel="nofollow">ModuleContainer</a> 类文档以获取可用的方法。</p>\n<h3 id="main-heading-H3-16">在指定钩子上执行任务</h3>\n<p dir="auto">您的模块可能只需要在特定条件下执行操作，而不仅仅是在 Nuxt 初始化期间。我们可以使用<a href="https://github.com/nuxt-contrib/hookable">Hookable</a> Nuxt.js 系统来完成特定事件的任务。Nuxt 将等待钩子返回<code class="notranslate">Promise</code>或被定义为<code class="notranslate">async</code>(异步)。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function () {\n  // Add hook for modules\n  this.nuxt.hook(\'modules:done\', moduleContainer =&gt; {\n    // This will be called when all modules finished loading\n  })\n\n  // Add hook for renderer\n  this.nuxt.hook(\'render:before\', renderer =&gt; {\n    // Called after the renderer was created\n  })\n\n  // Add hook for build:extendRoutes\n  this.nuxt.hook(\'build:extendRoutes\', async routes =&gt; {\n    // This will be called after routes created\n  })\n\n  // Add hook for build:compile\n  this.nuxt.hook(\'build:compile\', async {compiler} =&gt; {\n    // This will be run just before webpack compiler starts\n  })\n\n  // Add hook for generate\n  this.nuxt.hook(\'generate:before\', async generator =&gt; {\n    // This will be called before Nuxt generates your pages\n  })\n}\n"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// Add hook for modules</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">\'modules:done\'</span><span class="pl-kos">,</span> <span class="pl-s1">moduleContainer</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// This will be called when all modules finished loading</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// Add hook for renderer</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">\'render:before\'</span><span class="pl-kos">,</span> <span class="pl-s1">renderer</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// Called after the renderer was created</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// Add hook for build:extendRoutes</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">\'build:extendRoutes\'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-s1">routes</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// This will be called after routes created</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// Add hook for build:compile</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">\'build:compile\'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">{</span>compiler<span class="pl-kos">}</span> <span class="pl-c1">=</span><span class="pl-c1">&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// This will be run just before webpack compiler starts</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// Add hook for generate</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">\'generate:before\'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-s1">generator</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// This will be called before Nuxt generates your pages</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">上面仅列出了一部分 hooks，请参考 <a href="https://www.nuxtjs.cn/api/internals" rel="nofollow">Nuxt Internals</a> 了解有关 Nuxt 内部 API 的更多信息。</p>\n<p dir="auto">Nuxt 的 hooks 功能来自 <a href="https://www.npmjs.com/package/hable" rel="nofollow">hable</a> 模块，Nuxt 类本身继承了 hable，所以在模块中可以使用 this.nuxt 注册和调用。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default function () {\n  this.nuxt.hook(&quot;hook1&quot;, async (param) =&gt; {\n    // 注册 hook1 回调\n  });\n  // 调用钩子 hook1\n  await this.nuxt.callHook(&quot;hook1&quot;);\n}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">"hook1"</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">param</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 注册 hook1 回调</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-c">// 调用钩子 hook1</span>\n  <span class="pl-k">await</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">callHook</span><span class="pl-kos">(</span><span class="pl-s">"hook1"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-17">来个实战</h2>\n<p dir="auto">根治 ———— nuxt 项目遇到的，网页重新部署，通知用户。</p>\n<p dir="auto"><strong>nuxt.config.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="export default {\n  mode: \'universal\',\n  env: {\n    PATH_TYPE: process.env.PATH_TYPE\n  },\n  /*\n   ** Nuxt.js modules\n   */\n  modules: [\n    [\n      \'~/webUpdateNotification\',\n      {\n        logVersion: true,\n        checkInterval: 5 * 60 * 1000, // 5 分钟设置轮询一次\n        // 在某些环境下才开启该 Module\n        shouldBeEnable: (options) =&gt; {\n          if (options.env.PATH_TYPE === \'trial\') {\n            return true\n          }\n          return false\n        }\n      }\n    ]\n  ],\n}"><pre class="notranslate"><span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">mode</span>: <span class="pl-s">\'universal\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">env</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">PATH_TYPE</span>: <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">/*</span>\n<span class="pl-c">   ** Nuxt.js modules</span>\n<span class="pl-c">   */</span>\n  <span class="pl-c1">modules</span>: <span class="pl-kos">[</span>\n    <span class="pl-kos">[</span>\n      <span class="pl-s">\'~/webUpdateNotification\'</span><span class="pl-kos">,</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">logVersion</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-c1">checkInterval</span>: <span class="pl-c1">5</span> <span class="pl-c1">*</span> <span class="pl-c1">60</span> <span class="pl-c1">*</span> <span class="pl-c1">1000</span><span class="pl-kos">,</span> <span class="pl-c">// 5 分钟设置轮询一次</span>\n        <span class="pl-c">// 在某些环境下才开启该 Module</span>\n        <span class="pl-en">shouldBeEnable</span>: <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">PATH_TYPE</span> <span class="pl-c1">===</span> <span class="pl-s">\'trial\'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n            <span class="pl-k">return</span> <span class="pl-c1">true</span>\n          <span class="pl-kos">}</span>\n          <span class="pl-k">return</span> <span class="pl-c1">false</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">]</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>webUpdateNotification.js</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { accessSync, constants, readFileSync, writeFileSync } from \'fs\'\nimport { resolve } from \'path\'\nimport {\n  DIRECTORY_NAME,\n  INJECT_SCRIPT_FILE_NAME,\n  INJECT_STYLE_FILE_NAME,\n  JSON_FILE_NAME,\n  NOTIFICATION_ANCHOR_CLASS_NAME,\n  generateJSONFileContent,\n  generateJsFileContent,\n  getFileHash,\n  getVersion,\n  get__Dirname\n} from \'@plugin-web-update-notification/core\'\n\nconst pluginName = \'WebUpdateNotificationPlugin\'\n\n/**\n * It injects the hash into the HTML, and injects the notification anchor and the stylesheet and the\n * script into the HTML\n * @param {string} html - The original HTML of the page\n * @param {string} version - The hash of the current commit\n * @param {Options} options - Options\n * @returns The html of the page with the injected script and css.\n */\nfunction injectPluginHtml(\n  html = \'\',\n  version = \'\',\n  options = {},\n  { cssFileHash = \'\', jsFileHash = \'\' }\n) {\n  const {\n    customNotificationHTML,\n    hiddenDefaultNotification,\n    injectFileBase = \'/\'\n  } = options\n\n  const versionScript = `&lt;script&gt;window.pluginWebUpdateNotice_version = \'${version}\';&lt;/script&gt;`\n  const cssLinkHtml =\n    customNotificationHTML || hiddenDefaultNotification\n      ? \'\'\n      : `&lt;link rel=&quot;stylesheet&quot; href=&quot;${injectFileBase}${DIRECTORY_NAME}/${INJECT_STYLE_FILE_NAME}.${cssFileHash}.css&quot;&gt;`\n  let res = html\n\n  res = res.replace(\n    \'&lt;head&gt;\',\n    `&lt;head&gt;\n    ${cssLinkHtml}\n    &lt;script src=&quot;${injectFileBase}${DIRECTORY_NAME}/${INJECT_SCRIPT_FILE_NAME}.${jsFileHash}.js&quot;&gt;&lt;/script&gt;\n\n    ${versionScript}`\n  )\n\n  if (!hiddenDefaultNotification) {\n    res = res.replace(\n      \'&lt;/body&gt;\',\n      `&lt;div class=&quot;${NOTIFICATION_ANCHOR_CLASS_NAME}&quot;&gt;&lt;/div&gt;&lt;/body&gt;`\n    )\n  }\n\n  return res\n}\n\nexport default function WebUpdateNotificationPlugin(moduleOptions = {}) {\n  // this 为 modules 中的 context\n  // 所有的 nuxt 的配置项\n  const options = this.options\n  // 对当前 nuxt 实例的引用\n  const nuxt = this.nuxt\n\n  /** inject script file hash */\n  let jsFileHash = \'\'\n  /** inject css file hash */\n  let cssFileHash = \'\'\n  // 版本信息\n  let version = \'\'\n\n  // 留一个函数 shouldBeEnable 可以判断是否开启\n  if (typeof moduleOptions.shouldBeEnable === \'function\') {\n    const enable = moduleOptions.shouldBeEnable(options)\n    if (!enable) {\n      return\n    }\n  }\n\n  // Emit assets： 注册 webpack 插件在构建期间发出资源\n  options.build.plugins.push({\n    apply(compiler) {\n      // 仅执行一次标识 （client 和 server 会分别走一次，不用再走服务端一次）\n      if (compiler.options.name !== \'client\') {\n        return\n      }\n\n      const { publicPath } = compiler.options.output\n      if (moduleOptions.injectFileBase === undefined)\n        moduleOptions.injectFileBase =\n          typeof publicPath === \'string\' ? publicPath : \'/\'\n\n      const { hiddenDefaultNotification, versionType, customVersion, silence } =\n        moduleOptions\n      if (versionType === \'custom\')\n        version = getVersion(versionType, customVersion)\n      else version = getVersion(versionType)\n\n      compiler.hooks.emit.tap(pluginName, (compilation) =&gt; {\n        // const outputPath = compiler.outputPath\n        const jsonFileContent = generateJSONFileContent(version, silence)\n        // @ts-expect-error\n        compilation.assets[`${DIRECTORY_NAME}/${JSON_FILE_NAME}.json`] = {\n          source: () =&gt; jsonFileContent,\n          size: () =&gt; jsonFileContent.length\n        }\n        if (!hiddenDefaultNotification) {\n          const injectStyleContent = readFileSync(\n            `${get__Dirname()}/${INJECT_STYLE_FILE_NAME}.css`,\n            \'utf8\'\n          )\n          cssFileHash = getFileHash(injectStyleContent)\n\n          // @ts-expect-error\n          compilation.assets[\n            `${DIRECTORY_NAME}/${INJECT_STYLE_FILE_NAME}.${cssFileHash}.css`\n          ] = {\n            source: () =&gt; injectStyleContent,\n            size: () =&gt; injectStyleContent.length\n          }\n        }\n\n        const filePath = resolve(\n          `${get__Dirname()}/${INJECT_SCRIPT_FILE_NAME}.js`\n        )\n\n        const injectScriptContent = generateJsFileContent(\n          readFileSync(filePath, \'utf8\').toString(),\n          version,\n          moduleOptions // 传入 module 的参数控制\n        )\n        jsFileHash = getFileHash(injectScriptContent)\n\n        // @ts-expect-error\n        compilation.assets[\n          `${DIRECTORY_NAME}/${INJECT_SCRIPT_FILE_NAME}.${jsFileHash}.js`\n        ] = {\n          source: () =&gt; injectScriptContent,\n          size: () =&gt; injectScriptContent.length\n        }\n      })\n    }\n  })\n\n  // Hook on generation finished\n  nuxt.hook(\'generate:done\', async (generator) =&gt; {\n    const htmlFilePath = resolve(\n      generator.distPath,\n      moduleOptions.indexHtmlFilePath || \'./index.html\' // 可以自定义写入要 inject 的 html 地址\n    )\n    try {\n      accessSync(htmlFilePath, constants.F_OK)\n\n      let html = readFileSync(htmlFilePath, \'utf8\')\n      html = injectPluginHtml(html, version, moduleOptions, {\n        jsFileHash,\n        cssFileHash\n      })\n      writeFileSync(htmlFilePath, html)\n    } catch (error) {\n      console.error(error)\n      console.error(\n        `${pluginName} failed to inject the plugin into the HTML file. index.html（${htmlFilePath}） not found.`\n      )\n    }\n  })\n}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">accessSync</span><span class="pl-kos">,</span> <span class="pl-s1">constants</span><span class="pl-kos">,</span> <span class="pl-s1">readFileSync</span><span class="pl-kos">,</span> <span class="pl-s1">writeFileSync</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'fs\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">resolve</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'path\'</span>\n<span class="pl-k">import</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">,</span>\n  <span class="pl-c1">INJECT_SCRIPT_FILE_NAME</span><span class="pl-kos">,</span>\n  <span class="pl-c1">INJECT_STYLE_FILE_NAME</span><span class="pl-kos">,</span>\n  <span class="pl-c1">JSON_FILE_NAME</span><span class="pl-kos">,</span>\n  <span class="pl-c1">NOTIFICATION_ANCHOR_CLASS_NAME</span><span class="pl-kos">,</span>\n  <span class="pl-s1">generateJSONFileContent</span><span class="pl-kos">,</span>\n  <span class="pl-s1">generateJsFileContent</span><span class="pl-kos">,</span>\n  <span class="pl-s1">getFileHash</span><span class="pl-kos">,</span>\n  <span class="pl-s1">getVersion</span><span class="pl-kos">,</span>\n  <span class="pl-s1">get__Dirname</span>\n<span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">\'@plugin-web-update-notification/core\'</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">pluginName</span> <span class="pl-c1">=</span> <span class="pl-s">\'WebUpdateNotificationPlugin\'</span>\n\n<span class="pl-c">/**</span>\n<span class="pl-c"> * It injects the hash into the HTML, and injects the notification anchor and the stylesheet and the</span>\n<span class="pl-c"> * script into the HTML</span>\n<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">string</span>} html - The original HTML of the page</span>\n<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">string</span>} version - The hash of the current commit</span>\n<span class="pl-c"> * <span class="pl-k">@param</span> {<span class="pl-smi">Options</span>} options - Options</span>\n<span class="pl-c"> * <span class="pl-k">@returns</span> The html of the page with the injected script and css.</span>\n<span class="pl-c"> */</span>\n<span class="pl-k">function</span> <span class="pl-en">injectPluginHtml</span><span class="pl-kos">(</span>\n  <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-s">\'\'</span><span class="pl-kos">,</span>\n  <span class="pl-s1">version</span> <span class="pl-c1">=</span> <span class="pl-s">\'\'</span><span class="pl-kos">,</span>\n  <span class="pl-s1">options</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">{</span> cssFileHash <span class="pl-c1">=</span> <span class="pl-s">\'\'</span><span class="pl-kos">,</span> jsFileHash <span class="pl-c1">=</span> <span class="pl-s">\'\'</span> <span class="pl-kos">}</span>\n<span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-kos">{</span>\n    customNotificationHTML<span class="pl-kos">,</span>\n    hiddenDefaultNotification<span class="pl-kos">,</span>\n    injectFileBase <span class="pl-c1">=</span> <span class="pl-s">\'/\'</span>\n  <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">options</span>\n\n  <span class="pl-k">const</span> <span class="pl-s1">versionScript</span> <span class="pl-c1">=</span> <span class="pl-s">`&lt;script&gt;window.pluginWebUpdateNotice_version = \'<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">version</span><span class="pl-kos">}</span></span>\';&lt;/script&gt;`</span>\n  <span class="pl-k">const</span> <span class="pl-s1">cssLinkHtml</span> <span class="pl-c1">=</span>\n    <span class="pl-s1">customNotificationHTML</span> <span class="pl-c1">||</span> <span class="pl-s1">hiddenDefaultNotification</span>\n      ? <span class="pl-s">\'\'</span>\n      : <span class="pl-s">`&lt;link rel="stylesheet" href="<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">injectFileBase</span><span class="pl-kos">}</span></span><span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_STYLE_FILE_NAME</span><span class="pl-kos">}</span></span>.<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">cssFileHash</span><span class="pl-kos">}</span></span>.css"&gt;`</span>\n  <span class="pl-k">let</span> <span class="pl-s1">res</span> <span class="pl-c1">=</span> <span class="pl-s1">html</span>\n\n  <span class="pl-s1">res</span> <span class="pl-c1">=</span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span>\n    <span class="pl-s">\'&lt;head&gt;\'</span><span class="pl-kos">,</span>\n    <span class="pl-s">`&lt;head&gt;</span>\n<span class="pl-s">    <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">cssLinkHtml</span><span class="pl-kos">}</span></span></span>\n<span class="pl-s">    &lt;script src="<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">injectFileBase</span><span class="pl-kos">}</span></span><span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_SCRIPT_FILE_NAME</span><span class="pl-kos">}</span></span>.<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">jsFileHash</span><span class="pl-kos">}</span></span>.js"&gt;&lt;/script&gt;</span>\n<span class="pl-s"></span>\n<span class="pl-s">    <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">versionScript</span><span class="pl-kos">}</span></span>`</span>\n  <span class="pl-kos">)</span>\n\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">hiddenDefaultNotification</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">res</span> <span class="pl-c1">=</span> <span class="pl-s1">res</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span>\n      <span class="pl-s">\'&lt;/body&gt;\'</span><span class="pl-kos">,</span>\n      <span class="pl-s">`&lt;div class="<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">NOTIFICATION_ANCHOR_CLASS_NAME</span><span class="pl-kos">}</span></span>"&gt;&lt;/div&gt;&lt;/body&gt;`</span>\n    <span class="pl-kos">)</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-k">return</span> <span class="pl-s1">res</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">WebUpdateNotificationPlugin</span><span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// this 为 modules 中的 context</span>\n  <span class="pl-c">// 所有的 nuxt 的配置项</span>\n  <span class="pl-k">const</span> <span class="pl-s1">options</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">options</span>\n  <span class="pl-c">// 对当前 nuxt 实例的引用</span>\n  <span class="pl-k">const</span> <span class="pl-s1">nuxt</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nuxt</span>\n\n  <span class="pl-c">/** inject script file hash */</span>\n  <span class="pl-k">let</span> <span class="pl-s1">jsFileHash</span> <span class="pl-c1">=</span> <span class="pl-s">\'\'</span>\n  <span class="pl-c">/** inject css file hash */</span>\n  <span class="pl-k">let</span> <span class="pl-s1">cssFileHash</span> <span class="pl-c1">=</span> <span class="pl-s">\'\'</span>\n  <span class="pl-c">// 版本信息</span>\n  <span class="pl-k">let</span> <span class="pl-s1">version</span> <span class="pl-c1">=</span> <span class="pl-s">\'\'</span>\n\n  <span class="pl-c">// 留一个函数 shouldBeEnable 可以判断是否开启</span>\n  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-k">typeof</span> <span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">shouldBeEnable</span> <span class="pl-c1">===</span> <span class="pl-s">\'function\'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">const</span> <span class="pl-s1">enable</span> <span class="pl-c1">=</span> <span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-en">shouldBeEnable</span><span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">enable</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-c">// Emit assets： 注册 webpack 插件在构建期间发出资源</span>\n  <span class="pl-s1">options</span><span class="pl-kos">.</span><span class="pl-c1">build</span><span class="pl-kos">.</span><span class="pl-c1">plugins</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n    <span class="pl-en">apply</span><span class="pl-kos">(</span><span class="pl-s1">compiler</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// 仅执行一次标识 （client 和 server 会分别走一次，不用再走服务端一次）</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">compiler</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">name</span> <span class="pl-c1">!==</span> <span class="pl-s">\'client\'</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-k">return</span>\n      <span class="pl-kos">}</span>\n\n      <span class="pl-k">const</span> <span class="pl-kos">{</span> publicPath <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">compiler</span><span class="pl-kos">.</span><span class="pl-c1">options</span><span class="pl-kos">.</span><span class="pl-c1">output</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">injectFileBase</span> <span class="pl-c1">===</span> <span class="pl-c1">undefined</span><span class="pl-kos">)</span>\n        <span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">injectFileBase</span> <span class="pl-c1">=</span>\n          <span class="pl-k">typeof</span> <span class="pl-s1">publicPath</span> <span class="pl-c1">===</span> <span class="pl-s">\'string\'</span> ? <span class="pl-s1">publicPath</span> : <span class="pl-s">\'/\'</span>\n\n      <span class="pl-k">const</span> <span class="pl-kos">{</span> hiddenDefaultNotification<span class="pl-kos">,</span> versionType<span class="pl-kos">,</span> customVersion<span class="pl-kos">,</span> silence <span class="pl-kos">}</span> <span class="pl-c1">=</span>\n        <span class="pl-s1">moduleOptions</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">versionType</span> <span class="pl-c1">===</span> <span class="pl-s">\'custom\'</span><span class="pl-kos">)</span>\n        <span class="pl-s1">version</span> <span class="pl-c1">=</span> <span class="pl-en">getVersion</span><span class="pl-kos">(</span><span class="pl-s1">versionType</span><span class="pl-kos">,</span> <span class="pl-s1">customVersion</span><span class="pl-kos">)</span>\n      <span class="pl-k">else</span> <span class="pl-s1">version</span> <span class="pl-c1">=</span> <span class="pl-en">getVersion</span><span class="pl-kos">(</span><span class="pl-s1">versionType</span><span class="pl-kos">)</span>\n\n      <span class="pl-s1">compiler</span><span class="pl-kos">.</span><span class="pl-c1">hooks</span><span class="pl-kos">.</span><span class="pl-c1">emit</span><span class="pl-kos">.</span><span class="pl-en">tap</span><span class="pl-kos">(</span><span class="pl-s1">pluginName</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">compilation</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-c">// const outputPath = compiler.outputPath</span>\n        <span class="pl-k">const</span> <span class="pl-s1">jsonFileContent</span> <span class="pl-c1">=</span> <span class="pl-en">generateJSONFileContent</span><span class="pl-kos">(</span><span class="pl-s1">version</span><span class="pl-kos">,</span> <span class="pl-s1">silence</span><span class="pl-kos">)</span>\n        <span class="pl-c">// <span class="pl-k">@ts</span>-expect-error</span>\n        <span class="pl-s1">compilation</span><span class="pl-kos">.</span><span class="pl-c1">assets</span><span class="pl-kos">[</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">JSON_FILE_NAME</span><span class="pl-kos">}</span></span>.json`</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n          <span class="pl-en">source</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">jsonFileContent</span><span class="pl-kos">,</span>\n          <span class="pl-en">size</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">jsonFileContent</span><span class="pl-kos">.</span><span class="pl-c1">length</span>\n        <span class="pl-kos">}</span>\n        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">hiddenDefaultNotification</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-k">const</span> <span class="pl-s1">injectStyleContent</span> <span class="pl-c1">=</span> <span class="pl-en">readFileSync</span><span class="pl-kos">(</span>\n            <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-en">get__Dirname</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_STYLE_FILE_NAME</span><span class="pl-kos">}</span></span>.css`</span><span class="pl-kos">,</span>\n            <span class="pl-s">\'utf8\'</span>\n          <span class="pl-kos">)</span>\n          <span class="pl-s1">cssFileHash</span> <span class="pl-c1">=</span> <span class="pl-en">getFileHash</span><span class="pl-kos">(</span><span class="pl-s1">injectStyleContent</span><span class="pl-kos">)</span>\n\n          <span class="pl-c">// <span class="pl-k">@ts</span>-expect-error</span>\n          <span class="pl-s1">compilation</span><span class="pl-kos">.</span><span class="pl-c1">assets</span><span class="pl-kos">[</span>\n            <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_STYLE_FILE_NAME</span><span class="pl-kos">}</span></span>.<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">cssFileHash</span><span class="pl-kos">}</span></span>.css`</span>\n          <span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n            <span class="pl-en">source</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">injectStyleContent</span><span class="pl-kos">,</span>\n            <span class="pl-en">size</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">injectStyleContent</span><span class="pl-kos">.</span><span class="pl-c1">length</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span>\n\n        <span class="pl-k">const</span> <span class="pl-s1">filePath</span> <span class="pl-c1">=</span> <span class="pl-en">resolve</span><span class="pl-kos">(</span>\n          <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-en">get__Dirname</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_SCRIPT_FILE_NAME</span><span class="pl-kos">}</span></span>.js`</span>\n        <span class="pl-kos">)</span>\n\n        <span class="pl-k">const</span> <span class="pl-s1">injectScriptContent</span> <span class="pl-c1">=</span> <span class="pl-en">generateJsFileContent</span><span class="pl-kos">(</span>\n          <span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s1">filePath</span><span class="pl-kos">,</span> <span class="pl-s">\'utf8\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n          <span class="pl-s1">version</span><span class="pl-kos">,</span>\n          <span class="pl-s1">moduleOptions</span> <span class="pl-c">// 传入 module 的参数控制</span>\n        <span class="pl-kos">)</span>\n        <span class="pl-s1">jsFileHash</span> <span class="pl-c1">=</span> <span class="pl-en">getFileHash</span><span class="pl-kos">(</span><span class="pl-s1">injectScriptContent</span><span class="pl-kos">)</span>\n\n        <span class="pl-c">// <span class="pl-k">@ts</span>-expect-error</span>\n        <span class="pl-s1">compilation</span><span class="pl-kos">.</span><span class="pl-c1">assets</span><span class="pl-kos">[</span>\n          <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">DIRECTORY_NAME</span><span class="pl-kos">}</span></span>/<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">INJECT_SCRIPT_FILE_NAME</span><span class="pl-kos">}</span></span>.<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">jsFileHash</span><span class="pl-kos">}</span></span>.js`</span>\n        <span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n          <span class="pl-en">source</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">injectScriptContent</span><span class="pl-kos">,</span>\n          <span class="pl-en">size</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">injectScriptContent</span><span class="pl-kos">.</span><span class="pl-c1">length</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n  <span class="pl-c">// Hook on generation finished</span>\n  <span class="pl-s1">nuxt</span><span class="pl-kos">.</span><span class="pl-en">hook</span><span class="pl-kos">(</span><span class="pl-s">\'generate:done\'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">generator</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n    <span class="pl-k">const</span> <span class="pl-s1">htmlFilePath</span> <span class="pl-c1">=</span> <span class="pl-en">resolve</span><span class="pl-kos">(</span>\n      <span class="pl-s1">generator</span><span class="pl-kos">.</span><span class="pl-c1">distPath</span><span class="pl-kos">,</span>\n      <span class="pl-s1">moduleOptions</span><span class="pl-kos">.</span><span class="pl-c1">indexHtmlFilePath</span> <span class="pl-c1">||</span> <span class="pl-s">\'./index.html\'</span> <span class="pl-c">// 可以自定义写入要 inject 的 html 地址</span>\n    <span class="pl-kos">)</span>\n    <span class="pl-k">try</span> <span class="pl-kos">{</span>\n      <span class="pl-en">accessSync</span><span class="pl-kos">(</span><span class="pl-s1">htmlFilePath</span><span class="pl-kos">,</span> <span class="pl-s1">constants</span><span class="pl-kos">.</span><span class="pl-c1">F_OK</span><span class="pl-kos">)</span>\n\n      <span class="pl-k">let</span> <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s1">htmlFilePath</span><span class="pl-kos">,</span> <span class="pl-s">\'utf8\'</span><span class="pl-kos">)</span>\n      <span class="pl-s1">html</span> <span class="pl-c1">=</span> <span class="pl-en">injectPluginHtml</span><span class="pl-kos">(</span><span class="pl-s1">html</span><span class="pl-kos">,</span> <span class="pl-s1">version</span><span class="pl-kos">,</span> <span class="pl-s1">moduleOptions</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n        jsFileHash<span class="pl-kos">,</span>\n        cssFileHash\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n      <span class="pl-en">writeFileSync</span><span class="pl-kos">(</span><span class="pl-s1">htmlFilePath</span><span class="pl-kos">,</span> <span class="pl-s1">html</span><span class="pl-kos">)</span>\n    <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span>\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span>\n        <span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">pluginName</span><span class="pl-kos">}</span></span> failed to inject the plugin into the HTML file. index.html（<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">htmlFilePath</span><span class="pl-kos">}</span></span>） not found.`</span>\n      <span class="pl-kos">)</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">)</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-18">调试</h2>\n<p dir="auto">教你调试 nuxt modules。</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/nuxt/nuxt-debugger.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/nuxt/nuxt-debugger.jpg" alt="" style="max-width: 100%;"></a></p>\n<p dir="auto">由于文档并不能全面了解 Nuxt 构建过程，所以很多时候需要查看 Nuxt 源码，这里提供些小技巧给大家。</p>\n<ul dir="auto">\n<li>定位启动 Nuxt 入口文件</li>\n</ul>\n<p dir="auto">我们可以在项目目录中执行 nuxt 命令，其实是因为npm install nuxt 过程中在 ~/node_modules/.bin 下添加了 nuxt 启动文件，内容如下所示：</p>\n<p dir="auto"><strong>~/node_modules/.bin/nuxt</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="#!/bin/sh\nbasedir=$(dirname &quot;$(echo &quot;$0&quot; | sed -e \'s,\\\\,/,g\')&quot;)\n\ncase `uname` in\n    *CYGWIN*|*MINGW*|*MSYS*) basedir=`cygpath -w &quot;$basedir&quot;`;;\nesac\n\nif [ -x &quot;$basedir/node&quot; ]; then\n  &quot;$basedir/node&quot;  &quot;$basedir/../nuxt/bin/nuxt.js&quot; &quot;$@&quot;\n  ret=$?\nelse\n  node  &quot;$basedir/../nuxt/bin/nuxt.js&quot; &quot;$@&quot;\n  ret=$?\nfi\nexit $ret\n"><pre class="notranslate"><code class="notranslate">#!/bin/sh\nbasedir=$(dirname "$(echo "$0" | sed -e \'s,\\\\,/,g\')")\n\ncase `uname` in\n    *CYGWIN*|*MINGW*|*MSYS*) basedir=`cygpath -w "$basedir"`;;\nesac\n\nif [ -x "$basedir/node" ]; then\n  "$basedir/node"  "$basedir/../nuxt/bin/nuxt.js" "$@"\n  ret=$?\nelse\n  node  "$basedir/../nuxt/bin/nuxt.js" "$@"\n  ret=$?\nfi\nexit $ret\n\n</code></pre></div>\n<p dir="auto">可以看到最终执行了 /../nuxt/bin/nuxt.js</p>\n<p dir="auto"><strong>~/node_modules/nuxt/bin/nuxt.js</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="#!/usr/bin/env node\nconst suffix = require(\'../package.json\').name.includes(\'-edge\') ? \'-edge\' : \'\'\nrequire(\'@nuxt/cli\' + suffix).run()\n  .catch((error) =&gt; {\n    require(\'consola\').fatal(error)\n    process.exit(2)\n  })\n"><pre class="notranslate"><code class="notranslate">#!/usr/bin/env node\nconst suffix = require(\'../package.json\').name.includes(\'-edge\') ? \'-edge\' : \'\'\nrequire(\'@nuxt/cli\' + suffix).run()\n  .catch((error) =&gt; {\n    require(\'consola\').fatal(error)\n    process.exit(2)\n  })\n\n</code></pre></div>\n<p dir="auto">又调用了 @nuxt/cli ，查看 @nuxt/cli package.json 中 main 属性可知，入口文件为 ./dist/cli.js。结合 cli.js 中的逻辑可以确定，nuxt 入口文件就在这里，根据 nuxt 命令参数的不同，会分别调用 ./cli-dev.js 和 ./cli-generate.js</p>\n<ul dir="auto">\n<li>调试 Nuxt 构建过程</li>\n</ul>\n<p dir="auto">虽然确定了入口文件，但仅通过 console 的方式很难调试代码，还好 vscode 内置了调试功能，可以方便的调试 JS 代码。</p>\n<ol dir="auto">\n<li>在需要调试的代码行最前面添加断点。</li>\n<li>在 vscode 控制台右上角下拉选项中选择 JavaScript Debug Terminal</li>\n<li>在打开的 Debug Terminal 中执行构建命令会自动进行调试模式，如执行 npm run serve</li>\n<li>然后就可以愉快的调试了</li>\n</ol>\n<h2 id="main-heading-H2-19">参考</h2>\n<ul dir="auto">\n<li><a href="https://juejin.cn/post/7209234917288886331" rel="nofollow">https://juejin.cn/post/7209234917288886331</a></li>\n<li><a href="https://github.com/GreatAuk/plugin-web-update-notification/tree/master/packages/webpack-plugin">https://github.com/GreatAuk/plugin-web-update-notification/tree/master/packages/webpack-plugin</a></li>\n<li><a href="https://stackoverflow.com/questions/66603200/nuxt-html-injection-by-webpack-plugin" rel="nofollow">https://stackoverflow.com/questions/66603200/nuxt-html-injection-by-webpack-plugin</a></li>\n<li><a href="https://stackoverflow.com/questions/50468383/how-to-use-nuxt-hooks-in-a-module" rel="nofollow">https://stackoverflow.com/questions/50468383/how-to-use-nuxt-hooks-in-a-module</a></li>\n<li><a href="https://v2.nuxt.com/docs/directory-structure/modules/" rel="nofollow">https://v2.nuxt.com/docs/directory-structure/modules/</a></li>\n<li><a href="https://www.nuxtjs.cn/guide/modules" rel="nofollow">https://www.nuxtjs.cn/guide/modules</a></li>\n<li><a href="https://v2.nuxt.com/tutorials/creating-a-nuxt-module" rel="nofollow">https://v2.nuxt.com/tutorials/creating-a-nuxt-module</a></li>\n</ul>\n<p dir="auto">这里还有更多关于 nuxt</p>\n<ul dir="auto">\n<li><a href="https://v2.nuxt.com/docs/configuration-glossary/configuration-build" rel="nofollow">https://v2.nuxt.com/docs/configuration-glossary/configuration-build</a></li>\n<li><a href="https://v2.nuxt.com/docs/configuration-glossary/configuration-render/" rel="nofollow">https://v2.nuxt.com/docs/configuration-glossary/configuration-render/</a></li>\n<li><a href="https://v2.nuxt.com/docs/directory-structure/pages" rel="nofollow">https://v2.nuxt.com/docs/directory-structure/pages</a></li>\n<li><a href="https://v2.nuxt.com/docs/directory-structure/nuxt-config" rel="nofollow">https://v2.nuxt.com/docs/directory-structure/nuxt-config</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:n}],html_url:"https://github.com/yanyue404/blog/issues/263"},navList:[{text:"Modules",id:"main-heading-H2-0",type:a,children:[]},{text:'<a href="https://www.nuxtjs.cn/guide/modules#nuxtjs-%E6%A8%A1%E5%9D%97%E5%88%97%E8%A1%A8" rel="nofollow">Nuxt.js 模块列表</a>',id:"main-heading-H2-1",type:a,children:[]},{text:"基础模块",id:"main-heading-H2-2",type:a,children:[]},{text:"编写自己的模块",id:"main-heading-H2-3",type:a,children:[]},{text:"异步模块",id:"main-heading-H2-4",type:a,children:[{text:"使用 async/await",id:"main-heading-H3-5",type:s},{text:"返回 Promise",id:"main-heading-H3-6",type:s},{text:"使用回调",id:"main-heading-H3-7",type:s}]},{text:"常见模块",id:"main-heading-H2-8",type:a,children:[{text:"优先级最高选项",id:"main-heading-H3-9",type:s},{text:"注册插件",id:"main-heading-H3-10",type:s},{text:"模板插件",id:"main-heading-H3-11",type:s},{text:"注册 webpack loader",id:"main-heading-H3-12",type:s},{text:"注册 webpack 插件",id:"main-heading-H3-13",type:s},{text:"为构建提供扩展配置",id:"main-heading-H3-14",type:s},{text:"nuxt 生命周期注册钩子",id:"main-heading-H3-15",type:s},{text:"在指定钩子上执行任务",id:"main-heading-H3-16",type:s}]},{text:"来个实战",id:"main-heading-H2-17",type:a,children:[]},{text:"调试",id:"main-heading-H2-18",type:a,children:[]},{text:"参考",id:"main-heading-H2-19",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:l}},serverRendered:!0}}("H3","H2","","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

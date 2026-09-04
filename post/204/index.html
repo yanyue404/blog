@@ -1,0 +1,447 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Whistle 使用教程 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="whistle 官方文档 说明 whistle(读音[ˈwɪsəl]，拼音[wēisǒu])基于 Node 实现的跨平台 web 调试代理工具，类似的工具有 Windows 平台上的 Fiddler，主要用于查看、修改 HTTP、HTTPS、Websocket 的请求、响应，也可以作为 HTTP 代"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Whistle 使用教程"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="whistle 官方文档 说明 whistle(读音[ˈwɪsəl]，拼音[wēisǒu])基于 Node 实现的跨平台 web 调试代理工具，类似的工具有 Windows 平台上的 Fiddler，主要用于查看、修改 HTTP、HTTPS、Websocket 的请求、响应，也可以作为 HTTP 代"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Whistle 使用教程"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="whistle 官方文档 说明 whistle(读音[ˈwɪsəl]，拼音[wēisǒu])基于 Node 实现的跨平台 web 调试代理工具，类似的工具有 Windows 平台上的 Fiddler，主要用于查看、修改 HTTP、HTTPS、Websocket 的请求、响应，也可以作为 HTTP 代"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/204#main-heading-H2-0" title="说明" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              说明
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/204#main-heading-H2-1" title="操作步骤" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              操作步骤
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/204#main-heading-H2-2" title="下载" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              下载
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/204#main-heading-H2-3" title="安装 whistle 证书" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              安装 whistle 证书
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/204#main-heading-H2-4" title="使用" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              使用
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/204#main-heading-H2-5" title="线上调试" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              线上调试
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/204#main-heading-H2-6" title="whistle 插件使用" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              whistle 插件使用
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/204#main-heading-H2-7" title="参考文档" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考文档
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Whistle 使用教程</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Whistle 使用教程</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2021-04-20</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 16 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><blockquote>
+<p dir="auto"><a href="http://wproxy.org/whistle/webui/rules.html" rel="nofollow">whistle 官方文档</a></p>
+</blockquote>
+<h2 id="main-heading-H2-0">说明</h2>
+<p dir="auto">whistle(读音[ˈwɪsəl]，拼音[wēisǒu])基于 Node 实现的跨平台 web 调试代理工具，类似的工具有 Windows 平台上的 Fiddler，主要用于查看、修改 HTTP、HTTPS、Websocket 的请求、响应，也可以作为 HTTP 代理服务器使用。</p>
+<h2 id="main-heading-H2-1">操作步骤</h2>
+<ol dir="auto">
+<li>pc 机 npm 安装 whistle；</li>
+<li>pc 机安装 whistle https 根证书；</li>
+<li>pc 机运行 whistle (w2 start)，配置浏览器代理 127.0.0.1:8899，浏览器访问 <a href="http://127.0.0.1:8899/" rel="nofollow">http://127.0.0.1:8899/</a> (至此完成 pc 机代理)</li>
+<li>pc 机开启移动热点，获取本机 ip 地址；</li>
+<li>ios 或 安卓设备连接热点，手动配置 pc 机 ip 代理；</li>
+<li>扫码 或浏览器访问 rootca.pro，安装 whistle https 根证书，设置证书受信任；</li>
+<li>真机访问 h5 类的目标域名网页，可以被 pc 机 whistle 代理成功捕获。（至此完成真机代理）</li>
+</ol>
+<h2 id="main-heading-H2-2">下载</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 安装或更新
+$ npm install -g whistle
+
+# 或者直接指定镜像安装：
+$ npm install whistle -g --registry=https://registry.npm.taobao.org"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装或更新</span>
+$ npm install -g whistle
+
+<span class="pl-c"><span class="pl-c">#</span> 或者直接指定镜像安装：</span>
+$ npm install whistle -g --registry=https://registry.npm.taobao.org</pre></div>
+<h2 id="main-heading-H2-3">安装 whistle 证书</h2>
+<p dir="auto">下载根证书，开启捕获 HTTPS 请求：</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/https-proxy.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/https-proxy.png" width="50%" height="50%" style="max-width:100%"></a></p>
+<p dir="auto">配置手机代理：</p>
+<p dir="auto">IP 地址由 观察 pc 机 ipconfig 获得。</p>
+<div dir="auto">
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/phone1.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/phone1.jpg" width="40%" height="50%" style="max-width:100%"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/phone2.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/phone2.jpg" width="40%" height="50%" style="max-width:100%"></a> 
+</div>
+<p dir="auto"><strong>PC 机</strong></p>
+<p dir="auto">windows: 下载证书后，双击证书，根据指引安装证书。证书安装过程，要确保证书存储到受信任的根证书颁发机构下。</p>
+<p dir="auto">注意： 只有 HTTPS 为对勾时才说明根证书安装成功，可以成功代理 HTTPS 类型的请求。</p>
+<p dir="auto"><strong>IOS 设备</strong></p>
+<p dir="auto">手机设置代理后，Safari 地址栏输入 rootca.pro，按提示安装证书（或者通过 whistle 控制台的二维码扫码安装，iOS 安装根证书需要到连接远程服务器进行验证，需要暂时把 Https 拦截功能关掉）。</p>
+<p dir="auto">iOS 10.3 之后需要手动信任自定义根证书，设置路径：设置> 外观 > 关于本机> 证书信任设置</p>
+<p dir="auto"><strong>安卓设备</strong></p>
+<p dir="auto">手机设置代理后，证书通过二维码扫码安装或者浏览器地址栏 rootca.pro 按提示安装，安装成功后，需要手机将连接笔记本电脑的 wifi 设为 可信任网络才能正常抓取 https 网络请求。</p>
+<h2 id="main-heading-H2-4">使用</h2>
+<p dir="auto"><strong>浏览器代理： 安装 Chrome 代理插件：（推荐安装 SwitchyOmega）</strong></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/SwitchySharp.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/SwitchySharp.png" width="50%" height="50%" style="max-width:100%"></a></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="
+# 开启代理监听 http://127.0.0.1:8899/
+w2 start
+
+# filter， 在 Network 不会出现某些域名的请求
+/xxx.cn|abc/ filter://hide
+
+# req ua
+http://m.aliexpress.com ua://{{wp_ua}}
+
+# reqHeaders，修改请求头
+http://m.aliexpress.com  reqHeaders://{{req-headers}}
+
+# resHeaders，修改请求头
+/https?:\/\/(cdn)\.cn/ resHeaders://{resHeaders.json}
+
+# reqBody - 请求报文
+# http://localhost:8000/api/posts reqBody://{posts.json}
+
+# resBody - 响应报文
+# http://localhost:8000/api/posts resBody://{posts.json}
+
+# 使用 内置的 Weinre 调试移动端页面，然后选择菜单栏的 Weinre 进入看到调试界面了
+# http://127.0.0.1:8899/weinre/client/#test
+
+http://www.qq.com/  weinre://test
+
+# 配置规则（线上代理到本地调试）
+//[xxx.cn//0002/](http://xxx.cn/0002/)  localhost:3334//0002/
+
+# 单个文件代理到 values 面板（新建 local.js 文件, 完全替换）
+//[xxx.cn/js/reference.js](http://xxx.cn/js/reference.js) resBody://{local_reference.js}
+
+# 单个文件代理到本地的文件
+https://xx.cn/lowcode/editer.js file://D:\At-Work\lowcode\project-name\dist\editer.js 
+
+# 设置 延迟响应的时间（单位：毫秒）
+https://xxx.cn/api/xxxcms/selectById resDelay://3000
+
+# 修改返回码，可以模拟接口出错
+https://xxx.cn/api/xxxcms/selectById statusCode://500
+
+# 在网页中注入以 script 标签的形式插入，花括号的值是内置编辑器保存的文件，在主菜单 “Value” 下可找到：
+https://wq.jd.com/ jsAppend://{test.js} https://wq.jd.com/ jsAppend:///Users/myname/test/test.js
+
+# 在网页中注入以 style 标签的形式插入，花括号的值是内置编辑器保存的文件，在主菜单 “Value” 下可找到：
+https://wq.jd.com/ cssAppend://{test.css} https://wq.jd.com/ cssAppend:///Users/myname/test/test.css
+
+# log 日志分组
+http://localhost:49804/xxx/0001/ log://0001
+
+# proxy 代理
+/github.com/ proxy://127.0.0.1:8899
+
+## html，往html文档(</body>之前)追加html标签(script,style or normal html tag)
+https://github.com/ html://{html-test} proxy://127.0.0.1:33210
+
+## js，往js响应追加脚本，如果响应是html文档，则自动用`<script></script>`包装后插入
+https://github.com/ js://{js-test} proxy://127.0.0.1:33210
+
+## css，往css响应追加样式，如果响应是html文档，则自动用`<style></style>`包装后插入
+## `/`可以起到仅对首页追加的效果
+https://github.com/ css://{css-test} 
+
+## resReplace，替换响应的某些字符串
+## 一般可用来快速验证某些功能
+m.aliexpress.com resReplace://{res-replace}
+
+## 组合技能 修改接口为 js
+https://xxx.com/auth/code  resBody://{hack.js} resType://text/javascript"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 开启代理监听 http://127.0.0.1:8899/</span>
+w2 start
+
+<span class="pl-c"><span class="pl-c">#</span> filter， 在 Network 不会出现某些域名的请求</span>
+/xxx.cn<span class="pl-k">|</span>abc/ filter://hide
+
+<span class="pl-c"><span class="pl-c">#</span> req ua</span>
+http://m.aliexpress.com ua://{{wp_ua}}
+
+<span class="pl-c"><span class="pl-c">#</span> reqHeaders，修改请求头</span>
+http://m.aliexpress.com  reqHeaders://{{req-headers}}
+
+<span class="pl-c"><span class="pl-c">#</span> resHeaders，修改请求头</span>
+/https<span class="pl-k">?</span>:<span class="pl-cce">\/\/</span>(cdn)<span class="pl-cce">\.</span>cn/ resHeaders://{resHeaders.json}
+
+<span class="pl-c"><span class="pl-c">#</span> reqBody - 请求报文</span>
+<span class="pl-c"><span class="pl-c">#</span> http://localhost:8000/api/posts reqBody://{posts.json}</span>
+
+<span class="pl-c"><span class="pl-c">#</span> resBody - 响应报文</span>
+<span class="pl-c"><span class="pl-c">#</span> http://localhost:8000/api/posts resBody://{posts.json}</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 使用 内置的 Weinre 调试移动端页面，然后选择菜单栏的 Weinre 进入看到调试界面了</span>
+<span class="pl-c"><span class="pl-c">#</span> http://127.0.0.1:8899/weinre/client/#test</span>
+
+http://www.qq.com/  weinre://test
+
+<span class="pl-c"><span class="pl-c">#</span> 配置规则（线上代理到本地调试）</span>
+//[xxx.cn//0002/](http://xxx.cn/0002/)  localhost:3334//0002/
+
+<span class="pl-c"><span class="pl-c">#</span> 单个文件代理到 values 面板（新建 local.js 文件, 完全替换）</span>
+//[xxx.cn/js/reference.js](http://xxx.cn/js/reference.js) resBody://{local_reference.js}
+
+<span class="pl-c"><span class="pl-c">#</span> 单个文件代理到本地的文件</span>
+https://xx.cn/lowcode/editer.js file://D:<span class="pl-cce">\A</span>t-Work<span class="pl-cce">\l</span>owcode<span class="pl-cce">\p</span>roject-name<span class="pl-cce">\d</span>ist<span class="pl-cce">\e</span>diter.js 
+
+<span class="pl-c"><span class="pl-c">#</span> 设置 延迟响应的时间（单位：毫秒）</span>
+https://xxx.cn/api/xxxcms/selectById resDelay://3000
+
+<span class="pl-c"><span class="pl-c">#</span> 修改返回码，可以模拟接口出错</span>
+https://xxx.cn/api/xxxcms/selectById statusCode://500
+
+<span class="pl-c"><span class="pl-c">#</span> 在网页中注入以 script 标签的形式插入，花括号的值是内置编辑器保存的文件，在主菜单 “Value” 下可找到：</span>
+https://wq.jd.com/ jsAppend://{test.js} https://wq.jd.com/ jsAppend:///Users/myname/test/test.js
+
+<span class="pl-c"><span class="pl-c">#</span> 在网页中注入以 style 标签的形式插入，花括号的值是内置编辑器保存的文件，在主菜单 “Value” 下可找到：</span>
+https://wq.jd.com/ cssAppend://{test.css} https://wq.jd.com/ cssAppend:///Users/myname/test/test.css
+
+<span class="pl-c"><span class="pl-c">#</span> log 日志分组</span>
+http://localhost:49804/xxx/0001/ log://0001
+
+<span class="pl-c"><span class="pl-c">#</span> proxy 代理</span>
+/github.com/ proxy://127.0.0.1:8899
+
+<span class="pl-c"><span class="pl-c">#</span># html，往html文档(&lt;/body>之前)追加html标签(script,style or normal html tag)</span>
+https://github.com/ html://{html-test} proxy://127.0.0.1:33210
+
+<span class="pl-c"><span class="pl-c">#</span># js，往js响应追加脚本，如果响应是html文档，则自动用`&lt;script>&lt;/script>`包装后插入</span>
+https://github.com/ js://{js-test} proxy://127.0.0.1:33210
+
+<span class="pl-c"><span class="pl-c">#</span># css，往css响应追加样式，如果响应是html文档，则自动用`&lt;style>&lt;/style>`包装后插入</span>
+<span class="pl-c"><span class="pl-c">#</span># `/`可以起到仅对首页追加的效果</span>
+https://github.com/ css://{css-test} 
+
+<span class="pl-c"><span class="pl-c">#</span># resReplace，替换响应的某些字符串</span>
+<span class="pl-c"><span class="pl-c">#</span># 一般可用来快速验证某些功能</span>
+m.aliexpress.com resReplace://{res-replace}
+
+<span class="pl-c"><span class="pl-c">#</span># 组合技能 修改接口为 js</span>
+https://xxx.com/auth/code  resBody://{hack.js} resType://text/javascript</pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// test.js
+const script = document.createElement("script");
+script.type = "text/javascript";
+script.src = "https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js";
+script.onload = function() {
+  console.log("jquery 注入成功");
+  console.dir($("head")[0]);
+};
+document.head.appendChild(script);'><pre class="notranslate"><span class="pl-c">// test.js</span>
+<span class="pl-k">const</span> <span class="pl-s1">script</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"script"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">=</span> <span class="pl-s">"text/javascript"</span><span class="pl-kos">;</span>
+<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">src</span> <span class="pl-c1">=</span> <span class="pl-s">"https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"</span><span class="pl-kos">;</span>
+<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-en">onload</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"jquery 注入成功"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">dir</span><span class="pl-kos">(</span><span class="pl-en">$</span><span class="pl-kos">(</span><span class="pl-s">"head"</span><span class="pl-kos">)</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">head</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">script</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// VConsole.js
+const script = document.createElement("script");
+script.type = "text/javascript";
+script.src = "https://cdn.bootcdn.net/ajax/libs/vConsole/3.1.0/vconsole.min.js";
+script.onload = function() {
+  console.log("VConsole 注入成功");
+  new VConsole();
+};
+document.head.appendChild(script);'><pre class="notranslate"><span class="pl-c">// VConsole.js</span>
+<span class="pl-k">const</span> <span class="pl-s1">script</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"script"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">=</span> <span class="pl-s">"text/javascript"</span><span class="pl-kos">;</span>
+<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">src</span> <span class="pl-c1">=</span> <span class="pl-s">"https://cdn.bootcdn.net/ajax/libs/vConsole/3.1.0/vconsole.min.js"</span><span class="pl-kos">;</span>
+<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-en">onload</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"VConsole 注入成功"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-k">new</span> <span class="pl-v">VConsole</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">head</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">script</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/* test.css */
+body {
+  background: red !important;
+}"><pre class="notranslate"><span class="pl-c">/* test.css */</span>
+<span class="pl-ent">body</span> {
+  <span class="pl-c1">background</span><span class="pl-kos">:</span> red <span class="pl-k">!important</span>;
+}</pre></div>
+<p dir="auto"><strong>values</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='{wp_ua}
+  Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; RM-1113) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Mobile Safari/537.36 Edge/13.10586
+
+{req-headers}
+  {
+    "X-Forwarded-For":" 188.146.171.71",
+    "X-Real-IP":" 188.146.171.71",
+    "X-Client-Scheme":"https",
+    "referer":"https://vk.com/",
+    "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 AliApp(H/5)"
+  }
+
+{resHeaders.json}
+{ "Access-Control-Allow-Origin": "*" }
+
+{html-test}
+ <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js" onload="new VConsole()"></script>
+ 
+ <script>
+   alert(&#39;hello world!&#39;)
+ </script>
+
+{js-test}
+ alert(&#39;hello world!&#39;)
+
+{css-test}
+ * {
+    background: pink
+  }
+
+{res-replace}
+  <meta name="screen-orientation" content="portrait">: <meta name="apple-itunes-app" content="app-id=436672029">'><pre class="notranslate"><code class="notranslate">{wp_ua}
+  Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; RM-1113) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Mobile Safari/537.36 Edge/13.10586
+
+{req-headers}
+  {
+    "X-Forwarded-For":" 188.146.171.71",
+    "X-Real-IP":" 188.146.171.71",
+    "X-Client-Scheme":"https",
+    "referer":"https://vk.com/",
+    "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 AliApp(H/5)"
+  }
+
+{resHeaders.json}
+{ "Access-Control-Allow-Origin": "*" }
+
+{html-test}
+ &lt;script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js" onload="new VConsole()">&lt;/script>
+ 
+ &lt;script>
+   alert('hello world!')
+ &lt;/script>
+
+{js-test}
+ alert('hello world!')
+
+{css-test}
+ * {
+    background: pink
+  }
+
+{res-replace}
+  &lt;meta name="screen-orientation" content="portrait">: &lt;meta name="apple-itunes-app" content="app-id=436672029">
+</code></pre></div>
+<p dir="auto"><strong>其他命令</strong></p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 查看whistle的帮助信息
+$ w2 help
+
+# 停止 whistle：
+$ w2 stop
+
+# 重启 whistle：
+$ w2 restart"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 查看whistle的帮助信息</span>
+$ w2 <span class="pl-c1">help</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 停止 whistle：</span>
+$ w2 stop
+
+<span class="pl-c"><span class="pl-c">#</span> 重启 whistle：</span>
+$ w2 restart</pre></div>
+<p dir="auto"><strong>Q&A</strong></p>
+<ol dir="auto">
+<li>证书信任问题<br>
+Q: 苹果手机代理已配置，且已经信任证书打开调试显示无法链接？<br>
+A: 苹果手机还需要手动开启 whistle 的证书信任。参下图手动开启。</li>
+</ol>
+<p dir="auto">警告，部分 ios 版本无法设置证书信任，<a href="https://discussionschinese.apple.com/thread/255795170?answerId=260828153322&sortBy=rank&page=2#260828153322" rel="nofollow">讨论</a>（我的手机 iphone 12 升级至 18.1.1 后不可用，升级至 18.2.1 后可用，原始版本 15.1.1 可用）</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/yanyue404/blog/blob/master/assets/whistle/trust-certificate.jpg?raw=true"><img src="https://github.com/yanyue404/blog/blob/master/assets/whistle/trust-certificate.jpg?raw=true" width="50%" height="50%" style="max-width:100%"></a></p>
+<ol start="2" dir="auto">
+<li>真机样式调试</li>
+</ol>
+<p dir="auto">在标签栏选择 <strong>Weinre</strong> 标签进入，选择 Targets 的链接进入页面。</p>
+<p dir="auto">···bash<br>
+<a href="https://xxx.cn//0012/" rel="nofollow">https://xxx.cn//0012/</a> weinre://0012</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="
+
+## 真机代理
+
+**安卓设备**
+
+注意：
+
+1. 如果配置完代理，手机无法访问，可能是 whistle 所在的电脑防火墙限制了远程访问 whistle 的端口，关闭防火墙或者设置白名单。
+
+2. 安装证书后，如无法正常捕获请求，需要将连接笔记本电脑的 wifi 设为 **可信任网络**。
+
+**微信公众号**
+
+3. 启动 whistle 后，先配置**微信开发者工具**代理:
+
+最上边一栏 ---- 设置 ---- 代理设置 ---- 设置本机 ip 加 端口号 8899
+
+4. 设置代理规则
+
+```bash
+# 线上混淆代码代理到本地源码
+//xxx.cn//wx-util.js  file://C:\Users\Administrator\Desktop\wx-util.js"><pre class="notranslate"><code class="notranslate">
+
+## 真机代理
+
+**安卓设备**
+
+注意：
+
+1. 如果配置完代理，手机无法访问，可能是 whistle 所在的电脑防火墙限制了远程访问 whistle 的端口，关闭防火墙或者设置白名单。
+
+2. 安装证书后，如无法正常捕获请求，需要将连接笔记本电脑的 wifi 设为 **可信任网络**。
+
+**微信公众号**
+
+3. 启动 whistle 后，先配置**微信开发者工具**代理:
+
+最上边一栏 ---- 设置 ---- 代理设置 ---- 设置本机 ip 加 端口号 8899
+
+4. 设置代理规则
+
+```bash
+# 线上混淆代码代理到本地源码
+//xxx.cn//wx-util.js  file://C:\Users\Administrator\Desktop\wx-util.js
+</code></pre></div>
+<ol start="5" dir="auto">
+<li>查看代理是否生效</li>
+</ol>
+<p dir="auto">在页面资源面板中使用 <code class="notranslate">control+p</code>搜索 <code class="notranslate">wx-util.js</code>, 发现资源已经被代理到本地（源码），然后就可以快乐的 debugger 了！</p>
+<p dir="auto"><strong>更多代理</strong></p>
+<p dir="auto">在 windows 代理服务器设置<strong>本机 ip + 端口号 8899</strong> （win7 在 ie 中设置），然后微信开发者工具就可以使用默认的系统代理，不必配置了。</p>
+<p dir="auto">配置好后 支持 h5 访问类型的抓包，如： Firefox 浏览器，微信里的公众号、小程序等。</p>
+<h2 id="main-heading-H2-5">线上调试</h2>
+<p dir="auto">在线上的生产环境使用  <code class="notranslate">hidden-source-map</code> 的情况下如何映射源码文件。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 线上 source-map 定位源码 
+# 域名配置：www.guangtest.com 127.0.0.1
+# 代理错误 js 文件，在文件末尾加上 //# sourceMappingURL=http://域名:端口/dist/index.js.map
+
+# 例：//# sourceMappingURL=http://www.guangtest.com:3000/dist/_nuxt/hulvla08-8ce21d5db8216aacf81f.js.map"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 线上 source-map 定位源码 </span>
+<span class="pl-c"><span class="pl-c">#</span> 域名配置：www.guangtest.com 127.0.0.1</span>
+<span class="pl-c"><span class="pl-c">#</span> 代理错误 js 文件，在文件末尾加上 //# sourceMappingURL=http://域名:端口/dist/index.js.map</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 例：//# sourceMappingURL=http://www.guangtest.com:3000/dist/_nuxt/hulvla08-8ce21d5db8216aacf81f.js.map</span></pre></div>
+<h2 id="main-heading-H2-6">whistle 插件使用</h2>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 插件注入 vconsole https://github.com/whistle-plugins/whistle.inspect
+//xxx.cn whistle.inspect://vconsole"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 插件注入 vconsole https://github.com/whistle-plugins/whistle.inspect</span>
+//xxx.cn whistle.inspect://vconsole</pre></div>
+<h2 id="main-heading-H2-7">参考文档</h2>
+<ul dir="auto">
+<li><a href="http://wproxy.org/whistle/install.html" rel="nofollow">官方文档 - whistle 安装启动</a></li>
+<li><a href="http://wproxy.org/whistle/webui/https.html" rel="nofollow">官方文档 - 安装根证书</a></li>
+<li><a href="https://github.com/yanyue404/fe-debug-exercize/tree/main/online-error-debug">https://github.com/yanyue404/fe-debug-exercize/tree/main/online-error-debug</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,n,a,p,t){return{layout:"default",data:[{post:{id:862145254,number:204,title:"Whistle 使用教程",created_at:"2021-04-20T00:02:06Z",updated_at:"2025-06-11T07:22:39Z",body_html:'<blockquote>\n<p dir="auto"><a href="http://wproxy.org/whistle/webui/rules.html" rel="nofollow">whistle 官方文档</a></p>\n</blockquote>\n<h2 id="main-heading-H2-0">说明</h2>\n<p dir="auto">whistle(读音[ˈwɪsəl]，拼音[wēisǒu])基于 Node 实现的跨平台 web 调试代理工具，类似的工具有 Windows 平台上的 Fiddler，主要用于查看、修改 HTTP、HTTPS、Websocket 的请求、响应，也可以作为 HTTP 代理服务器使用。</p>\n<h2 id="main-heading-H2-1">操作步骤</h2>\n<ol dir="auto">\n<li>pc 机 npm 安装 whistle；</li>\n<li>pc 机安装 whistle https 根证书；</li>\n<li>pc 机运行 whistle (w2 start)，配置浏览器代理 127.0.0.1:8899，浏览器访问 <a href="http://127.0.0.1:8899/" rel="nofollow">http://127.0.0.1:8899/</a> (至此完成 pc 机代理)</li>\n<li>pc 机开启移动热点，获取本机 ip 地址；</li>\n<li>ios 或 安卓设备连接热点，手动配置 pc 机 ip 代理；</li>\n<li>扫码 或浏览器访问 rootca.pro，安装 whistle https 根证书，设置证书受信任；</li>\n<li>真机访问 h5 类的目标域名网页，可以被 pc 机 whistle 代理成功捕获。（至此完成真机代理）</li>\n</ol>\n<h2 id="main-heading-H2-2">下载</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 安装或更新\n$ npm install -g whistle\n\n# 或者直接指定镜像安装：\n$ npm install whistle -g --registry=https://registry.npm.taobao.org"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 安装或更新</span>\n$ npm install -g whistle\n\n<span class="pl-c"><span class="pl-c">#</span> 或者直接指定镜像安装：</span>\n$ npm install whistle -g --registry=https://registry.npm.taobao.org</pre></div>\n<h2 id="main-heading-H2-3">安装 whistle 证书</h2>\n<p dir="auto">下载根证书，开启捕获 HTTPS 请求：</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/https-proxy.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/https-proxy.png" width="50%" height="50%" style="max-width: 100%;"></a></p>\n<p dir="auto">配置手机代理：</p>\n<p dir="auto">IP 地址由 观察 pc 机 ipconfig 获得。</p>\n<div dir="auto">\n<a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/phone1.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/phone1.jpg" width="40%" height="50%" style="max-width: 100%;"></a>\n<a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/phone2.jpg"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/phone2.jpg" width="40%" height="50%" style="max-width: 100%;"></a> \n</div>\n<p dir="auto"><strong>PC 机</strong></p>\n<p dir="auto">windows: 下载证书后，双击证书，根据指引安装证书。证书安装过程，要确保证书存储到受信任的根证书颁发机构下。</p>\n<p dir="auto">注意： 只有 HTTPS 为对勾时才说明根证书安装成功，可以成功代理 HTTPS 类型的请求。</p>\n<p dir="auto"><strong>IOS 设备</strong></p>\n<p dir="auto">手机设置代理后，Safari 地址栏输入 rootca.pro，按提示安装证书（或者通过 whistle 控制台的二维码扫码安装，iOS 安装根证书需要到连接远程服务器进行验证，需要暂时把 Https 拦截功能关掉）。</p>\n<p dir="auto">iOS 10.3 之后需要手动信任自定义根证书，设置路径：设置&gt; 外观 &gt; 关于本机&gt; 证书信任设置</p>\n<p dir="auto"><strong>安卓设备</strong></p>\n<p dir="auto">手机设置代理后，证书通过二维码扫码安装或者浏览器地址栏 rootca.pro 按提示安装，安装成功后，需要手机将连接笔记本电脑的 wifi 设为 可信任网络才能正常抓取 https 网络请求。</p>\n<h2 id="main-heading-H2-4">使用</h2>\n<p dir="auto"><strong>浏览器代理： 安装 Chrome 代理插件：（推荐安装 SwitchyOmega）</strong></p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/SwitchySharp.png"><img src="https://raw.githubusercontent.com/yanyue404/blog/master/assets/whistle/SwitchySharp.png" width="50%" height="50%" style="max-width: 100%;"></a></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="\n# 开启代理监听 http://127.0.0.1:8899/\nw2 start\n\n# filter， 在 Network 不会出现某些域名的请求\n/xxx.cn|abc/ filter://hide\n\n# req ua\nhttp://m.aliexpress.com ua://{{wp_ua}}\n\n# reqHeaders，修改请求头\nhttp://m.aliexpress.com  reqHeaders://{{req-headers}}\n\n# resHeaders，修改请求头\n/https?:\\/\\/(cdn)\\.cn/ resHeaders://{resHeaders.json}\n\n# reqBody - 请求报文\n# http://localhost:8000/api/posts reqBody://{posts.json}\n\n# resBody - 响应报文\n# http://localhost:8000/api/posts resBody://{posts.json}\n\n# 使用 内置的 Weinre 调试移动端页面，然后选择菜单栏的 Weinre 进入看到调试界面了\n# http://127.0.0.1:8899/weinre/client/#test\n\nhttp://www.qq.com/  weinre://test\n\n# 配置规则（线上代理到本地调试）\n//[xxx.cn//0002/](http://xxx.cn/0002/)  localhost:3334//0002/\n\n# 单个文件代理到 values 面板（新建 local.js 文件, 完全替换）\n//[xxx.cn/js/reference.js](http://xxx.cn/js/reference.js) resBody://{local_reference.js}\n\n# 单个文件代理到本地的文件\nhttps://xx.cn/lowcode/editer.js file://D:\\At-Work\\lowcode\\project-name\\dist\\editer.js \n\n# 设置 延迟响应的时间（单位：毫秒）\nhttps://xxx.cn/api/xxxcms/selectById resDelay://3000\n\n# 修改返回码，可以模拟接口出错\nhttps://xxx.cn/api/xxxcms/selectById statusCode://500\n\n# 在网页中注入以 script 标签的形式插入，花括号的值是内置编辑器保存的文件，在主菜单 “Value” 下可找到：\nhttps://wq.jd.com/ jsAppend://{test.js} https://wq.jd.com/ jsAppend:///Users/myname/test/test.js\n\n# 在网页中注入以 style 标签的形式插入，花括号的值是内置编辑器保存的文件，在主菜单 “Value” 下可找到：\nhttps://wq.jd.com/ cssAppend://{test.css} https://wq.jd.com/ cssAppend:///Users/myname/test/test.css\n\n# log 日志分组\nhttp://localhost:49804/xxx/0001/ log://0001\n\n# proxy 代理\n/github.com/ proxy://127.0.0.1:8899\n\n## html，往html文档(&lt;/body&gt;之前)追加html标签(script,style or normal html tag)\nhttps://github.com/ html://{html-test} proxy://127.0.0.1:33210\n\n## js，往js响应追加脚本，如果响应是html文档，则自动用`&lt;script&gt;&lt;/script&gt;`包装后插入\nhttps://github.com/ js://{js-test} proxy://127.0.0.1:33210\n\n## css，往css响应追加样式，如果响应是html文档，则自动用`&lt;style&gt;&lt;/style&gt;`包装后插入\n## `/`可以起到仅对首页追加的效果\nhttps://github.com/ css://{css-test} \n\n## resReplace，替换响应的某些字符串\n## 一般可用来快速验证某些功能\nm.aliexpress.com resReplace://{res-replace}\n\n## 组合技能 修改接口为 js\nhttps://xxx.com/auth/code  resBody://{hack.js} resType://text/javascript"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 开启代理监听 http://127.0.0.1:8899/</span>\nw2 start\n\n<span class="pl-c"><span class="pl-c">#</span> filter， 在 Network 不会出现某些域名的请求</span>\n/xxx.cn<span class="pl-k">|</span>abc/ filter://hide\n\n<span class="pl-c"><span class="pl-c">#</span> req ua</span>\nhttp://m.aliexpress.com ua://{{wp_ua}}\n\n<span class="pl-c"><span class="pl-c">#</span> reqHeaders，修改请求头</span>\nhttp://m.aliexpress.com  reqHeaders://{{req-headers}}\n\n<span class="pl-c"><span class="pl-c">#</span> resHeaders，修改请求头</span>\n/https<span class="pl-k">?</span>:<span class="pl-cce">\\/\\/</span>(cdn)<span class="pl-cce">\\.</span>cn/ resHeaders://{resHeaders.json}\n\n<span class="pl-c"><span class="pl-c">#</span> reqBody - 请求报文</span>\n<span class="pl-c"><span class="pl-c">#</span> http://localhost:8000/api/posts reqBody://{posts.json}</span>\n\n<span class="pl-c"><span class="pl-c">#</span> resBody - 响应报文</span>\n<span class="pl-c"><span class="pl-c">#</span> http://localhost:8000/api/posts resBody://{posts.json}</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 使用 内置的 Weinre 调试移动端页面，然后选择菜单栏的 Weinre 进入看到调试界面了</span>\n<span class="pl-c"><span class="pl-c">#</span> http://127.0.0.1:8899/weinre/client/#test</span>\n\nhttp://www.qq.com/  weinre://test\n\n<span class="pl-c"><span class="pl-c">#</span> 配置规则（线上代理到本地调试）</span>\n//[xxx.cn//0002/](http://xxx.cn/0002/)  localhost:3334//0002/\n\n<span class="pl-c"><span class="pl-c">#</span> 单个文件代理到 values 面板（新建 local.js 文件, 完全替换）</span>\n//[xxx.cn/js/reference.js](http://xxx.cn/js/reference.js) resBody://{local_reference.js}\n\n<span class="pl-c"><span class="pl-c">#</span> 单个文件代理到本地的文件</span>\nhttps://xx.cn/lowcode/editer.js file://D:<span class="pl-cce">\\A</span>t-Work<span class="pl-cce">\\l</span>owcode<span class="pl-cce">\\p</span>roject-name<span class="pl-cce">\\d</span>ist<span class="pl-cce">\\e</span>diter.js \n\n<span class="pl-c"><span class="pl-c">#</span> 设置 延迟响应的时间（单位：毫秒）</span>\nhttps://xxx.cn/api/xxxcms/selectById resDelay://3000\n\n<span class="pl-c"><span class="pl-c">#</span> 修改返回码，可以模拟接口出错</span>\nhttps://xxx.cn/api/xxxcms/selectById statusCode://500\n\n<span class="pl-c"><span class="pl-c">#</span> 在网页中注入以 script 标签的形式插入，花括号的值是内置编辑器保存的文件，在主菜单 “Value” 下可找到：</span>\nhttps://wq.jd.com/ jsAppend://{test.js} https://wq.jd.com/ jsAppend:///Users/myname/test/test.js\n\n<span class="pl-c"><span class="pl-c">#</span> 在网页中注入以 style 标签的形式插入，花括号的值是内置编辑器保存的文件，在主菜单 “Value” 下可找到：</span>\nhttps://wq.jd.com/ cssAppend://{test.css} https://wq.jd.com/ cssAppend:///Users/myname/test/test.css\n\n<span class="pl-c"><span class="pl-c">#</span> log 日志分组</span>\nhttp://localhost:49804/xxx/0001/ log://0001\n\n<span class="pl-c"><span class="pl-c">#</span> proxy 代理</span>\n/github.com/ proxy://127.0.0.1:8899\n\n<span class="pl-c"><span class="pl-c">#</span># html，往html文档(&lt;/body&gt;之前)追加html标签(script,style or normal html tag)</span>\nhttps://github.com/ html://{html-test} proxy://127.0.0.1:33210\n\n<span class="pl-c"><span class="pl-c">#</span># js，往js响应追加脚本，如果响应是html文档，则自动用`&lt;script&gt;&lt;/script&gt;`包装后插入</span>\nhttps://github.com/ js://{js-test} proxy://127.0.0.1:33210\n\n<span class="pl-c"><span class="pl-c">#</span># css，往css响应追加样式，如果响应是html文档，则自动用`&lt;style&gt;&lt;/style&gt;`包装后插入</span>\n<span class="pl-c"><span class="pl-c">#</span># `/`可以起到仅对首页追加的效果</span>\nhttps://github.com/ css://{css-test} \n\n<span class="pl-c"><span class="pl-c">#</span># resReplace，替换响应的某些字符串</span>\n<span class="pl-c"><span class="pl-c">#</span># 一般可用来快速验证某些功能</span>\nm.aliexpress.com resReplace://{res-replace}\n\n<span class="pl-c"><span class="pl-c">#</span># 组合技能 修改接口为 js</span>\nhttps://xxx.com/auth/code  resBody://{hack.js} resType://text/javascript</pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// test.js\nconst script = document.createElement(&quot;script&quot;);\nscript.type = &quot;text/javascript&quot;;\nscript.src = &quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js&quot;;\nscript.onload = function() {\n  console.log(&quot;jquery 注入成功&quot;);\n  console.dir($(&quot;head&quot;)[0]);\n};\ndocument.head.appendChild(script);"><pre class="notranslate"><span class="pl-c">// test.js</span>\n<span class="pl-k">const</span> <span class="pl-s1">script</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"script"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">=</span> <span class="pl-s">"text/javascript"</span><span class="pl-kos">;</span>\n<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">src</span> <span class="pl-c1">=</span> <span class="pl-s">"https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"</span><span class="pl-kos">;</span>\n<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-en">onload</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"jquery 注入成功"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">dir</span><span class="pl-kos">(</span><span class="pl-en">$</span><span class="pl-kos">(</span><span class="pl-s">"head"</span><span class="pl-kos">)</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">head</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">script</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// VConsole.js\nconst script = document.createElement(&quot;script&quot;);\nscript.type = &quot;text/javascript&quot;;\nscript.src = &quot;https://cdn.bootcdn.net/ajax/libs/vConsole/3.1.0/vconsole.min.js&quot;;\nscript.onload = function() {\n  console.log(&quot;VConsole 注入成功&quot;);\n  new VConsole();\n};\ndocument.head.appendChild(script);"><pre class="notranslate"><span class="pl-c">// VConsole.js</span>\n<span class="pl-k">const</span> <span class="pl-s1">script</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"script"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">=</span> <span class="pl-s">"text/javascript"</span><span class="pl-kos">;</span>\n<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-c1">src</span> <span class="pl-c1">=</span> <span class="pl-s">"https://cdn.bootcdn.net/ajax/libs/vConsole/3.1.0/vconsole.min.js"</span><span class="pl-kos">;</span>\n<span class="pl-s1">script</span><span class="pl-kos">.</span><span class="pl-en">onload</span> <span class="pl-c1">=</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"VConsole 注入成功"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-k">new</span> <span class="pl-v">VConsole</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">head</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">script</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/* test.css */\nbody {\n  background: red !important;\n}"><pre class="notranslate"><span class="pl-c">/* test.css */</span>\n<span class="pl-ent">body</span> {\n  <span class="pl-c1">background</span><span class="pl-kos">:</span> red <span class="pl-k">!important</span>;\n}</pre></div>\n<p dir="auto"><strong>values</strong></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{wp_ua}\n  Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; RM-1113) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Mobile Safari/537.36 Edge/13.10586\n\n{req-headers}\n  {\n    &quot;X-Forwarded-For&quot;:&quot; 188.146.171.71&quot;,\n    &quot;X-Real-IP&quot;:&quot; 188.146.171.71&quot;,\n    &quot;X-Client-Scheme&quot;:&quot;https&quot;,\n    &quot;referer&quot;:&quot;https://vk.com/&quot;,\n    &quot;User-Agent&quot;:&quot;Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 AliApp(H/5)&quot;\n  }\n\n{resHeaders.json}\n{ &quot;Access-Control-Allow-Origin&quot;: &quot;*&quot; }\n\n{html-test}\n &lt;script src=&quot;https://unpkg.com/vconsole@latest/dist/vconsole.min.js&quot; onload=&quot;new VConsole()&quot;&gt;&lt;/script&gt;\n \n &lt;script&gt;\n   alert(\'hello world!\')\n &lt;/script&gt;\n\n{js-test}\n alert(\'hello world!\')\n\n{css-test}\n * {\n    background: pink\n  }\n\n{res-replace}\n  &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;: &lt;meta name=&quot;apple-itunes-app&quot; content=&quot;app-id=436672029&quot;&gt;"><pre class="notranslate"><code class="notranslate">{wp_ua}\n  Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; Microsoft; RM-1113) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Mobile Safari/537.36 Edge/13.10586\n\n{req-headers}\n  {\n    "X-Forwarded-For":" 188.146.171.71",\n    "X-Real-IP":" 188.146.171.71",\n    "X-Client-Scheme":"https",\n    "referer":"https://vk.com/",\n    "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 AliApp(H/5)"\n  }\n\n{resHeaders.json}\n{ "Access-Control-Allow-Origin": "*" }\n\n{html-test}\n &lt;script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js" onload="new VConsole()"&gt;&lt;/script&gt;\n \n &lt;script&gt;\n   alert(\'hello world!\')\n &lt;/script&gt;\n\n{js-test}\n alert(\'hello world!\')\n\n{css-test}\n * {\n    background: pink\n  }\n\n{res-replace}\n  &lt;meta name="screen-orientation" content="portrait"&gt;: &lt;meta name="apple-itunes-app" content="app-id=436672029"&gt;\n</code></pre></div>\n<p dir="auto"><strong>其他命令</strong></p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 查看whistle的帮助信息\n$ w2 help\n\n# 停止 whistle：\n$ w2 stop\n\n# 重启 whistle：\n$ w2 restart"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 查看whistle的帮助信息</span>\n$ w2 <span class="pl-c1">help</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 停止 whistle：</span>\n$ w2 stop\n\n<span class="pl-c"><span class="pl-c">#</span> 重启 whistle：</span>\n$ w2 restart</pre></div>\n<p dir="auto"><strong>Q&amp;A</strong></p>\n<ol dir="auto">\n<li>证书信任问题<br>\nQ: 苹果手机代理已配置，且已经信任证书打开调试显示无法链接？<br>\nA: 苹果手机还需要手动开启 whistle 的证书信任。参下图手动开启。</li>\n</ol>\n<p dir="auto">警告，部分 ios 版本无法设置证书信任，<a href="https://discussionschinese.apple.com/thread/255795170?answerId=260828153322&amp;sortBy=rank&amp;page=2#260828153322" rel="nofollow">讨论</a>（我的手机 iphone 12 升级至 18.1.1 后不可用，升级至 18.2.1 后可用，原始版本 15.1.1 可用）</p>\n<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/yanyue404/blog/blob/master/assets/whistle/trust-certificate.jpg?raw=true"><img src="https://github.com/yanyue404/blog/blob/master/assets/whistle/trust-certificate.jpg?raw=true" width="50%" height="50%" style="max-width: 100%;"></a></p>\n<ol start="2" dir="auto">\n<li>真机样式调试</li>\n</ol>\n<p dir="auto">在标签栏选择 <strong>Weinre</strong> 标签进入，选择 Targets 的链接进入页面。</p>\n<p dir="auto">···bash<br>\n<a href="https://xxx.cn//0012/" rel="nofollow">https://xxx.cn//0012/</a> weinre://0012</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="\n\n## 真机代理\n\n**安卓设备**\n\n注意：\n\n1. 如果配置完代理，手机无法访问，可能是 whistle 所在的电脑防火墙限制了远程访问 whistle 的端口，关闭防火墙或者设置白名单。\n\n2. 安装证书后，如无法正常捕获请求，需要将连接笔记本电脑的 wifi 设为 **可信任网络**。\n\n**微信公众号**\n\n3. 启动 whistle 后，先配置**微信开发者工具**代理:\n\n最上边一栏 ---- 设置 ---- 代理设置 ---- 设置本机 ip 加 端口号 8899\n\n4. 设置代理规则\n\n```bash\n# 线上混淆代码代理到本地源码\n//xxx.cn//wx-util.js  file://C:\\Users\\Administrator\\Desktop\\wx-util.js"><pre class="notranslate"><code class="notranslate">\n\n## 真机代理\n\n**安卓设备**\n\n注意：\n\n1. 如果配置完代理，手机无法访问，可能是 whistle 所在的电脑防火墙限制了远程访问 whistle 的端口，关闭防火墙或者设置白名单。\n\n2. 安装证书后，如无法正常捕获请求，需要将连接笔记本电脑的 wifi 设为 **可信任网络**。\n\n**微信公众号**\n\n3. 启动 whistle 后，先配置**微信开发者工具**代理:\n\n最上边一栏 ---- 设置 ---- 代理设置 ---- 设置本机 ip 加 端口号 8899\n\n4. 设置代理规则\n\n```bash\n# 线上混淆代码代理到本地源码\n//xxx.cn//wx-util.js  file://C:\\Users\\Administrator\\Desktop\\wx-util.js\n</code></pre></div>\n<ol start="5" dir="auto">\n<li>查看代理是否生效</li>\n</ol>\n<p dir="auto">在页面资源面板中使用 <code class="notranslate">control+p</code>搜索 <code class="notranslate">wx-util.js</code>, 发现资源已经被代理到本地（源码），然后就可以快乐的 debugger 了！</p>\n<p dir="auto"><strong>更多代理</strong></p>\n<p dir="auto">在 windows 代理服务器设置<strong>本机 ip + 端口号 8899</strong> （win7 在 ie 中设置），然后微信开发者工具就可以使用默认的系统代理，不必配置了。</p>\n<p dir="auto">配置好后 支持 h5 访问类型的抓包，如： Firefox 浏览器，微信里的公众号、小程序等。</p>\n<h2 id="main-heading-H2-5">线上调试</h2>\n<p dir="auto">在线上的生产环境使用  <code class="notranslate">hidden-source-map</code> 的情况下如何映射源码文件。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 线上 source-map 定位源码 \n# 域名配置：www.guangtest.com 127.0.0.1\n# 代理错误 js 文件，在文件末尾加上 //# sourceMappingURL=http://域名:端口/dist/index.js.map\n\n# 例：//# sourceMappingURL=http://www.guangtest.com:3000/dist/_nuxt/hulvla08-8ce21d5db8216aacf81f.js.map"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 线上 source-map 定位源码 </span>\n<span class="pl-c"><span class="pl-c">#</span> 域名配置：www.guangtest.com 127.0.0.1</span>\n<span class="pl-c"><span class="pl-c">#</span> 代理错误 js 文件，在文件末尾加上 //# sourceMappingURL=http://域名:端口/dist/index.js.map</span>\n\n<span class="pl-c"><span class="pl-c">#</span> 例：//# sourceMappingURL=http://www.guangtest.com:3000/dist/_nuxt/hulvla08-8ce21d5db8216aacf81f.js.map</span></pre></div>\n<h2 id="main-heading-H2-6">whistle 插件使用</h2>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 插件注入 vconsole https://github.com/whistle-plugins/whistle.inspect\n//xxx.cn whistle.inspect://vconsole"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 插件注入 vconsole https://github.com/whistle-plugins/whistle.inspect</span>\n//xxx.cn whistle.inspect://vconsole</pre></div>\n<h2 id="main-heading-H2-7">参考文档</h2>\n<ul dir="auto">\n<li><a href="http://wproxy.org/whistle/install.html" rel="nofollow">官方文档 - whistle 安装启动</a></li>\n<li><a href="http://wproxy.org/whistle/webui/https.html" rel="nofollow">官方文档 - 安装根证书</a></li>\n<li><a href="https://github.com/yanyue404/fe-debug-exercize/tree/main/online-error-debug">https://github.com/yanyue404/fe-debug-exercize/tree/main/online-error-debug</a></li>\n</ul>',user:{login:a,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:p,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/204"},navList:[{text:"说明",id:"main-heading-H2-0",type:n,children:[]},{text:"操作步骤",id:"main-heading-H2-1",type:n,children:[]},{text:"下载",id:"main-heading-H2-2",type:n,children:[]},{text:"安装 whistle 证书",id:"main-heading-H2-3",type:n,children:[]},{text:"使用",id:"main-heading-H2-4",type:n,children:[]},{text:"线上调试",id:"main-heading-H2-5",type:n,children:[]},{text:"whistle 插件使用",id:"main-heading-H2-6",type:n,children:[]},{text:"参考文档",id:"main-heading-H2-7",type:n,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:a,userEmail:"1656800216@qq.com",repository:"blog",blogName:t,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:t,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:p}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,744 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title> React & Vue 用法区别记 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content='1.创建组件 React React 有两种类型的组件，分别是 functional component, class component，所以有两种定义方式: functional component function Test(props) { return div className="con'><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content=" React & Vue 用法区别记"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content='1.创建组件 React React 有两种类型的组件，分别是 functional component, class component，所以有两种定义方式: functional component function Test(props) { return div className="con'><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content=" React & Vue 用法区别记"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content='1.创建组件 React React 有两种类型的组件，分别是 functional component, class component，所以有两种定义方式: functional component function Test(props) { return div className="con'><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/86#main-heading-H2-0" title="1.创建组件" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              1.创建组件
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/86#main-heading-H3-1" title="React" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  React
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/86#main-heading-H3-2" title="Vue" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Vue
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/86#main-heading-H2-3" title="2. 模板语法" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              2. 模板语法
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/86#main-heading-H2-4" title="3.流通管道 Props" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              3.流通管道 Props
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/86#main-heading-H2-5" title="4. 内部状态 State" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              4. 内部状态 State
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/86#main-heading-H2-6" title="5. 双向绑定" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              5. 双向绑定
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/86#main-heading-H2-7" title="6. 生命周期" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              6. 生命周期
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd> React & Vue 用法区别记</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330> React & Vue 用法区别记</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2019-10-16</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 25 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">1.创建组件</h2>
+<h3 id="main-heading-H3-1">React</h3>
+<p dir="auto">React 有两种类型的组件，分别是 functional component, class component，所以有两种定义方式:</p>
+<p dir="auto"><strong>functional component</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='function Test(props) {
+  return <div className="container">{props.name}</div>;
+}'><pre class="notranslate"><span class="pl-k">function</span> <span class="pl-v">Test</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"container"</span><span class="pl-c1">></span><span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>class component</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Test extends React.Component() {
+  constructor(props) {
+    // super一定要写，继承React.Component
+    super(props);
+    // state在里面定义
+    this.state = { name: 'daisy' };
+  }
+  // class创建的组件中 必须有render方法，且显示return内容或者null
+  render() {
+    return <div className=&#34;shopping-list&#34;>{this.state.name}</div>;
+  }
+}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Test</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">Component</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// super一定要写，继承React.Component</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-c">// state在里面定义</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">'daisy'</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-c">// class创建的组件中 必须有render方法，且显示return内容或者null</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"shopping-list"</span><span class="pl-c1">></span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-2">Vue</h3>
+<p dir="auto"><strong>全局注册</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Vue.component('my-component-name', {
+  /* ... */
+});"><pre class="notranslate"><span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-s">'my-component-name'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+  <span class="pl-c">/* ... */</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>局部注册</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var ComponentA = {
+  /* ... */
+};
+
+new Vue({
+  el: '#app',
+  components: {
+    'component-a': ComponentA
+  }
+});"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-v">ComponentA</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c">/* ... */</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">el</span>: <span class="pl-s">'#app'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">components</span>: <span class="pl-kos">{</span>
+    <span class="pl-s">'component-a'</span>: <span class="pl-v">ComponentA</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>单文件组件</strong></p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<template>
+  <p class=&#34;red&#34;>{{ greeting }}</p>
+  <other-component></other-component>
+</template>
+
+<script>
+  import OtherComponent from './OtherComponent.vue';
+
+  export default {
+    data() {
+      return {
+        gretting: 'Hello'
+      };
+    },
+    components: {
+      OtherComponent
+    }
+  };
+</script>
+<style>
+  .red {
+    color: red;
+  }
+</style>"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">template</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">class</span>="<span class="pl-s">red</span>"<span class="pl-kos">></span>{{ greeting }}<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">other-component</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">other-component</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">template</span><span class="pl-kos">></span>
+
+<span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+  <span class="pl-k">import</span> <span class="pl-v">OtherComponent</span> <span class="pl-k">from</span> <span class="pl-s">'./OtherComponent.vue'</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>
+    <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">gretting</span>: <span class="pl-s">'Hello'</span>
+      <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">components</span>: <span class="pl-kos">{</span>
+      OtherComponent
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">style</span><span class="pl-kos">></span>
+  .<span class="pl-c1">red</span> {
+    <span class="pl-c1">color</span><span class="pl-kos">:</span> red;
+  }
+<span class="pl-kos">&lt;/</span><span class="pl-ent">style</span><span class="pl-kos">></span></pre></div>
+<h2 id="main-heading-H2-3">2. 模板语法</h2>
+<p dir="auto">通过以下几个方面说：</p>
+<ul dir="auto">
+<li>遍历渲染</li>
+<li>条件渲染</li>
+<li>html 属性</li>
+<li>绑定事件</li>
+</ul>
+<p dir="auto"><strong>React</strong></p>
+<p dir="auto"><strong>遍历渲染</strong>： map</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  render() {
+      var repoList = repos.map(function(repo, index) {
+        return (
+          <li key={index}>
+            <a href={repo.html_url}>{repo.name}</a> ({repo.stargazers_count}{' '}
+            stars) <br /> {repo.description}
+          </li>
+        );
+      });
+      return (
+        <main>
+          <ol>{repoList}</ol>
+        </main>
+      );
+    }
+  }"><pre class="notranslate">  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+      <span class="pl-k">var</span> <span class="pl-s1">repoList</span> <span class="pl-c1">=</span> <span class="pl-s1">repos</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">repo</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-kos">(</span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">li</span> <span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">index</span><span class="pl-kos">}</span><span class="pl-c1">></span>
+            <span class="pl-c1">&lt;</span><span class="pl-s1">a</span> <span class="pl-c1">href</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">repo</span><span class="pl-kos">.</span><span class="pl-c1">html_url</span><span class="pl-kos">}</span><span class="pl-c1">></span><span class="pl-kos">{</span><span class="pl-s1">repo</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">a</span><span class="pl-c1">></span> (<span class="pl-kos">{</span><span class="pl-s1">repo</span><span class="pl-kos">.</span><span class="pl-c1">stargazers_count</span><span class="pl-kos">}</span><span class="pl-kos">{</span><span class="pl-s">' '</span><span class="pl-kos">}</span>
+            stars) <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/></span> <span class="pl-kos">{</span><span class="pl-s1">repo</span><span class="pl-kos">.</span><span class="pl-c1">description</span><span class="pl-kos">}</span>
+          <span class="pl-kos">&lt;/</span><span class="pl-s1">li</span><span class="pl-c1">></span>
+        <span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">return</span> <span class="pl-kos">(</span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">main</span><span class="pl-c1">></span>
+          <span class="pl-c1">&lt;</span><span class="pl-s1">ol</span><span class="pl-c1">></span><span class="pl-kos">{</span><span class="pl-s1">repoList</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">ol</span><span class="pl-c1">></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">main</span><span class="pl-c1">></span>
+      <span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>条件渲染</strong>：使用三目，&&，如果逻辑在复杂一点就得用函数来帮忙了</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      isHappy ? <div> yes i am  </div> : <div> no </div>
+    </div>
+  );
+}
+
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+       isShow && <div>hello word</div>
+    </div>
+  );
+}"><pre class="notranslate"><span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-s1">isLoggedIn</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">isLoggedIn</span><span class="pl-kos">;</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+      isHappy ? <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span> yes i am  <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span> : <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span> no <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+  <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-s1">isLoggedIn</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">isLoggedIn</span><span class="pl-kos">;</span>
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+       isShow <span class="pl-c1">&&</span> <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">></span>hello word<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+  <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>html 属性</strong>: 跟原生一样直接写不过要换成驼峰式 tab-index => tabIndex，React 16 以后还支持自定义属性。</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<div tabindex="-1" className="test" />
+
+<div mycustomattribute="something" />'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">tabindex</span>="<span class="pl-s">-1</span>" <span class="pl-c1">className</span>="<span class="pl-s">test</span>" <span class="pl-kos">/></span>
+
+<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">mycustomattribute</span>="<span class="pl-s">something</span>" <span class="pl-kos">/></span></pre></div>
+<p dir="auto"><strong>绑定事件</strong>:改成驼峰<code class="notranslate">onClick</code>这样的形式，同时传入一个函数</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<button onClick={this.handleClick}>Activate Lasers</button>"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleClick</span><span class="pl-kos">}</span><span class="pl-c1">></span>Activate Lasers<span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">></span></pre></div>
+<blockquote>
+<p dir="auto">阻止默认事件需要显式使用： <code class="notranslate">e.preventDefault();</code></p>
+</blockquote>
+<p dir="auto"><strong>Vue</strong></p>
+<p dir="auto"><strong>遍历渲染: v-for</strong></p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<template>
+  <li v-else-if="githubStar.length >1" v-for="(record, index) in githubStar">
+    <a :href="record.html_url" :class="index<3?&#39;red&#39;:&#39;&#39;">
+      {{ record.name }}
+    </a>
+    ({{ record.stargazers_count }} stars)
+    <br />
+    <p v-if="index<3" style="color: #000;">{{ record.description }}</p>
+    <p v-else style="color: #333;">{{ record.description }}</p>
+  </li>
+</template>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">template</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">v-else-if</span>="<span class="pl-s">githubStar.length >1</span>" <span class="pl-c1">v-for</span>="<span class="pl-s">(record, index) in githubStar</span>"<span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">:href</span>="<span class="pl-s">record.html_url</span>" <span class="pl-c1">:class</span>="<span class="pl-s">index&lt;3?'red':''</span>"<span class="pl-kos">></span>
+      {{ record.name }}
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+    ({{ record.stargazers_count }} stars)
+    <span class="pl-kos">&lt;</span><span class="pl-ent">br</span> <span class="pl-kos">/></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">v-if</span>="<span class="pl-s">index&lt;3</span>" <span class="pl-c1">style</span>="<span class="pl-s">color: #000;</span>"<span class="pl-kos">></span>{{ record.description }}<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">v-else</span> <span class="pl-c1">style</span>="<span class="pl-s">color: #333;</span>"<span class="pl-kos">></span>{{ record.description }}<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">template</span><span class="pl-kos">></span></pre></div>
+<p dir="auto"><strong>条件渲染</strong></p>
+<ol dir="auto">
+<li><code class="notranslate">vue-if</code> 系列</li>
+</ol>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<div v-if=&#34;type === 'A'&#34;>
+  A
+</div>
+<div v-else-if=&#34;type === 'B'&#34;>
+  B
+</div>
+<div v-else-if=&#34;type === 'C'&#34;>
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">v-if</span>="<span class="pl-s">type === 'A'</span>"<span class="pl-kos">></span>
+  A
+<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">v-else-if</span>="<span class="pl-s">type === 'B'</span>"<span class="pl-kos">></span>
+  B
+<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">v-else-if</span>="<span class="pl-s">type === 'C'</span>"<span class="pl-kos">></span>
+  C
+<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">v-else</span><span class="pl-kos">></span>
+  Not A/B/C
+<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span></pre></div>
+<ol start="2" dir="auto">
+<li><code class="notranslate">v-show</code></li>
+</ol>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<h1 v-show="ok">Hello!</h1>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">h1</span> <span class="pl-c1">v-show</span>="<span class="pl-s">ok</span>"<span class="pl-kos">></span>Hello!<span class="pl-kos">&lt;/</span><span class="pl-ent">h1</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">与 <code class="notranslate">v-if</code>的逻辑显示不同，<code class="notranslate">v-show</code>只是简单地切换元素的 CSS 属性 display</p>
+<blockquote>
+<p dir="auto">注意，v-show 不支持 <code class="notranslate">&lt;template></code> 元素，也不支持 v-else</p>
+</blockquote>
+<p dir="auto"><strong>html 属性：需要用 v-bind 来指定</strong></p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<!-- 完整语法 -->
+<a v-bind:href="url">...</a>
+
+<!-- 缩写 -->
+<a :href="url">...</a>
+<div :id="dynamicId"></div>
+<img :src="imageSrc" />
+<div :style="{ fontSize: size + &#39;px&#39; }"></div>'><pre class="notranslate"><span class="pl-c">&lt;!-- 完整语法 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">v-bind:href</span>="<span class="pl-s">url</span>"<span class="pl-kos">></span>...<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+
+<span class="pl-c">&lt;!-- 缩写 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">:href</span>="<span class="pl-s">url</span>"<span class="pl-kos">></span>...<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">:id</span>="<span class="pl-s">dynamicId</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">:src</span>="<span class="pl-s">imageSrc</span>" <span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">:style</span>="<span class="pl-s">{ fontSize: size + 'px' }</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">></span></pre></div>
+<p dir="auto"><strong>绑定事件</strong>:v-on</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="<!-- 完整语法 -->
+<button v-on:click=&#34;doThat('hello', $event)&#34;></button>
+
+<!-- 缩写语句 -->
+<button @click=&#34;doThat('hello', $event)&#34;></button>"><pre class="notranslate"><span class="pl-c">&lt;!-- 完整语法 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">v-on:click</span>="<span class="pl-s">doThat('hello', $event)</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">></span>
+
+<span class="pl-c">&lt;!-- 缩写语句 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">@click</span>="<span class="pl-s">doThat('hello', $event)</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">事件修饰符：</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<!-- 停止冒泡 -->
+<button @click.stop="doThis"></button>
+<!-- 阻止默认行为 -->
+<button @click.prevent="doThis"></button>
+<!-- 阻止默认行为，没有表达式 -->
+<form @submit.prevent></form>
+<!-- 点击回调只会触发一次 -->
+<button v-on:click.once="doThis"></button>
+<!-- 键修饰符，键别名 -->
+<input @keyup.enter="onEnter" />
+<!--  串联修饰符 -->
+<button @click.stop.prevent="doThis"></button>'><pre class="notranslate"><span class="pl-c">&lt;!-- 停止冒泡 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">@click.stop</span>="<span class="pl-s">doThis</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">></span>
+<span class="pl-c">&lt;!-- 阻止默认行为 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">@click.prevent</span>="<span class="pl-s">doThis</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">></span>
+<span class="pl-c">&lt;!-- 阻止默认行为，没有表达式 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">form</span> <span class="pl-c1">@submit.prevent</span><span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">form</span><span class="pl-kos">></span>
+<span class="pl-c">&lt;!-- 点击回调只会触发一次 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">v-on:click.once</span>="<span class="pl-s">doThis</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">></span>
+<span class="pl-c">&lt;!-- 键修饰符，键别名 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">@keyup.enter</span>="<span class="pl-s">onEnter</span>" <span class="pl-kos">/></span>
+<span class="pl-c">&lt;!--  串联修饰符 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">@click.stop.prevent</span>="<span class="pl-s">doThis</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">></span></pre></div>
+<h2 id="main-heading-H2-4">3.流通管道 Props</h2>
+<p dir="auto"><strong>React</strong></p>
+<p dir="auto">React 的 props 如果是静态的就直接传字符串，动态的就用变量<code class="notranslate">{}</code>来传,还可以传入方法(在子组件上 props 属性获取)。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='class Test extends React.Component {
+   constructor(super) {
+     super(props);
+	   this.state = { name : &#39;daisy&#39;}
+   }
+   onClick( ) => {
+      console.log("onClick");
+   }
+   render() {
+     return (
+	      <Welcome name="Sara" />;
+        <Welcome name={this.state.name} />;
+        <Welcome handleClick={this.onClick} />;
+        // 子组件使用的时候，直接this.props.handleClick()就可以了。
+	  )
+   }
+}'><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Test</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+   <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-smi">super</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+     <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+	   <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span> : <span class="pl-s">'daisy'</span><span class="pl-kos">}</span>
+   <span class="pl-kos">}</span>
+   <span class="pl-en">onClick</span><span class="pl-kos">(</span> <span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"onClick"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+   <span class="pl-kos">}</span>
+   <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+     <span class="pl-k">return</span> <span class="pl-kos">(</span>
+	      <span class="pl-c1">&lt;</span><span class="pl-v">Welcome</span> <span class="pl-c1">name</span><span class="pl-c1">=</span><span class="pl-s">"Sara"</span> <span class="pl-kos">/></span><span class="pl-kos"></span><span class="pl-kos">;</span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">Welcome</span> <span class="pl-c1">name</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span> <span class="pl-kos">/></span><span class="pl-kos">;</span>
+        <span class="pl-c1">&lt;</span><span class="pl-v">Welcome</span> <span class="pl-c1">handleClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">onClick</span><span class="pl-kos">}</span> <span class="pl-kos">/></span><span class="pl-kos">;</span>
+        <span class="pl-c">// 子组件使用的时候，直接this.props.handleClick()就可以了。</span>
+	  <span class="pl-kos">)</span>
+   <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>Vue</strong></p>
+<p dir="auto">传入的值 title 为一个常量(静态 prop)时，不加 v-bind</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<blog-post title="My journey with Vue"></blog-post>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">blog-post</span> <span class="pl-c1">title</span>="<span class="pl-s">My journey with Vue</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">blog-post</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">传入的值 title 为一个变量(动态 prop)时，加 v-bind(此时传递的才是变量，然后 vue 会去 data 里找这个值)</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<blog-post v-bind:title="titleValue"></blog-post>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">blog-post</span> <span class="pl-c1">v-bind:title</span>="<span class="pl-s">titleValue</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">blog-post</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">传入方法的话，一样要使用 v-on，子组件要用 emit 方法来触发。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<Welcome v-on:handleClick="onClick" />;
+
+// 子组件里要用$emit方法来触发它
+<button v-on:click="$emit(&#39;handleClick&#39;)">Enlarge text</button>;'><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-v">Welcome</span> <span class="pl-s1">v-on</span>:<span class="pl-s1">handleClick</span><span class="pl-c1">=</span><span class="pl-s">"onClick"</span> <span class="pl-kos">/></span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 子组件里要用$emit方法来触发它</span>
+<span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-s1">v-on</span>:<span class="pl-s1">click</span><span class="pl-c1">=</span><span class="pl-s">"$emit('handleClick')"</span><span class="pl-c1">></span>Enlarge text<span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">></span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-5">4. 内部状态 State</h2>
+<p dir="auto"><strong>React</strong></p>
+<p dir="auto">在 React，组件内部自己维护的状态叫 State，不能直接去改内部状态 state，而是通过<code class="notranslate">setState</code></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Test extends React.Component() {
+ constructor(props) {
+   // super一定要写，继承React.Component
+    super(props);
+	// state在里面定义
+	this.state = { name : 'daisy' };
+  }
+  changeName () => {
+     this.setState({ name: 'Lily' })
+  }
+  render() {
+    return (
+      <div className=&#34;shopping-list&#34; onClick={this.changeName}>
+          {this.state.name}
+      </div>
+    )
+  }
+}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Test</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">Component</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+ <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+   <span class="pl-c">// super一定要写，继承React.Component</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+	<span class="pl-c">// state在里面定义</span>
+	<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span> : <span class="pl-s">'daisy'</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">changeName</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+     <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">'Lily'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"shopping-list"</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">changeName</span><span class="pl-kos">}</span><span class="pl-c1">></span>
+          <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>Vue</strong></p>
+<p dir="auto">在 Vue, 组件内部自己维护的状态其实就是 Data。如果要改的话，直接在方法里通过 this 或者是通过 vue 对象来改。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var vm = new Vue({
+  el: '#app',
+  //  用于给 View 提供数据，相当于React的state
+  data: {
+    msg: 'Hello Vue'
+  },
+  method: {
+    changeMsg: function() {
+      this.msg = 'Hello daisy';
+    }
+  }
+});
+
+// 或者
+vm.msg = 'daisy';"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">vm</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">el</span>: <span class="pl-s">'#app'</span><span class="pl-kos">,</span>
+  <span class="pl-c">//  用于给 View 提供数据，相当于React的state</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">msg</span>: <span class="pl-s">'Hello Vue'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">method</span>: <span class="pl-kos">{</span>
+    <span class="pl-en">changeMsg</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">msg</span> <span class="pl-c1">=</span> <span class="pl-s">'Hello daisy'</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-c">// 或者</span>
+<span class="pl-s1">vm</span><span class="pl-kos">.</span><span class="pl-c1">msg</span> <span class="pl-c1">=</span> <span class="pl-s">'daisy'</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">Vue 除了在 Data 里定义的属性之外，还额外定义计算属性跟侦听属性</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 计算属性, reversedMessage 属性将会监听 message 的改变，而自动重新计算
+var vm = new Vue({
+  el: '#example',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    reversedMessage: function () {
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
+
+<div id=&#34;example&#34;>
+  { reversedMessage }
+</div>"><pre class="notranslate"><span class="pl-c">// 计算属性, reversedMessage 属性将会监听 message 的改变，而自动重新计算</span>
+<span class="pl-k">var</span> <span class="pl-s1">vm</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">el</span>: <span class="pl-s">'#example'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">message</span>: <span class="pl-s">'Hello'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">computed</span>: <span class="pl-kos">{</span>
+    <span class="pl-en">reversedMessage</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">''</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">reverse</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">''</span><span class="pl-kos">)</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">id</span><span class="pl-c1">=</span><span class="pl-s">"example"</span><span class="pl-c1">></span>
+  <span class="pl-kos">{</span> reversedMessage <span class="pl-kos">}</span>
+<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">i</span><span class="pl-s">v</span><span class="pl-s">></span></pre></div>
+<p dir="auto"><strong>为啥 React 不需要这个属性呢？</strong></p>
+<p dir="auto">因为 React 有 render 函数，你可以在里面随便多定义一个变量。<br>
+每一次 this.state.message 改变的时候，都一定会调用 render 函数重新渲染，所以就相当于重新计算 reversedMessage 了。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="render() {
+   const reversedMessage = this.state.message.split('').reverse().join('')
+    return (
+      <div className=&#34;shopping-list&#34;>
+        {reversedMessage}
+      </div>
+    )
+  }"><pre class="notranslate"><span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+   <span class="pl-k">const</span> <span class="pl-s1">reversedMessage</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">''</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">reverse</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">''</span><span class="pl-kos">)</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"shopping-list"</span><span class="pl-c1">></span>
+        <span class="pl-kos">{</span><span class="pl-s1">reversedMessage</span><span class="pl-kos">}</span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span>
+  <span class="pl-kos">}</span></pre></div>
+<p dir="auto"><strong>侦听属性</strong>感觉跟计算属性很像，但是他们又有不同。<br>
+侦听属性是为了可以监听到数据的改变，然后做一些异步的或者开销大的操作。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var watchExampleVM = new Vue({
+  el: '#watch-example',
+  data: {
+    question: 'aaa'
+  },
+  watch: {
+    // 如果 `question` 发生改变，这个函数就会运行
+    question: function(newQuestion, oldQuestion) {
+      this.getAnswer();
+    }
+  },
+  methods: {
+    getAnswer: function() {
+      // AJax 请求
+    }
+  }
+});"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">watchExampleVM</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">el</span>: <span class="pl-s">'#watch-example'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">question</span>: <span class="pl-s">'aaa'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">watch</span>: <span class="pl-kos">{</span>
+    <span class="pl-c">// 如果 `question` 发生改变，这个函数就会运行</span>
+    <span class="pl-en">question</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">newQuestion</span><span class="pl-kos">,</span> <span class="pl-s1">oldQuestion</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getAnswer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>
+    <span class="pl-en">getAnswer</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-c">// AJax 请求</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>同样的问题，为啥 React 不需要这个属性呢？</strong></p>
+<p dir="auto">因为 React 里已经有方法可以做到了。<br>
+React 15 的版本，可以通过 componentWillReceiveProps 来实现</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="componentWillReceiveProps(nextProps) {
+    if (nextProps.id !== this.props.id) {
+    	this.setState({externalData: null});
+      this._loadAsyncData(nextProps.id);
+    }
+  }"><pre class="notranslate"><span class="pl-en">componentWillReceiveProps</span><span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">.</span><span class="pl-c1">id</span> <span class="pl-c1">!==</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    	<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-c1">externalData</span>: <span class="pl-c1">null</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">_loadAsyncData</span><span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span></pre></div>
+<p dir="auto">React 16 的版本，可以通过 <code class="notranslate">getDerivedStateFromProps</code>，<code class="notranslate">componentDidUpdate</code> 来实现。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="static getDerivedStateFromProps(nextProps, prevState) {
+    // Store prevId in state so we can compare when props change.
+    if (nextProps.id !== prevState.prevId) {
+      return {
+        externalData: null,
+        prevId: nextProps.id,
+      };
+    }
+    // No state update necessary
+    return null;
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.externalData === null) {
+      this._loadAsyncData(this.props.id);
+    }
+  }"><pre class="notranslate"><span class="pl-k">static</span> <span class="pl-en">getDerivedStateFromProps</span><span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">,</span> <span class="pl-s1">prevState</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// Store prevId in state so we can compare when props change.</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">.</span><span class="pl-c1">id</span> <span class="pl-c1">!==</span> <span class="pl-s1">prevState</span><span class="pl-kos">.</span><span class="pl-c1">prevId</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">externalData</span>: <span class="pl-c1">null</span><span class="pl-kos">,</span>
+        <span class="pl-c1">prevId</span>: <span class="pl-s1">nextProps</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-c">// No state update necessary</span>
+    <span class="pl-k">return</span> <span class="pl-c1">null</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+  <span class="pl-en">componentDidUpdate</span><span class="pl-kos">(</span><span class="pl-s1">prevProps</span><span class="pl-kos">,</span> <span class="pl-s1">prevState</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">externalData</span> <span class="pl-c1">===</span> <span class="pl-c1">null</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">_loadAsyncData</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-6">5. 双向绑定</h2>
+<p dir="auto"><strong>React</strong></p>
+<p dir="auto">html 标签<code class="notranslate">&lt;input></code>, <code class="notranslate">&lt;textarea></code> , 和 <code class="notranslate">&lt;select></code> 使用受控组件，<code class="notranslate">setState</code>同步更新<code class="notranslate">onChange</code>后的 value</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: &#39;&#39;};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  // 这里通过setState去改变state的值
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert(&#39;提交的名字: &#39; + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          名字:
+		  // 当input的值发生改变的时候就会调用handleChange
+		  // 通过state改变value的值，所以这里的显示会随用户
+		  // 的输入更新而更新
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="提交" />
+      </form>
+    );'><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">NameForm</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-c1">value</span>: <span class="pl-s">''</span><span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleSubmit</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleSubmit</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-c">// 这里通过setState去改变state的值</span>
+  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-c1">value</span>: <span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-en">handleSubmit</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-en">alert</span><span class="pl-kos">(</span><span class="pl-s">'提交的名字: '</span> <span class="pl-c1">+</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-en">preventDefault</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-c1">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-kos">(</span>
+      <span class="pl-c1">&lt;</span><span class="pl-s1">form</span> <span class="pl-c1">onSubmit</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleSubmit</span><span class="pl-kos">}</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">label</span><span class="pl-c1">></span>
+          名字:
+		  // 当input的值发生改变的时候就会调用handleChange
+		  // 通过state改变value的值，所以这里的显示会随用户
+		  // 的输入更新而更新
+          <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">}</span> <span class="pl-kos">/></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-s1">label</span><span class="pl-c1">></span>
+        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"submit"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-s">"提交"</span> <span class="pl-kos">/></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-s1">form</span><span class="pl-c1">></span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>Vue</strong></p>
+<p dir="auto">vue 采用 <code class="notranslate">v-model</code> 的形式</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<input v-model="message" placeholder="edit me" />
+<p>Message is: {{ message }}</p>'><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">v-model</span>="<span class="pl-s">message</span>" <span class="pl-c1">placeholder</span>="<span class="pl-s">edit me</span>" <span class="pl-kos">/></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">></span>Message is: {{ message }}<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">></span></pre></div>
+<p dir="auto">实际上 v-model 是一个语法糖， 上面可以翻译成：</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='`<input :value="message" @input="message = $event.targer.value" />`'><pre class="notranslate">`<span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">:value</span>="<span class="pl-s">message</span>" <span class="pl-c1">@input</span>="<span class="pl-s">message = $event.targer.value</span>" <span class="pl-kos">/></span>`</pre></div>
+<blockquote>
+<p dir="auto">input 本身有个 oninput 事件，每当输入框发生变化，就会触发 onput,将最新的 value 传给他。</p>
+</blockquote>
+<p dir="auto">此外，v-model 在内部为不同的输入元素使用不同的属性并抛出不同的事件：</p>
+<ul dir="auto">
+<li>input 和 textarea 元素使用 value 属性和 input 事件；</li>
+<li>checkbox 和 radio 使用 checked 属性和 change 事件；</li>
+<li>select 字段将 value 作为 prop 并将 change 作为事件。</li>
+</ul>
+<p dir="auto">v-model 不仅仅可以用在原生 html 元素上，还可以用在组件上。用在组件上的时候 v-on 用于监听事件，emit 用来触发事件。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<div id="demo">
+  <currency-input v-model="price"></currentcy-input>
+  // 相当于是<currency-input :value="price" v-on:input="price = arguments[0]"></currentcy-input>
+  // 这里用v-on监听事件，相当于传给了子组件value，还有input方法
+  <span>{{price}}</span>
+</div>
+Vue.component(&#39;currency-input&#39;, {
+  template: `
+    <span>
+      <input
+        ref="input"
+        :value="value" // 这里将父组件传来的value赋值给input的value
+        @input="$emit(&#39;input&#39;, $event.target.value)" // 这里去触发input方法
+      >
+    </span>
+  `,
+  props: [&#39;value&#39;],
+})
+
+var demo = new Vue({
+  el: &#39;#demo&#39;,
+  data: {
+    price: 100,
+  }
+})'><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">id</span><span class="pl-c1">=</span><span class="pl-s">"demo"</span><span class="pl-c1">></span>
+  <span class="pl-c1">&lt;</span><span class="pl-s1">currency-input</span> <span class="pl-c1">v-model</span><span class="pl-c1">=</span><span class="pl-s">"price"</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-s1">currentcy-input</span><span class="pl-c1">></span>
+  // 相当于是<span class="pl-c1">&lt;</span><span class="pl-s1">currency-input</span> :<span class="pl-s1">value</span><span class="pl-c1">=</span>"<span class="pl-c1">price</span>" <span class="pl-s1">v-on</span>:<span class="pl-s1">input</span><span class="pl-c1">=</span><span class="pl-s">"price = arguments[0]"</span><span class="pl-c1">></span><span class="pl-kos">&lt;/</span><span class="pl-s1">currentcy-input</span><span class="pl-c1">></span>
+  // 这里用v-on监听事件，相当于传给了子组件value，还有input方法
+  <span class="pl-c1">&lt;</span><span class="pl-s1">span</span><span class="pl-c1">></span><span class="pl-kos">{</span><span class="pl-kos">{</span>price<span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">span</span><span class="pl-c1">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">></span>
+<span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-s">'currency-input'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">template</span>: <span class="pl-s">`</span>
+<span class="pl-s">    &lt;span></span>
+<span class="pl-s">      &lt;input</span>
+<span class="pl-s">        ref="input"</span>
+<span class="pl-s">        :value="value" // 这里将父组件传来的value赋值给input的value</span>
+<span class="pl-s">        @input="$emit('input', $event.target.value)" // 这里去触发input方法</span>
+<span class="pl-s">      ></span>
+<span class="pl-s">    &lt;/span></span>
+<span class="pl-s">  `</span><span class="pl-kos">,</span>
+  <span class="pl-c1">props</span>: <span class="pl-kos">[</span><span class="pl-s">'value'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-k">var</span> <span class="pl-s1">demo</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">el</span>: <span class="pl-s">'#demo'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">price</span>: <span class="pl-c1">100</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>
+<h2 id="main-heading-H2-7">6. 生命周期</h2>
+<p dir="auto">React、vue 的生命周期都大同小异，主要就是创建 -> 更新 -> 销毁。具体一些名字不同而已。</p>
+<h4 dir="auto">参考</h4>
+<ul dir="auto">
+<li><a href="https://zhuanlan.zhihu.com/p/70888985" rel="nofollow">https://zhuanlan.zhihu.com/p/70888985</a></li>
+<li><a href="https://juejin.im/post/5b8b56e3f265da434c1f5f76" rel="nofollow">https://juejin.im/post/5b8b56e3f265da434c1f5f76</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l){return{layout:"default",data:[{post:{id:508014831,number:86,title:" React & Vue 用法区别记",created_at:"2019-10-16T18:13:20Z",updated_at:"2025-11-23T15:50:34Z",body_html:'<h2 id="main-heading-H2-0">1.创建组件</h2>\n<h3 id="main-heading-H3-1">React</h3>\n<p dir="auto">React 有两种类型的组件，分别是 functional component, class component，所以有两种定义方式:</p>\n<p dir="auto"><strong>functional component</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="function Test(props) {\n  return &lt;div className=&quot;container&quot;&gt;{props.name}&lt;/div&gt;;\n}"><pre class="notranslate"><span class="pl-k">function</span> <span class="pl-v">Test</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"container"</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">props</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>class component</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Test extends React.Component() {\n  constructor(props) {\n    // super一定要写，继承React.Component\n    super(props);\n    // state在里面定义\n    this.state = { name: \'daisy\' };\n  }\n  // class创建的组件中 必须有render方法，且显示return内容或者null\n  render() {\n    return &lt;div className=&quot;shopping-list&quot;&gt;{this.state.name}&lt;/div&gt;;\n  }\n}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Test</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">Component</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// super一定要写，继承React.Component</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-c">// state在里面定义</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">\'daisy\'</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-c">// class创建的组件中 必须有render方法，且显示return内容或者null</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"shopping-list"</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-2">Vue</h3>\n<p dir="auto"><strong>全局注册</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Vue.component(\'my-component-name\', {\n  /* ... */\n});"><pre class="notranslate"><span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-s">\'my-component-name\'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n  <span class="pl-c">/* ... */</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>局部注册</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var ComponentA = {\n  /* ... */\n};\n\nnew Vue({\n  el: \'#app\',\n  components: {\n    \'component-a\': ComponentA\n  }\n});"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-v">ComponentA</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c">/* ... */</span>\n<span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n<span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">el</span>: <span class="pl-s">\'#app\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">components</span>: <span class="pl-kos">{</span>\n    <span class="pl-s">\'component-a\'</span>: <span class="pl-v">ComponentA</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>单文件组件</strong></p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template&gt;\n  &lt;p class=&quot;red&quot;&gt;{{ greeting }}&lt;/p&gt;\n  &lt;other-component&gt;&lt;/other-component&gt;\n&lt;/template&gt;\n\n&lt;script&gt;\n  import OtherComponent from \'./OtherComponent.vue\';\n\n  export default {\n    data() {\n      return {\n        gretting: \'Hello\'\n      };\n    },\n    components: {\n      OtherComponent\n    }\n  };\n&lt;/script&gt;\n&lt;style&gt;\n  .red {\n    color: red;\n  }\n&lt;/style&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">template</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">class</span>="<span class="pl-s">red</span>"<span class="pl-kos">&gt;</span>{{ greeting }}<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">other-component</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">other-component</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">template</span><span class="pl-kos">&gt;</span>\n\n<span class="pl-kos">&lt;</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n  <span class="pl-k">import</span> <span class="pl-v">OtherComponent</span> <span class="pl-k">from</span> <span class="pl-s">\'./OtherComponent.vue\'</span><span class="pl-kos">;</span>\n\n  <span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-kos">{</span>\n    <span class="pl-en">data</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">gretting</span>: <span class="pl-s">\'Hello\'</span>\n      <span class="pl-kos">}</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c1">components</span>: <span class="pl-kos">{</span>\n      OtherComponent\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span>\n  .<span class="pl-c1">red</span> {\n    <span class="pl-c1">color</span><span class="pl-kos">:</span> red;\n  }\n<span class="pl-kos">&lt;/</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span></pre></div>\n<h2 id="main-heading-H2-3">2. 模板语法</h2>\n<p dir="auto">通过以下几个方面说：</p>\n<ul dir="auto">\n<li>遍历渲染</li>\n<li>条件渲染</li>\n<li>html 属性</li>\n<li>绑定事件</li>\n</ul>\n<p dir="auto"><strong>React</strong></p>\n<p dir="auto"><strong>遍历渲染</strong>： map</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  render() {\n      var repoList = repos.map(function(repo, index) {\n        return (\n          &lt;li key={index}&gt;\n            &lt;a href={repo.html_url}&gt;{repo.name}&lt;/a&gt; ({repo.stargazers_count}{\' \'}\n            stars) &lt;br /&gt; {repo.description}\n          &lt;/li&gt;\n        );\n      });\n      return (\n        &lt;main&gt;\n          &lt;ol&gt;{repoList}&lt;/ol&gt;\n        &lt;/main&gt;\n      );\n    }\n  }"><pre class="notranslate">  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>\n      <span class="pl-k">var</span> <span class="pl-s1">repoList</span> <span class="pl-c1">=</span> <span class="pl-s1">repos</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">repo</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-k">return</span> <span class="pl-kos">(</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">li</span> <span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">index</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>\n            <span class="pl-c1">&lt;</span><span class="pl-s1">a</span> <span class="pl-c1">href</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">repo</span><span class="pl-kos">.</span><span class="pl-c1">html_url</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">repo</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">a</span><span class="pl-c1">&gt;</span> (<span class="pl-kos">{</span><span class="pl-s1">repo</span><span class="pl-kos">.</span><span class="pl-c1">stargazers_count</span><span class="pl-kos">}</span><span class="pl-kos">{</span><span class="pl-s">\' \'</span><span class="pl-kos">}</span>\n            stars) <span class="pl-c1">&lt;</span><span class="pl-s1">br</span> <span class="pl-kos">/&gt;</span> <span class="pl-kos">{</span><span class="pl-s1">repo</span><span class="pl-kos">.</span><span class="pl-c1">description</span><span class="pl-kos">}</span>\n          <span class="pl-kos">&lt;/</span><span class="pl-s1">li</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-k">return</span> <span class="pl-kos">(</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">main</span><span class="pl-c1">&gt;</span>\n          <span class="pl-c1">&lt;</span><span class="pl-s1">ol</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">repoList</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">ol</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">main</span><span class="pl-c1">&gt;</span>\n      <span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>条件渲染</strong>：使用三目，&amp;&amp;，如果逻辑在复杂一点就得用函数来帮忙了</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="render() {\n  const isLoggedIn = this.state.isLoggedIn;\n  return (\n    &lt;div&gt;\n      isHappy ? &lt;div&gt; yes i am  &lt;/div&gt; : &lt;div&gt; no &lt;/div&gt;\n    &lt;/div&gt;\n  );\n}\n\nrender() {\n  const isLoggedIn = this.state.isLoggedIn;\n  return (\n    &lt;div&gt;\n       isShow &amp;&amp; &lt;div&gt;hello word&lt;/div&gt;\n    &lt;/div&gt;\n  );\n}"><pre class="notranslate"><span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-s1">isLoggedIn</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">isLoggedIn</span><span class="pl-kos">;</span>\n  <span class="pl-k">return</span> <span class="pl-kos">(</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n      isHappy ? <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span> yes i am  <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span> : <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span> no <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n  <span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>\n  <span class="pl-k">const</span> <span class="pl-s1">isLoggedIn</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">isLoggedIn</span><span class="pl-kos">;</span>\n  <span class="pl-k">return</span> <span class="pl-kos">(</span>\n    <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n       isShow <span class="pl-c1">&amp;&amp;</span> <span class="pl-c1">&lt;</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>hello word<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n  <span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>html 属性</strong>: 跟原生一样直接写不过要换成驼峰式 tab-index =&gt; tabIndex，React 16 以后还支持自定义属性。</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;div tabindex=&quot;-1&quot; className=&quot;test&quot; /&gt;\n\n&lt;div mycustomattribute=&quot;something&quot; /&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">tabindex</span>="<span class="pl-s">-1</span>" <span class="pl-c1">className</span>="<span class="pl-s">test</span>" <span class="pl-kos">/&gt;</span>\n\n<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">mycustomattribute</span>="<span class="pl-s">something</span>" <span class="pl-kos">/&gt;</span></pre></div>\n<p dir="auto"><strong>绑定事件</strong>:改成驼峰<code class="notranslate">onClick</code>这样的形式，同时传入一个函数</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;button onClick={this.handleClick}&gt;Activate Lasers&lt;/button&gt;"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleClick</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>Activate Lasers<span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">&gt;</span></pre></div>\n<blockquote>\n<p dir="auto">阻止默认事件需要显式使用： <code class="notranslate">e.preventDefault();</code></p>\n</blockquote>\n<p dir="auto"><strong>Vue</strong></p>\n<p dir="auto"><strong>遍历渲染: v-for</strong></p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template&gt;\n  &lt;li v-else-if=&quot;githubStar.length &gt;1&quot; v-for=&quot;(record, index) in githubStar&quot;&gt;\n    &lt;a :href=&quot;record.html_url&quot; :class=&quot;index&lt;3?\'red\':\'\'&quot;&gt;\n      {{ record.name }}\n    &lt;/a&gt;\n    ({{ record.stargazers_count }} stars)\n    &lt;br /&gt;\n    &lt;p v-if=&quot;index&lt;3&quot; style=&quot;color: #000;&quot;&gt;{{ record.description }}&lt;/p&gt;\n    &lt;p v-else style=&quot;color: #333;&quot;&gt;{{ record.description }}&lt;/p&gt;\n  &lt;/li&gt;\n&lt;/template&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">template</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">li</span> <span class="pl-c1">v-else-if</span>="<span class="pl-s">githubStar.length &gt;1</span>" <span class="pl-c1">v-for</span>="<span class="pl-s">(record, index) in githubStar</span>"<span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">:href</span>="<span class="pl-s">record.html_url</span>" <span class="pl-c1">:class</span>="<span class="pl-s">index&lt;3?\'red\':\'\'</span>"<span class="pl-kos">&gt;</span>\n      {{ record.name }}\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n    ({{ record.stargazers_count }} stars)\n    <span class="pl-kos">&lt;</span><span class="pl-ent">br</span> <span class="pl-kos">/&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">v-if</span>="<span class="pl-s">index&lt;3</span>" <span class="pl-c1">style</span>="<span class="pl-s">color: #000;</span>"<span class="pl-kos">&gt;</span>{{ record.description }}<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">p</span> <span class="pl-c1">v-else</span> <span class="pl-c1">style</span>="<span class="pl-s">color: #333;</span>"<span class="pl-kos">&gt;</span>{{ record.description }}<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">li</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">template</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto"><strong>条件渲染</strong></p>\n<ol dir="auto">\n<li><code class="notranslate">vue-if</code> 系列</li>\n</ol>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;div v-if=&quot;type === \'A\'&quot;&gt;\n  A\n&lt;/div&gt;\n&lt;div v-else-if=&quot;type === \'B\'&quot;&gt;\n  B\n&lt;/div&gt;\n&lt;div v-else-if=&quot;type === \'C\'&quot;&gt;\n  C\n&lt;/div&gt;\n&lt;div v-else&gt;\n  Not A/B/C\n&lt;/div&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">v-if</span>="<span class="pl-s">type === \'A\'</span>"<span class="pl-kos">&gt;</span>\n  A\n<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">v-else-if</span>="<span class="pl-s">type === \'B\'</span>"<span class="pl-kos">&gt;</span>\n  B\n<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">v-else-if</span>="<span class="pl-s">type === \'C\'</span>"<span class="pl-kos">&gt;</span>\n  C\n<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">v-else</span><span class="pl-kos">&gt;</span>\n  Not A/B/C\n<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></pre></div>\n<ol start="2" dir="auto">\n<li><code class="notranslate">v-show</code></li>\n</ol>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;h1 v-show=&quot;ok&quot;&gt;Hello!&lt;/h1&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">h1</span> <span class="pl-c1">v-show</span>="<span class="pl-s">ok</span>"<span class="pl-kos">&gt;</span>Hello!<span class="pl-kos">&lt;/</span><span class="pl-ent">h1</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">与 <code class="notranslate">v-if</code>的逻辑显示不同，<code class="notranslate">v-show</code>只是简单地切换元素的 CSS 属性 display</p>\n<blockquote>\n<p dir="auto">注意，v-show 不支持 <code class="notranslate">&lt;template&gt;</code> 元素，也不支持 v-else</p>\n</blockquote>\n<p dir="auto"><strong>html 属性：需要用 v-bind 来指定</strong></p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!-- 完整语法 --&gt;\n&lt;a v-bind:href=&quot;url&quot;&gt;...&lt;/a&gt;\n\n&lt;!-- 缩写 --&gt;\n&lt;a :href=&quot;url&quot;&gt;...&lt;/a&gt;\n&lt;div :id=&quot;dynamicId&quot;&gt;&lt;/div&gt;\n&lt;img :src=&quot;imageSrc&quot; /&gt;\n&lt;div :style=&quot;{ fontSize: size + \'px\' }&quot;&gt;&lt;/div&gt;"><pre class="notranslate"><span class="pl-c">&lt;!-- 完整语法 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">v-bind:href</span>="<span class="pl-s">url</span>"<span class="pl-kos">&gt;</span>...<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n\n<span class="pl-c">&lt;!-- 缩写 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">:href</span>="<span class="pl-s">url</span>"<span class="pl-kos">&gt;</span>...<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">:id</span>="<span class="pl-s">dynamicId</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">img</span> <span class="pl-c1">:src</span>="<span class="pl-s">imageSrc</span>" <span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">:style</span>="<span class="pl-s">{ fontSize: size + \'px\' }</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto"><strong>绑定事件</strong>:v-on</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!-- 完整语法 --&gt;\n&lt;button v-on:click=&quot;doThat(\'hello\', $event)&quot;&gt;&lt;/button&gt;\n\n&lt;!-- 缩写语句 --&gt;\n&lt;button @click=&quot;doThat(\'hello\', $event)&quot;&gt;&lt;/button&gt;"><pre class="notranslate"><span class="pl-c">&lt;!-- 完整语法 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">v-on:click</span>="<span class="pl-s">doThat(\'hello\', $event)</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>\n\n<span class="pl-c">&lt;!-- 缩写语句 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">@click</span>="<span class="pl-s">doThat(\'hello\', $event)</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">事件修饰符：</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!-- 停止冒泡 --&gt;\n&lt;button @click.stop=&quot;doThis&quot;&gt;&lt;/button&gt;\n&lt;!-- 阻止默认行为 --&gt;\n&lt;button @click.prevent=&quot;doThis&quot;&gt;&lt;/button&gt;\n&lt;!-- 阻止默认行为，没有表达式 --&gt;\n&lt;form @submit.prevent&gt;&lt;/form&gt;\n&lt;!-- 点击回调只会触发一次 --&gt;\n&lt;button v-on:click.once=&quot;doThis&quot;&gt;&lt;/button&gt;\n&lt;!-- 键修饰符，键别名 --&gt;\n&lt;input @keyup.enter=&quot;onEnter&quot; /&gt;\n&lt;!--  串联修饰符 --&gt;\n&lt;button @click.stop.prevent=&quot;doThis&quot;&gt;&lt;/button&gt;"><pre class="notranslate"><span class="pl-c">&lt;!-- 停止冒泡 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">@click.stop</span>="<span class="pl-s">doThis</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>\n<span class="pl-c">&lt;!-- 阻止默认行为 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">@click.prevent</span>="<span class="pl-s">doThis</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>\n<span class="pl-c">&lt;!-- 阻止默认行为，没有表达式 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">form</span> <span class="pl-c1">@submit.prevent</span><span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">form</span><span class="pl-kos">&gt;</span>\n<span class="pl-c">&lt;!-- 点击回调只会触发一次 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">v-on:click.once</span>="<span class="pl-s">doThis</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span>\n<span class="pl-c">&lt;!-- 键修饰符，键别名 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">@keyup.enter</span>="<span class="pl-s">onEnter</span>" <span class="pl-kos">/&gt;</span>\n<span class="pl-c">&lt;!--  串联修饰符 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">button</span> <span class="pl-c1">@click.stop.prevent</span>="<span class="pl-s">doThis</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">button</span><span class="pl-kos">&gt;</span></pre></div>\n<h2 id="main-heading-H2-4">3.流通管道 Props</h2>\n<p dir="auto"><strong>React</strong></p>\n<p dir="auto">React 的 props 如果是静态的就直接传字符串，动态的就用变量<code class="notranslate">{}</code>来传,还可以传入方法(在子组件上 props 属性获取)。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Test extends React.Component {\n   constructor(super) {\n     super(props);\n\t   this.state = { name : \'daisy\'}\n   }\n   onClick( ) =&gt; {\n      console.log(&quot;onClick&quot;);\n   }\n   render() {\n     return (\n\t      &lt;Welcome name=&quot;Sara&quot; /&gt;;\n        &lt;Welcome name={this.state.name} /&gt;;\n        &lt;Welcome handleClick={this.onClick} /&gt;;\n        // 子组件使用的时候，直接this.props.handleClick()就可以了。\n\t  )\n   }\n}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Test</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n   <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-smi">super</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n     <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\t   <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span> : <span class="pl-s">\'daisy\'</span><span class="pl-kos">}</span>\n   <span class="pl-kos">}</span>\n   <span class="pl-en">onClick</span><span class="pl-kos">(</span> <span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"onClick"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n   <span class="pl-kos">}</span>\n   <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n     <span class="pl-k">return</span> <span class="pl-kos">(</span>\n\t      <span class="pl-c1">&lt;</span><span class="pl-v">Welcome</span> <span class="pl-c1">name</span><span class="pl-c1">=</span><span class="pl-s">"Sara"</span> <span class="pl-kos">/&gt;</span><span class="pl-kos"></span><span class="pl-kos">;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">Welcome</span> <span class="pl-c1">name</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span><span class="pl-kos">;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-v">Welcome</span> <span class="pl-c1">handleClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">onClick</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span><span class="pl-kos">;</span>\n        <span class="pl-c">// 子组件使用的时候，直接this.props.handleClick()就可以了。</span>\n\t  <span class="pl-kos">)</span>\n   <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>Vue</strong></p>\n<p dir="auto">传入的值 title 为一个常量(静态 prop)时，不加 v-bind</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;blog-post title=&quot;My journey with Vue&quot;&gt;&lt;/blog-post&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">blog-post</span> <span class="pl-c1">title</span>="<span class="pl-s">My journey with Vue</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">blog-post</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">传入的值 title 为一个变量(动态 prop)时，加 v-bind(此时传递的才是变量，然后 vue 会去 data 里找这个值)</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;blog-post v-bind:title=&quot;titleValue&quot;&gt;&lt;/blog-post&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">blog-post</span> <span class="pl-c1">v-bind:title</span>="<span class="pl-s">titleValue</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">blog-post</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">传入方法的话，一样要使用 v-on，子组件要用 emit 方法来触发。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;Welcome v-on:handleClick=&quot;onClick&quot; /&gt;;\n\n// 子组件里要用$emit方法来触发它\n&lt;button v-on:click=&quot;$emit(\'handleClick\')&quot;&gt;Enlarge text&lt;/button&gt;;"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-v">Welcome</span> <span class="pl-s1">v-on</span>:<span class="pl-s1">handleClick</span><span class="pl-c1">=</span><span class="pl-s">"onClick"</span> <span class="pl-kos">/&gt;</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 子组件里要用$emit方法来触发它</span>\n<span class="pl-c1">&lt;</span><span class="pl-s1">button</span> <span class="pl-s1">v-on</span>:<span class="pl-s1">click</span><span class="pl-c1">=</span><span class="pl-s">"$emit(\'handleClick\')"</span><span class="pl-c1">&gt;</span>Enlarge text<span class="pl-kos">&lt;/</span><span class="pl-s1">button</span><span class="pl-c1">&gt;</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-5">4. 内部状态 State</h2>\n<p dir="auto"><strong>React</strong></p>\n<p dir="auto">在 React，组件内部自己维护的状态叫 State，不能直接去改内部状态 state，而是通过<code class="notranslate">setState</code></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class Test extends React.Component() {\n constructor(props) {\n   // super一定要写，继承React.Component\n    super(props);\n\t// state在里面定义\n\tthis.state = { name : \'daisy\' };\n  }\n  changeName () =&gt; {\n     this.setState({ name: \'Lily\' })\n  }\n  render() {\n    return (\n      &lt;div className=&quot;shopping-list&quot; onClick={this.changeName}&gt;\n          {this.state.name}\n      &lt;/div&gt;\n    )\n  }\n}"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">Test</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-en">Component</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n   <span class="pl-c">// super一定要写，继承React.Component</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\t<span class="pl-c">// state在里面定义</span>\n\t<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span> : <span class="pl-s">\'daisy\'</span> <span class="pl-kos">}</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">changeName</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n     <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">\'Lily\'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"shopping-list"</span> <span class="pl-c1">onClick</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">changeName</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>\n          <span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">name</span><span class="pl-kos">}</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>Vue</strong></p>\n<p dir="auto">在 Vue, 组件内部自己维护的状态其实就是 Data。如果要改的话，直接在方法里通过 this 或者是通过 vue 对象来改。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var vm = new Vue({\n  el: \'#app\',\n  //  用于给 View 提供数据，相当于React的state\n  data: {\n    msg: \'Hello Vue\'\n  },\n  method: {\n    changeMsg: function() {\n      this.msg = \'Hello daisy\';\n    }\n  }\n});\n\n// 或者\nvm.msg = \'daisy\';"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">vm</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">el</span>: <span class="pl-s">\'#app\'</span><span class="pl-kos">,</span>\n  <span class="pl-c">//  用于给 View 提供数据，相当于React的state</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">msg</span>: <span class="pl-s">\'Hello Vue\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">method</span>: <span class="pl-kos">{</span>\n    <span class="pl-en">changeMsg</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">msg</span> <span class="pl-c1">=</span> <span class="pl-s">\'Hello daisy\'</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n\n<span class="pl-c">// 或者</span>\n<span class="pl-s1">vm</span><span class="pl-kos">.</span><span class="pl-c1">msg</span> <span class="pl-c1">=</span> <span class="pl-s">\'daisy\'</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto">Vue 除了在 Data 里定义的属性之外，还额外定义计算属性跟侦听属性</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 计算属性, reversedMessage 属性将会监听 message 的改变，而自动重新计算\nvar vm = new Vue({\n  el: \'#example\',\n  data: {\n    message: \'Hello\'\n  },\n  computed: {\n    reversedMessage: function () {\n      return this.message.split(\'\').reverse().join(\'\')\n    }\n  }\n})\n\n&lt;div id=&quot;example&quot;&gt;\n  { reversedMessage }\n&lt;/div&gt;"><pre class="notranslate"><span class="pl-c">// 计算属性, reversedMessage 属性将会监听 message 的改变，而自动重新计算</span>\n<span class="pl-k">var</span> <span class="pl-s1">vm</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">el</span>: <span class="pl-s">\'#example\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">message</span>: <span class="pl-s">\'Hello\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">computed</span>: <span class="pl-kos">{</span>\n    <span class="pl-en">reversedMessage</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">\'\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">reverse</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">\'\'</span><span class="pl-kos">)</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n<span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-s1">id</span><span class="pl-c1">=</span><span class="pl-s">"example"</span><span class="pl-c1">&gt;</span>\n  <span class="pl-kos">{</span> reversedMessage <span class="pl-kos">}</span>\n<span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-s">d</span><span class="pl-s">i</span><span class="pl-s">v</span><span class="pl-s">&gt;</span></pre></div>\n<p dir="auto"><strong>为啥 React 不需要这个属性呢？</strong></p>\n<p dir="auto">因为 React 有 render 函数，你可以在里面随便多定义一个变量。<br>\n每一次 this.state.message 改变的时候，都一定会调用 render 函数重新渲染，所以就相当于重新计算 reversedMessage 了。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="render() {\n   const reversedMessage = this.state.message.split(\'\').reverse().join(\'\')\n    return (\n      &lt;div className=&quot;shopping-list&quot;&gt;\n        {reversedMessage}\n      &lt;/div&gt;\n    )\n  }"><pre class="notranslate"><span class="pl-en">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n   <span class="pl-k">const</span> <span class="pl-s1">reversedMessage</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">message</span><span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span><span class="pl-s">\'\'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">reverse</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">\'\'</span><span class="pl-kos">)</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">className</span><span class="pl-c1">=</span><span class="pl-s">"shopping-list"</span><span class="pl-c1">&gt;</span>\n        <span class="pl-kos">{</span><span class="pl-s1">reversedMessage</span><span class="pl-kos">}</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span>\n  <span class="pl-kos">}</span></pre></div>\n<p dir="auto"><strong>侦听属性</strong>感觉跟计算属性很像，但是他们又有不同。<br>\n侦听属性是为了可以监听到数据的改变，然后做一些异步的或者开销大的操作。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="var watchExampleVM = new Vue({\n  el: \'#watch-example\',\n  data: {\n    question: \'aaa\'\n  },\n  watch: {\n    // 如果 `question` 发生改变，这个函数就会运行\n    question: function(newQuestion, oldQuestion) {\n      this.getAnswer();\n    }\n  },\n  methods: {\n    getAnswer: function() {\n      // AJax 请求\n    }\n  }\n});"><pre class="notranslate"><span class="pl-k">var</span> <span class="pl-s1">watchExampleVM</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">el</span>: <span class="pl-s">\'#watch-example\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">question</span>: <span class="pl-s">\'aaa\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">watch</span>: <span class="pl-kos">{</span>\n    <span class="pl-c">// 如果 `question` 发生改变，这个函数就会运行</span>\n    <span class="pl-en">question</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">newQuestion</span><span class="pl-kos">,</span> <span class="pl-s1">oldQuestion</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getAnswer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">methods</span>: <span class="pl-kos">{</span>\n    <span class="pl-en">getAnswer</span>: <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// AJax 请求</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>同样的问题，为啥 React 不需要这个属性呢？</strong></p>\n<p dir="auto">因为 React 里已经有方法可以做到了。<br>\nReact 15 的版本，可以通过 componentWillReceiveProps 来实现</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="componentWillReceiveProps(nextProps) {\n    if (nextProps.id !== this.props.id) {\n    \tthis.setState({externalData: null});\n      this._loadAsyncData(nextProps.id);\n    }\n  }"><pre class="notranslate"><span class="pl-en">componentWillReceiveProps</span><span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">.</span><span class="pl-c1">id</span> <span class="pl-c1">!==</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    \t<span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-c1">externalData</span>: <span class="pl-c1">null</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">_loadAsyncData</span><span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span></pre></div>\n<p dir="auto">React 16 的版本，可以通过 <code class="notranslate">getDerivedStateFromProps</code>，<code class="notranslate">componentDidUpdate</code> 来实现。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="static getDerivedStateFromProps(nextProps, prevState) {\n    // Store prevId in state so we can compare when props change.\n    if (nextProps.id !== prevState.prevId) {\n      return {\n        externalData: null,\n        prevId: nextProps.id,\n      };\n    }\n    // No state update necessary\n    return null;\n  }\n  componentDidUpdate(prevProps, prevState) {\n    if (this.state.externalData === null) {\n      this._loadAsyncData(this.props.id);\n    }\n  }"><pre class="notranslate"><span class="pl-k">static</span> <span class="pl-en">getDerivedStateFromProps</span><span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">,</span> <span class="pl-s1">prevState</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// Store prevId in state so we can compare when props change.</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">nextProps</span><span class="pl-kos">.</span><span class="pl-c1">id</span> <span class="pl-c1">!==</span> <span class="pl-s1">prevState</span><span class="pl-kos">.</span><span class="pl-c1">prevId</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">externalData</span>: <span class="pl-c1">null</span><span class="pl-kos">,</span>\n        <span class="pl-c1">prevId</span>: <span class="pl-s1">nextProps</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-c">// No state update necessary</span>\n    <span class="pl-k">return</span> <span class="pl-c1">null</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n  <span class="pl-en">componentDidUpdate</span><span class="pl-kos">(</span><span class="pl-s1">prevProps</span><span class="pl-kos">,</span> <span class="pl-s1">prevState</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">externalData</span> <span class="pl-c1">===</span> <span class="pl-c1">null</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">_loadAsyncData</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">props</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-6">5. 双向绑定</h2>\n<p dir="auto"><strong>React</strong></p>\n<p dir="auto">html 标签<code class="notranslate">&lt;input&gt;</code>, <code class="notranslate">&lt;textarea&gt;</code> , 和 <code class="notranslate">&lt;select&gt;</code> 使用受控组件，<code class="notranslate">setState</code>同步更新<code class="notranslate">onChange</code>后的 value</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class NameForm extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {value: \'\'};\n\n    this.handleChange = this.handleChange.bind(this);\n    this.handleSubmit = this.handleSubmit.bind(this);\n  }\n\n  // 这里通过setState去改变state的值\n  handleChange(event) {\n    this.setState({value: event.target.value});\n  }\n\n  handleSubmit(event) {\n    alert(\'提交的名字: \' + this.state.value);\n    event.preventDefault();\n  }\n\n  render() {\n    return (\n      &lt;form onSubmit={this.handleSubmit}&gt;\n        &lt;label&gt;\n          名字:\n\t\t  // 当input的值发生改变的时候就会调用handleChange\n\t\t  // 通过state改变value的值，所以这里的显示会随用户\n\t\t  // 的输入更新而更新\n          &lt;input type=&quot;text&quot; value={this.state.value} onChange={this.handleChange} /&gt;\n        &lt;/label&gt;\n        &lt;input type=&quot;submit&quot; value=&quot;提交&quot; /&gt;\n      &lt;/form&gt;\n    );"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">NameForm</span> <span class="pl-k">extends</span> <span class="pl-v">React</span><span class="pl-kos">.</span><span class="pl-c1">Component</span> <span class="pl-kos">{</span>\n  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-s1">props</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span><span class="pl-c1">value</span>: <span class="pl-s">\'\'</span><span class="pl-kos">}</span><span class="pl-kos">;</span>\n\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleSubmit</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleSubmit</span><span class="pl-kos">.</span><span class="pl-en">bind</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-c">// 这里通过setState去改变state的值</span>\n  <span class="pl-en">handleChange</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setState</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-c1">value</span>: <span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-c1">target</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-en">handleSubmit</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-en">alert</span><span class="pl-kos">(</span><span class="pl-s">\'提交的名字: \'</span> <span class="pl-c1">+</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-en">preventDefault</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span>\n\n  <span class="pl-c1">render</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">return</span> <span class="pl-kos">(</span>\n      <span class="pl-c1">&lt;</span><span class="pl-s1">form</span> <span class="pl-c1">onSubmit</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleSubmit</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">label</span><span class="pl-c1">&gt;</span>\n          名字:\n\t\t  // 当input的值发生改变的时候就会调用handleChange\n\t\t  // 通过state改变value的值，所以这里的显示会随用户\n\t\t  // 的输入更新而更新\n          <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"text"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">state</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">}</span> <span class="pl-c1">onChange</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">handleChange</span><span class="pl-kos">}</span> <span class="pl-kos">/&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-s1">label</span><span class="pl-c1">&gt;</span>\n        <span class="pl-c1">&lt;</span><span class="pl-s1">input</span> <span class="pl-c1">type</span><span class="pl-c1">=</span><span class="pl-s">"submit"</span> <span class="pl-c1">value</span><span class="pl-c1">=</span><span class="pl-s">"提交"</span> <span class="pl-kos">/&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-s1">form</span><span class="pl-c1">&gt;</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>Vue</strong></p>\n<p dir="auto">vue 采用 <code class="notranslate">v-model</code> 的形式</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;input v-model=&quot;message&quot; placeholder=&quot;edit me&quot; /&gt;\n&lt;p&gt;Message is: {{ message }}&lt;/p&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">v-model</span>="<span class="pl-s">message</span>" <span class="pl-c1">placeholder</span>="<span class="pl-s">edit me</span>" <span class="pl-kos">/&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>Message is: {{ message }}<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span></pre></div>\n<p dir="auto">实际上 v-model 是一个语法糖， 上面可以翻译成：</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="`&lt;input :value=&quot;message&quot; @input=&quot;message = $event.targer.value&quot; /&gt;`"><pre class="notranslate">`<span class="pl-kos">&lt;</span><span class="pl-ent">input</span> <span class="pl-c1">:value</span>="<span class="pl-s">message</span>" <span class="pl-c1">@input</span>="<span class="pl-s">message = $event.targer.value</span>" <span class="pl-kos">/&gt;</span>`</pre></div>\n<blockquote>\n<p dir="auto">input 本身有个 oninput 事件，每当输入框发生变化，就会触发 onput,将最新的 value 传给他。</p>\n</blockquote>\n<p dir="auto">此外，v-model 在内部为不同的输入元素使用不同的属性并抛出不同的事件：</p>\n<ul dir="auto">\n<li>input 和 textarea 元素使用 value 属性和 input 事件；</li>\n<li>checkbox 和 radio 使用 checked 属性和 change 事件；</li>\n<li>select 字段将 value 作为 prop 并将 change 作为事件。</li>\n</ul>\n<p dir="auto">v-model 不仅仅可以用在原生 html 元素上，还可以用在组件上。用在组件上的时候 v-on 用于监听事件，emit 用来触发事件。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;div id=&quot;demo&quot;&gt;\n  &lt;currency-input v-model=&quot;price&quot;&gt;&lt;/currentcy-input&gt;\n  // 相当于是&lt;currency-input :value=&quot;price&quot; v-on:input=&quot;price = arguments[0]&quot;&gt;&lt;/currentcy-input&gt;\n  // 这里用v-on监听事件，相当于传给了子组件value，还有input方法\n  &lt;span&gt;{{price}}&lt;/span&gt;\n&lt;/div&gt;\nVue.component(\'currency-input\', {\n  template: `\n    &lt;span&gt;\n      &lt;input\n        ref=&quot;input&quot;\n        :value=&quot;value&quot; // 这里将父组件传来的value赋值给input的value\n        @input=&quot;$emit(\'input\', $event.target.value)&quot; // 这里去触发input方法\n      &gt;\n    &lt;/span&gt;\n  `,\n  props: [\'value\'],\n})\n\nvar demo = new Vue({\n  el: \'#demo\',\n  data: {\n    price: 100,\n  }\n})"><pre class="notranslate"><span class="pl-c1">&lt;</span><span class="pl-s1">div</span> <span class="pl-c1">id</span><span class="pl-c1">=</span><span class="pl-s">"demo"</span><span class="pl-c1">&gt;</span>\n  <span class="pl-c1">&lt;</span><span class="pl-s1">currency-input</span> <span class="pl-c1">v-model</span><span class="pl-c1">=</span><span class="pl-s">"price"</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-s1">currentcy-input</span><span class="pl-c1">&gt;</span>\n  // 相当于是<span class="pl-c1">&lt;</span><span class="pl-s1">currency-input</span> :<span class="pl-s1">value</span><span class="pl-c1">=</span>"<span class="pl-c1">price</span>" <span class="pl-s1">v-on</span>:<span class="pl-s1">input</span><span class="pl-c1">=</span><span class="pl-s">"price = arguments[0]"</span><span class="pl-c1">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-s1">currentcy-input</span><span class="pl-c1">&gt;</span>\n  // 这里用v-on监听事件，相当于传给了子组件value，还有input方法\n  <span class="pl-c1">&lt;</span><span class="pl-s1">span</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-kos">{</span>price<span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">&lt;/</span><span class="pl-s1">span</span><span class="pl-c1">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-s1">div</span><span class="pl-c1">&gt;</span>\n<span class="pl-v">Vue</span><span class="pl-kos">.</span><span class="pl-en">component</span><span class="pl-kos">(</span><span class="pl-s">\'currency-input\'</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">template</span>: <span class="pl-s">`</span>\n<span class="pl-s">    &lt;span&gt;</span>\n<span class="pl-s">      &lt;input</span>\n<span class="pl-s">        ref="input"</span>\n<span class="pl-s">        :value="value" // 这里将父组件传来的value赋值给input的value</span>\n<span class="pl-s">        @input="$emit(\'input\', $event.target.value)" // 这里去触发input方法</span>\n<span class="pl-s">      &gt;</span>\n<span class="pl-s">    &lt;/span&gt;</span>\n<span class="pl-s">  `</span><span class="pl-kos">,</span>\n  <span class="pl-c1">props</span>: <span class="pl-kos">[</span><span class="pl-s">\'value\'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span>\n\n<span class="pl-k">var</span> <span class="pl-s1">demo</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Vue</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">el</span>: <span class="pl-s">\'#demo\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">price</span>: <span class="pl-c1">100</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span></pre></div>\n<h2 id="main-heading-H2-7">6. 生命周期</h2>\n<p dir="auto">React、vue 的生命周期都大同小异，主要就是创建 -&gt; 更新 -&gt; 销毁。具体一些名字不同而已。</p>\n<h4 dir="auto">参考</h4>\n<ul dir="auto">\n<li><a href="https://zhuanlan.zhihu.com/p/70888985" rel="nofollow">https://zhuanlan.zhihu.com/p/70888985</a></li>\n<li><a href="https://juejin.im/post/5b8b56e3f265da434c1f5f76" rel="nofollow">https://juejin.im/post/5b8b56e3f265da434c1f5f76</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:n,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/86"},navList:[{text:"1.创建组件",id:"main-heading-H2-0",type:a,children:[{text:"React",id:"main-heading-H3-1",type:"H3"},{text:"Vue",id:"main-heading-H3-2",type:"H3"}]},{text:"2. 模板语法",id:"main-heading-H2-3",type:a,children:[]},{text:"3.流通管道 Props",id:"main-heading-H2-4",type:a,children:[]},{text:"4. 内部状态 State",id:"main-heading-H2-5",type:a,children:[]},{text:"5. 双向绑定",id:"main-heading-H2-6",type:a,children:[]},{text:"6. 生命周期",id:"main-heading-H2-7",type:a,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:l,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:l,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:n}},serverRendered:!0}}("","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

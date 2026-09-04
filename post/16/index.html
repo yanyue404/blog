@@ -1,0 +1,513 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>babel使用全纪录 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="说明 在react项目中使用ant-design的时候，配置import antd/dist/antd.css的babel-plugin-import 插件并未成功导入，搞的很心烦，环境配置不通,此篇将babel的使用梳理一遍！！！ 配置文件.babelrc Babel的配置文件是.babelrc，"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="babel使用全纪录"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="说明 在react项目中使用ant-design的时候，配置import antd/dist/antd.css的babel-plugin-import 插件并未成功导入，搞的很心烦，环境配置不通,此篇将babel的使用梳理一遍！！！ 配置文件.babelrc Babel的配置文件是.babelrc，"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="babel使用全纪录"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="说明 在react项目中使用ant-design的时候，配置import antd/dist/antd.css的babel-plugin-import 插件并未成功导入，搞的很心烦，环境配置不通,此篇将babel的使用梳理一遍！！！ 配置文件.babelrc Babel的配置文件是.babelrc，"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H2-0" title="说明" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              说明
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H2-1" title="配置文件.babelrc" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              配置文件.babelrc
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H2-2" title="命令行转码babel-cli" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              命令行转码babel-cli
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H2-3" title="babel-node" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              babel-node
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H2-4" title="babel-core" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              babel-core
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H2-5" title="babel-polyfill" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              babel-polyfill
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H2-6" title="webpack 和 babel 配置 react 开发环境" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              webpack 和 babel 配置 react 开发环境
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H3-7" title="1. 安装" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. 安装
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H3-8" title="2. 建立 babel" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. 建立 babel
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H3-9" title="3.webpack配置" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.webpack配置
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H2-10" title="补充：eslint" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              补充：eslint
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H3-11" title="1.安装" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1.安装
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H3-12" title="2.eslint结合webpack配置" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2.eslint结合webpack配置
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H3-13" title="3.eslintrc.json规则配置" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3.eslintrc.json规则配置
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H3-14" title="4.package.json检查eslint语法" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4.package.json检查eslint语法
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/16#main-heading-H3-15" title="5.eslint结合babel" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5.eslint结合babel
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>babel使用全纪录</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>babel使用全纪录</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2018-03-20</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 14 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">说明</h2>
+<p dir="auto">在react项目中使用<code class="notranslate">ant-design</code>的时候，配置<code class="notranslate">import antd/dist/antd.css</code>的<code class="notranslate">babel-plugin-import</code> 插件并未成功导入，搞的很心烦，环境配置不通,此篇将babel的使用梳理一遍！！！</p>
+<h2 id="main-heading-H2-1">配置文件.babelrc</h2>
+<p dir="auto">Babel的配置文件是<code class="notranslate">.babelrc</code>，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。</p>
+<p dir="auto">cmd命令行创建</p>
+<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" touch .babelrc"><pre class="notranslate"> touch .babelrc</pre></div>
+<p dir="auto">该文件用来设置转码规则和插件，基本格式如下。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "presets": [],
+  "plugins": []
+}'><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-s">"presets"</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-s">"plugins"</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">presets字段设定转码规则，官方提供以下的规则集，你可以根据需要安装。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# ES2015转码规则
+$ npm install --save-dev babel-preset-es2015
+
+# react转码规则
+$ npm install --save-dev babel-preset-react
+
+# ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个
+$ npm install --save-dev babel-preset-stage-0
+$ npm install --save-dev babel-preset-stage-1
+$ npm install --save-dev babel-preset-stage-2
+$ npm install --save-dev babel-preset-stage-3"><pre class="notranslate"># <span class="pl-v">ES2015转码规则</span>
+<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">es2015</span>
+
+# <span class="pl-s1">react转码规则</span>
+<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">react</span>
+
+# <span class="pl-v">ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个</span>
+<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">stage</span><span class="pl-c1">-</span><span class="pl-c1">0</span>
+<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">stage</span><span class="pl-c1">-</span><span class="pl-c1">1</span>
+<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">stage</span><span class="pl-c1">-</span><span class="pl-c1">2</span>
+<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">stage</span><span class="pl-c1">-</span><span class="pl-c1">3</span></pre></div>
+<p dir="auto">将规则写入<code class="notranslate">.babelrc</code></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=' {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-2"
+    ],
+    "plugins": []
+  }'><pre class="notranslate"> <span class="pl-kos">{</span>
+    <span class="pl-s">"presets"</span>: <span class="pl-kos">[</span>
+      <span class="pl-s">"es2015"</span><span class="pl-kos">,</span>
+      <span class="pl-s">"react"</span><span class="pl-kos">,</span>
+      <span class="pl-s">"stage-2"</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-s">"plugins"</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span>
+  <span class="pl-kos">}</span></pre></div>
+<p dir="auto">注意，以下所有Babel工具和模块的使用，都必须先写好<code class="notranslate">.babelrc</code>。</p>
+<h2 id="main-heading-H2-2">命令行转码babel-cli</h2>
+<p dir="auto">Babel提供<code class="notranslate">babel-cli</code>工具，用于命令行转码。<br>
+听阮老师的，在全局环境和当前项目环境都安装。</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 全局
+$ npm install --global babel-cli
+
+# 本地
+$ npm install --save-dev babel-cli"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 全局</span>
+$ npm install --global babel-cli
+
+<span class="pl-c"><span class="pl-c">#</span> 本地</span>
+$ npm install --save-dev babel-cli</pre></div>
+<h4 dir="auto">基本用法</h4>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 转码结果输出到标准输出
+$ babel example.js
+
+# 转码结果写入一个文件
+# --out-file 或 -o 参数指定输出文件
+$ babel example.js --out-file compiled.js
+# 或者
+$ babel example.js -o compiled.js
+
+# 整个目录转码
+# --out-dir 或 -d 参数指定输出目录
+$ babel src --out-dir lib
+# 或者
+$ babel src -d lib
+
+# -s 参数生成source map文件
+$ babel src -d lib -s"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 转码结果输出到标准输出</span>
+$ babel example.js
+
+<span class="pl-c"><span class="pl-c">#</span> 转码结果写入一个文件</span>
+<span class="pl-c"><span class="pl-c">#</span> --out-file 或 -o 参数指定输出文件</span>
+$ babel example.js --out-file compiled.js
+<span class="pl-c"><span class="pl-c">#</span> 或者</span>
+$ babel example.js -o compiled.js
+
+<span class="pl-c"><span class="pl-c">#</span> 整个目录转码</span>
+<span class="pl-c"><span class="pl-c">#</span> --out-dir 或 -d 参数指定输出目录</span>
+$ babel src --out-dir lib
+<span class="pl-c"><span class="pl-c">#</span> 或者</span>
+$ babel src -d lib
+
+<span class="pl-c"><span class="pl-c">#</span> -s 参数生成source map文件</span>
+$ babel src -d lib -s</pre></div>
+<h5 dir="auto">demo</h5>
+<ol dir="auto">
+<li>es6</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const arr = [1,2,3];
+arr.forEach(item=>{
+  console.log(item+1)
+})"><pre class="notranslate"><code class="notranslate">const arr = [1,2,3];
+arr.forEach(item=>{
+  console.log(item+1)
+})
+</code></pre></div>
+<ol start="2" dir="auto">
+<li>.babelrc,使用<code class="notranslate">es2015</code>转码规则</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='{
+  "presets": [
+    "es2015"
+  ],
+  "plugins": []
+}'><pre class="notranslate"><code class="notranslate">{
+  "presets": [
+    "es2015"
+  ],
+  "plugins": []
+}
+</code></pre></div>
+<ol start="3" dir="auto">
+<li>package.json添加命令</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='{
+  // ...
+  "devDependencies": {
+    "babel-cli": "^6.0.0"
+  },
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+}'><pre class="notranslate"><code class="notranslate">{
+  // ...
+  "devDependencies": {
+    "babel-cli": "^6.0.0"
+  },
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+}
+</code></pre></div>
+<p dir="auto">最后，转码<code class="notranslate">npm run build</code></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='"use strict";
+
+var arr = [1, 2, 3];
+arr.forEach(function (item) {
+  console.log(item + 1);
+});'><pre class="notranslate"><code class="notranslate">"use strict";
+
+var arr = [1, 2, 3];
+arr.forEach(function (item) {
+  console.log(item + 1);
+});
+</code></pre></div>
+<blockquote>
+<p dir="auto">转码对应的在与src同级目录的lib目录下编译所有的文件。</p>
+</blockquote>
+<h2 id="main-heading-H2-3">babel-node</h2>
+<p dir="auto">babel-cli工具自带一个<code class="notranslate">babel-node</code>命令，提供一个支持ES6的REPL环境。它支持Node的REPL环境的所有功能，而且可以直接运行ES6代码。</p>
+<p dir="auto">它不用单独安装，而是随babel-cli一起安装。然后，执行babel-node就进入PEPL环境。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ babel-node
+> (x => x * 2)(1)
+2"><pre class="notranslate"><code class="notranslate">$ babel-node
+> (x => x * 2)(1)
+2
+</code></pre></div>
+<p dir="auto">babel-node命令可以直接运行ES6脚本。将上面的代码放入脚本文件es6.js，然后直接运行。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ babel-node es6.js
+2"><pre class="notranslate"><code class="notranslate">$ babel-node es6.js
+2
+</code></pre></div>
+<p dir="auto">babel-node也可以安装在项目中。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ npm install --save-dev babel-cli"><pre class="notranslate"><code class="notranslate">$ npm install --save-dev babel-cli
+</code></pre></div>
+<p dir="auto">然后，改写package.json。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content='{
+  "scripts": {
+    "script-name": "babel-node script.js"
+  }
+}'><pre class="notranslate"><code class="notranslate">{
+  "scripts": {
+    "script-name": "babel-node script.js"
+  }
+}
+</code></pre></div>
+<p dir="auto">上面代码中，使用babel-node替代node，这样script.js本身就不用做任何转码处理。</p>
+<h2 id="main-heading-H2-4">babel-core</h2>
+<p dir="auto">如果某些代码需要调用Babel的API进行转码，就要使用babel-core模块。</p>
+<p dir="auto">安装命令如下。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="
+$ npm install babel-core --save"><pre class="notranslate"><code class="notranslate">
+$ npm install babel-core --save
+</code></pre></div>
+<p dir="auto">然后，在项目中就可以调用babel-core。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="var babel = require('babel-core');
+
+// 字符串转码
+babel.transform('code();', options);
+// => { code, map, ast }
+
+// 文件转码（异步）
+babel.transformFile('filename.js', options, function(err, result) {
+  result; // => { code, map, ast }
+});
+
+// 文件转码（同步）
+babel.transformFileSync('filename.js', options);
+// => { code, map, ast }
+
+// Babel AST转码
+babel.transformFromAst(ast, code, options);
+// => { code, map, ast }"><pre class="notranslate"><code class="notranslate">var babel = require('babel-core');
+
+// 字符串转码
+babel.transform('code();', options);
+// => { code, map, ast }
+
+// 文件转码（异步）
+babel.transformFile('filename.js', options, function(err, result) {
+  result; // => { code, map, ast }
+});
+
+// 文件转码（同步）
+babel.transformFileSync('filename.js', options);
+// => { code, map, ast }
+
+// Babel AST转码
+babel.transformFromAst(ast, code, options);
+// => { code, map, ast }
+</code></pre></div>
+<p dir="auto">配置对象options，可以参看<a href="http://babeljs.io/docs/usage/options/" rel="nofollow">官方文档</a>。</p>
+<p dir="auto">下面是一个例子。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="var es6Code = 'let x = n => n + 1';
+var es5Code = require('babel-core')
+  .transform(es6Code, {
+    presets: ['es2015']
+  })
+  .code;
+// '&#34;use strict&#34;;\n\nvar x = function x(n) {\n  return n + 1;\n};'"><pre class="notranslate"><code class="notranslate">var es6Code = 'let x = n => n + 1';
+var es5Code = require('babel-core')
+  .transform(es6Code, {
+    presets: ['es2015']
+  })
+  .code;
+// '"use strict";\n\nvar x = function x(n) {\n  return n + 1;\n};'
+</code></pre></div>
+<p dir="auto">上面代码中，transform方法的第一个参数是一个字符串，表示需要转换的ES6代码，第二个参数是转换的配置对象。</p>
+<h2 id="main-heading-H2-5">babel-polyfill</h2>
+<p dir="auto">Babel默认只转换新的JavaScript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。</p>
+<p dir="auto">举例来说，ES6在Array对象上新增了Array.from方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用babel-polyfill，为当前环境提供一个垫片。</p>
+<p dir="auto">安装命令如下。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="
+$ npm install --save babel-polyfill"><pre class="notranslate"><code class="notranslate">
+$ npm install --save babel-polyfill
+</code></pre></div>
+<p dir="auto">然后，在脚本头部，加入如下一行代码。</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import 'babel-polyfill';
+// 或者
+require('babel-polyfill');"><pre class="notranslate"><code class="notranslate">import 'babel-polyfill';
+// 或者
+require('babel-polyfill');
+</code></pre></div>
+<p dir="auto">Babel默认不转码的API非常多，详细清单可以查看 <code class="notranslate">babel-plugin-transform-runtime</code>模块的<a href="https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-runtime/src/definitions.js">definitions.js</a>文件。</p>
+<h2 id="main-heading-H2-6">webpack 和 babel 配置 react 开发环境</h2>
+<h3 id="main-heading-H3-7">1. 安装</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save react react-dom
+$ npm install --save-dev babel-cli babel-core babel-preset-react babel-preset-es2015 babel-preset-stage-0 babel-plugin-transform-runtime"><pre class="notranslate">$ npm install --save react react-dom
+$ npm install --save-dev babel-cli babel-core babel-preset-react babel-preset-es2015 babel-preset-stage-0 babel-plugin-transform-runtime</pre></div>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=' "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+  }'><pre class="notranslate"> <span class="pl-ent">"devDependencies"</span>: {
+    <span class="pl-ent">"babel-cli"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.26.0<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"babel-core"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.26.0<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"babel-loader"</span>: <span class="pl-s"><span class="pl-pds">"</span>^7.1.2<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"babel-plugin-transform-runtime"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.23.0<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"babel-preset-es2015"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.24.1<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"babel-preset-react"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.24.1<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"babel-preset-stage-0"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.24.1<span class="pl-pds">"</span></span>,
+  }</pre></div>
+<h3 id="main-heading-H3-8">2. 建立 babel</h3>
+<p dir="auto">创建 .babelrc 文件。</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "presets": ["es2015", "stage-0"],
+  "plugins": [
+    ["transform-runtime"] 
+  ]
+}'><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-s">"presets"</span>: <span class="pl-kos">[</span><span class="pl-s">"es2015"</span><span class="pl-kos">,</span> <span class="pl-s">"stage-0"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-s">"plugins"</span>: <span class="pl-kos">[</span>
+    <span class="pl-kos">[</span><span class="pl-s">"transform-runtime"</span><span class="pl-kos">]</span> 
+  <span class="pl-kos">]</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-9">3.webpack配置</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...
+module: {
+    rules:[
+        {
+        test: /\.js[x]?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'stage-0', 'react'],
+            plugins: ['transform-runtime'],
+          },
+        },
+      },
+    ]
+}"><pre class="notranslate">...
+module: <span class="pl-kos">{</span>
+    <span class="pl-c1">rules</span>:<span class="pl-kos">[</span>
+        <span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-kos">[</span><span class="pl-c1">x</span><span class="pl-kos">]</span><span class="pl-c1">?</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">exclude</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">use</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">loader</span>: <span class="pl-s">'babel-loader'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">options</span>: <span class="pl-kos">{</span>
+            <span class="pl-c1">presets</span>: <span class="pl-kos">[</span><span class="pl-s">'es2015'</span><span class="pl-kos">,</span> <span class="pl-s">'stage-0'</span><span class="pl-kos">,</span> <span class="pl-s">'react'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+            <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span><span class="pl-s">'transform-runtime'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span>
+<span class="pl-kos">}</span></pre></div>
+<h2 id="main-heading-H2-10">补充：eslint</h2>
+<h3 id="main-heading-H3-11">1.安装</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install eslint --save-dev
+npm install eslint-plugin-import eslint-config-airbnb-base --save-dev"><pre class="notranslate">npm install eslint --save-dev
+npm install eslint-plugin-import eslint-config-airbnb-base --save-dev</pre></div>
+<h3 id="main-heading-H3-12">2.eslint结合webpack配置</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...
+module: {
+    rules:[
+         {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        loader: 'eslint-loader',
+      },
+    ]
+}"><pre class="notranslate">...
+module: <span class="pl-kos">{</span>
+    <span class="pl-c1">rules</span>:<span class="pl-kos">[</span>
+         <span class="pl-kos">{</span>
+        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">exclude</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-kos">(</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-kos">)</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>
+        <span class="pl-c1">loader</span>: <span class="pl-s">'eslint-loader'</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span>
+<span class="pl-kos">}</span></pre></div>
+<h3 id="main-heading-H3-13">3.eslintrc.json规则配置</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="touch .eslintrc.json
+touch .eslintignore"><pre class="notranslate">touch .eslintrc.json
+touch .eslintignore</pre></div>
+<p dir="auto">.eslintrc.json</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "semi": 2,
+    "no-console": 1,
+    ...
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"extends"</span>: <span class="pl-s"><span class="pl-pds">"</span>airbnb-base<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"env"</span>: {
+    <span class="pl-ent">"browser"</span>: <span class="pl-c1">true</span>
+  },
+  <span class="pl-ent">"parserOptions"</span>: {
+    <span class="pl-ent">"ecmaVersion"</span>: <span class="pl-c1">6</span>,
+    <span class="pl-ent">"sourceType"</span>: <span class="pl-s"><span class="pl-pds">"</span>module<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"ecmaFeatures"</span>: {
+      <span class="pl-ent">"jsx"</span>: <span class="pl-c1">true</span>,
+      <span class="pl-ent">"experimentalObjectRestSpread"</span>: <span class="pl-c1">true</span>
+    }
+  },
+  <span class="pl-ent">"rules"</span>: {
+    <span class="pl-ent">"semi"</span>: <span class="pl-c1">2</span>,
+    <span class="pl-ent">"no-console"</span>: <span class="pl-c1">1</span>,
+    <span class="pl-ii">...</span>
+  }
+}</pre></div>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install eslint-loader --save-dev"><pre class="notranslate">npm install eslint-loader --save-dev</pre></div>
+<h3 id="main-heading-H3-14">4.package.json检查eslint语法</h3>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=' ...
+ "scripts": {
+    "lint": "eslint **/*.js",
+    "lint-html": "eslint **/*.js -f html -o ./reports/lint-results.html",
+    "lint-fix": "eslint --fix **/*.js"
+  },
+  ...'><pre class="notranslate"> <span class="pl-ii">...</span>
+ <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"lint"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint **/*.js<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"lint-html"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint **/*.js -f html -o ./reports/lint-results.html<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"lint-fix"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint --fix **/*.js<span class="pl-pds">"</span></span>
+  },
+  <span class="pl-ii">...</span></pre></div>
+<h3 id="main-heading-H3-15">5.eslint结合babel</h3>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install babel-eslint --save-dev"><pre class="notranslate">npm install babel-eslint --save-dev</pre></div>
+<p dir="auto">然后创建或使用项目现有的 .eslintrc.json 文件并设置 parser 为 babel-eslint。.</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='  {
++   "parser": "babel-eslint",
+    "rules": {
+      ...
+    }
+  }'><pre class="notranslate">  <span class="pl-kos">{</span>
+<span class="pl-c1">+</span>   <span class="pl-s">"parser"</span>: <span class="pl-s">"babel-eslint"</span><span class="pl-kos">,</span>
+    <span class="pl-s">"rules"</span>: <span class="pl-kos">{</span>
+      ...
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span></pre></div>
+<h4 dir="auto">参考链接</h4>
+<ul dir="auto">
+<li><a href="https://babeljs.io/docs/plugins/preset-react/" rel="nofollow">React preset</a></li>
+<li><a href="https://reactjs.org/docs/try-react.html" rel="nofollow">React Installation</a></li>
+</ul>
+<h4 dir="auto">userful links</h4>
+<ul dir="auto">
+<li><a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" rel="nofollow">http://www.ruanyifeng.com/blog/2016/01/babel.html</a></li>
+<li><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/README.md">Babel 手册</a></li>
+<li><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md#toc-introduction">https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md#toc-introduction</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,n,p,l,e){return{layout:"default",data:[{post:{id:306785645,number:16,title:"babel使用全纪录",created_at:"2018-03-20T09:25:28Z",updated_at:"2025-11-23T15:49:53Z",body_html:'<h2 id="main-heading-H2-0">说明</h2>\n<p dir="auto">在react项目中使用<code class="notranslate">ant-design</code>的时候，配置<code class="notranslate">import antd/dist/antd.css</code>的<code class="notranslate">babel-plugin-import</code> 插件并未成功导入，搞的很心烦，环境配置不通,此篇将babel的使用梳理一遍！！！</p>\n<h2 id="main-heading-H2-1">配置文件.babelrc</h2>\n<p dir="auto">Babel的配置文件是<code class="notranslate">.babelrc</code>，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。</p>\n<p dir="auto">cmd命令行创建</p>\n<div class="highlight highlight-source-batchfile notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" touch .babelrc"><pre class="notranslate"> touch .babelrc</pre></div>\n<p dir="auto">该文件用来设置转码规则和插件，基本格式如下。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;presets&quot;: [],\n  &quot;plugins&quot;: []\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-s">"presets"</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-s">"plugins"</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">presets字段设定转码规则，官方提供以下的规则集，你可以根据需要安装。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# ES2015转码规则\n$ npm install --save-dev babel-preset-es2015\n\n# react转码规则\n$ npm install --save-dev babel-preset-react\n\n# ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个\n$ npm install --save-dev babel-preset-stage-0\n$ npm install --save-dev babel-preset-stage-1\n$ npm install --save-dev babel-preset-stage-2\n$ npm install --save-dev babel-preset-stage-3"><pre class="notranslate"># <span class="pl-v">ES2015转码规则</span>\n<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">es2015</span>\n\n# <span class="pl-s1">react转码规则</span>\n<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">react</span>\n\n# <span class="pl-v">ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个</span>\n<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">stage</span><span class="pl-c1">-</span><span class="pl-c1">0</span>\n<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">stage</span><span class="pl-c1">-</span><span class="pl-c1">1</span>\n<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">stage</span><span class="pl-c1">-</span><span class="pl-c1">2</span>\n<span class="pl-s1">$</span> <span class="pl-s1">npm</span> <span class="pl-s1">install</span> <span class="pl-c1">--</span><span class="pl-s1">save</span><span class="pl-c1">-</span><span class="pl-s1">dev</span> <span class="pl-s1">babel</span><span class="pl-c1">-</span><span class="pl-s1">preset</span><span class="pl-c1">-</span><span class="pl-s1">stage</span><span class="pl-c1">-</span><span class="pl-c1">3</span></pre></div>\n<p dir="auto">将规则写入<code class="notranslate">.babelrc</code></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" {\n    &quot;presets&quot;: [\n      &quot;es2015&quot;,\n      &quot;react&quot;,\n      &quot;stage-2&quot;\n    ],\n    &quot;plugins&quot;: []\n  }"><pre class="notranslate"> <span class="pl-kos">{</span>\n    <span class="pl-s">"presets"</span>: <span class="pl-kos">[</span>\n      <span class="pl-s">"es2015"</span><span class="pl-kos">,</span>\n      <span class="pl-s">"react"</span><span class="pl-kos">,</span>\n      <span class="pl-s">"stage-2"</span>\n    <span class="pl-kos">]</span><span class="pl-kos">,</span>\n    <span class="pl-s">"plugins"</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span>\n  <span class="pl-kos">}</span></pre></div>\n<p dir="auto">注意，以下所有Babel工具和模块的使用，都必须先写好<code class="notranslate">.babelrc</code>。</p>\n<h2 id="main-heading-H2-2">命令行转码babel-cli</h2>\n<p dir="auto">Babel提供<code class="notranslate">babel-cli</code>工具，用于命令行转码。<br>\n听阮老师的，在全局环境和当前项目环境都安装。</p>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 全局\n$ npm install --global babel-cli\n\n# 本地\n$ npm install --save-dev babel-cli"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 全局</span>\n$ npm install --global babel-cli\n\n<span class="pl-c"><span class="pl-c">#</span> 本地</span>\n$ npm install --save-dev babel-cli</pre></div>\n<h4 dir="auto">基本用法</h4>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# 转码结果输出到标准输出\n$ babel example.js\n\n# 转码结果写入一个文件\n# --out-file 或 -o 参数指定输出文件\n$ babel example.js --out-file compiled.js\n# 或者\n$ babel example.js -o compiled.js\n\n# 整个目录转码\n# --out-dir 或 -d 参数指定输出目录\n$ babel src --out-dir lib\n# 或者\n$ babel src -d lib\n\n# -s 参数生成source map文件\n$ babel src -d lib -s"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 转码结果输出到标准输出</span>\n$ babel example.js\n\n<span class="pl-c"><span class="pl-c">#</span> 转码结果写入一个文件</span>\n<span class="pl-c"><span class="pl-c">#</span> --out-file 或 -o 参数指定输出文件</span>\n$ babel example.js --out-file compiled.js\n<span class="pl-c"><span class="pl-c">#</span> 或者</span>\n$ babel example.js -o compiled.js\n\n<span class="pl-c"><span class="pl-c">#</span> 整个目录转码</span>\n<span class="pl-c"><span class="pl-c">#</span> --out-dir 或 -d 参数指定输出目录</span>\n$ babel src --out-dir lib\n<span class="pl-c"><span class="pl-c">#</span> 或者</span>\n$ babel src -d lib\n\n<span class="pl-c"><span class="pl-c">#</span> -s 参数生成source map文件</span>\n$ babel src -d lib -s</pre></div>\n<h5 dir="auto">demo</h5>\n<ol dir="auto">\n<li>es6</li>\n</ol>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const arr = [1,2,3];\narr.forEach(item=&gt;{\n  console.log(item+1)\n})"><pre class="notranslate"><code class="notranslate">const arr = [1,2,3];\narr.forEach(item=&gt;{\n  console.log(item+1)\n})\n</code></pre></div>\n<ol start="2" dir="auto">\n<li>.babelrc,使用<code class="notranslate">es2015</code>转码规则</li>\n</ol>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{\n  &quot;presets&quot;: [\n    &quot;es2015&quot;\n  ],\n  &quot;plugins&quot;: []\n}"><pre class="notranslate"><code class="notranslate">{\n  "presets": [\n    "es2015"\n  ],\n  "plugins": []\n}\n</code></pre></div>\n<ol start="3" dir="auto">\n<li>package.json添加命令</li>\n</ol>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{\n  // ...\n  &quot;devDependencies&quot;: {\n    &quot;babel-cli&quot;: &quot;^6.0.0&quot;\n  },\n  &quot;scripts&quot;: {\n    &quot;build&quot;: &quot;babel src -d lib&quot;\n  },\n}"><pre class="notranslate"><code class="notranslate">{\n  // ...\n  "devDependencies": {\n    "babel-cli": "^6.0.0"\n  },\n  "scripts": {\n    "build": "babel src -d lib"\n  },\n}\n</code></pre></div>\n<p dir="auto">最后，转码<code class="notranslate">npm run build</code></p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="&quot;use strict&quot;;\n\nvar arr = [1, 2, 3];\narr.forEach(function (item) {\n  console.log(item + 1);\n});"><pre class="notranslate"><code class="notranslate">"use strict";\n\nvar arr = [1, 2, 3];\narr.forEach(function (item) {\n  console.log(item + 1);\n});\n</code></pre></div>\n<blockquote>\n<p dir="auto">转码对应的在与src同级目录的lib目录下编译所有的文件。</p>\n</blockquote>\n<h2 id="main-heading-H2-3">babel-node</h2>\n<p dir="auto">babel-cli工具自带一个<code class="notranslate">babel-node</code>命令，提供一个支持ES6的REPL环境。它支持Node的REPL环境的所有功能，而且可以直接运行ES6代码。</p>\n<p dir="auto">它不用单独安装，而是随babel-cli一起安装。然后，执行babel-node就进入PEPL环境。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ babel-node\n&gt; (x =&gt; x * 2)(1)\n2"><pre class="notranslate"><code class="notranslate">$ babel-node\n&gt; (x =&gt; x * 2)(1)\n2\n</code></pre></div>\n<p dir="auto">babel-node命令可以直接运行ES6脚本。将上面的代码放入脚本文件es6.js，然后直接运行。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ babel-node es6.js\n2"><pre class="notranslate"><code class="notranslate">$ babel-node es6.js\n2\n</code></pre></div>\n<p dir="auto">babel-node也可以安装在项目中。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ npm install --save-dev babel-cli"><pre class="notranslate"><code class="notranslate">$ npm install --save-dev babel-cli\n</code></pre></div>\n<p dir="auto">然后，改写package.json。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{\n  &quot;scripts&quot;: {\n    &quot;script-name&quot;: &quot;babel-node script.js&quot;\n  }\n}"><pre class="notranslate"><code class="notranslate">{\n  "scripts": {\n    "script-name": "babel-node script.js"\n  }\n}\n</code></pre></div>\n<p dir="auto">上面代码中，使用babel-node替代node，这样script.js本身就不用做任何转码处理。</p>\n<h2 id="main-heading-H2-4">babel-core</h2>\n<p dir="auto">如果某些代码需要调用Babel的API进行转码，就要使用babel-core模块。</p>\n<p dir="auto">安装命令如下。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="\n$ npm install babel-core --save"><pre class="notranslate"><code class="notranslate">\n$ npm install babel-core --save\n</code></pre></div>\n<p dir="auto">然后，在项目中就可以调用babel-core。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="var babel = require(\'babel-core\');\n\n// 字符串转码\nbabel.transform(\'code();\', options);\n// =&gt; { code, map, ast }\n\n// 文件转码（异步）\nbabel.transformFile(\'filename.js\', options, function(err, result) {\n  result; // =&gt; { code, map, ast }\n});\n\n// 文件转码（同步）\nbabel.transformFileSync(\'filename.js\', options);\n// =&gt; { code, map, ast }\n\n// Babel AST转码\nbabel.transformFromAst(ast, code, options);\n// =&gt; { code, map, ast }"><pre class="notranslate"><code class="notranslate">var babel = require(\'babel-core\');\n\n// 字符串转码\nbabel.transform(\'code();\', options);\n// =&gt; { code, map, ast }\n\n// 文件转码（异步）\nbabel.transformFile(\'filename.js\', options, function(err, result) {\n  result; // =&gt; { code, map, ast }\n});\n\n// 文件转码（同步）\nbabel.transformFileSync(\'filename.js\', options);\n// =&gt; { code, map, ast }\n\n// Babel AST转码\nbabel.transformFromAst(ast, code, options);\n// =&gt; { code, map, ast }\n</code></pre></div>\n<p dir="auto">配置对象options，可以参看<a href="http://babeljs.io/docs/usage/options/" rel="nofollow">官方文档</a>。</p>\n<p dir="auto">下面是一个例子。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="var es6Code = \'let x = n =&gt; n + 1\';\nvar es5Code = require(\'babel-core\')\n  .transform(es6Code, {\n    presets: [\'es2015\']\n  })\n  .code;\n// \'&quot;use strict&quot;;\\n\\nvar x = function x(n) {\\n  return n + 1;\\n};\'"><pre class="notranslate"><code class="notranslate">var es6Code = \'let x = n =&gt; n + 1\';\nvar es5Code = require(\'babel-core\')\n  .transform(es6Code, {\n    presets: [\'es2015\']\n  })\n  .code;\n// \'"use strict";\\n\\nvar x = function x(n) {\\n  return n + 1;\\n};\'\n</code></pre></div>\n<p dir="auto">上面代码中，transform方法的第一个参数是一个字符串，表示需要转换的ES6代码，第二个参数是转换的配置对象。</p>\n<h2 id="main-heading-H2-5">babel-polyfill</h2>\n<p dir="auto">Babel默认只转换新的JavaScript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。</p>\n<p dir="auto">举例来说，ES6在Array对象上新增了Array.from方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用babel-polyfill，为当前环境提供一个垫片。</p>\n<p dir="auto">安装命令如下。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="\n$ npm install --save babel-polyfill"><pre class="notranslate"><code class="notranslate">\n$ npm install --save babel-polyfill\n</code></pre></div>\n<p dir="auto">然后，在脚本头部，加入如下一行代码。</p>\n<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import \'babel-polyfill\';\n// 或者\nrequire(\'babel-polyfill\');"><pre class="notranslate"><code class="notranslate">import \'babel-polyfill\';\n// 或者\nrequire(\'babel-polyfill\');\n</code></pre></div>\n<p dir="auto">Babel默认不转码的API非常多，详细清单可以查看 <code class="notranslate">babel-plugin-transform-runtime</code>模块的<a href="https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-runtime/src/definitions.js">definitions.js</a>文件。</p>\n<h2 id="main-heading-H2-6">webpack 和 babel 配置 react 开发环境</h2>\n<h3 id="main-heading-H3-7">1. 安装</h3>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm install --save react react-dom\n$ npm install --save-dev babel-cli babel-core babel-preset-react babel-preset-es2015 babel-preset-stage-0 babel-plugin-transform-runtime"><pre class="notranslate">$ npm install --save react react-dom\n$ npm install --save-dev babel-cli babel-core babel-preset-react babel-preset-es2015 babel-preset-stage-0 babel-plugin-transform-runtime</pre></div>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" &quot;devDependencies&quot;: {\n    &quot;babel-cli&quot;: &quot;^6.26.0&quot;,\n    &quot;babel-core&quot;: &quot;^6.26.0&quot;,\n    &quot;babel-loader&quot;: &quot;^7.1.2&quot;,\n    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.23.0&quot;,\n    &quot;babel-preset-es2015&quot;: &quot;^6.24.1&quot;,\n    &quot;babel-preset-react&quot;: &quot;^6.24.1&quot;,\n    &quot;babel-preset-stage-0&quot;: &quot;^6.24.1&quot;,\n  }"><pre class="notranslate"> <span class="pl-ent">"devDependencies"</span>: {\n    <span class="pl-ent">"babel-cli"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.26.0<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"babel-core"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.26.0<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"babel-loader"</span>: <span class="pl-s"><span class="pl-pds">"</span>^7.1.2<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"babel-plugin-transform-runtime"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.23.0<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"babel-preset-es2015"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.24.1<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"babel-preset-react"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.24.1<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"babel-preset-stage-0"</span>: <span class="pl-s"><span class="pl-pds">"</span>^6.24.1<span class="pl-pds">"</span></span>,\n  }</pre></div>\n<h3 id="main-heading-H3-8">2. 建立 babel</h3>\n<p dir="auto">创建 .babelrc 文件。</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;presets&quot;: [&quot;es2015&quot;, &quot;stage-0&quot;],\n  &quot;plugins&quot;: [\n    [&quot;transform-runtime&quot;] \n  ]\n}"><pre class="notranslate"><span class="pl-kos">{</span>\n  <span class="pl-s">"presets"</span>: <span class="pl-kos">[</span><span class="pl-s">"es2015"</span><span class="pl-kos">,</span> <span class="pl-s">"stage-0"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-s">"plugins"</span>: <span class="pl-kos">[</span>\n    <span class="pl-kos">[</span><span class="pl-s">"transform-runtime"</span><span class="pl-kos">]</span> \n  <span class="pl-kos">]</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-9">3.webpack配置</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...\nmodule: {\n    rules:[\n        {\n        test: /\\.js[x]?$/,\n        exclude: /node_modules/,\n        use: {\n          loader: \'babel-loader\',\n          options: {\n            presets: [\'es2015\', \'stage-0\', \'react\'],\n            plugins: [\'transform-runtime\'],\n          },\n        },\n      },\n    ]\n}"><pre class="notranslate">...\nmodule: <span class="pl-kos">{</span>\n    <span class="pl-c1">rules</span>:<span class="pl-kos">[</span>\n        <span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-kos">[</span><span class="pl-c1">x</span><span class="pl-kos">]</span><span class="pl-c1">?</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">exclude</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">use</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">loader</span>: <span class="pl-s">\'babel-loader\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">options</span>: <span class="pl-kos">{</span>\n            <span class="pl-c1">presets</span>: <span class="pl-kos">[</span><span class="pl-s">\'es2015\'</span><span class="pl-kos">,</span> <span class="pl-s">\'stage-0\'</span><span class="pl-kos">,</span> <span class="pl-s">\'react\'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n            <span class="pl-c1">plugins</span>: <span class="pl-kos">[</span><span class="pl-s">\'transform-runtime\'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span>\n<span class="pl-kos">}</span></pre></div>\n<h2 id="main-heading-H2-10">补充：eslint</h2>\n<h3 id="main-heading-H3-11">1.安装</h3>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install eslint --save-dev\nnpm install eslint-plugin-import eslint-config-airbnb-base --save-dev"><pre class="notranslate">npm install eslint --save-dev\nnpm install eslint-plugin-import eslint-config-airbnb-base --save-dev</pre></div>\n<h3 id="main-heading-H3-12">2.eslint结合webpack配置</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="...\nmodule: {\n    rules:[\n         {\n        test: /\\.js$/,\n        exclude: /(node_modules)/,\n        loader: \'eslint-loader\',\n      },\n    ]\n}"><pre class="notranslate">...\nmodule: <span class="pl-kos">{</span>\n    <span class="pl-c1">rules</span>:<span class="pl-kos">[</span>\n         <span class="pl-kos">{</span>\n        <span class="pl-c1">test</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\\.</span><span class="pl-s">j</span><span class="pl-s">s</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">exclude</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-kos">(</span><span class="pl-s">n</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">e</span><span class="pl-s">_</span><span class="pl-s">m</span><span class="pl-s">o</span><span class="pl-s">d</span><span class="pl-s">u</span><span class="pl-s">l</span><span class="pl-s">e</span><span class="pl-s">s</span><span class="pl-kos">)</span><span class="pl-c1">/</span></span><span class="pl-kos">,</span>\n        <span class="pl-c1">loader</span>: <span class="pl-s">\'eslint-loader\'</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-kos">]</span>\n<span class="pl-kos">}</span></pre></div>\n<h3 id="main-heading-H3-13">3.eslintrc.json规则配置</h3>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="touch .eslintrc.json\ntouch .eslintignore"><pre class="notranslate">touch .eslintrc.json\ntouch .eslintignore</pre></div>\n<p dir="auto">.eslintrc.json</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;extends&quot;: &quot;airbnb-base&quot;,\n  &quot;env&quot;: {\n    &quot;browser&quot;: true\n  },\n  &quot;parserOptions&quot;: {\n    &quot;ecmaVersion&quot;: 6,\n    &quot;sourceType&quot;: &quot;module&quot;,\n    &quot;ecmaFeatures&quot;: {\n      &quot;jsx&quot;: true,\n      &quot;experimentalObjectRestSpread&quot;: true\n    }\n  },\n  &quot;rules&quot;: {\n    &quot;semi&quot;: 2,\n    &quot;no-console&quot;: 1,\n    ...\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"extends"</span>: <span class="pl-s"><span class="pl-pds">"</span>airbnb-base<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"env"</span>: {\n    <span class="pl-ent">"browser"</span>: <span class="pl-c1">true</span>\n  },\n  <span class="pl-ent">"parserOptions"</span>: {\n    <span class="pl-ent">"ecmaVersion"</span>: <span class="pl-c1">6</span>,\n    <span class="pl-ent">"sourceType"</span>: <span class="pl-s"><span class="pl-pds">"</span>module<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"ecmaFeatures"</span>: {\n      <span class="pl-ent">"jsx"</span>: <span class="pl-c1">true</span>,\n      <span class="pl-ent">"experimentalObjectRestSpread"</span>: <span class="pl-c1">true</span>\n    }\n  },\n  <span class="pl-ent">"rules"</span>: {\n    <span class="pl-ent">"semi"</span>: <span class="pl-c1">2</span>,\n    <span class="pl-ent">"no-console"</span>: <span class="pl-c1">1</span>,\n    <span class="pl-ii">...</span>\n  }\n}</pre></div>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install eslint-loader --save-dev"><pre class="notranslate">npm install eslint-loader --save-dev</pre></div>\n<h3 id="main-heading-H3-14">4.package.json检查eslint语法</h3>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=" ...\n &quot;scripts&quot;: {\n    &quot;lint&quot;: &quot;eslint **/*.js&quot;,\n    &quot;lint-html&quot;: &quot;eslint **/*.js -f html -o ./reports/lint-results.html&quot;,\n    &quot;lint-fix&quot;: &quot;eslint --fix **/*.js&quot;\n  },\n  ..."><pre class="notranslate"> <span class="pl-ii">...</span>\n <span class="pl-ent">"scripts"</span>: {\n    <span class="pl-ent">"lint"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint **/*.js<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"lint-html"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint **/*.js -f html -o ./reports/lint-results.html<span class="pl-pds">"</span></span>,\n    <span class="pl-ent">"lint-fix"</span>: <span class="pl-s"><span class="pl-pds">"</span>eslint --fix **/*.js<span class="pl-pds">"</span></span>\n  },\n  <span class="pl-ii">...</span></pre></div>\n<h3 id="main-heading-H3-15">5.eslint结合babel</h3>\n<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install babel-eslint --save-dev"><pre class="notranslate">npm install babel-eslint --save-dev</pre></div>\n<p dir="auto">然后创建或使用项目现有的 .eslintrc.json 文件并设置 parser 为 babel-eslint。.</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="  {\n+   &quot;parser&quot;: &quot;babel-eslint&quot;,\n    &quot;rules&quot;: {\n      ...\n    }\n  }"><pre class="notranslate">  <span class="pl-kos">{</span>\n<span class="pl-c1">+</span>   <span class="pl-s">"parser"</span>: <span class="pl-s">"babel-eslint"</span><span class="pl-kos">,</span>\n    <span class="pl-s">"rules"</span>: <span class="pl-kos">{</span>\n      ...\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span></pre></div>\n<h4 dir="auto">参考链接</h4>\n<ul dir="auto">\n<li><a href="https://babeljs.io/docs/plugins/preset-react/" rel="nofollow">React preset</a></li>\n<li><a href="https://reactjs.org/docs/try-react.html" rel="nofollow">React Installation</a></li>\n</ul>\n<h4 dir="auto">userful links</h4>\n<ul dir="auto">\n<li><a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" rel="nofollow">http://www.ruanyifeng.com/blog/2016/01/babel.html</a></li>\n<li><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/README.md">Babel 手册</a></li>\n<li><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md#toc-introduction">https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md#toc-introduction</a></li>\n</ul>',user:{login:p,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:854606991,node_id:"MDU6TGFiZWw4NTQ2MDY5OTE=",url:"https://api.github.com/repos/yanyue404/blog/labels/JavaScript",name:"JavaScript",color:"0e8a16",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/16"},navList:[{text:"说明",id:"main-heading-H2-0",type:a,children:[]},{text:"配置文件.babelrc",id:"main-heading-H2-1",type:a,children:[]},{text:"命令行转码babel-cli",id:"main-heading-H2-2",type:a,children:[]},{text:"babel-node",id:"main-heading-H2-3",type:a,children:[]},{text:"babel-core",id:"main-heading-H2-4",type:a,children:[]},{text:"babel-polyfill",id:"main-heading-H2-5",type:a,children:[]},{text:"webpack 和 babel 配置 react 开发环境",id:"main-heading-H2-6",type:a,children:[{text:"1. 安装",id:"main-heading-H3-7",type:n},{text:"2. 建立 babel",id:"main-heading-H3-8",type:n},{text:"3.webpack配置",id:"main-heading-H3-9",type:n}]},{text:"补充：eslint",id:"main-heading-H2-10",type:a,children:[{text:"1.安装",id:"main-heading-H3-11",type:n},{text:"2.eslint结合webpack配置",id:"main-heading-H3-12",type:n},{text:"3.eslintrc.json规则配置",id:"main-heading-H3-13",type:n},{text:"4.package.json检查eslint语法",id:"main-heading-H3-14",type:n},{text:"5.eslint结合babel",id:"main-heading-H3-15",type:n}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:p,userEmail:"1656800216@qq.com",repository:"blog",blogName:e,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:e,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H2","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

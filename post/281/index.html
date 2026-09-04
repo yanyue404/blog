@@ -1,0 +1,1075 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>JSON 与 JSON Schema：从结构到规范的转换之旅 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="什么是 JSON Schema？ JSON Schema 是对 JSON 数据格式的描述和规范，提供了一种方式来约束和明确数据的类型和结构。可以把 JSON Schema 看作是 JSON 格式的一种“类型系统”，它就像 TypeScript 对 JavaScript 的作用一样。 数据类型 在 J"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="JSON 与 JSON Schema：从结构到规范的转换之旅"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="什么是 JSON Schema？ JSON Schema 是对 JSON 数据格式的描述和规范，提供了一种方式来约束和明确数据的类型和结构。可以把 JSON Schema 看作是 JSON 格式的一种“类型系统”，它就像 TypeScript 对 JavaScript 的作用一样。 数据类型 在 J"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="JSON 与 JSON Schema：从结构到规范的转换之旅"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="什么是 JSON Schema？ JSON Schema 是对 JSON 数据格式的描述和规范，提供了一种方式来约束和明确数据的类型和结构。可以把 JSON Schema 看作是 JSON 格式的一种“类型系统”，它就像 TypeScript 对 JavaScript 的作用一样。 数据类型 在 J"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H2-0" title="什么是 JSON Schema？" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              什么是 JSON Schema？
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H3-1" title="数据类型" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  数据类型
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H3-2" title="关键字" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  关键字
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H2-3" title="JSON Schema 的应用场景" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              JSON Schema 的应用场景
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H2-4" title="低代码组件配置示例" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              低代码组件配置示例
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H3-5" title="1. 对象" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. 对象
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H3-6" title="2. 数组" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. 数组
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H3-7" title="3. 递归" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3. 递归
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/281#main-heading-H3-8" title="参考" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  参考
+                </a></div></li></ul></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>JSON 与 JSON Schema：从结构到规范的转换之旅</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>JSON 与 JSON Schema：从结构到规范的转换之旅</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2024-09-24</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 28 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">什么是 JSON Schema？</h2>
+<p dir="auto">JSON Schema 是对 JSON 数据格式的描述和规范，提供了一种方式来约束和明确数据的类型和结构。可以把 JSON Schema 看作是 JSON 格式的一种“类型系统”，它就像 TypeScript 对 JavaScript 的作用一样。</p>
+<h3 id="main-heading-H3-1">数据类型</h3>
+<p dir="auto">在 JSON Schema 中使用最多的是<code class="notranslate">type</code>关键字，它包含了 JSON 格式的基本类型</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>字符串型，双引号包裹的 Unicode 字符和反斜杠转义字符</td>
+</tr>
+<tr>
+<td>number</td>
+<td>数字型，包括整型(int)和浮点数型(float)</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>布尔型，true 或 false</td>
+</tr>
+<tr>
+<td>object</td>
+<td>对象型，无序的键:值对集合</td>
+</tr>
+<tr>
+<td>array</td>
+<td>数组型，有序的值序列</td>
+</tr>
+<tr>
+<td>null</td>
+<td>空型</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 id="main-heading-H3-2">关键字</h3>
+<p dir="auto">下面以 Object 类型为例，列举在 JSON Schema 中经常使用到的关键字和作用。示例 JSON Schema 如下：</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "https://example.com/schemas/person",
+  "title": "base info",
+  "description": "base information about person",
+  "type": "object",
+  "required": ["name", "age", "phone"],
+  "definitions": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10
+    },
+    "age": {
+      "type": "number",
+      "minimum": 18,
+      "exclusiveMinimum": true,
+      "maximum": 65,
+      "exclusiveMaximum": true
+    },
+    "phone": {
+      "type": "string",
+      "pattern": "^1\\d{10}$"
+    },
+    "parents": {
+      "type": "array",
+      "items": [{ "$ref": "#/definitions/name" }],
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string",
+          "enum": ["guangzhou", "beijing"]
+        }
+      }
+    }
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"$schema"</span>: <span class="pl-s"><span class="pl-pds">"</span>http://json-schema.org/draft-04/schema#<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"$id"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://example.com/schemas/person<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>base info<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>base information about person<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"required"</span>: [<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>age<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span>],
+  <span class="pl-ent">"definitions"</span>: {
+    <span class="pl-ent">"name"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">1</span>,
+      <span class="pl-ent">"maxLength"</span>: <span class="pl-c1">10</span>
+    }
+  },
+  <span class="pl-ent">"properties"</span>: {
+    <span class="pl-ent">"name"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">1</span>,
+      <span class="pl-ent">"maxLength"</span>: <span class="pl-c1">10</span>
+    },
+    <span class="pl-ent">"age"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"minimum"</span>: <span class="pl-c1">18</span>,
+      <span class="pl-ent">"exclusiveMinimum"</span>: <span class="pl-c1">true</span>,
+      <span class="pl-ent">"maximum"</span>: <span class="pl-c1">65</span>,
+      <span class="pl-ent">"exclusiveMaximum"</span>: <span class="pl-c1">true</span>
+    },
+    <span class="pl-ent">"phone"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"pattern"</span>: <span class="pl-s"><span class="pl-pds">"</span>^1<span class="pl-cce">\\</span>d{10}$<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"parents"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"items"</span>: [{ <span class="pl-ent">"$ref"</span>: <span class="pl-s"><span class="pl-pds">"</span>#/definitions/name<span class="pl-pds">"</span></span> }],
+      <span class="pl-ent">"minItems"</span>: <span class="pl-c1">1</span>,
+      <span class="pl-ent">"maxItems"</span>: <span class="pl-c1">2</span>,
+      <span class="pl-ent">"uniqueItems"</span>: <span class="pl-c1">true</span>
+    },
+    <span class="pl-ent">"address"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"properties"</span>: {
+        <span class="pl-ent">"city"</span>: {
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"enum"</span>: [<span class="pl-s"><span class="pl-pds">"</span>guangzhou<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>beijing<span class="pl-pds">"</span></span>]
+        }
+      }
+    }
+  }
+}</pre></div>
+<p dir="auto">这个示例 JSON Schema 描述了一个人的基本信息对象，包含了多个字段和相应的验证规则。</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>关键字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$schema</td>
+<td>声明此 json 片段属于 JSON Schema，并遵循所声明的 JSON Schema 版本规范</td>
+</tr>
+<tr>
+<td>$id</td>
+<td>为 JSON Schema 声明一个统一资源标识符，使解析$ref 时能够引用片段</td>
+</tr>
+<tr>
+<td>title</td>
+<td>为 JSON Schema 文件提供标题</td>
+</tr>
+<tr>
+<td>description</td>
+<td>为 JSON Schema 文件提供描述信息</td>
+</tr>
+<tr>
+<td>definitions</td>
+<td>声明子 schema,使解析$ref 能够引用片段</td>
+</tr>
+<tr>
+<td>$ref</td>
+<td>引用 JSON Schema 片段</td>
+</tr>
+<tr>
+<td>required</td>
+<td>定义对象类型 properties 所声明的字段是否必须，值必须是数组，数组中的元素必须是字符串类型且唯一</td>
+</tr>
+<tr>
+<td>type</td>
+<td>定义元素的类型</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>定义对象类型里的属性(键值对)，每个字段的值都是一个有效的 schema 片段，用来限制每个字段的格式</td>
+</tr>
+<tr>
+<td>minimum</td>
+<td>约束取值范围，标识取值范围应该大于或等于 minimum</td>
+</tr>
+<tr>
+<td>exclusiveMinimum</td>
+<td>假若 minimum 或 exclusiveMinimum 同时存在，且 exclusiveMinimum 为 true，则取值范围大于 minimum</td>
+</tr>
+<tr>
+<td>maximum</td>
+<td>约束取值范围，标识取值范围应该小于或等于 maximum</td>
+</tr>
+<tr>
+<td>exclusiveMaximum</td>
+<td>假若 maximum 或 exclusiveMaximum 同时存在，且 exclusiveMaximum 为 true，则取值范围小于 maximum</td>
+</tr>
+<tr>
+<td>minLength</td>
+<td>字符串类型数据的最小长度</td>
+</tr>
+<tr>
+<td>maxLength</td>
+<td>字符串类型数据的最大长度</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>使用正则表达式约束字符串类型数据</td>
+</tr>
+<tr>
+<td>items</td>
+<td>用来定义数组类型的子元素，值必须为数组，且是一个有效的 schema 片段</td>
+</tr>
+<tr>
+<td>minItems</td>
+<td>定义数组类型大小的最小长度</td>
+</tr>
+<tr>
+<td>maxItems</td>
+<td>定义数组类型大小的最大长度</td>
+</tr>
+<tr>
+<td>uniqueItems</td>
+<td>定义数组类型子元素是否必须唯一</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>用来限制值的范围，值必须在 enum 所指定的集合里面</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">以上列举的是一些常用到的关键字。要深入了解和使用更多关键字，可以参考 <a href="https://json-schema.org/" rel="nofollow">JSON Schema 官方文档</a>。</p>
+<h2 id="main-heading-H2-3">JSON Schema 的应用场景</h2>
+<p dir="auto">JSON Schema 的优点在于可以对数据类型进行描述，方便理解。同时也让机器“读懂”，比如数据校验或、输入检测提示、自动化测试等等。</p>
+<ol dir="auto">
+<li>数据校验</li>
+</ol>
+<p dir="auto">基于 JSON Schema 提供多种校验约束条件，可以定义数据的校验规则，通过 JSON Schema 进行数据校验，多用于接口请求参数校验，表单校验，和数据校验自动化测试上</p>
+<h4 dir="auto">验证器</h4>
+<p dir="auto">JSON Schema 校验工具：<a href="https://github.com/ajv-validator/ajv">Ajv</a></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// or ESM/TypeScript import
+import Ajv from 'ajv'
+// Node.js require:
+const Ajv = require('ajv')
+
+const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
+
+const schema = {
+  type: 'object',
+  properties: {
+    foo: { type: 'integer' },
+    bar: { type: 'string' }
+  },
+  required: ['foo'],
+  additionalProperties: false
+}
+
+const data = {
+  foo: 1,
+  bar: 'abc'
+}
+
+// 最佳性能：compile 和 getSchema 方法，使用由 compile 或 getSchema 方法返回的编译函数时可以获得最佳性能。
+const validate = ajv.compile(schema)
+// 每次调用验证函数（或 ajv.validate ）时， errors属性都会被覆盖
+const valid = validate(data)
+if (!valid) console.log(validate.errors)"><pre class="notranslate"><span class="pl-c">// or ESM/TypeScript import</span>
+<span class="pl-k">import</span> <span class="pl-v">Ajv</span> <span class="pl-k">from</span> <span class="pl-s">'ajv'</span>
+<span class="pl-c">// Node.js require:</span>
+<span class="pl-k">const</span> <span class="pl-v">Ajv</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'ajv'</span><span class="pl-kos">)</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">ajv</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Ajv</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">// options can be passed, e.g. {allErrors: true}</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">schema</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">type</span>: <span class="pl-s">'object'</span><span class="pl-kos">,</span>
+  <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">foo</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">'integer'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">bar</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">'string'</span> <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">required</span>: <span class="pl-kos">[</span><span class="pl-s">'foo'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">additionalProperties</span>: <span class="pl-c1">false</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">foo</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span>
+  <span class="pl-c1">bar</span>: <span class="pl-s">'abc'</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-c">// 最佳性能：compile 和 getSchema 方法，使用由 compile 或 getSchema 方法返回的编译函数时可以获得最佳性能。</span>
+<span class="pl-k">const</span> <span class="pl-s1">validate</span> <span class="pl-c1">=</span> <span class="pl-s1">ajv</span><span class="pl-kos">.</span><span class="pl-en">compile</span><span class="pl-kos">(</span><span class="pl-s1">schema</span><span class="pl-kos">)</span>
+<span class="pl-c">// 每次调用验证函数（或 ajv.validate ）时， errors属性都会被覆盖</span>
+<span class="pl-k">const</span> <span class="pl-s1">valid</span> <span class="pl-c1">=</span> <span class="pl-s1">validate</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">valid</span><span class="pl-kos">)</span> <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">validate</span><span class="pl-kos">.</span><span class="pl-c1">errors</span><span class="pl-kos">)</span></pre></div>
+<ol start="2" dir="auto">
+<li>提供更为准确可靠的 mock 数据</li>
+</ol>
+<p dir="auto">基于 JSON Schema 提供多种校验约束条件，可以使用它原生的能力来生成更为准确可靠的 mock 数据</p>
+<p dir="auto">使用 JSON Schema 生成 mock 数据在线工具：</p>
+<ul dir="auto">
+<li><a href="https://json-schema-faker.js.org/" rel="nofollow">JSON Schema Faker</a></li>
+</ul>
+<ol start="3" dir="auto">
+<li>基于 JSON Schema 配置文件渲染 UI 组件</li>
+</ol>
+<p dir="auto">例如： <a href="https://github.com/lljj-x/vue-json-schema-form/tree/master">https://github.com/lljj-x/vue-json-schema-form/tree/master</a>, 其基于 Vue/Vue3，Json Schema 和 ElementUi/antd/iview3/naiveUi 等生成 HTML Form 表单，可用于活动编辑器、h5 编辑器、cms 等数据配置；支持可视化生成表单 Schema 。</p>
+<p dir="auto"><strong>Schema</strong></p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "title": "测试注册表单",
+  "description": "A simple form example.",
+  "type": "object",
+  "required": ["firstName", "lastName"],
+  "ui:order": ["lastName", "firstName", "*", "password"],
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "title": "First name",
+      "default": "Jun"
+    },
+    "lastName": {
+      "type": "string",
+      "title": "Last name",
+      "ui:options": {
+        "description": "请输入你的姓"
+      },
+      "err:required": "必须输入Last Name"
+    },
+    "price": {
+      "type": "string",
+      "description": "最多输入两位小数点，最大值 999999.99",
+      "title": "价格",
+      "format": "price"
+    },
+    "age": {
+      "type": "integer",
+      "title": "Age",
+      "maximum": 80,
+      "minimum": 16
+    },
+    "bio": {
+      "type": "string",
+      "title": "Bio",
+      "minLength": 10
+    },
+    "password": {
+      "type": "string",
+      "title": "Password",
+      "minLength": 3
+    },
+    "telephone": {
+      "type": "string",
+      "title": "Telephone",
+      "minLength": 10
+    }
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>测试注册表单<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>A simple form example.<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"required"</span>: [<span class="pl-s"><span class="pl-pds">"</span>firstName<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>lastName<span class="pl-pds">"</span></span>],
+  <span class="pl-ent">"ui:order"</span>: [<span class="pl-s"><span class="pl-pds">"</span>lastName<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>firstName<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span>],
+  <span class="pl-ent">"properties"</span>: {
+    <span class="pl-ent">"firstName"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>First name<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"default"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jun<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"lastName"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Last name<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"ui:options"</span>: {
+        <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>请输入你的姓<span class="pl-pds">"</span></span>
+      },
+      <span class="pl-ent">"err:required"</span>: <span class="pl-s"><span class="pl-pds">"</span>必须输入Last Name<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"price"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>最多输入两位小数点，最大值 999999.99<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>价格<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"format"</span>: <span class="pl-s"><span class="pl-pds">"</span>price<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"age"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>integer<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Age<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"maximum"</span>: <span class="pl-c1">80</span>,
+      <span class="pl-ent">"minimum"</span>: <span class="pl-c1">16</span>
+    },
+    <span class="pl-ent">"bio"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Bio<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">10</span>
+    },
+    <span class="pl-ent">"password"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Password<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">3</span>
+    },
+    <span class="pl-ent">"telephone"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Telephone<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">10</span>
+    }
+  }
+}</pre></div>
+<p dir="auto"><strong>FormData</strong></p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "firstName": "Jun",
+  "lastName": "Liu",
+  "age": 80,
+  "bio": "知道的越多、就知道的越少",
+  "password": "My.Pass",
+  "telephone": "1881446xxxx"
+}'><pre class="notranslate">{
+  <span class="pl-ent">"firstName"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jun<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"lastName"</span>: <span class="pl-s"><span class="pl-pds">"</span>Liu<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"age"</span>: <span class="pl-c1">80</span>,
+  <span class="pl-ent">"bio"</span>: <span class="pl-s"><span class="pl-pds">"</span>知道的越多、就知道的越少<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"password"</span>: <span class="pl-s"><span class="pl-pds">"</span>My.Pass<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"telephone"</span>: <span class="pl-s"><span class="pl-pds">"</span>1881446xxxx<span class="pl-pds">"</span></span>
+}</pre></div>
+<ol start="4" dir="auto">
+<li>低代码 low-code</li>
+</ol>
+<ul dir="auto">
+<li>整个页面规范 JSON Schema</li>
+<li>组件配置页按 JSON Schema 驱动</li>
+<li>视图页消费解析 JSON Schema 并渲染视图</li>
+</ul>
+<h2 id="main-heading-H2-4">低代码组件配置示例</h2>
+<h3 id="main-heading-H3-5">1. 对象</h3>
+<p dir="auto">（1）方案 A</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const props = {
+  // data 组件内置
+  scrollArea: {
+    type: Object,
+    desc: '滚动条区域',
+    def: () => {
+      return {
+        scrollType: {
+          type: String,
+          desc: '滚动条展示文案类型'
+        },
+        scrollTypeSwitch: {
+          type: Boolean,
+          desc: '展示开关'
+        }
+      }
+    }
+  },
+  btnStyle: {
+    type: Object,
+    desc: '按钮自定义样式',
+    def: () => {}
+  },
+  btnWrapStyle: {
+    type: Object,
+    desc: '按钮区域自定义样式',
+    def: () => {}
+  },
+  clickArea: {
+    type: 'CLICK_AREA',
+    desc: '配置图片可点击区域'
+  }
+}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// data 组件内置</span>
+  <span class="pl-c1">scrollArea</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'滚动条区域'</span><span class="pl-kos">,</span>
+    <span class="pl-en">def</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">scrollType</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'滚动条展示文案类型'</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">scrollTypeSwitch</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Boolean</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'展示开关'</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">btnStyle</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'按钮自定义样式'</span><span class="pl-kos">,</span>
+    <span class="pl-en">def</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span><span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">btnWrapStyle</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'按钮区域自定义样式'</span><span class="pl-kos">,</span>
+    <span class="pl-en">def</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span><span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">clickArea</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-s">'CLICK_AREA'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'配置图片可点击区域'</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">（2）方案 B</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const props = {
+  data: {
+    type: Object,
+    desc: '数据源配置',
+    default: () => {
+      return {
+        headImageUrl: {
+          type: String,
+          desc: '头图链接',
+          component: 'Upload',
+          default:
+            'https://ecuat.tk.cn/tkcms/file/upload/mob/productImg/zwt1.png'
+        },
+        saleImageUrl: {
+          type: String,
+          desc: '卖点图链接',
+          component: 'Upload',
+          default:
+            'https://ecuat.tk.cn/tkcms/file/upload/mob/productImg/zwt2.png'
+        }
+      }
+    }
+  },
+  scrollArea: {
+    type: Object,
+    desc: '滚动条区域',
+    default: () => {
+      return {
+        scrollType: {
+          type: String,
+          desc: '滚动条展示文案类型',
+          default: 'normal',
+          component: 'Select',
+          selectList: [
+            {
+              key: 'normal',
+              value: '默认'
+            },
+            {
+              key: 'womon',
+              value: '女性'
+            },
+            {
+              key: 'child',
+              value: '少儿'
+            },
+            {
+              key: 'pet',
+              value: '宠物'
+            }
+          ]
+        },
+        scrollTypeSwitch: {
+          type: Boolean,
+          desc: '展示开关',
+          default: true
+        }
+      }
+    }
+  },
+  btnStyle: {
+    type: Array,
+    component: 'Css',
+    desc: '投保按钮自定义样式',
+    default: () => [
+      {
+        background: 'linear-gradient(180deg,#63c3ff, #3f80ff 76%)'
+      },
+      {
+        boxShadow:
+          '0px 1px 4px 0px rgba(87,163,253,0.50), inset 1px 0px 6px 0px rgba(132,186,255,0.40)'
+      }
+    ]
+  },
+  btnWrapStyle: {
+    type: Object,
+    desc: '按钮区域自定义样式',
+    default: () => {
+      return {
+        top: {
+          type: String,
+          desc: '按钮距离顶部的距离',
+          default: '2.76rem'
+        }
+      }
+    }
+  }
+}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'数据源配置'</span><span class="pl-kos">,</span>
+    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">headImageUrl</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'头图链接'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">component</span>: <span class="pl-s">'Upload'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">default</span>:
+            <span class="pl-s">'https://ecuat.tk.cn/tkcms/file/upload/mob/productImg/zwt1.png'</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">saleImageUrl</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'卖点图链接'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">component</span>: <span class="pl-s">'Upload'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">default</span>:
+            <span class="pl-s">'https://ecuat.tk.cn/tkcms/file/upload/mob/productImg/zwt2.png'</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">scrollArea</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'滚动条区域'</span><span class="pl-kos">,</span>
+    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">scrollType</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'滚动条展示文案类型'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">default</span>: <span class="pl-s">'normal'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">component</span>: <span class="pl-s">'Select'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">selectList</span>: <span class="pl-kos">[</span>
+            <span class="pl-kos">{</span>
+              <span class="pl-c1">key</span>: <span class="pl-s">'normal'</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'默认'</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-kos">{</span>
+              <span class="pl-c1">key</span>: <span class="pl-s">'womon'</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'女性'</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-kos">{</span>
+              <span class="pl-c1">key</span>: <span class="pl-s">'child'</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'少儿'</span>
+            <span class="pl-kos">}</span><span class="pl-kos">,</span>
+            <span class="pl-kos">{</span>
+              <span class="pl-c1">key</span>: <span class="pl-s">'pet'</span><span class="pl-kos">,</span>
+              <span class="pl-c1">value</span>: <span class="pl-s">'宠物'</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">]</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-c1">scrollTypeSwitch</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">Boolean</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'展示开关'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">default</span>: <span class="pl-c1">true</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">btnStyle</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">Array</span><span class="pl-kos">,</span>
+    <span class="pl-c1">component</span>: <span class="pl-s">'Css'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'投保按钮自定义样式'</span><span class="pl-kos">,</span>
+    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">background</span>: <span class="pl-s">'linear-gradient(180deg,#63c3ff, #3f80ff 76%)'</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">boxShadow</span>:
+          <span class="pl-s">'0px 1px 4px 0px rgba(87,163,253,0.50), inset 1px 0px 6px 0px rgba(132,186,255,0.40)'</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">btnWrapStyle</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'按钮区域自定义样式'</span><span class="pl-kos">,</span>
+    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-kos">{</span>
+        <span class="pl-c1">top</span>: <span class="pl-kos">{</span>
+          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>
+          <span class="pl-c1">desc</span>: <span class="pl-s">'按钮距离顶部的距离'</span><span class="pl-kos">,</span>
+          <span class="pl-c1">default</span>: <span class="pl-s">'2.76rem'</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">（3） 方案 C</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "title": "组件的配置",
+  "description": "组件的描述",
+  "type": "object",
+  "properties": {
+    "data": {
+      "title": "数据源配置",
+      "type": "object",
+      "properties": {
+        "headImageUrl": {
+          "type": "string",
+          "description": "头图链接"
+        },
+        "saleImageUrl": {
+          "type": "string",
+          "description": "卖点图"
+        }
+      },
+      "required": ["headImageUrl", "saleImageUrl"]
+    },
+    "scrollArea": {
+      "title": "滚动条区域",
+      "type": "object",
+      "properties": {
+        "scrollType": {
+          "type": "string",
+          "description": "滚动条展示文案类型",
+          "oneOf": [
+            { "const": "normal", "title": "普通" },
+            { "const": "womon", "title": "女性" },
+            { "const": "child", "title": "少儿" },
+            { "const": "pet", "title": "宠物" }
+          ]
+        },
+        "scrollTypeSwitch": {
+          "description": "展示开关",
+          "type": "boolean"
+        }
+      }
+    },
+    "btnStyle": {
+      "title": "按钮样式",
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "btnWrapStyle": {
+      "title": "按钮外部样式",
+      "type": "object",
+      "properties": {
+        "top": {
+          "type": "integer",
+          "description": "按钮距离顶部的距离",
+          "minimum": 0,
+          "maximum": 10
+        }
+      }
+    }
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>组件的配置<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>组件的描述<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"properties"</span>: {
+    <span class="pl-ent">"data"</span>: {
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>数据源配置<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"properties"</span>: {
+        <span class="pl-ent">"headImageUrl"</span>: {
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>头图链接<span class="pl-pds">"</span></span>
+        },
+        <span class="pl-ent">"saleImageUrl"</span>: {
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>卖点图<span class="pl-pds">"</span></span>
+        }
+      },
+      <span class="pl-ent">"required"</span>: [<span class="pl-s"><span class="pl-pds">"</span>headImageUrl<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>saleImageUrl<span class="pl-pds">"</span></span>]
+    },
+    <span class="pl-ent">"scrollArea"</span>: {
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>滚动条区域<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"properties"</span>: {
+        <span class="pl-ent">"scrollType"</span>: {
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>滚动条展示文案类型<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"oneOf"</span>: [
+            { <span class="pl-ent">"const"</span>: <span class="pl-s"><span class="pl-pds">"</span>normal<span class="pl-pds">"</span></span>, <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>普通<span class="pl-pds">"</span></span> },
+            { <span class="pl-ent">"const"</span>: <span class="pl-s"><span class="pl-pds">"</span>womon<span class="pl-pds">"</span></span>, <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>女性<span class="pl-pds">"</span></span> },
+            { <span class="pl-ent">"const"</span>: <span class="pl-s"><span class="pl-pds">"</span>child<span class="pl-pds">"</span></span>, <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>少儿<span class="pl-pds">"</span></span> },
+            { <span class="pl-ent">"const"</span>: <span class="pl-s"><span class="pl-pds">"</span>pet<span class="pl-pds">"</span></span>, <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>宠物<span class="pl-pds">"</span></span> }
+          ]
+        },
+        <span class="pl-ent">"scrollTypeSwitch"</span>: {
+          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>展示开关<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>boolean<span class="pl-pds">"</span></span>
+        }
+      }
+    },
+    <span class="pl-ent">"btnStyle"</span>: {
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>按钮样式<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"items"</span>: {
+        <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>
+      },
+      <span class="pl-ent">"minItems"</span>: <span class="pl-c1">0</span>,
+      <span class="pl-ent">"uniqueItems"</span>: <span class="pl-c1">true</span>
+    },
+    <span class="pl-ent">"btnWrapStyle"</span>: {
+      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>按钮外部样式<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"properties"</span>: {
+        <span class="pl-ent">"top"</span>: {
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>integer<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>按钮距离顶部的距离<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"minimum"</span>: <span class="pl-c1">0</span>,
+          <span class="pl-ent">"maximum"</span>: <span class="pl-c1">10</span>
+        }
+      }
+    }
+  }
+}</pre></div>
+<blockquote>
+<p dir="auto">默认值采用，新增 <code class="notranslate">default</code> 字段</p>
+</blockquote>
+<blockquote>
+<p dir="auto">定制组件采用，新增 <code class="notranslate">useComponent</code> 字段 b</p>
+</blockquote>
+<h3 id="main-heading-H3-6">2. 数组</h3>
+<p dir="auto">(1) 方案 A</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const props = {
+  gapStyle: { type: 'Style', desc: '间距样式' },
+  config: { type: 'LIST_RENDER' }
+}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">gapStyle</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">'Style'</span><span class="pl-kos">,</span> <span class="pl-c1">desc</span>: <span class="pl-s">'间距样式'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">config</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">'LIST_RENDER'</span> <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">(2) 方案 B</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const props = {
+  title: {
+    type: String,
+    desc: '主标题',
+    default: '图片区'
+  },
+  productList: {
+    type: Array,
+    component: 'Uploadevent',
+    desc: '图片列表',
+    default: () => [
+      {
+        url: '',
+        event: []
+      }
+    ]
+  }
+}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">title</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'主标题'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">default</span>: <span class="pl-s">'图片区'</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">productList</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">type</span>: <span class="pl-v">Array</span><span class="pl-kos">,</span>
+    <span class="pl-c1">component</span>: <span class="pl-s">'Uploadevent'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">desc</span>: <span class="pl-s">'图片列表'</span><span class="pl-kos">,</span>
+    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">[</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">url</span>: <span class="pl-s">''</span><span class="pl-kos">,</span>
+        <span class="pl-c1">event</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">]</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">(3) 方案 C</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "title": "组件的配置",
+  "description": "组件的描述",
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "标题",
+      "type": "string",
+      "maxLength": 10
+    },
+    "productList": {
+      "type": "array",
+      "items": {
+        "url": {
+          "description": "链接地址",
+          "type": "string"
+        },
+        "events": {
+          "type": "array",
+          "description": "事件配置",
+          "items": {
+            "type": { "type": "string" },
+            "title": { "type": "string" },
+            "clickArea": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "minItems": 0
+        }
+      },
+      "required": ["url"],
+      "minItems": 0
+    }
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>组件的配置<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>组件的描述<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"properties"</span>: {
+    <span class="pl-ent">"title"</span>: {
+      <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>标题<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"maxLength"</span>: <span class="pl-c1">10</span>
+    },
+    <span class="pl-ent">"productList"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"items"</span>: {
+        <span class="pl-ent">"url"</span>: {
+          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>链接地址<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>
+        },
+        <span class="pl-ent">"events"</span>: {
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>事件配置<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"items"</span>: {
+            <span class="pl-ent">"type"</span>: { <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span> },
+            <span class="pl-ent">"title"</span>: { <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span> },
+            <span class="pl-ent">"clickArea"</span>: {
+              <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"items"</span>: {
+                <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>
+              }
+            }
+          },
+          <span class="pl-ent">"minItems"</span>: <span class="pl-c1">0</span>
+        }
+      },
+      <span class="pl-ent">"required"</span>: [<span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>],
+      <span class="pl-ent">"minItems"</span>: <span class="pl-c1">0</span>
+    }
+  }
+}</pre></div>
+<h3 id="main-heading-H3-7">3. 递归</h3>
+<p dir="auto">使用 <code class="notranslate">$ref</code> 关键字引用自己的子 schema 片段，实现递归模式，可以用于树形结构的描述</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "$ref递归调用",
+  "definitions": {
+    "node": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/node"
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "tree": {
+      "$ref": "#/definitions/node"
+    }
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"$schema"</span>: <span class="pl-s"><span class="pl-pds">"</span>http://json-schema.org/draft-04/schema#<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>$ref递归调用<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"definitions"</span>: {
+    <span class="pl-ent">"node"</span>: {
+      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"properties"</span>: {
+        <span class="pl-ent">"children"</span>: {
+          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"items"</span>: {
+            <span class="pl-ent">"$ref"</span>: <span class="pl-s"><span class="pl-pds">"</span>#/definitions/node<span class="pl-pds">"</span></span>
+          }
+        }
+      }
+    }
+  },
+  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"properties"</span>: {
+    <span class="pl-ent">"tree"</span>: {
+      <span class="pl-ent">"$ref"</span>: <span class="pl-s"><span class="pl-pds">"</span>#/definitions/node<span class="pl-pds">"</span></span>
+    }
+  }
+}</pre></div>
+<p dir="auto">以下的 JSON 结构才能在上述的 JSON Schema 校验通过:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='{
+  "tree": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+}'><pre class="notranslate">{
+  <span class="pl-ent">"tree"</span>: {
+    <span class="pl-ent">"children"</span>: [
+      {
+        <span class="pl-ent">"children"</span>: [
+          {
+            <span class="pl-ent">"children"</span>: []
+          }
+        ]
+      }
+    ]
+  }
+}</pre></div>
+<h3 id="main-heading-H3-8">参考</h3>
+<ul dir="auto">
+<li><a href="https://json-schema.org/" rel="nofollow">https://json-schema.org/</a>
+<ul dir="auto">
+<li><a href="https://json-schema.org/draft/2019-09/json-schema-validation#rfc.section.6.1.2" rel="nofollow">https://json-schema.org/draft/2019-09/json-schema-validation#rfc.section.6.1.2</a></li>
+</ul>
+</li>
+<li><a href="https://json-schema.apifox.cn/" rel="nofollow">https://json-schema.apifox.cn/</a></li>
+<li>npm
+<ul dir="auto">
+<li><a href="https://github.com/ajv-validator/ajv">https://github.com/ajv-validator/ajv</a></li>
+<li><a href="https://github.com/tdegrunt/jsonschema">https://github.com/tdegrunt/jsonschema</a></li>
+</ul>
+</li>
+<li>vue 相关
+<ul dir="auto">
+<li><a href="https://github.com/lljj-x/vue-json-schema-form/tree/master">https://github.com/lljj-x/vue-json-schema-form/tree/master</a><br>
+<a href="https://formilyjs.org/zh-CN" rel="nofollow">https://formilyjs.org/zh-CN</a></li>
+</ul>
+</li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,n,p,a,l,t){return{layout:"default",data:[{post:{id:2544572057,number:281,title:"JSON 与 JSON Schema：从结构到规范的转换之旅",created_at:"2024-09-24T07:23:36Z",updated_at:"2024-10-08T02:16:52Z",body_html:'<h2 id="main-heading-H2-0">什么是 JSON Schema？</h2>\n<p dir="auto">JSON Schema 是对 JSON 数据格式的描述和规范，提供了一种方式来约束和明确数据的类型和结构。可以把 JSON Schema 看作是 JSON 格式的一种“类型系统”，它就像 TypeScript 对 JavaScript 的作用一样。</p>\n<h3 id="main-heading-H3-1">数据类型</h3>\n<p dir="auto">在 JSON Schema 中使用最多的是<code class="notranslate">type</code>关键字，它包含了 JSON 格式的基本类型</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>类型</th>\n<th>描述</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>string</td>\n<td>字符串型，双引号包裹的 Unicode 字符和反斜杠转义字符</td>\n</tr>\n<tr>\n<td>number</td>\n<td>数字型，包括整型(int)和浮点数型(float)</td>\n</tr>\n<tr>\n<td>boolean</td>\n<td>布尔型，true 或 false</td>\n</tr>\n<tr>\n<td>object</td>\n<td>对象型，无序的键:值对集合</td>\n</tr>\n<tr>\n<td>array</td>\n<td>数组型，有序的值序列</td>\n</tr>\n<tr>\n<td>null</td>\n<td>空型</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h3 id="main-heading-H3-2">关键字</h3>\n<p dir="auto">下面以 Object 类型为例，列举在 JSON Schema 中经常使用到的关键字和作用。示例 JSON Schema 如下：</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,\n  &quot;$id&quot;: &quot;https://example.com/schemas/person&quot;,\n  &quot;title&quot;: &quot;base info&quot;,\n  &quot;description&quot;: &quot;base information about person&quot;,\n  &quot;type&quot;: &quot;object&quot;,\n  &quot;required&quot;: [&quot;name&quot;, &quot;age&quot;, &quot;phone&quot;],\n  &quot;definitions&quot;: {\n    &quot;name&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;minLength&quot;: 1,\n      &quot;maxLength&quot;: 10\n    }\n  },\n  &quot;properties&quot;: {\n    &quot;name&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;minLength&quot;: 1,\n      &quot;maxLength&quot;: 10\n    },\n    &quot;age&quot;: {\n      &quot;type&quot;: &quot;number&quot;,\n      &quot;minimum&quot;: 18,\n      &quot;exclusiveMinimum&quot;: true,\n      &quot;maximum&quot;: 65,\n      &quot;exclusiveMaximum&quot;: true\n    },\n    &quot;phone&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;pattern&quot;: &quot;^1\\\\d{10}$&quot;\n    },\n    &quot;parents&quot;: {\n      &quot;type&quot;: &quot;array&quot;,\n      &quot;items&quot;: [{ &quot;$ref&quot;: &quot;#/definitions/name&quot; }],\n      &quot;minItems&quot;: 1,\n      &quot;maxItems&quot;: 2,\n      &quot;uniqueItems&quot;: true\n    },\n    &quot;address&quot;: {\n      &quot;type&quot;: &quot;object&quot;,\n      &quot;properties&quot;: {\n        &quot;city&quot;: {\n          &quot;type&quot;: &quot;string&quot;,\n          &quot;enum&quot;: [&quot;guangzhou&quot;, &quot;beijing&quot;]\n        }\n      }\n    }\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"$schema"</span>: <span class="pl-s"><span class="pl-pds">"</span>http://json-schema.org/draft-04/schema#<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"$id"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://example.com/schemas/person<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>base info<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>base information about person<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"required"</span>: [<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>age<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span>],\n  <span class="pl-ent">"definitions"</span>: {\n    <span class="pl-ent">"name"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">1</span>,\n      <span class="pl-ent">"maxLength"</span>: <span class="pl-c1">10</span>\n    }\n  },\n  <span class="pl-ent">"properties"</span>: {\n    <span class="pl-ent">"name"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">1</span>,\n      <span class="pl-ent">"maxLength"</span>: <span class="pl-c1">10</span>\n    },\n    <span class="pl-ent">"age"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"minimum"</span>: <span class="pl-c1">18</span>,\n      <span class="pl-ent">"exclusiveMinimum"</span>: <span class="pl-c1">true</span>,\n      <span class="pl-ent">"maximum"</span>: <span class="pl-c1">65</span>,\n      <span class="pl-ent">"exclusiveMaximum"</span>: <span class="pl-c1">true</span>\n    },\n    <span class="pl-ent">"phone"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"pattern"</span>: <span class="pl-s"><span class="pl-pds">"</span>^1<span class="pl-cce">\\\\</span>d{10}$<span class="pl-pds">"</span></span>\n    },\n    <span class="pl-ent">"parents"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"items"</span>: [{ <span class="pl-ent">"$ref"</span>: <span class="pl-s"><span class="pl-pds">"</span>#/definitions/name<span class="pl-pds">"</span></span> }],\n      <span class="pl-ent">"minItems"</span>: <span class="pl-c1">1</span>,\n      <span class="pl-ent">"maxItems"</span>: <span class="pl-c1">2</span>,\n      <span class="pl-ent">"uniqueItems"</span>: <span class="pl-c1">true</span>\n    },\n    <span class="pl-ent">"address"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"properties"</span>: {\n        <span class="pl-ent">"city"</span>: {\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"enum"</span>: [<span class="pl-s"><span class="pl-pds">"</span>guangzhou<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>beijing<span class="pl-pds">"</span></span>]\n        }\n      }\n    }\n  }\n}</pre></div>\n<p dir="auto">这个示例 JSON Schema 描述了一个人的基本信息对象，包含了多个字段和相应的验证规则。</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>关键字</th>\n<th>描述</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>$schema</td>\n<td>声明此 json 片段属于 JSON Schema，并遵循所声明的 JSON Schema 版本规范</td>\n</tr>\n<tr>\n<td>$id</td>\n<td>为 JSON Schema 声明一个统一资源标识符，使解析$ref 时能够引用片段</td>\n</tr>\n<tr>\n<td>title</td>\n<td>为 JSON Schema 文件提供标题</td>\n</tr>\n<tr>\n<td>description</td>\n<td>为 JSON Schema 文件提供描述信息</td>\n</tr>\n<tr>\n<td>definitions</td>\n<td>声明子 schema,使解析$ref 能够引用片段</td>\n</tr>\n<tr>\n<td>$ref</td>\n<td>引用 JSON Schema 片段</td>\n</tr>\n<tr>\n<td>required</td>\n<td>定义对象类型 properties 所声明的字段是否必须，值必须是数组，数组中的元素必须是字符串类型且唯一</td>\n</tr>\n<tr>\n<td>type</td>\n<td>定义元素的类型</td>\n</tr>\n<tr>\n<td>properties</td>\n<td>定义对象类型里的属性(键值对)，每个字段的值都是一个有效的 schema 片段，用来限制每个字段的格式</td>\n</tr>\n<tr>\n<td>minimum</td>\n<td>约束取值范围，标识取值范围应该大于或等于 minimum</td>\n</tr>\n<tr>\n<td>exclusiveMinimum</td>\n<td>假若 minimum 或 exclusiveMinimum 同时存在，且 exclusiveMinimum 为 true，则取值范围大于 minimum</td>\n</tr>\n<tr>\n<td>maximum</td>\n<td>约束取值范围，标识取值范围应该小于或等于 maximum</td>\n</tr>\n<tr>\n<td>exclusiveMaximum</td>\n<td>假若 maximum 或 exclusiveMaximum 同时存在，且 exclusiveMaximum 为 true，则取值范围小于 maximum</td>\n</tr>\n<tr>\n<td>minLength</td>\n<td>字符串类型数据的最小长度</td>\n</tr>\n<tr>\n<td>maxLength</td>\n<td>字符串类型数据的最大长度</td>\n</tr>\n<tr>\n<td>pattern</td>\n<td>使用正则表达式约束字符串类型数据</td>\n</tr>\n<tr>\n<td>items</td>\n<td>用来定义数组类型的子元素，值必须为数组，且是一个有效的 schema 片段</td>\n</tr>\n<tr>\n<td>minItems</td>\n<td>定义数组类型大小的最小长度</td>\n</tr>\n<tr>\n<td>maxItems</td>\n<td>定义数组类型大小的最大长度</td>\n</tr>\n<tr>\n<td>uniqueItems</td>\n<td>定义数组类型子元素是否必须唯一</td>\n</tr>\n<tr>\n<td>enum</td>\n<td>用来限制值的范围，值必须在 enum 所指定的集合里面</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto">以上列举的是一些常用到的关键字。要深入了解和使用更多关键字，可以参考 <a href="https://json-schema.org/" rel="nofollow">JSON Schema 官方文档</a>。</p>\n<h2 id="main-heading-H2-3">JSON Schema 的应用场景</h2>\n<p dir="auto">JSON Schema 的优点在于可以对数据类型进行描述，方便理解。同时也让机器“读懂”，比如数据校验或、输入检测提示、自动化测试等等。</p>\n<ol dir="auto">\n<li>数据校验</li>\n</ol>\n<p dir="auto">基于 JSON Schema 提供多种校验约束条件，可以定义数据的校验规则，通过 JSON Schema 进行数据校验，多用于接口请求参数校验，表单校验，和数据校验自动化测试上</p>\n<h4 dir="auto">验证器</h4>\n<p dir="auto">JSON Schema 校验工具：<a href="https://github.com/ajv-validator/ajv">Ajv</a></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// or ESM/TypeScript import\nimport Ajv from \'ajv\'\n// Node.js require:\nconst Ajv = require(\'ajv\')\n\nconst ajv = new Ajv() // options can be passed, e.g. {allErrors: true}\n\nconst schema = {\n  type: \'object\',\n  properties: {\n    foo: { type: \'integer\' },\n    bar: { type: \'string\' }\n  },\n  required: [\'foo\'],\n  additionalProperties: false\n}\n\nconst data = {\n  foo: 1,\n  bar: \'abc\'\n}\n\n// 最佳性能：compile 和 getSchema 方法，使用由 compile 或 getSchema 方法返回的编译函数时可以获得最佳性能。\nconst validate = ajv.compile(schema)\n// 每次调用验证函数（或 ajv.validate ）时， errors属性都会被覆盖\nconst valid = validate(data)\nif (!valid) console.log(validate.errors)"><pre class="notranslate"><span class="pl-c">// or ESM/TypeScript import</span>\n<span class="pl-k">import</span> <span class="pl-v">Ajv</span> <span class="pl-k">from</span> <span class="pl-s">\'ajv\'</span>\n<span class="pl-c">// Node.js require:</span>\n<span class="pl-k">const</span> <span class="pl-v">Ajv</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">\'ajv\'</span><span class="pl-kos">)</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">ajv</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Ajv</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">// options can be passed, e.g. {allErrors: true}</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">schema</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">type</span>: <span class="pl-s">\'object\'</span><span class="pl-kos">,</span>\n  <span class="pl-c1">properties</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">foo</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">\'integer\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n    <span class="pl-c1">bar</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">\'string\'</span> <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">required</span>: <span class="pl-kos">[</span><span class="pl-s">\'foo\'</span><span class="pl-kos">]</span><span class="pl-kos">,</span>\n  <span class="pl-c1">additionalProperties</span>: <span class="pl-c1">false</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-k">const</span> <span class="pl-s1">data</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">foo</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span>\n  <span class="pl-c1">bar</span>: <span class="pl-s">\'abc\'</span>\n<span class="pl-kos">}</span>\n\n<span class="pl-c">// 最佳性能：compile 和 getSchema 方法，使用由 compile 或 getSchema 方法返回的编译函数时可以获得最佳性能。</span>\n<span class="pl-k">const</span> <span class="pl-s1">validate</span> <span class="pl-c1">=</span> <span class="pl-s1">ajv</span><span class="pl-kos">.</span><span class="pl-en">compile</span><span class="pl-kos">(</span><span class="pl-s1">schema</span><span class="pl-kos">)</span>\n<span class="pl-c">// 每次调用验证函数（或 ajv.validate ）时， errors属性都会被覆盖</span>\n<span class="pl-k">const</span> <span class="pl-s1">valid</span> <span class="pl-c1">=</span> <span class="pl-s1">validate</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span>\n<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">valid</span><span class="pl-kos">)</span> <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">validate</span><span class="pl-kos">.</span><span class="pl-c1">errors</span><span class="pl-kos">)</span></pre></div>\n<ol start="2" dir="auto">\n<li>提供更为准确可靠的 mock 数据</li>\n</ol>\n<p dir="auto">基于 JSON Schema 提供多种校验约束条件，可以使用它原生的能力来生成更为准确可靠的 mock 数据</p>\n<p dir="auto">使用 JSON Schema 生成 mock 数据在线工具：</p>\n<ul dir="auto">\n<li><a href="https://json-schema-faker.js.org/" rel="nofollow">JSON Schema Faker</a></li>\n</ul>\n<ol start="3" dir="auto">\n<li>基于 JSON Schema 配置文件渲染 UI 组件</li>\n</ol>\n<p dir="auto">例如： <a href="https://github.com/lljj-x/vue-json-schema-form/tree/master">https://github.com/lljj-x/vue-json-schema-form/tree/master</a>, 其基于 Vue/Vue3，Json Schema 和 ElementUi/antd/iview3/naiveUi 等生成 HTML Form 表单，可用于活动编辑器、h5 编辑器、cms 等数据配置；支持可视化生成表单 Schema 。</p>\n<p dir="auto"><strong>Schema</strong></p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;title&quot;: &quot;测试注册表单&quot;,\n  &quot;description&quot;: &quot;A simple form example.&quot;,\n  &quot;type&quot;: &quot;object&quot;,\n  &quot;required&quot;: [&quot;firstName&quot;, &quot;lastName&quot;],\n  &quot;ui:order&quot;: [&quot;lastName&quot;, &quot;firstName&quot;, &quot;*&quot;, &quot;password&quot;],\n  &quot;properties&quot;: {\n    &quot;firstName&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;title&quot;: &quot;First name&quot;,\n      &quot;default&quot;: &quot;Jun&quot;\n    },\n    &quot;lastName&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;title&quot;: &quot;Last name&quot;,\n      &quot;ui:options&quot;: {\n        &quot;description&quot;: &quot;请输入你的姓&quot;\n      },\n      &quot;err:required&quot;: &quot;必须输入Last Name&quot;\n    },\n    &quot;price&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;description&quot;: &quot;最多输入两位小数点，最大值 999999.99&quot;,\n      &quot;title&quot;: &quot;价格&quot;,\n      &quot;format&quot;: &quot;price&quot;\n    },\n    &quot;age&quot;: {\n      &quot;type&quot;: &quot;integer&quot;,\n      &quot;title&quot;: &quot;Age&quot;,\n      &quot;maximum&quot;: 80,\n      &quot;minimum&quot;: 16\n    },\n    &quot;bio&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;title&quot;: &quot;Bio&quot;,\n      &quot;minLength&quot;: 10\n    },\n    &quot;password&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;title&quot;: &quot;Password&quot;,\n      &quot;minLength&quot;: 3\n    },\n    &quot;telephone&quot;: {\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;title&quot;: &quot;Telephone&quot;,\n      &quot;minLength&quot;: 10\n    }\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>测试注册表单<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>A simple form example.<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"required"</span>: [<span class="pl-s"><span class="pl-pds">"</span>firstName<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>lastName<span class="pl-pds">"</span></span>],\n  <span class="pl-ent">"ui:order"</span>: [<span class="pl-s"><span class="pl-pds">"</span>lastName<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>firstName<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span>],\n  <span class="pl-ent">"properties"</span>: {\n    <span class="pl-ent">"firstName"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>First name<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"default"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jun<span class="pl-pds">"</span></span>\n    },\n    <span class="pl-ent">"lastName"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Last name<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"ui:options"</span>: {\n        <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>请输入你的姓<span class="pl-pds">"</span></span>\n      },\n      <span class="pl-ent">"err:required"</span>: <span class="pl-s"><span class="pl-pds">"</span>必须输入Last Name<span class="pl-pds">"</span></span>\n    },\n    <span class="pl-ent">"price"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>最多输入两位小数点，最大值 999999.99<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>价格<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"format"</span>: <span class="pl-s"><span class="pl-pds">"</span>price<span class="pl-pds">"</span></span>\n    },\n    <span class="pl-ent">"age"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>integer<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Age<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"maximum"</span>: <span class="pl-c1">80</span>,\n      <span class="pl-ent">"minimum"</span>: <span class="pl-c1">16</span>\n    },\n    <span class="pl-ent">"bio"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Bio<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">10</span>\n    },\n    <span class="pl-ent">"password"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Password<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">3</span>\n    },\n    <span class="pl-ent">"telephone"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>Telephone<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"minLength"</span>: <span class="pl-c1">10</span>\n    }\n  }\n}</pre></div>\n<p dir="auto"><strong>FormData</strong></p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;firstName&quot;: &quot;Jun&quot;,\n  &quot;lastName&quot;: &quot;Liu&quot;,\n  &quot;age&quot;: 80,\n  &quot;bio&quot;: &quot;知道的越多、就知道的越少&quot;,\n  &quot;password&quot;: &quot;My.Pass&quot;,\n  &quot;telephone&quot;: &quot;1881446xxxx&quot;\n}"><pre class="notranslate">{\n  <span class="pl-ent">"firstName"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jun<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"lastName"</span>: <span class="pl-s"><span class="pl-pds">"</span>Liu<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"age"</span>: <span class="pl-c1">80</span>,\n  <span class="pl-ent">"bio"</span>: <span class="pl-s"><span class="pl-pds">"</span>知道的越多、就知道的越少<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"password"</span>: <span class="pl-s"><span class="pl-pds">"</span>My.Pass<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"telephone"</span>: <span class="pl-s"><span class="pl-pds">"</span>1881446xxxx<span class="pl-pds">"</span></span>\n}</pre></div>\n<ol start="4" dir="auto">\n<li>低代码 low-code</li>\n</ol>\n<ul dir="auto">\n<li>整个页面规范 JSON Schema</li>\n<li>组件配置页按 JSON Schema 驱动</li>\n<li>视图页消费解析 JSON Schema 并渲染视图</li>\n</ul>\n<h2 id="main-heading-H2-4">低代码组件配置示例</h2>\n<h3 id="main-heading-H3-5">1. 对象</h3>\n<p dir="auto">（1）方案 A</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const props = {\n  // data 组件内置\n  scrollArea: {\n    type: Object,\n    desc: \'滚动条区域\',\n    def: () =&gt; {\n      return {\n        scrollType: {\n          type: String,\n          desc: \'滚动条展示文案类型\'\n        },\n        scrollTypeSwitch: {\n          type: Boolean,\n          desc: \'展示开关\'\n        }\n      }\n    }\n  },\n  btnStyle: {\n    type: Object,\n    desc: \'按钮自定义样式\',\n    def: () =&gt; {}\n  },\n  btnWrapStyle: {\n    type: Object,\n    desc: \'按钮区域自定义样式\',\n    def: () =&gt; {}\n  },\n  clickArea: {\n    type: \'CLICK_AREA\',\n    desc: \'配置图片可点击区域\'\n  }\n}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c">// data 组件内置</span>\n  <span class="pl-c1">scrollArea</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'滚动条区域\'</span><span class="pl-kos">,</span>\n    <span class="pl-en">def</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">scrollType</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'滚动条展示文案类型\'</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">scrollTypeSwitch</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Boolean</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'展示开关\'</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">btnStyle</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'按钮自定义样式\'</span><span class="pl-kos">,</span>\n    <span class="pl-en">def</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">btnWrapStyle</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'按钮区域自定义样式\'</span><span class="pl-kos">,</span>\n    <span class="pl-en">def</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span><span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">clickArea</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-s">\'CLICK_AREA\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'配置图片可点击区域\'</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">（2）方案 B</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const props = {\n  data: {\n    type: Object,\n    desc: \'数据源配置\',\n    default: () =&gt; {\n      return {\n        headImageUrl: {\n          type: String,\n          desc: \'头图链接\',\n          component: \'Upload\',\n          default:\n            \'https://ecuat.tk.cn/tkcms/file/upload/mob/productImg/zwt1.png\'\n        },\n        saleImageUrl: {\n          type: String,\n          desc: \'卖点图链接\',\n          component: \'Upload\',\n          default:\n            \'https://ecuat.tk.cn/tkcms/file/upload/mob/productImg/zwt2.png\'\n        }\n      }\n    }\n  },\n  scrollArea: {\n    type: Object,\n    desc: \'滚动条区域\',\n    default: () =&gt; {\n      return {\n        scrollType: {\n          type: String,\n          desc: \'滚动条展示文案类型\',\n          default: \'normal\',\n          component: \'Select\',\n          selectList: [\n            {\n              key: \'normal\',\n              value: \'默认\'\n            },\n            {\n              key: \'womon\',\n              value: \'女性\'\n            },\n            {\n              key: \'child\',\n              value: \'少儿\'\n            },\n            {\n              key: \'pet\',\n              value: \'宠物\'\n            }\n          ]\n        },\n        scrollTypeSwitch: {\n          type: Boolean,\n          desc: \'展示开关\',\n          default: true\n        }\n      }\n    }\n  },\n  btnStyle: {\n    type: Array,\n    component: \'Css\',\n    desc: \'投保按钮自定义样式\',\n    default: () =&gt; [\n      {\n        background: \'linear-gradient(180deg,#63c3ff, #3f80ff 76%)\'\n      },\n      {\n        boxShadow:\n          \'0px 1px 4px 0px rgba(87,163,253,0.50), inset 1px 0px 6px 0px rgba(132,186,255,0.40)\'\n      }\n    ]\n  },\n  btnWrapStyle: {\n    type: Object,\n    desc: \'按钮区域自定义样式\',\n    default: () =&gt; {\n      return {\n        top: {\n          type: String,\n          desc: \'按钮距离顶部的距离\',\n          default: \'2.76rem\'\n        }\n      }\n    }\n  }\n}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'数据源配置\'</span><span class="pl-kos">,</span>\n    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">headImageUrl</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'头图链接\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">component</span>: <span class="pl-s">\'Upload\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">default</span>:\n            <span class="pl-s">\'https://ecuat.tk.cn/tkcms/file/upload/mob/productImg/zwt1.png\'</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">saleImageUrl</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'卖点图链接\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">component</span>: <span class="pl-s">\'Upload\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">default</span>:\n            <span class="pl-s">\'https://ecuat.tk.cn/tkcms/file/upload/mob/productImg/zwt2.png\'</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">scrollArea</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'滚动条区域\'</span><span class="pl-kos">,</span>\n    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">scrollType</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'滚动条展示文案类型\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">default</span>: <span class="pl-s">\'normal\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">component</span>: <span class="pl-s">\'Select\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">selectList</span>: <span class="pl-kos">[</span>\n            <span class="pl-kos">{</span>\n              <span class="pl-c1">key</span>: <span class="pl-s">\'normal\'</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'默认\'</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-kos">{</span>\n              <span class="pl-c1">key</span>: <span class="pl-s">\'womon\'</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'女性\'</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-kos">{</span>\n              <span class="pl-c1">key</span>: <span class="pl-s">\'child\'</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'少儿\'</span>\n            <span class="pl-kos">}</span><span class="pl-kos">,</span>\n            <span class="pl-kos">{</span>\n              <span class="pl-c1">key</span>: <span class="pl-s">\'pet\'</span><span class="pl-kos">,</span>\n              <span class="pl-c1">value</span>: <span class="pl-s">\'宠物\'</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">]</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-c1">scrollTypeSwitch</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">Boolean</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'展示开关\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">default</span>: <span class="pl-c1">true</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">btnStyle</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">Array</span><span class="pl-kos">,</span>\n    <span class="pl-c1">component</span>: <span class="pl-s">\'Css\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'投保按钮自定义样式\'</span><span class="pl-kos">,</span>\n    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">background</span>: <span class="pl-s">\'linear-gradient(180deg,#63c3ff, #3f80ff 76%)\'</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">boxShadow</span>:\n          <span class="pl-s">\'0px 1px 4px 0px rgba(87,163,253,0.50), inset 1px 0px 6px 0px rgba(132,186,255,0.40)\'</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">btnWrapStyle</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'按钮区域自定义样式\'</span><span class="pl-kos">,</span>\n    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-kos">{</span>\n        <span class="pl-c1">top</span>: <span class="pl-kos">{</span>\n          <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>\n          <span class="pl-c1">desc</span>: <span class="pl-s">\'按钮距离顶部的距离\'</span><span class="pl-kos">,</span>\n          <span class="pl-c1">default</span>: <span class="pl-s">\'2.76rem\'</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">（3） 方案 C</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;title&quot;: &quot;组件的配置&quot;,\n  &quot;description&quot;: &quot;组件的描述&quot;,\n  &quot;type&quot;: &quot;object&quot;,\n  &quot;properties&quot;: {\n    &quot;data&quot;: {\n      &quot;title&quot;: &quot;数据源配置&quot;,\n      &quot;type&quot;: &quot;object&quot;,\n      &quot;properties&quot;: {\n        &quot;headImageUrl&quot;: {\n          &quot;type&quot;: &quot;string&quot;,\n          &quot;description&quot;: &quot;头图链接&quot;\n        },\n        &quot;saleImageUrl&quot;: {\n          &quot;type&quot;: &quot;string&quot;,\n          &quot;description&quot;: &quot;卖点图&quot;\n        }\n      },\n      &quot;required&quot;: [&quot;headImageUrl&quot;, &quot;saleImageUrl&quot;]\n    },\n    &quot;scrollArea&quot;: {\n      &quot;title&quot;: &quot;滚动条区域&quot;,\n      &quot;type&quot;: &quot;object&quot;,\n      &quot;properties&quot;: {\n        &quot;scrollType&quot;: {\n          &quot;type&quot;: &quot;string&quot;,\n          &quot;description&quot;: &quot;滚动条展示文案类型&quot;,\n          &quot;oneOf&quot;: [\n            { &quot;const&quot;: &quot;normal&quot;, &quot;title&quot;: &quot;普通&quot; },\n            { &quot;const&quot;: &quot;womon&quot;, &quot;title&quot;: &quot;女性&quot; },\n            { &quot;const&quot;: &quot;child&quot;, &quot;title&quot;: &quot;少儿&quot; },\n            { &quot;const&quot;: &quot;pet&quot;, &quot;title&quot;: &quot;宠物&quot; }\n          ]\n        },\n        &quot;scrollTypeSwitch&quot;: {\n          &quot;description&quot;: &quot;展示开关&quot;,\n          &quot;type&quot;: &quot;boolean&quot;\n        }\n      }\n    },\n    &quot;btnStyle&quot;: {\n      &quot;title&quot;: &quot;按钮样式&quot;,\n      &quot;type&quot;: &quot;array&quot;,\n      &quot;items&quot;: {\n        &quot;type&quot;: &quot;object&quot;\n      },\n      &quot;minItems&quot;: 0,\n      &quot;uniqueItems&quot;: true\n    },\n    &quot;btnWrapStyle&quot;: {\n      &quot;title&quot;: &quot;按钮外部样式&quot;,\n      &quot;type&quot;: &quot;object&quot;,\n      &quot;properties&quot;: {\n        &quot;top&quot;: {\n          &quot;type&quot;: &quot;integer&quot;,\n          &quot;description&quot;: &quot;按钮距离顶部的距离&quot;,\n          &quot;minimum&quot;: 0,\n          &quot;maximum&quot;: 10\n        }\n      }\n    }\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>组件的配置<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>组件的描述<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"properties"</span>: {\n    <span class="pl-ent">"data"</span>: {\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>数据源配置<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"properties"</span>: {\n        <span class="pl-ent">"headImageUrl"</span>: {\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>头图链接<span class="pl-pds">"</span></span>\n        },\n        <span class="pl-ent">"saleImageUrl"</span>: {\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>卖点图<span class="pl-pds">"</span></span>\n        }\n      },\n      <span class="pl-ent">"required"</span>: [<span class="pl-s"><span class="pl-pds">"</span>headImageUrl<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>saleImageUrl<span class="pl-pds">"</span></span>]\n    },\n    <span class="pl-ent">"scrollArea"</span>: {\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>滚动条区域<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"properties"</span>: {\n        <span class="pl-ent">"scrollType"</span>: {\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>滚动条展示文案类型<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"oneOf"</span>: [\n            { <span class="pl-ent">"const"</span>: <span class="pl-s"><span class="pl-pds">"</span>normal<span class="pl-pds">"</span></span>, <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>普通<span class="pl-pds">"</span></span> },\n            { <span class="pl-ent">"const"</span>: <span class="pl-s"><span class="pl-pds">"</span>womon<span class="pl-pds">"</span></span>, <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>女性<span class="pl-pds">"</span></span> },\n            { <span class="pl-ent">"const"</span>: <span class="pl-s"><span class="pl-pds">"</span>child<span class="pl-pds">"</span></span>, <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>少儿<span class="pl-pds">"</span></span> },\n            { <span class="pl-ent">"const"</span>: <span class="pl-s"><span class="pl-pds">"</span>pet<span class="pl-pds">"</span></span>, <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>宠物<span class="pl-pds">"</span></span> }\n          ]\n        },\n        <span class="pl-ent">"scrollTypeSwitch"</span>: {\n          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>展示开关<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>boolean<span class="pl-pds">"</span></span>\n        }\n      }\n    },\n    <span class="pl-ent">"btnStyle"</span>: {\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>按钮样式<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"items"</span>: {\n        <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>\n      },\n      <span class="pl-ent">"minItems"</span>: <span class="pl-c1">0</span>,\n      <span class="pl-ent">"uniqueItems"</span>: <span class="pl-c1">true</span>\n    },\n    <span class="pl-ent">"btnWrapStyle"</span>: {\n      <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>按钮外部样式<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"properties"</span>: {\n        <span class="pl-ent">"top"</span>: {\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>integer<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>按钮距离顶部的距离<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"minimum"</span>: <span class="pl-c1">0</span>,\n          <span class="pl-ent">"maximum"</span>: <span class="pl-c1">10</span>\n        }\n      }\n    }\n  }\n}</pre></div>\n<blockquote>\n<p dir="auto">默认值采用，新增 <code class="notranslate">default</code> 字段</p>\n</blockquote>\n<blockquote>\n<p dir="auto">定制组件采用，新增 <code class="notranslate">useComponent</code> 字段 b</p>\n</blockquote>\n<h3 id="main-heading-H3-6">2. 数组</h3>\n<p dir="auto">(1) 方案 A</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const props = {\n  gapStyle: { type: \'Style\', desc: \'间距样式\' },\n  config: { type: \'LIST_RENDER\' }\n}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">gapStyle</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">\'Style\'</span><span class="pl-kos">,</span> <span class="pl-c1">desc</span>: <span class="pl-s">\'间距样式\'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">config</span>: <span class="pl-kos">{</span> <span class="pl-c1">type</span>: <span class="pl-s">\'LIST_RENDER\'</span> <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">(2) 方案 B</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const props = {\n  title: {\n    type: String,\n    desc: \'主标题\',\n    default: \'图片区\'\n  },\n  productList: {\n    type: Array,\n    component: \'Uploadevent\',\n    desc: \'图片列表\',\n    default: () =&gt; [\n      {\n        url: \'\',\n        event: []\n      }\n    ]\n  }\n}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">props</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>\n  <span class="pl-c1">title</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">String</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'主标题\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">default</span>: <span class="pl-s">\'图片区\'</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">productList</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">type</span>: <span class="pl-v">Array</span><span class="pl-kos">,</span>\n    <span class="pl-c1">component</span>: <span class="pl-s">\'Uploadevent\'</span><span class="pl-kos">,</span>\n    <span class="pl-c1">desc</span>: <span class="pl-s">\'图片列表\'</span><span class="pl-kos">,</span>\n    <span class="pl-en">default</span>: <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">[</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">url</span>: <span class="pl-s">\'\'</span><span class="pl-kos">,</span>\n        <span class="pl-c1">event</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">]</span>\n  <span class="pl-kos">}</span>\n<span class="pl-kos">}</span></pre></div>\n<p dir="auto">(3) 方案 C</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;title&quot;: &quot;组件的配置&quot;,\n  &quot;description&quot;: &quot;组件的描述&quot;,\n  &quot;type&quot;: &quot;object&quot;,\n  &quot;properties&quot;: {\n    &quot;title&quot;: {\n      &quot;description&quot;: &quot;标题&quot;,\n      &quot;type&quot;: &quot;string&quot;,\n      &quot;maxLength&quot;: 10\n    },\n    &quot;productList&quot;: {\n      &quot;type&quot;: &quot;array&quot;,\n      &quot;items&quot;: {\n        &quot;url&quot;: {\n          &quot;description&quot;: &quot;链接地址&quot;,\n          &quot;type&quot;: &quot;string&quot;\n        },\n        &quot;events&quot;: {\n          &quot;type&quot;: &quot;array&quot;,\n          &quot;description&quot;: &quot;事件配置&quot;,\n          &quot;items&quot;: {\n            &quot;type&quot;: { &quot;type&quot;: &quot;string&quot; },\n            &quot;title&quot;: { &quot;type&quot;: &quot;string&quot; },\n            &quot;clickArea&quot;: {\n              &quot;type&quot;: &quot;array&quot;,\n              &quot;items&quot;: {\n                &quot;type&quot;: &quot;string&quot;\n              }\n            }\n          },\n          &quot;minItems&quot;: 0\n        }\n      },\n      &quot;required&quot;: [&quot;url&quot;],\n      &quot;minItems&quot;: 0\n    }\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>组件的配置<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>组件的描述<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"properties"</span>: {\n    <span class="pl-ent">"title"</span>: {\n      <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>标题<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"maxLength"</span>: <span class="pl-c1">10</span>\n    },\n    <span class="pl-ent">"productList"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"items"</span>: {\n        <span class="pl-ent">"url"</span>: {\n          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>链接地址<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>\n        },\n        <span class="pl-ent">"events"</span>: {\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>事件配置<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"items"</span>: {\n            <span class="pl-ent">"type"</span>: { <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span> },\n            <span class="pl-ent">"title"</span>: { <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span> },\n            <span class="pl-ent">"clickArea"</span>: {\n              <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,\n              <span class="pl-ent">"items"</span>: {\n                <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>\n              }\n            }\n          },\n          <span class="pl-ent">"minItems"</span>: <span class="pl-c1">0</span>\n        }\n      },\n      <span class="pl-ent">"required"</span>: [<span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>],\n      <span class="pl-ent">"minItems"</span>: <span class="pl-c1">0</span>\n    }\n  }\n}</pre></div>\n<h3 id="main-heading-H3-7">3. 递归</h3>\n<p dir="auto">使用 <code class="notranslate">$ref</code> 关键字引用自己的子 schema 片段，实现递归模式，可以用于树形结构的描述</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,\n  &quot;title&quot;: &quot;$ref递归调用&quot;,\n  &quot;definitions&quot;: {\n    &quot;node&quot;: {\n      &quot;type&quot;: &quot;object&quot;,\n      &quot;properties&quot;: {\n        &quot;children&quot;: {\n          &quot;type&quot;: &quot;array&quot;,\n          &quot;items&quot;: {\n            &quot;$ref&quot;: &quot;#/definitions/node&quot;\n          }\n        }\n      }\n    }\n  },\n  &quot;type&quot;: &quot;object&quot;,\n  &quot;properties&quot;: {\n    &quot;tree&quot;: {\n      &quot;$ref&quot;: &quot;#/definitions/node&quot;\n    }\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"$schema"</span>: <span class="pl-s"><span class="pl-pds">"</span>http://json-schema.org/draft-04/schema#<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"title"</span>: <span class="pl-s"><span class="pl-pds">"</span>$ref递归调用<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"definitions"</span>: {\n    <span class="pl-ent">"node"</span>: {\n      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n      <span class="pl-ent">"properties"</span>: {\n        <span class="pl-ent">"children"</span>: {\n          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,\n          <span class="pl-ent">"items"</span>: {\n            <span class="pl-ent">"$ref"</span>: <span class="pl-s"><span class="pl-pds">"</span>#/definitions/node<span class="pl-pds">"</span></span>\n          }\n        }\n      }\n    }\n  },\n  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,\n  <span class="pl-ent">"properties"</span>: {\n    <span class="pl-ent">"tree"</span>: {\n      <span class="pl-ent">"$ref"</span>: <span class="pl-s"><span class="pl-pds">"</span>#/definitions/node<span class="pl-pds">"</span></span>\n    }\n  }\n}</pre></div>\n<p dir="auto">以下的 JSON 结构才能在上述的 JSON Schema 校验通过:</p>\n<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{\n  &quot;tree&quot;: {\n    &quot;children&quot;: [\n      {\n        &quot;children&quot;: [\n          {\n            &quot;children&quot;: []\n          }\n        ]\n      }\n    ]\n  }\n}"><pre class="notranslate">{\n  <span class="pl-ent">"tree"</span>: {\n    <span class="pl-ent">"children"</span>: [\n      {\n        <span class="pl-ent">"children"</span>: [\n          {\n            <span class="pl-ent">"children"</span>: []\n          }\n        ]\n      }\n    ]\n  }\n}</pre></div>\n<h3 id="main-heading-H3-8">参考</h3>\n<ul dir="auto">\n<li><a href="https://json-schema.org/" rel="nofollow">https://json-schema.org/</a>\n<ul dir="auto">\n<li><a href="https://json-schema.org/draft/2019-09/json-schema-validation#rfc.section.6.1.2" rel="nofollow">https://json-schema.org/draft/2019-09/json-schema-validation#rfc.section.6.1.2</a></li>\n</ul>\n</li>\n<li><a href="https://json-schema.apifox.cn/" rel="nofollow">https://json-schema.apifox.cn/</a></li>\n<li>npm\n<ul dir="auto">\n<li><a href="https://github.com/ajv-validator/ajv">https://github.com/ajv-validator/ajv</a></li>\n<li><a href="https://github.com/tdegrunt/jsonschema">https://github.com/tdegrunt/jsonschema</a></li>\n</ul>\n</li>\n<li>vue 相关\n<ul dir="auto">\n<li><a href="https://github.com/lljj-x/vue-json-schema-form/tree/master">https://github.com/lljj-x/vue-json-schema-form/tree/master</a><br>\n<a href="https://formilyjs.org/zh-CN" rel="nofollow">https://formilyjs.org/zh-CN</a></li>\n</ul>\n</li>\n</ul>',user:{login:a,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/281"},navList:[{text:"什么是 JSON Schema？",id:"main-heading-H2-0",type:p,children:[{text:"数据类型",id:"main-heading-H3-1",type:n},{text:"关键字",id:"main-heading-H3-2",type:n}]},{text:"JSON Schema 的应用场景",id:"main-heading-H2-3",type:p,children:[]},{text:"低代码组件配置示例",id:"main-heading-H2-4",type:p,children:[{text:"1. 对象",id:"main-heading-H3-5",type:n},{text:"2. 数组",id:"main-heading-H3-6",type:n},{text:"3. 递归",id:"main-heading-H3-7",type:n},{text:"参考",id:"main-heading-H3-8",type:n}]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:a,userEmail:"1656800216@qq.com",repository:"blog",blogName:t,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:t,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H3","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

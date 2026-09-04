@@ -1,0 +1,206 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Cursor 教程 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="Cursor - AI 代码编辑器 Cursor 编辑器是一款专为现代开发者设计的 AI 驱动的代码编辑器。 Cursor 通过集成先进的大型语言模型（如GPT-4、Claude 3.5）来理解和生成代码 。 Cursor 是一款基于 Visual Studio Code (VS Code) 的现代"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Cursor 教程"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="Cursor - AI 代码编辑器 Cursor 编辑器是一款专为现代开发者设计的 AI 驱动的代码编辑器。 Cursor 通过集成先进的大型语言模型（如GPT-4、Claude 3.5）来理解和生成代码 。 Cursor 是一款基于 Visual Studio Code (VS Code) 的现代"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Cursor 教程"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="Cursor - AI 代码编辑器 Cursor 编辑器是一款专为现代开发者设计的 AI 驱动的代码编辑器。 Cursor 通过集成先进的大型语言模型（如GPT-4、Claude 3.5）来理解和生成代码 。 Cursor 是一款基于 Visual Studio Code (VS Code) 的现代"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/292#main-heading-H2-0" title="Cursor - AI 代码编辑器" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Cursor - AI 代码编辑器
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/292#main-heading-H2-1" title="特点" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              特点
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/292#main-heading-H2-2" title="基本使用" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              基本使用
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/292#main-heading-H3-3" title="code/cursor 命令" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  code/cursor 命令
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/292#main-heading-H3-4" title="快捷键" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  快捷键
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/292#main-heading-H3-5" title="@ 符号" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  @ 符号
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/292#main-heading-H2-6" title="Cursor 支持支付宝订阅付费了 （2025/04/11）" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              Cursor 支持支付宝订阅付费了 （2025/04/11）
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/292#main-heading-H2-7" title="参考" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Cursor 教程</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Cursor 教程</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2025-03-03</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 6 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">Cursor - AI 代码编辑器</h2>
+<p dir="auto">Cursor 编辑器是一款专为现代开发者设计的 AI 驱动的代码编辑器。</p>
+<p dir="auto">Cursor 通过集成先进的大型语言模型（如GPT-4、Claude 3.5）来理解和生成代码 。</p>
+<p dir="auto">Cursor 是一款基于 Visual Studio Code (VS Code) 的现代化代码编辑器，它继承了 VS Code 的强大功能和扩展性，并在此基础上加入了 AI 辅助编程功能，旨在提升开发者的效率和代码质量。</p>
+<h2 id="main-heading-H2-1">特点</h2>
+<p dir="auto">Cursor 基于 <a href="https://www.runoob.com/vscode/vscode-tutorial.html" rel="nofollow">VS Code</a> 开发，因此它拥有 VS Code 的所有优点，例如：</p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>跨平台支持:</strong> 支持 Windows、macOS 和 Linux 系统。</p>
+</li>
+<li>
+<p dir="auto"><strong>丰富的插件生态系统:</strong> 可以使用 VS Code 的庞大插件库来扩展功能。</p>
+</li>
+<li>
+<p dir="auto"><strong>强大的代码编辑功能:</strong> 支持语法高亮、代码补全、代码片段、代码导航等功能。</p>
+</li>
+<li>
+<p dir="auto"><strong>集成终端:</strong> 方便开发者直接在编辑器内运行命令。</p>
+</li>
+</ul>
+<p dir="auto">对于熟悉 VS Code 的用户来说，Cursor 的学习成本非常低，可以快速上手。</p>
+<p dir="auto">Cursor 的最大亮点在于其内置的 AI 辅助编程功能，它可以帮助开发者：</p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>代码补全:</strong> 根据上下文和代码风格，提供更智能、更准确的代码补全建议。</p>
+</li>
+<li>
+<p dir="auto"><strong>代码生成:</strong> 根据自然语言描述或代码片段，自动生成代码，例如生成函数、类、测试用例等。</p>
+</li>
+<li>
+<p dir="auto"><strong>代码解释:</strong> 解释代码的功能和逻辑，帮助开发者理解复杂的代码。</p>
+</li>
+<li>
+<p dir="auto"><strong>代码调试:</strong> 帮助开发者查找和修复代码中的错误。</p>
+</li>
+</ul>
+<p dir="auto">这些 AI 功能可以显著提升开发效率，减少重复性工作，让开发者更专注于创造性工作。</p>
+<h2 id="main-heading-H2-2">基本使用</h2>
+<h3 id="main-heading-H3-3">code/cursor 命令</h3>
+<ul dir="auto">
+<li>注册 cursor 命令1：安装时勾选</li>
+<li>命令面板：Windows/Linux 快捷键: Ctrl + Shift + P，搜索安装 >shell command: install 'cursor' command in PATH ，选择后即可为系统 PATH 路径添加了 cursor 命令的引用。</li>
+</ul>
+<h3 id="main-heading-H3-4">快捷键</h3>
+<ul dir="auto">
+<li><code class="notranslate">Ctrl + L</code> 打开聊天窗口（chat）</li>
+<li><code class="notranslate">Ctrl + I</code> 打开代码代理人：生成代码（composer）</li>
+<li><code class="notranslate">Ctrl + K</code> 打开聊天窗口编辑代码</li>
+<li><code class="notranslate">Ctrl + J</code> 打开代码补全</li>
+</ul>
+<h3 id="main-heading-H3-5">@ 符号</h3>
+<p dir="auto">支持以下主要指令:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th><strong>功能</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>使用场景</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>@Files</strong></td>
+<td>引用整个文件作为上下文。支持文件路径预览和分块处理。</td>
+<td>需要引用特定文件内容时，如代码文件、文档等。</td>
+</tr>
+<tr>
+<td><strong><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Folders/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Folders">@Folders</a></strong></td>
+<td>引用整个文件夹作为上下文。</td>
+<td>需要提供大量文件作为上下文，例如项目目录。</td>
+</tr>
+<tr>
+<td><strong><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/code/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/code">@code</a></strong></td>
+<td>引用特定代码片段作为上下文。</td>
+<td>需要针对特定代码片段进行查询或操作。</td>
+</tr>
+<tr>
+<td><strong><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/codebase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/codebase">@codebase</a></strong></td>
+<td>从代码库中搜索重要文件或代码块，并根据相关性重新排序。</td>
+<td>需要在整个代码库中查找相关代码或文件。</td>
+</tr>
+<tr>
+<td><strong><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/git/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/git">@git</a></strong></td>
+<td>扫描 Git 提交、差异或拉取请求，帮助查找问题。</td>
+<td>需要分析 Git 相关信息，如提交记录、代码差异等。</td>
+</tr>
+<tr>
+<td><strong><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/web/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/web">@web</a></strong></td>
+<td>搜索网络信息作为附加上下文。</td>
+<td>需要获取最新网络信息或外部资源。</td>
+</tr>
+<tr>
+<td><strong><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/docs/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/docs">@docs</a></strong></td>
+<td>引用预设的第三方文档或自定义文档。支持添加自定义文档。</td>
+<td>需要引用外部文档或自定义知识库。</td>
+</tr>
+<tr>
+<td><strong><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/definitions/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/definitions">@definitions</a></strong></td>
+<td>引用附近的所有定义作为上下文。</td>
+<td>需要引用当前代码中的变量、函数等定义。</td>
+</tr>
+<tr>
+<td><strong>@Chat</strong></td>
+<td>将当前聊天消息添加为上下文。</td>
+<td>在聊天中需要引用之前的对话内容。</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>高级使用技巧</strong></p>
+<p dir="auto"><strong>组合指令:</strong> 输入 <code class="notranslate">@Files src/utils/helper.js @Codebase</code>，可同时引用指定文件并关联代码库全局上下文，生成高度定制化的代码。</p>
+<p dir="auto"><strong>动态资源集成:</strong> 粘贴以 <code class="notranslate">@</code> 开头的链接（如 @<a href="https://api.example.com/docs%EF%BC%89%EF%BC%8CCursor" rel="nofollow">https://api.example.com/docs），Cursor</a> 会自动解析内容并纳入上下文。</p>
+<p dir="auto"><strong>隐私与配置管理:</strong> 通过 <strong>.cursorignore</strong> 文件（类似 .gitignore）排除敏感文件或目录的索引。 在 <code class="notranslate">Settings > Features > Docs</code> 中添加自定义文档链接，增强 <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/docs/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/docs">@docs</a> 的覆盖范围。</p>
+<p dir="auto"><strong>典型应用场景示例</strong></p>
+<p dir="auto"><strong>1、代码生成</strong></p>
+<ul dir="auto">
+<li>指令：生成用户登录功能 <code class="notranslate">@Files src/models/user.js @Docs https://jwt.io/introduction</code></li>
+<li>结果：基于现有用户模型和 JWT 官方文档生成安全的鉴权逻辑。</li>
+</ul>
+<p dir="auto"><strong>2、错误排查</strong></p>
+<ul dir="auto">
+<li>指令：解释此报错原因 <code class="notranslate">@Code 12-25 行 @Git HEAD~1</code></li>
+<li>结果：结合代码段和最近提交历史分析潜在问题。</li>
+</ul>
+<p dir="auto"><strong>3、跨文件重构</strong></p>
+<ul dir="auto">
+<li>指令：将类组件改为函数式组件 <code class="notranslate">@Folders src/components @Codebase</code></li>
+<li>结果：批量转换并确保全局样式和状态管理兼容。</li>
+</ul>
+<h2 id="main-heading-H2-6">Cursor 支持支付宝订阅付费了 （2025/04/11）</h2>
+<p dir="auto"><strong>🔥 鼓励付费，支持正版 🔥</strong></p>
+<h2 id="main-heading-H2-7">参考</h2>
+<p dir="auto"><strong>官方文档</strong></p>
+<ul dir="auto">
+<li><a href="https://www.cursor.com/cn" rel="nofollow">https://www.cursor.com/cn</a></li>
+<li><a href="https://cursordocs.com/docs" rel="nofollow">Cursor 中文文档</a></li>
+<li><a href="https://www.cursor.com/cn/changelog" rel="nofollow">Cursor 更新日志</a></li>
+<li><a href="https://forum.cursor.com/" rel="nofollow">Cursor 官方论坛</a></li>
+</ul>
+<p dir="auto"><strong>使用教程</strong></p>
+<ul dir="auto">
+<li><a href="https://www.runoob.com/cursor/cursor-tutorial.html" rel="nofollow">菜鸟 —— Cursor 教程</a> / <a href="https://www.runoob.com/vscode/vscode-ai-extensions.html" rel="nofollow">VS Code AI 扩展</a></li>
+<li><a href="https://www.ifb.me/zh/blog/backend/10-fen-zhong-jie-suo" rel="nofollow">10 分钟带你解锁 Cursor 的全部潜力：从基础操作到高级技巧</a></li>
+<li><a href="https://www.youtube.com/watch?v=lypPoT8lZ2M&list=PLZ81M_gt1CZdlEQqug70vMGhthMwXOJRB" rel="nofollow">cursor 教程</a></li>
+<li><a href="https://flowus.cn/share/58da5f2b-f741-446e-8046-3a73e5dae836" rel="nofollow">Cursor 学习指南 （v2ex 网友）</a></li>
+</ul>
+<p dir="auto"><strong>知乎话题</strong></p>
+<ul dir="auto">
+<li><a href="https://zhuanlan.zhihu.com/p/1341154936" rel="nofollow">Cursor 成功让我卸载了 VSCode</a></li>
+<li><a href="https://www.zhihu.com/question/590152131" rel="nofollow">集成 GPT-4 的代码生成器 Cursor 使用体验如何？怎么用更高效？</a></li>
+<li><a href="https://www.zhihu.com/question/1339583068" rel="nofollow">程序员如何用好 cursor 工具？</a></li>
+<li><a href="https://www.zhihu.com/question/600101707" rel="nofollow">Cursor 和 Copilot 有哪些神仙用法？</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(t,o,r,n,e,a){return{layout:"default",data:[{post:{id:2890003625,number:292,title:"Cursor 教程",created_at:"2025-03-03T02:28:27Z",updated_at:"2025-04-11T02:26:43Z",body_html:'<h2 id="main-heading-H2-0">Cursor - AI 代码编辑器</h2>\n<p dir="auto">Cursor 编辑器是一款专为现代开发者设计的 AI 驱动的代码编辑器。</p>\n<p dir="auto">Cursor 通过集成先进的大型语言模型（如GPT-4、Claude 3.5）来理解和生成代码 。</p>\n<p dir="auto">Cursor 是一款基于 Visual Studio Code (VS Code) 的现代化代码编辑器，它继承了 VS Code 的强大功能和扩展性，并在此基础上加入了 AI 辅助编程功能，旨在提升开发者的效率和代码质量。</p>\n<h2 id="main-heading-H2-1">特点</h2>\n<p dir="auto">Cursor 基于 <a href="https://www.runoob.com/vscode/vscode-tutorial.html" rel="nofollow">VS Code</a> 开发，因此它拥有 VS Code 的所有优点，例如：</p>\n<ul dir="auto">\n<li>\n<p dir="auto"><strong>跨平台支持:</strong> 支持 Windows、macOS 和 Linux 系统。</p>\n</li>\n<li>\n<p dir="auto"><strong>丰富的插件生态系统:</strong> 可以使用 VS Code 的庞大插件库来扩展功能。</p>\n</li>\n<li>\n<p dir="auto"><strong>强大的代码编辑功能:</strong> 支持语法高亮、代码补全、代码片段、代码导航等功能。</p>\n</li>\n<li>\n<p dir="auto"><strong>集成终端:</strong> 方便开发者直接在编辑器内运行命令。</p>\n</li>\n</ul>\n<p dir="auto">对于熟悉 VS Code 的用户来说，Cursor 的学习成本非常低，可以快速上手。</p>\n<p dir="auto">Cursor 的最大亮点在于其内置的 AI 辅助编程功能，它可以帮助开发者：</p>\n<ul dir="auto">\n<li>\n<p dir="auto"><strong>代码补全:</strong> 根据上下文和代码风格，提供更智能、更准确的代码补全建议。</p>\n</li>\n<li>\n<p dir="auto"><strong>代码生成:</strong> 根据自然语言描述或代码片段，自动生成代码，例如生成函数、类、测试用例等。</p>\n</li>\n<li>\n<p dir="auto"><strong>代码解释:</strong> 解释代码的功能和逻辑，帮助开发者理解复杂的代码。</p>\n</li>\n<li>\n<p dir="auto"><strong>代码调试:</strong> 帮助开发者查找和修复代码中的错误。</p>\n</li>\n</ul>\n<p dir="auto">这些 AI 功能可以显著提升开发效率，减少重复性工作，让开发者更专注于创造性工作。</p>\n<h2 id="main-heading-H2-2">基本使用</h2>\n<h3 id="main-heading-H3-3">code/cursor 命令</h3>\n<ul dir="auto">\n<li>注册 cursor 命令1：安装时勾选</li>\n<li>命令面板：Windows/Linux 快捷键: Ctrl + Shift + P，搜索安装 &gt;shell command: install \'cursor\' command in PATH ，选择后即可为系统 PATH 路径添加了 cursor 命令的引用。</li>\n</ul>\n<h3 id="main-heading-H3-4">快捷键</h3>\n<ul dir="auto">\n<li><code class="notranslate">Ctrl + L</code> 打开聊天窗口（chat）</li>\n<li><code class="notranslate">Ctrl + I</code> 打开代码代理人：生成代码（composer）</li>\n<li><code class="notranslate">Ctrl + K</code> 打开聊天窗口编辑代码</li>\n<li><code class="notranslate">Ctrl + J</code> 打开代码补全</li>\n</ul>\n<h3 id="main-heading-H3-5">@ 符号</h3>\n<p dir="auto">支持以下主要指令:</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th><strong>功能</strong></th>\n<th><strong>描述</strong></th>\n<th><strong>使用场景</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>@Files</strong></td>\n<td>引用整个文件作为上下文。支持文件路径预览和分块处理。</td>\n<td>需要引用特定文件内容时，如代码文件、文档等。</td>\n</tr>\n<tr>\n<td><strong><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Folders/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Folders">@Folders</a></strong></td>\n<td>引用整个文件夹作为上下文。</td>\n<td>需要提供大量文件作为上下文，例如项目目录。</td>\n</tr>\n<tr>\n<td><strong><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/code/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/code">@code</a></strong></td>\n<td>引用特定代码片段作为上下文。</td>\n<td>需要针对特定代码片段进行查询或操作。</td>\n</tr>\n<tr>\n<td><strong><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/codebase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/codebase">@codebase</a></strong></td>\n<td>从代码库中搜索重要文件或代码块，并根据相关性重新排序。</td>\n<td>需要在整个代码库中查找相关代码或文件。</td>\n</tr>\n<tr>\n<td><strong><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/git/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/git">@git</a></strong></td>\n<td>扫描 Git 提交、差异或拉取请求，帮助查找问题。</td>\n<td>需要分析 Git 相关信息，如提交记录、代码差异等。</td>\n</tr>\n<tr>\n<td><strong><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/web/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/web">@web</a></strong></td>\n<td>搜索网络信息作为附加上下文。</td>\n<td>需要获取最新网络信息或外部资源。</td>\n</tr>\n<tr>\n<td><strong><a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/docs/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/docs">@docs</a></strong></td>\n<td>引用预设的第三方文档或自定义文档。支持添加自定义文档。</td>\n<td>需要引用外部文档或自定义知识库。</td>\n</tr>\n<tr>\n<td><strong><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/definitions/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/definitions">@definitions</a></strong></td>\n<td>引用附近的所有定义作为上下文。</td>\n<td>需要引用当前代码中的变量、函数等定义。</td>\n</tr>\n<tr>\n<td><strong>@Chat</strong></td>\n<td>将当前聊天消息添加为上下文。</td>\n<td>在聊天中需要引用之前的对话内容。</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong>高级使用技巧</strong></p>\n<p dir="auto"><strong>组合指令:</strong> 输入 <code class="notranslate">@Files src/utils/helper.js @Codebase</code>，可同时引用指定文件并关联代码库全局上下文，生成高度定制化的代码。</p>\n<p dir="auto"><strong>动态资源集成:</strong> 粘贴以 <code class="notranslate">@</code> 开头的链接（如 @<a href="https://api.example.com/docs%EF%BC%89%EF%BC%8CCursor" rel="nofollow">https://api.example.com/docs），Cursor</a> 会自动解析内容并纳入上下文。</p>\n<p dir="auto"><strong>隐私与配置管理:</strong> 通过 <strong>.cursorignore</strong> 文件（类似 .gitignore）排除敏感文件或目录的索引。 在 <code class="notranslate">Settings &gt; Features &gt; Docs</code> 中添加自定义文档链接，增强 <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/docs/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/docs">@docs</a> 的覆盖范围。</p>\n<p dir="auto"><strong>典型应用场景示例</strong></p>\n<p dir="auto"><strong>1、代码生成</strong></p>\n<ul dir="auto">\n<li>指令：生成用户登录功能 <code class="notranslate">@Files src/models/user.js @Docs https://jwt.io/introduction</code></li>\n<li>结果：基于现有用户模型和 JWT 官方文档生成安全的鉴权逻辑。</li>\n</ul>\n<p dir="auto"><strong>2、错误排查</strong></p>\n<ul dir="auto">\n<li>指令：解释此报错原因 <code class="notranslate">@Code 12-25 行 @Git HEAD~1</code></li>\n<li>结果：结合代码段和最近提交历史分析潜在问题。</li>\n</ul>\n<p dir="auto"><strong>3、跨文件重构</strong></p>\n<ul dir="auto">\n<li>指令：将类组件改为函数式组件 <code class="notranslate">@Folders src/components @Codebase</code></li>\n<li>结果：批量转换并确保全局样式和状态管理兼容。</li>\n</ul>\n<h2 id="main-heading-H2-6">Cursor 支持支付宝订阅付费了 （2025/04/11）</h2>\n<p dir="auto"><strong>🔥 鼓励付费，支持正版 🔥</strong></p>\n<h2 id="main-heading-H2-7">参考</h2>\n<p dir="auto"><strong>官方文档</strong></p>\n<ul dir="auto">\n<li><a href="https://www.cursor.com/cn" rel="nofollow">https://www.cursor.com/cn</a></li>\n<li><a href="https://cursordocs.com/docs" rel="nofollow">Cursor 中文文档</a></li>\n<li><a href="https://www.cursor.com/cn/changelog" rel="nofollow">Cursor 更新日志</a></li>\n<li><a href="https://forum.cursor.com/" rel="nofollow">Cursor 官方论坛</a></li>\n</ul>\n<p dir="auto"><strong>使用教程</strong></p>\n<ul dir="auto">\n<li><a href="https://www.runoob.com/cursor/cursor-tutorial.html" rel="nofollow">菜鸟 —— Cursor 教程</a> / <a href="https://www.runoob.com/vscode/vscode-ai-extensions.html" rel="nofollow">VS Code AI 扩展</a></li>\n<li><a href="https://www.ifb.me/zh/blog/backend/10-fen-zhong-jie-suo" rel="nofollow">10 分钟带你解锁 Cursor 的全部潜力：从基础操作到高级技巧</a></li>\n<li><a href="https://www.youtube.com/watch?v=lypPoT8lZ2M&amp;list=PLZ81M_gt1CZdlEQqug70vMGhthMwXOJRB" rel="nofollow">cursor 教程</a></li>\n<li><a href="https://flowus.cn/share/58da5f2b-f741-446e-8046-3a73e5dae836" rel="nofollow">Cursor 学习指南 （v2ex 网友）</a></li>\n</ul>\n<p dir="auto"><strong>知乎话题</strong></p>\n<ul dir="auto">\n<li><a href="https://zhuanlan.zhihu.com/p/1341154936" rel="nofollow">Cursor 成功让我卸载了 VSCode</a></li>\n<li><a href="https://www.zhihu.com/question/590152131" rel="nofollow">集成 GPT-4 的代码生成器 Cursor 使用体验如何？怎么用更高效？</a></li>\n<li><a href="https://www.zhihu.com/question/1339583068" rel="nofollow">程序员如何用好 cursor 工具？</a></li>\n<li><a href="https://www.zhihu.com/question/600101707" rel="nofollow">Cursor 和 Copilot 有哪些神仙用法？</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:t,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:e,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:t}],html_url:"https://github.com/yanyue404/blog/issues/292"},navList:[{text:"Cursor - AI 代码编辑器",id:"main-heading-H2-0",type:o,children:[]},{text:"特点",id:"main-heading-H2-1",type:o,children:[]},{text:"基本使用",id:"main-heading-H2-2",type:o,children:[{text:"code/cursor 命令",id:"main-heading-H3-3",type:r},{text:"快捷键",id:"main-heading-H3-4",type:r},{text:"@ 符号",id:"main-heading-H3-5",type:r}]},{text:"Cursor 支持支付宝订阅付费了 （2025/04/11）",id:"main-heading-H2-6",type:o,children:[]},{text:"参考",id:"main-heading-H2-7",type:o,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:a,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:a,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:t},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:t,avatar_url:t,name:t,html_url:t,bio:t,type:e}},serverRendered:!0}}("","H2","H3","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>

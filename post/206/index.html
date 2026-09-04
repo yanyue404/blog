@@ -1,0 +1,985 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>微信小程序产品页改版分享 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content="前言 需求描述 小程序产品列表和 APP 接口统一，实现产品轮播页单页楼梯导航效果 效果预览 App 与 小程序产品页交互效果查看 实现思路 1. 改造数据 // clearnData 方法 Page({ clearnData(data) { // ... data.forEach((o, data"><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="微信小程序产品页改版分享"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content="前言 需求描述 小程序产品列表和 APP 接口统一，实现产品轮播页单页楼梯导航效果 效果预览 App 与 小程序产品页交互效果查看 实现思路 1. 改造数据 // clearnData 方法 Page({ clearnData(data) { // ... data.forEach((o, data"><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="微信小程序产品页改版分享"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content="前言 需求描述 小程序产品列表和 APP 接口统一，实现产品轮播页单页楼梯导航效果 效果预览 App 与 小程序产品页交互效果查看 实现思路 1. 改造数据 // clearnData 方法 Page({ clearnData(data) { // ... data.forEach((o, data"><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H2-0" title="前言" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              前言
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H2-1" title="实现思路" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              实现思路
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H3-2" title="1. 改造数据" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  1. 改造数据
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H3-3" title="2. 基本实现：scroll-into-view + 滚动监听" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  2. 基本实现：scroll-into-view + 滚动监听
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H3-4" title="3. 如何获取集合所有分组的高度？" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  3. 如何获取集合所有分组的高度？
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H3-5" title="4. 什么时机去更新" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  4. 什么时机去更新
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H3-6" title="5. 直接计算 dom 高度" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  5. 直接计算 dom 高度
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H2-7" title="性能测试优化" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              性能测试优化
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H3-8" title="存在问题" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  存在问题
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H2-9" title="拓展" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              拓展
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/206#main-heading-H2-10" title="参考" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              参考
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>微信小程序产品页改版分享</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>微信小程序产品页改版分享</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2021-05-22</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 34 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><h2 id="main-heading-H2-0">前言</h2>
+<p dir="auto"><strong>需求描述</strong></p>
+<p dir="auto">小程序产品列表和 APP 接口统一，实现产品轮播页单页楼梯导航效果</p>
+<p dir="auto"><strong>效果预览</strong></p>
+<p dir="auto">App 与 小程序产品页交互效果查看</p>
+<h2 id="main-heading-H2-1">实现思路</h2>
+<h3 id="main-heading-H3-2">1. 改造数据</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='// clearnData 方法
+Page({
+  clearnData(data) {
+    // ...
+    data.forEach((o, dataIndex) => {
+      objList.push({
+        key: o[0].moduleKey, // allHotProd
+        name: o[0].parentTitle, // 全部
+        currentLabel: "page" + dataIndex + "_" + o[0].moduleKey, // page0_allHotProd
+        info: [...o], // 所有数据集合 - dataList 分组集合
+      });
+    });
+  },
+   this.setData(
+      {
+        swiperList: objList,
+        currentType: objList[0].key,
+      }
+    );
+});'><pre class="notranslate"><span class="pl-c">// clearnData 方法</span>
+<span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">clearnData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// ...</span>
+    <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">o</span><span class="pl-kos">,</span> <span class="pl-s1">dataIndex</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-s1">objList</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">key</span>: <span class="pl-s1">o</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span><span class="pl-kos">,</span> <span class="pl-c">// allHotProd</span>
+        <span class="pl-c1">name</span>: <span class="pl-s1">o</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">parentTitle</span><span class="pl-kos">,</span> <span class="pl-c">// 全部</span>
+        <span class="pl-c1">currentLabel</span>: <span class="pl-s">"page"</span> <span class="pl-c1">+</span> <span class="pl-s1">dataIndex</span> <span class="pl-c1">+</span> <span class="pl-s">"_"</span> <span class="pl-c1">+</span> <span class="pl-s1">o</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span><span class="pl-kos">,</span> <span class="pl-c">// page0_allHotProd</span>
+        <span class="pl-c1">info</span>: <span class="pl-kos">[</span>...<span class="pl-s1">o</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 所有数据集合 - dataList 分组集合</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+   this<span class="pl-kos"></span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">swiperList</span>: <span class="pl-s1">objList</span><span class="pl-kos">,</span>
+        <span class="pl-c1">currentType</span>: <span class="pl-s1">objList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-3">2. 基本实现：scroll-into-view + 滚动监听</h3>
+<p dir="auto">点击上面的 label 已经可以正确定位了，如何滚动监听回显？</p>
+<p dir="auto">需要的是详细的高度信息。</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='<!-- ! swiperList 页切换 -->
+<scroll-view scroll-x="true" class="head-type">
+  <view
+    class="type-item {{item.key == currentType ? &#39;active&#39; : &#39;&#39;}}"
+    wx:for="{{swiperList}}"
+    wx:key="key"
+    bindtap="changeType"
+    data-type="{{item.key}}"
+  >
+    <view class="type-item-name">{{item.name}}</view>
+    <view class="type-item-line"></view>
+  </view>
+</scroll-view>
+<!-- swiper 实际区域 -->
+<swiper>
+  <swiper-item
+    wx:for="{{swiperList}}"
+    wx:key="key"
+    wx:for-index="pageIndex"
+    wx:for-item="page"
+  >
+    <view class="label-content">
+      <!-- 子标签切换 -->
+      <view
+        wx:for="{{page.info}}"
+        wx:for-item="info"
+        wx:key="key"
+        wx:for-index="infoIndex"
+        hidden="{{info.dataList.length === 0 || info.show === &#39;false&#39;}}"
+        class="label-item {{info.key == page.currentLabel ? &#39;active&#39; : &#39;&#39;}}"
+        data-label="{{info.key}}"
+        bindtap="changeLabel"
+        >{{info.title}}</view
+      >
+      <scroll-view
+        class="scrollBox"
+        scroll-y="true"
+        scroll-into-view="{{toView}}"
+        scroll-with-animation="true"
+        enable-back-to-top="true"
+        bindscroll="listenScroll"
+      >
+        <view
+          class="group"
+          id="{{infoitem.key}}"
+          wx:for="{{page.info}}"
+          wx:for-item="infoitem"
+          wx:key="key"
+          data-rol="{{infoitem.key}}"
+          wx:for-index="groupIndex"
+          hidden="{{infoitem.dataList.length === 0 || infoitem.show === &#39;false&#39;}}"
+        >
+          <!-- 组标题：爆款热销 -->
+          <!-- - 广告 ads -->
+          <!-- - 产品 product -->
+          <!-- - 产品 product -->
+          <!-- - 产品 product -->
+        </view>
+      </scroll-view>
+    </view>
+  </swiper-item>
+</swiper>'><pre class="notranslate"><span class="pl-c">&lt;!-- ! swiperList 页切换 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">scroll-view</span> <span class="pl-c1">scroll-x</span>="<span class="pl-s">true</span>" <span class="pl-c1">class</span>="<span class="pl-s">head-type</span>"<span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">view</span>
+    <span class="pl-c1">class</span>="<span class="pl-s">type-item {{item.key == currentType ? 'active' : ''}}</span>"
+    <span class="pl-c1">wx:for</span>="<span class="pl-s">{{swiperList}}</span>"
+    <span class="pl-c1">wx:key</span>="<span class="pl-s">key</span>"
+    <span class="pl-c1">bindtap</span>="<span class="pl-s">changeType</span>"
+    <span class="pl-c1">data-type</span>="<span class="pl-s">{{item.key}}</span>"
+  <span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">type-item-name</span>"<span class="pl-kos">></span>{{item.name}}<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">type-item-line</span>"<span class="pl-kos">></span><span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">scroll-view</span><span class="pl-kos">></span>
+<span class="pl-c">&lt;!-- swiper 实际区域 --></span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">swiper</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">swiper-item</span>
+    <span class="pl-c1">wx:for</span>="<span class="pl-s">{{swiperList}}</span>"
+    <span class="pl-c1">wx:key</span>="<span class="pl-s">key</span>"
+    <span class="pl-c1">wx:for-index</span>="<span class="pl-s">pageIndex</span>"
+    <span class="pl-c1">wx:for-item</span>="<span class="pl-s">page</span>"
+  <span class="pl-kos">></span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">label-content</span>"<span class="pl-kos">></span>
+      <span class="pl-c">&lt;!-- 子标签切换 --></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">view</span>
+        <span class="pl-c1">wx:for</span>="<span class="pl-s">{{page.info}}</span>"
+        <span class="pl-c1">wx:for-item</span>="<span class="pl-s">info</span>"
+        <span class="pl-c1">wx:key</span>="<span class="pl-s">key</span>"
+        <span class="pl-c1">wx:for-index</span>="<span class="pl-s">infoIndex</span>"
+        <span class="pl-c1">hidden</span>="<span class="pl-s">{{info.dataList.length === 0 || info.show === 'false'}}</span>"
+        <span class="pl-c1">class</span>="<span class="pl-s">label-item {{info.key == page.currentLabel ? 'active' : ''}}</span>"
+        <span class="pl-c1">data-label</span>="<span class="pl-s">{{info.key}}</span>"
+        <span class="pl-c1">bindtap</span>="<span class="pl-s">changeLabel</span>"
+        <span class="pl-kos">></span>{{info.title}}<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span>
+      <span class="pl-kos">></span>
+      <span class="pl-kos">&lt;</span><span class="pl-ent">scroll-view</span>
+        <span class="pl-c1">class</span>="<span class="pl-s">scrollBox</span>"
+        <span class="pl-c1">scroll-y</span>="<span class="pl-s">true</span>"
+        <span class="pl-c1">scroll-into-view</span>="<span class="pl-s">{{toView}}</span>"
+        <span class="pl-c1">scroll-with-animation</span>="<span class="pl-s">true</span>"
+        <span class="pl-c1">enable-back-to-top</span>="<span class="pl-s">true</span>"
+        <span class="pl-c1">bindscroll</span>="<span class="pl-s">listenScroll</span>"
+      <span class="pl-kos">></span>
+        <span class="pl-kos">&lt;</span><span class="pl-ent">view</span>
+          <span class="pl-c1">class</span>="<span class="pl-s">group</span>"
+          <span class="pl-c1">id</span>="<span class="pl-s">{{infoitem.key}}</span>"
+          <span class="pl-c1">wx:for</span>="<span class="pl-s">{{page.info}}</span>"
+          <span class="pl-c1">wx:for-item</span>="<span class="pl-s">infoitem</span>"
+          <span class="pl-c1">wx:key</span>="<span class="pl-s">key</span>"
+          <span class="pl-c1">data-rol</span>="<span class="pl-s">{{infoitem.key}}</span>"
+          <span class="pl-c1">wx:for-index</span>="<span class="pl-s">groupIndex</span>"
+          <span class="pl-c1">hidden</span>="<span class="pl-s">{{infoitem.dataList.length === 0 || infoitem.show === 'false'}}</span>"
+        <span class="pl-kos">></span>
+          <span class="pl-c">&lt;!-- 组标题：爆款热销 --></span>
+          <span class="pl-c">&lt;!-- - 广告 ads --></span>
+          <span class="pl-c">&lt;!-- - 产品 product --></span>
+          <span class="pl-c">&lt;!-- - 产品 product --></span>
+          <span class="pl-c">&lt;!-- - 产品 product --></span>
+        <span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+      <span class="pl-kos">&lt;/</span><span class="pl-ent">scroll-view</span><span class="pl-kos">></span>
+    <span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">></span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">swiper-item</span><span class="pl-kos">></span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">swiper</span><span class="pl-kos">></span></pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='Page({
+  data: {
+    swiperList: [], // 新的数据容器
+    toView: "", // 滚动目标 scroll-into-view 的 id
+    currentType: "all",
+    currentTypeIndex: 0, //当前轮播图的第几页
+  },
+  //切换标签
+  changeLabel(e) {
+    let label = e.currentTarget.dataset.label;
+    let param = "swiperList[" + this.data.currentTypeIndex + "].currentLabel";
+    this.setData({
+      [param]: label,
+      toView: label,
+      isClickLabel: true,
+    });
+  },
+  listenScroll: debounce(function (e) {
+    this.scrollFn(e);
+  }, 8),
+  scrollFn(e) {
+      ...
+    const infoList = swiperList[currentTypeIndex].info;
+    let init = 0;
+    // [521， 686， 1184， 1685， 1850， 2015， 2180， 2345]
+    const heightMap = infoList.map((v, index) => {
+      if (v.height === 0) {
+        return 0;
+      }
+      init += v.height;
+      return init;
+    });
+    let heightMapIndex = heightMap.findIndex((v) => v > e.detail.scrollTop);
+    ...
+  },
+});'><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">swiperList</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 新的数据容器</span>
+    <span class="pl-c1">toView</span>: <span class="pl-s">""</span><span class="pl-kos">,</span> <span class="pl-c">// 滚动目标 scroll-into-view 的 id</span>
+    <span class="pl-c1">currentType</span>: <span class="pl-s">"all"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">currentTypeIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c">//当前轮播图的第几页</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">//切换标签</span>
+  <span class="pl-en">changeLabel</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">label</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">dataset</span><span class="pl-kos">.</span><span class="pl-c1">label</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">param</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">currentTypeIndex</span> <span class="pl-c1">+</span> <span class="pl-s">"].currentLabel"</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-kos">[</span><span class="pl-s1">param</span><span class="pl-kos">]</span>: <span class="pl-s1">label</span><span class="pl-kos">,</span>
+      <span class="pl-c1">toView</span>: <span class="pl-s1">label</span><span class="pl-kos">,</span>
+      <span class="pl-c1">isClickLabel</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">listenScroll</span>: <span class="pl-en">debounce</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">scrollFn</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">8</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+  <span class="pl-en">scrollFn</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      ...
+    <span class="pl-k">const</span> <span class="pl-s1">infoList</span> <span class="pl-c1">=</span> <span class="pl-s1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">currentTypeIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">init</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+    <span class="pl-c">// [521， 686， 1184， 1685， 1850， 2015， 2180， 2345]</span>
+    <span class="pl-k">const</span> <span class="pl-s1">heightMap</span> <span class="pl-c1">=</span> <span class="pl-s1">infoList</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">===</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">return</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+      <span class="pl-s1">init</span> <span class="pl-c1">+=</span> <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>
+      <span class="pl-k">return</span> <span class="pl-s1">init</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">heightMapIndex</span> <span class="pl-c1">=</span> <span class="pl-s1">heightMap</span><span class="pl-kos">.</span><span class="pl-en">findIndex</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">v</span> <span class="pl-c1">></span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">scrollTop</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    ...
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-4">3. 如何获取集合所有分组的高度？</h3>
+<p dir="auto">先动态计算再进行精度调整</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='Page({
+  data: {
+    heightInfo: {
+      // (参照单位 ： width 375 的设计稿)
+      title: 86, // 标题种类 1：仅有标题
+      desc: 126, // 标题种类 2：带有标题描述
+      ads: 228, // 广告高度
+      product: 222, // 产品的高度
+      gap: 22, // 间隔线
+    },
+  },
+  getGroupHeight(datas, descText) {
+    const { title, desc, gap, ads, product } = this.data.heightInfo;
+    let base = descText ? desc + gap : title + gap;
+    let num_ads = datas.filter((m) => m.itemType === "ads").length;
+    let num_products = datas.filter((m) => m.itemType === "product").length;
+    if (datas.length > 0) {
+      return Number(
+        Math.floor((base + num_ads * ads + product * num_products) / 2)
+      );
+    } else {
+      return 0;
+    }
+  },
+  calculationAccuracy() {
+    let query = wx.createSelectorQuery();
+    query
+      .select(".page0_firstGroup")
+      .boundingClientRect((rect) => {
+        if (rect === null) {
+          console.error("首次获取dom失败");
+        } else if (rect.height) {
+          let height = rect.height;
+          const default_firstGroupHeight = this.data.swiperList[0].info[0]
+            .height;
+          let scale = toFixed(height / default_firstGroupHeight, 3);
+          //   更新 swiperList 的真实的高度
+        }
+      })
+      .exec();
+  },
+});'><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">heightInfo</span>: <span class="pl-kos">{</span>
+      <span class="pl-c">// (参照单位 ： width 375 的设计稿)</span>
+      <span class="pl-c1">title</span>: <span class="pl-c1">86</span><span class="pl-kos">,</span> <span class="pl-c">// 标题种类 1：仅有标题</span>
+      <span class="pl-c1">desc</span>: <span class="pl-c1">126</span><span class="pl-kos">,</span> <span class="pl-c">// 标题种类 2：带有标题描述</span>
+      <span class="pl-c1">ads</span>: <span class="pl-c1">228</span><span class="pl-kos">,</span> <span class="pl-c">// 广告高度</span>
+      <span class="pl-c1">product</span>: <span class="pl-c1">222</span><span class="pl-kos">,</span> <span class="pl-c">// 产品的高度</span>
+      <span class="pl-c1">gap</span>: <span class="pl-c1">22</span><span class="pl-kos">,</span> <span class="pl-c">// 间隔线</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">getGroupHeight</span><span class="pl-kos">(</span><span class="pl-s1">datas</span><span class="pl-kos">,</span> <span class="pl-s1">descText</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-kos">{</span> title<span class="pl-kos">,</span> desc<span class="pl-kos">,</span> gap<span class="pl-kos">,</span> ads<span class="pl-kos">,</span> product <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">heightInfo</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">base</span> <span class="pl-c1">=</span> <span class="pl-s1">descText</span> ? <span class="pl-s1">desc</span> <span class="pl-c1">+</span> <span class="pl-s1">gap</span> : <span class="pl-s1">title</span> <span class="pl-c1">+</span> <span class="pl-s1">gap</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">num_ads</span> <span class="pl-c1">=</span> <span class="pl-s1">datas</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">itemType</span> <span class="pl-c1">===</span> <span class="pl-s">"ads"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">num_products</span> <span class="pl-c1">=</span> <span class="pl-s1">datas</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">itemType</span> <span class="pl-c1">===</span> <span class="pl-s">"product"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">datas</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">></span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-v">Number</span><span class="pl-kos">(</span>
+        <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">base</span> <span class="pl-c1">+</span> <span class="pl-s1">num_ads</span> <span class="pl-c1">*</span> <span class="pl-s1">ads</span> <span class="pl-c1">+</span> <span class="pl-s1">product</span> <span class="pl-c1">*</span> <span class="pl-s1">num_products</span><span class="pl-kos">)</span> <span class="pl-c1">/</span> <span class="pl-c1">2</span><span class="pl-kos">)</span>
+      <span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">query</span> <span class="pl-c1">=</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">createSelectorQuery</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">query</span>
+      <span class="pl-kos">.</span><span class="pl-en">select</span><span class="pl-kos">(</span><span class="pl-s">".page0_firstGroup"</span><span class="pl-kos">)</span>
+      <span class="pl-kos">.</span><span class="pl-en">boundingClientRect</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">rect</span> <span class="pl-c1">===</span> <span class="pl-c1">null</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s">"首次获取dom失败"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-k">let</span> <span class="pl-s1">height</span> <span class="pl-c1">=</span> <span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>
+          <span class="pl-k">const</span> <span class="pl-s1">default_firstGroupHeight</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span>
+            <span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>
+          <span class="pl-k">let</span> <span class="pl-s1">scale</span> <span class="pl-c1">=</span> <span class="pl-en">toFixed</span><span class="pl-kos">(</span><span class="pl-s1">height</span> <span class="pl-c1">/</span> <span class="pl-s1">default_firstGroupHeight</span><span class="pl-kos">,</span> <span class="pl-c1">3</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-c">//   更新 swiperList 的真实的高度</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span>
+      <span class="pl-kos">.</span><span class="pl-en">exec</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-5">4. 什么时机去更新</h3>
+<p dir="auto"><strong>（1） 延时 seTimeout</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({
+  onReady() {
+    setTimeout(() => {
+      // ! 响应式屏幕精度调整（时机： 页面完全渲染完后）
+      this.calculationAccuracy();
+    }, 2000);
+  },
+});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">onReady</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-c">// ! 响应式屏幕精度调整（时机： 页面完全渲染完后）</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">2000</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>（2） 多个延时 等待更新</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='Page({
+  onReady() {
+    // ! 响应式屏幕精度调整（时机： 页面完全渲染完后）
+    this.calculationAccuracy();
+  },
+  calculationAccuracy() {
+    let query = wx.createSelectorQuery();
+    const calc = () => {
+      return new Promise((resolve, reject) => {
+        // ! 取第一个 group 实际高度与理论高度获取精度差
+        query
+          .select(".page0_firstGroup")
+          .boundingClientRect((rect) => {
+            if (rect === null) {
+              reject("首次获取dom失败");
+            } else if (rect.height) {
+              resolve(rect.height);
+            }
+          })
+          .exec();
+      });
+    };
+    const resetHeightInfo = (height) => {
+      const default_firstGroupHeight = this.data.swiperList[0].info[0].height;
+      let scale = toFixed(height / default_firstGroupHeight, 3);
+      console.log("精度比例：", scale);
+      const temp = deepCopy(this.data.swiperList);
+      temp.forEach((v) => {
+        v.info.forEach((m) => {
+          m.height = Math.floor(m.height * scale);
+        });
+      });
+      console.log("调整精度后设置 swiperList", temp);
+      this.setData({
+        scale: scale,
+        swiperList: temp,
+      });
+    };
+    setTimeout(() => {
+      calc()
+        .then((first_height) => {
+          resetHeightInfo(first_height);
+        })
+        .catch((error) => {
+          console.log("error", error, "尝试第二次调整精度");
+          setTimeout(() => {
+            calc()
+              .then((second_height) => {
+                resetHeightInfo(second_height);
+              })
+              .catch((err) => {
+                console.log("error", error, "尝试第三次调整精度");
+                setTimeout(() => {
+                  calc()
+                    .then((third_height) => {
+                      resetHeightInfo(third_height);
+                    })
+                    .catch(() => {
+                      throw new Error("三次调整精度失败！！！请过会儿再试");
+                    });
+                }, 2000);
+              });
+          }, 1500);
+        });
+    }, 1500);
+  },
+});'><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">onReady</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// ! 响应式屏幕精度调整（时机： 页面完全渲染完后）</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">query</span> <span class="pl-c1">=</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">createSelectorQuery</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-en">calc</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-v">Promise</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">,</span> <span class="pl-s1">reject</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-c">// ! 取第一个 group 实际高度与理论高度获取精度差</span>
+        <span class="pl-s1">query</span>
+          <span class="pl-kos">.</span><span class="pl-en">select</span><span class="pl-kos">(</span><span class="pl-s">".page0_firstGroup"</span><span class="pl-kos">)</span>
+          <span class="pl-kos">.</span><span class="pl-en">boundingClientRect</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+            <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">rect</span> <span class="pl-c1">===</span> <span class="pl-c1">null</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+              <span class="pl-s1">reject</span><span class="pl-kos">(</span><span class="pl-s">"首次获取dom失败"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+            <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+              <span class="pl-s1">resolve</span><span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+            <span class="pl-kos">}</span>
+          <span class="pl-kos">}</span><span class="pl-kos">)</span>
+          <span class="pl-kos">.</span><span class="pl-en">exec</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-k">const</span> <span class="pl-en">resetHeightInfo</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">height</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">const</span> <span class="pl-s1">default_firstGroupHeight</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>
+      <span class="pl-k">let</span> <span class="pl-s1">scale</span> <span class="pl-c1">=</span> <span class="pl-en">toFixed</span><span class="pl-kos">(</span><span class="pl-s1">height</span> <span class="pl-c1">/</span> <span class="pl-s1">default_firstGroupHeight</span><span class="pl-kos">,</span> <span class="pl-c1">3</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"精度比例："</span><span class="pl-kos">,</span> <span class="pl-s1">scale</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">const</span> <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-en">deepCopy</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-s1">temp</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">=</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">*</span> <span class="pl-s1">scale</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"调整精度后设置 swiperList"</span><span class="pl-kos">,</span> <span class="pl-s1">temp</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">scale</span>: <span class="pl-s1">scale</span><span class="pl-kos">,</span>
+        <span class="pl-c1">swiperList</span>: <span class="pl-s1">temp</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">;</span>
+    <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-en">calc</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+        <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">first_height</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-en">resetHeightInfo</span><span class="pl-kos">(</span><span class="pl-s1">first_height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+        <span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"error"</span><span class="pl-kos">,</span> <span class="pl-s1">error</span><span class="pl-kos">,</span> <span class="pl-s">"尝试第二次调整精度"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+            <span class="pl-en">calc</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+              <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">second_height</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+                <span class="pl-en">resetHeightInfo</span><span class="pl-kos">(</span><span class="pl-s1">second_height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+              <span class="pl-kos">}</span><span class="pl-kos">)</span>
+              <span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">err</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+                <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"error"</span><span class="pl-kos">,</span> <span class="pl-s1">error</span><span class="pl-kos">,</span> <span class="pl-s">"尝试第三次调整精度"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+                <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+                  <span class="pl-en">calc</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+                    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">third_height</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+                      <span class="pl-en">resetHeightInfo</span><span class="pl-kos">(</span><span class="pl-s1">third_height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+                    <span class="pl-kos">}</span><span class="pl-kos">)</span>
+                    <span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+                      <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-v">Error</span><span class="pl-kos">(</span><span class="pl-s">"三次调整精度失败！！！请过会儿再试"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+                    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+                <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">2000</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+              <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1500</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1500</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>（3） 真正的更新时机</strong></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='Page({
+  data: {
+    text: "This is page data.",
+  },
+  onLoad: function (options) {
+    // 页面创建时执行*是在首次数据渲染之前执行），非阻断性逻辑尽量不要写在这里，会影响首屏数据渲染的时间
+  },
+  onReady: function () {
+    // 页面首次渲染完毕时执行，一个页面只会调用一次，代表页面已经准备妥当（可以操作 Dom）
+    // ! 如果需要获取 ajax 动态渲染的 dom 元素，可以在获取数据后设置 setData 时的回调中获取
+  },
+  clearnData(data) {
+    this.setData(
+      {
+        swiperList: objList,
+        currentType: objList[0].key,
+      },
+      () => {
+        // ! 响应式屏幕精度调整（时机： 页面完全渲染完后）
+        this.calculationAccuracy();
+      }
+    );
+  },
+  calculationAccuracy() {
+    // 可以同步计算精度差
+  },
+});'><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">text</span>: <span class="pl-s">"This is page data."</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onLoad</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面创建时执行*是在首次数据渲染之前执行），非阻断性逻辑尽量不要写在这里，会影响首屏数据渲染的时间</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">onReady</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 页面首次渲染完毕时执行，一个页面只会调用一次，代表页面已经准备妥当（可以操作 Dom）</span>
+    <span class="pl-c">// ! 如果需要获取 ajax 动态渲染的 dom 元素，可以在获取数据后设置 setData 时的回调中获取</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">clearnData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">swiperList</span>: <span class="pl-s1">objList</span><span class="pl-kos">,</span>
+        <span class="pl-c1">currentType</span>: <span class="pl-s1">objList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-c">// ! 响应式屏幕精度调整（时机： 页面完全渲染完后）</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 可以同步计算精度差</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 id="main-heading-H3-6">5. 直接计算 dom 高度</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='Page({
+  clearnData(data) {
+    this.setData(
+      {
+        swiperList: objList,
+        currentType: objList[0].key,
+      },
+      () => {
+        this.setRelDomHeight();
+      }
+    );
+  },
+  setRelDomHeight() {
+    // 获取真实 dom 高度后设置 swiperList
+    const temp = deepCopy(this.data.swiperList);
+    temp.forEach((v) => {
+      v.info.forEach(async (m) => {
+        m.height = await this.getGroupHeight2(m.key);
+      });
+    });
+    this.setData({
+      swiperList: temp,
+    });
+  },
+
+  // 单个 dom 高度获取 by id
+  getGroupHeight2(id) {
+    let query = wx.createSelectorQuery();
+    return new Promise((resolve, reject) => {
+      query
+        .select(`#${id}`)
+        .boundingClientRect((rect) => {
+          try {
+            let height = rect.height;
+            resolve(height);
+          } catch (error) {
+            reject("获取 dom #" + id + "失败");
+          }
+        })
+        .exec();
+    });
+  },
+});'><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-en">clearnData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">swiperList</span>: <span class="pl-s1">objList</span><span class="pl-kos">,</span>
+        <span class="pl-c1">currentType</span>: <span class="pl-s1">objList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-c">// 获取真实 dom 高度后设置 swiperList</span>
+    <span class="pl-k">const</span> <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-en">deepCopy</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">temp</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getGroupHeight2</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">swiperList</span>: <span class="pl-s1">temp</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+
+  <span class="pl-c">// 单个 dom 高度获取 by id</span>
+  <span class="pl-en">getGroupHeight2</span><span class="pl-kos">(</span><span class="pl-s1">id</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">query</span> <span class="pl-c1">=</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">createSelectorQuery</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-v">Promise</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">,</span> <span class="pl-s1">reject</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-s1">query</span>
+        <span class="pl-kos">.</span><span class="pl-en">select</span><span class="pl-kos">(</span><span class="pl-s">`#<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">id</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>
+        <span class="pl-kos">.</span><span class="pl-en">boundingClientRect</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-k">try</span> <span class="pl-kos">{</span>
+            <span class="pl-k">let</span> <span class="pl-s1">height</span> <span class="pl-c1">=</span> <span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>
+            <span class="pl-s1">resolve</span><span class="pl-kos">(</span><span class="pl-s1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+            <span class="pl-s1">reject</span><span class="pl-kos">(</span><span class="pl-s">"获取 dom #"</span> <span class="pl-c1">+</span> <span class="pl-s1">id</span> <span class="pl-c1">+</span> <span class="pl-s">"失败"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span>
+        <span class="pl-kos">.</span><span class="pl-en">exec</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-7">性能测试优化</h2>
+<h3 id="main-heading-H3-8">存在问题</h3>
+<ol dir="auto">
+<li>存在渲染界面的耗时过长的情况；</li>
+</ol>
+<p dir="auto">渲染界面的耗时过长会让用户觉得卡顿，体验较差，出现这一情况时，需要校验下是否同时渲染的区域太大 ---pages/productList/productList</p>
+<p dir="auto">解决方案：页面数据过大，一次渲染耗费时长，按模块分多次渲染，加入骨架屏</p>
+<ol start="2" dir="auto">
+<li>存在 setData 的数据过大</li>
+</ol>
+<p dir="auto">由于小程序运行逻辑线程与渲染线程之上，setData 的调用会把数据从逻辑层传到渲染层，数据太大会增加通信时间<br>
+pages/productList/productList ： swiperList、currentType，变量单次赋值 598k;</p>
+<p dir="auto">解决方案：产品列表页所有数据来源一个接口，数据过大，大量冗余字段；先是接口拆分，然后数据清洗，去除无用字段，减少数据大小，一般不超过 256k；</p>
+<ol start="3" dir="auto">
+<li>滚动区域没有开启惯性滚动</li>
+</ol>
+<p dir="auto">惯性滚动会使滚动比较顺畅，在安卓下默认有惯性滚动，而在 iOS 下需要额外设置 <code class="notranslate">-webkit-overflow-scrolling: touch</code> 的样式<br>
+pages/productList/productList</p>
+<p dir="auto">解决方案：使用 scroll-view 组件，添加<code class="notranslate">-webkit-overflow-scrolling: touch</code> 的样式</p>
+<ol start="4" dir="auto">
+<li>存在将未绑定在 WXML 的变量传入 setData</li>
+</ol>
+<p dir="auto">setData 操作会引起框架处理一些渲染界面相关的工作，一个未绑定的变量意味着与界面渲染无关，传入 setData 会造成不必要的性能消耗</p>
+<p dir="auto">解决方案：按要求处理，减少 setData 的调用 （可以使用 this.data 存储不需要在 wxml 中展示的变量）</p>
+<ol start="5" dir="auto">
+<li>存在短时间内发起太多的图片请求</li>
+</ol>
+<p dir="auto">短时间内发起太多图片请求会触发浏览器并行加载的限制，可能导致图片加载慢，用户一直处理等待。应该合理控制数量，可考虑使用雪碧图技术、拆分域名或在屏幕外的图片使用懒加载</p>
+<p dir="auto">解决方案：懒加载需要监听滚动的高度，计算当前 dom 的高度，调用 setData 改变图片的显隐状态，会增加另外性能损失，再考虑...</p>
+<ol start="6" dir="auto">
+<li>存在 setData 的调用过于频繁</li>
+</ol>
+<p dir="auto">setData 接口的调用涉及逻辑层与渲染层间的线程通过，通信过于频繁可能导致处理队列阻塞，界面渲染不及时而导致卡顿，应避免无用的频繁调用<br>
+pages/home/home：onPageScroll 方法 38 次/秒，touchEnd 方法 26 次/秒</p>
+<p dir="auto">解决方案：滚动监听处理数据，使用节流处理；页面其他多次调用，减少非必要的调用，非数据绑定的使用常规赋值方法；</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content='Page({
+  data: {
+    swiperList: [], // 新的数据容器，开关 isRender 来控制渲染
+    currentType: "all", // 轮播大 标签
+    currentTypeIndex: 0, //当前轮播图的第几页
+    domHeightList: [], // 单独维护所有高度
+    isClickLabel: false,
+  },
+  clearnData(data) {
+    this.setData(
+      {
+        swiperList: objList,
+        currentType: objList[0].key,
+        "swiperList[0].isRender": true,
+      },
+      () => {
+        this.setRelDomHeight(0);
+      }
+    );
+  },
+  // 设置 dom 高度
+  setRelDomHeight(index) {
+    let arr = [];
+    this.data.swiperList[index].info.forEach(async (v) => {
+      let height = await this.getGroupHeight2(v.moduleKey);
+      if (height) {
+        if (arr.length == 0) {
+          arr.push(height);
+        } else {
+          arr.push(arr[arr.length - 1] + height);
+        }
+      }
+    });
+    this.data.domHeightList[index] = arr;
+  },
+  //切换标签
+  changeLabel(e) {
+    let label = e.currentTarget.dataset.label;
+    let param = "swiperList[" + this.data.currentTypeIndex + "].currentLabel";
+    this.setData({
+      [param]: label,
+      toView: label,
+    });
+    this.data.isClickLabel = true;
+  },
+  //切换类型
+  changeType(e) {
+    let type = e.currentTarget.dataset.type;
+    let index = this.data.swiperList.findIndex((item) => item.key === type);
+    let isRender = "swiperList[" + index + "].isRender";
+    if (this.data.swiperList[index].isRender) {
+      this.setData({
+        currentType: type,
+        currentTypeIndex: index,
+      });
+    } else {
+      this.setData(
+        {
+          currentType: type,
+          currentTypeIndex: index,
+          [isRender]: true,
+        },
+        () => {
+          this.setRelDomHeight(index);
+        }
+      );
+    }
+  },
+  // 轮播图切换
+  switchType(e) {
+    var source = e.detail.source;
+    // FIX 轮播切换 bug
+    if (source === "autoplay" || source === "touch") {
+      let current = e.detail.current;
+      let type = this.data.swiperList[current].key;
+      let isRender = "swiperList[" + current + "].isRender";
+      if (this.data.swiperList[current].isRender) {
+        this.setData({
+          currentType: type,
+          currentTypeIndex: current,
+        });
+      } else {
+        this.setData(
+          {
+            currentType: type,
+            currentTypeIndex: current,
+            [isRender]: true,
+          },
+          () => {
+            this.setRelDomHeight(current);
+          }
+        );
+      }
+    }
+  },
+  //  滚动监听 scroll-view 回显 label
+  listenScroll: debounce(function (e) {
+    this.scrollFn(e);
+  }, 50),
+  scrollFn(e) {
+    const { isClickLabel, swiperList, currentTypeIndex } = this.data;
+    // 点击 label 不需要加入滚动监听
+    if (isClickLabel) {
+      this.data.isClickLabel = false;
+      return;
+    }
+    const infoList = swiperList[currentTypeIndex].info;
+    let heightMapIndex = this.data.domHeightList[currentTypeIndex].findIndex(
+      (v) => v > e.detail.scrollTop
+    );
+    // ! 设置 page.currentLabel && toView
+    if (heightMapIndex === -1) {
+      heightMapIndex = this.data.domHeightList[currentTypeIndex].length - 1;
+    }
+    let param = "swiperList[" + this.data.currentTypeIndex + "].currentLabel";
+    let currentLabel = this.data[param];
+    let infoKey = infoList[heightMapIndex].moduleKey;
+    let currentIndex = infoList.findIndex((v) => v.moduleKey === currentLabel);
+    if (currentIndex !== heightMapIndex) {
+      this.setData({
+        [param]: infoKey,
+      });
+    }
+  },
+  // 跳转到搜索页
+  toSearch() {
+    wx.navigateTo({
+      url: "/pages/search/search",
+    });
+  },
+});'><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">swiperList</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 新的数据容器，开关 isRender 来控制渲染</span>
+    <span class="pl-c1">currentType</span>: <span class="pl-s">"all"</span><span class="pl-kos">,</span> <span class="pl-c">// 轮播大 标签</span>
+    <span class="pl-c1">currentTypeIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c">//当前轮播图的第几页</span>
+    <span class="pl-c1">domHeightList</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 单独维护所有高度</span>
+    <span class="pl-c1">isClickLabel</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-en">clearnData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>
+      <span class="pl-kos">{</span>
+        <span class="pl-c1">swiperList</span>: <span class="pl-s1">objList</span><span class="pl-kos">,</span>
+        <span class="pl-c1">currentType</span>: <span class="pl-s1">objList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span>
+        <span class="pl-s">"swiperList[0].isRender"</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">,</span>
+      <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 设置 dom 高度</span>
+  <span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">arr</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+      <span class="pl-k">let</span> <span class="pl-s1">height</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getGroupHeight2</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">height</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">arr</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">==</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+          <span class="pl-s1">arr</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+          <span class="pl-s1">arr</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s1">arr</span><span class="pl-kos">[</span><span class="pl-s1">arr</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">]</span> <span class="pl-c1">+</span> <span class="pl-s1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">domHeightList</span><span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">arr</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">//切换标签</span>
+  <span class="pl-en">changeLabel</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">label</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">dataset</span><span class="pl-kos">.</span><span class="pl-c1">label</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">param</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">currentTypeIndex</span> <span class="pl-c1">+</span> <span class="pl-s">"].currentLabel"</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-kos">[</span><span class="pl-s1">param</span><span class="pl-kos">]</span>: <span class="pl-s1">label</span><span class="pl-kos">,</span>
+      <span class="pl-c1">toView</span>: <span class="pl-s1">label</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">isClickLabel</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">//切换类型</span>
+  <span class="pl-en">changeType</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">dataset</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">index</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">.</span><span class="pl-en">findIndex</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">item</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">key</span> <span class="pl-c1">===</span> <span class="pl-s1">type</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">isRender</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-s">"].isRender"</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">isRender</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-c1">currentType</span>: <span class="pl-s1">type</span><span class="pl-kos">,</span>
+        <span class="pl-c1">currentTypeIndex</span>: <span class="pl-s1">index</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>
+        <span class="pl-kos">{</span>
+          <span class="pl-c1">currentType</span>: <span class="pl-s1">type</span><span class="pl-kos">,</span>
+          <span class="pl-c1">currentTypeIndex</span>: <span class="pl-s1">index</span><span class="pl-kos">,</span>
+          <span class="pl-kos">[</span><span class="pl-s1">isRender</span><span class="pl-kos">]</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">,</span>
+        <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+          <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-kos">}</span>
+      <span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 轮播图切换</span>
+  <span class="pl-en">switchType</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">var</span> <span class="pl-s1">source</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">source</span><span class="pl-kos">;</span>
+    <span class="pl-c">// FIX 轮播切换 bug</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">source</span> <span class="pl-c1">===</span> <span class="pl-s">"autoplay"</span> <span class="pl-c1">||</span> <span class="pl-s1">source</span> <span class="pl-c1">===</span> <span class="pl-s">"touch"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">let</span> <span class="pl-s1">current</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">current</span><span class="pl-kos">;</span>
+      <span class="pl-k">let</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">current</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">;</span>
+      <span class="pl-k">let</span> <span class="pl-s1">isRender</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-s1">current</span> <span class="pl-c1">+</span> <span class="pl-s">"].isRender"</span><span class="pl-kos">;</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">current</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">isRender</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+          <span class="pl-c1">currentType</span>: <span class="pl-s1">type</span><span class="pl-kos">,</span>
+          <span class="pl-c1">currentTypeIndex</span>: <span class="pl-s1">current</span><span class="pl-kos">,</span>
+        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>
+          <span class="pl-kos">{</span>
+            <span class="pl-c1">currentType</span>: <span class="pl-s1">type</span><span class="pl-kos">,</span>
+            <span class="pl-c1">currentTypeIndex</span>: <span class="pl-s1">current</span><span class="pl-kos">,</span>
+            <span class="pl-kos">[</span><span class="pl-s1">isRender</span><span class="pl-kos">]</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+          <span class="pl-kos">}</span><span class="pl-kos">,</span>
+          <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-kos">{</span>
+            <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-s1">current</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+          <span class="pl-kos">}</span>
+        <span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">//  滚动监听 scroll-view 回显 label</span>
+  <span class="pl-c1">listenScroll</span>: <span class="pl-en">debounce</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">scrollFn</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">50</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+  <span class="pl-en">scrollFn</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-kos">{</span> isClickLabel<span class="pl-kos">,</span> swiperList<span class="pl-kos">,</span> currentTypeIndex <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">;</span>
+    <span class="pl-c">// 点击 label 不需要加入滚动监听</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isClickLabel</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">isClickLabel</span> <span class="pl-c1">=</span> <span class="pl-c1">false</span><span class="pl-kos">;</span>
+      <span class="pl-k">return</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">const</span> <span class="pl-s1">infoList</span> <span class="pl-c1">=</span> <span class="pl-s1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">currentTypeIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">heightMapIndex</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">domHeightList</span><span class="pl-kos">[</span><span class="pl-s1">currentTypeIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">findIndex</span><span class="pl-kos">(</span>
+      <span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">v</span> <span class="pl-c1">></span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">scrollTop</span>
+    <span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-c">// ! 设置 page.currentLabel && toView</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">heightMapIndex</span> <span class="pl-c1">===</span> <span class="pl-c1">-</span><span class="pl-c1">1</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-s1">heightMapIndex</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">domHeightList</span><span class="pl-kos">[</span><span class="pl-s1">currentTypeIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">let</span> <span class="pl-s1">param</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">currentTypeIndex</span> <span class="pl-c1">+</span> <span class="pl-s">"].currentLabel"</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">currentLabel</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">[</span><span class="pl-s1">param</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">infoKey</span> <span class="pl-c1">=</span> <span class="pl-s1">infoList</span><span class="pl-kos">[</span><span class="pl-s1">heightMapIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span><span class="pl-kos">;</span>
+    <span class="pl-k">let</span> <span class="pl-s1">currentIndex</span> <span class="pl-c1">=</span> <span class="pl-s1">infoList</span><span class="pl-kos">.</span><span class="pl-en">findIndex</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=></span> <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span> <span class="pl-c1">===</span> <span class="pl-s1">currentLabel</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">currentIndex</span> <span class="pl-c1">!==</span> <span class="pl-s1">heightMapIndex</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+        <span class="pl-kos">[</span><span class="pl-s1">param</span><span class="pl-kos">]</span>: <span class="pl-s1">infoKey</span><span class="pl-kos">,</span>
+      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c">// 跳转到搜索页</span>
+  <span class="pl-en">toSearch</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+      <span class="pl-c1">url</span>: <span class="pl-s">"/pages/search/search"</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h2 id="main-heading-H2-9">拓展</h2>
+<ul dir="auto">
+<li>setData API 如何做到的异步渲染回调？</li>
+<li><a href="https://segmentfault.com/a/1190000008589736" rel="nofollow">Vue 源码详解之 nextTick：MutationObserver 只是浮云，microtask 才是核心！</a></li>
+</ul>
+<h2 id="main-heading-H2-10">参考</h2>
+<ul dir="auto">
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html" rel="nofollow">https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html" rel="nofollow">https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html</a></li>
+</ul></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(s,a,p,n,l,c){return{layout:"default",data:[{post:{id:898896347,number:206,title:"微信小程序产品页改版分享",created_at:"2021-05-22T22:58:22Z",updated_at:"2025-11-23T15:57:03Z",body_html:'<h2 id="main-heading-H2-0">前言</h2>\n<p dir="auto"><strong>需求描述</strong></p>\n<p dir="auto">小程序产品列表和 APP 接口统一，实现产品轮播页单页楼梯导航效果</p>\n<p dir="auto"><strong>效果预览</strong></p>\n<p dir="auto">App 与 小程序产品页交互效果查看</p>\n<h2 id="main-heading-H2-1">实现思路</h2>\n<h3 id="main-heading-H3-2">1. 改造数据</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// clearnData 方法\nPage({\n  clearnData(data) {\n    // ...\n    data.forEach((o, dataIndex) =&gt; {\n      objList.push({\n        key: o[0].moduleKey, // allHotProd\n        name: o[0].parentTitle, // 全部\n        currentLabel: &quot;page&quot; + dataIndex + &quot;_&quot; + o[0].moduleKey, // page0_allHotProd\n        info: [...o], // 所有数据集合 - dataList 分组集合\n      });\n    });\n  },\n   this.setData(\n      {\n        swiperList: objList,\n        currentType: objList[0].key,\n      }\n    );\n});"><pre class="notranslate"><span class="pl-c">// clearnData 方法</span>\n<span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">clearnData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// ...</span>\n    <span class="pl-s1">data</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">o</span><span class="pl-kos">,</span> <span class="pl-s1">dataIndex</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">objList</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">key</span>: <span class="pl-s1">o</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span><span class="pl-kos">,</span> <span class="pl-c">// allHotProd</span>\n        <span class="pl-c1">name</span>: <span class="pl-s1">o</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">parentTitle</span><span class="pl-kos">,</span> <span class="pl-c">// 全部</span>\n        <span class="pl-c1">currentLabel</span>: <span class="pl-s">"page"</span> <span class="pl-c1">+</span> <span class="pl-s1">dataIndex</span> <span class="pl-c1">+</span> <span class="pl-s">"_"</span> <span class="pl-c1">+</span> <span class="pl-s1">o</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span><span class="pl-kos">,</span> <span class="pl-c">// page0_allHotProd</span>\n        <span class="pl-c1">info</span>: <span class="pl-kos">[</span>...<span class="pl-s1">o</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 所有数据集合 - dataList 分组集合</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n   this<span class="pl-kos"></span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">swiperList</span>: <span class="pl-s1">objList</span><span class="pl-kos">,</span>\n        <span class="pl-c1">currentType</span>: <span class="pl-s1">objList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-3">2. 基本实现：scroll-into-view + 滚动监听</h3>\n<p dir="auto">点击上面的 label 已经可以正确定位了，如何滚动监听回显？</p>\n<p dir="auto">需要的是详细的高度信息。</p>\n<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!-- ! swiperList 页切换 --&gt;\n&lt;scroll-view scroll-x=&quot;true&quot; class=&quot;head-type&quot;&gt;\n  &lt;view\n    class=&quot;type-item {{item.key == currentType ? \'active\' : \'\'}}&quot;\n    wx:for=&quot;{{swiperList}}&quot;\n    wx:key=&quot;key&quot;\n    bindtap=&quot;changeType&quot;\n    data-type=&quot;{{item.key}}&quot;\n  &gt;\n    &lt;view class=&quot;type-item-name&quot;&gt;{{item.name}}&lt;/view&gt;\n    &lt;view class=&quot;type-item-line&quot;&gt;&lt;/view&gt;\n  &lt;/view&gt;\n&lt;/scroll-view&gt;\n&lt;!-- swiper 实际区域 --&gt;\n&lt;swiper&gt;\n  &lt;swiper-item\n    wx:for=&quot;{{swiperList}}&quot;\n    wx:key=&quot;key&quot;\n    wx:for-index=&quot;pageIndex&quot;\n    wx:for-item=&quot;page&quot;\n  &gt;\n    &lt;view class=&quot;label-content&quot;&gt;\n      &lt;!-- 子标签切换 --&gt;\n      &lt;view\n        wx:for=&quot;{{page.info}}&quot;\n        wx:for-item=&quot;info&quot;\n        wx:key=&quot;key&quot;\n        wx:for-index=&quot;infoIndex&quot;\n        hidden=&quot;{{info.dataList.length === 0 || info.show === \'false\'}}&quot;\n        class=&quot;label-item {{info.key == page.currentLabel ? \'active\' : \'\'}}&quot;\n        data-label=&quot;{{info.key}}&quot;\n        bindtap=&quot;changeLabel&quot;\n        &gt;{{info.title}}&lt;/view\n      &gt;\n      &lt;scroll-view\n        class=&quot;scrollBox&quot;\n        scroll-y=&quot;true&quot;\n        scroll-into-view=&quot;{{toView}}&quot;\n        scroll-with-animation=&quot;true&quot;\n        enable-back-to-top=&quot;true&quot;\n        bindscroll=&quot;listenScroll&quot;\n      &gt;\n        &lt;view\n          class=&quot;group&quot;\n          id=&quot;{{infoitem.key}}&quot;\n          wx:for=&quot;{{page.info}}&quot;\n          wx:for-item=&quot;infoitem&quot;\n          wx:key=&quot;key&quot;\n          data-rol=&quot;{{infoitem.key}}&quot;\n          wx:for-index=&quot;groupIndex&quot;\n          hidden=&quot;{{infoitem.dataList.length === 0 || infoitem.show === \'false\'}}&quot;\n        &gt;\n          &lt;!-- 组标题：爆款热销 --&gt;\n          &lt;!-- - 广告 ads --&gt;\n          &lt;!-- - 产品 product --&gt;\n          &lt;!-- - 产品 product --&gt;\n          &lt;!-- - 产品 product --&gt;\n        &lt;/view&gt;\n      &lt;/scroll-view&gt;\n    &lt;/view&gt;\n  &lt;/swiper-item&gt;\n&lt;/swiper&gt;"><pre class="notranslate"><span class="pl-c">&lt;!-- ! swiperList 页切换 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">scroll-view</span> <span class="pl-c1">scroll-x</span>="<span class="pl-s">true</span>" <span class="pl-c1">class</span>="<span class="pl-s">head-type</span>"<span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">view</span>\n    <span class="pl-c1">class</span>="<span class="pl-s">type-item {{item.key == currentType ? \'active\' : \'\'}}</span>"\n    <span class="pl-c1">wx:for</span>="<span class="pl-s">{{swiperList}}</span>"\n    <span class="pl-c1">wx:key</span>="<span class="pl-s">key</span>"\n    <span class="pl-c1">bindtap</span>="<span class="pl-s">changeType</span>"\n    <span class="pl-c1">data-type</span>="<span class="pl-s">{{item.key}}</span>"\n  <span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">type-item-name</span>"<span class="pl-kos">&gt;</span>{{item.name}}<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">type-item-line</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">scroll-view</span><span class="pl-kos">&gt;</span>\n<span class="pl-c">&lt;!-- swiper 实际区域 --&gt;</span>\n<span class="pl-kos">&lt;</span><span class="pl-ent">swiper</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;</span><span class="pl-ent">swiper-item</span>\n    <span class="pl-c1">wx:for</span>="<span class="pl-s">{{swiperList}}</span>"\n    <span class="pl-c1">wx:key</span>="<span class="pl-s">key</span>"\n    <span class="pl-c1">wx:for-index</span>="<span class="pl-s">pageIndex</span>"\n    <span class="pl-c1">wx:for-item</span>="<span class="pl-s">page</span>"\n  <span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;</span><span class="pl-ent">view</span> <span class="pl-c1">class</span>="<span class="pl-s">label-content</span>"<span class="pl-kos">&gt;</span>\n      <span class="pl-c">&lt;!-- 子标签切换 --&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">view</span>\n        <span class="pl-c1">wx:for</span>="<span class="pl-s">{{page.info}}</span>"\n        <span class="pl-c1">wx:for-item</span>="<span class="pl-s">info</span>"\n        <span class="pl-c1">wx:key</span>="<span class="pl-s">key</span>"\n        <span class="pl-c1">wx:for-index</span>="<span class="pl-s">infoIndex</span>"\n        <span class="pl-c1">hidden</span>="<span class="pl-s">{{info.dataList.length === 0 || info.show === \'false\'}}</span>"\n        <span class="pl-c1">class</span>="<span class="pl-s">label-item {{info.key == page.currentLabel ? \'active\' : \'\'}}</span>"\n        <span class="pl-c1">data-label</span>="<span class="pl-s">{{info.key}}</span>"\n        <span class="pl-c1">bindtap</span>="<span class="pl-s">changeLabel</span>"\n        <span class="pl-kos">&gt;</span>{{info.title}}<span class="pl-kos">&lt;/</span><span class="pl-ent">view</span>\n      <span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;</span><span class="pl-ent">scroll-view</span>\n        <span class="pl-c1">class</span>="<span class="pl-s">scrollBox</span>"\n        <span class="pl-c1">scroll-y</span>="<span class="pl-s">true</span>"\n        <span class="pl-c1">scroll-into-view</span>="<span class="pl-s">{{toView}}</span>"\n        <span class="pl-c1">scroll-with-animation</span>="<span class="pl-s">true</span>"\n        <span class="pl-c1">enable-back-to-top</span>="<span class="pl-s">true</span>"\n        <span class="pl-c1">bindscroll</span>="<span class="pl-s">listenScroll</span>"\n      <span class="pl-kos">&gt;</span>\n        <span class="pl-kos">&lt;</span><span class="pl-ent">view</span>\n          <span class="pl-c1">class</span>="<span class="pl-s">group</span>"\n          <span class="pl-c1">id</span>="<span class="pl-s">{{infoitem.key}}</span>"\n          <span class="pl-c1">wx:for</span>="<span class="pl-s">{{page.info}}</span>"\n          <span class="pl-c1">wx:for-item</span>="<span class="pl-s">infoitem</span>"\n          <span class="pl-c1">wx:key</span>="<span class="pl-s">key</span>"\n          <span class="pl-c1">data-rol</span>="<span class="pl-s">{{infoitem.key}}</span>"\n          <span class="pl-c1">wx:for-index</span>="<span class="pl-s">groupIndex</span>"\n          <span class="pl-c1">hidden</span>="<span class="pl-s">{{infoitem.dataList.length === 0 || infoitem.show === \'false\'}}</span>"\n        <span class="pl-kos">&gt;</span>\n          <span class="pl-c">&lt;!-- 组标题：爆款热销 --&gt;</span>\n          <span class="pl-c">&lt;!-- - 广告 ads --&gt;</span>\n          <span class="pl-c">&lt;!-- - 产品 product --&gt;</span>\n          <span class="pl-c">&lt;!-- - 产品 product --&gt;</span>\n          <span class="pl-c">&lt;!-- - 产品 product --&gt;</span>\n        <span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n      <span class="pl-kos">&lt;/</span><span class="pl-ent">scroll-view</span><span class="pl-kos">&gt;</span>\n    <span class="pl-kos">&lt;/</span><span class="pl-ent">view</span><span class="pl-kos">&gt;</span>\n  <span class="pl-kos">&lt;/</span><span class="pl-ent">swiper-item</span><span class="pl-kos">&gt;</span>\n<span class="pl-kos">&lt;/</span><span class="pl-ent">swiper</span><span class="pl-kos">&gt;</span></pre></div>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  data: {\n    swiperList: [], // 新的数据容器\n    toView: &quot;&quot;, // 滚动目标 scroll-into-view 的 id\n    currentType: &quot;all&quot;,\n    currentTypeIndex: 0, //当前轮播图的第几页\n  },\n  //切换标签\n  changeLabel(e) {\n    let label = e.currentTarget.dataset.label;\n    let param = &quot;swiperList[&quot; + this.data.currentTypeIndex + &quot;].currentLabel&quot;;\n    this.setData({\n      [param]: label,\n      toView: label,\n      isClickLabel: true,\n    });\n  },\n  listenScroll: debounce(function (e) {\n    this.scrollFn(e);\n  }, 8),\n  scrollFn(e) {\n      ...\n    const infoList = swiperList[currentTypeIndex].info;\n    let init = 0;\n    // [521， 686， 1184， 1685， 1850， 2015， 2180， 2345]\n    const heightMap = infoList.map((v, index) =&gt; {\n      if (v.height === 0) {\n        return 0;\n      }\n      init += v.height;\n      return init;\n    });\n    let heightMapIndex = heightMap.findIndex((v) =&gt; v &gt; e.detail.scrollTop);\n    ...\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">swiperList</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 新的数据容器</span>\n    <span class="pl-c1">toView</span>: <span class="pl-s">""</span><span class="pl-kos">,</span> <span class="pl-c">// 滚动目标 scroll-into-view 的 id</span>\n    <span class="pl-c1">currentType</span>: <span class="pl-s">"all"</span><span class="pl-kos">,</span>\n    <span class="pl-c1">currentTypeIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c">//当前轮播图的第几页</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">//切换标签</span>\n  <span class="pl-en">changeLabel</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">let</span> <span class="pl-s1">label</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">dataset</span><span class="pl-kos">.</span><span class="pl-c1">label</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">param</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">currentTypeIndex</span> <span class="pl-c1">+</span> <span class="pl-s">"].currentLabel"</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-kos">[</span><span class="pl-s1">param</span><span class="pl-kos">]</span>: <span class="pl-s1">label</span><span class="pl-kos">,</span>\n      <span class="pl-c1">toView</span>: <span class="pl-s1">label</span><span class="pl-kos">,</span>\n      <span class="pl-c1">isClickLabel</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c1">listenScroll</span>: <span class="pl-en">debounce</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">scrollFn</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">8</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n  <span class="pl-en">scrollFn</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      ...\n    <span class="pl-k">const</span> <span class="pl-s1">infoList</span> <span class="pl-c1">=</span> <span class="pl-s1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">currentTypeIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">init</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>\n    <span class="pl-c">// [521， 686， 1184， 1685， 1850， 2015， 2180， 2345]</span>\n    <span class="pl-k">const</span> <span class="pl-s1">heightMap</span> <span class="pl-c1">=</span> <span class="pl-s1">infoList</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">,</span> <span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">===</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-k">return</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n      <span class="pl-s1">init</span> <span class="pl-c1">+=</span> <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>\n      <span class="pl-k">return</span> <span class="pl-s1">init</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">heightMapIndex</span> <span class="pl-c1">=</span> <span class="pl-s1">heightMap</span><span class="pl-kos">.</span><span class="pl-en">findIndex</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">v</span> <span class="pl-c1">&gt;</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">scrollTop</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    ...\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-4">3. 如何获取集合所有分组的高度？</h3>\n<p dir="auto">先动态计算再进行精度调整</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  data: {\n    heightInfo: {\n      // (参照单位 ： width 375 的设计稿)\n      title: 86, // 标题种类 1：仅有标题\n      desc: 126, // 标题种类 2：带有标题描述\n      ads: 228, // 广告高度\n      product: 222, // 产品的高度\n      gap: 22, // 间隔线\n    },\n  },\n  getGroupHeight(datas, descText) {\n    const { title, desc, gap, ads, product } = this.data.heightInfo;\n    let base = descText ? desc + gap : title + gap;\n    let num_ads = datas.filter((m) =&gt; m.itemType === &quot;ads&quot;).length;\n    let num_products = datas.filter((m) =&gt; m.itemType === &quot;product&quot;).length;\n    if (datas.length &gt; 0) {\n      return Number(\n        Math.floor((base + num_ads * ads + product * num_products) / 2)\n      );\n    } else {\n      return 0;\n    }\n  },\n  calculationAccuracy() {\n    let query = wx.createSelectorQuery();\n    query\n      .select(&quot;.page0_firstGroup&quot;)\n      .boundingClientRect((rect) =&gt; {\n        if (rect === null) {\n          console.error(&quot;首次获取dom失败&quot;);\n        } else if (rect.height) {\n          let height = rect.height;\n          const default_firstGroupHeight = this.data.swiperList[0].info[0]\n            .height;\n          let scale = toFixed(height / default_firstGroupHeight, 3);\n          //   更新 swiperList 的真实的高度\n        }\n      })\n      .exec();\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">heightInfo</span>: <span class="pl-kos">{</span>\n      <span class="pl-c">// (参照单位 ： width 375 的设计稿)</span>\n      <span class="pl-c1">title</span>: <span class="pl-c1">86</span><span class="pl-kos">,</span> <span class="pl-c">// 标题种类 1：仅有标题</span>\n      <span class="pl-c1">desc</span>: <span class="pl-c1">126</span><span class="pl-kos">,</span> <span class="pl-c">// 标题种类 2：带有标题描述</span>\n      <span class="pl-c1">ads</span>: <span class="pl-c1">228</span><span class="pl-kos">,</span> <span class="pl-c">// 广告高度</span>\n      <span class="pl-c1">product</span>: <span class="pl-c1">222</span><span class="pl-kos">,</span> <span class="pl-c">// 产品的高度</span>\n      <span class="pl-c1">gap</span>: <span class="pl-c1">22</span><span class="pl-kos">,</span> <span class="pl-c">// 间隔线</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">getGroupHeight</span><span class="pl-kos">(</span><span class="pl-s1">datas</span><span class="pl-kos">,</span> <span class="pl-s1">descText</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">const</span> <span class="pl-kos">{</span> title<span class="pl-kos">,</span> desc<span class="pl-kos">,</span> gap<span class="pl-kos">,</span> ads<span class="pl-kos">,</span> product <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">heightInfo</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">base</span> <span class="pl-c1">=</span> <span class="pl-s1">descText</span> ? <span class="pl-s1">desc</span> <span class="pl-c1">+</span> <span class="pl-s1">gap</span> : <span class="pl-s1">title</span> <span class="pl-c1">+</span> <span class="pl-s1">gap</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">num_ads</span> <span class="pl-c1">=</span> <span class="pl-s1">datas</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">itemType</span> <span class="pl-c1">===</span> <span class="pl-s">"ads"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">num_products</span> <span class="pl-c1">=</span> <span class="pl-s1">datas</span><span class="pl-kos">.</span><span class="pl-en">filter</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">itemType</span> <span class="pl-c1">===</span> <span class="pl-s">"product"</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">datas</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-v">Number</span><span class="pl-kos">(</span>\n        <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">base</span> <span class="pl-c1">+</span> <span class="pl-s1">num_ads</span> <span class="pl-c1">*</span> <span class="pl-s1">ads</span> <span class="pl-c1">+</span> <span class="pl-s1">product</span> <span class="pl-c1">*</span> <span class="pl-s1">num_products</span><span class="pl-kos">)</span> <span class="pl-c1">/</span> <span class="pl-c1">2</span><span class="pl-kos">)</span>\n      <span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">let</span> <span class="pl-s1">query</span> <span class="pl-c1">=</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">createSelectorQuery</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-s1">query</span>\n      <span class="pl-kos">.</span><span class="pl-en">select</span><span class="pl-kos">(</span><span class="pl-s">".page0_firstGroup"</span><span class="pl-kos">)</span>\n      <span class="pl-kos">.</span><span class="pl-en">boundingClientRect</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">rect</span> <span class="pl-c1">===</span> <span class="pl-c1">null</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s">"首次获取dom失败"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-k">let</span> <span class="pl-s1">height</span> <span class="pl-c1">=</span> <span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>\n          <span class="pl-k">const</span> <span class="pl-s1">default_firstGroupHeight</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span>\n            <span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>\n          <span class="pl-k">let</span> <span class="pl-s1">scale</span> <span class="pl-c1">=</span> <span class="pl-en">toFixed</span><span class="pl-kos">(</span><span class="pl-s1">height</span> <span class="pl-c1">/</span> <span class="pl-s1">default_firstGroupHeight</span><span class="pl-kos">,</span> <span class="pl-c1">3</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-c">//   更新 swiperList 的真实的高度</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span>\n      <span class="pl-kos">.</span><span class="pl-en">exec</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-5">4. 什么时机去更新</h3>\n<p dir="auto"><strong>（1） 延时 seTimeout</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  onReady() {\n    setTimeout(() =&gt; {\n      // ! 响应式屏幕精度调整（时机： 页面完全渲染完后）\n      this.calculationAccuracy();\n    }, 2000);\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">onReady</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-c">// ! 响应式屏幕精度调整（时机： 页面完全渲染完后）</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">2000</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>（2） 多个延时 等待更新</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  onReady() {\n    // ! 响应式屏幕精度调整（时机： 页面完全渲染完后）\n    this.calculationAccuracy();\n  },\n  calculationAccuracy() {\n    let query = wx.createSelectorQuery();\n    const calc = () =&gt; {\n      return new Promise((resolve, reject) =&gt; {\n        // ! 取第一个 group 实际高度与理论高度获取精度差\n        query\n          .select(&quot;.page0_firstGroup&quot;)\n          .boundingClientRect((rect) =&gt; {\n            if (rect === null) {\n              reject(&quot;首次获取dom失败&quot;);\n            } else if (rect.height) {\n              resolve(rect.height);\n            }\n          })\n          .exec();\n      });\n    };\n    const resetHeightInfo = (height) =&gt; {\n      const default_firstGroupHeight = this.data.swiperList[0].info[0].height;\n      let scale = toFixed(height / default_firstGroupHeight, 3);\n      console.log(&quot;精度比例：&quot;, scale);\n      const temp = deepCopy(this.data.swiperList);\n      temp.forEach((v) =&gt; {\n        v.info.forEach((m) =&gt; {\n          m.height = Math.floor(m.height * scale);\n        });\n      });\n      console.log(&quot;调整精度后设置 swiperList&quot;, temp);\n      this.setData({\n        scale: scale,\n        swiperList: temp,\n      });\n    };\n    setTimeout(() =&gt; {\n      calc()\n        .then((first_height) =&gt; {\n          resetHeightInfo(first_height);\n        })\n        .catch((error) =&gt; {\n          console.log(&quot;error&quot;, error, &quot;尝试第二次调整精度&quot;);\n          setTimeout(() =&gt; {\n            calc()\n              .then((second_height) =&gt; {\n                resetHeightInfo(second_height);\n              })\n              .catch((err) =&gt; {\n                console.log(&quot;error&quot;, error, &quot;尝试第三次调整精度&quot;);\n                setTimeout(() =&gt; {\n                  calc()\n                    .then((third_height) =&gt; {\n                      resetHeightInfo(third_height);\n                    })\n                    .catch(() =&gt; {\n                      throw new Error(&quot;三次调整精度失败！！！请过会儿再试&quot;);\n                    });\n                }, 2000);\n              });\n          }, 1500);\n        });\n    }, 1500);\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">onReady</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// ! 响应式屏幕精度调整（时机： 页面完全渲染完后）</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">let</span> <span class="pl-s1">query</span> <span class="pl-c1">=</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">createSelectorQuery</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">const</span> <span class="pl-en">calc</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-v">Promise</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">,</span> <span class="pl-s1">reject</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-c">// ! 取第一个 group 实际高度与理论高度获取精度差</span>\n        <span class="pl-s1">query</span>\n          <span class="pl-kos">.</span><span class="pl-en">select</span><span class="pl-kos">(</span><span class="pl-s">".page0_firstGroup"</span><span class="pl-kos">)</span>\n          <span class="pl-kos">.</span><span class="pl-en">boundingClientRect</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n            <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">rect</span> <span class="pl-c1">===</span> <span class="pl-c1">null</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n              <span class="pl-s1">reject</span><span class="pl-kos">(</span><span class="pl-s">"首次获取dom失败"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n            <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n              <span class="pl-s1">resolve</span><span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n            <span class="pl-kos">}</span>\n          <span class="pl-kos">}</span><span class="pl-kos">)</span>\n          <span class="pl-kos">.</span><span class="pl-en">exec</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n    <span class="pl-k">const</span> <span class="pl-en">resetHeightInfo</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">height</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">const</span> <span class="pl-s1">default_firstGroupHeight</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>\n      <span class="pl-k">let</span> <span class="pl-s1">scale</span> <span class="pl-c1">=</span> <span class="pl-en">toFixed</span><span class="pl-kos">(</span><span class="pl-s1">height</span> <span class="pl-c1">/</span> <span class="pl-s1">default_firstGroupHeight</span><span class="pl-kos">,</span> <span class="pl-c1">3</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"精度比例："</span><span class="pl-kos">,</span> <span class="pl-s1">scale</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-k">const</span> <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-en">deepCopy</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-s1">temp</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">=</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">*</span> <span class="pl-s1">scale</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"调整精度后设置 swiperList"</span><span class="pl-kos">,</span> <span class="pl-s1">temp</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">scale</span>: <span class="pl-s1">scale</span><span class="pl-kos">,</span>\n        <span class="pl-c1">swiperList</span>: <span class="pl-s1">temp</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">;</span>\n    <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-en">calc</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n        <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">first_height</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-en">resetHeightInfo</span><span class="pl-kos">(</span><span class="pl-s1">first_height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n        <span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"error"</span><span class="pl-kos">,</span> <span class="pl-s1">error</span><span class="pl-kos">,</span> <span class="pl-s">"尝试第二次调整精度"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n            <span class="pl-en">calc</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n              <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">second_height</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n                <span class="pl-en">resetHeightInfo</span><span class="pl-kos">(</span><span class="pl-s1">second_height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n              <span class="pl-kos">}</span><span class="pl-kos">)</span>\n              <span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">err</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n                <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"error"</span><span class="pl-kos">,</span> <span class="pl-s1">error</span><span class="pl-kos">,</span> <span class="pl-s">"尝试第三次调整精度"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n                <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n                  <span class="pl-en">calc</span><span class="pl-kos">(</span><span class="pl-kos">)</span>\n                    <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">third_height</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n                      <span class="pl-en">resetHeightInfo</span><span class="pl-kos">(</span><span class="pl-s1">third_height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n                    <span class="pl-kos">}</span><span class="pl-kos">)</span>\n                    <span class="pl-kos">.</span><span class="pl-en">catch</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n                      <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-v">Error</span><span class="pl-kos">(</span><span class="pl-s">"三次调整精度失败！！！请过会儿再试"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n                    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n                <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">2000</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n              <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1500</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">1500</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<p dir="auto"><strong>（3） 真正的更新时机</strong></p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  data: {\n    text: &quot;This is page data.&quot;,\n  },\n  onLoad: function (options) {\n    // 页面创建时执行*是在首次数据渲染之前执行），非阻断性逻辑尽量不要写在这里，会影响首屏数据渲染的时间\n  },\n  onReady: function () {\n    // 页面首次渲染完毕时执行，一个页面只会调用一次，代表页面已经准备妥当（可以操作 Dom）\n    // ! 如果需要获取 ajax 动态渲染的 dom 元素，可以在获取数据后设置 setData 时的回调中获取\n  },\n  clearnData(data) {\n    this.setData(\n      {\n        swiperList: objList,\n        currentType: objList[0].key,\n      },\n      () =&gt; {\n        // ! 响应式屏幕精度调整（时机： 页面完全渲染完后）\n        this.calculationAccuracy();\n      }\n    );\n  },\n  calculationAccuracy() {\n    // 可以同步计算精度差\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">text</span>: <span class="pl-s">"This is page data."</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onLoad</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">options</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面创建时执行*是在首次数据渲染之前执行），非阻断性逻辑尽量不要写在这里，会影响首屏数据渲染的时间</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">onReady</span>: <span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 页面首次渲染完毕时执行，一个页面只会调用一次，代表页面已经准备妥当（可以操作 Dom）</span>\n    <span class="pl-c">// ! 如果需要获取 ajax 动态渲染的 dom 元素，可以在获取数据后设置 setData 时的回调中获取</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">clearnData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">swiperList</span>: <span class="pl-s1">objList</span><span class="pl-kos">,</span>\n        <span class="pl-c1">currentType</span>: <span class="pl-s1">objList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-c">// ! 响应式屏幕精度调整（时机： 页面完全渲染完后）</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">calculationAccuracy</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 可以同步计算精度差</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h3 id="main-heading-H3-6">5. 直接计算 dom 高度</h3>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  clearnData(data) {\n    this.setData(\n      {\n        swiperList: objList,\n        currentType: objList[0].key,\n      },\n      () =&gt; {\n        this.setRelDomHeight();\n      }\n    );\n  },\n  setRelDomHeight() {\n    // 获取真实 dom 高度后设置 swiperList\n    const temp = deepCopy(this.data.swiperList);\n    temp.forEach((v) =&gt; {\n      v.info.forEach(async (m) =&gt; {\n        m.height = await this.getGroupHeight2(m.key);\n      });\n    });\n    this.setData({\n      swiperList: temp,\n    });\n  },\n\n  // 单个 dom 高度获取 by id\n  getGroupHeight2(id) {\n    let query = wx.createSelectorQuery();\n    return new Promise((resolve, reject) =&gt; {\n      query\n        .select(`#${id}`)\n        .boundingClientRect((rect) =&gt; {\n          try {\n            let height = rect.height;\n            resolve(height);\n          } catch (error) {\n            reject(&quot;获取 dom #&quot; + id + &quot;失败&quot;);\n          }\n        })\n        .exec();\n    });\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-en">clearnData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">swiperList</span>: <span class="pl-s1">objList</span><span class="pl-kos">,</span>\n        <span class="pl-c1">currentType</span>: <span class="pl-s1">objList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-c">// 获取真实 dom 高度后设置 swiperList</span>\n    <span class="pl-k">const</span> <span class="pl-s1">temp</span> <span class="pl-c1">=</span> <span class="pl-en">deepCopy</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-s1">temp</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">height</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getGroupHeight2</span><span class="pl-kos">(</span><span class="pl-s1">m</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">swiperList</span>: <span class="pl-s1">temp</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n\n  <span class="pl-c">// 单个 dom 高度获取 by id</span>\n  <span class="pl-en">getGroupHeight2</span><span class="pl-kos">(</span><span class="pl-s1">id</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">let</span> <span class="pl-s1">query</span> <span class="pl-c1">=</span> <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">createSelectorQuery</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-v">Promise</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">resolve</span><span class="pl-kos">,</span> <span class="pl-s1">reject</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">query</span>\n        <span class="pl-kos">.</span><span class="pl-en">select</span><span class="pl-kos">(</span><span class="pl-s">`#<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">id</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>\n        <span class="pl-kos">.</span><span class="pl-en">boundingClientRect</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">rect</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-k">try</span> <span class="pl-kos">{</span>\n            <span class="pl-k">let</span> <span class="pl-s1">height</span> <span class="pl-c1">=</span> <span class="pl-s1">rect</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">;</span>\n            <span class="pl-s1">resolve</span><span class="pl-kos">(</span><span class="pl-s1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n            <span class="pl-s1">reject</span><span class="pl-kos">(</span><span class="pl-s">"获取 dom #"</span> <span class="pl-c1">+</span> <span class="pl-s1">id</span> <span class="pl-c1">+</span> <span class="pl-s">"失败"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span>\n        <span class="pl-kos">.</span><span class="pl-en">exec</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-7">性能测试优化</h2>\n<h3 id="main-heading-H3-8">存在问题</h3>\n<ol dir="auto">\n<li>存在渲染界面的耗时过长的情况；</li>\n</ol>\n<p dir="auto">渲染界面的耗时过长会让用户觉得卡顿，体验较差，出现这一情况时，需要校验下是否同时渲染的区域太大 ---pages/productList/productList</p>\n<p dir="auto">解决方案：页面数据过大，一次渲染耗费时长，按模块分多次渲染，加入骨架屏</p>\n<ol start="2" dir="auto">\n<li>存在 setData 的数据过大</li>\n</ol>\n<p dir="auto">由于小程序运行逻辑线程与渲染线程之上，setData 的调用会把数据从逻辑层传到渲染层，数据太大会增加通信时间<br>\npages/productList/productList ： swiperList、currentType，变量单次赋值 598k;</p>\n<p dir="auto">解决方案：产品列表页所有数据来源一个接口，数据过大，大量冗余字段；先是接口拆分，然后数据清洗，去除无用字段，减少数据大小，一般不超过 256k；</p>\n<ol start="3" dir="auto">\n<li>滚动区域没有开启惯性滚动</li>\n</ol>\n<p dir="auto">惯性滚动会使滚动比较顺畅，在安卓下默认有惯性滚动，而在 iOS 下需要额外设置 <code class="notranslate">-webkit-overflow-scrolling: touch</code> 的样式<br>\npages/productList/productList</p>\n<p dir="auto">解决方案：使用 scroll-view 组件，添加<code class="notranslate">-webkit-overflow-scrolling: touch</code> 的样式</p>\n<ol start="4" dir="auto">\n<li>存在将未绑定在 WXML 的变量传入 setData</li>\n</ol>\n<p dir="auto">setData 操作会引起框架处理一些渲染界面相关的工作，一个未绑定的变量意味着与界面渲染无关，传入 setData 会造成不必要的性能消耗</p>\n<p dir="auto">解决方案：按要求处理，减少 setData 的调用 （可以使用 this.data 存储不需要在 wxml 中展示的变量）</p>\n<ol start="5" dir="auto">\n<li>存在短时间内发起太多的图片请求</li>\n</ol>\n<p dir="auto">短时间内发起太多图片请求会触发浏览器并行加载的限制，可能导致图片加载慢，用户一直处理等待。应该合理控制数量，可考虑使用雪碧图技术、拆分域名或在屏幕外的图片使用懒加载</p>\n<p dir="auto">解决方案：懒加载需要监听滚动的高度，计算当前 dom 的高度，调用 setData 改变图片的显隐状态，会增加另外性能损失，再考虑...</p>\n<ol start="6" dir="auto">\n<li>存在 setData 的调用过于频繁</li>\n</ol>\n<p dir="auto">setData 接口的调用涉及逻辑层与渲染层间的线程通过，通信过于频繁可能导致处理队列阻塞，界面渲染不及时而导致卡顿，应避免无用的频繁调用<br>\npages/home/home：onPageScroll 方法 38 次/秒，touchEnd 方法 26 次/秒</p>\n<p dir="auto">解决方案：滚动监听处理数据，使用节流处理；页面其他多次调用，减少非必要的调用，非数据绑定的使用常规赋值方法；</p>\n<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="Page({\n  data: {\n    swiperList: [], // 新的数据容器，开关 isRender 来控制渲染\n    currentType: &quot;all&quot;, // 轮播大 标签\n    currentTypeIndex: 0, //当前轮播图的第几页\n    domHeightList: [], // 单独维护所有高度\n    isClickLabel: false,\n  },\n  clearnData(data) {\n    this.setData(\n      {\n        swiperList: objList,\n        currentType: objList[0].key,\n        &quot;swiperList[0].isRender&quot;: true,\n      },\n      () =&gt; {\n        this.setRelDomHeight(0);\n      }\n    );\n  },\n  // 设置 dom 高度\n  setRelDomHeight(index) {\n    let arr = [];\n    this.data.swiperList[index].info.forEach(async (v) =&gt; {\n      let height = await this.getGroupHeight2(v.moduleKey);\n      if (height) {\n        if (arr.length == 0) {\n          arr.push(height);\n        } else {\n          arr.push(arr[arr.length - 1] + height);\n        }\n      }\n    });\n    this.data.domHeightList[index] = arr;\n  },\n  //切换标签\n  changeLabel(e) {\n    let label = e.currentTarget.dataset.label;\n    let param = &quot;swiperList[&quot; + this.data.currentTypeIndex + &quot;].currentLabel&quot;;\n    this.setData({\n      [param]: label,\n      toView: label,\n    });\n    this.data.isClickLabel = true;\n  },\n  //切换类型\n  changeType(e) {\n    let type = e.currentTarget.dataset.type;\n    let index = this.data.swiperList.findIndex((item) =&gt; item.key === type);\n    let isRender = &quot;swiperList[&quot; + index + &quot;].isRender&quot;;\n    if (this.data.swiperList[index].isRender) {\n      this.setData({\n        currentType: type,\n        currentTypeIndex: index,\n      });\n    } else {\n      this.setData(\n        {\n          currentType: type,\n          currentTypeIndex: index,\n          [isRender]: true,\n        },\n        () =&gt; {\n          this.setRelDomHeight(index);\n        }\n      );\n    }\n  },\n  // 轮播图切换\n  switchType(e) {\n    var source = e.detail.source;\n    // FIX 轮播切换 bug\n    if (source === &quot;autoplay&quot; || source === &quot;touch&quot;) {\n      let current = e.detail.current;\n      let type = this.data.swiperList[current].key;\n      let isRender = &quot;swiperList[&quot; + current + &quot;].isRender&quot;;\n      if (this.data.swiperList[current].isRender) {\n        this.setData({\n          currentType: type,\n          currentTypeIndex: current,\n        });\n      } else {\n        this.setData(\n          {\n            currentType: type,\n            currentTypeIndex: current,\n            [isRender]: true,\n          },\n          () =&gt; {\n            this.setRelDomHeight(current);\n          }\n        );\n      }\n    }\n  },\n  //  滚动监听 scroll-view 回显 label\n  listenScroll: debounce(function (e) {\n    this.scrollFn(e);\n  }, 50),\n  scrollFn(e) {\n    const { isClickLabel, swiperList, currentTypeIndex } = this.data;\n    // 点击 label 不需要加入滚动监听\n    if (isClickLabel) {\n      this.data.isClickLabel = false;\n      return;\n    }\n    const infoList = swiperList[currentTypeIndex].info;\n    let heightMapIndex = this.data.domHeightList[currentTypeIndex].findIndex(\n      (v) =&gt; v &gt; e.detail.scrollTop\n    );\n    // ! 设置 page.currentLabel &amp;&amp; toView\n    if (heightMapIndex === -1) {\n      heightMapIndex = this.data.domHeightList[currentTypeIndex].length - 1;\n    }\n    let param = &quot;swiperList[&quot; + this.data.currentTypeIndex + &quot;].currentLabel&quot;;\n    let currentLabel = this.data[param];\n    let infoKey = infoList[heightMapIndex].moduleKey;\n    let currentIndex = infoList.findIndex((v) =&gt; v.moduleKey === currentLabel);\n    if (currentIndex !== heightMapIndex) {\n      this.setData({\n        [param]: infoKey,\n      });\n    }\n  },\n  // 跳转到搜索页\n  toSearch() {\n    wx.navigateTo({\n      url: &quot;/pages/search/search&quot;,\n    });\n  },\n});"><pre class="notranslate"><span class="pl-v">Page</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n  <span class="pl-c1">data</span>: <span class="pl-kos">{</span>\n    <span class="pl-c1">swiperList</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 新的数据容器，开关 isRender 来控制渲染</span>\n    <span class="pl-c1">currentType</span>: <span class="pl-s">"all"</span><span class="pl-kos">,</span> <span class="pl-c">// 轮播大 标签</span>\n    <span class="pl-c1">currentTypeIndex</span>: <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c">//当前轮播图的第几页</span>\n    <span class="pl-c1">domHeightList</span>: <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">,</span> <span class="pl-c">// 单独维护所有高度</span>\n    <span class="pl-c1">isClickLabel</span>: <span class="pl-c1">false</span><span class="pl-kos">,</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-en">clearnData</span><span class="pl-kos">(</span><span class="pl-s1">data</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>\n      <span class="pl-kos">{</span>\n        <span class="pl-c1">swiperList</span>: <span class="pl-s1">objList</span><span class="pl-kos">,</span>\n        <span class="pl-c1">currentType</span>: <span class="pl-s1">objList</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span>\n        <span class="pl-s">"swiperList[0].isRender"</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">,</span>\n      <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 设置 dom 高度</span>\n  <span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">let</span> <span class="pl-s1">arr</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n      <span class="pl-k">let</span> <span class="pl-s1">height</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getGroupHeight2</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">height</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">arr</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">==</span> <span class="pl-c1">0</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n          <span class="pl-s1">arr</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n          <span class="pl-s1">arr</span><span class="pl-kos">.</span><span class="pl-en">push</span><span class="pl-kos">(</span><span class="pl-s1">arr</span><span class="pl-kos">[</span><span class="pl-s1">arr</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">]</span> <span class="pl-c1">+</span> <span class="pl-s1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">domHeightList</span><span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">arr</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">//切换标签</span>\n  <span class="pl-en">changeLabel</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">let</span> <span class="pl-s1">label</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">dataset</span><span class="pl-kos">.</span><span class="pl-c1">label</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">param</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">currentTypeIndex</span> <span class="pl-c1">+</span> <span class="pl-s">"].currentLabel"</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-kos">[</span><span class="pl-s1">param</span><span class="pl-kos">]</span>: <span class="pl-s1">label</span><span class="pl-kos">,</span>\n      <span class="pl-c1">toView</span>: <span class="pl-s1">label</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">isClickLabel</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">//切换类型</span>\n  <span class="pl-en">changeType</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">let</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">currentTarget</span><span class="pl-kos">.</span><span class="pl-c1">dataset</span><span class="pl-kos">.</span><span class="pl-c1">type</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">index</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">.</span><span class="pl-en">findIndex</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">item</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">item</span><span class="pl-kos">.</span><span class="pl-c1">key</span> <span class="pl-c1">===</span> <span class="pl-s1">type</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">isRender</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-s">"].isRender"</span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">isRender</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-c1">currentType</span>: <span class="pl-s1">type</span><span class="pl-kos">,</span>\n        <span class="pl-c1">currentTypeIndex</span>: <span class="pl-s1">index</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>\n        <span class="pl-kos">{</span>\n          <span class="pl-c1">currentType</span>: <span class="pl-s1">type</span><span class="pl-kos">,</span>\n          <span class="pl-c1">currentTypeIndex</span>: <span class="pl-s1">index</span><span class="pl-kos">,</span>\n          <span class="pl-kos">[</span><span class="pl-s1">isRender</span><span class="pl-kos">]</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">,</span>\n        <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n          <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-s1">index</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n        <span class="pl-kos">}</span>\n      <span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 轮播图切换</span>\n  <span class="pl-en">switchType</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">var</span> <span class="pl-s1">source</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">source</span><span class="pl-kos">;</span>\n    <span class="pl-c">// FIX 轮播切换 bug</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">source</span> <span class="pl-c1">===</span> <span class="pl-s">"autoplay"</span> <span class="pl-c1">||</span> <span class="pl-s1">source</span> <span class="pl-c1">===</span> <span class="pl-s">"touch"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-k">let</span> <span class="pl-s1">current</span> <span class="pl-c1">=</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">current</span><span class="pl-kos">;</span>\n      <span class="pl-k">let</span> <span class="pl-s1">type</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">current</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">;</span>\n      <span class="pl-k">let</span> <span class="pl-s1">isRender</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-s1">current</span> <span class="pl-c1">+</span> <span class="pl-s">"].isRender"</span><span class="pl-kos">;</span>\n      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">current</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">isRender</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n          <span class="pl-c1">currentType</span>: <span class="pl-s1">type</span><span class="pl-kos">,</span>\n          <span class="pl-c1">currentTypeIndex</span>: <span class="pl-s1">current</span><span class="pl-kos">,</span>\n        <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>\n        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span>\n          <span class="pl-kos">{</span>\n            <span class="pl-c1">currentType</span>: <span class="pl-s1">type</span><span class="pl-kos">,</span>\n            <span class="pl-c1">currentTypeIndex</span>: <span class="pl-s1">current</span><span class="pl-kos">,</span>\n            <span class="pl-kos">[</span><span class="pl-s1">isRender</span><span class="pl-kos">]</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>\n          <span class="pl-kos">}</span><span class="pl-kos">,</span>\n          <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>\n            <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setRelDomHeight</span><span class="pl-kos">(</span><span class="pl-s1">current</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n          <span class="pl-kos">}</span>\n        <span class="pl-kos">)</span><span class="pl-kos">;</span>\n      <span class="pl-kos">}</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">//  滚动监听 scroll-view 回显 label</span>\n  <span class="pl-c1">listenScroll</span>: <span class="pl-en">debounce</span><span class="pl-kos">(</span><span class="pl-k">function</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">scrollFn</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-c1">50</span><span class="pl-kos">)</span><span class="pl-kos">,</span>\n  <span class="pl-en">scrollFn</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-k">const</span> <span class="pl-kos">{</span> isClickLabel<span class="pl-kos">,</span> swiperList<span class="pl-kos">,</span> currentTypeIndex <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">;</span>\n    <span class="pl-c">// 点击 label 不需要加入滚动监听</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">isClickLabel</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">isClickLabel</span> <span class="pl-c1">=</span> <span class="pl-c1">false</span><span class="pl-kos">;</span>\n      <span class="pl-k">return</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-k">const</span> <span class="pl-s1">infoList</span> <span class="pl-c1">=</span> <span class="pl-s1">swiperList</span><span class="pl-kos">[</span><span class="pl-s1">currentTypeIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">info</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">heightMapIndex</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">domHeightList</span><span class="pl-kos">[</span><span class="pl-s1">currentTypeIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">findIndex</span><span class="pl-kos">(</span>\n      <span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">v</span> <span class="pl-c1">&gt;</span> <span class="pl-s1">e</span><span class="pl-kos">.</span><span class="pl-c1">detail</span><span class="pl-kos">.</span><span class="pl-c1">scrollTop</span>\n    <span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-c">// ! 设置 page.currentLabel &amp;&amp; toView</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">heightMapIndex</span> <span class="pl-c1">===</span> <span class="pl-c1">-</span><span class="pl-c1">1</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-s1">heightMapIndex</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">domHeightList</span><span class="pl-kos">[</span><span class="pl-s1">currentTypeIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n    <span class="pl-k">let</span> <span class="pl-s1">param</span> <span class="pl-c1">=</span> <span class="pl-s">"swiperList["</span> <span class="pl-c1">+</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">.</span><span class="pl-c1">currentTypeIndex</span> <span class="pl-c1">+</span> <span class="pl-s">"].currentLabel"</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">currentLabel</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">[</span><span class="pl-s1">param</span><span class="pl-kos">]</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">infoKey</span> <span class="pl-c1">=</span> <span class="pl-s1">infoList</span><span class="pl-kos">[</span><span class="pl-s1">heightMapIndex</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span><span class="pl-kos">;</span>\n    <span class="pl-k">let</span> <span class="pl-s1">currentIndex</span> <span class="pl-c1">=</span> <span class="pl-s1">infoList</span><span class="pl-kos">.</span><span class="pl-en">findIndex</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">v</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">v</span><span class="pl-kos">.</span><span class="pl-c1">moduleKey</span> <span class="pl-c1">===</span> <span class="pl-s1">currentLabel</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">currentIndex</span> <span class="pl-c1">!==</span> <span class="pl-s1">heightMapIndex</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">setData</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n        <span class="pl-kos">[</span><span class="pl-s1">param</span><span class="pl-kos">]</span>: <span class="pl-s1">infoKey</span><span class="pl-kos">,</span>\n      <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n    <span class="pl-kos">}</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n  <span class="pl-c">// 跳转到搜索页</span>\n  <span class="pl-en">toSearch</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>\n    <span class="pl-s1">wx</span><span class="pl-kos">.</span><span class="pl-en">navigateTo</span><span class="pl-kos">(</span><span class="pl-kos">{</span>\n      <span class="pl-c1">url</span>: <span class="pl-s">"/pages/search/search"</span><span class="pl-kos">,</span>\n    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>\n  <span class="pl-kos">}</span><span class="pl-kos">,</span>\n<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>\n<h2 id="main-heading-H2-9">拓展</h2>\n<ul dir="auto">\n<li>setData API 如何做到的异步渲染回调？</li>\n<li><a href="https://segmentfault.com/a/1190000008589736" rel="nofollow">Vue 源码详解之 nextTick：MutationObserver 只是浮云，microtask 才是核心！</a></li>\n</ul>\n<h2 id="main-heading-H2-10">参考</h2>\n<ul dir="auto">\n<li><a href="https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html" rel="nofollow">https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html</a></li>\n<li><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html" rel="nofollow">https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html</a></li>\n</ul>',user:{login:n,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:s,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:l,user_view_type:"public",site_admin:!1},labels:[{id:3968141036,node_id:"LA_kwDOB1PONs7shQbs",url:"https://api.github.com/repos/yanyue404/blog/labels/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85%E6%89%8B%E5%86%8C",name:"前端开发者手册",color:"E4698D",default:!1,description:s}],html_url:"https://github.com/yanyue404/blog/issues/206"},navList:[{text:"前言",id:"main-heading-H2-0",type:p,children:[]},{text:"实现思路",id:"main-heading-H2-1",type:p,children:[{text:"1. 改造数据",id:"main-heading-H3-2",type:a},{text:"2. 基本实现：scroll-into-view + 滚动监听",id:"main-heading-H3-3",type:a},{text:"3. 如何获取集合所有分组的高度？",id:"main-heading-H3-4",type:a},{text:"4. 什么时机去更新",id:"main-heading-H3-5",type:a},{text:"5. 直接计算 dom 高度",id:"main-heading-H3-6",type:a}]},{text:"性能测试优化",id:"main-heading-H2-7",type:p,children:[{text:"存在问题",id:"main-heading-H3-8",type:a}]},{text:"拓展",id:"main-heading-H2-9",type:p,children:[]},{text:"参考",id:"main-heading-H2-10",type:p,children:[]}],preloadedComments:[]}],error:null,state:{blog:{baseUrl:"/blog/",userName:n,userEmail:"1656800216@qq.com",repository:"blog",blogName:c,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:c,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:s},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:s,avatar_url:s,name:s,html_url:s,bio:s,type:l}},serverRendered:!0}}("","H3","H2","yanyue404","User","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>
