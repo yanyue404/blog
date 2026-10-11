@@ -1,0 +1,764 @@
+<!doctype html>
+<html data-n-head-ssr lang="zh" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22zh%22%7D%7D" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script>try{"dark"===localStorage.getItem("darken-mode")&&document.documentElement.classList.add("dark-mode")}catch(e){}</script>
+    <title>Best Agent Skills：三榜看懂 Agent 技能生态的今天 | 闫越的网络日志</title><meta data-n-head="ssr" name="description" content="Just blog and unjust blog"><meta data-n-head="ssr" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="keywords" name="keywords" content="基督徒 | F2E"><meta data-n-head="ssr" data-hid="description" name="description" content='数据来源：LinklyAI/best-skills 开源项目 2026-09-18 快照 覆盖平台：skills.sh、clawhub.ai、skillhub.cn 引言：技能生态已经大到需要"排行榜"了 Agent Skills（智能体技能）正在成为 AI 编程生态的新货币——一个带 SKILL.'><meta data-n-head="ssr" data-hid="og:type" property="og:type" content="article"><meta data-n-head="ssr" data-hid="og:title" property="og:title" content="Best Agent Skills：三榜看懂 Agent 技能生态的今天"><meta data-n-head="ssr" data-hid="og:description" property="og:description" content='数据来源：LinklyAI/best-skills 开源项目 2026-09-18 快照 覆盖平台：skills.sh、clawhub.ai、skillhub.cn 引言：技能生态已经大到需要"排行榜"了 Agent Skills（智能体技能）正在成为 AI 编程生态的新货币——一个带 SKILL.'><meta data-n-head="ssr" data-hid="twitter:card" name="twitter:card" content="summary"><meta data-n-head="ssr" data-hid="twitter:title" name="twitter:title" content="Best Agent Skills：三榜看懂 Agent 技能生态的今天"><meta data-n-head="ssr" data-hid="twitter:description" name="twitter:description" content='数据来源：LinklyAI/best-skills 开源项目 2026-09-18 快照 覆盖平台：skills.sh、clawhub.ai、skillhub.cn 引言：技能生态已经大到需要"排行榜"了 Agent Skills（智能体技能）正在成为 AI 编程生态的新货币——一个带 SKILL.'><base href="/blog/"><link rel="stylesheet" href="/blog/_nuxt/22d1037290ddf9197594.css"><link rel="stylesheet" href="/blog/_nuxt/ac92b695e1d280415cd3.css"><link rel="stylesheet" href="/blog/_nuxt/5e889f718aa275c4a572.css"> 
+    <script>!function(){var e=sessionStorage.redirect;delete sessionStorage.redirect,e&&e!=location.href&&history.replaceState(null,null,e)}()</script>
+    <script defer src="//mcdn.tk.cn/tk-online/assets/public-js/lib/vue.all.runtime.js"></script>
+    
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-shell"><header class="site-header" data-v-d0f08eca><div class="header-inner" data-v-d0f08eca><div class="header-left" data-v-d0f08eca><h1 class="blog-title" data-v-d0f08eca>Just blog and unjust blog</h1></div> <div class="header-center" data-v-d0f08eca><button class="search-trigger" data-v-d0f08eca><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-v-d0f08eca><circle cx="11" cy="11" r="8" data-v-d0f08eca></circle> <path d="M21 21l-4.35-4.35" data-v-d0f08eca></path></svg> <span data-v-d0f08eca>搜索文章...</span> <kbd data-v-d0f08eca>Ctrl+K</kbd></button></div> <div class="header-right" data-v-d0f08eca><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link" data-v-d0f08eca><svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor" data-v-d0f08eca><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-d0f08eca></path></svg></a> <div class="lang-switch" data-v-59e76d54 data-v-d0f08eca><span class="lang-label" data-v-59e76d54>EN</span></div> <button title="切换暗色模式" aria-label="Switch to dark mode" class="dark-toggle" data-v-2f0e3bda data-v-d0f08eca><span class="icon icon-moon" data-v-2f0e3bda>🌙</span> <span class="icon icon-sun" style="display:none" data-v-2f0e3bda>☀️</span></button></div></div> <!----></header> <div class="app-main"><div class="article-block" data-v-046725fd><div class="reading-progress" style="width:0%" data-v-79262d39 data-v-046725fd></div> <div class="article-sidebar-left" data-v-046725fd><nav class="article-catalog catalog-block" data-v-582c5933 data-v-046725fd><div class="catalog-title" data-v-582c5933><div data-v-582c5933>目录</div></div> <div class="catalog-body unfold" data-v-582c5933><ul class="catalog-list" style="margin-top:0" data-v-582c5933><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H2-0" title='引言：技能生态已经大到需要"排行榜"了' class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              引言：技能生态已经大到需要"排行榜"了
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H2-1" title="榜单一：Best 100 综合榜——存量实力的排行" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              榜单一：Best 100 综合榜——存量实力的排行
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-2" title="Top 10" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Top 10
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-3" title="榜单解读" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  榜单解读
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H2-4" title="榜单二：Social Buzz 热议榜——7 天内的增量叙事" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              榜单二：Social Buzz 热议榜——7 天内的增量叙事
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-5" title="Top 10（按 buzz_score）" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Top 10（按 buzz_score）
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-6" title="榜单解读" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  榜单解读
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H2-7" title="榜单三：Top Repos 仓库榜——GitHub 社区的长期投票" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              榜单三：Top Repos 仓库榜——GitHub 社区的长期投票
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-8" title="Top 10" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  Top 10
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-9" title="榜单解读" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  榜单解读
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H2-10" title="三榜交叉：今天值得记住的五个信号" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              三榜交叉：今天值得记住的五个信号
+            </a></div> <!----></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H2-11" title="给开发者工程师的选型建议" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              给开发者工程师的选型建议
+            </a></div> <ul class="sub-list" data-v-582c5933><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-12" title="场景一：日常编码——已装 mattpocock + superpowers 用户的完整清单" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  场景一：日常编码——已装 mattpocock + superpowers 用户的完整清单
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-13" title="场景二：前端与设计" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  场景二：前端与设计
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-14" title="场景三：数据库与后端基础设施" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  场景三：数据库与后端基础设施
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-15" title="场景四：效率工具箱（clawhub 生态）" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  场景四：效率工具箱（clawhub 生态）
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-16" title="场景五：前沿尝鲜（热度优先）" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  场景五：前沿尝鲜（热度优先）
+                </a></div></li><li class="item d3" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H3-17" title="通用建议" class="catalog-aTag d3-aTag-title" data-v-582c5933>
+                  通用建议
+                </a></div></li></ul></li><li class="item d2" data-v-582c5933><div class="a-container" data-v-582c5933><a href="/blog/post/310#main-heading-H2-18" title="结语" class="catalog-aTag d2-aTag-title" data-v-582c5933>
+              结语
+            </a></div> <!----></li> <!----></ul></div></nav></div> <div class="article-center" data-v-046725fd><div class="article-area" style="display:none" data-v-046725fd><div style="width:100%" data-v-046725fd><div class="el-skeleton is-animated"><div class="article-header" data-v-046725fd><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h1" style="width:50%" data-v-046725fd><!----></div></div> <code class="text-italic" data-v-046725fd><div class="el-skeleton__item el-skeleton__text" style="width:25%" data-v-046725fd><!----></div></code></div> <div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="display:none;width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div><div data-v-046725fd><div class="el-skeleton__item el-skeleton__h2" style="width:40%" data-v-046725fd><!----></div> <div style="padding:14px" data-v-046725fd><div style="display:none" data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div> <div class="el-skeleton__item el-skeleton__image" style="width:100%;height:240px" data-v-046725fd><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M64 896V128h896v768H64z m64-128l192-192 116.352 116.352L640 448l256 307.2V192H128v576z m224-480a96 96 0 1 1-0.064 192.064A96 96 0 0 1 352 288z"></path></svg></div> <div data-v-046725fd><div class="el-skeleton is-animated"><div class="el-skeleton__item el-skeleton__p is-first"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph"><!----></div><div class="el-skeleton__item el-skeleton__p el-skeleton__paragraph is-last"><!----></div></div></div></div></div></div></div></div> <div class="article-area" data-v-046725fd><nav class="breadcrumb" data-v-046725fd><a href="/blog/" class="breadcrumb-link" data-v-046725fd><i class="el-icon-house" data-v-046725fd></i> 首页
+        </a> <span class="breadcrumb-sep" data-v-046725fd>/</span> <span class="breadcrumb-current" data-v-046725fd>Best Agent Skills：三榜看懂 Agent 技能生态的今天</span></nav> <div class="page-header" data-v-b6542330 data-v-046725fd><div class="header-content" data-v-b6542330><div class="title-wrapper" data-v-b6542330><div class="title-section" data-v-b6542330><h1 class="main-title" data-v-b6542330>Best Agent Skills：三榜看懂 Agent 技能生态的今天</h1> <!----></div></div> <div class="meta-actions-wrapper" data-v-b6542330><div class="meta-section" data-v-b6542330><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-user" data-v-b6542330></i> <span data-v-b6542330>yanyue404</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-time" data-v-b6542330></i> <span data-v-b6542330>发布于 2026-09-18</span></div><div class="el-tooltip meta-item" data-v-b6542330 data-v-b6542330><i class="el-icon-reading" data-v-b6542330></i> <span data-v-b6542330>约 25 分钟</span></div></div> <div class="actions-section" data-v-b6542330><button type="button" class="el-button edit-button el-button--primary el-button--small" data-v-046725fd><!----><i class="el-icon-edit"></i><span>
+            编辑文章
+          </span></button></div></div></div> <div class="header-decoration" data-v-b6542330></div></div> <div class="q-mt-lg markdown-body post-markdown" data-v-046725fd><blockquote>
+<p dir="auto">数据来源：<a href="https://github.com/LinklyAI/best-skills/">LinklyAI/best-skills</a> 开源项目 2026-09-18 快照<br>
+覆盖平台：skills.sh、clawhub.ai、skillhub.cn</p>
+</blockquote>
+<hr>
+<h2 id="main-heading-H2-0">引言：技能生态已经大到需要"排行榜"了</h2>
+<p dir="auto">Agent Skills（智能体技能）正在成为 AI 编程生态的新货币——一个带 <code class="notranslate">SKILL.md</code> 的文件夹，就能教会 Claude Code、Codex、Clawdbot 这类编码智能体一套新本领。当技能数量从几十个膨胀到成千上万个，"哪个技能值得装"就成了真实痛点。</p>
+<p dir="auto"><a href="https://github.com/LinklyAI/best-skills/">LinklyAI/best-skills</a> 项目应运而生：它每日聚合 skills.sh、clawhub.ai、skillhub.cn 三大技能平台的公开数据，产出三份互相补位的榜单：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>榜单</th>
+<th>回答的问题</th>
+<th>核心指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Best 100 综合榜</strong></td>
+<td>哪些技能装的人最多、最稳？</td>
+<td>wis 综合评分（装机量 + 流行度 + 增长动量 + 社交热度加权）</td>
+</tr>
+<tr>
+<td><strong>Social Buzz 热议榜</strong></td>
+<td>过去 7 天大家在谈论什么？</td>
+<td>buzz_score（X / Hacker News / Bluesky / GitHub 提及与互动）</td>
+</tr>
+<tr>
+<td><strong>Top Repos 仓库榜</strong></td>
+<td>哪些技能仓库最受开发者追捧？</td>
+<td>GitHub 星标数、日增星标、收录技能数</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">三份榜单放在一起读，才能看到完整的生态图景：<strong>装机量代表存量实力，社交热度代表增量叙事，仓库星标代表开发者社区的长期投票。</strong></p>
+<hr>
+<h2 id="main-heading-H2-1">榜单一：Best 100 综合榜——存量实力的排行</h2>
+<h3 id="main-heading-H3-2">Top 10</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">排名</th>
+<th>技能</th>
+<th>作者 / 厂商</th>
+<th>平台</th>
+<th align="center">wis 评分</th>
+<th align="center">装机量</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td><strong>find-skills</strong></td>
+<td>vercel-labs</td>
+<td>skills.sh</td>
+<td align="center">74.7</td>
+<td align="center">344.9 万</td>
+<td><a href="https://github.com/vercel-labs/skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td><strong>frontend-design</strong></td>
+<td>anthropics</td>
+<td>skills.sh</td>
+<td align="center">73.0</td>
+<td align="center">89.7 万</td>
+<td><a href="https://github.com/anthropics/skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td><strong>agent-browser</strong></td>
+<td>vercel-labs</td>
+<td>skills.sh</td>
+<td align="center">69.0</td>
+<td align="center">87.8 万</td>
+<td><a href="https://github.com/vercel-labs/agent-browser">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td><strong>vercel-react-best-practices</strong></td>
+<td>vercel-labs</td>
+<td>skills.sh</td>
+<td align="center">68.5</td>
+<td align="center">72.3 万</td>
+<td><a href="https://github.com/vercel-labs/agent-skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td><strong>grill-me</strong></td>
+<td>mattpocock</td>
+<td>skills.sh</td>
+<td align="center">66.7</td>
+<td align="center">116.6 万</td>
+<td><a href="https://github.com/mattpocock/skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td><strong>weather</strong></td>
+<td>steipete</td>
+<td>clawhub</td>
+<td align="center">66.5</td>
+<td align="center">17.0 万</td>
+<td><a href="https://clawhub.ai/steipete/skills/weather" rel="nofollow">clawhub</a></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td><strong>azure-ai</strong></td>
+<td>microsoft</td>
+<td>skills.sh</td>
+<td align="center">66.2</td>
+<td align="center">58.8 万</td>
+<td><a href="https://github.com/microsoft/azure-skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td><strong>gog</strong></td>
+<td>steipete</td>
+<td>clawhub</td>
+<td align="center">66.2</td>
+<td align="center">19.4 万</td>
+<td><a href="https://clawhub.ai/steipete/skills/gog" rel="nofollow">clawhub</a></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td><strong>web-design-guidelines</strong></td>
+<td>vercel-labs</td>
+<td>skills.sh</td>
+<td align="center">65.5</td>
+<td align="center">64.4 万</td>
+<td><a href="https://github.com/vercel-labs/agent-skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td><strong>grill-with-docs</strong></td>
+<td>mattpocock</td>
+<td>skills.sh</td>
+<td align="center">64.7</td>
+<td align="center">99.6 万</td>
+<td><a href="https://github.com/mattpocock/skills">GitHub</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 id="main-heading-H3-3">榜单解读</h3>
+<p dir="auto"><strong>榜首是个"元技能"。</strong> <code class="notranslate">find-skills</code> 以 344.9 万装机量、74.7 的 wis 评分断层领先——它的功能就是"帮智能体找到合适的技能"。这本身就是生态成熟的标志：技能多到需要导航，而导航本身成了最热门的技能。</p>
+<p dir="auto"><strong>Microsoft 是最大的"集团军"。</strong> 全榜 100 席中，Azure 系技能（azure-ai、azure-deploy、azure-kubernetes、entra-* 等约 28 席）集体入榜，且装机量整齐地停在 58 万上下——这种高度一致的数字透露出典型的<strong>企业批量部署</strong>特征：Azure 技能包正在被组织级用户整包安装，而非开发者零散选用。</p>
+<p dir="auto"><strong>方法论教练 mattpocock 贡献 19 席。</strong> Matt Pocock（Total TypeScript 作者）的技能不是工具，而是<strong>工程方法论</strong>：<code class="notranslate">grill-me</code>（拷问需求）、<code class="notranslate">tdd</code>（测试驱动）、<code class="notranslate">handoff</code>（任务交接）、<code class="notranslate">triage</code>（问题分诊）、<code class="notranslate">code-review</code>……把资深工程师的工作习惯封装成技能，是本榜最独特的存在。</p>
+<p dir="auto"><strong>个人开发者 steipete 占 12 席。</strong> Peter Steinberger 在 clawhub 上的技能全是"日用工具箱"风格：<code class="notranslate">weather</code>（免 API Key 天气）、<code class="notranslate">gog</code>（Google Workspace 命令行）、<code class="notranslate">slack</code>、<code class="notranslate">github</code>、<code class="notranslate">notion</code>、<code class="notranslate">obsidian</code>、<code class="notranslate">brave-search</code>……一个顶一个厂商。</p>
+<p dir="auto"><strong>厂商全家桶成建制入榜。</strong> Vercel 8 席（React 最佳实践、组合模式、部署）、Prisma 9 席（几乎覆盖数据库工作全流程）、Supabase / Neon 各 2 席——数据库与前端基础设施厂商已把 Skills 当成官方文档的"可执行版本"。</p>
+<p dir="auto"><strong>唯一的 skillhub.cn 入榜者</strong>是 <code class="notranslate">multi-search-engine</code>（成都智创未来）：16 个搜索引擎集成（7 国内 + 9 全球），54 万下载量，排名 60——中国平台生态的代表作。</p>
+<hr>
+<h2 id="main-heading-H2-4">榜单二：Social Buzz 热议榜——7 天内的增量叙事</h2>
+<h3 id="main-heading-H3-5">Top 10（按 buzz_score）</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">排名</th>
+<th>技能</th>
+<th>平台</th>
+<th align="center">buzz_score</th>
+<th>关键社交数据（7 天）</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td><strong>self-improving</strong></td>
+<td>clawhub</td>
+<td align="center">0.826</td>
+<td>X 提及 20 · HN 10 · Bluesky 183 命中</td>
+<td><a href="https://clawhub.ai/ivangdavila/skills/self-improving" rel="nofollow">clawhub</a></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td><strong>grill-me</strong></td>
+<td>skills.sh</td>
+<td align="center">0.732</td>
+<td>X 提及 100+（截断）· 互动量 4128</td>
+<td><a href="https://github.com/mattpocock/skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td><strong>frontend-design</strong></td>
+<td>skills.sh</td>
+<td align="center">0.657</td>
+<td>X 提及 20 · GitHub 提及 62</td>
+<td><a href="https://github.com/anthropics/skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td><strong>nano-banana-pro</strong></td>
+<td>clawhub</td>
+<td align="center">0.638</td>
+<td>X 提及 28 · 互动量 2243</td>
+<td><a href="https://clawhub.ai/steipete/skills/nano-banana-pro" rel="nofollow">clawhub</a></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td><strong>grill-with-docs</strong></td>
+<td>skills.sh</td>
+<td align="center">0.638</td>
+<td>X 提及 21 · 互动量 3178</td>
+<td><a href="https://github.com/mattpocock/skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td><strong>self-improving-agent</strong></td>
+<td>clawhub</td>
+<td align="center">0.628</td>
+<td>X 提及 50 · 互动量 1987</td>
+<td><a href="https://clawhub.ai/pskoett/skills/self-improving-agent" rel="nofollow">clawhub</a></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td><strong>browser-use</strong></td>
+<td>skills.sh</td>
+<td align="center">0.616</td>
+<td>HN 2 · Bluesky 15 命中</td>
+<td><a href="https://github.com/browser-use/browser-use">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td><strong>skill-creator</strong></td>
+<td>skills.sh</td>
+<td align="center">0.616</td>
+<td>X 提及 60 · GitHub 提及 86</td>
+<td><a href="https://github.com/anthropics/skills">GitHub</a></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td><strong>proactive-agent</strong></td>
+<td>clawhub</td>
+<td align="center">0.604</td>
+<td>X 提及 30</td>
+<td><a href="https://clawhub.ai/halthelobster/skills/proactive-agent" rel="nofollow">clawhub</a></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td><strong>find-skills</strong></td>
+<td>skills.sh</td>
+<td align="center">0.572</td>
+<td>X 提及 25 · GitHub 提及 95</td>
+<td><a href="https://github.com/vercel-labs/skills">GitHub</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 id="main-heading-H3-6">榜单解读</h3>
+<p dir="auto"><strong>"自我进化"是当下最强的叙事。</strong> 社交榜第一的 <code class="notranslate">self-improving</code>（自我反思 + 自我批评 + 自我学习 + 自组织记忆，让智能体评估自身工作并永久改进）以 0.826 的 buzz_score 断层领先；第 6 名 <code class="notranslate">self-improving-agent</code>（捕获错误与用户纠正、持续自我改进）与第 9 名 <code class="notranslate">proactive-agent</code>（从任务执行者变为主动伙伴）同属这一叙事。<strong>前十名中三席都在讲"让智能体自己变好"</strong>——这不是巧合，是社区当下真正的注意力所在。</p>
+<p dir="auto"><strong>grill-me 是 X 上的顶流。</strong> 100+ 提及（真实数字被平台截断）、4128 互动量，"让 AI 拷问你的需求再动手"的思路引发了大量开发者共鸣，连带 <code class="notranslate">grill-with-docs</code> 一起上榜。</p>
+<p dir="auto"><strong>Bluesky 是被低估的讨论场。</strong> <code class="notranslate">self-improving</code> 在 Bluesky 上拿到 183 次命中（原始提及 383），<code class="notranslate">stock-analysis</code>（Yahoo Finance 股票/加密货币分析）虽未进前十，却在 Bluesky 拿到 199 次命中——金融分析类技能在 Bsky 社区形成了自己的小气候。</p>
+<p dir="auto"><strong>图像生成热度不低。</strong> <code class="notranslate">nano-banana-pro</code>（Gemini 3 Pro Image 文生图/图生图）靠 28 次 X 提及贡献 2243 互动，说明"让智能体直接产出图像"的实用需求旺盛。</p>
+<hr>
+<h2 id="main-heading-H2-7">榜单三：Top Repos 仓库榜——GitHub 社区的长期投票</h2>
+<h3 id="main-heading-H3-8">Top 10</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">排名</th>
+<th>仓库</th>
+<th align="center">星标数</th>
+<th align="center">日增</th>
+<th align="center">收录技能数</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td><a href="https://github.com/obra/superpowers"><strong>obra/superpowers</strong></a></td>
+<td align="center">288,126</td>
+<td align="center">+331</td>
+<td align="center">14</td>
+<td>超能力技能合集（SDLC 全流程）</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td><a href="https://github.com/mattpocock/skills"><strong>mattpocock/skills</strong></a></td>
+<td align="center">264,489</td>
+<td align="center">+614</td>
+<td align="center">53</td>
+<td>工程方法论技能库</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td><a href="https://github.com/affaan-m/ECC"><strong>affaan-m/ECC</strong></a></td>
+<td align="center">261,164</td>
+<td align="center">—</td>
+<td align="center">52</td>
+<td>Claude / MCP 生产力技能合集</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td><a href="https://github.com/multica-ai/andrej-karpathy-skills"><strong>multica-ai/andrej-karpathy-skills</strong></a></td>
+<td align="center">213,713</td>
+<td align="center">—</td>
+<td align="center">1</td>
+<td>Karpathy 风格技能</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td><a href="https://github.com/firecrawl/firecrawl"><strong>firecrawl/firecrawl</strong></a></td>
+<td align="center">181,677</td>
+<td align="center">—</td>
+<td align="center">1</td>
+<td>网页抓取转 Markdown</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td><a href="https://github.com/anthropics/skills"><strong>anthropics/skills</strong></a></td>
+<td align="center">176,889</td>
+<td align="center">+112</td>
+<td align="center">20</td>
+<td>Anthropic 官方技能库</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td><a href="https://github.com/anthropics/claude-code"><strong>anthropics/claude-code</strong></a></td>
+<td align="center">145,865</td>
+<td align="center">+166</td>
+<td align="center">1</td>
+<td>Claude Code 本体</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td><a href="https://github.com/vercel/next.js"><strong>vercel/next.js</strong></a></td>
+<td align="center">142,338</td>
+<td align="center">—</td>
+<td align="center">2</td>
+<td>Next.js 官方（附技能）</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td><a href="https://github.com/DietrichGebert/ponytail"><strong>DietrichGebert/ponytail</strong></a></td>
+<td align="center">141,321</td>
+<td align="center">+563</td>
+<td align="center">6</td>
+<td>YAGNI 极简编码哲学技能</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"><strong>nextlevelbuilder/ui-ux-pro-max-skill</strong></a></td>
+<td align="center">128,517</td>
+<td align="center">+214</td>
+<td align="center">4</td>
+<td>UI/UX 设计技能</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 id="main-heading-H3-9">榜单解读</h3>
+<p dir="auto"><strong>superpowers 登顶，但 mattpocock 增长最猛。</strong> <code class="notranslate">obra/superpowers</code>（Jesse Vincent 的 SDLC 技能合集：brainstorming、TDD、subagent 驱动开发等）以 28.8 万星守住第一；但第二名 <code class="notranslate">mattpocock/skills</code> 日增 614 星，且以 53 个收录技能成为头部仓库中<strong>内容最丰富的技能库之一</strong>。</p>
+<p dir="auto"><strong>名人效应真实存在。</strong> <code class="notranslate">andrej-karpathy-skills</code> 只有 1 个技能，却凭 Karpathy 的名字拿下 21.4 万星——社区对"Karpathy 会怎么写代码"的兴趣，本身就是一个顶级 IP。</p>
+<p dir="auto"><strong>philosophy 也能拿星。</strong> <code class="notranslate">ponytail</code>（YAGNI / 极简主义编码哲学，日增 563 星）和 <code class="notranslate">caveman</code>（10.6 万星，"穴居人"极简 token 风格）证明：<strong>约束型技能</strong>（让 AI 少做、别过度设计）与能力型技能同样受欢迎。</p>
+<p dir="auto"><strong>安全护栏是当日最大黑马。</strong> <code class="notranslate">cloudflare/security-audit-skill</code> 星标数刚过 1 万，但<strong>单日暴涨 2240 星</strong>，是全榜增速第一；<code class="notranslate">destructive_command_guard</code>（拦截破坏性命令）也进入百强。"给智能体系上安全带"正在成为新的刚需赛道。</p>
+<p dir="auto"><strong>收录技能数之最：</strong> <code class="notranslate">NomaDamas/k-skill</code>（7,598 星）被追踪收录了 <strong>125 个技能</strong>，是全榜数量冠军；<code class="notranslate">coreyhaines31/marketingskills</code>（62 个）、<code class="notranslate">mattpocock/skills</code>（53 个）、<code class="notranslate">affaan-m/ECC</code>（52 个）紧随其后。</p>
+<p dir="auto"><strong>中文生态在仓库榜上更活跃：</strong> <code class="notranslate">JimLiu/baoyu-skills</code>（2.6 万星，宝玉技能库）、<code class="notranslate">larksuite/cli</code>（飞书官方，28 个技能）、<code class="notranslate">zenstory-ai/oh-story-claudecode</code>（中文小说写作）、<code class="notranslate">WenyuChiou/awesome-agentic-ai-zh</code>（中文学习路线图）、<code class="notranslate">op7418/Humanizer-zh</code>（去 AI 味中文写作）——中文技能生态偏<strong>内容创作与效率办公</strong>，与英文生态的工程主导形成鲜明互补。</p>
+<hr>
+<h2 id="main-heading-H2-10">三榜交叉：今天值得记住的五个信号</h2>
+<p dir="auto"><strong>1. 生态进入"需要导航"的阶段。</strong><br>
+综合榜第一是 find-skills，社交榜前十有它，GitHub 提及 95 次——当选择成本超过使用成本时，聚合与发现层就成了基础设施。</p>
+<p dir="auto"><strong>2. "自我进化"从概念走向落地。</strong><br>
+<code class="notranslate">self-improving</code> 同时打进综合榜（第 45）和社交榜（第 1），<code class="notranslate">self-improving-agent</code> 更是以 120.9 万下载冲进综合榜第 55。让智能体记录错误、自我批评、永久改进，是当前增长最快的品类。</p>
+<p dir="auto"><strong>3. 方法论比工具更有黏性。</strong><br>
+mattpocock 系（grill-me / tdd / handoff / triage）三榜全部在榜：装机 19 席、社交榜 4 席（含前二占据两席）、仓库榜第 2 且日增最高。"教会 AI 怎么干活"胜过"替 AI干活"。</p>
+<p dir="auto"><strong>4. 厂商集团军与个人奇兵并存。</strong><br>
+Microsoft 28 席、Vercel 8 席、Prisma 9 席的集团军打法，与 steipete 一人 12 席、obra 一仓库 28.8 万星的双轨并行——企业看重整包分发，开发者用星标投票给个人品牌。</p>
+<p dir="auto"><strong>5. 平台三足鼎立格局初现。</strong><br>
+skills.sh 占综合榜约 3/4 席位，是存量主战场；clawhub.ai（Clawdbot 生态）以日用工具和自我进化类技能见长；skillhub.cn 尚在早期，但 multi-search-engine 的 54 万下载和仓库榜上的中文军团，预示着下一个增量市场。</p>
+<hr>
+<h2 id="main-heading-H2-11">给开发者工程师的选型建议</h2>
+<p dir="auto">榜单看热闹，选型看门道。基于三份榜单的数据交叉验证（装机量 × 社交热度 × 仓库活跃度），按工程师的日常工作场景给出以下建议：</p>
+<h3 id="main-heading-H3-12">场景一：日常编码——已装 mattpocock + superpowers 用户的完整清单</h3>
+<p dir="auto">日常编码的方法论底座你已经装配到位（mattpocock 仓库榜第 2 + superpowers 仓库榜第 1），下面把这两家在榜单中的技能<strong>全部罗列</strong>，按用途分组查漏补缺：</p>
+<h4 dir="auto">mattpocock/skills 榜单全量（综合榜 19 席 + 社交榜 5 席）</h4>
+<p dir="auto">仓库地址：<a href="https://github.com/mattpocock/skills">github.com/mattpocock/skills</a>（264,489 星 · 日增 614 · 收录 53 个技能）</p>
+<p dir="auto"><strong>需求与规划类</strong>（动手前先想清楚）</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>技能</th>
+<th align="center">综合榜排名</th>
+<th align="center">装机量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>grill-me</strong></td>
+<td align="center">5</td>
+<td align="center">116.6 万</td>
+<td>拷问需求，动手前压力测试你的想法（社交榜第 2，X 互动 4128）</td>
+</tr>
+<tr>
+<td><strong>grill-with-docs</strong></td>
+<td align="center">10</td>
+<td align="center">99.6 万</td>
+<td>带文档上下文的深度拷问（社交榜第 5）</td>
+</tr>
+<tr>
+<td><strong>grilling</strong></td>
+<td align="center">49</td>
+<td align="center">72.3 万</td>
+<td>通用层层盘问模式</td>
+</tr>
+<tr>
+<td><strong>to-spec</strong></td>
+<td align="center">95</td>
+<td align="center">52.1 万</td>
+<td>把口头需求转成可执行规格</td>
+</tr>
+<tr>
+<td><strong>domain-modeling</strong></td>
+<td align="center">64</td>
+<td align="center">65.4 万</td>
+<td>构建项目领域模型与共享词汇（社交榜第 16）</td>
+</tr>
+<tr>
+<td><strong>codebase-design</strong></td>
+<td align="center">69</td>
+<td align="center">63.3 万</td>
+<td>设计模块接口、找深化机会（社交榜第 20）</td>
+</tr>
+<tr>
+<td><strong>prototype</strong></td>
+<td align="center">51</td>
+<td align="center">79.8 万</td>
+<td>抛弃型原型验证设计问题</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>实现与质量类</strong>（写代码时的护栏）</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>技能</th>
+<th align="center">综合榜排名</th>
+<th align="center">装机量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>tdd</strong></td>
+<td align="center">48</td>
+<td align="center">92.2 万</td>
+<td>测试驱动开发（red-green-refactor）</td>
+</tr>
+<tr>
+<td><strong>implement</strong></td>
+<td align="center">93</td>
+<td align="center">57.3 万</td>
+<td>按计划逐步实现，带验证检查点</td>
+</tr>
+<tr>
+<td><strong>diagnosing-bugs</strong></td>
+<td align="center">88</td>
+<td align="center">62.1 万</td>
+<td>bug 诊断循环：先系统排查再修复</td>
+</tr>
+<tr>
+<td><strong>triage</strong></td>
+<td align="center">50</td>
+<td align="center">80.2 万</td>
+<td>问题分诊，决定先修哪个</td>
+</tr>
+<tr>
+<td><strong>code-review</strong></td>
+<td align="center">92</td>
+<td align="center">57.1 万</td>
+<td>提交前按规范与规格双轴审查</td>
+</tr>
+<tr>
+<td><strong>improve-codebase-architecture</strong></td>
+<td align="center">47</td>
+<td align="center">94.9 万</td>
+<td>架构持续改进（社交榜第 13）</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>协作与研究类</strong></p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>技能</th>
+<th align="center">综合榜排名</th>
+<th align="center">装机量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>handoff</strong></td>
+<td align="center">39</td>
+<td align="center">82.4 万</td>
+<td>任务交接，在独立会话中继续执行计划</td>
+</tr>
+<tr>
+<td><strong>research</strong></td>
+<td align="center">98</td>
+<td align="center">52.1 万</td>
+<td>对照一手来源调研并落库 Markdown</td>
+</tr>
+<tr>
+<td><strong>to-tickets</strong></td>
+<td align="center">99</td>
+<td align="center">51.2 万</td>
+<td>把需求拆成工单</td>
+</tr>
+<tr>
+<td><strong>teach</strong></td>
+<td align="center">53</td>
+<td align="center">67.1 万</td>
+<td>让 AI 边做边教，理解每步决策</td>
+</tr>
+<tr>
+<td><strong>ask-matt</strong></td>
+<td align="center">97</td>
+<td align="center">57.5 万</td>
+<td>直接问 Matt 本人的最佳实践</td>
+</tr>
+<tr>
+<td><strong>wayfinder</strong></td>
+<td align="center">100</td>
+<td align="center">52.7 万</td>
+<td>复杂任务中的路径导航</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h4 dir="auto">obra/superpowers 榜单表现（仓库榜第 1）</h4>
+<p dir="auto">仓库地址：<a href="https://github.com/obra/superpowers">github.com/obra/superpowers</a>（288,126 星 · 日增 331 · 收录 14 个技能）</p>
+<p dir="auto">superpowers 的技能级明细未进入技能榜统计，但其 SDLC 全流程技能集覆盖（据仓库主题标签：brainstorming / sdlc / subagent-driven-development）：<strong>brainstorming</strong>（实现前强制需求探索）、<strong>writing-plans / executing-plans</strong>（计划先行）、<strong>test-driven-development</strong>、<strong>systematic-debugging</strong>、<strong>verification-before-completion</strong>（先有证据再宣布完成）、<strong>requesting / receiving-code-review</strong>、<strong>subagent-driven-development</strong>、<strong>dispatching-parallel-agents</strong>（并行子代理）、<strong>using-git-worktrees</strong>（隔离工作区）、<strong>finishing-a-development-branch</strong>（分支收尾流程）。</p>
+<p dir="auto"><strong>查漏补缺建议</strong>：两家在 TDD、debug、code-review 上功能重叠——建议以 superpowers 的流程链为主干（brainstorming → writing-plans → executing-plans → verification），用 mattpocock 的差异化技能补位：<strong>需求拷问</strong>（grill-me / grilling）、<strong>领域建模</strong>（domain-modeling / codebase-design）、<strong>任务交接</strong>（handoff）、<strong>调研</strong>（research）——这四个能力是 superpowers 未覆盖、而 mattpocock 数据最强的部分。</p>
+<h3 id="main-heading-H3-13">场景二：前端与设计</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>推荐技能</th>
+<th>作者</th>
+<th>推荐理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>frontend-design</strong></td>
+<td>anthropics</td>
+<td>综合榜第 2（89.7 万装机）+ 社交榜第 3，Anthropic 官方出品，避免 AI 生成"一眼假"的模板 UI</td>
+</tr>
+<tr>
+<td><strong>web-design-guidelines</strong></td>
+<td>vercel-labs</td>
+<td>综合榜第 9（64.4 万装机），Vercel 的 Web 设计规范沉淀</td>
+</tr>
+<tr>
+<td><strong>vercel-react-best-practices</strong></td>
+<td>vercel-labs</td>
+<td>综合榜第 4（72.3 万装机），React 项目的事实标准</td>
+</tr>
+<tr>
+<td>ui-ux-pro-max-skill（仓库榜第 10，12.9 万星）</td>
+<td>nextlevelbuilder</td>
+<td>落地页/UI 整套设计能力，仓库热度极高</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>选型逻辑</strong>：设计类技能是"效果立竿见影"的品类——装与不装，AI 产出的 UI 质量差距肉眼可见。官方与 Vercel 双保险即可覆盖绝大多数场景。</p>
+<h3 id="main-heading-H3-14">场景三：数据库与后端基础设施</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>推荐技能</th>
+<th>作者</th>
+<th>推荐理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>prisma-database-setup / prisma-client-api</strong></td>
+<td>prisma</td>
+<td>Prisma 官方 9 席全流程技能，Prisma 用户建议整包安装</td>
+</tr>
+<tr>
+<td><strong>supabase-postgres-best-practices</strong></td>
+<td>supabase</td>
+<td>综合榜第 54（40.6 万装机），Supabase 用户必装</td>
+</tr>
+<tr>
+<td><strong>neon-postgres</strong></td>
+<td>neondatabase</td>
+<td>Serverless Postgres 场景</td>
+</tr>
+<tr>
+<td><strong>azure-deploy / azure-kubernetes</strong></td>
+<td>microsoft</td>
+<td>Azure 用户按需选取，企业环境建议整包（28 席入榜说明其批量部署已是主流用法）</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>选型逻辑</strong>：基础设施类技能"厂商绑定"属性强——用哪家产品就装哪家技能，官方技能包已等同于"可执行文档"。</p>
+<h3 id="main-heading-H3-15">场景四：效率工具箱（clawhub 生态）</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>推荐技能</th>
+<th>作者</th>
+<th>推荐理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>gog</strong></td>
+<td>steipete</td>
+<td>Google Workspace 全家桶 CLI（Gmail/日历/Drive/Sheets/Docs）</td>
+</tr>
+<tr>
+<td><strong>github</strong></td>
+<td>steipete</td>
+<td>gh CLI 封装（issue/PR/CI），37.3 万总下载</td>
+</tr>
+<tr>
+<td><strong>brave-search</strong></td>
+<td>steipete</td>
+<td>轻量网页搜索，无需浏览器</td>
+</tr>
+<tr>
+<td><strong>markdown-converter</strong></td>
+<td>steipete</td>
+<td>文档一键转 Markdown（PDF/Office/图片/音频）</td>
+</tr>
+<tr>
+<td><strong>qmd</strong></td>
+<td>steipete</td>
+<td>本地代码库语义搜索（BM25+向量+重排序）</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>选型逻辑</strong>：steipete 一人占综合榜 12 席，工具箱类技能的"个人品牌天花板"。日用效率场景按需挑选，相当于给智能体装上外部手脚。</p>
+<h3 id="main-heading-H3-16">场景五：前沿尝鲜（热度优先）</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>推荐技能</th>
+<th>作者</th>
+<th>推荐理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>self-improving</strong></td>
+<td>ivangdavila</td>
+<td>社交榜第 1（buzz 0.826），自我进化叙事的核心标的</td>
+</tr>
+<tr>
+<td><strong>self-improving-agent</strong></td>
+<td>pskoett</td>
+<td>总下载 169 万，自我进化品类中装机最高</td>
+</tr>
+<tr>
+<td><strong>nano-banana-pro</strong></td>
+<td>steipete</td>
+<td>Gemini 3 Pro Image 图像生成，社交互动 2243</td>
+</tr>
+<tr>
+<td><strong>api-gateway</strong></td>
+<td>byungkyu</td>
+<td>Maton 网关连接第三方应用，buzz 0.934（全榜热度值最高）</td>
+</tr>
+<tr>
+<td>hyperframes（仓库榜第 28，5.1 万星）</td>
+<td>heygen-com</td>
+<td>38 个技能的动画/视频生成全家桶</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><strong>选型逻辑</strong>：尝鲜类技能看社交榜而非装机榜——buzz 高说明社区正在积极踩坑，早装早受益，但要做好技能快速迭代的心理准备。</p>
+<h3 id="main-heading-H3-17">通用建议</h3>
+<ol dir="auto">
+<li><strong>从 find-skills 开始</strong>（综合榜第 1，344.9 万装机）：让智能体自己学会找技能，一次安装解决长期发现成本。</li>
+<li><strong>方法论 ≤ 5 个 + 工具按需</strong>：方法论类技能会改变智能体的行为模式，装太多容易互相冲突。</li>
+<li><strong>关注 anomaly 标记</strong>：数据中带 anomaly 标记的技能（如部分 Azure 系装机量高度一致的批量部署特征）需留意真实使用量与统计口径的差异。</li>
+<li><strong>中文用户可关注</strong>：skillhub.cn 的 <code class="notranslate">multi-search-engine</code>（54 万下载）+ 仓库榜中文军团（baoyu-skills、larksuite/cli、Humanizer-zh 等）。</li>
+</ol>
+<hr>
+<h2 id="main-heading-H2-18">结语</h2>
+<p dir="auto">三份榜单合起来读，Agent Skills 生态的今天大致是这样一个画面：<strong>存量看厂商与方法论，增量看自我进化与安全护栏，长期看社区星标与个人品牌。</strong></p>
+<p dir="auto">技能市场正在重演应用商店的历史——从"有什么装什么"走向"排行榜决定装什么"。而 best-skills 这样的每日聚合项目，正在成为这个新兴市场的"App Annie"。</p>
+<blockquote>
+<p dir="auto">榜单每日更新，本文基于 2026-09-18 快照。数据与完整榜单见 <a href="https://github.com/LinklyAI/best-skills/">LinklyAI/best-skills</a>。</p>
+</blockquote></div> <!----> <!----> <div class="comment-container" data-v-23bcf102 data-v-046725fd><!----> <div id="blog-comments" class="comments-container" data-v-23bcf102><h2 data-v-23bcf102>留言（0 条）</h2> <div class="comment-empty" data-v-23bcf102>
+      还没有留言，来写第一条吧
+    </div> </div> <div class="comment-action" data-v-23bcf102><p class="comment-hint" data-v-23bcf102>使用 GitHub 登录后即可在下方直接留言</p> <div class="utterances-box" data-v-23bcf102></div></div></div></div></div> <div class="article-sidebar-right" data-v-046725fd><!----></div></div></div> <footer class="footer" data-v-204eba05><div class="footer-content" data-v-204eba05><div class="project-info" data-v-204eba05><h3 data-v-204eba05>🚀 想要搭建自己的博客？</h3> <p data-v-204eba05>
+        本博客基于
+        <a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" data-v-204eba05>
+          Nuxt Issue Blog
+        </a>
+        构建
+      </p> <p class="description" data-v-204eba05>
+        一个基于 GitHub API 的博客静态站点生成工具，让你享受用 GitHub Issue 写博客的便利！
+      </p> <div class="features" data-v-204eba05><span data-v-204eba05>✨ SSG静态站点</span> <span data-v-204eba05>🌙 暗黑主题</span> <span data-v-204eba05>💬 GitHub评论</span> <span data-v-204eba05>🔄 自动部署</span></div></div> <div class="github-stats" data-v-204eba05><a href="https://github.com/yanyue404/nuxt-issue-blog" target="_blank" rel="noopener noreferrer" class="github-button" data-v-204eba05><svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-v-204eba05><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" data-v-204eba05></path></svg> <span data-v-204eba05>Star on GitHub</span> <!----></a></div></div> <div class="copyright" data-v-204eba05>
+    © 2023-2026 Built with Nuxt Issue Blog
+  </div></footer></div></div></div><script>window.__NUXT__=function(t,n,e,r,d,a,s,o,i){return{layout:"default",data:[{post:{id:5498661763,number:310,title:"Best Agent Skills：三榜看懂 Agent 技能生态的今天",created_at:"2026-09-18T10:46:41Z",updated_at:"2026-09-18T10:46:59Z",body_html:'<blockquote>\n<p dir="auto">数据来源：<a href="https://github.com/LinklyAI/best-skills/">LinklyAI/best-skills</a> 开源项目 2026-09-18 快照<br>\n覆盖平台：skills.sh、clawhub.ai、skillhub.cn</p>\n</blockquote>\n<hr>\n<h2 id="main-heading-H2-0">引言：技能生态已经大到需要"排行榜"了</h2>\n<p dir="auto">Agent Skills（智能体技能）正在成为 AI 编程生态的新货币——一个带 <code class="notranslate">SKILL.md</code> 的文件夹，就能教会 Claude Code、Codex、Clawdbot 这类编码智能体一套新本领。当技能数量从几十个膨胀到成千上万个，"哪个技能值得装"就成了真实痛点。</p>\n<p dir="auto"><a href="https://github.com/LinklyAI/best-skills/">LinklyAI/best-skills</a> 项目应运而生：它每日聚合 skills.sh、clawhub.ai、skillhub.cn 三大技能平台的公开数据，产出三份互相补位的榜单：</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>榜单</th>\n<th>回答的问题</th>\n<th>核心指标</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>Best 100 综合榜</strong></td>\n<td>哪些技能装的人最多、最稳？</td>\n<td>wis 综合评分（装机量 + 流行度 + 增长动量 + 社交热度加权）</td>\n</tr>\n<tr>\n<td><strong>Social Buzz 热议榜</strong></td>\n<td>过去 7 天大家在谈论什么？</td>\n<td>buzz_score（X / Hacker News / Bluesky / GitHub 提及与互动）</td>\n</tr>\n<tr>\n<td><strong>Top Repos 仓库榜</strong></td>\n<td>哪些技能仓库最受开发者追捧？</td>\n<td>GitHub 星标数、日增星标、收录技能数</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto">三份榜单放在一起读，才能看到完整的生态图景：<strong>装机量代表存量实力，社交热度代表增量叙事，仓库星标代表开发者社区的长期投票。</strong></p>\n<hr>\n<h2 id="main-heading-H2-1">榜单一：Best 100 综合榜——存量实力的排行</h2>\n<h3 id="main-heading-H3-2">Top 10</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th align="center">排名</th>\n<th>技能</th>\n<th>作者 / 厂商</th>\n<th>平台</th>\n<th align="center">wis 评分</th>\n<th align="center">装机量</th>\n<th>地址</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td align="center">1</td>\n<td><strong>find-skills</strong></td>\n<td>vercel-labs</td>\n<td>skills.sh</td>\n<td align="center">74.7</td>\n<td align="center">344.9 万</td>\n<td><a href="https://github.com/vercel-labs/skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">2</td>\n<td><strong>frontend-design</strong></td>\n<td>anthropics</td>\n<td>skills.sh</td>\n<td align="center">73.0</td>\n<td align="center">89.7 万</td>\n<td><a href="https://github.com/anthropics/skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">3</td>\n<td><strong>agent-browser</strong></td>\n<td>vercel-labs</td>\n<td>skills.sh</td>\n<td align="center">69.0</td>\n<td align="center">87.8 万</td>\n<td><a href="https://github.com/vercel-labs/agent-browser">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">4</td>\n<td><strong>vercel-react-best-practices</strong></td>\n<td>vercel-labs</td>\n<td>skills.sh</td>\n<td align="center">68.5</td>\n<td align="center">72.3 万</td>\n<td><a href="https://github.com/vercel-labs/agent-skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">5</td>\n<td><strong>grill-me</strong></td>\n<td>mattpocock</td>\n<td>skills.sh</td>\n<td align="center">66.7</td>\n<td align="center">116.6 万</td>\n<td><a href="https://github.com/mattpocock/skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">6</td>\n<td><strong>weather</strong></td>\n<td>steipete</td>\n<td>clawhub</td>\n<td align="center">66.5</td>\n<td align="center">17.0 万</td>\n<td><a href="https://clawhub.ai/steipete/skills/weather" rel="nofollow">clawhub</a></td>\n</tr>\n<tr>\n<td align="center">7</td>\n<td><strong>azure-ai</strong></td>\n<td>microsoft</td>\n<td>skills.sh</td>\n<td align="center">66.2</td>\n<td align="center">58.8 万</td>\n<td><a href="https://github.com/microsoft/azure-skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">8</td>\n<td><strong>gog</strong></td>\n<td>steipete</td>\n<td>clawhub</td>\n<td align="center">66.2</td>\n<td align="center">19.4 万</td>\n<td><a href="https://clawhub.ai/steipete/skills/gog" rel="nofollow">clawhub</a></td>\n</tr>\n<tr>\n<td align="center">9</td>\n<td><strong>web-design-guidelines</strong></td>\n<td>vercel-labs</td>\n<td>skills.sh</td>\n<td align="center">65.5</td>\n<td align="center">64.4 万</td>\n<td><a href="https://github.com/vercel-labs/agent-skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">10</td>\n<td><strong>grill-with-docs</strong></td>\n<td>mattpocock</td>\n<td>skills.sh</td>\n<td align="center">64.7</td>\n<td align="center">99.6 万</td>\n<td><a href="https://github.com/mattpocock/skills">GitHub</a></td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h3 id="main-heading-H3-3">榜单解读</h3>\n<p dir="auto"><strong>榜首是个"元技能"。</strong> <code class="notranslate">find-skills</code> 以 344.9 万装机量、74.7 的 wis 评分断层领先——它的功能就是"帮智能体找到合适的技能"。这本身就是生态成熟的标志：技能多到需要导航，而导航本身成了最热门的技能。</p>\n<p dir="auto"><strong>Microsoft 是最大的"集团军"。</strong> 全榜 100 席中，Azure 系技能（azure-ai、azure-deploy、azure-kubernetes、entra-* 等约 28 席）集体入榜，且装机量整齐地停在 58 万上下——这种高度一致的数字透露出典型的<strong>企业批量部署</strong>特征：Azure 技能包正在被组织级用户整包安装，而非开发者零散选用。</p>\n<p dir="auto"><strong>方法论教练 mattpocock 贡献 19 席。</strong> Matt Pocock（Total TypeScript 作者）的技能不是工具，而是<strong>工程方法论</strong>：<code class="notranslate">grill-me</code>（拷问需求）、<code class="notranslate">tdd</code>（测试驱动）、<code class="notranslate">handoff</code>（任务交接）、<code class="notranslate">triage</code>（问题分诊）、<code class="notranslate">code-review</code>……把资深工程师的工作习惯封装成技能，是本榜最独特的存在。</p>\n<p dir="auto"><strong>个人开发者 steipete 占 12 席。</strong> Peter Steinberger 在 clawhub 上的技能全是"日用工具箱"风格：<code class="notranslate">weather</code>（免 API Key 天气）、<code class="notranslate">gog</code>（Google Workspace 命令行）、<code class="notranslate">slack</code>、<code class="notranslate">github</code>、<code class="notranslate">notion</code>、<code class="notranslate">obsidian</code>、<code class="notranslate">brave-search</code>……一个顶一个厂商。</p>\n<p dir="auto"><strong>厂商全家桶成建制入榜。</strong> Vercel 8 席（React 最佳实践、组合模式、部署）、Prisma 9 席（几乎覆盖数据库工作全流程）、Supabase / Neon 各 2 席——数据库与前端基础设施厂商已把 Skills 当成官方文档的"可执行版本"。</p>\n<p dir="auto"><strong>唯一的 skillhub.cn 入榜者</strong>是 <code class="notranslate">multi-search-engine</code>（成都智创未来）：16 个搜索引擎集成（7 国内 + 9 全球），54 万下载量，排名 60——中国平台生态的代表作。</p>\n<hr>\n<h2 id="main-heading-H2-4">榜单二：Social Buzz 热议榜——7 天内的增量叙事</h2>\n<h3 id="main-heading-H3-5">Top 10（按 buzz_score）</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th align="center">排名</th>\n<th>技能</th>\n<th>平台</th>\n<th align="center">buzz_score</th>\n<th>关键社交数据（7 天）</th>\n<th>地址</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td align="center">1</td>\n<td><strong>self-improving</strong></td>\n<td>clawhub</td>\n<td align="center">0.826</td>\n<td>X 提及 20 · HN 10 · Bluesky 183 命中</td>\n<td><a href="https://clawhub.ai/ivangdavila/skills/self-improving" rel="nofollow">clawhub</a></td>\n</tr>\n<tr>\n<td align="center">2</td>\n<td><strong>grill-me</strong></td>\n<td>skills.sh</td>\n<td align="center">0.732</td>\n<td>X 提及 100+（截断）· 互动量 4128</td>\n<td><a href="https://github.com/mattpocock/skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">3</td>\n<td><strong>frontend-design</strong></td>\n<td>skills.sh</td>\n<td align="center">0.657</td>\n<td>X 提及 20 · GitHub 提及 62</td>\n<td><a href="https://github.com/anthropics/skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">4</td>\n<td><strong>nano-banana-pro</strong></td>\n<td>clawhub</td>\n<td align="center">0.638</td>\n<td>X 提及 28 · 互动量 2243</td>\n<td><a href="https://clawhub.ai/steipete/skills/nano-banana-pro" rel="nofollow">clawhub</a></td>\n</tr>\n<tr>\n<td align="center">5</td>\n<td><strong>grill-with-docs</strong></td>\n<td>skills.sh</td>\n<td align="center">0.638</td>\n<td>X 提及 21 · 互动量 3178</td>\n<td><a href="https://github.com/mattpocock/skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">6</td>\n<td><strong>self-improving-agent</strong></td>\n<td>clawhub</td>\n<td align="center">0.628</td>\n<td>X 提及 50 · 互动量 1987</td>\n<td><a href="https://clawhub.ai/pskoett/skills/self-improving-agent" rel="nofollow">clawhub</a></td>\n</tr>\n<tr>\n<td align="center">7</td>\n<td><strong>browser-use</strong></td>\n<td>skills.sh</td>\n<td align="center">0.616</td>\n<td>HN 2 · Bluesky 15 命中</td>\n<td><a href="https://github.com/browser-use/browser-use">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">8</td>\n<td><strong>skill-creator</strong></td>\n<td>skills.sh</td>\n<td align="center">0.616</td>\n<td>X 提及 60 · GitHub 提及 86</td>\n<td><a href="https://github.com/anthropics/skills">GitHub</a></td>\n</tr>\n<tr>\n<td align="center">9</td>\n<td><strong>proactive-agent</strong></td>\n<td>clawhub</td>\n<td align="center">0.604</td>\n<td>X 提及 30</td>\n<td><a href="https://clawhub.ai/halthelobster/skills/proactive-agent" rel="nofollow">clawhub</a></td>\n</tr>\n<tr>\n<td align="center">10</td>\n<td><strong>find-skills</strong></td>\n<td>skills.sh</td>\n<td align="center">0.572</td>\n<td>X 提及 25 · GitHub 提及 95</td>\n<td><a href="https://github.com/vercel-labs/skills">GitHub</a></td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h3 id="main-heading-H3-6">榜单解读</h3>\n<p dir="auto"><strong>"自我进化"是当下最强的叙事。</strong> 社交榜第一的 <code class="notranslate">self-improving</code>（自我反思 + 自我批评 + 自我学习 + 自组织记忆，让智能体评估自身工作并永久改进）以 0.826 的 buzz_score 断层领先；第 6 名 <code class="notranslate">self-improving-agent</code>（捕获错误与用户纠正、持续自我改进）与第 9 名 <code class="notranslate">proactive-agent</code>（从任务执行者变为主动伙伴）同属这一叙事。<strong>前十名中三席都在讲"让智能体自己变好"</strong>——这不是巧合，是社区当下真正的注意力所在。</p>\n<p dir="auto"><strong>grill-me 是 X 上的顶流。</strong> 100+ 提及（真实数字被平台截断）、4128 互动量，"让 AI 拷问你的需求再动手"的思路引发了大量开发者共鸣，连带 <code class="notranslate">grill-with-docs</code> 一起上榜。</p>\n<p dir="auto"><strong>Bluesky 是被低估的讨论场。</strong> <code class="notranslate">self-improving</code> 在 Bluesky 上拿到 183 次命中（原始提及 383），<code class="notranslate">stock-analysis</code>（Yahoo Finance 股票/加密货币分析）虽未进前十，却在 Bluesky 拿到 199 次命中——金融分析类技能在 Bsky 社区形成了自己的小气候。</p>\n<p dir="auto"><strong>图像生成热度不低。</strong> <code class="notranslate">nano-banana-pro</code>（Gemini 3 Pro Image 文生图/图生图）靠 28 次 X 提及贡献 2243 互动，说明"让智能体直接产出图像"的实用需求旺盛。</p>\n<hr>\n<h2 id="main-heading-H2-7">榜单三：Top Repos 仓库榜——GitHub 社区的长期投票</h2>\n<h3 id="main-heading-H3-8">Top 10</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th align="center">排名</th>\n<th>仓库</th>\n<th align="center">星标数</th>\n<th align="center">日增</th>\n<th align="center">收录技能数</th>\n<th>定位</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td align="center">1</td>\n<td><a href="https://github.com/obra/superpowers"><strong>obra/superpowers</strong></a></td>\n<td align="center">288,126</td>\n<td align="center">+331</td>\n<td align="center">14</td>\n<td>超能力技能合集（SDLC 全流程）</td>\n</tr>\n<tr>\n<td align="center">2</td>\n<td><a href="https://github.com/mattpocock/skills"><strong>mattpocock/skills</strong></a></td>\n<td align="center">264,489</td>\n<td align="center">+614</td>\n<td align="center">53</td>\n<td>工程方法论技能库</td>\n</tr>\n<tr>\n<td align="center">3</td>\n<td><a href="https://github.com/affaan-m/ECC"><strong>affaan-m/ECC</strong></a></td>\n<td align="center">261,164</td>\n<td align="center">—</td>\n<td align="center">52</td>\n<td>Claude / MCP 生产力技能合集</td>\n</tr>\n<tr>\n<td align="center">4</td>\n<td><a href="https://github.com/multica-ai/andrej-karpathy-skills"><strong>multica-ai/andrej-karpathy-skills</strong></a></td>\n<td align="center">213,713</td>\n<td align="center">—</td>\n<td align="center">1</td>\n<td>Karpathy 风格技能</td>\n</tr>\n<tr>\n<td align="center">5</td>\n<td><a href="https://github.com/firecrawl/firecrawl"><strong>firecrawl/firecrawl</strong></a></td>\n<td align="center">181,677</td>\n<td align="center">—</td>\n<td align="center">1</td>\n<td>网页抓取转 Markdown</td>\n</tr>\n<tr>\n<td align="center">6</td>\n<td><a href="https://github.com/anthropics/skills"><strong>anthropics/skills</strong></a></td>\n<td align="center">176,889</td>\n<td align="center">+112</td>\n<td align="center">20</td>\n<td>Anthropic 官方技能库</td>\n</tr>\n<tr>\n<td align="center">7</td>\n<td><a href="https://github.com/anthropics/claude-code"><strong>anthropics/claude-code</strong></a></td>\n<td align="center">145,865</td>\n<td align="center">+166</td>\n<td align="center">1</td>\n<td>Claude Code 本体</td>\n</tr>\n<tr>\n<td align="center">8</td>\n<td><a href="https://github.com/vercel/next.js"><strong>vercel/next.js</strong></a></td>\n<td align="center">142,338</td>\n<td align="center">—</td>\n<td align="center">2</td>\n<td>Next.js 官方（附技能）</td>\n</tr>\n<tr>\n<td align="center">9</td>\n<td><a href="https://github.com/DietrichGebert/ponytail"><strong>DietrichGebert/ponytail</strong></a></td>\n<td align="center">141,321</td>\n<td align="center">+563</td>\n<td align="center">6</td>\n<td>YAGNI 极简编码哲学技能</td>\n</tr>\n<tr>\n<td align="center">10</td>\n<td><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"><strong>nextlevelbuilder/ui-ux-pro-max-skill</strong></a></td>\n<td align="center">128,517</td>\n<td align="center">+214</td>\n<td align="center">4</td>\n<td>UI/UX 设计技能</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h3 id="main-heading-H3-9">榜单解读</h3>\n<p dir="auto"><strong>superpowers 登顶，但 mattpocock 增长最猛。</strong> <code class="notranslate">obra/superpowers</code>（Jesse Vincent 的 SDLC 技能合集：brainstorming、TDD、subagent 驱动开发等）以 28.8 万星守住第一；但第二名 <code class="notranslate">mattpocock/skills</code> 日增 614 星，且以 53 个收录技能成为头部仓库中<strong>内容最丰富的技能库之一</strong>。</p>\n<p dir="auto"><strong>名人效应真实存在。</strong> <code class="notranslate">andrej-karpathy-skills</code> 只有 1 个技能，却凭 Karpathy 的名字拿下 21.4 万星——社区对"Karpathy 会怎么写代码"的兴趣，本身就是一个顶级 IP。</p>\n<p dir="auto"><strong>philosophy 也能拿星。</strong> <code class="notranslate">ponytail</code>（YAGNI / 极简主义编码哲学，日增 563 星）和 <code class="notranslate">caveman</code>（10.6 万星，"穴居人"极简 token 风格）证明：<strong>约束型技能</strong>（让 AI 少做、别过度设计）与能力型技能同样受欢迎。</p>\n<p dir="auto"><strong>安全护栏是当日最大黑马。</strong> <code class="notranslate">cloudflare/security-audit-skill</code> 星标数刚过 1 万，但<strong>单日暴涨 2240 星</strong>，是全榜增速第一；<code class="notranslate">destructive_command_guard</code>（拦截破坏性命令）也进入百强。"给智能体系上安全带"正在成为新的刚需赛道。</p>\n<p dir="auto"><strong>收录技能数之最：</strong> <code class="notranslate">NomaDamas/k-skill</code>（7,598 星）被追踪收录了 <strong>125 个技能</strong>，是全榜数量冠军；<code class="notranslate">coreyhaines31/marketingskills</code>（62 个）、<code class="notranslate">mattpocock/skills</code>（53 个）、<code class="notranslate">affaan-m/ECC</code>（52 个）紧随其后。</p>\n<p dir="auto"><strong>中文生态在仓库榜上更活跃：</strong> <code class="notranslate">JimLiu/baoyu-skills</code>（2.6 万星，宝玉技能库）、<code class="notranslate">larksuite/cli</code>（飞书官方，28 个技能）、<code class="notranslate">zenstory-ai/oh-story-claudecode</code>（中文小说写作）、<code class="notranslate">WenyuChiou/awesome-agentic-ai-zh</code>（中文学习路线图）、<code class="notranslate">op7418/Humanizer-zh</code>（去 AI 味中文写作）——中文技能生态偏<strong>内容创作与效率办公</strong>，与英文生态的工程主导形成鲜明互补。</p>\n<hr>\n<h2 id="main-heading-H2-10">三榜交叉：今天值得记住的五个信号</h2>\n<p dir="auto"><strong>1. 生态进入"需要导航"的阶段。</strong><br>\n综合榜第一是 find-skills，社交榜前十有它，GitHub 提及 95 次——当选择成本超过使用成本时，聚合与发现层就成了基础设施。</p>\n<p dir="auto"><strong>2. "自我进化"从概念走向落地。</strong><br>\n<code class="notranslate">self-improving</code> 同时打进综合榜（第 45）和社交榜（第 1），<code class="notranslate">self-improving-agent</code> 更是以 120.9 万下载冲进综合榜第 55。让智能体记录错误、自我批评、永久改进，是当前增长最快的品类。</p>\n<p dir="auto"><strong>3. 方法论比工具更有黏性。</strong><br>\nmattpocock 系（grill-me / tdd / handoff / triage）三榜全部在榜：装机 19 席、社交榜 4 席（含前二占据两席）、仓库榜第 2 且日增最高。"教会 AI 怎么干活"胜过"替 AI干活"。</p>\n<p dir="auto"><strong>4. 厂商集团军与个人奇兵并存。</strong><br>\nMicrosoft 28 席、Vercel 8 席、Prisma 9 席的集团军打法，与 steipete 一人 12 席、obra 一仓库 28.8 万星的双轨并行——企业看重整包分发，开发者用星标投票给个人品牌。</p>\n<p dir="auto"><strong>5. 平台三足鼎立格局初现。</strong><br>\nskills.sh 占综合榜约 3/4 席位，是存量主战场；clawhub.ai（Clawdbot 生态）以日用工具和自我进化类技能见长；skillhub.cn 尚在早期，但 multi-search-engine 的 54 万下载和仓库榜上的中文军团，预示着下一个增量市场。</p>\n<hr>\n<h2 id="main-heading-H2-11">给开发者工程师的选型建议</h2>\n<p dir="auto">榜单看热闹，选型看门道。基于三份榜单的数据交叉验证（装机量 × 社交热度 × 仓库活跃度），按工程师的日常工作场景给出以下建议：</p>\n<h3 id="main-heading-H3-12">场景一：日常编码——已装 mattpocock + superpowers 用户的完整清单</h3>\n<p dir="auto">日常编码的方法论底座你已经装配到位（mattpocock 仓库榜第 2 + superpowers 仓库榜第 1），下面把这两家在榜单中的技能<strong>全部罗列</strong>，按用途分组查漏补缺：</p>\n<h4 dir="auto">mattpocock/skills 榜单全量（综合榜 19 席 + 社交榜 5 席）</h4>\n<p dir="auto">仓库地址：<a href="https://github.com/mattpocock/skills">github.com/mattpocock/skills</a>（264,489 星 · 日增 614 · 收录 53 个技能）</p>\n<p dir="auto"><strong>需求与规划类</strong>（动手前先想清楚）</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>技能</th>\n<th align="center">综合榜排名</th>\n<th align="center">装机量</th>\n<th>用途</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>grill-me</strong></td>\n<td align="center">5</td>\n<td align="center">116.6 万</td>\n<td>拷问需求，动手前压力测试你的想法（社交榜第 2，X 互动 4128）</td>\n</tr>\n<tr>\n<td><strong>grill-with-docs</strong></td>\n<td align="center">10</td>\n<td align="center">99.6 万</td>\n<td>带文档上下文的深度拷问（社交榜第 5）</td>\n</tr>\n<tr>\n<td><strong>grilling</strong></td>\n<td align="center">49</td>\n<td align="center">72.3 万</td>\n<td>通用层层盘问模式</td>\n</tr>\n<tr>\n<td><strong>to-spec</strong></td>\n<td align="center">95</td>\n<td align="center">52.1 万</td>\n<td>把口头需求转成可执行规格</td>\n</tr>\n<tr>\n<td><strong>domain-modeling</strong></td>\n<td align="center">64</td>\n<td align="center">65.4 万</td>\n<td>构建项目领域模型与共享词汇（社交榜第 16）</td>\n</tr>\n<tr>\n<td><strong>codebase-design</strong></td>\n<td align="center">69</td>\n<td align="center">63.3 万</td>\n<td>设计模块接口、找深化机会（社交榜第 20）</td>\n</tr>\n<tr>\n<td><strong>prototype</strong></td>\n<td align="center">51</td>\n<td align="center">79.8 万</td>\n<td>抛弃型原型验证设计问题</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong>实现与质量类</strong>（写代码时的护栏）</p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>技能</th>\n<th align="center">综合榜排名</th>\n<th align="center">装机量</th>\n<th>用途</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>tdd</strong></td>\n<td align="center">48</td>\n<td align="center">92.2 万</td>\n<td>测试驱动开发（red-green-refactor）</td>\n</tr>\n<tr>\n<td><strong>implement</strong></td>\n<td align="center">93</td>\n<td align="center">57.3 万</td>\n<td>按计划逐步实现，带验证检查点</td>\n</tr>\n<tr>\n<td><strong>diagnosing-bugs</strong></td>\n<td align="center">88</td>\n<td align="center">62.1 万</td>\n<td>bug 诊断循环：先系统排查再修复</td>\n</tr>\n<tr>\n<td><strong>triage</strong></td>\n<td align="center">50</td>\n<td align="center">80.2 万</td>\n<td>问题分诊，决定先修哪个</td>\n</tr>\n<tr>\n<td><strong>code-review</strong></td>\n<td align="center">92</td>\n<td align="center">57.1 万</td>\n<td>提交前按规范与规格双轴审查</td>\n</tr>\n<tr>\n<td><strong>improve-codebase-architecture</strong></td>\n<td align="center">47</td>\n<td align="center">94.9 万</td>\n<td>架构持续改进（社交榜第 13）</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong>协作与研究类</strong></p>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>技能</th>\n<th align="center">综合榜排名</th>\n<th align="center">装机量</th>\n<th>用途</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>handoff</strong></td>\n<td align="center">39</td>\n<td align="center">82.4 万</td>\n<td>任务交接，在独立会话中继续执行计划</td>\n</tr>\n<tr>\n<td><strong>research</strong></td>\n<td align="center">98</td>\n<td align="center">52.1 万</td>\n<td>对照一手来源调研并落库 Markdown</td>\n</tr>\n<tr>\n<td><strong>to-tickets</strong></td>\n<td align="center">99</td>\n<td align="center">51.2 万</td>\n<td>把需求拆成工单</td>\n</tr>\n<tr>\n<td><strong>teach</strong></td>\n<td align="center">53</td>\n<td align="center">67.1 万</td>\n<td>让 AI 边做边教，理解每步决策</td>\n</tr>\n<tr>\n<td><strong>ask-matt</strong></td>\n<td align="center">97</td>\n<td align="center">57.5 万</td>\n<td>直接问 Matt 本人的最佳实践</td>\n</tr>\n<tr>\n<td><strong>wayfinder</strong></td>\n<td align="center">100</td>\n<td align="center">52.7 万</td>\n<td>复杂任务中的路径导航</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<h4 dir="auto">obra/superpowers 榜单表现（仓库榜第 1）</h4>\n<p dir="auto">仓库地址：<a href="https://github.com/obra/superpowers">github.com/obra/superpowers</a>（288,126 星 · 日增 331 · 收录 14 个技能）</p>\n<p dir="auto">superpowers 的技能级明细未进入技能榜统计，但其 SDLC 全流程技能集覆盖（据仓库主题标签：brainstorming / sdlc / subagent-driven-development）：<strong>brainstorming</strong>（实现前强制需求探索）、<strong>writing-plans / executing-plans</strong>（计划先行）、<strong>test-driven-development</strong>、<strong>systematic-debugging</strong>、<strong>verification-before-completion</strong>（先有证据再宣布完成）、<strong>requesting / receiving-code-review</strong>、<strong>subagent-driven-development</strong>、<strong>dispatching-parallel-agents</strong>（并行子代理）、<strong>using-git-worktrees</strong>（隔离工作区）、<strong>finishing-a-development-branch</strong>（分支收尾流程）。</p>\n<p dir="auto"><strong>查漏补缺建议</strong>：两家在 TDD、debug、code-review 上功能重叠——建议以 superpowers 的流程链为主干（brainstorming → writing-plans → executing-plans → verification），用 mattpocock 的差异化技能补位：<strong>需求拷问</strong>（grill-me / grilling）、<strong>领域建模</strong>（domain-modeling / codebase-design）、<strong>任务交接</strong>（handoff）、<strong>调研</strong>（research）——这四个能力是 superpowers 未覆盖、而 mattpocock 数据最强的部分。</p>\n<h3 id="main-heading-H3-13">场景二：前端与设计</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>推荐技能</th>\n<th>作者</th>\n<th>推荐理由</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>frontend-design</strong></td>\n<td>anthropics</td>\n<td>综合榜第 2（89.7 万装机）+ 社交榜第 3，Anthropic 官方出品，避免 AI 生成"一眼假"的模板 UI</td>\n</tr>\n<tr>\n<td><strong>web-design-guidelines</strong></td>\n<td>vercel-labs</td>\n<td>综合榜第 9（64.4 万装机），Vercel 的 Web 设计规范沉淀</td>\n</tr>\n<tr>\n<td><strong>vercel-react-best-practices</strong></td>\n<td>vercel-labs</td>\n<td>综合榜第 4（72.3 万装机），React 项目的事实标准</td>\n</tr>\n<tr>\n<td>ui-ux-pro-max-skill（仓库榜第 10，12.9 万星）</td>\n<td>nextlevelbuilder</td>\n<td>落地页/UI 整套设计能力，仓库热度极高</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong>选型逻辑</strong>：设计类技能是"效果立竿见影"的品类——装与不装，AI 产出的 UI 质量差距肉眼可见。官方与 Vercel 双保险即可覆盖绝大多数场景。</p>\n<h3 id="main-heading-H3-14">场景三：数据库与后端基础设施</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>推荐技能</th>\n<th>作者</th>\n<th>推荐理由</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>prisma-database-setup / prisma-client-api</strong></td>\n<td>prisma</td>\n<td>Prisma 官方 9 席全流程技能，Prisma 用户建议整包安装</td>\n</tr>\n<tr>\n<td><strong>supabase-postgres-best-practices</strong></td>\n<td>supabase</td>\n<td>综合榜第 54（40.6 万装机），Supabase 用户必装</td>\n</tr>\n<tr>\n<td><strong>neon-postgres</strong></td>\n<td>neondatabase</td>\n<td>Serverless Postgres 场景</td>\n</tr>\n<tr>\n<td><strong>azure-deploy / azure-kubernetes</strong></td>\n<td>microsoft</td>\n<td>Azure 用户按需选取，企业环境建议整包（28 席入榜说明其批量部署已是主流用法）</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong>选型逻辑</strong>：基础设施类技能"厂商绑定"属性强——用哪家产品就装哪家技能，官方技能包已等同于"可执行文档"。</p>\n<h3 id="main-heading-H3-15">场景四：效率工具箱（clawhub 生态）</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>推荐技能</th>\n<th>作者</th>\n<th>推荐理由</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>gog</strong></td>\n<td>steipete</td>\n<td>Google Workspace 全家桶 CLI（Gmail/日历/Drive/Sheets/Docs）</td>\n</tr>\n<tr>\n<td><strong>github</strong></td>\n<td>steipete</td>\n<td>gh CLI 封装（issue/PR/CI），37.3 万总下载</td>\n</tr>\n<tr>\n<td><strong>brave-search</strong></td>\n<td>steipete</td>\n<td>轻量网页搜索，无需浏览器</td>\n</tr>\n<tr>\n<td><strong>markdown-converter</strong></td>\n<td>steipete</td>\n<td>文档一键转 Markdown（PDF/Office/图片/音频）</td>\n</tr>\n<tr>\n<td><strong>qmd</strong></td>\n<td>steipete</td>\n<td>本地代码库语义搜索（BM25+向量+重排序）</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong>选型逻辑</strong>：steipete 一人占综合榜 12 席，工具箱类技能的"个人品牌天花板"。日用效率场景按需挑选，相当于给智能体装上外部手脚。</p>\n<h3 id="main-heading-H3-16">场景五：前沿尝鲜（热度优先）</h3>\n<markdown-accessiblity-table><table role="table">\n<thead>\n<tr>\n<th>推荐技能</th>\n<th>作者</th>\n<th>推荐理由</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>self-improving</strong></td>\n<td>ivangdavila</td>\n<td>社交榜第 1（buzz 0.826），自我进化叙事的核心标的</td>\n</tr>\n<tr>\n<td><strong>self-improving-agent</strong></td>\n<td>pskoett</td>\n<td>总下载 169 万，自我进化品类中装机最高</td>\n</tr>\n<tr>\n<td><strong>nano-banana-pro</strong></td>\n<td>steipete</td>\n<td>Gemini 3 Pro Image 图像生成，社交互动 2243</td>\n</tr>\n<tr>\n<td><strong>api-gateway</strong></td>\n<td>byungkyu</td>\n<td>Maton 网关连接第三方应用，buzz 0.934（全榜热度值最高）</td>\n</tr>\n<tr>\n<td>hyperframes（仓库榜第 28，5.1 万星）</td>\n<td>heygen-com</td>\n<td>38 个技能的动画/视频生成全家桶</td>\n</tr>\n</tbody>\n</table></markdown-accessiblity-table>\n<p dir="auto"><strong>选型逻辑</strong>：尝鲜类技能看社交榜而非装机榜——buzz 高说明社区正在积极踩坑，早装早受益，但要做好技能快速迭代的心理准备。</p>\n<h3 id="main-heading-H3-17">通用建议</h3>\n<ol dir="auto">\n<li><strong>从 find-skills 开始</strong>（综合榜第 1，344.9 万装机）：让智能体自己学会找技能，一次安装解决长期发现成本。</li>\n<li><strong>方法论 ≤ 5 个 + 工具按需</strong>：方法论类技能会改变智能体的行为模式，装太多容易互相冲突。</li>\n<li><strong>关注 anomaly 标记</strong>：数据中带 anomaly 标记的技能（如部分 Azure 系装机量高度一致的批量部署特征）需留意真实使用量与统计口径的差异。</li>\n<li><strong>中文用户可关注</strong>：skillhub.cn 的 <code class="notranslate">multi-search-engine</code>（54 万下载）+ 仓库榜中文军团（baoyu-skills、larksuite/cli、Humanizer-zh 等）。</li>\n</ol>\n<hr>\n<h2 id="main-heading-H2-18">结语</h2>\n<p dir="auto">三份榜单合起来读，Agent Skills 生态的今天大致是这样一个画面：<strong>存量看厂商与方法论，增量看自我进化与安全护栏，长期看社区星标与个人品牌。</strong></p>\n<p dir="auto">技能市场正在重演应用商店的历史——从"有什么装什么"走向"排行榜决定装什么"。而 best-skills 这样的每日聚合项目，正在成为这个新兴市场的"App Annie"。</p>\n<blockquote>\n<p dir="auto">榜单每日更新，本文基于 2026-09-18 快照。数据与完整榜单见 <a href="https://github.com/LinklyAI/best-skills/">LinklyAI/best-skills</a>。</p>\n</blockquote>',user:{login:a,id:24217900,node_id:"MDQ6VXNlcjI0MjE3OTAw",avatar_url:"https://avatars.githubusercontent.com/u/24217900?v=4",gravatar_id:n,url:"https://api.github.com/users/yanyue404",html_url:"https://github.com/yanyue404",followers_url:"https://api.github.com/users/yanyue404/followers",following_url:"https://api.github.com/users/yanyue404/following{/other_user}",gists_url:"https://api.github.com/users/yanyue404/gists{/gist_id}",starred_url:"https://api.github.com/users/yanyue404/starred{/owner}{/repo}",subscriptions_url:"https://api.github.com/users/yanyue404/subscriptions",organizations_url:"https://api.github.com/users/yanyue404/orgs",repos_url:"https://api.github.com/users/yanyue404/repos",events_url:"https://api.github.com/users/yanyue404/events{/privacy}",received_events_url:"https://api.github.com/users/yanyue404/received_events",type:s,user_view_type:"public",site_admin:!1},labels:[{id:1793631208,node_id:"MDU6TGFiZWwxNzkzNjMxMjA4",url:"https://api.github.com/repos/yanyue404/blog/labels/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB",name:"软件工程师的自我修养",color:"1d76db",default:!1,description:n,archived_at:r,archived_by:r}],html_url:"https://github.com/yanyue404/blog/issues/310"},navList:[{text:'引言：技能生态已经大到需要"排行榜"了',id:"main-heading-H2-0",type:e,children:[]},{text:"榜单一：Best 100 综合榜——存量实力的排行",id:"main-heading-H2-1",type:e,children:[{text:o,id:"main-heading-H3-2",type:t},{text:d,id:"main-heading-H3-3",type:t}]},{text:"榜单二：Social Buzz 热议榜——7 天内的增量叙事",id:"main-heading-H2-4",type:e,children:[{text:"Top 10（按 buzz_score）",id:"main-heading-H3-5",type:t},{text:d,id:"main-heading-H3-6",type:t}]},{text:"榜单三：Top Repos 仓库榜——GitHub 社区的长期投票",id:"main-heading-H2-7",type:e,children:[{text:o,id:"main-heading-H3-8",type:t},{text:d,id:"main-heading-H3-9",type:t}]},{text:"三榜交叉：今天值得记住的五个信号",id:"main-heading-H2-10",type:e,children:[]},{text:"给开发者工程师的选型建议",id:"main-heading-H2-11",type:e,children:[{text:"场景一：日常编码——已装 mattpocock + superpowers 用户的完整清单",id:"main-heading-H3-12",type:t},{text:"场景二：前端与设计",id:"main-heading-H3-13",type:t},{text:"场景三：数据库与后端基础设施",id:"main-heading-H3-14",type:t},{text:"场景四：效率工具箱（clawhub 生态）",id:"main-heading-H3-15",type:t},{text:"场景五：前沿尝鲜（热度优先）",id:"main-heading-H3-16",type:t},{text:"通用建议",id:"main-heading-H3-17",type:t}]},{text:"结语",id:"main-heading-H2-18",type:e,children:[]}],preloadedComments:[]}],error:r,state:{blog:{baseUrl:"/blog/",userName:a,userEmail:"1656800216@qq.com",repository:"blog",blogName:i,heroTitle:"欢迎来到我的博客",heroSubtitle:"记录技术与信仰的思考，分享前端开发实践",seo:{title:"闫越的网络日志",description:i,keywords:"基督徒 | F2E"},serverLoaded:!1,postList:[],allPosts:[],page:0,total_count:0,pending:!1,keyWorld:n},label:{labelList:[],page:1,total_count:0,pending:!1},user:{id:n,avatar_url:n,name:n,html_url:n,bio:n,type:s}},serverRendered:!0}}("H3","","H2",null,"榜单解读","yanyue404","User","Top 10","Just blog and unjust blog")</script><script src="/blog/_nuxt/3ca71d917093bec7117f.js" defer></script><script src="/blog/_nuxt/18a2cc7c56bc1381ad80.js" defer></script><script src="/blog/_nuxt/80cd76334673a51b4f79.js" defer></script><script src="/blog/_nuxt/5d37d981ea0f1bfba3d0.js" defer></script><script src="/blog/_nuxt/b11a0041e67a50c5da72.js" defer></script>
+  </body>
+</html>
