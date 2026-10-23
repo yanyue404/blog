@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{399:function(t,e,n){"use strict";n.r(e);var c={fetch:function(t){var e=t.query,n=t.redirect;return e.id?n(301,"/post/".concat(e.id)):n(302,"/")}},r=n(6),component=Object(r.a)(c,(function(){return(0,this._self._c)("div",{staticClass:"route-placeholder"})}),[],!1,null,null,null);e.default=component.exports}}]);
